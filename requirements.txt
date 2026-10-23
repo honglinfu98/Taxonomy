@@ -1,0 +1,6 @@
+# Core
+numpy
+pandas
+python-dotenv
+
+# Add project-specific dependencies below.
