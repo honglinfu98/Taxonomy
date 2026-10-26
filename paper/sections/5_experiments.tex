@@ -109,8 +109,8 @@ least one verified citation, but five values were supported only by a rejected
 quote and are therefore unverified.
 
 Verification checks existence, not relevance: whether the 470 verified
-citations support their term types is the question for the expert annotation
-planned in \cref{sec:exp:setup}, which we have not run. The run is one call of
+citations support their term types is left to the expert validation deferred to the next version
+(\cref{sec:conclusion}). The run is one call of
 302 seconds with 85,729 output tokens and 235,298 cached input tokens, at most
 \$0.33 at list price.
 
@@ -166,8 +166,6 @@ near-singletons.
 allows for low-probability entries, and \BTopNoCite\ top entries cite nothing,
 which it does not. Rejected quotes are mostly short phrases from long sections, such as
 ``Wrapped tokens''.
-\todo{Expert judgement of a sample of 100 edges on a 1--3 scale with agreement,
-following the protocol planned for \cref{sec:exp:rq5}.}
 
 \subsection{RQ3: The DAG as a Label Space}
 \label{sec:exp:rq3}
@@ -228,8 +226,7 @@ thousands in iteration 2, which is why support is extrapolated to the residual
 
 The tags have no gold labels yet, so verified evidence is the only quality
 signal we report; an evidence span can exist without the tag being right.
-\todo{Expert review of a slice of the tags for precision and recall, and a
-regulatory content batch for the legal branches.}
+\todo{A regulatory content batch for the legal branches.}
 
 \subsection{RQ4: Retrieval over the DAG}
 \label{sec:exp:rq4}
@@ -268,8 +265,7 @@ asset root reaches \RTopClosurePct\% of the items, so a bare subtree query on
 a high node returns most of the collection. Restricting the subtree to path strength $\ge 0.3$ cuts the mean
 hit count from 1,474 to 579 at twice the latency, and the candidate edges
 added at weight one will tighten once the is-a query re-estimates them.
-Ranking uses the tagger's confidence; there are no relevance judgements yet. \todo{Relevance judgements
-on a query sample; compare with BM25 over the item text.}
+Ranking uses the tagger's confidence; there are no relevance judgements yet. \todo{Compare with BM25 over the item text.}
 
 \textbf{Planned evaluations (RQ5--RQ7).}\label{sec:exp:rq5}\label{sec:exp:rq6}\label{sec:exp:rq7}
 \todo{RQ5: expert taxonomies and LLM baselines (zero-shot, chunked RAG, RAPTOR,

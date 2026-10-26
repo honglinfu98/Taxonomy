@@ -49,6 +49,16 @@ In review mode `\todo{}` renders red, `\note{}` blue; both vanish in camera-read
 
 Suggested body allocation: intro 1.25 · related 0.75 · problem 0.5 · method 2 · experiments 2.5 · discussion 0.5 · conclusion 0.25 · figures/tables ~0.25.
 
+## Parked for the next version
+
+Human expert validation is deferred (decided 2026-10-26); the paper states this in the
+conclusion instead of carrying red placeholders for it:
+
+- expert judgement of a sample of ~100 is-a edges on a 1-3 scale with inter-annotator agreement
+  (RQ2);
+- expert review of a slice of the tags for precision and recall (RQ3);
+- relevance judgements on a query sample for the retrieval ranking (RQ4).
+
 ## Submission checklist (from the CFP)
 
 - [ ] `\documentclass[sigconf, anonymous, review]{acmart}` (default here)

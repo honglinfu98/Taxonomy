@@ -190,7 +190,8 @@ def run_system(name: str, queries: list[dict], k: int, searcher) -> dict:
 
 
 def render(res: dict, k: int) -> tuple[str, str]:
-    names = {"dag_index": "DAG index (ours)", "flat_tags": "flat zero-shot tags, no closure", "supervised": "supervised labels + DAG index", "bm25": "BM25 over text"}
+    names = {"dag_index": "DAG index (ours, Haiku 5.5 tags)", "flat_tags": "flat zero-shot tags, no closure", "supervised": "supervised labels + DAG index",
+             "bm25": "BM25 over text", "dag_index@claude-sonnet-5-5": "DAG index (Sonnet 5.5 tags)"}
     md = ["# Retrieval evaluation", "",
           f"Judged collection: {res['items']} gold items; {res['n_queries']} queries ({res['query_kinds']}); k = {k}; "
           f"{res['runs']} runs (mean ± sd over runs; each run uses that run's tag predictions). "
@@ -235,7 +236,13 @@ def main() -> None:
         pass
     parsed = {q["query"]: parse(tokenize(q["query"])) for q in queries}
     for r in range(1, a.runs + 1):
-        preds = {s: read_jsonl(OUT / f"pred_{s}_run{r}.jsonl") for s in ("dag", "flat", "supervised") if (OUT / f"pred_{s}_run{r}.jsonl").exists()}
+        preds = {p.name[len("pred_"):-len(f"_run{r}.jsonl")]: read_jsonl(p) for p in sorted(OUT.glob(f"pred_*_run{r}.jsonl"))}
+        for s2, rows2 in preds.items():
+            if s2.startswith("dag@"):          # second-model tags through the DAG index
+                idx3 = make_index(version, tts, dag, items, rows2)
+                eng3 = Engine(idx3)
+                res["systems"].setdefault(f"dag_index@{s2.split('@', 1)[1]}", []).append(run_system(
+                    s2, queries, a.k, lambda q, idx3=idx3, eng3=eng3: [idx3.items[x["i"]]["id"] for x in eng3.rank(eng3.evaluate(parsed[q["query"]]), eng3.positive_atoms(parsed[q["query"]]), a.k)]))
         if "dag" in preds:
             idx = make_index(version, tts, dag, items, preds["dag"])
             eng = Engine(idx)

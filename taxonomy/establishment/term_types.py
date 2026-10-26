@@ -131,8 +131,9 @@ def run(model: str, effort: str, max_tokens: int, thinking: bool) -> tuple[str, 
     prompt = with_manifest(prompt, manifest(corpus, parse_corpus(corpus)))
     # Haiku 5.5 thinks by default; on this 235K-token corpus adaptive thinking ran past 100K
     # tokens without emitting any text, so thinking is off unless --thinking is given.
-    req = build_request(instructions, prompt, model=model, max_tokens=max_tokens, effort=effort,
-                        thinking={"type": "adaptive"} if thinking else {"type": "disabled"})
+    extra = {} if model in ("claude-opus-5-5", "claude-sonnet-5-5") else {   # thinking cannot be disabled on these
+        "thinking": {"type": "adaptive"} if thinking else {"type": "disabled"}}
+    req = build_request(instructions, prompt, model=model, max_tokens=max_tokens, effort=effort, **extra)
     t0 = time.time()
     with client().messages.stream(**req) as stream:      # streaming: long outputs, no request timeout
         msg = stream.get_final_message()
@@ -147,8 +148,15 @@ def main() -> None:
     ap.add_argument("--max-tokens", type=int, default=120000)  # model ceiling is 128K; a full pass is ~60-70K
     ap.add_argument("--thinking", action="store_true", help="enable adaptive thinking (counts toward max-tokens)")
     ap.add_argument("--verify-only", action="store_true", help="re-verify output/term_types.raw.txt without calling the API")
+    ap.add_argument("--tag", default=None, help="write to output/establishment/repeats/term_types.<tag>.* instead of the main outputs")
     args = ap.parse_args()
     OUT_DIR.mkdir(exist_ok=True)
+    global RAW_OUT, JSON_OUT, VERIFY_OUT
+    if args.tag:
+        rep = OUT_DIR / "repeats"
+        rep.mkdir(exist_ok=True)
+        RAW_OUT, JSON_OUT, VERIFY_OUT = (rep / f"term_types.{args.tag}.raw.txt", rep / f"term_types.{args.tag}.json",
+                                         rep / f"term_types.{args.tag}.verification.json")
 
     if args.verify_only:
         text, meta = RAW_OUT.read_text(encoding="utf-8"), json.loads(JSON_OUT.read_text())["run"]

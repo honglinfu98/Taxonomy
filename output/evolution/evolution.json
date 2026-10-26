@@ -677,5 +677,299 @@
   "result_nodes": 113,
   "result_edges": 300,
   "result_values": 433
+ },
+ {
+  "iteration": 4,
+  "catalogue_version": 3,
+  "timestamp": "2026-10-26T10:54:25+00:00",
+  "sample": "data/dlt_corpus/sample_iter04.jsonl",
+  "items": 8646,
+  "sources": {
+   "paper": {
+    "items": 3744,
+    "tags_per_item": 3.87
+   },
+   "patent": {
+    "items": 4902,
+    "tags_per_item": 4.38
+   }
+  },
+  "tags": 35952,
+  "tags_per_item": 4.16,
+  "evidence_verified": "34608/35952",
+  "off_topic": 520,
+  "nodes": 113,
+  "nodes_with_items": 113,
+  "dormant": 0,
+  "collapsed": 13,
+  "discovery_targets": 42,
+  "candidates": 106,
+  "accepted": 18,
+  "objectives": {
+   "bits_per_descent": 7.2153,
+   "auc": 0.7796,
+   "expected_depth": 3.8027,
+   "effective_leaves": 24.68,
+   "effective_leaves_over_nodes": 0.2184,
+   "prior_bits_per_descent": 4.8767,
+   "prior_auc": 0.8427
+  },
+  "cost": {
+   "requests": 8689,
+   "input_tokens": 6982643,
+   "cache_read_tokens": 242630570,
+   "output_tokens": 2923586,
+   "tagging_usd": 4.544,
+   "discovery_usd": 0.0425,
+   "evolve_usd": 0.0034,
+   "total_usd": 4.5899
+  },
+  "time": {
+   "api_seconds": 17928.7,
+   "wall_seconds": 789.5,
+   "note": null,
+   "mean_request_s": 2.06,
+   "p95_request_s": 3.24,
+   "workers": 24
+  },
+  "produced_version": 4,
+  "added_term_types": [
+   {
+    "id": "deanonymisation_tracing_approach",
+    "name": "Deanonymisation / tracing approach",
+    "question": "What technique is used to trace or link pseudonymous transactions back to identities?",
+    "values": [
+     "address clustering heuristic",
+     "graph-based machine learning",
+     "transaction time-series analysis",
+     "wallet risk scoring",
+     "argumentation or legal reasoning"
+    ],
+    "parents": [
+     "anonymity_enhancing_status"
+    ],
+    "merged_from": 1,
+    "support": 6
+   },
+   {
+    "id": "backing_mechanism",
+    "name": "Backing mechanism",
+    "question": "How is the backing asset held or secured against the token?",
+    "values": [
+     "custodial reserve held by third party",
+     "pledged or encumbered on a ledger",
+     "oracle-priced collateral",
+     "algorithmic peg without collateral"
+    ],
+    "parents": [
+     "backing_of_token"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "settlement_finality_timing",
+    "name": "Settlement finality timing",
+    "question": "When does the payment become final relative to its initiation?",
+    "values": [
+     "real-time or instant",
+     "batch or net settlement",
+     "condition- or event-triggered",
+     "periodic or scheduled"
+    ],
+    "parents": [
+     "payment_settlement_mechanism"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "settlement_counterparty",
+    "name": "Settlement counterparty",
+    "question": "Which entity actually moves the fiat funds to the merchant or seller?",
+    "values": [
+     "merchant acquirer / bank",
+     "payment platform remits fiat",
+     "commercial bank node",
+     "not applicable"
+    ],
+    "parents": [
+     "fiat_rail_integration"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "physical_transfer_mechanism_air_gap",
+    "name": "Physical transfer mechanism across air gap",
+    "question": "By what physical channel, if any, is data moved across the isolation boundary between the key-holding device and the network?",
+    "values": [
+     "none (fully disconnected)",
+     "removable storage media",
+     "optical/visual codes",
+     "acoustic",
+     "electrical diode or one-way link"
+    ],
+    "parents": [
+     "key_isolation_from_network"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "validator_selection_mechanism",
+    "name": "Validator selection mechanism",
+    "question": "How are the validators or consensus nodes chosen for a given round?",
+    "values": [
+     "random or verifiable-random selection",
+     "stake or share weighted selection",
+     "reputation based selection",
+     "fixed rotation or leader election",
+     "all eligible nodes participate"
+    ],
+    "parents": [
+     "consensus_participant_validator_capacity"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "sharding_partition_basis",
+    "name": "Sharding partition basis",
+    "question": "On what basis is the ledger or validator set partitioned into shards?",
+    "values": [
+     "validator/node grouping",
+     "account or state partition",
+     "transaction-graph or workload-based partition",
+     "jurisdiction or location partition"
+    ],
+    "parents": [
+     "ledger_partitioning_topology"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "wallet_interface_delivery_form",
+    "name": "Wallet interface or delivery form",
+    "question": "In what form or interface is the wallet's key material delivered to or accessed by the user?",
+    "values": [
+     "software wallet application",
+     "physical card or token",
+     "physical object (e.g., sphere or coin)",
+     "hardware device",
+     "browser or web extension"
+    ],
+    "parents": [
+     "unhosted_vs_hosted_wallet"
+    ],
+    "merged_from": 1,
+    "support": 6
+   },
+   {
+    "id": "share_recovery_mechanism",
+    "name": "Share recovery mechanism",
+    "question": "How can the divided key shares be recombined or recovered if some shares are lost or unavailable?",
+    "values": [
+     "threshold reconstruction from quorum",
+     "escrow recovery by third party",
+     "proactive resharing over time",
+     "no recovery path"
+    ],
+    "parents": [
+     "key_splitting_scheme"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "centralisation_locus",
+    "name": "Centralisation locus",
+    "question": "Which component or layer of the system is centralised (consensus/mining, block building, governance, token issuance, data storage, or validation)?",
+    "values": [
+     "consensus_or_mining",
+     "block_building_or_ordering",
+     "governance_voting",
+     "token_issuance_or_monetary_policy",
+     "data_storage_or_oracles",
+     "validator_or_node_operation"
+    ],
+    "parents": [
+     "centralisation_level"
+    ],
+    "merged_from": 1,
+    "support": 6
+   },
+   {
+    "id": "cross_chain_interoperability_mechanism",
+    "name": "Cross-chain interoperability mechanism",
+    "question": "How does the mechanism move state or value between blockchains?",
+    "values": [
+     "side-chain peg / two-way transfer",
+     "cross-chain relay or oracle verification",
+     "atomic cross-chain swap",
+     "software bridge between protocols",
+     "cross-chain smart contract execution"
+    ],
+    "parents": [
+     "wrapped_or_bridged_asset"
+    ],
+    "merged_from": 1,
+    "support": 7
+   }
+  ],
+  "added_values": [
+   {
+    "term_type": "key_share_distribution_topology",
+    "value": "among blockchain network nodes",
+    "definition": "Key shares are held by nodes of a blockchain or decentralized network, such that a threshold of nodes must cooperate to reconstruct the key.",
+    "support": 5
+   },
+   {
+    "term_type": "backing_of_token",
+    "value": "backed by physical commodities or precious metals",
+    "definition": "The token's value is backed by physical commodities, precious metals, gems or other tangible goods held in custody.",
+    "support": 5
+   },
+   {
+    "term_type": "fiat_rail_integration",
+    "value": "card-network-issued crypto payment card",
+    "definition": "The crypto settlement is triggered by a payment card whose authorization flows through a card network.",
+    "support": 5
+   },
+   {
+    "term_type": "fiat_rail_integration",
+    "value": "ledger-tokenized fiat settlement",
+    "definition": "Fiat settlement is replaced by settlement tokens or in-network tokens on a distributed ledger rather than a bridged rail.",
+    "support": 5
+   },
+   {
+    "term_type": "minting_mechanism",
+    "value": "NFT minting for media and content licensing",
+    "definition": "Units minted as NFTs representing a media asset, royalty split, or content authorisation, typically via a marketplace or digital vault.",
+    "support": 5
+   },
+   {
+    "term_type": "key_custody_control_model",
+    "value": "air-gapped offline signing device",
+    "definition": "Private keys are generated and stored on a device never connected to a network, with signing performed offline via QR codes, cards, or isolated chambers.",
+    "support": 5
+   },
+   {
+    "term_type": "native_vs_token_standard",
+    "value": "NFT standard token",
+    "definition": "Non-fungible token issued under a smart-contract standard, such as ERC-721 or ERC-1155, representing unique assets.",
+    "support": 5
+   }
+  ],
+  "dropped": [
+   {
+    "label": "fiat_rail_integration (ledger-tokenized fiat settlement) duplicated across candidates",
+    "reason": "Retained as a value of fiat_rail_integration; no duplicate term type created."
+   }
+  ],
+  "result_nodes": 124,
+  "result_edges": 311,
+  "result_values": 491
  }
 ]

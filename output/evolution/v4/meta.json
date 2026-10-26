@@ -1,0 +1,407 @@
+{
+ "role": "evolved",
+ "from_version": 3,
+ "iteration": 4,
+ "accepted_candidates": 18,
+ "plan": {
+  "term_types": [
+   {
+    "id": "deanonymisation_tracing_approach",
+    "name": "Deanonymisation / tracing approach",
+    "category": "obligation_or_risk",
+    "question": "What technique is used to trace or link pseudonymous transactions back to identities?",
+    "description": "Method by which a pseudonymous ledger's transfers are clustered, labelled or attributed to real-world actors by investigators or detectors.",
+    "values": [
+     "address clustering heuristic",
+     "graph-based machine learning",
+     "transaction time-series analysis",
+     "wallet risk scoring",
+     "argumentation or legal reasoning"
+    ],
+    "parents": [
+     "anonymity_enhancing_status"
+    ],
+    "merged_from": [
+     "Deanonymisation / tracing approach"
+    ],
+    "item_ids": [
+     "paper:01f882c68fd68f4bc3c3a86e7ec098803297b4d8",
+     "paper:3edf8cd519c48c85e85e3106ee54347801b307d7",
+     "paper:4d43e75e25e777fcb6cb3b21078c3ccf4cc4dd88",
+     "paper:987be989a0ee00b48c229b249e7b5cde921a6153",
+     "paper:b7dcef6f750598c15573a8d841a9b4c07c533e4d",
+     "patent:20220414664"
+    ]
+   },
+   {
+    "id": "backing_mechanism",
+    "name": "Backing mechanism",
+    "category": "asset",
+    "question": "How is the backing asset held or secured against the token?",
+    "description": "Distinguishes whether backing assets are held in custody, pledged or locked, or governed by an oracle or algorithm.",
+    "values": [
+     "custodial reserve held by third party",
+     "pledged or encumbered on a ledger",
+     "oracle-priced collateral",
+     "algorithmic peg without collateral"
+    ],
+    "parents": [
+     "backing_of_token"
+    ],
+    "merged_from": [
+     "backing mechanism"
+    ],
+    "item_ids": [
+     "patent:11669831",
+     "patent:20240119444",
+     "patent:20240135367",
+     "patent:20240146554",
+     "patent:20240420114"
+    ]
+   },
+   {
+    "id": "settlement_finality_timing",
+    "name": "Settlement finality timing",
+    "category": "activity",
+    "question": "When does the payment become final relative to its initiation?",
+    "description": "Distinguishes whether settlement is immediate, deferred to a batch or net window, or triggered by a condition or event.",
+    "values": [
+     "real-time or instant",
+     "batch or net settlement",
+     "condition- or event-triggered",
+     "periodic or scheduled"
+    ],
+    "parents": [
+     "payment_settlement_mechanism"
+    ],
+    "merged_from": [
+     "settlement_finality_timing"
+    ],
+    "item_ids": [
+     "patent:11605080",
+     "patent:20180121918",
+     "patent:20190150036",
+     "patent:20200302433",
+     "patent:20230103796"
+    ]
+   },
+   {
+    "id": "settlement_counterparty",
+    "name": "Settlement counterparty",
+    "category": "actor",
+    "question": "Which entity actually moves the fiat funds to the merchant or seller?",
+    "description": "Identifies the institution or platform that performs the fiat-side payout, distinct from the crypto-side transfer.",
+    "values": [
+     "merchant acquirer / bank",
+     "payment platform remits fiat",
+     "commercial bank node",
+     "not applicable"
+    ],
+    "parents": [
+     "fiat_rail_integration"
+    ],
+    "merged_from": [
+     "Settlement counterparty"
+    ],
+    "item_ids": [
+     "patent:11348081",
+     "patent:11798050",
+     "patent:12373803",
+     "patent:20200364686",
+     "patent:20210174320"
+    ]
+   },
+   {
+    "id": "physical_transfer_mechanism_air_gap",
+    "name": "Physical transfer mechanism across air gap",
+    "category": "technology",
+    "question": "By what physical channel, if any, is data moved across the isolation boundary between the key-holding device and the network?",
+    "description": "Distinguishes how signed or key material physically crosses an air gap, which the existing binary-style values do not separate.",
+    "values": [
+     "none (fully disconnected)",
+     "removable storage media",
+     "optical/visual codes",
+     "acoustic",
+     "electrical diode or one-way link"
+    ],
+    "parents": [
+     "key_isolation_from_network"
+    ],
+    "merged_from": [
+     "physical transfer mechanism across air gap"
+    ],
+    "item_ids": [
+     "patent:11468435",
+     "patent:11979495",
+     "patent:20190251524",
+     "patent:20200028675",
+     "patent:20240005302"
+    ]
+   },
+   {
+    "id": "validator_selection_mechanism",
+    "name": "Validator selection mechanism",
+    "category": "technology",
+    "question": "How are the validators or consensus nodes chosen for a given round?",
+    "description": "Describes how the set of active validators is selected, independent of who is eligible to join.",
+    "values": [
+     "random or verifiable-random selection",
+     "stake or share weighted selection",
+     "reputation based selection",
+     "fixed rotation or leader election",
+     "all eligible nodes participate"
+    ],
+    "parents": [
+     "consensus_participant_validator_capacity"
+    ],
+    "merged_from": [
+     "validator selection mechanism"
+    ],
+    "item_ids": [
+     "paper:0b361882764ca6e81cd88e8aa37d6a1f51c1dc1e",
+     "paper:14868840ff690436c1daa4b2f12804af225ff6da",
+     "patent:10540652",
+     "patent:20210099280",
+     "patent:20230066169"
+    ]
+   },
+   {
+    "id": "sharding_partition_basis",
+    "name": "Sharding partition basis",
+    "category": "technology",
+    "question": "On what basis is the ledger or validator set partitioned into shards?",
+    "description": "Describes what criterion divides the network or state into parallel shards.",
+    "values": [
+     "validator/node grouping",
+     "account or state partition",
+     "transaction-graph or workload-based partition",
+     "jurisdiction or location partition"
+    ],
+    "parents": [
+     "ledger_partitioning_topology"
+    ],
+    "merged_from": [
+     "sharding partition basis"
+    ],
+    "item_ids": [
+     "paper:1e5465fbf37475074143209dbe92eb41e33bd81c",
+     "paper:348b3a88e1f1afbe0750d792f9a32e6f04268c75",
+     "paper:5d22af0780077f2d3db73e30e5c73c6d7c111c76",
+     "paper:98ebaa215677b2a72aa0deb3e461c4376bf81311",
+     "paper:a628d734a20e2c4c133c7c6e8e1b4283be28c006"
+    ]
+   },
+   {
+    "id": "wallet_interface_delivery_form",
+    "name": "Wallet interface or delivery form",
+    "category": "technology",
+    "question": "In what form or interface is the wallet's key material delivered to or accessed by the user?",
+    "description": "Classifies the physical or software form in which the wallet and its keys are presented to the user.",
+    "values": [
+     "software wallet application",
+     "physical card or token",
+     "physical object (e.g., sphere or coin)",
+     "hardware device",
+     "browser or web extension"
+    ],
+    "parents": [
+     "unhosted_vs_hosted_wallet"
+    ],
+    "merged_from": [
+     "wallet interface or delivery form"
+    ],
+    "item_ids": [
+     "patent:11983682",
+     "patent:12284276",
+     "patent:20230206222",
+     "patent:20250131397",
+     "patent:20250175332",
+     "patent:20250211442"
+    ]
+   },
+   {
+    "id": "share_recovery_mechanism",
+    "name": "Share recovery mechanism",
+    "category": "technology",
+    "question": "How can the divided key shares be recombined or recovered if some shares are lost or unavailable?",
+    "description": "Distinguishes how split key material is reconstituted, such as threshold reconstruction, escrow recovery, or dynamic re-sharing.",
+    "values": [
+     "threshold reconstruction from quorum",
+     "escrow recovery by third party",
+     "proactive resharing over time",
+     "no recovery path"
+    ],
+    "parents": [
+     "key_splitting_scheme"
+    ],
+    "merged_from": [
+     "Share recovery mechanism"
+    ],
+    "item_ids": [
+     "patent:11329807",
+     "patent:20200162243",
+     "patent:20220029801",
+     "patent:20230016360",
+     "patent:20240048387"
+    ]
+   },
+   {
+    "id": "centralisation_locus",
+    "name": "Centralisation locus",
+    "category": "asset",
+    "question": "Which component or layer of the system is centralised (consensus/mining, block building, governance, token issuance, data storage, or validation)?",
+    "description": "Splits centralisation by the specific layer where control concentrates, rather than an overall level.",
+    "values": [
+     "consensus_or_mining",
+     "block_building_or_ordering",
+     "governance_voting",
+     "token_issuance_or_monetary_policy",
+     "data_storage_or_oracles",
+     "validator_or_node_operation"
+    ],
+    "parents": [
+     "centralisation_level"
+    ],
+    "merged_from": [
+     "centralisation_locus"
+    ],
+    "item_ids": [
+     "paper:041474460e28d3bab41b6d1c71f73272aafacf53",
+     "paper:0fda627556814140c4fe39f68e1094b757c954da",
+     "paper:5a0bffb9caa1e5428a269c53e512cc8b66ec4091",
+     "paper:bb229a0127d5339391bfac25c4e0ee7ba4b899ad",
+     "paper:d3933808c64b322a0b77d894338435a6188c096b",
+     "paper:df7f5e14066bada29b4bb72aeafd04544a11eb2c"
+    ]
+   },
+   {
+    "id": "cross_chain_interoperability_mechanism",
+    "name": "Cross-chain interoperability mechanism",
+    "category": "technology",
+    "question": "How does the mechanism move state or value between blockchains?",
+    "description": "Technique used to transfer or verify assets, data, or transactions across distinct blockchain networks.",
+    "values": [
+     "side-chain peg / two-way transfer",
+     "cross-chain relay or oracle verification",
+     "atomic cross-chain swap",
+     "software bridge between protocols",
+     "cross-chain smart contract execution"
+    ],
+    "parents": [
+     "wrapped_or_bridged_asset"
+    ],
+    "merged_from": [
+     "Cross-chain interoperability mechanism"
+    ],
+    "item_ids": [
+     "patent:10805090",
+     "patent:11194837",
+     "patent:11888991",
+     "patent:12165202",
+     "patent:20190340267",
+     "patent:20210328770",
+     "patent:20220231869"
+    ]
+   }
+  ],
+  "values": [
+   {
+    "term_type": "key_share_distribution_topology",
+    "value": "among blockchain network nodes",
+    "definition": "Key shares are held by nodes of a blockchain or decentralized network, such that a threshold of nodes must cooperate to reconstruct the key.",
+    "item_ids": [
+     "patent:11082482",
+     "patent:11509459",
+     "patent:11870894",
+     "patent:12192352",
+     "patent:20240249289"
+    ]
+   },
+   {
+    "term_type": "backing_of_token",
+    "value": "backed by physical commodities or precious metals",
+    "definition": "The token's value is backed by physical commodities, precious metals, gems or other tangible goods held in custody.",
+    "item_ids": [
+     "patent:12293357",
+     "patent:20200394652",
+     "patent:20250086711",
+     "patent:20250173427",
+     "patent:20250245651"
+    ]
+   },
+   {
+    "term_type": "fiat_rail_integration",
+    "value": "card-network-issued crypto payment card",
+    "definition": "The crypto settlement is triggered by a payment card whose authorization flows through a card network.",
+    "item_ids": [
+     "patent:12217246",
+     "patent:20190220856",
+     "patent:20220020011",
+     "patent:20240104560",
+     "patent:20240193584"
+    ]
+   },
+   {
+    "term_type": "fiat_rail_integration",
+    "value": "ledger-tokenized fiat settlement",
+    "definition": "Fiat settlement is replaced by settlement tokens or in-network tokens on a distributed ledger rather than a bridged rail.",
+    "item_ids": [
+     "patent:11836717",
+     "patent:20160342978",
+     "patent:20200151686",
+     "patent:20200167769",
+     "patent:20210073913"
+    ]
+   },
+   {
+    "term_type": "minting_mechanism",
+    "value": "NFT minting for media and content licensing",
+    "definition": "Units minted as NFTs representing a media asset, royalty split, or content authorisation, typically via a marketplace or digital vault.",
+    "item_ids": [
+     "patent:11687628",
+     "patent:11983195",
+     "patent:11983253",
+     "patent:20240144262",
+     "patent:20250045808"
+    ]
+   },
+   {
+    "term_type": "key_custody_control_model",
+    "value": "air-gapped offline signing device",
+    "definition": "Private keys are generated and stored on a device never connected to a network, with signing performed offline via QR codes, cards, or isolated chambers.",
+    "item_ids": [
+     "patent:11468435",
+     "patent:11568398",
+     "patent:20200028675",
+     "patent:20230162188",
+     "patent:20250131420"
+    ]
+   },
+   {
+    "term_type": "native_vs_token_standard",
+    "value": "NFT standard token",
+    "definition": "Non-fungible token issued under a smart-contract standard, such as ERC-721 or ERC-1155, representing unique assets.",
+    "item_ids": [
+     "paper:3e9cf3eae5d88d77579d3e5aa402adac81f9835f",
+     "paper:52422d0553ce78fcf4844f355a27a334f0d0c927",
+     "paper:68a0607a22417e2a1263ea8ffc2f7a7b91790d04",
+     "paper:86f015916ca8f6119e31b9eb6c2457a3fe923f30",
+     "paper:fb9bf9c0346ae81c206e9ba41149304b3d917178"
+    ]
+   }
+  ],
+  "dropped": [
+   {
+    "label": "fiat_rail_integration (ledger-tokenized fiat settlement) duplicated across candidates",
+    "reason": "Retained as a value of fiat_rail_integration; no duplicate term type created."
+   }
+  ]
+ },
+ "version": 4,
+ "created": "2026-10-26T10:54:25+00:00",
+ "nodes": 124,
+ "edges": 311,
+ "values": 491,
+ "candidate_nodes": 31,
+ "candidate_values": 174
+}

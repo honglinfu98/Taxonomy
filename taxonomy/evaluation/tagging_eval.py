@@ -168,7 +168,8 @@ def evaluate(gold: dict[str, dict], rows: list[dict]) -> dict:
 
 def render(res: dict) -> tuple[str, str]:
     systems = res["systems"]
-    names = {"dag": "DAG-guided LLM (ours)", "flat": "zero-shot LLM, flat labels", "supervised": "supervised TF-IDF + LR"}
+    names = {"dag": "DAG-guided LLM (ours, Haiku 5.5)", "flat": "zero-shot LLM, flat labels (Haiku 5.5)", "supervised": "supervised TF-IDF + LR",
+             "dag@claude-sonnet-5-5": "DAG-guided LLM (Sonnet 5.5)", "flat@claude-sonnet-5-5": "zero-shot LLM, flat labels (Sonnet 5.5)"}
     md = ["# Tagging evaluation", "",
           f"Gold: {res['gold']['items']} items, {res['gold']['labels']} labels ({res['gold']['labels_per_item']} per item), "
           f"{res['gold']['distinct_labels']} distinct (term type, value) labels over {res['gold']['distinct_term_types']} term types; "
@@ -199,13 +200,15 @@ def render(res: dict) -> tuple[str, str]:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--systems", nargs="*", default=["dag", "flat", "supervised"])
+    ap.add_argument("--systems", nargs="*", default=["dag", "flat", "supervised"],
+                    help="dag, flat, supervised, or system@model for a second model, e.g. dag@claude-sonnet-5-5")
     ap.add_argument("--runs", type=int, default=3)
     ap.add_argument("--model", default="claude-haiku-5-5")
     ap.add_argument("--effort", default="medium")
     ap.add_argument("--version", type=int, default=None)
     ap.add_argument("--workers", type=int, default=16)
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--keep", action="store_true", help="keep systems already in tagging_eval.json that are not re-run")
     a = ap.parse_args()
     if not GOLD.exists():
         sys.exit("gold.jsonl missing: run taxonomy.evaluation.gold select / annotate first")
@@ -219,11 +222,19 @@ def main() -> None:
     gold = {i: gold[i] for i in gold if i in {it["id"] for it in items}}
     res = {"catalogue_version": version, "runs": a.runs, "gold": {**gsum["gold"], "model": gsum["model"],
            "pass_agreement": gsum.get("pass_agreement", {}).get("micro_f1")}, "systems": {}}
+    prev = OUT / "tagging_eval.json"
+    if a.keep and prev.exists():
+        old_res = json.loads(prev.read_text(encoding="utf-8"))
+        if old_res.get("catalogue_version") == version:
+            res["systems"] = {k: v for k, v in old_res["systems"].items() if k not in a.systems}
     for s in a.systems:
         res["systems"][s] = []
         for r in range(1, a.runs + 1):
             if s == "supervised":
                 rows, info = supervised_system(items, tts, seed=100 + r)
+            elif "@" in s:                      # e.g. dag@claude-sonnet-5-5: the same system with a second model
+                base, model = s.split("@", 1)
+                rows, info = llm_system(base, items, tts, dag, model, a.effort, a.workers)
             else:
                 rows, info = llm_system(s, items, tts, dag, a.model, a.effort, a.workers)
             write_jsonl(OUT / f"pred_{s}_run{r}.jsonl", rows)

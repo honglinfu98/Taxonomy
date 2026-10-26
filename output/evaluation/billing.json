@@ -1,0 +1,122 @@
+{
+ "rows": [
+  {
+   "stage": "Task A term types (run 1)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.2274,
+   "seconds": 302.1,
+   "tokens": {
+    "input": 2542,
+    "output": 85729,
+    "cache_read": 235298,
+    "cache_write": 0
+   },
+   "note": "high effort, 1 streamed call"
+  },
+  {
+   "stage": "Task B is-a distributions",
+   "model": "claude-haiku-5-5",
+   "usd": 1.4353,
+   "seconds": 104.3,
+   "tokens": {
+    "input": 196567,
+    "output": 68156,
+    "cache_read": 23331933,
+    "cache_write": 0
+   },
+   "note": "93 calls"
+  },
+  {
+   "stage": "Iteration 1: tag 300 items + discovery + consolidation",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1541,
+   "seconds": 107.1,
+   "tokens": {
+    "input": 319014,
+    "output": 99719,
+    "cache_read": 7229700,
+    "cache_write": 0
+   },
+   "note": "tagging $0.1413, discovery $0.0107, consolidation $0.0021"
+  },
+  {
+   "stage": "Iteration 2: tag 8646 items + discovery + consolidation",
+   "model": "claude-haiku-5-5",
+   "usd": 4.2902,
+   "seconds": 2023.9,
+   "tokens": {
+    "input": 6980250,
+    "output": 2858174,
+    "cache_read": 215995325,
+    "cache_write": 0
+   },
+   "note": "tagging $4.2509, discovery $0.0357, consolidation $0.0036"
+  },
+  {
+   "stage": "Iteration 3: tag 8646 items + discovery + consolidation",
+   "model": "claude-haiku-5-5",
+   "usd": 4.4534,
+   "seconds": 742.6,
+   "tokens": {
+    "input": 6940563,
+    "output": 2897818,
+    "cache_read": 230709115,
+    "cache_write": 0
+   },
+   "note": "tagging $4.415, discovery $0.0356, consolidation $0.0028"
+  },
+  {
+   "stage": "Iteration 4: tag 8646 items + discovery + consolidation",
+   "model": "claude-haiku-5-5",
+   "usd": 4.5899,
+   "seconds": 789.5,
+   "tokens": {
+    "input": 6982643,
+    "output": 2923586,
+    "cache_read": 242630570,
+    "cache_write": 0
+   },
+   "note": "tagging $4.544, discovery $0.0425, consolidation $0.0034"
+  },
+  {
+   "stage": "Gold annotation: 12 items x 2 passes",
+   "model": "claude-opus-5-5",
+   "usd": 1.6208,
+   "seconds": 55.6,
+   "tokens": {
+    "input": 19098,
+    "output": 20964,
+    "cache_read": 562560,
+    "cache_write": 112512
+   },
+   "note": "high effort, adaptive thinking"
+  },
+  {
+   "stage": "Evaluation: dag run 1 (12 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0063,
+   "seconds": 7.5,
+   "tokens": {
+    "input": 9549,
+    "output": 3956,
+    "cache_read": 336792,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "Evaluation: flat run 1 (12 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0073,
+   "seconds": 8.5,
+   "tokens": {
+    "input": 9549,
+    "output": 4695,
+    "cache_read": 55488,
+    "cache_write": 27744
+   },
+   "note": ""
+  }
+ ],
+ "total_usd": 16.78
+}
