@@ -478,3 +478,68 @@ if __name__ == "__main__":
     with (TABLES / "numbers.tex").open("a") as f:
         f.write(iter2_numbers())
     print("wrote evolution, objectives and new-type tables and iteration-2 numbers")
+
+
+# ---- Part 3: retrieval over the DAG -------------------------------------------------------
+RETR = ROOT / "output" / "retrieval"
+
+
+def retrieval_table() -> str:
+    b = json.loads((RETR / "benchmark.json").read_text())
+    names = {"closure (1 node)": "subtree, 1 node", "direct (node!)": "direct, 1 node", "value (node=value)": "value, 1 node",
+             "closure, strength >= 0.3": r"subtree, $s \ge 0.3$", "AND (2 atoms)": "AND, 2 atoms", "OR (2 atoms)": "OR, 2 atoms",
+             "AND NOT": "AND NOT, 2 atoms", "3 atoms, mixed": "mixed, 3 atoms"}
+    rows = [r"\begin{tabular}{@{}lrrrrr@{}}", r"\toprule",
+            r"Workload & Queries & Hits & Bitset ($\mu$s) & Flat (ms) & Speed-up \\", r"\midrule"]
+    for k, r in b["latency"].items():
+        rows.append(f"{names.get(k, k)} & {r['queries']} & {r['mean_result_size']:,.0f} & {r['bitset_us_mean']:.1f} & "
+                    f"{r['flat_scan_us_mean'] / 1000:.1f} & {r['speedup_vs_flat']:,.0f}$\\times$ \\\\")
+    rows += [r"\bottomrule", r"\end{tabular}"]
+    return "\n".join(rows) + "\n"
+
+
+def navigation_table() -> str:
+    b = json.loads((RETR / "benchmark.json").read_text())["navigation"]
+    rows = [r"\begin{tabular}{@{}lrrrrr@{}}", r"\toprule",
+            r"Facet policy & Steps & Bits & Bits/step & Reached $k$ & Final size \\", r"\midrule"]
+    for p, name in (("gain", "highest expected narrowing"), ("random", "random facet")):
+        r = b[p]
+        rows.append(f"{name} & {r['mean_steps']:.1f} & {r['mean_bits']:.1f} & {r['bits_per_step']:.2f} & {100 * r['reached_k']:.0f}\\% & {r['mean_final_size']:.0f} \\\\")
+    rows += [r"\bottomrule", r"\end{tabular}"]
+    return "\n".join(rows) + "\n"
+
+
+def retrieval_numbers() -> str:
+    s = json.loads((RETR / "index_summary.json").read_text())
+    b = json.loads((RETR / "benchmark.json").read_text())
+    lat = b["latency"].values()
+    nav = b["navigation"]
+    top_closure = s["closure_size_top"][0]
+    vals = {
+        "RItems": f"{s['items']:,}", "RTags": f"{s['tags']:,}", "RTagsPerItem": s["tags_per_item"],
+        "RSkippedOff": s["skipped"]["off_topic"], "RSkippedNoTags": s["skipped"]["no_tags"],
+        "RPapers": f"{s['by_source']['paper']:,}", "RPatents": f"{s['by_source']['patent']:,}",
+        "RNodes": s["nodes"], "REdges": s["edges"], "RLeaves": s["leaves"], "RNodesTagged": s["nodes_with_items"], "RPairs": s["pairs_with_items"],
+        "RBuildSec": f"{s['build_seconds']:.1f}", "RIndexMB": "9",
+        "RTopClosureName": top_closure[0].replace("_", " "), "RTopClosurePct": f"{100 * top_closure[1] / s['items']:.0f}",
+        "RTopDirectName": s["direct_size_top"][0][0].replace("_", " "), "RTopDirect": f"{s['direct_size_top'][0][1]:,}",
+        "RLatMin": f"{min(r['bitset_us_mean'] for r in lat):.1f}", "RLatMax": f"{max(r['bitset_us_mean'] for r in lat):.1f}",
+        "RFlatMinMs": f"{min(r['flat_scan_us_mean'] for r in lat) / 1000:.0f}", "RFlatMaxMs": f"{max(r['flat_scan_us_mean'] for r in lat) / 1000:.0f}",
+        "RSpeedMin": f"{min(r['speedup_vs_flat'] for r in lat):,.0f}", "RSpeedMax": f"{max(r['speedup_vs_flat'] for r in lat):,.0f}",
+        "RQueries": f"{sum(r['queries'] for r in lat):,}", "RMismatches": sum(r["mismatches"] for r in lat), "RRepeat": b["repeat"],
+        "RTargets": nav["targets"], "RK": nav["k"], "RIdealBits": f"{nav['ideal_bits']:.2f}",
+        "RGainSteps": f"{nav['gain']['mean_steps']:.1f}", "RGainBits": f"{nav['gain']['mean_bits']:.1f}", "RGainBps": f"{nav['gain']['bits_per_step']:.2f}",
+        "RGainReached": f"{100 * nav['gain']['reached_k']:.0f}", "RGainFinal": f"{nav['gain']['mean_final_size']:.0f}", "RGainMs": f"{nav['gain']['ms_per_target']:.1f}",
+        "RRandSteps": f"{nav['random']['mean_steps']:.1f}", "RRandBits": f"{nav['random']['mean_bits']:.1f}", "RRandBps": f"{nav['random']['bits_per_step']:.2f}",
+        "RRandReached": f"{100 * nav['random']['reached_k']:.0f}", "RRandFinal": f"{nav['random']['mean_final_size']:.0f}",
+        "RGainTraceLen": len(nav["gain"]["example_trace"]),
+    }
+    return "\n".join(f"\\newcommand{{\\{k}}}{{{v}}}" for k, v in vals.items()) + "\n"
+
+
+if __name__ == "__main__":
+    (TABLES / "retrieval.tex").write_text(retrieval_table())
+    (TABLES / "navigation.tex").write_text(navigation_table())
+    with (TABLES / "numbers.tex").open("a") as f:
+        f.write(retrieval_numbers())
+    print("wrote retrieval and navigation tables and Part 3 numbers")

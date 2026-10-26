@@ -1,0 +1,14 @@
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Workload & Queries & Hits & Bitset ($\mu$s) & Flat (ms) & Speed-up \\
+\midrule
+subtree, 1 node & 107 & 1,474 & 2.1 & 5.1 & 2,439$\times$ \\
+direct, 1 node & 91 & 360 & 2.1 & 2.0 & 935$\times$ \\
+value, 1 node & 285 & 126 & 2.8 & 6.5 & 2,286$\times$ \\
+subtree, $s \ge 0.3$ & 107 & 579 & 4.9 & 5.4 & 1,111$\times$ \\
+AND, 2 atoms & 300 & 63 & 5.6 & 7.3 & 1,304$\times$ \\
+OR, 2 atoms & 300 & 1,071 & 5.7 & 12.5 & 2,192$\times$ \\
+AND NOT, 2 atoms & 300 & 476 & 6.9 & 7.5 & 1,090$\times$ \\
+mixed, 3 atoms & 200 & 53 & 9.9 & 14.2 & 1,437$\times$ \\
+\bottomrule
+\end{tabular}

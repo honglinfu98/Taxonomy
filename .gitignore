@@ -17,3 +17,4 @@ venv/
 
 # Downloaded datasets (DLT-Corpus shards, samples)
 data/
+output/retrieval/index.pkl

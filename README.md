@@ -17,7 +17,7 @@ so the taxonomy can be audited and regenerated when the sources change.
 |---|---|---|
 | **1. Taxonomy establishment** | Establish the graph from a grounded corpus of legal instruments and academic taxonomies. | **complete (2026-10-26)**: `taxonomy/establishment/`, `output/establishment/` |
 | **2. Classification** | Tag content onto DAG nodes; maintain the DAG from node statistics (information gain, reach-a-leaf AUC, effective leaves / nodes) and discover new nodes from impurity. | **in progress**: `taxonomy/classification/`; 2 iterations run (300 + 8,646 DLT-Corpus items), seed v0 -> v2 (93 -> 107 term types) |
-| **3. Optimization** | Keep the graph self-maintaining: merge / split / prune nodes from classification feedback and retrieval usage, ingest new sources, re-verify citations. | not started |
+| **3. Optimization** | Index the tagged content on the DAG and retrieve it by graph operations: reachability closure, weighted is-a paths, lowest common ancestors, information content, facet gain for the best next question. | **first version (2026-10-26)**: `taxonomy/retrieval/`, `output/retrieval/`; 8,205 items indexed, queries in 2 to 10 us (1,000 to 2,400x faster than flat scans) |
 
 ## Part 1: taxonomy establishment (complete)
 
@@ -60,7 +60,7 @@ https://claude.ai/artifact/4fCD72T7CAUmyLzjmcpFne.
 The DAG is the label space. Content is tagged onto its nodes; node statistics drive the
 three self-maintenance objectives (information gain, AUC of the reach-a-leaf curve,
 effective leaves / nodes); entropy impurity at a node marks where new values or term
-types are discovered from the content. Retrieval by DAG walk is deferred. Content: the **DLT-Corpus** (scientific
+types are discovered from the content. Retrieval over the DAG is Part 3. Content: the **DLT-Corpus** (scientific
 literature and USPTO patents from `ExponentialScience/dlt-corpus` on Hugging Face), sampled
 in proportion for cost. The pilot tags items with Haiku 5.5 and the catalogue of term types
 and values (with is-a parents) cached in the prompt; the tagged items will train an
@@ -75,6 +75,25 @@ python -m taxonomy.classification.evolve     # consolidate accepted candidates -
 
 Mechanism: `taxonomy/classification/MAINTENANCE.md`. Pipeline, data and results:
 `taxonomy/classification/README.md`. DAG evolution from the v0 seed: `output/evolution/evolution.md`.
+
+## Part 3: optimisation (retrieval over the DAG)
+
+Tagged items become bitset postings on the DAG nodes (direct, per value, and subtree
+closure). Queries are boolean combinations of nodes, values, strength-restricted subtrees
+and categories, evaluated with integer set algebra; results are ranked by tag confidence
+weighted by the best is-a path strength (Task B weights), generalised by the lowest common
+ancestor of the query nodes, expanded to similar nodes when few items match, and narrowed
+by the facet with the highest expected information gain, which is the retrieval-time use
+of the same objective that maintains the DAG in Part 2.
+
+```bash
+python -m taxonomy.retrieval.index        # index.pkl from all tagged iterations
+python -m taxonomy.retrieval.query 'consensus_mechanism="proof of stake" AND privacy_enhancement'
+python -m taxonomy.retrieval.query --text "zero-knowledge proofs for private payments"
+python -m taxonomy.retrieval.benchmark    # output/retrieval/benchmark.md
+```
+
+Details and results: `taxonomy/retrieval/README.md`.
 
 ## Setup
 
@@ -99,11 +118,13 @@ taxonomy/
   llm_context.py           shared Claude client + cached-corpus request builder
   corpus/                  PDF extraction spec and corpus builder
   establishment/           Part 1: prompts, Task A/B runners, DAG metrics, dashboard
-  classification/          Part 2: sampler, prompts, Task C tagging runner
+  classification/          Part 2: sampler, prompts, Task C tagging, maintenance, evolution
+  retrieval/               Part 3: DAG index, graph structures, query engine, benchmark
 data/dlt_corpus/           downloaded DLT-Corpus shards and the pilot sample (gitignored)
 output/
   establishment/           Part 1 results: term types, is-a distributions, DAG, metrics, viewer
   classification/          Part 2 pilot outputs (superseded by evolution/iter_01)
   evolution/               v0 seed, v1.. evolved catalogues, iter_XX batches, evolution log
+  retrieval/               Part 3: index summary, benchmark (index.pkl is rebuilt, not committed)
 paper/                     the write-up (LaTeX)
 ```
