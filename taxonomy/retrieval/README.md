@@ -30,8 +30,8 @@ algebra on postings is one integer operation.
 
 Per item the index keeps its tagged nodes with confidence, its (node, value) pairs, the
 evidence span per (item, node), and a byte offset into the sample file for the text (the
-text itself stays in the gitignored `data/`). The index on v2 holds 8,205 items and 35,884
-tags, builds in 0.2 s and is 9 MB (`index.pkl`, rebuildable, not committed).
+text itself stays in the gitignored `data/`). The index on v6 holds 33,581 items and 149,256
+tags, builds in 1.2 s and is about 35 MB (`index.pkl`, rebuildable, not committed).
 
 ## 2. Graph structures (`graph.py`)
 
@@ -80,31 +80,35 @@ model for the query string with the catalogue as a cached system block instead.
 
 ## 4. Benchmark (`benchmark.py`, `output/retrieval/benchmark.md`)
 
-Latency per query on one core, index on v2 (8,205 items), all results checked identical
-to the flat scans:
+Latency per query on one core, index on v6 (33,581 items, 149,256 tags, 132 nodes), all
+results checked identical to the flat scans:
 
 | workload | queries | mean result | bitset (us) | flat scan (us) | flat, no closure (us) | speedup |
 |---|---|---|---|---|---|---|
-| closure, 1 node | 107 | 1474 | 2.1 | 5131 | 4515 | 2400x |
-| direct, 1 node | 91 | 360 | 2.1 | 1991 | 2506 | 935x |
-| value | 285 | 126 | 2.8 | 6488 | 6949 | 2300x |
-| closure, strength >= 0.3 | 107 | 579 | 4.9 | 5423 | 4817 | 1100x |
-| AND, 2 atoms | 300 | 63 | 5.6 | 7315 | 7492 | 1300x |
-| OR, 2 atoms | 300 | 1071 | 5.7 | 12534 | 12783 | 2200x |
-| AND NOT | 300 | 476 | 6.9 | 7485 | 7621 | 1100x |
-| 3 atoms, mixed | 200 | 53 | 9.9 | 14204 | 14479 | 1400x |
+| closure, 1 node | 132 | 5,083 | 2.1 | 22,125 | 19,720 | 10,000x |
+| direct, 1 node | 125 | 1,068 | 2.1 | 8,269 | 10,351 | 3,900x |
+| value | 463 | 322 | 2.9 | 26,737 | 28,564 | 9,100x |
+| closure, strength >= 0.3 | 132 | 1,992 | 6.0 | 22,523 | 20,243 | 3,800x |
+| AND, 2 atoms | 300 | 146 | 6.5 | 29,789 | 30,865 | 4,600x |
+| OR, 2 atoms | 300 | 2,456 | 6.4 | 53,096 | 55,311 | 8,300x |
+| AND NOT | 300 | 1,479 | 9.1 | 30,915 | 32,052 | 3,400x |
+| 3 atoms, mixed | 200 | 155 | 11.1 | 58,397 | 59,764 | 5,300x |
 
 The flat scan is what a tag table without an inverted index costs (one predicate test per
-item, ancestor sets precomputed); "no closure" also enumerates the subtree per query.
+item, ancestor sets precomputed); "no closure" also enumerates the subtree per query. The
+bitset latency is unchanged from the 8,205-item index while the scans grew four-fold.
 
 Navigation: 300 random target items, narrowing the whole collection by picking, at each
 step, the option of the offered facet that contains the target, until at most k = 10 items
-remain (ideal 9.68 bits):
+remain (ideal 11.7 bits):
 
 | facet policy | mean steps | bits resolved | bits / step | reached k | mean final size |
 |---|---|---|---|---|---|
-| highest expected narrowing | 8.2 | 10.2 | 1.25 | 86% | 18 |
-| random facet | 14.3 | 5.7 | 0.40 | 20% | 793 |
+| highest expected narrowing | 10.2 | 11.7 | 1.14 | 77% | 72 |
+| random facet | 14.6 | 4.9 | 0.34 | 10% | 5,206 |
+
+Ranking quality against judged queries (P@10, NDCG@10, MAP against BM25 and flat tags) is in
+`taxonomy/evaluation/README.md`.
 
 ## 5. Known limitations
 

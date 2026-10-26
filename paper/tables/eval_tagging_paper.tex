@@ -4,8 +4,9 @@
     \toprule
     System & Micro-F$_1$ & Macro-F$_1$ & P & R & Type micro-F$_1$ & Type macro-F$_1$ \\
     \midrule
-    DAG-guided LLM (ours) & 0.424 & 0.419 & 0.429 & 0.420 & 0.494 & 0.451 \\
-    Same LLM, flat label list & 0.376 & 0.416 & 0.372 & 0.380 & 0.447 & 0.448 \\
-    TF-IDF + logistic regression & 0.444 & 0.284 & 0.449 & 0.440 & 0.486 & 0.277 \\
+    DAG-guided, Haiku 5.5 (ours) & 0.379 $\pm$ 0.006 & 0.316 $\pm$ 0.002 & 0.364 $\pm$ 0.003 & 0.394 $\pm$ 0.008 & 0.493 $\pm$ 0.005 & 0.390 $\pm$ 0.005 \\
+    Flat label list, Haiku 5.5 & 0.387 $\pm$ 0.009 & 0.321 $\pm$ 0.012 & 0.347 $\pm$ 0.010 & 0.439 $\pm$ 0.006 & 0.485 $\pm$ 0.006 & 0.388 $\pm$ 0.020 \\
+    TF-IDF + logistic regression & 0.388 $\pm$ 0.003 & 0.160 $\pm$ 0.002 & 0.371 $\pm$ 0.005 & 0.406 $\pm$ 0.002 & 0.482 $\pm$ 0.002 & 0.204 $\pm$ 0.001 \\
+    DAG-guided, Sonnet 5.5 & 0.595 $\pm$ 0.004 & 0.505 $\pm$ 0.008 & 0.673 $\pm$ 0.003 & 0.532 $\pm$ 0.005 & 0.658 $\pm$ 0.006 & 0.544 $\pm$ 0.009 \\
     \bottomrule
 \end{tabular}

@@ -1,17 +1,17 @@
 {
- "catalogue_version": 3,
- "runs": 1,
+ "catalogue_version": 6,
+ "runs": 3,
  "gold": {
-  "items": 12,
-  "off_topic": 1,
-  "labels": 50,
-  "labels_per_item": 4.17,
-  "distinct_labels": 31,
-  "distinct_term_types": 18,
-  "dropped_disagreement": 11,
+  "items": 300,
+  "off_topic": 13,
+  "labels": 1168,
+  "labels_per_item": 3.89,
+  "distinct_labels": 209,
+  "distinct_term_types": 84,
+  "dropped_disagreement": 309,
   "dropped_no_evidence": 0,
   "model": "claude-opus-5-5",
-  "pass_agreement": 0.9009
+  "pass_agreement": 0.8832
  },
  "systems": {
   "dag": [
@@ -19,81 +19,282 @@
     "run": 1,
     "metrics": {
      "label": {
-      "micro_p": 0.4286,
-      "micro_r": 0.42,
-      "micro_f1": 0.4242,
-      "macro_f1": 0.4194,
-      "n_labels": 31,
-      "tp": 21,
-      "fp": 28,
-      "fn": 29,
-      "pred_per_item": 4.08
+      "micro_p": 0.3623,
+      "micro_r": 0.3921,
+      "micro_f1": 0.3766,
+      "macro_f1": 0.3138,
+      "n_labels": 209,
+      "tp": 458,
+      "fp": 806,
+      "fn": 710,
+      "pred_per_item": 4.21
      },
      "type": {
-      "micro_p": 0.4762,
-      "micro_r": 0.5128,
-      "micro_f1": 0.4938,
-      "macro_f1": 0.4513,
-      "n_labels": 18,
-      "tp": 20,
-      "fp": 22,
-      "fn": 19,
-      "pred_per_item": 3.5
+      "micro_p": 0.4731,
+      "micro_r": 0.5097,
+      "micro_f1": 0.4907,
+      "macro_f1": 0.393,
+      "n_labels": 84,
+      "tp": 528,
+      "fp": 588,
+      "fn": 508,
+      "pred_per_item": 3.72
      },
      "label_asset": {
-      "micro_p": 0.25,
-      "micro_r": 0.4,
-      "micro_f1": 0.3077,
-      "macro_f1": 0.3333,
-      "n_labels": 5,
-      "tp": 2,
-      "fp": 6,
-      "fn": 3,
-      "pred_per_item": 0.67
+      "micro_p": 0.2552,
+      "micro_r": 0.5701,
+      "micro_f1": 0.3526,
+      "macro_f1": 0.2556,
+      "n_labels": 31,
+      "tp": 61,
+      "fp": 178,
+      "fn": 46,
+      "pred_per_item": 0.8
      },
      "label_technology": {
-      "micro_p": 0.4634,
-      "micro_r": 0.4524,
-      "micro_f1": 0.4578,
-      "macro_f1": 0.4928,
-      "n_labels": 23,
-      "tp": 19,
-      "fp": 22,
-      "fn": 23,
-      "pred_per_item": 3.42
+      "micro_p": 0.395,
+      "micro_r": 0.3909,
+      "micro_f1": 0.393,
+      "macro_f1": 0.3607,
+      "n_labels": 134,
+      "tp": 380,
+      "fp": 582,
+      "fn": 592,
+      "pred_per_item": 3.21
+     },
+     "label_actor": {
+      "micro_p": 0.1,
+      "micro_r": 0.0488,
+      "micro_f1": 0.0656,
+      "macro_f1": 0.0648,
+      "n_labels": 18,
+      "tp": 2,
+      "fp": 18,
+      "fn": 39,
+      "pred_per_item": 0.07
      },
      "label_activity": {
-      "micro_p": 0.0,
-      "micro_r": 0.0,
-      "micro_f1": 0.0,
-      "macro_f1": 0.0,
-      "n_labels": 2,
-      "tp": 0,
-      "fp": 0,
-      "fn": 2,
-      "pred_per_item": 0.0
+      "micro_p": 0.1176,
+      "micro_r": 0.0667,
+      "micro_f1": 0.0851,
+      "macro_f1": 0.0833,
+      "n_labels": 18,
+      "tp": 2,
+      "fp": 15,
+      "fn": 28,
+      "pred_per_item": 0.06
      },
      "label_obligation_or_risk": {
-      "micro_p": 0.0,
-      "micro_r": 0.0,
-      "micro_f1": 0.0,
-      "macro_f1": 0.0,
-      "n_labels": 1,
-      "tp": 0,
-      "fp": 0,
-      "fn": 1,
-      "pred_per_item": 0.0
+      "micro_p": 0.5,
+      "micro_r": 0.7222,
+      "micro_f1": 0.5909,
+      "macro_f1": 0.8321,
+      "n_labels": 8,
+      "tp": 13,
+      "fp": 13,
+      "fn": 5,
+      "pred_per_item": 0.09
      }
     },
     "run_info": {
-     "cost_usd": 0.0063,
-     "api_seconds": 25.3,
-     "wall_seconds": 7.5,
+     "cost_usd": 0.1755,
+     "api_seconds": 630.7,
+     "wall_seconds": 43.4,
      "usage": {
-      "input": 9549,
-      "output": 3956,
+      "input": 233972,
+      "output": 103640,
+      "cache_write": 32187,
+      "cache_read": 9623913
+     },
+     "model": "claude-haiku-5-5",
+     "effort": "medium"
+    }
+   },
+   {
+    "run": 2,
+    "metrics": {
+     "label": {
+      "micro_p": 0.3622,
+      "micro_r": 0.387,
+      "micro_f1": 0.3742,
+      "macro_f1": 0.3168,
+      "n_labels": 209,
+      "tp": 452,
+      "fp": 796,
+      "fn": 716,
+      "pred_per_item": 4.16
+     },
+     "type": {
+      "micro_p": 0.4718,
+      "micro_r": 0.5097,
+      "micro_f1": 0.49,
+      "macro_f1": 0.3845,
+      "n_labels": 84,
+      "tp": 528,
+      "fp": 591,
+      "fn": 508,
+      "pred_per_item": 3.73
+     },
+     "label_asset": {
+      "micro_p": 0.256,
+      "micro_r": 0.5981,
+      "micro_f1": 0.3585,
+      "macro_f1": 0.3196,
+      "n_labels": 31,
+      "tp": 64,
+      "fp": 186,
+      "fn": 43,
+      "pred_per_item": 0.83
+     },
+     "label_technology": {
+      "micro_p": 0.4002,
+      "micro_r": 0.3817,
+      "micro_f1": 0.3907,
+      "macro_f1": 0.355,
+      "n_labels": 134,
+      "tp": 371,
+      "fp": 556,
+      "fn": 601,
+      "pred_per_item": 3.09
+     },
+     "label_actor": {
+      "micro_p": 0.1739,
+      "micro_r": 0.0976,
+      "micro_f1": 0.125,
+      "macro_f1": 0.1148,
+      "n_labels": 18,
+      "tp": 4,
+      "fp": 19,
+      "fn": 37,
+      "pred_per_item": 0.08
+     },
+     "label_activity": {
+      "micro_p": 0.2083,
+      "micro_r": 0.1667,
+      "micro_f1": 0.1852,
+      "macro_f1": 0.1833,
+      "n_labels": 18,
+      "tp": 5,
+      "fp": 19,
+      "fn": 25,
+      "pred_per_item": 0.08
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.3333,
+      "micro_r": 0.4444,
+      "micro_f1": 0.381,
+      "macro_f1": 0.4208,
+      "n_labels": 8,
+      "tp": 8,
+      "fp": 16,
+      "fn": 10,
+      "pred_per_item": 0.08
+     }
+    },
+    "run_info": {
+     "cost_usd": 0.1712,
+     "api_seconds": 646.0,
+     "wall_seconds": 45.9,
+     "usage": {
+      "input": 233972,
+      "output": 102543,
       "cache_write": 0,
-      "cache_read": 336792
+      "cache_read": 9656100
+     },
+     "model": "claude-haiku-5-5",
+     "effort": "medium"
+    }
+   },
+   {
+    "run": 3,
+    "metrics": {
+     "label": {
+      "micro_p": 0.368,
+      "micro_r": 0.4033,
+      "micro_f1": 0.3848,
+      "macro_f1": 0.3162,
+      "n_labels": 209,
+      "tp": 471,
+      "fp": 809,
+      "fn": 697,
+      "pred_per_item": 4.27
+     },
+     "type": {
+      "micro_p": 0.4808,
+      "micro_r": 0.5193,
+      "micro_f1": 0.4993,
+      "macro_f1": 0.3917,
+      "n_labels": 84,
+      "tp": 538,
+      "fp": 581,
+      "fn": 498,
+      "pred_per_item": 3.73
+     },
+     "label_asset": {
+      "micro_p": 0.2278,
+      "micro_r": 0.5514,
+      "micro_f1": 0.3224,
+      "macro_f1": 0.2908,
+      "n_labels": 31,
+      "tp": 59,
+      "fp": 200,
+      "fn": 48,
+      "pred_per_item": 0.86
+     },
+     "label_technology": {
+      "micro_p": 0.4104,
+      "micro_r": 0.4053,
+      "micro_f1": 0.4079,
+      "macro_f1": 0.3623,
+      "n_labels": 134,
+      "tp": 394,
+      "fp": 566,
+      "fn": 578,
+      "pred_per_item": 3.2
+     },
+     "label_actor": {
+      "micro_p": 0.3182,
+      "micro_r": 0.1707,
+      "micro_f1": 0.2222,
+      "macro_f1": 0.1926,
+      "n_labels": 18,
+      "tp": 7,
+      "fp": 15,
+      "fn": 34,
+      "pred_per_item": 0.07
+     },
+     "label_activity": {
+      "micro_p": 0.1429,
+      "micro_r": 0.1,
+      "micro_f1": 0.1176,
+      "macro_f1": 0.0833,
+      "n_labels": 18,
+      "tp": 3,
+      "fp": 18,
+      "fn": 27,
+      "pred_per_item": 0.07
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.4444,
+      "micro_r": 0.4444,
+      "micro_f1": 0.4444,
+      "macro_f1": 0.4429,
+      "n_labels": 8,
+      "tp": 8,
+      "fp": 10,
+      "fn": 10,
+      "pred_per_item": 0.06
+     }
+    },
+    "run_info": {
+     "cost_usd": 0.1723,
+     "api_seconds": 624.1,
+     "wall_seconds": 42.8,
+     "usage": {
+      "input": 233972,
+      "output": 104664,
+      "cache_write": 0,
+      "cache_read": 9656100
      },
      "model": "claude-haiku-5-5",
      "effort": "medium"
@@ -105,81 +306,282 @@
     "run": 1,
     "metrics": {
      "label": {
-      "micro_p": 0.3725,
-      "micro_r": 0.38,
-      "micro_f1": 0.3762,
-      "macro_f1": 0.4165,
-      "n_labels": 31,
-      "tp": 19,
-      "fp": 32,
-      "fn": 31,
-      "pred_per_item": 4.25
+      "micro_p": 0.3589,
+      "micro_r": 0.4452,
+      "micro_f1": 0.3974,
+      "macro_f1": 0.3333,
+      "n_labels": 209,
+      "tp": 520,
+      "fp": 929,
+      "fn": 648,
+      "pred_per_item": 4.83
      },
      "type": {
-      "micro_p": 0.413,
-      "micro_r": 0.4872,
-      "micro_f1": 0.4471,
-      "macro_f1": 0.4478,
-      "n_labels": 18,
-      "tp": 19,
-      "fp": 27,
-      "fn": 20,
-      "pred_per_item": 3.83
+      "micro_p": 0.4327,
+      "micro_r": 0.5618,
+      "micro_f1": 0.4889,
+      "macro_f1": 0.4114,
+      "n_labels": 84,
+      "tp": 582,
+      "fp": 763,
+      "fn": 454,
+      "pred_per_item": 4.48
      },
      "label_asset": {
-      "micro_p": 0.3636,
-      "micro_r": 0.8,
-      "micro_f1": 0.5,
-      "macro_f1": 0.7333,
-      "n_labels": 5,
-      "tp": 4,
-      "fp": 7,
-      "fn": 1,
-      "pred_per_item": 0.92
+      "micro_p": 0.2165,
+      "micro_r": 0.514,
+      "micro_f1": 0.3047,
+      "macro_f1": 0.2972,
+      "n_labels": 31,
+      "tp": 55,
+      "fp": 199,
+      "fn": 52,
+      "pred_per_item": 0.85
      },
      "label_technology": {
-      "micro_p": 0.3824,
-      "micro_r": 0.3095,
-      "micro_f1": 0.3421,
-      "macro_f1": 0.315,
-      "n_labels": 23,
-      "tp": 13,
-      "fp": 21,
-      "fn": 29,
-      "pred_per_item": 2.83
+      "micro_p": 0.4349,
+      "micro_r": 0.4465,
+      "micro_f1": 0.4406,
+      "macro_f1": 0.3559,
+      "n_labels": 134,
+      "tp": 434,
+      "fp": 564,
+      "fn": 538,
+      "pred_per_item": 3.33
+     },
+     "label_actor": {
+      "micro_p": 0.1228,
+      "micro_r": 0.3415,
+      "micro_f1": 0.1806,
+      "macro_f1": 0.2979,
+      "n_labels": 18,
+      "tp": 14,
+      "fp": 100,
+      "fn": 27,
+      "pred_per_item": 0.38
      },
      "label_activity": {
-      "micro_p": 1.0,
-      "micro_r": 1.0,
-      "micro_f1": 1.0,
-      "macro_f1": 1.0,
-      "n_labels": 2,
-      "tp": 2,
-      "fp": 0,
-      "fn": 0,
-      "pred_per_item": 0.17
+      "micro_p": 0.1552,
+      "micro_r": 0.3,
+      "micro_f1": 0.2045,
+      "macro_f1": 0.2259,
+      "n_labels": 18,
+      "tp": 9,
+      "fp": 49,
+      "fn": 21,
+      "pred_per_item": 0.19
      },
      "label_obligation_or_risk": {
-      "micro_p": 0.0,
-      "micro_r": 0.0,
-      "micro_f1": 0.0,
-      "macro_f1": 0.0,
-      "n_labels": 1,
-      "tp": 0,
-      "fp": 1,
-      "fn": 1,
+      "micro_p": 0.32,
+      "micro_r": 0.4444,
+      "micro_f1": 0.3721,
+      "macro_f1": 0.4167,
+      "n_labels": 8,
+      "tp": 8,
+      "fp": 17,
+      "fn": 10,
       "pred_per_item": 0.08
      }
     },
     "run_info": {
-     "cost_usd": 0.0073,
-     "api_seconds": 30.8,
-     "wall_seconds": 8.5,
+     "cost_usd": 0.1092,
+     "api_seconds": 601.3,
+     "wall_seconds": 41.6,
      "usage": {
-      "input": 9549,
-      "output": 4695,
-      "cache_write": 27744,
-      "cache_read": 55488
+      "input": 233972,
+      "output": 117243,
+      "cache_write": 8712,
+      "cache_read": 2604888
+     },
+     "model": "claude-haiku-5-5",
+     "effort": "medium"
+    }
+   },
+   {
+    "run": 2,
+    "metrics": {
+     "label": {
+      "micro_p": 0.3425,
+      "micro_r": 0.4366,
+      "micro_f1": 0.3839,
+      "macro_f1": 0.3205,
+      "n_labels": 209,
+      "tp": 510,
+      "fp": 979,
+      "fn": 658,
+      "pred_per_item": 4.96
+     },
+     "type": {
+      "micro_p": 0.4211,
+      "micro_r": 0.5512,
+      "micro_f1": 0.4774,
+      "macro_f1": 0.373,
+      "n_labels": 84,
+      "tp": 571,
+      "fp": 785,
+      "fn": 465,
+      "pred_per_item": 4.52
+     },
+     "label_asset": {
+      "micro_p": 0.2096,
+      "micro_r": 0.5327,
+      "micro_f1": 0.3008,
+      "macro_f1": 0.217,
+      "n_labels": 31,
+      "tp": 57,
+      "fp": 215,
+      "fn": 50,
+      "pred_per_item": 0.91
+     },
+     "label_technology": {
+      "micro_p": 0.4143,
+      "micro_r": 0.4352,
+      "micro_f1": 0.4245,
+      "macro_f1": 0.3693,
+      "n_labels": 134,
+      "tp": 423,
+      "fp": 598,
+      "fn": 549,
+      "pred_per_item": 3.4
+     },
+     "label_actor": {
+      "micro_p": 0.1165,
+      "micro_r": 0.2927,
+      "micro_f1": 0.1667,
+      "macro_f1": 0.1411,
+      "n_labels": 18,
+      "tp": 12,
+      "fp": 91,
+      "fn": 29,
+      "pred_per_item": 0.34
+     },
+     "label_activity": {
+      "micro_p": 0.1905,
+      "micro_r": 0.4,
+      "micro_f1": 0.2581,
+      "macro_f1": 0.3426,
+      "n_labels": 18,
+      "tp": 12,
+      "fp": 51,
+      "fn": 18,
+      "pred_per_item": 0.21
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.2,
+      "micro_r": 0.3333,
+      "micro_f1": 0.25,
+      "macro_f1": 0.2571,
+      "n_labels": 8,
+      "tp": 6,
+      "fp": 24,
+      "fn": 12,
+      "pred_per_item": 0.1
+     }
+    },
+    "run_info": {
+     "cost_usd": 0.1092,
+     "api_seconds": 631.5,
+     "wall_seconds": 45.2,
+     "usage": {
+      "input": 233972,
+      "output": 119288,
+      "cache_write": 0,
+      "cache_read": 2613600
+     },
+     "model": "claude-haiku-5-5",
+     "effort": "medium"
+    }
+   },
+   {
+    "run": 3,
+    "metrics": {
+     "label": {
+      "micro_p": 0.3394,
+      "micro_r": 0.4341,
+      "micro_f1": 0.3809,
+      "macro_f1": 0.3088,
+      "n_labels": 209,
+      "tp": 507,
+      "fp": 987,
+      "fn": 661,
+      "pred_per_item": 4.98
+     },
+     "type": {
+      "micro_p": 0.4291,
+      "micro_r": 0.5637,
+      "micro_f1": 0.4873,
+      "macro_f1": 0.3803,
+      "n_labels": 84,
+      "tp": 584,
+      "fp": 777,
+      "fn": 452,
+      "pred_per_item": 4.54
+     },
+     "label_asset": {
+      "micro_p": 0.25,
+      "micro_r": 0.5607,
+      "micro_f1": 0.3458,
+      "macro_f1": 0.2971,
+      "n_labels": 31,
+      "tp": 60,
+      "fp": 180,
+      "fn": 47,
+      "pred_per_item": 0.8
+     },
+     "label_technology": {
+      "micro_p": 0.4006,
+      "micro_r": 0.4331,
+      "micro_f1": 0.4162,
+      "macro_f1": 0.3518,
+      "n_labels": 134,
+      "tp": 421,
+      "fp": 630,
+      "fn": 551,
+      "pred_per_item": 3.5
+     },
+     "label_actor": {
+      "micro_p": 0.0862,
+      "micro_r": 0.2439,
+      "micro_f1": 0.1274,
+      "macro_f1": 0.1328,
+      "n_labels": 18,
+      "tp": 10,
+      "fp": 106,
+      "fn": 31,
+      "pred_per_item": 0.39
+     },
+     "label_activity": {
+      "micro_p": 0.1552,
+      "micro_r": 0.3,
+      "micro_f1": 0.2045,
+      "macro_f1": 0.2083,
+      "n_labels": 18,
+      "tp": 9,
+      "fp": 49,
+      "fn": 21,
+      "pred_per_item": 0.19
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.2414,
+      "micro_r": 0.3889,
+      "micro_f1": 0.2979,
+      "macro_f1": 0.2555,
+      "n_labels": 8,
+      "tp": 7,
+      "fp": 22,
+      "fn": 11,
+      "pred_per_item": 0.1
+     }
+    },
+    "run_info": {
+     "cost_usd": 0.1086,
+     "api_seconds": 607.1,
+     "wall_seconds": 42.6,
+     "usage": {
+      "input": 233972,
+      "output": 118220,
+      "cache_write": 0,
+      "cache_read": 2613600
      },
      "model": "claude-haiku-5-5",
      "effort": "medium"
@@ -191,81 +593,850 @@
     "run": 1,
     "metrics": {
      "label": {
-      "micro_p": 0.449,
-      "micro_r": 0.44,
-      "micro_f1": 0.4444,
-      "macro_f1": 0.2839,
-      "n_labels": 31,
-      "tp": 22,
-      "fp": 27,
-      "fn": 28,
-      "pred_per_item": 4.08
+      "micro_p": 0.3699,
+      "micro_r": 0.4041,
+      "micro_f1": 0.3863,
+      "macro_f1": 0.1582,
+      "n_labels": 209,
+      "tp": 472,
+      "fp": 804,
+      "fn": 696,
+      "pred_per_item": 4.25
      },
      "type": {
-      "micro_p": 0.5143,
-      "micro_r": 0.4615,
-      "micro_f1": 0.4865,
-      "macro_f1": 0.2772,
-      "n_labels": 18,
-      "tp": 18,
-      "fp": 17,
-      "fn": 21,
-      "pred_per_item": 2.92
+      "micro_p": 0.4777,
+      "micro_r": 0.4865,
+      "micro_f1": 0.4821,
+      "macro_f1": 0.205,
+      "n_labels": 84,
+      "tp": 504,
+      "fp": 551,
+      "fn": 532,
+      "pred_per_item": 3.52
      },
      "label_asset": {
-      "micro_p": 0.1667,
-      "micro_r": 0.2,
-      "micro_f1": 0.1818,
-      "macro_f1": 0.1333,
-      "n_labels": 5,
-      "tp": 1,
-      "fp": 5,
-      "fn": 4,
-      "pred_per_item": 0.5
+      "micro_p": 0.2105,
+      "micro_r": 0.5234,
+      "micro_f1": 0.3003,
+      "macro_f1": 0.1806,
+      "n_labels": 31,
+      "tp": 56,
+      "fp": 210,
+      "fn": 51,
+      "pred_per_item": 0.89
      },
      "label_technology": {
-      "micro_p": 0.4884,
-      "micro_r": 0.5,
-      "micro_f1": 0.4941,
-      "macro_f1": 0.3536,
-      "n_labels": 23,
-      "tp": 21,
-      "fp": 22,
-      "fn": 21,
-      "pred_per_item": 3.58
+      "micro_p": 0.4128,
+      "micro_r": 0.4239,
+      "micro_f1": 0.4183,
+      "macro_f1": 0.1839,
+      "n_labels": 134,
+      "tp": 412,
+      "fp": 586,
+      "fn": 560,
+      "pred_per_item": 3.33
+     },
+     "label_actor": {
+      "micro_p": 0.75,
+      "micro_r": 0.0732,
+      "micro_f1": 0.1333,
+      "macro_f1": 0.1019,
+      "n_labels": 18,
+      "tp": 3,
+      "fp": 1,
+      "fn": 38,
+      "pred_per_item": 0.01
      },
      "label_activity": {
       "micro_p": 0.0,
       "micro_r": 0.0,
       "micro_f1": 0.0,
       "macro_f1": 0.0,
-      "n_labels": 2,
+      "n_labels": 18,
       "tp": 0,
-      "fp": 0,
-      "fn": 2,
-      "pred_per_item": 0.0
+      "fp": 5,
+      "fn": 30,
+      "pred_per_item": 0.02
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.3333,
+      "micro_r": 0.0556,
+      "micro_f1": 0.0952,
+      "macro_f1": 0.125,
+      "n_labels": 8,
+      "tp": 1,
+      "fp": 2,
+      "fn": 17,
+      "pred_per_item": 0.01
+     }
+    },
+    "run_info": {
+     "train_items": 29970,
+     "val_items": 3330,
+     "labels": 390,
+     "threshold": 0.2,
+     "val_micro_f1": 0.4904,
+     "features": 200000,
+     "wall_seconds": 48.6,
+     "cost_usd": 0.0
+    }
+   },
+   {
+    "run": 2,
+    "metrics": {
+     "label": {
+      "micro_p": 0.3769,
+      "micro_r": 0.4075,
+      "micro_f1": 0.3916,
+      "macro_f1": 0.1588,
+      "n_labels": 209,
+      "tp": 476,
+      "fp": 787,
+      "fn": 692,
+      "pred_per_item": 4.21
+     },
+     "type": {
+      "micro_p": 0.4809,
+      "micro_r": 0.4865,
+      "micro_f1": 0.4837,
+      "macro_f1": 0.2023,
+      "n_labels": 84,
+      "tp": 504,
+      "fp": 544,
+      "fn": 532,
+      "pred_per_item": 3.49
+     },
+     "label_asset": {
+      "micro_p": 0.2184,
+      "micro_r": 0.5327,
+      "micro_f1": 0.3098,
+      "macro_f1": 0.1949,
+      "n_labels": 31,
+      "tp": 57,
+      "fp": 204,
+      "fn": 50,
+      "pred_per_item": 0.87
+     },
+     "label_technology": {
+      "micro_p": 0.4198,
+      "micro_r": 0.428,
+      "micro_f1": 0.4238,
+      "macro_f1": 0.1889,
+      "n_labels": 134,
+      "tp": 416,
+      "fp": 575,
+      "fn": 556,
+      "pred_per_item": 3.3
+     },
+     "label_actor": {
+      "micro_p": 0.6,
+      "micro_r": 0.0732,
+      "micro_f1": 0.1304,
+      "macro_f1": 0.1019,
+      "n_labels": 18,
+      "tp": 3,
+      "fp": 2,
+      "fn": 38,
+      "pred_per_item": 0.02
+     },
+     "label_activity": {
+      "micro_p": 0.0,
+      "micro_r": 0.0,
+      "micro_f1": 0.0,
+      "macro_f1": 0.0,
+      "n_labels": 18,
+      "tp": 0,
+      "fp": 4,
+      "fn": 30,
+      "pred_per_item": 0.01
      },
      "label_obligation_or_risk": {
       "micro_p": 0.0,
       "micro_r": 0.0,
       "micro_f1": 0.0,
       "macro_f1": 0.0,
-      "n_labels": 1,
+      "n_labels": 8,
       "tp": 0,
-      "fp": 0,
-      "fn": 1,
-      "pred_per_item": 0.0
+      "fp": 2,
+      "fn": 18,
+      "pred_per_item": 0.01
      }
     },
     "run_info": {
-     "train_items": 14496,
-     "val_items": 1610,
-     "labels": 270,
-     "threshold": 0.15,
-     "val_micro_f1": 0.481,
+     "train_items": 29970,
+     "val_items": 3330,
+     "labels": 390,
+     "threshold": 0.2,
+     "val_micro_f1": 0.4962,
      "features": 200000,
-     "wall_seconds": 19.6,
+     "wall_seconds": 43.5,
      "cost_usd": 0.0
+    }
+   },
+   {
+    "run": 3,
+    "metrics": {
+     "label": {
+      "micro_p": 0.3676,
+      "micro_r": 0.4075,
+      "micro_f1": 0.3865,
+      "macro_f1": 0.1623,
+      "n_labels": 209,
+      "tp": 476,
+      "fp": 819,
+      "fn": 692,
+      "pred_per_item": 4.32
+     },
+     "type": {
+      "micro_p": 0.4724,
+      "micro_r": 0.4865,
+      "micro_f1": 0.4793,
+      "macro_f1": 0.2032,
+      "n_labels": 84,
+      "tp": 504,
+      "fp": 563,
+      "fn": 532,
+      "pred_per_item": 3.56
+     },
+     "label_asset": {
+      "micro_p": 0.2097,
+      "micro_r": 0.5234,
+      "micro_f1": 0.2995,
+      "macro_f1": 0.1866,
+      "n_labels": 31,
+      "tp": 56,
+      "fp": 211,
+      "fn": 51,
+      "pred_per_item": 0.89
+     },
+     "label_technology": {
+      "micro_p": 0.4103,
+      "micro_r": 0.428,
+      "micro_f1": 0.4189,
+      "macro_f1": 0.1888,
+      "n_labels": 134,
+      "tp": 416,
+      "fp": 598,
+      "fn": 556,
+      "pred_per_item": 3.38
+     },
+     "label_actor": {
+      "micro_p": 0.6,
+      "micro_r": 0.0732,
+      "micro_f1": 0.1304,
+      "macro_f1": 0.1019,
+      "n_labels": 18,
+      "tp": 3,
+      "fp": 2,
+      "fn": 38,
+      "pred_per_item": 0.02
+     },
+     "label_activity": {
+      "micro_p": 0.0,
+      "micro_r": 0.0,
+      "micro_f1": 0.0,
+      "macro_f1": 0.0,
+      "n_labels": 18,
+      "tp": 0,
+      "fp": 6,
+      "fn": 30,
+      "pred_per_item": 0.02
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.3333,
+      "micro_r": 0.0556,
+      "micro_f1": 0.0952,
+      "macro_f1": 0.125,
+      "n_labels": 8,
+      "tp": 1,
+      "fp": 2,
+      "fn": 17,
+      "pred_per_item": 0.01
+     }
+    },
+    "run_info": {
+     "train_items": 29970,
+     "val_items": 3330,
+     "labels": 390,
+     "threshold": 0.2,
+     "val_micro_f1": 0.4997,
+     "features": 200000,
+     "wall_seconds": 43.7,
+     "cost_usd": 0.0
+    }
+   }
+  ],
+  "dag@claude-sonnet-5-5": [
+   {
+    "run": 1,
+    "metrics": {
+     "label": {
+      "micro_p": 0.6714,
+      "micro_r": 0.5265,
+      "micro_f1": 0.5902,
+      "macro_f1": 0.5044,
+      "n_labels": 209,
+      "tp": 615,
+      "fp": 301,
+      "fn": 553,
+      "pred_per_item": 3.05
+     },
+     "type": {
+      "micro_p": 0.7168,
+      "micro_r": 0.5985,
+      "micro_f1": 0.6523,
+      "macro_f1": 0.5384,
+      "n_labels": 84,
+      "tp": 620,
+      "fp": 245,
+      "fn": 416,
+      "pred_per_item": 2.88
+     },
+     "label_asset": {
+      "micro_p": 0.4797,
+      "micro_r": 0.5514,
+      "micro_f1": 0.513,
+      "macro_f1": 0.4433,
+      "n_labels": 31,
+      "tp": 59,
+      "fp": 64,
+      "fn": 48,
+      "pred_per_item": 0.41
+     },
+     "label_technology": {
+      "micro_p": 0.7111,
+      "micro_r": 0.5319,
+      "micro_f1": 0.6086,
+      "macro_f1": 0.5496,
+      "n_labels": 134,
+      "tp": 517,
+      "fp": 210,
+      "fn": 455,
+      "pred_per_item": 2.42
+     },
+     "label_actor": {
+      "micro_p": 0.8235,
+      "micro_r": 0.3415,
+      "micro_f1": 0.4828,
+      "macro_f1": 0.3704,
+      "n_labels": 18,
+      "tp": 14,
+      "fp": 3,
+      "fn": 27,
+      "pred_per_item": 0.06
+     },
+     "label_activity": {
+      "micro_p": 0.4074,
+      "micro_r": 0.3667,
+      "micro_f1": 0.386,
+      "macro_f1": 0.3407,
+      "n_labels": 18,
+      "tp": 11,
+      "fp": 16,
+      "fn": 19,
+      "pred_per_item": 0.09
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.6364,
+      "micro_r": 0.7778,
+      "micro_f1": 0.7,
+      "macro_f1": 0.6528,
+      "n_labels": 8,
+      "tp": 14,
+      "fp": 8,
+      "fn": 4,
+      "pred_per_item": 0.07
+     }
+    },
+    "run_info": {
+     "cost_usd": 3.2828,
+     "api_seconds": 827.1,
+     "wall_seconds": 55.6,
+     "usage": {
+      "input": 233972,
+      "output": 76129,
+      "cache_write": 32188,
+      "cache_read": 9624212
+     },
+     "model": "claude-sonnet-5-5",
+     "effort": "medium"
+    }
+   },
+   {
+    "run": 2,
+    "metrics": {
+     "label": {
+      "micro_p": 0.6771,
+      "micro_r": 0.5368,
+      "micro_f1": 0.5989,
+      "macro_f1": 0.497,
+      "n_labels": 209,
+      "tp": 627,
+      "fp": 299,
+      "fn": 541,
+      "pred_per_item": 3.09
+     },
+     "type": {
+      "micro_p": 0.7244,
+      "micro_r": 0.6139,
+      "micro_f1": 0.6646,
+      "macro_f1": 0.5393,
+      "n_labels": 84,
+      "tp": 636,
+      "fp": 242,
+      "fn": 400,
+      "pred_per_item": 2.93
+     },
+     "label_asset": {
+      "micro_p": 0.4921,
+      "micro_r": 0.5794,
+      "micro_f1": 0.5322,
+      "macro_f1": 0.4314,
+      "n_labels": 31,
+      "tp": 62,
+      "fp": 64,
+      "fn": 45,
+      "pred_per_item": 0.42
+     },
+     "label_technology": {
+      "micro_p": 0.7176,
+      "micro_r": 0.536,
+      "micro_f1": 0.6137,
+      "macro_f1": 0.5238,
+      "n_labels": 134,
+      "tp": 521,
+      "fp": 205,
+      "fn": 451,
+      "pred_per_item": 2.42
+     },
+     "label_actor": {
+      "micro_p": 0.6667,
+      "micro_r": 0.3415,
+      "micro_f1": 0.4516,
+      "macro_f1": 0.3585,
+      "n_labels": 18,
+      "tp": 14,
+      "fp": 7,
+      "fn": 27,
+      "pred_per_item": 0.07
+     },
+     "label_activity": {
+      "micro_p": 0.5,
+      "micro_r": 0.5,
+      "micro_f1": 0.5,
+      "macro_f1": 0.4852,
+      "n_labels": 18,
+      "tp": 15,
+      "fp": 15,
+      "fn": 15,
+      "pred_per_item": 0.1
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.6522,
+      "micro_r": 0.8333,
+      "micro_f1": 0.7317,
+      "macro_f1": 0.6406,
+      "n_labels": 8,
+      "tp": 15,
+      "fp": 8,
+      "fn": 3,
+      "pred_per_item": 0.08
+     }
+    },
+    "run_info": {
+     "cost_usd": 3.1595,
+     "api_seconds": 756.5,
+     "wall_seconds": 50.7,
+     "usage": {
+      "input": 233972,
+      "output": 76032,
+      "cache_write": 0,
+      "cache_read": 9656400
+     },
+     "model": "claude-sonnet-5-5",
+     "effort": "medium"
+    }
+   },
+   {
+    "run": 3,
+    "metrics": {
+     "label": {
+      "micro_p": 0.6717,
+      "micro_r": 0.5342,
+      "micro_f1": 0.5951,
+      "macro_f1": 0.5124,
+      "n_labels": 209,
+      "tp": 624,
+      "fp": 305,
+      "fn": 544,
+      "pred_per_item": 3.1
+     },
+     "type": {
+      "micro_p": 0.7197,
+      "micro_r": 0.6023,
+      "micro_f1": 0.6558,
+      "macro_f1": 0.5552,
+      "n_labels": 84,
+      "tp": 624,
+      "fp": 243,
+      "fn": 412,
+      "pred_per_item": 2.89
+     },
+     "label_asset": {
+      "micro_p": 0.496,
+      "micro_r": 0.5794,
+      "micro_f1": 0.5345,
+      "macro_f1": 0.5264,
+      "n_labels": 31,
+      "tp": 62,
+      "fp": 63,
+      "fn": 45,
+      "pred_per_item": 0.42
+     },
+     "label_technology": {
+      "micro_p": 0.7088,
+      "micro_r": 0.536,
+      "micro_f1": 0.6104,
+      "macro_f1": 0.5372,
+      "n_labels": 134,
+      "tp": 521,
+      "fp": 214,
+      "fn": 451,
+      "pred_per_item": 2.45
+     },
+     "label_actor": {
+      "micro_p": 0.8333,
+      "micro_r": 0.3659,
+      "micro_f1": 0.5085,
+      "macro_f1": 0.4352,
+      "n_labels": 18,
+      "tp": 15,
+      "fp": 3,
+      "fn": 26,
+      "pred_per_item": 0.06
+     },
+     "label_activity": {
+      "micro_p": 0.3793,
+      "micro_r": 0.3667,
+      "micro_f1": 0.3729,
+      "macro_f1": 0.3296,
+      "n_labels": 18,
+      "tp": 11,
+      "fp": 18,
+      "fn": 19,
+      "pred_per_item": 0.1
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.6818,
+      "micro_r": 0.8333,
+      "micro_f1": 0.75,
+      "macro_f1": 0.6278,
+      "n_labels": 8,
+      "tp": 15,
+      "fp": 7,
+      "fn": 3,
+      "pred_per_item": 0.07
+     }
+    },
+    "run_info": {
+     "cost_usd": 3.1688,
+     "api_seconds": 728.3,
+     "wall_seconds": 49.1,
+     "usage": {
+      "input": 233972,
+      "output": 76956,
+      "cache_write": 0,
+      "cache_read": 9656400
+     },
+     "model": "claude-sonnet-5-5",
+     "effort": "medium"
+    }
+   }
+  ],
+  "flat@claude-sonnet-5-5": [
+   {
+    "run": 1,
+    "metrics": {
+     "label": {
+      "micro_p": 0.6552,
+      "micro_r": 0.5531,
+      "micro_f1": 0.5998,
+      "macro_f1": 0.5197,
+      "n_labels": 209,
+      "tp": 646,
+      "fp": 340,
+      "fn": 522,
+      "pred_per_item": 3.29
+     },
+     "type": {
+      "micro_p": 0.7096,
+      "micro_r": 0.6486,
+      "micro_f1": 0.6778,
+      "macro_f1": 0.5394,
+      "n_labels": 84,
+      "tp": 672,
+      "fp": 275,
+      "fn": 364,
+      "pred_per_item": 3.16
+     },
+     "label_asset": {
+      "micro_p": 0.5843,
+      "micro_r": 0.486,
+      "micro_f1": 0.5306,
+      "macro_f1": 0.4536,
+      "n_labels": 31,
+      "tp": 52,
+      "fp": 37,
+      "fn": 55,
+      "pred_per_item": 0.3
+     },
+     "label_technology": {
+      "micro_p": 0.6715,
+      "micro_r": 0.5679,
+      "micro_f1": 0.6154,
+      "macro_f1": 0.5545,
+      "n_labels": 134,
+      "tp": 552,
+      "fp": 270,
+      "fn": 420,
+      "pred_per_item": 2.74
+     },
+     "label_actor": {
+      "micro_p": 0.625,
+      "micro_r": 0.3659,
+      "micro_f1": 0.4615,
+      "macro_f1": 0.3684,
+      "n_labels": 18,
+      "tp": 15,
+      "fp": 9,
+      "fn": 26,
+      "pred_per_item": 0.08
+     },
+     "label_activity": {
+      "micro_p": 0.4839,
+      "micro_r": 0.5,
+      "micro_f1": 0.4918,
+      "macro_f1": 0.4907,
+      "n_labels": 18,
+      "tp": 15,
+      "fp": 16,
+      "fn": 15,
+      "pred_per_item": 0.1
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.6,
+      "micro_r": 0.6667,
+      "micro_f1": 0.6316,
+      "macro_f1": 0.6,
+      "n_labels": 8,
+      "tp": 12,
+      "fp": 8,
+      "fn": 6,
+      "pred_per_item": 0.07
+     }
+    },
+    "run_info": {
+     "cost_usd": 1.8744,
+     "api_seconds": 740.8,
+     "wall_seconds": 59.0,
+     "usage": {
+      "input": 233972,
+      "output": 85057,
+      "cache_write": 8713,
+      "cache_read": 2605187
+     },
+     "model": "claude-sonnet-5-5",
+     "effort": "medium"
+    }
+   },
+   {
+    "run": 2,
+    "metrics": {
+     "label": {
+      "micro_p": 0.6446,
+      "micro_r": 0.542,
+      "micro_f1": 0.5888,
+      "macro_f1": 0.5178,
+      "n_labels": 209,
+      "tp": 633,
+      "fp": 349,
+      "fn": 535,
+      "pred_per_item": 3.27
+     },
+     "type": {
+      "micro_p": 0.6996,
+      "micro_r": 0.6361,
+      "micro_f1": 0.6663,
+      "macro_f1": 0.5429,
+      "n_labels": 84,
+      "tp": 659,
+      "fp": 283,
+      "fn": 377,
+      "pred_per_item": 3.14
+     },
+     "label_asset": {
+      "micro_p": 0.5663,
+      "micro_r": 0.4393,
+      "micro_f1": 0.4947,
+      "macro_f1": 0.4455,
+      "n_labels": 31,
+      "tp": 47,
+      "fp": 36,
+      "fn": 60,
+      "pred_per_item": 0.28
+     },
+     "label_technology": {
+      "micro_p": 0.6618,
+      "micro_r": 0.5576,
+      "micro_f1": 0.6052,
+      "macro_f1": 0.553,
+      "n_labels": 134,
+      "tp": 542,
+      "fp": 277,
+      "fn": 430,
+      "pred_per_item": 2.73
+     },
+     "label_actor": {
+      "micro_p": 0.6,
+      "micro_r": 0.3659,
+      "micro_f1": 0.4545,
+      "macro_f1": 0.4045,
+      "n_labels": 18,
+      "tp": 15,
+      "fp": 10,
+      "fn": 26,
+      "pred_per_item": 0.08
+     },
+     "label_activity": {
+      "micro_p": 0.4857,
+      "micro_r": 0.5667,
+      "micro_f1": 0.5231,
+      "macro_f1": 0.4661,
+      "n_labels": 18,
+      "tp": 17,
+      "fp": 18,
+      "fn": 13,
+      "pred_per_item": 0.12
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.6,
+      "micro_r": 0.6667,
+      "micro_f1": 0.6316,
+      "macro_f1": 0.5792,
+      "n_labels": 8,
+      "tp": 12,
+      "fp": 8,
+      "fn": 6,
+      "pred_per_item": 0.07
+     }
+    },
+    "run_info": {
+     "cost_usd": 1.8196,
+     "api_seconds": 738.3,
+     "wall_seconds": 51.3,
+     "usage": {
+      "input": 233972,
+      "output": 82885,
+      "cache_write": 0,
+      "cache_read": 2613900
+     },
+     "model": "claude-sonnet-5-5",
+     "effort": "medium"
+    }
+   },
+   {
+    "run": 3,
+    "metrics": {
+     "label": {
+      "micro_p": 0.6535,
+      "micro_r": 0.5394,
+      "micro_f1": 0.591,
+      "macro_f1": 0.516,
+      "n_labels": 209,
+      "tp": 630,
+      "fp": 334,
+      "fn": 538,
+      "pred_per_item": 3.21
+     },
+     "type": {
+      "micro_p": 0.701,
+      "micro_r": 0.6245,
+      "micro_f1": 0.6605,
+      "macro_f1": 0.538,
+      "n_labels": 84,
+      "tp": 647,
+      "fp": 276,
+      "fn": 389,
+      "pred_per_item": 3.08
+     },
+     "label_asset": {
+      "micro_p": 0.5349,
+      "micro_r": 0.4299,
+      "micro_f1": 0.4767,
+      "macro_f1": 0.4543,
+      "n_labels": 31,
+      "tp": 46,
+      "fp": 40,
+      "fn": 61,
+      "pred_per_item": 0.29
+     },
+     "label_technology": {
+      "micro_p": 0.67,
+      "micro_r": 0.5576,
+      "micro_f1": 0.6086,
+      "macro_f1": 0.5603,
+      "n_labels": 134,
+      "tp": 542,
+      "fp": 267,
+      "fn": 430,
+      "pred_per_item": 2.7
+     },
+     "label_actor": {
+      "micro_p": 0.7778,
+      "micro_r": 0.3415,
+      "micro_f1": 0.4746,
+      "macro_f1": 0.3593,
+      "n_labels": 18,
+      "tp": 14,
+      "fp": 4,
+      "fn": 27,
+      "pred_per_item": 0.06
+     },
+     "label_activity": {
+      "micro_p": 0.5484,
+      "micro_r": 0.5667,
+      "micro_f1": 0.5574,
+      "macro_f1": 0.4212,
+      "n_labels": 18,
+      "tp": 17,
+      "fp": 14,
+      "fn": 13,
+      "pred_per_item": 0.1
+     },
+     "label_obligation_or_risk": {
+      "micro_p": 0.55,
+      "micro_r": 0.6111,
+      "micro_f1": 0.5789,
+      "macro_f1": 0.578,
+      "n_labels": 8,
+      "tp": 11,
+      "fp": 9,
+      "fn": 7,
+      "pred_per_item": 0.07
+     }
+    },
+    "run_info": {
+     "cost_usd": 1.8302,
+     "api_seconds": 752.5,
+     "wall_seconds": 51.1,
+     "usage": {
+      "input": 233972,
+      "output": 83947,
+      "cache_write": 0,
+      "cache_read": 2613900
+     },
+     "model": "claude-sonnet-5-5",
+     "effort": "medium"
     }
    }
   ]

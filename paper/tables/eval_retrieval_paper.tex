@@ -2,11 +2,12 @@
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}lrrrrrrrr@{}}
     \toprule
-    System & P@10 & R@10 & NDCG@10 & MAP & NDCG value & NDCG node & NDCG AND & $\mu$s \\
+    System & P@10 & R@10 & NDCG@10 & MAP & NDCG val. & NDCG node & NDCG AND & $\mu$s \\
     \midrule
-    DAG index on our tags & 0.070 & 0.144 & 0.173 & 0.139 & 0.566 & 0.803 & 0.000 & 8 \\
-    Boolean match on flat tags & 0.026 & 0.056 & 0.071 & 0.056 & 0.435 & 0.063 & 0.000 & 22 \\
-    Supervised labels, DAG index & 0.189 & 0.515 & 0.612 & 0.502 & 0.829 & 0.678 & 0.558 & 10 \\
-    BM25 over item text & 0.289 & 0.810 & 0.746 & 0.608 & 0.819 & 0.744 & 0.732 & 36 \\
+    DAG index, Haiku tags (ours) & 0.292 $\pm$ 0.012 & 0.268 $\pm$ 0.012 & 0.413 $\pm$ 0.028 & 0.229 $\pm$ 0.016 & 0.427 $\pm$ 0.027 & 0.546 $\pm$ 0.043 & 0.169 $\pm$ 0.016 & 27 \\
+    DAG index, Sonnet tags & 0.409 $\pm$ 0.003 & 0.395 $\pm$ 0.008 & 0.596 $\pm$ 0.011 & 0.373 $\pm$ 0.012 & 0.624 $\pm$ 0.011 & 0.723 $\pm$ 0.010 & 0.321 $\pm$ 0.025 & 24 \\
+    Boolean match on flat tags & 0.233 $\pm$ 0.013 & 0.260 $\pm$ 0.017 & 0.393 $\pm$ 0.016 & 0.225 $\pm$ 0.013 & 0.447 $\pm$ 0.009 & 0.368 $\pm$ 0.034 & 0.268 $\pm$ 0.023 & 303 \\
+    Supervised labels, DAG index & 0.234 $\pm$ 0.001 & 0.173 $\pm$ 0.004 & 0.308 $\pm$ 0.006 & 0.145 $\pm$ 0.006 & 0.312 $\pm$ 0.007 & 0.372 $\pm$ 0.006 & 0.199 $\pm$ 0.008 & 25 \\
+    BM25 over item text & 0.226 $\pm$ 0.000 & 0.259 $\pm$ 0.000 & 0.313 $\pm$ 0.000 & 0.140 $\pm$ 0.000 & 0.369 $\pm$ 0.000 & 0.281 $\pm$ 0.000 & 0.194 $\pm$ 0.000 & 587 \\
     \bottomrule
 \end{tabular}

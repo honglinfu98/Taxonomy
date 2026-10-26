@@ -24,6 +24,7 @@ grow the graph by \AllAddedTypes\ dimensions and \AllAddedValues\ values for
 \$\AllCost; dimensions discovered in one iteration are among the most used
 in the next. The index answers queries
 over \RItems\ items in microseconds, \RSpeedMin\ to \RSpeedMax\ times faster
-than a flat scan, and facet gain reaches ten items in \RGainSteps\ questions. On a pilot gold set the DAG-guided tagger beats the same model given a
-flat label list in micro-F$_1$. The
+than a flat scan, and facet gain reaches ten items in \RGainSteps\ questions. On a 300-item gold set the DAG index beats BM25 on NDCG@10 at a
+twentieth of the latency, and tagging micro-F$_1$ rises from \DagMicro\ to
+\SonMicro\ with a stronger tagger. The
 corpus, taxonomy and code are available at an anonymised repository.\footnote{\url{https://anonymous.4open.science/r/Taxonomy-77BF/}}

@@ -98,8 +98,8 @@ facet with the highest expected narrowing.
     hierarchy resolves \BBits\ bits per descent, \NIterWord\ maintenance
     iterations over the whole on-topic DLT-Corpus of \AllItems\ items verify
     \EvidMin--\EvidMax\% of tag evidence and add \AllAddedTypes\ dimensions, and the index answers queries over \RItems\
-    items \RSpeedMin\ to \RSpeedMax\ times faster than a flat scan. On a pilot gold set the DAG-guided tagger reaches micro-F$_1$ \DagMicro\
-    against \FlatMicro\ for the same model with a flat label list
-    (\cref{sec:exp:rq3}). Code and data are at an anonymised
+    items \RSpeedMin\ to \RSpeedMax\ times faster than a flat scan. On a 300-item gold set the DAG index reaches NDCG@10 \RetDagNDCG\
+    against \RetBMNDCG\ for BM25, and tagging micro-F$_1$ rises from
+    \DagMicro\ to \SonMicro\ with a stronger tagger (\cref{sec:exp:rq3}). Code and data are at an anonymised
     repository.\footnote{\url{https://anonymous.4open.science/r/Taxonomy-77BF/}}
 \end{itemize}

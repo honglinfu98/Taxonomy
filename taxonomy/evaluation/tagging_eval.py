@@ -242,6 +242,8 @@ def main() -> None:
             res["systems"][s].append({"run": r, "metrics": m, "run_info": info})
             print(f"{s} run {r}: label micro-F1 {m['label']['micro_f1']}  macro-F1 {m['label']['macro_f1']}  type micro-F1 {m['type']['micro_f1']}  "
                   f"({info.get('cost_usd', 0)} USD, {info.get('wall_seconds')} s)")
+    order = ["dag", "flat", "supervised", "dag@claude-sonnet-5-5", "flat@claude-sonnet-5-5"]
+    res["systems"] = {k: res["systems"][k] for k in order if k in res["systems"]} | {k: v for k, v in res["systems"].items() if k not in order}
     (OUT / "tagging_eval.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
     md, tex = render(res)
     (OUT / "tagging_eval.md").write_text(md, encoding="utf-8")

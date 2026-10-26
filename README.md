@@ -16,8 +16,8 @@ so the taxonomy can be audited and regenerated when the sources change.
 | Part | Role | Status |
 |---|---|---|
 | **1. Taxonomy establishment** | Establish the graph from a grounded corpus of legal instruments and academic taxonomies. | **complete (2026-10-26)**: `taxonomy/establishment/`, `output/establishment/` |
-| **2. Classification** | Tag content onto DAG nodes; maintain the DAG from node statistics (information gain, reach-a-leaf AUC, effective leaves / nodes) and discover new nodes from impurity. | **in progress**: `taxonomy/classification/`; 2 iterations run (300 + 8,646 DLT-Corpus items), seed v0 -> v2 (93 -> 107 term types) |
-| **3. Optimization** | Index the tagged content on the DAG and retrieve it by graph operations: reachability closure, weighted is-a paths, lowest common ancestors, information content, facet gain for the best next question. | **first version (2026-10-26)**: `taxonomy/retrieval/`, `output/retrieval/`; 8,205 items indexed, queries in 2 to 10 us (1,000 to 2,400x faster than flat scans) |
+| **2. Classification** | Tag content onto DAG nodes; maintain the DAG from node statistics (information gain, reach-a-leaf AUC, effective leaves / nodes) and discover new nodes from impurity. | **complete for the on-topic DLT-Corpus (2026-10-26)**: `taxonomy/classification/`; 6 iterations, 36,702 items, seed v0 -> v6 (93 -> 132 term types, 317 -> 549 values), $19.3 |
+| **3. Optimization** | Index the tagged content on the DAG and retrieve it by graph operations: reachability closure, weighted is-a paths, lowest common ancestors, information content, facet gain for the best next question. | **first version (2026-10-26)**: `taxonomy/retrieval/`, `output/retrieval/`; 33,581 items indexed, queries in 2 to 11 us (3,400 to 10,000x faster than flat scans); NDCG@10 0.60 on judged queries vs 0.31 for BM25 |
 
 ## Part 1: taxonomy establishment (complete)
 

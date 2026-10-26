@@ -1,0 +1,32 @@
+\begin{tabular}{llrrrr}
+\toprule
+Stage & Model & Input (K) & Cached (M) & Output (K) & USD \\
+\midrule
+Task A term types (run 1) & haiku-5-5 & 3 & 0.2 & 86 & 0.23 \\
+Task A term types (haiku\_run2) & haiku-5-5 & 3 & 0.0 & 73 & 0.42 \\
+Task A term types (sonnet) & sonnet-5-5 & 3 & 0.0 & 127 & 2.21 \\
+Task A term types (sonnet\_medium) & sonnet-5-5 & 3 & 0.2 & 35 & 0.40 \\
+Task B is-a distributions & haiku-5-5 & 197 & 23.3 & 68 & 1.44 \\
+Iteration 1: tag 300 items + discovery + consolidation & haiku-5-5 & 319 & 7.2 & 100 & 0.15 \\
+Iteration 2: tag 8646 items + discovery + consolidation & haiku-5-5 & 6980 & 216.0 & 2858 & 4.29 \\
+Iteration 3: tag 8646 items + discovery + consolidation & haiku-5-5 & 6941 & 230.7 & 2898 & 4.45 \\
+Iteration 4: tag 8646 items + discovery + consolidation & haiku-5-5 & 6983 & 242.6 & 2924 & 4.59 \\
+Iteration 5: tag 8646 items + discovery + consolidation & haiku-5-5 & 7033 & 258.4 & 2878 & 4.73 \\
+Iteration 6: tag 1818 items + discovery + consolidation & haiku-5-5 & 1732 & 57.4 & 636 & 1.07 \\
+Gold annotation: 300 items x 2 passes & opus-5-5 & 468 & 19.3 & 545 & 20.76 \\
+Evaluation: dag run 1 (300 items) & haiku-5-5 & 234 & 9.6 & 104 & 0.18 \\
+Evaluation: dag run 2 (300 items) & haiku-5-5 & 234 & 9.7 & 103 & 0.17 \\
+Evaluation: dag run 3 (300 items) & haiku-5-5 & 234 & 9.7 & 105 & 0.17 \\
+Evaluation: flat run 1 (300 items) & haiku-5-5 & 234 & 2.6 & 117 & 0.11 \\
+Evaluation: flat run 2 (300 items) & haiku-5-5 & 234 & 2.6 & 119 & 0.11 \\
+Evaluation: flat run 3 (300 items) & haiku-5-5 & 234 & 2.6 & 118 & 0.11 \\
+Evaluation: dag@claude-sonnet-5-5 run 1 (300 items) & sonnet-5-5 & 234 & 9.6 & 76 & 3.28 \\
+Evaluation: dag@claude-sonnet-5-5 run 2 (300 items) & sonnet-5-5 & 234 & 9.7 & 76 & 3.16 \\
+Evaluation: dag@claude-sonnet-5-5 run 3 (300 items) & sonnet-5-5 & 234 & 9.7 & 77 & 3.17 \\
+Evaluation: flat@claude-sonnet-5-5 run 1 (300 items) & sonnet-5-5 & 234 & 2.6 & 85 & 1.87 \\
+Evaluation: flat@claude-sonnet-5-5 run 2 (300 items) & sonnet-5-5 & 234 & 2.6 & 83 & 1.82 \\
+Evaluation: flat@claude-sonnet-5-5 run 3 (300 items) & sonnet-5-5 & 234 & 2.6 & 84 & 1.83 \\
+\midrule
+Total & & & & & 60.72 \\
+\bottomrule
+\end{tabular}

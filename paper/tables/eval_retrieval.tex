@@ -3,9 +3,11 @@
 \toprule
 System & P@10 & NDCG@10 & MAP & R@10 & Latency ($\mu$s) \\
 \midrule
-DAG index (ours) & 0.070 $\pm$ 0.000 & 0.173 $\pm$ 0.000 & 0.139 $\pm$ 0.000 & 0.144 $\pm$ 0.000 & 8 \\
-flat zero-shot tags, no closure & 0.026 $\pm$ 0.000 & 0.071 $\pm$ 0.000 & 0.056 $\pm$ 0.000 & 0.056 $\pm$ 0.000 & 22 \\
-supervised labels + DAG index & 0.189 $\pm$ 0.000 & 0.612 $\pm$ 0.000 & 0.502 $\pm$ 0.000 & 0.515 $\pm$ 0.000 & 10 \\
-BM25 over text & 0.289 $\pm$ 0.000 & 0.746 $\pm$ 0.000 & 0.608 $\pm$ 0.000 & 0.810 $\pm$ 0.000 & 36 \\
+DAG index (ours, Haiku 5.5 tags) & 0.292 $\pm$ 0.012 & 0.413 $\pm$ 0.028 & 0.229 $\pm$ 0.016 & 0.268 $\pm$ 0.012 & 27 \\
+DAG index (Sonnet 5.5 tags) & 0.409 $\pm$ 0.003 & 0.596 $\pm$ 0.011 & 0.373 $\pm$ 0.012 & 0.395 $\pm$ 0.008 & 24 \\
+flat zero-shot tags, no closure & 0.233 $\pm$ 0.013 & 0.393 $\pm$ 0.016 & 0.225 $\pm$ 0.013 & 0.260 $\pm$ 0.017 & 303 \\
+flat zero-shot tags, no closure (Sonnet 5.5) & 0.316 $\pm$ 0.006 & 0.539 $\pm$ 0.009 & 0.362 $\pm$ 0.006 & 0.385 $\pm$ 0.008 & 282 \\
+supervised labels + DAG index & 0.234 $\pm$ 0.001 & 0.308 $\pm$ 0.006 & 0.145 $\pm$ 0.006 & 0.173 $\pm$ 0.004 & 25 \\
+BM25 over text & 0.226 $\pm$ 0.000 & 0.313 $\pm$ 0.000 & 0.140 $\pm$ 0.000 & 0.259 $\pm$ 0.000 & 587 \\
 \bottomrule
 \end{tabular}

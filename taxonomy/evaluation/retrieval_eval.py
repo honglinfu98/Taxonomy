@@ -191,7 +191,8 @@ def run_system(name: str, queries: list[dict], k: int, searcher) -> dict:
 
 def render(res: dict, k: int) -> tuple[str, str]:
     names = {"dag_index": "DAG index (ours, Haiku 5.5 tags)", "flat_tags": "flat zero-shot tags, no closure", "supervised": "supervised labels + DAG index",
-             "bm25": "BM25 over text", "dag_index@claude-sonnet-5-5": "DAG index (Sonnet 5.5 tags)"}
+             "bm25": "BM25 over text", "dag_index@claude-sonnet-5-5": "DAG index (Sonnet 5.5 tags)",
+             "flat_tags@claude-sonnet-5-5": "flat zero-shot tags, no closure (Sonnet 5.5)"}
     md = ["# Retrieval evaluation", "",
           f"Judged collection: {res['items']} gold items; {res['n_queries']} queries ({res['query_kinds']}); k = {k}; "
           f"{res['runs']} runs (mean ± sd over runs; each run uses that run's tag predictions). "
@@ -238,6 +239,10 @@ def main() -> None:
     for r in range(1, a.runs + 1):
         preds = {p.name[len("pred_"):-len(f"_run{r}.jsonl")]: read_jsonl(p) for p in sorted(OUT.glob(f"pred_*_run{r}.jsonl"))}
         for s2, rows2 in preds.items():
+            if s2.startswith("flat@"):         # second-model flat tags, no closure
+                ft2 = FlatTags(rows2)
+                res["systems"].setdefault(f"flat_tags@{s2.split('@', 1)[1]}", []).append(run_system(
+                    s2, queries, a.k, lambda q, ft2=ft2: ft2.search(parsed[q["query"]], a.k)))
             if s2.startswith("dag@"):          # second-model tags through the DAG index
                 idx3 = make_index(version, tts, dag, items, rows2)
                 eng3 = Engine(idx3)
@@ -258,6 +263,8 @@ def main() -> None:
                 "supervised", queries, a.k, lambda q: [idx2.items[x["i"]]["id"] for x in eng2.rank(eng2.evaluate(parsed[q["query"]]), eng2.positive_atoms(parsed[q["query"]]), a.k)]))
         if r == 1 or True:
             res["systems"].setdefault("bm25", []).append(run_system("bm25", queries, a.k, lambda q: bm25.search(q["text"], a.k)))
+    order = ["dag_index", "dag_index@claude-sonnet-5-5", "flat_tags", "flat_tags@claude-sonnet-5-5", "supervised", "bm25"]
+    res["systems"] = {k: res["systems"][k] for k in order if k in res["systems"]} | {k: v for k, v in res["systems"].items() if k not in order}
     (OUT / "retrieval_eval.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
     md, tex = render(res, a.k)
     (OUT / "retrieval_eval.md").write_text(md, encoding="utf-8")

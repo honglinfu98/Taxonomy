@@ -56,3 +56,40 @@ in `output/retrieval/benchmark.md`.
 `pred_*_run*.jsonl`, `tagging_eval.{json,md}`, `retrieval_queries.json`,
 `retrieval_eval.{json,md}`; LaTeX tables `paper/tables/eval_tagging.tex` and
 `paper/tables/eval_retrieval.tex`.
+
+## 5. Results (catalogue v6, 2026-10-26)
+
+Gold: 300 items, two Opus 5.5 passes, pass agreement micro-F1 0.88, 1,168 labels (3.89 per
+item) over 209 distinct labels and 84 term types; 309 labels dropped for disagreement; $20.8.
+
+| tagging system | label micro-F1 | label macro-F1 | type micro-F1 | cost / run |
+|---|---|---|---|---|
+| DAG-guided, Haiku 5.5 (production) | 0.379 ± 0.006 | 0.316 ± 0.002 | 0.493 ± 0.005 | $0.17 |
+| flat zero-shot, Haiku 5.5 | 0.387 ± 0.009 | 0.321 ± 0.012 | 0.485 ± 0.006 | $0.11 |
+| supervised TF-IDF + LR | 0.388 ± 0.003 | 0.160 ± 0.002 | 0.482 ± 0.002 | 0 |
+| DAG-guided, Sonnet 5.5 | 0.595 ± 0.004 | 0.505 ± 0.008 | 0.658 ± 0.006 | $3.20 |
+| flat zero-shot, Sonnet 5.5 | 0.594 ± 0.006 | 0.518 ± 0.002 | 0.668 ± 0.009 | $1.84 |
+
+The catalogue block (definitions, hierarchy) does not raise tagging accuracy over a flat label
+list at either model; the model does (+0.21 micro-F1 from Haiku to Sonnet). The supervised
+classifier matches the LLMs on micro-F1 but halves macro-F1: it learns the frequent labels.
+
+| retrieval system (110 judged queries) | P@10 | NDCG@10 | MAP | node queries NDCG@10 | latency (us) |
+|---|---|---|---|---|---|
+| DAG index, Sonnet 5.5 tags | 0.409 ± 0.003 | 0.596 ± 0.011 | 0.373 ± 0.012 | 0.723 ± 0.010 | 24 |
+| flat Sonnet 5.5 tags, no closure | 0.316 ± 0.006 | 0.539 ± 0.009 | 0.362 ± 0.006 | 0.420 ± 0.027 | 282 |
+| DAG index, Haiku 5.5 tags | 0.292 ± 0.012 | 0.413 ± 0.028 | 0.229 ± 0.016 | 0.546 ± 0.043 | 27 |
+| flat Haiku 5.5 tags, no closure | 0.233 ± 0.013 | 0.393 ± 0.016 | 0.225 ± 0.013 | 0.368 ± 0.034 | 303 |
+| supervised labels + DAG index | 0.234 ± 0.001 | 0.308 ± 0.006 | 0.145 ± 0.006 | 0.372 ± 0.006 | 25 |
+| BM25 over text | 0.226 | 0.313 | 0.140 | 0.281 | 587 |
+
+The hierarchy is what retrieval gains from the DAG: with the same tags, is-a closure lifts node
+queries from 0.42 to 0.72 NDCG@10 and P@10 from 0.32 to 0.41 at a tenth of the latency; every
+tag-based index beats BM25 over the text. Full tables: `output/evaluation/tagging_eval.md`,
+`retrieval_eval.md`; billing for every stage: `billing.md` ($60.7 for everything recorded).
+
+Task A repeats (`output/establishment/repeats/`, `taxonomy/establishment/agreement.py`): a second
+Haiku run gives 76 term types and agreement F1 0.51 with run 1 (43 matched, value Jaccard 0.32);
+Sonnet 5.5 at effort high is truncated at the 127K output ceiling (72 types, F1 0.55), at medium
+complete with 54 types (F1 0.40). The matcher is lexical (name + question), so these are lower
+bounds on semantic agreement.

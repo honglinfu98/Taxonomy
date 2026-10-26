@@ -3,8 +3,10 @@
 \toprule
 System & Micro-F1 & Macro-F1 & P & R & Type Micro-F1 & Type Macro-F1 \\
 \midrule
-DAG-guided LLM (ours) & 0.424 $\pm$ 0.000 & 0.419 $\pm$ 0.000 & 0.429 $\pm$ 0.000 & 0.420 $\pm$ 0.000 & 0.494 $\pm$ 0.000 & 0.451 $\pm$ 0.000 \\
-zero-shot LLM, flat labels & 0.376 $\pm$ 0.000 & 0.416 $\pm$ 0.000 & 0.372 $\pm$ 0.000 & 0.380 $\pm$ 0.000 & 0.447 $\pm$ 0.000 & 0.448 $\pm$ 0.000 \\
-supervised TF-IDF + LR & 0.444 $\pm$ 0.000 & 0.284 $\pm$ 0.000 & 0.449 $\pm$ 0.000 & 0.440 $\pm$ 0.000 & 0.486 $\pm$ 0.000 & 0.277 $\pm$ 0.000 \\
+DAG-guided LLM (ours, Haiku 5.5) & 0.379 $\pm$ 0.006 & 0.316 $\pm$ 0.002 & 0.364 $\pm$ 0.003 & 0.394 $\pm$ 0.008 & 0.493 $\pm$ 0.005 & 0.390 $\pm$ 0.005 \\
+zero-shot LLM, flat labels (Haiku 5.5) & 0.387 $\pm$ 0.009 & 0.321 $\pm$ 0.012 & 0.347 $\pm$ 0.010 & 0.439 $\pm$ 0.006 & 0.485 $\pm$ 0.006 & 0.388 $\pm$ 0.020 \\
+supervised TF-IDF + LR & 0.388 $\pm$ 0.003 & 0.160 $\pm$ 0.002 & 0.371 $\pm$ 0.005 & 0.406 $\pm$ 0.002 & 0.482 $\pm$ 0.002 & 0.203 $\pm$ 0.001 \\
+DAG-guided LLM (Sonnet 5.5) & 0.595 $\pm$ 0.004 & 0.505 $\pm$ 0.008 & 0.673 $\pm$ 0.003 & 0.532 $\pm$ 0.005 & 0.658 $\pm$ 0.006 & 0.544 $\pm$ 0.009 \\
+zero-shot LLM, flat labels (Sonnet 5.5) & 0.593 $\pm$ 0.006 & 0.518 $\pm$ 0.002 & 0.651 $\pm$ 0.006 & 0.545 $\pm$ 0.007 & 0.668 $\pm$ 0.009 & 0.540 $\pm$ 0.003 \\
 \bottomrule
 \end{tabular}

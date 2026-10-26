@@ -24,15 +24,16 @@ batches: a pilot of 150 papers and 150 patents, then a tenth of each
 collection (3,744 papers, 4,902 patents) per iteration until the on-topic
 pool of \AllItems\ items is exhausted; an item is the title and abstract
 capped at 450 words. For RQ4 the index holds the tagged
-items of all \RIterWord\ batches on version \RCat. A held-out gold set of 300 items is
-excluded from the supervised baseline's training; \GItems\ are annotated so far. DLT-Corpus items may occur in the model's pretraining data, which we
+items of all \RIterWord\ batches on version \RCat. A held-out gold set of \GItems\ items (150 papers, 150
+patents) is excluded from the supervised baseline's training. DLT-Corpus items may occur in the model's pretraining data, which we
 cannot rule out; the gold labels are produced with the catalogue in view, so
 contamination would help every system alike.
 
 \textbf{Baselines.} For tagging, the same model given a flat list of term
 types and value labels without questions, definitions or hierarchy, and a
 supervised TF-IDF with one-vs-rest logistic regression trained on the
-production tags outside the gold set. For retrieval, Boolean match on the
+production tags outside the gold set; a \texttt{claude-sonnet-5-5} variant
+of our tagger shows the effect of the model. For retrieval, Boolean match on the
 flat tags, the supervised labels through our index, and BM25 over title and
 text with the query rendered as the term type's name, question and values.
 
@@ -55,7 +56,9 @@ calls with $k{=}6$, four in parallel; Task~C runs at effort \texttt{medium}
 with 6 to 24 items in flight; gold annotation uses \texttt{claude-opus-5-5}
 at effort \texttt{high}. All runs are API calls from a laptop; no GPU is
 involved. The retrieval engine is pure Python over integer bitsets and is
-timed on one core of the same laptop. Repeat runs are compared in \cref{sec:exp:rq1}.
+timed on one core of the same laptop. Gold-set systems
+are run \EvalRunsWord\ times, LLMs by sampling and the classifier by seed,
+and reported as mean $\pm$ sd; Task~A repeats are compared in \cref{sec:exp:rq1}.
 
 \subsection{RQ1: Term Types Generated and Their Faithfulness}
 \label{sec:exp:rq1}
@@ -233,13 +236,19 @@ cross-chain transfer mechanism of iteration 2. And with raw support counts, capp
 in iteration 2, which is why support is extrapolated to the residual (21 of
 81 accepted).
 
-\textbf{Pilot gold-set evaluation.} Verified evidence shows that a span
-exists, not that the tag is right. On \GItems\ held-out items with \GLabels\
-LLM-adjudicated labels (\cref{tab:evaltag,tab:evalret}, \cref{app:results}) the DAG-guided tagger reaches
-label micro-F$_1$ \DagMicro\ against \FlatMicro\ for the same model with a
-flat label list and \SupMicro\ for a supervised classifier, while BM25 beats
-our index on retrieval (NDCG@10 \RetBMNDCG\ against \RetDagNDCG) because the
-tags miss the second atom of most AND queries.
+\textbf{Gold-set evaluation.} Verified evidence shows that a span exists,
+not that the tag is right. On \GItems\ held-out items with \GLabels\
+LLM-adjudicated labels over \GTypes\ term types (\cref{tab:evaltag,tab:evalret},
+\cref{app:results}), the Haiku tagger with the catalogue reaches label
+micro-F$_1$ \DagMicro, level with the same model given a flat label list
+(\FlatMicro) and with the supervised classifier (\SupMicro), whose macro-F$_1$
+collapses to \SupMacro; the catalogue trades recall for precision, and it pays
+off with a stronger model, \SonMicro\ for Sonnet 5.5 (macro \SonMacro). For
+retrieval over \NQueries\ judged queries, the DAG index on our tags reaches
+NDCG@10 \RetDagNDCG\ against \RetFlatNDCG\ for Boolean match on flat tags and
+\RetBMNDCG\ for BM25, at \RetDagLat\ against \RetBMLat\ microseconds per
+query, and \RetSonNDCG\ on Sonnet tags; two-atom AND queries remain the weak
+case (\RetDagAnd).
 
 \subsection{RQ4: Retrieval over the DAG}
 \label{sec:exp:rq4}

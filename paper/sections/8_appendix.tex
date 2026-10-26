@@ -28,10 +28,10 @@
 \end{table*}
 \begin{table*}[t]
   \centering
-  \caption{Pilot tagging evaluation on \GItems\ held-out items with \GLabels\
+  \caption{Tagging evaluation on \GItems\ held-out items with \GLabels\
   gold labels adjudicated from two passes of \texttt{\GModel} (pass agreement
   micro-F$_1$ \GAgreement\%; no human labels), catalogue version \EvalCat,
-  one run per system. Label metrics are over (term type, value) pairs, type
+  mean $\pm$ sd over \EvalRunsWord\ runs. Label metrics are over (term type, value) pairs, type
   metrics over term types.}
   \label{tab:evaltag}
   \scriptsize
@@ -40,14 +40,14 @@
 
 \begin{table*}[t]
   \centering
-  \caption{Pilot retrieval evaluation on the same \GItems\ items over
+  \caption{Retrieval evaluation on the same \GItems\ items over
   \NQueries\ judged queries (\NQValue\ value, \NQNode\ node, \NQAnd\ two-atom
   AND), $k{=}10$, relevance graded from the gold labels. Each system ranks
   with its own tags or text; the last column is the mean latency per query
-  on the judged collection.}
+  on the judged collection; mean $\pm$ sd over \EvalRunsWord\ runs.}
   \label{tab:evalret}
   \scriptsize
-  \begin{minipage}{0.86\textwidth}\input{tables/eval_retrieval_paper}\end{minipage}
+  \input{tables/eval_retrieval_paper}
 \end{table*}
 
 \begin{table*}[t]
@@ -57,7 +57,7 @@
   exceed 100K tokens and are priced on the long-prompt card.}
   \label{tab:billing}
   \scriptsize
-  \begin{minipage}{0.8\textwidth}\input{tables/billing}\end{minipage}
+  \begin{minipage}{0.8\textwidth}\input{tables/billing_paper}\end{minipage}
 \end{table*}
 
 \begin{figure*}[t]
@@ -106,11 +106,11 @@ system block that follows the instructions.}
 \Cref{tab:errors}
 lists the rejected citations discussed there; \cref{tab:accepted} lists the
 term types the maintenance iterations added; \cref{tab:evaltag,tab:evalret}
-hold the pilot gold-set evaluation of \cref{sec:exp:rq3}: \GItems\ held-out
+hold the gold-set evaluation of \cref{sec:exp:rq3}: \GItems\ held-out
 items were annotated twice by \texttt{\GModel} at effort high, and a (term
 type, value) label is gold when both passes assert it with verified evidence
 (pass agreement micro-F$_1$ \GAgreement\%, \GDropped\ labels dropped); no
-human labels are involved, and one run per system is reported. \Cref{tab:billing}
+human labels are involved; each system is run \EvalRunsWord\ times. \Cref{tab:billing}
 is the billing of every stage. The seed catalogue, the case study,
 the category trees, the remaining prompts and the full DAG are in the
 released artefact.
