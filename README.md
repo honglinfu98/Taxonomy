@@ -16,7 +16,7 @@ so the taxonomy can be audited and regenerated when the sources change.
 | Part | Role | Status |
 |---|---|---|
 | **1. Taxonomy establishment** | Establish the graph from a grounded corpus of legal instruments and academic taxonomies. | **complete (2026-10-26)**: `taxonomy/establishment/`, `output/establishment/` |
-| **2. Classification** | Tag content onto DAG nodes; maintain the DAG from node statistics (information gain, reach-a-leaf AUC, effective leaves / nodes) and discover new nodes from impurity. | **in progress**: `taxonomy/classification/` |
+| **2. Classification** | Tag content onto DAG nodes; maintain the DAG from node statistics (information gain, reach-a-leaf AUC, effective leaves / nodes) and discover new nodes from impurity. | **in progress**: `taxonomy/classification/`; 2 iterations run (300 + 8,646 DLT-Corpus items), seed v0 -> v2 (93 -> 107 term types) |
 | **3. Optimization** | Keep the graph self-maintaining: merge / split / prune nodes from classification feedback and retrieval usage, ingest new sources, re-verify citations. | not started |
 
 ## Part 1: taxonomy establishment (complete)
@@ -69,10 +69,12 @@ in-house classifier to replace the LLM for bulk tagging.
 ```bash
 python -m taxonomy.classification.sample     # pilot sample -> data/dlt_corpus/sample.jsonl
 python -m taxonomy.classification.tag        # Task C tagging -> output/classification/
-python -m taxonomy.classification.maintain   # label space, objectives, discovery -> dag_v2_proposal.json
+python -m taxonomy.classification.maintain   # label space, objectives, discovery at impure nodes
+python -m taxonomy.classification.evolve     # consolidate accepted candidates -> next catalogue version + log
 ```
 
-Details, data download and results: `taxonomy/classification/README.md`.
+Mechanism: `taxonomy/classification/MAINTENANCE.md`. Pipeline, data and results:
+`taxonomy/classification/README.md`. DAG evolution from the v0 seed: `output/evolution/evolution.md`.
 
 ## Setup
 
@@ -101,6 +103,7 @@ taxonomy/
 data/dlt_corpus/           downloaded DLT-Corpus shards and the pilot sample (gitignored)
 output/
   establishment/           Part 1 results: term types, is-a distributions, DAG, metrics, viewer
-  classification/          Part 2 results
+  classification/          Part 2 pilot outputs (superseded by evolution/iter_01)
+  evolution/               v0 seed, v1.. evolved catalogues, iter_XX batches, evolution log
 paper/                     the write-up (LaTeX)
 ```

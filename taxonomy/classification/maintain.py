@@ -1,8 +1,9 @@
 """Part 2 maintenance loop: the DAG as label space, empirical metrics from tags, discovery.
 
-    python -m taxonomy.classification.maintain [--min-items 5] [--min-residual 0.3] [--no-discover]
+    python -m taxonomy.classification.maintain [--iter K] [--min-items 5] [--min-residual 0.3] [--no-discover]
 
-Reads the Part 1 DAG and term types and the Task C tags (output/classification/tags.jsonl)
+Reads iteration K's tags (output/evolution/iter_K/tags.jsonl; default: latest iteration) and
+the catalogue version that iteration was tagged with
 and treats the DAG as the label space: every item sits on the term-type nodes it was tagged
 with, and on their is-a ancestors (closure). From the item sets it computes, per node,
 
@@ -23,35 +24,31 @@ share) or moves to a child in proportion to the child's closure share.
 Maintenance proposals (deterministic): dormant nodes (no items), collapsed nodes (many
 items, one value), high-gain nodes, and discovery targets (residual >= --min-residual and
 >= --min-items items). Discovery (Task E) sends each target's residual items to the model,
-which proposes missing values or child term types with supporting item ids; a candidate is
-scored by the branching-gain increase it would bring at that node and accepted when it
-clears --min-gain bits with >= --min-items supporting items.
+which proposes missing values or child term types with supporting item ids. The shown items
+are a sample of the residual (at most --max-items), so the candidate's support share among
+them is extrapolated to the whole residual; a candidate is scored by the branching-gain
+increase that estimated support would bring at the node and accepted when it clears
+--min-gain bits with >= --min-items supporting items among those shown.
 
-Outputs (output/classification/): maintenance.json, maintenance.md, dag_v2_proposal.json
-(the Part 1 DAG plus accepted candidates as status "candidate" nodes; Part 1 files are not
-modified).
+Outputs (output/evolution/iter_K/): maintenance.json, maintenance.md. Accepted candidates
+are consolidated into the next catalogue version by evolve.py; no version is modified here.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import math
-import re
 import sys
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 
+from taxonomy.classification import catalogue as cat
 from taxonomy.classification.prompts import DISCOVER_INSTRUCTIONS, DISCOVER_PROMPT
-from taxonomy.classification.sample import SAMPLE
-from taxonomy.classification.tag import CATEGORIES, NOVEL_OUT, OUT_DIR, PRICE, TAGS_OUT, extract_json, load_taxonomy
+from taxonomy.classification.tag import CATEGORIES, PRICE, extract_json, latency_stats, load_taxonomy
 from taxonomy.establishment.term_types import quote_found
-from taxonomy.llm_context import build_request, client
-
-MAINT_OUT = OUT_DIR / "maintenance.json"
-MD_OUT = OUT_DIR / "maintenance.md"
-DAG_V2_OUT = OUT_DIR / "dag_v2_proposal.json"
+from taxonomy.llm_context import ROOT, build_request, client
 
 
 def H(ps) -> float:
@@ -161,19 +158,25 @@ def descent_metrics(space: dict, stats: dict[str, dict]) -> dict:
 
 
 # ---------------------------------------------------------------- discovery (Task E)
-def candidate_gain(stats_y: dict, space: dict, y: str, supporting: set[str]) -> float:
-    """Branching-gain change at y if a new child captured `supporting` residual items."""
+def candidate_gain(stats_y: dict, space: dict, y: str, supporting: set[str], shown: int) -> tuple[float, int]:
+    """Branching-gain change at y if a new child captured the candidate's items.
+
+    Discovery shows at most `shown` residual items, so the support count is a sample: the
+    share of shown items that support the candidate is extrapolated to the whole residual
+    (estimated support), and the gain is computed with that estimate. Returns (gain, est)."""
     I = space["closure"][y]
-    if not I:
-        return 0.0
+    residual = set(stats_y["residual_items"])
+    if not I or not residual:
+        return 0.0, 0
+    n_shown = max(1, min(shown, len(residual)))
+    est = len(supporting & residual) if n_shown >= len(residual) else round(len(supporting & residual) / n_shown * len(residual))
+    est = min(est, len(residual))
     kids = space["children"].get(y, [])
     shares = [len(space["closure"][c]) / len(I) for c in kids]
-    residual = set(stats_y["residual_items"])
     before = shares + [len(residual) / len(I)]
-    new = len(supporting & residual) / len(I)
-    after = shares + [new, (len(residual) - len(supporting & residual)) / len(I)]
+    after = shares + [est / len(I), (len(residual) - est) / len(I)]
     Zb, Za = sum(before), sum(after)
-    return H([p / Zb for p in before]) if False else H([p / Za for p in after]) - H([p / Zb for p in before])
+    return H([p / Za for p in after]) - H([p / Zb for p in before]), est
 
 
 def discover(cl, y: str, stats_y: dict, by_id: dict, space: dict, items: dict[str, dict], rows_by_id: dict,
@@ -196,6 +199,7 @@ def discover(cl, y: str, stats_y: dict, by_id: dict, space: dict, items: dict[st
         seeds="; ".join(seeds) or "none", n=len(shown), total=len(resid), items="\n".join(lines))
     req = build_request(DISCOVER_INSTRUCTIONS, prompt, model=model, max_tokens=3000, effort="medium",
                         corpus=False, thinking={"type": "disabled"})
+    t0 = time.perf_counter()
     msg = cl.messages.create(**req)
     u = msg.usage
     text = "".join(b.text for b in msg.content if b.type == "text")
@@ -203,7 +207,8 @@ def discover(cl, y: str, stats_y: dict, by_id: dict, space: dict, items: dict[st
         parsed = extract_json(text)
     except (json.JSONDecodeError, ValueError):
         parsed = {"candidates": []}
-    return {"node": y, "shown": shown, "raw": parsed, "usage": {"input": u.input_tokens, "output": u.output_tokens,
+    return {"node": y, "shown": shown, "raw": parsed, "seconds": round(time.perf_counter() - t0, 3),
+            "usage": {"input": u.input_tokens, "output": u.output_tokens,
             "cache_write": u.cache_creation_input_tokens or 0, "cache_read": u.cache_read_input_tokens or 0}}
 
 
@@ -242,7 +247,8 @@ def render_md(m: dict, stats: dict, by_id: dict) -> str:
     for c in m["discovery"]["candidates"]:
         st = "ACCEPTED" if c["accepted"] else "rejected"
         lines.append(f"- [{st}] at `{c['node']}`: new {c['kind']} **{c['label']}** — {c['definition']} "
-                     f"(supports {c['n_support']} items, gain {c['gain_bits']} bits, evidence {'verified' if c['evidence_found'] else 'unverified'})"
+                     f"(supports {c['n_support']} of {c.get('n_shown')} shown, est. {c.get('estimated_support')} of {c.get('n_residual')} residual, "
+                     f"gain {c['gain_bits']} bits, evidence {'verified' if c['evidence_found'] else 'unverified'})"
                      + (f"; values: {', '.join(c['values'])}" if c.get("values") else ""))
     if not m["discovery"]["candidates"]:
         lines.append("(no discovery run or no candidates)")
@@ -258,13 +264,22 @@ def main() -> None:
     ap.add_argument("--max-items", type=int, default=40, help="residual items shown per discovery call")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--no-discover", action="store_true", help="metrics and deterministic proposals only")
+    ap.add_argument("--iter", type=int, default=None, help="iteration to maintain (default: latest)")
     args = ap.parse_args()
+    k = args.iter if args.iter is not None else (cat.iterations()[-1] if cat.iterations() else 1)
+    out_dir = cat.iter_dir(k)
+    TAGS_OUT, NOVEL_OUT = out_dir / "tags.jsonl", out_dir / "novel_proposals.json"
+    MAINT_OUT, MD_OUT = out_dir / "maintenance.json", out_dir / "maintenance.md"
     if not TAGS_OUT.exists():
-        sys.exit(f"{TAGS_OUT} missing: run python -m taxonomy.classification.tag first")
+        sys.exit(f"{TAGS_OUT} missing: run python -m taxonomy.classification.tag --iter {k} first")
+    run_meta = json.loads((out_dir / "tags_summary.json").read_text(encoding="utf-8"))["run"]
+    version = run_meta["catalogue_version"]
     rows = [json.loads(l) for l in TAGS_OUT.read_text(encoding="utf-8").splitlines() if l.strip()]
     rows_by_id = {r["item_id"]: r for r in rows}
-    items = {it["id"]: it for it in (json.loads(l) for l in SAMPLE.read_text(encoding="utf-8").splitlines() if l.strip())}
-    tts, dag = load_taxonomy()
+    sample_file = ROOT / run_meta["sample"]
+    items = {it["id"]: it for it in (json.loads(l) for l in sample_file.read_text(encoding="utf-8").splitlines() if l.strip())}
+    tts, dag = load_taxonomy(version)
+    print(f"iteration {k}: maintaining catalogue v{version} on {len(rows)} tagged items", file=sys.stderr)
     by_id = {t["id"]: t for t in tts}
     space = label_space(tts, dag, rows)
     stats = node_stats(space, by_id)
@@ -285,7 +300,7 @@ def main() -> None:
     targets.sort(key=lambda x: -x["residual"])
 
     # discovery
-    disc = {"calls": 0, "usage": {k: 0 for k in PRICE}, "cost_usd": 0.0, "candidates": []}
+    disc = {"calls": 0, "usage": {key: 0 for key in PRICE}, "cost_usd": 0.0, "candidates": [], "latencies": []}
     if not args.no_discover and targets:
         novel = json.loads(NOVEL_OUT.read_text(encoding="utf-8")) if NOVEL_OUT.exists() else {}
         cl = client()
@@ -301,26 +316,32 @@ def main() -> None:
             for f in as_completed(futs):
                 res = f.result()
                 disc["calls"] += 1
-                for k in disc["usage"]:
-                    disc["usage"][k] += res["usage"][k]
+                disc["latencies"].append(res["seconds"])
+                for key in disc["usage"]:
+                    disc["usage"][key] += res["usage"][key]
                 y = res["node"]
                 resid = set(stats[y]["residual_items"])
                 for c in res["raw"].get("candidates", []) or []:
                     support = {str(i) for i in (c.get("item_ids") or [])} & resid
-                    gain = round(candidate_gain(stats[y], space, y, support), 4)
+                    gain, est = candidate_gain(stats[y], space, y, support, len(res["shown"]))
+                    gain = round(gain, 4)
                     ev = str(c.get("evidence", "") or "")
                     ev_ok = any(quote_found(ev, items[i]["title"] + " " + items[i]["text"]) for i in support) if ev and support else False
                     disc["candidates"].append({
                         "node": y, "kind": c.get("kind"), "label": c.get("label"), "question": c.get("question", ""),
                         "definition": c.get("definition", ""), "values": c.get("values") or [],
-                        "item_ids": sorted(support), "n_support": len(support), "gain_bits": gain,
+                        "item_ids": sorted(support), "n_support": len(support), "n_shown": len(res["shown"]),
+                        "n_residual": len(resid), "estimated_support": est, "gain_bits": gain,
                         "evidence": ev, "evidence_found": ev_ok,
                         "accepted": len(support) >= args.min_items and gain >= args.min_gain and ev_ok})
-        disc["cost_usd"] = round(sum(disc["usage"][k] * PRICE[k] for k in PRICE), 4)
+        disc["cost_usd"] = round(sum(disc["usage"][key] * PRICE[key] for key in PRICE), 4)
         disc["seconds"] = round(time.time() - t0, 1)
+        disc["time"] = latency_stats(disc.pop("latencies"), time.time() - t0, args.workers)
         disc["candidates"].sort(key=lambda c: (-c["accepted"], -c["gain_bits"]))
 
+    disc.pop("latencies", None)
     out = {"run": {"timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"), "model": args.model,
+                   "iteration": k, "catalogue_version": version,
                    "min_items": args.min_items, "min_residual": args.min_residual, "min_gain": args.min_gain},
            "items": len(rows), "tags": sum(len(r["tags"]) for r in rows),
            "closure_placements": sum(len(s) for s in space["closure"].values()),
@@ -330,22 +351,6 @@ def main() -> None:
     MAINT_OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
     MD_OUT.write_text(render_md(out, stats, by_id), encoding="utf-8")
 
-    # DAG v2 proposal: Part 1 DAG + accepted candidates as "candidate" nodes/values
-    v2 = {"base": "output/establishment/taxonomy_dag.json", "nodes": list(dag["nodes"]), "edges": list(dag["edges"]),
-          "candidate_values": [], "status": "proposal"}
-    for c in disc["candidates"]:
-        if not c["accepted"]:
-            continue
-        if c["kind"] == "child_term_type":
-            nid = re.sub(r"[^a-z0-9]+", "_", c["label"].lower()).strip("_")
-            v2["nodes"].append({"id": nid, "name": c["label"], "category": by_id[c["node"]]["applies_to"], "question": c["question"],
-                                "values": c["values"], "status": "candidate", "support_items": c["item_ids"], "gain_bits": c["gain_bits"]})
-            v2["edges"].append({"child": nid, "parent": c["node"], "probability": None, "status": "candidate"})
-        else:
-            v2["candidate_values"].append({"term_type": c["node"], "value": c["label"], "definition": c["definition"],
-                                           "support_items": c["item_ids"], "gain_bits": c["gain_bits"]})
-    DAG_V2_OUT.write_text(json.dumps(v2, indent=1, ensure_ascii=False), encoding="utf-8")
-
     print(f"items {len(rows)}; nodes with items {emp['nodes_with_items']}/{emp['nodes']}")
     print(f"empirical: {emp['bits_per_descent']} bits/descent, AUC {emp['auc']}, E[depth] {emp['expected_depth']}, "
           f"effective leaves {emp['effective_leaves']} (/nodes {emp['effective_leaves_over_nodes']})")
@@ -354,7 +359,7 @@ def main() -> None:
     print(f"dormant {len(dormant)}, collapsed {len(collapsed)}, discovery targets {len(targets)}, "
           f"discovery calls {disc['calls']} (${disc['cost_usd']}), candidates {len(disc['candidates'])}, "
           f"accepted {sum(c['accepted'] for c in disc['candidates'])}")
-    print(f"-> {MAINT_OUT}\n-> {MD_OUT}\n-> {DAG_V2_OUT}")
+    print(f"-> {MAINT_OUT}\n-> {MD_OUT}")
 
 
 if __name__ == "__main__":

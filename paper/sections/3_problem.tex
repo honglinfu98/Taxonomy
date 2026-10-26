@@ -33,8 +33,15 @@ classifies is also classified by $y$, $x$ refines $y$'s question, and the values
 of $x$ could sit beneath one or more values of $y$. Given $\mathcal{Y}$, produce a
 weighted DAG $G = (\mathcal{Y}, E, w)$ with $w(x \to y) \in (0, 1]$ an estimate of
 $P(x \text{ is-a } y)$, every edge cited, and no cycle. A node may have several
-parents, which is what makes $G$ a DAG rather than a tree.\footnote{Placing
-terms under term types is the next part of this programme and out of scope here.}
+parents, which is what makes $G$ a DAG rather than a tree.
+
+\textbf{Problem (maintenance).} Given $G$ and a batch of content items, each
+tagged with pairs $(y, v)$, $v \in V(y)$, and placed by is-a on every ancestor
+of $y$, measure how much a descent of $G$ discriminates the content and, at
+nodes whose items stop short of every child, propose new values of $y$ or new
+children of $y$, accepting a candidate only when it raises that measure and
+is supported by verified evidence. Additions are marked as candidates; the seed is
+never edited.\footnote{Retrieval by walking the DAG is deferred.}
 
 \textbf{Desiderata.}
 \begin{enumerate*}[label=(D\arabic*)]
@@ -46,12 +53,9 @@ terms under term types is the next part of this programme and out of scope here.
   \item \emph{cost}: induction over the full corpus fits a stated token budget.
 \end{enumerate*}
 
-\textbf{Design principles.} It may seem natural to cast the problem as
-supervised structure prediction, but no gold catalogue of term types exists for
-any legal corpus, and building one is the expert annotation we are trying to
-reduce. We therefore use an LLM as the extractor and shift effort to two cheaper
-places, the corpus, which we restrict to definitional text so that
-every passage the model sees is a candidate criterion, and the output, which we
-constrain to cite and then check mechanically. We prioritise faithfulness over
-recall. A dimension the model cannot ground is dropped, and a quote the verifier
-cannot find stays flagged rather than repaired.
+\textbf{Design principles.} No gold catalogue of term types exists for any
+legal corpus, and building one is the expert annotation we are trying to
+reduce, so we use an LLM as the extractor and shift effort to the corpus,
+restricted to definitional text, and to the output, constrained to cite and
+then checked mechanically. We prioritise faithfulness over recall: an
+ungrounded dimension is dropped and an unfound quote stays flagged.

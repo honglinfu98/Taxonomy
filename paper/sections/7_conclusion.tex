@@ -1,21 +1,15 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-We studied how to induce the classification dimensions that legal instruments
-and academic taxonomies use for crypto-assets, and proposed \sys, which reduces
-each source to its definitional sections, extracts term types in one pass over
-the whole corpus held in a cached context, verifies every citation, and orders
-the term types into a DAG by one cited is-a query per node. On 24 documents from
-four jurisdictions, \sys produced 93 term types with 317 values, 97.9\% of whose
-480 citations verify, recorded a cross-source conflict for 69 of them, and
-linked them by \BEdges\ weighted is-a edges under one root per category, with
-the information gain, depth and leaf-use curves a maintenance stage can steer
-by. Future work follows the
-limits of this evidence: (i) expert validation of whether the verified
-citations support their term types, with annotator agreement; (ii) repeated
-runs and a second model to measure the stability of the catalogue, whose
-identifiers are not yet stable across runs; (iii) auditing the is-a edges, whose
-weights are coarse and whose citations verify less often than the term types',
-and placing terms under the term types; and (iv) using the catalogue as the label space for classifying Web-sourced token
-descriptions.
-\balance
+We proposed \sys, which induces the classification dimensions of crypto-asset
+law and research from definitional text with a citation for every element,
+orders them into a DAG by one cited is-a query per node, and maintains the
+DAG from tagged Web content by measured information gain. On 24 documents it
+produced 93 term types with 317 values, 97.9\% of whose 480 citations verify,
+and \BEdges\ weighted is-a edges; two maintenance iterations over \AllItems\ DLT-Corpus
+items verified 96--97\% of the tag evidence and grew the graph by \AllAddedTypes\
+dimensions and \AllAddedValues\ values for \$\AllCost. Future work follows the limits of
+this evidence: expert validation of whether verified citations and tags
+support their nodes; repeated runs and a second model, since identifiers are
+not yet stable across runs; and regulatory batches with a trained classifier
+replacing the LLM tagger.

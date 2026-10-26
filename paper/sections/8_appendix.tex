@@ -7,16 +7,18 @@
 The system instructions (\cref{fig:promptsys}) precede the cached corpus and are
 identical for every task; the Task A user prompt (\cref{fig:prompttask}) is
 followed at run time by the manifest of document indexes and section labels;
-the Task B user prompt (\cref{fig:prompttaskb}) is sent once per term type.
+the tagging prompt (\cref{fig:prompttag}) is sent once per item. The Task B
+is-a prompt, the discovery prompt and the consolidation prompt are in the
+released artefact.
 
 \begin{figure*}[t]
-\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{tables/prompt_system.txt}
+\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_system.txt}
 \caption{System instructions, verbatim.}
 \label{fig:promptsys}
 \end{figure*}
 
 \begin{figure*}[t]
-\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{tables/prompt_task_a.txt}
+\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_task_a.txt}
 \caption{Task A user prompt, verbatim. The manifest appended at run time is
 one line per document: \texttt{doc 4 (Regulation (EU) 2023/1114 ...): "Articles
 2-3: Scope and Definitions"}.}
@@ -24,79 +26,63 @@ one line per document: \texttt{doc 4 (Regulation (EU) 2023/1114 ...): "Articles
 \end{figure*}
 
 \begin{figure*}[t]
-\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{tables/prompt_task_b.txt}
-\caption{Task B user prompt, verbatim. The slots \texttt{\{child\}},
-\texttt{\{candidates\}}, \texttt{\{child\_id\}} and \texttt{\{k\}} are filled per
-term type; the catalogue of all term types is a second cached system block.}
-\label{fig:prompttaskb}
+\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_tag.txt}
+\caption{Task C tagging prompt, verbatim; the catalogue block is a cached
+system block that follows the instructions.}
+\label{fig:prompttag}
 \end{figure*}
 
-\section{Citation Verification}
-\label{app:verify}
-
-\begin{algorithm}[t]
-  \caption{Verify one citation $(i, \ell, q)$ against corpus $\mathcal{D}$.}
-  \label{alg:verify}
-  \KwIn{document index $i$, section label $\ell$, quote $q$; shingle length $k{=}12$, threshold $\tau{=}0.8$}
-  \KwOut{status $\in$ \{ok, relabelled, rejected\}, possibly corrected $\ell$}
-  \If{$d_i \notin \mathcal{D}$}{\Return rejected\;}
-  \If{$\ell \in d_i$ \textbf{and} \textsc{Found}$(q, s_{i\ell})$}{\Return ok\;}
-  \ForEach{$\ell' \in d_i$}{
-    \If{\textsc{Found}$(q, s_{i\ell'})$}{$\ell \gets \ell'$; \Return relabelled\;}
-  }
-  \Return rejected\;
-  \BlankLine
-  \SetKwFunction{Found}{Found}
-  \SetKwProg{Fn}{Function}{:}{}
-  \Fn{\Found{$q$, $s$}}{
-    $q, s \gets \textsc{Norm}(q), \textsc{Norm}(s)$ \tcp*{lower-case alphanumerics}
-    \lIf{$q \subseteq s$}{\Return true}
-    $G \gets$ $k$-shingles of $q$; $H \gets$ positions of each $g \in G$ in $s$\;
-    \Return $\max_{\text{window } w \subseteq s,\ |w| = 2|q|} |\{g \in G : g \text{ occurs in } w\}| / |G| \ge \tau$\;
-  }
-\end{algorithm}
-
-\Cref{alg:verify} is the procedure of \cref{sec:method:verify}. Normalisation
-removes everything but lower-case letters and digits, so line breaks,
-hyphenation and the spacing artefacts of PDF extraction do not matter. The
-window constraint is what distinguishes a compressed quote, whose shingles
-cluster in one place, from a paraphrase assembled from phrases that occur far
-apart.
-
-\section{Corpus Construction Details}
-\label{app:corpus}
-\todo{Per-instrument section ranges and regular-expression markers as specified
-in the source specification; cleaning rules (form feeds stripped, footer
-patterns removed); known extraction artefacts (tables read as one value per
-line).}
-
-\section{Full Catalogue of Term Types}
-\label{app:catalogue}
+\section{Additional Results}
+\label{app:results}
 
 \begin{table*}[t]
   \centering
-  \caption{All 93 term types, with the number of values and of grounding
-  documents. Category order: asset, technology, actor, activity, obligation or
-  risk, as returned by the model.}
+  \caption{All ten rejected Task A citations. The verifier found no match for
+  the quote in the cited section; the diagnosis comes from comparing the quote
+  with the section text. Two quotes share no five-word sequence with the
+  section; the other eight are compressions or partial rewrites of a passage
+  that is there.}
+  \label{tab:errors}
+  \scriptsize
+  \input{tables/errors}
+\end{table*}
+
+\begin{table*}[t]
+  \centering
+  \caption{Case study: the reference-asset term type as induced, with the model's
+  definition of each value and the source its first citation points to. The
+  notes field (not shown) records that \src{MiCA} splits by single currency
+  versus any other reference, that the \src{GENIUS Act} and UK regulations admit
+  fiat only, and that \src{FATF} and the \src{FSB} apply their standards to any
+  reference.}
+  \label{tab:case}
+  \scriptsize
+  \begin{minipage}{0.62\textwidth}\input{tables/case_reference_asset}\end{minipage}
+\end{table*}
+
+\begin{table*}[t]
+  \centering
+  \caption{All 93 term types of the seed catalogue, with the number of values
+  and of grounding documents, in the category order returned by the model.}
   \label{tab:catalogue}
   \scriptsize
   \input{tables/catalogue}
 \end{table*}
 
-\Cref{tab:catalogue} lists every term type in the run of \cref{sec:exp:rq1}.
-
-\section{Hierarchy of the Other Categories}
-\label{app:trees}
-\Cref{fig:trees} renders the primary-parent trees of the four categories not
-shown in \cref{fig:tree}; the full DAG with all parents and distributions is in
-the released artefact.
-
 \begin{figure*}[t]
   \centering
-  \begin{minipage}[t]{0.49\textwidth}\centering\input{tables/tree_technology}\\[2pt]\scriptsize (a) technology\end{minipage}\hfill
-  \begin{minipage}[t]{0.49\textwidth}\centering\input{tables/tree_actor}\\[2pt]\scriptsize (b) actor\\[6pt]\input{tables/tree_activity}\\[2pt]\scriptsize (c) activity\end{minipage}\\[6pt]
-  \begin{minipage}[t]{0.49\textwidth}\centering\input{tables/tree_obligation_or_risk}\\[2pt]\scriptsize (d) obligation or risk\end{minipage}
-  \caption{Primary-parent trees of the remaining categories, in the format of
-  \cref{fig:tree}.}
-  \label{fig:trees}
+  \begin{minipage}{0.6\textwidth}\centering\input{tables/tree_asset}\end{minipage}
+  \caption{Primary-parent tree of the asset category. Each node shows its name,
+  the weight of its primary is-a edge and, as $+n$, the number of additional
+  parents kept in the DAG. The root has no parent.}
+  \label{fig:tree}
 \end{figure*}
+
+
+\Cref{fig:tree} renders the asset category of the DAG discussed in
+\cref{sec:exp:rq2}. \Cref{tab:case} is the case study of \cref{sec:exp:rq1}; \cref{tab:errors}
+lists the rejected citations discussed there; \cref{tab:catalogue} lists every
+term type of the seed catalogue.
+The primary-parent trees of the technology, actor, activity and obligation
+categories, and the full DAG with every distribution, are in the released
+artefact.

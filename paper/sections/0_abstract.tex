@@ -1,23 +1,27 @@
 Crypto-assets are issued, traded and described on the Web, and the vocabulary
 that governs them is published as Web documents by regulators, standard-setters
-and researchers who do not share a dictionary. The same token is a crypto-asset
-under the EU's MiCA regulation, a digital asset under US law and a virtual asset
-under the FATF standards, and each definition discriminates along dimensions
-that the text never names. Manually built taxonomies capture one perspective at
-a time and go stale as instruments change, while LLM methods for taxonomy
-construction and ontology learning assume a fixed label space or a general-domain
-benchmark and do not trace their output to a legal source. In this paper we
+and researchers who do not share a dictionary: the same token is a crypto-asset
+under MiCA, a digital asset under US law and a virtual asset under FATF, and
+each definition discriminates along dimensions the text never names. Manual
+taxonomies capture one perspective and go stale, while LLM taxonomy and
+ontology-learning methods assume a fixed label space and do not trace their
+output to a legal source. In this paper we
 propose \sys, a framework that induces the classification dimensions, which we
 call term types, from the definitions themselves. \sys (1) builds a
 definitions-first corpus from 24 legal instruments and academic taxonomies,
 (2) extracts term types in a single pass over the whole corpus held in a cached
 context, requiring a document, section and verbatim quote for every dimension
-and value, (3) verifies every quote against the source, and (4) orders the term
+and value, (3) verifies every quote against the source, (4) orders the term
 types into an is-a graph by asking, for each one, for a cited probability
 distribution over the more general dimensions it specialises, consolidated
-greedily into a directed acyclic graph. On a corpus spanning the EU, the UK, the
+greedily into a directed acyclic graph, and (5) uses the graph as the label
+space for Web content and grows it only where tagged content raises its
+information gain. On a corpus spanning the EU, the UK, the
 US and six international bodies, \sys produces 93 term types with 317 values and
 480 citations, 97.9\% of which verify, records a cross-source disagreement for 69
 of them, and links them by 279 weighted is-a edges under one root per category,
-for a few dollars of API calls. \todo{One sentence of comparative evidence once RQ2--RQ4 are run.} The
+for a few dollars of API calls. Two maintenance iterations over \AllItems\ DLT-Corpus papers and patents
+verify 96--97\% of tag evidence and grow the graph by \AllAddedTypes\
+dimensions and \AllAddedValues\ values for \$\AllCost, and the dimensions
+discovered first are among the most used next. \todo{One sentence of comparative evidence once RQ2--RQ4 are run.} The
 corpus, taxonomy and code are available at an anonymised repository.\footnote{\todo{anonymised URL}}

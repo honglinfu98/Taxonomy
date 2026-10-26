@@ -1,0 +1,395 @@
+{
+ "role": "evolved",
+ "from_version": 1,
+ "iteration": 2,
+ "accepted_candidates": 21,
+ "plan": {
+  "term_types": [
+   {
+    "id": "cross_chain_transfer_mechanism",
+    "name": "Cross-chain transfer mechanism",
+    "category": "asset",
+    "question": "How is the asset moved or represented across chains?",
+    "description": "The mechanism by which an asset is transferred or represented between two blockchains.",
+    "values": [
+     "lock-and-mint bridge",
+     "pegged sidechain",
+     "atomic swap / hashlock",
+     "cross-chain messaging / relay",
+     "token linking or coloured coin"
+    ],
+    "parents": [
+     "wrapped_or_bridged_asset"
+    ],
+    "merged_from": [
+     "Cross-chain transfer mechanism"
+    ],
+    "item_ids": [
+     "patent:10812274",
+     "patent:11496327",
+     "patent:12086802",
+     "patent:20160330034",
+     "patent:20190311337",
+     "patent:20230018175",
+     "patent:20230289791",
+     "patent:20250069064"
+    ]
+   },
+   {
+    "id": "key_custody_control_model",
+    "name": "Key custody and control model",
+    "category": "technology",
+    "question": "Who or what controls the keys: the user alone, a custodian, a multi-party scheme, or a split/recovered secret?",
+    "description": "Classifies how signing keys are controlled and shared among parties or devices, independent of network connectivity.",
+    "values": [
+     "self-custody single key",
+     "custodial third party",
+     "multi-party or threshold signing",
+     "split seed or secret sharing"
+    ],
+    "parents": [
+     "wallet_type_storage"
+    ],
+    "merged_from": [
+     "Key custody and control model"
+    ],
+    "item_ids": [
+     "patent:10992469",
+     "patent:11271753",
+     "patent:12041189",
+     "patent:20190266576",
+     "patent:20210056545",
+     "patent:20240073016",
+     "patent:20250184137"
+    ]
+   },
+   {
+    "id": "finality_mechanism",
+    "name": "Finality mechanism",
+    "category": "technology",
+    "question": "What mechanism produces finality for confirmed transactions?",
+    "description": "Splits protocols by how transactions become irreversible, which is distinct from whether finality is deterministic or probabilistic.",
+    "values": [
+     "quorum certificate / BFT voting",
+     "longest-chain depth (k-deep confirmation)",
+     "checkpointing / finalized prefix",
+     "no global ordering (causal or asynchronous settlement)"
+    ],
+    "parents": [
+     "consensus_finality"
+    ],
+    "merged_from": [
+     "finality mechanism"
+    ],
+    "item_ids": [
+     "paper:27ba1eb6195d052406639736047938824b685cf2",
+     "paper:76c5d644d38de52cdd1a0c871018e5f04de961c8",
+     "paper:fbbffd057eef33fb6a20bec6f8261f85f237baa4",
+     "patent:10922692",
+     "patent:20180152289"
+    ]
+   },
+   {
+    "id": "key_isolation_from_network",
+    "name": "Key isolation from network connectivity",
+    "category": "technology",
+    "question": "Is the key-holding device or environment connected to a network at the time keys are used or transactions are signed?",
+    "description": "Refines the wallet's access model by whether signing keys are kept air-gapped or offline versus connected online.",
+    "values": [
+     "online/hot (network-connected)",
+     "offline/cold (air-gapped)",
+     "hybrid (offline signing with online broadcast)"
+    ],
+    "parents": [
+     "unhosted_vs_hosted_wallet"
+    ],
+    "merged_from": [
+     "key isolation from network connectivity"
+    ],
+    "item_ids": [
+     "patent:11373179",
+     "patent:11943350",
+     "patent:12136083",
+     "patent:20200356989",
+     "patent:20240046249"
+    ]
+   },
+   {
+    "id": "payment_settlement_mechanism",
+    "name": "Payment settlement mechanism",
+    "category": "activity",
+    "question": "What mechanism settles the payment between payer and payee?",
+    "description": "Splits payment-service transactions by how value is settled and reconciled between parties.",
+    "values": [
+     "on-chain direct settlement",
+     "off-chain payment channel",
+     "escrow or smart-contract conditional release",
+     "fiat conversion and merchant settlement",
+     "multi-chain cross-ledger settlement"
+    ],
+    "parents": [
+     "payment_or_transfer_service"
+    ],
+    "merged_from": [
+     "payment_settlement_mechanism"
+    ],
+    "item_ids": [
+     "paper:3cebe91fd3212ccc8122d257476721790ba46ad2",
+     "patent:11861619",
+     "patent:12079879",
+     "patent:20220335494",
+     "patent:20240161071"
+    ]
+   },
+   {
+    "id": "key_splitting_scheme",
+    "name": "Key splitting scheme",
+    "category": "technology",
+    "question": "How is the signing key divided or shared among parties or devices?",
+    "description": "Mechanism by which the private key material is split across shares, shards, or devices (e.g., threshold sharing, MPC, partial keys).",
+    "values": [
+     "threshold secret sharing (t-of-n shards)",
+     "multi-party computation key generation/signing",
+     "partial key split across devices or servers",
+     "no key splitting (single complete key)"
+    ],
+    "parents": [
+     "unhosted_custody_control_policy"
+    ],
+    "merged_from": [
+     "key_splitting_scheme"
+    ],
+    "item_ids": [
+     "patent:11303443",
+     "patent:11616643",
+     "patent:11978044",
+     "patent:12155750",
+     "patent:20210158444",
+     "patent:20210224797",
+     "patent:20210359863",
+     "patent:20240177148"
+    ]
+   },
+   {
+    "id": "expressiveness_claim_basis",
+    "name": "Expressiveness claim basis",
+    "category": "technology",
+    "question": "What basis does the source use to characterise the ledger's scripting expressiveness?",
+    "description": "Whether the text asserts expressiveness from the platform's design, a patent claim, or only describes the scripting or verification of contracts without stating a class.",
+    "values": [
+     "explicitly Turing-complete claim",
+     "Turing-incomplete by design",
+     "not stated / implicit"
+    ],
+    "parents": [
+     "script_language_expressiveness"
+    ],
+    "merged_from": [
+     "expressiveness claim basis"
+    ],
+    "item_ids": [
+     "paper:069620baecc927c64f8357754bc283601a4aaa6e",
+     "paper:2b1220f8ce8115f075bb09e5091cfe861b05484a",
+     "paper:90ebd3383184f4b81c781ddd255732d50517c7c9",
+     "paper:cb8576127730966d1b90867b47980f4bafa08de0",
+     "patent:11915023"
+    ]
+   },
+   {
+    "id": "key_management_control_model",
+    "name": "Key management control model",
+    "category": "activity",
+    "question": "How are the private keys or signing authority for custodied crypto-assets controlled?",
+    "description": "Distinguishes how signing keys are held, split, or authorised when a service custodies crypto-assets.",
+    "values": [
+     "multi-party computation / threshold signing",
+     "hardware security module with approval policy",
+     "sharded key distribution",
+     "single-party key storage"
+    ],
+    "parents": [
+     "crypto_asset_service_type"
+    ],
+    "merged_from": [
+     "key_management_control_model"
+    ],
+    "item_ids": [
+     "paper:bc7deea5cc298a53d6d276075a7d3afd7a881e57",
+     "patent:12088568",
+     "patent:20190266576",
+     "patent:20210056545",
+     "patent:20210224797",
+     "patent:20250184137"
+    ]
+   }
+  ],
+  "values": [
+   {
+    "term_type": "ledger_purpose",
+    "value": "supply chain traceability and product provenance",
+    "definition": "Ledger used to record and trace the movement or origin of physical goods through a supply chain.",
+    "item_ids": [
+     "paper:247c9aebe010cae4598dcd52ebcf3c96a5b6df6c",
+     "paper:73e1bcbb8bdaa6cd70639028b96d8f22e5738a85",
+     "paper:9ba5d90ee280d5a6845a62e2254307cb395f703b",
+     "paper:bc552f33c8761b8e8704dce814334fc9b4108045",
+     "paper:d91a912d8a959eb57ed494a0fac48441094b73a9",
+     "paper:f3010313a6ec7b44681a5f7381745ac7926ab708"
+    ]
+   },
+   {
+    "term_type": "ledger_purpose",
+    "value": "educational credential and achievement verification",
+    "definition": "Ledger used to issue, store, or verify academic certificates, diplomas, and learning records.",
+    "item_ids": [
+     "paper:33a85f35366c52729ea0f502b7819930be06dd56",
+     "paper:6438fbf2e59fed5e505bba34e56a98b13d2e77b4",
+     "paper:6cbe7db88532e69941310805f26238fdd14f2ff5",
+     "paper:82410757efad7a5db47676ab4b5bfb3ccff6553b",
+     "paper:dc19fd88567b3972c7daa3dcbc15275e70faf52c",
+     "paper:e306e9e5ff46ce800c3f3dc373e3f3da495ea320"
+    ]
+   },
+   {
+    "term_type": "unhosted_vs_hosted_wallet",
+    "value": "hardware-embedded key storage on physical medium",
+    "definition": "Keys are held in dedicated hardware (hardware wallet, secure element, or key stored on a physical card or token) rather than in software controlled by a provider or the user's general device.",
+    "item_ids": [
+     "patent:10896412",
+     "patent:10951414",
+     "patent:11240021",
+     "patent:20190362340",
+     "patent:20230069875"
+    ]
+   },
+   {
+    "term_type": "ledger_purpose",
+    "value": "electronic health and medical record management",
+    "definition": "Ledger used to store, share, or audit patient health records and medical supply or waste data.",
+    "item_ids": [
+     "paper:041681de8a047c6411430a352a22ce895aaa0906",
+     "paper:20663480d5f5d14162066b151900d1bf7efadada",
+     "paper:6aef7679497afbc1b9184c97ed197c2c8b69062c",
+     "paper:c4ec53d20e6486e31848ece591cd3315f4f7c625",
+     "paper:cfe579cf7c428a9bb1d27ac86eb8806d6f0e4c3d"
+    ]
+   },
+   {
+    "term_type": "identity_binding_mechanism",
+    "value": "decentralised identifiers (DID) resolved via blockchain",
+    "definition": "Identity is bound through a DID whose DID document is anchored and resolved on a distributed ledger, including DID-based authentication and credential flows.",
+    "item_ids": [
+     "patent:10917246",
+     "patent:10924284",
+     "patent:11477032",
+     "patent:11762746",
+     "patent:11902438"
+    ]
+   },
+   {
+    "term_type": "smart_contract_usage_domain",
+    "value": "energy trading and grid management",
+    "definition": "Smart contracts for peer-to-peer energy trading, demand response, and local energy markets involving prosumers and grid operators.",
+    "item_ids": [
+     "paper:1363d61390bbc9184f6fdb77586f7430bb2e3668",
+     "paper:3e921b2a61649b70209bb93aeee73645beeec6c4",
+     "paper:68f7552fd69c410d87159b658aa663837566a18e",
+     "paper:8e5d355020218f77e21f524996ed5331f01aa67a",
+     "paper:942694a881d7a744a64c52a5bbae8d92883d35fe"
+    ]
+   },
+   {
+    "term_type": "smart_contract_usage_domain",
+    "value": "electronic health records and medical data sharing",
+    "definition": "Ledger applications for storing, sharing, and governing patient medical records and health data access.",
+    "item_ids": [
+     "paper:041681de8a047c6411430a352a22ce895aaa0906",
+     "paper:527fabe4eb7b497059a3439351aa38b51c1fbe03",
+     "paper:628158e4470067980d6fc60133aa9c98617db607",
+     "paper:c4ec53d20e6486e31848ece591cd3315f4f7c625",
+     "paper:e07fd5992586a9291ea6683338ef0a60bc18ab2b"
+    ]
+   },
+   {
+    "term_type": "ledger_partitioning_topology",
+    "value": "sharded chain",
+    "definition": "Ledger is split into shards or committees that each process a subset of transactions in parallel.",
+    "item_ids": [
+     "paper:8f74e36d4c918918ddb4ef3200870ed667f8785b",
+     "patent:11228439",
+     "patent:12008394",
+     "patent:12200054",
+     "patent:12256004"
+    ]
+   },
+   {
+    "term_type": "ledger_partitioning_topology",
+    "value": "tiered parent-child chain hierarchy",
+    "definition": "Blockchains arranged in tiers where higher-tier integrity derives from lower-tier chains, with child chains linked to a parent.",
+    "item_ids": [
+     "paper:7addf027b1834c40e107108fb2118e60ed85ec7d",
+     "patent:10826685",
+     "patent:12175408",
+     "patent:20190303886",
+     "patent:20220230169"
+    ]
+   },
+   {
+    "term_type": "wallet_type_storage",
+    "value": "paper or physical token",
+    "definition": "Keys or addresses are stored on a physical medium such as paper, a card, or a note.",
+    "item_ids": [
+     "patent:10554401",
+     "patent:11240021",
+     "patent:11893554",
+     "patent:20200074423",
+     "patent:20230214830"
+    ]
+   },
+   {
+    "term_type": "ecosystem_participant_role",
+    "value": "researcher / evaluator",
+    "definition": "Participant whose role is to study, measure, benchmark or assess blockchain systems rather than operate, issue or hold assets.",
+    "item_ids": [
+     "paper:137a062d2ff261e00d0015e03a4d2c675d6d4ea8",
+     "paper:1ce735d5c26e420b63982b5a381ff71c60d7ed7a",
+     "paper:25d2d4cfb0ac8bcef1b8a2b1002af7a50b168d28",
+     "paper:7f3e7bb86251a3960ae5d7df3bab6a46362d054d",
+     "paper:d38be0e0c95b03c2df3b9da28467693e9745d51e"
+    ]
+   },
+   {
+    "term_type": "unhosted_custody_control_policy",
+    "value": "time-locked or recovery-key control",
+    "definition": "Control exercised through time-delayed, recovery, or fallback keys that alter who can move assets under given conditions.",
+    "item_ids": [
+     "patent:11367066",
+     "patent:20240013212",
+     "patent:20240346581",
+     "patent:20240362639",
+     "patent:20250111345"
+    ]
+   },
+   {
+    "term_type": "tokenisation_form",
+    "value": "fractional equity or security token",
+    "definition": "Token representing fractional ownership, equity, or a security interest in an off-chain asset or enterprise.",
+    "item_ids": [
+     "patent:11164254",
+     "patent:11288736",
+     "patent:12008649",
+     "patent:20230179419",
+     "patent:20250078157"
+    ]
+   }
+  ],
+  "dropped": []
+ },
+ "version": 2,
+ "created": "2026-10-26T07:26:41+00:00",
+ "nodes": 107,
+ "edges": 293,
+ "values": 396,
+ "candidate_nodes": 14,
+ "candidate_values": 79
+}

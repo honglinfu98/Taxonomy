@@ -9,10 +9,8 @@ TaxoEnrich~\cite{jiang2022taxoenrich} and TaxoComplete~\cite{arous2023taxocomple
 score parent--child positions; ICON~\cite{shi2024icon} generates concepts that
 the seed implies but does not name; TaxoCom~\cite{lee2022taxocom} discovers
 new topic clusters under a partial hierarchy; ToTER~\cite{kang2024toter} uses
-a corpus taxonomy to improve retrieval. Taxonomies built from scratch, such as
-TiFi for fictional domains~\cite{chu2019tifi} and the citation-reason taxonomy
-of Wikipedia~\cite{redi2019citation}, decompose the task into stages with their
-own gold sets. Our setting differs in two ways. There is no seed, and the nodes
+a corpus taxonomy to improve retrieval. Taxonomies built from scratch~\cite{chu2019tifi,redi2019citation}
+decompose the task into stages with their own gold sets. Our setting differs in two ways. There is no seed, and the nodes
 we induce are dimensions of classification rather than leaf concepts, each
 anchored in a cited passage.
 
@@ -24,9 +22,12 @@ classify zero-shot; LLMs4OL~\cite{babaeigiglou2023llms4ol} benchmarks term
 typing and hierarchy discovery; OntoTune~\cite{liu2025ontotune} aligns an LLM to
 an ontology; Graphusion~\cite{yang2025graphusion} builds a knowledge graph with
 retrieval and a global fusion step. These methods either take the label space
-as given or generate it without provenance. Unlike them, we require every
-induced class and value to cite a document and section, and we verify the
-citation.
+as given or generate it without provenance, and enrichment from a corpus
+\cite{zhang2025teleclass,lee2022taxocom} adds features or topics without a
+criterion for when the taxonomy should change. Unlike them, we require every
+induced class and value to cite a document and section, verify the citation,
+and admit content-derived additions only when they raise a measured
+information gain.
 
 \paragraph{Crypto-asset taxonomies and grounding.}
 Tasca and Tessone~\cite{tasca2019taxonomy} classify blockchain architectures by

@@ -1,0 +1,12 @@
+{
+ "version": 0,
+ "role": "seed",
+ "source": {
+  "term_types": "output/establishment/term_types.json",
+  "dag": "output/establishment/taxonomy_dag.json"
+ },
+ "created": "2026-10-26T06:46:50+00:00",
+ "nodes": 93,
+ "edges": 279,
+ "values": 317
+}

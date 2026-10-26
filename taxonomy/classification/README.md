@@ -24,18 +24,26 @@ Both datasets contain off-topic documents (the paper shard has oceanography and 
 network papers), so the sampler keeps only English items whose title or abstract mentions
 a DLT term; about 40% of papers and 49% of patents pass.
 
-## Pipeline
+## Pipeline (one iteration)
 
 ```bash
-python -m taxonomy.classification.sample --per-source 150   # -> data/dlt_corpus/sample.jsonl
-python -m taxonomy.classification.tag                       # -> output/classification/
+python -m taxonomy.classification.sample --iter 2 --fraction 0.1   # disjoint batch -> data/dlt_corpus/sample_iter02.jsonl
+python -m taxonomy.classification.tag --iter 2                     # Task C with the latest catalogue -> output/evolution/iter_02/
+python -m taxonomy.classification.maintain --iter 2                # label space, objectives, discovery (Task E)
+python -m taxonomy.classification.evolve --iter 2                  # consolidate accepted candidates -> next version, log
 ```
+
+The mechanism is specified in **`MAINTENANCE.md`** (objects, measurements, acceptance
+rule, evolution, cost accounting, parameters, limitations). Versions, iterations and the
+evolution log live in `output/evolution/` (`v0/` is the Part 1 seed, never modified).
 
 | File | Role |
 |---|---|
-| `sample.py` | Draws the pilot sample. An item = title + abstract (patents: the `### Abstract` section), capped at 450 words; uniform random with a fixed seed; `--per-source`, `--seed`, `--keywords`. |
+| `sample.py` | Draws a disjoint batch per iteration (`--iter`, `--fraction` of each dataset's size or `--per-source`). An item = title + abstract (patents: the `### Abstract` section), capped at 450 words; English, on-topic by keyword. |
 | `prompts.py` | `TAGGER_INSTRUCTIONS` (what a tag asserts, closed value lists, evidence rule, novel proposals) and the per-item `TAG_PROMPT`. |
-| `maintain.py` | Label space, empirical objectives, deterministic proposals, Task E discovery, `dag_v2_proposal.json`. |
+| `catalogue.py` | Versioned catalogue (`v0` seed copied from Part 1, `v{n}` evolved), iteration folders, evolution log. |
+| `maintain.py` | Label space, empirical objectives, deterministic proposals, Task E discovery with gain-scored acceptance. |
+| `evolve.py` | Consolidates accepted candidates (merge, placement) into the next version; appends the evolution log entry with cost and time. |
 | `tag.py` | Task C runner. Builds the **catalogue block** from Part 1 (every term type with question, value codes `v1..vn` with definitions, and its is-a parents from the DAG), caches it, and tags items in parallel. No corpus is sent. |
 
 Per item the model returns `tags` (term type id, value code, confidence, evidence span of
@@ -49,8 +57,8 @@ existing term type, or a missing term type), plus an `off_topic` flag. The runne
   under a specialised dimension is classified by the general ones too), which is what
   retrieval by DAG walk will use;
 - writes `tags.jsonl`, `tags_summary.json` (counts per (term type, value), coverage per
-  term type and category, cost), `novel_proposals.json` (grouped by target term type, the
-  discovery signal for Part 3) and `tags.md`.
+  term type and category, API cost and per-request latency), `novel_proposals.json`
+  (grouped by target term type, seeds for discovery) and `tags.md`.
 
 Cost: Haiku 5.5 with the ~24K-token catalogue cached, about $0.0014 per item.
 
@@ -97,7 +105,7 @@ python -m taxonomy.classification.maintain [--no-discover] [--min-items 5] [--mi
    and a verified evidence span. Accepted candidates go to `dag_v2_proposal.json` as
    status "candidate" nodes and values; Part 1 files are never modified.
 
-### Pilot maintenance results (300 items)
+### Iteration 1 (pilot, 300 items on v0)
 
 | metric | from tags | from Part 1 prior |
 |---|---|---|
@@ -111,22 +119,61 @@ python -m taxonomy.classification.maintain [--no-discover] [--min-items 5] [--mi
 exercise). Collapsed: DLT data structure (124 items, 95% "blockchain") and recording and
 cryptographic linkage (113 items, 97% one value), which are also the largest residual
 pools, so the discovery step targeted them. 15 targets, 15 calls, $0.01, 32 candidates,
-8 accepted: a privacy-mechanism family under privacy features (0.83 bits), identity
-binding mechanism and a device-identity value under the identity layer, a ledger
-partitioning topology under DLT data structure, a ledger-purpose dimension under
-recording, and application-domain dimensions proposed independently under smart contract
-scope and script expressiveness. The same "application domain" question surfacing at
-three nodes is the signal for one cross-cutting term type at a root rather than three
-children; merging candidates across nodes is the next step of the loop. Rejected
-candidates mostly had 2-4 supporting items, below `--min-items` on a 300-item batch.
+8 accepted and consolidated into **v1** (99 nodes, 285 edges, 351 values): privacy
+mechanism family under privacy features (0.83 bits), identity binding mechanism (with a
+device-identity value) under the identity layer, ledger partitioning topology under DLT
+data structure, ledger purpose under recording, and two application-domain dimensions
+under the smart-contract nodes that the consolidation step should have merged (see
+`MAINTENANCE.md`, limitations). Rejected candidates mostly had 2-4 supporting items,
+below `--min-items` on a 300-item batch. Full log: `output/evolution/evolution.md`.
+
+### Iteration 2 (10% of the DLT-Corpus, 8,646 items on v1)
+
+Batch: 3,744 papers + 4,902 patents (10% of each dataset's size, drawn from the on-topic
+pool of all 18 shards, disjoint from iteration 1). Tagging: 35,100 tags (4.06 per item),
+98 of 99 nodes received items; the six v1 candidate nodes were used heavily (ledger purpose
+4,890 items, smart-contract usage domain 1,347, identity binding 994, privacy mechanism
+613) with value entropies of 1.9-2.5 bits, i.e. they discriminate on this content.
+
+| metric | iter 1 (v0, 300 items) | iter 2 (v1, 8,646 items) | v1 prior |
+|---|---|---|---|
+| bits per descent | 6.92 | 6.96 | 4.82 |
+| AUC of reach-a-leaf | 0.794 | 0.771 | 0.843 |
+| expected depth | 3.37 | 3.70 | 2.70 |
+| effective leaves / nodes | 0.212 | 0.215 | 0.187 |
+
+Maintenance: 1 dormant node, 11 collapsed (DLT data structure 2,377 items at 96%
+"blockchain"; recording 2,316 at 97%; several legal nodes at 100% on one value), 32
+discovery targets, 81 candidates, 21 accepted, consolidated into **v2** (107 nodes, 293
+edges, 396 values): 8 new term types (cross-chain transfer mechanism, key custody and
+control model, finality mechanism, key isolation from network, payment settlement
+mechanism, key splitting scheme, expressiveness claim basis, key management control
+model) and 13 new values, several of them refining the v1 nodes (ledger purpose gains
+supply-chain provenance, credentials and health records).
+
+Cost and time of the iteration: 8,679 API requests, $4.29 (tagging $4.25, discovery
+$0.04, consolidation $0.004); 15,927 s of summed API time, 2,021 s wall with 8 workers;
+mean 1.83 s and p95 2.84 s per tagging request. At this rate the whole paper and patent
+corpus (86K documents, ~36K on-topic) would cost about $18 and 70 minutes of wall time
+at 8 workers.
+
+Correction made during this iteration: the gain test originally used raw support counts,
+but discovery shows at most 40 residual items, so against residual pools of thousands no
+candidate could clear the threshold (10 accepted of 76 on the first pass). Support is
+now extrapolated from the shown sample to the whole residual; the rerun accepted 21 of 81.
+
+Full per-iteration log with costs: `output/evolution/evolution.md`.
 
 ## Next
 
-- Close the loop: merge near-duplicate candidates across nodes, add accepted candidates to
-  the catalogue, re-tag the next batch with the v2 catalogue, and track the three
-  objectives per iteration.
-- Widen the batch (more shards) so support counts clear the thresholds; add a regulatory
-  content source so the actor / activity / obligation branches are exercised.
+- Iteration 3 on v2 with the next 10% batch; watch whether the three objectives settle.
+- Tighten consolidation so same-question candidates at different nodes are merged
+  (iteration 1 kept two application-domain dimensions); add a similarity check before
+  the model call.
+- Re-estimate is-a weights for candidate nodes (Task B on the new children) instead of
+  weight 1.0.
+- Add a regulatory content source so the actor / activity / obligation branches are
+  exercised; decide prune/merge for collapsed nodes across batches (Part 3).
 - Gold review of a slice of `tags.jsonl` for precision/recall; then train an in-house
   multi-label classifier on the tagged items to replace the LLM for bulk tagging.
 - Task D retrieval by DAG walk is deferred.

@@ -1,0 +1,53 @@
+# Evolution of the taxonomy DAG
+
+Seed = v0, the Part 1 DAG (never modified). Each iteration tags a disjoint batch of DLT-Corpus items with the catalogue version in force, measures the DAG on that content, discovers candidates at impure nodes, and consolidates the accepted ones into the next version.
+
+| iter | catalogue | items | tags/item | bits/descent (tags) | AUC (tags) | eff. leaves/nodes (tags) | candidates (accepted) | produced | nodes / edges / values | API cost | API time |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | v0 | 300 | 3.55 | 6.9161 | 0.7943 | 0.2122 | 32 (8) | v1 | 99 / 285 / 351 | $0.1541 | 8.2 s API, 107.1 s wall |
+| 2 | v1 | 8646 | 4.06 | 6.9602 | 0.7714 | 0.2147 | 81 (21) | v2 | 107 / 293 / 396 | $4.2902 | 15924.6 s API, 2023.9 s wall |
+
+## Iteration 1 (catalogue v0, 2026-10-26)
+
+Sample: data/dlt_corpus/sample.jsonl (300 items; {'paper': {'items': 150, 'tags_per_item': 3.64}, 'patent': {'items': 150, 'tags_per_item': 3.46}}). Tags: 1065 (3.55 per item), evidence verified 1026/1065, off-topic 20.
+Objectives from tags: 6.9161 bits/descent, AUC 0.7943, expected depth 3.373, effective leaves 19.73 (0.2122 per node); prior (is-a weights): 4.7155 bits, AUC 0.8353.
+Nodes with items 80/93; dormant 13; collapsed 3; discovery targets 15; candidates 32, accepted 8.
+API: 316 requests, 319014 input + 7229700 cached + 99719 output tokens, $0.1541 (tagging $0.1413, discovery $0.0107, consolidation $0.0021); time 8.2 s in API calls (per-request latency not recorded), 107.1 s wall with 6 workers.
+Added to the catalogue:
+- term type **Privacy mechanism family** `privacy_mechanism_family` under `privacy_enhancement`: Which cryptographic or structural technique provides the privacy or confidentiality guarantee? (values: encryption (symmetric or public-key), homomorphic encryption, zero-knowledge proofs, data slicing or secret sharing, private channels or data collections, commitments and hashing; from 1 candidate(s), 8 items)
+- term type **Smart contract deployment context** `smart_contract_deployment_context` under `script_language_expressiveness`: In what application context is the smart contract or script deployed? (values: supply chain / logistics, certification / credentials, decentralized finance, healthcare data sharing, IoT / device identity, general-purpose / unspecified; from 1 candidate(s), 6 items)
+- term type **Smart contract usage domain** `smart_contract_usage_domain` under `smart_contract_definition_scope`: What application domain or function is the smart contract or ledger application designed to serve? (values: energy and utilities, healthcare, intellectual property and media, identity and authentication, supply chain and retail, IoT and smart cities; from 1 candidate(s), 8 items)
+- term type **Identity binding mechanism** `identity_binding_mechanism` under `digital_identity_layer`: How is a participant's identity bound to the ledger entry? (values: decentralised identifiers (DID), trusted third-party attestation, biometric authentication, cryptographic key pairs only, device or hardware identity; from 1 candidate(s), 5 items)
+- term type **Ledger purpose** `ledger_purpose` under `digital_asset_recording`: What is the primary purpose for which the distributed ledger is used? (values: value transfer, data integrity and provenance, consent or governance, identity and access control; from 1 candidate(s), 6 items)
+- term type **Ledger partitioning or layering topology** `ledger_partitioning_topology` under `dlt_architecture`: Is the ledger a single chain, multiple parallel or layered chains, or partitioned into sub-ledgers? (values: single chain, multiple parallel chains, layered main and sub-chains, partitioned ledger, two-dimensional chains; from 1 candidate(s), 5 items)
+- value **device / machine identity** of `identity_binding_mechanism`: Ledger identity is assigned to devices, things or digital twins rather than to human participants. (5 items)
+- value **blockchain used for record-keeping of non-asset data** of `ledger_purpose`: Distributed ledger used to store records, logs, certificates or events rather than a transferable asset or token. (5 items)
+
+## Iteration 2 (catalogue v1, 2026-10-26)
+
+Sample: data/dlt_corpus/sample_iter02.jsonl (8646 items; {'paper': {'items': 3744, 'tags_per_item': 3.83}, 'patent': {'items': 4902, 'tags_per_item': 4.23}}). Tags: 35099 (4.06 per item), evidence verified 33962/35099, off-topic 596.
+Objectives from tags: 6.9602 bits/descent, AUC 0.7714, expected depth 3.6958, effective leaves 21.256 (0.2147 per node); prior (is-a weights): 4.8239 bits, AUC 0.8427.
+Nodes with items 98/99; dormant 1; collapsed 11; discovery targets 32; candidates 81, accepted 21.
+API: 8679 requests, 6980250 input + 215995325 cached + 2858174 output tokens, $4.2902 (tagging $4.2509, discovery $0.0357, consolidation $0.0036); time 15924.6 s in API calls (mean 1.83 s, p95 2.84 s per request), 2023.9 s wall with 8 workers.
+Added to the catalogue:
+- term type **Cross-chain transfer mechanism** `cross_chain_transfer_mechanism` under `wrapped_or_bridged_asset`: How is the asset moved or represented across chains? (values: lock-and-mint bridge, pegged sidechain, atomic swap / hashlock, cross-chain messaging / relay, token linking or coloured coin; from 1 candidate(s), 8 items)
+- term type **Key custody and control model** `key_custody_control_model` under `wallet_type_storage`: Who or what controls the keys: the user alone, a custodian, a multi-party scheme, or a split/recovered secret? (values: self-custody single key, custodial third party, multi-party or threshold signing, split seed or secret sharing; from 1 candidate(s), 7 items)
+- term type **Finality mechanism** `finality_mechanism` under `consensus_finality`: What mechanism produces finality for confirmed transactions? (values: quorum certificate / BFT voting, longest-chain depth (k-deep confirmation), checkpointing / finalized prefix, no global ordering (causal or asynchronous settlement); from 1 candidate(s), 5 items)
+- term type **Key isolation from network connectivity** `key_isolation_from_network` under `unhosted_vs_hosted_wallet`: Is the key-holding device or environment connected to a network at the time keys are used or transactions are signed? (values: online/hot (network-connected), offline/cold (air-gapped), hybrid (offline signing with online broadcast); from 1 candidate(s), 5 items)
+- term type **Payment settlement mechanism** `payment_settlement_mechanism` under `payment_or_transfer_service`: What mechanism settles the payment between payer and payee? (values: on-chain direct settlement, off-chain payment channel, escrow or smart-contract conditional release, fiat conversion and merchant settlement, multi-chain cross-ledger settlement; from 1 candidate(s), 5 items)
+- term type **Key splitting scheme** `key_splitting_scheme` under `unhosted_custody_control_policy`: How is the signing key divided or shared among parties or devices? (values: threshold secret sharing (t-of-n shards), multi-party computation key generation/signing, partial key split across devices or servers, no key splitting (single complete key); from 1 candidate(s), 8 items)
+- term type **Expressiveness claim basis** `expressiveness_claim_basis` under `script_language_expressiveness`: What basis does the source use to characterise the ledger's scripting expressiveness? (values: explicitly Turing-complete claim, Turing-incomplete by design, not stated / implicit; from 1 candidate(s), 5 items)
+- term type **Key management control model** `key_management_control_model` under `crypto_asset_service_type`: How are the private keys or signing authority for custodied crypto-assets controlled? (values: multi-party computation / threshold signing, hardware security module with approval policy, sharded key distribution, single-party key storage; from 1 candidate(s), 6 items)
+- value **supply chain traceability and product provenance** of `ledger_purpose`: Ledger used to record and trace the movement or origin of physical goods through a supply chain. (6 items)
+- value **educational credential and achievement verification** of `ledger_purpose`: Ledger used to issue, store, or verify academic certificates, diplomas, and learning records. (6 items)
+- value **hardware-embedded key storage on physical medium** of `unhosted_vs_hosted_wallet`: Keys are held in dedicated hardware (hardware wallet, secure element, or key stored on a physical card or token) rather than in software controlled by a provider or the user's general device. (5 items)
+- value **electronic health and medical record management** of `ledger_purpose`: Ledger used to store, share, or audit patient health records and medical supply or waste data. (5 items)
+- value **decentralised identifiers (DID) resolved via blockchain** of `identity_binding_mechanism`: Identity is bound through a DID whose DID document is anchored and resolved on a distributed ledger, including DID-based authentication and credential flows. (5 items)
+- value **energy trading and grid management** of `smart_contract_usage_domain`: Smart contracts for peer-to-peer energy trading, demand response, and local energy markets involving prosumers and grid operators. (5 items)
+- value **electronic health records and medical data sharing** of `smart_contract_usage_domain`: Ledger applications for storing, sharing, and governing patient medical records and health data access. (5 items)
+- value **sharded chain** of `ledger_partitioning_topology`: Ledger is split into shards or committees that each process a subset of transactions in parallel. (5 items)
+- value **tiered parent-child chain hierarchy** of `ledger_partitioning_topology`: Blockchains arranged in tiers where higher-tier integrity derives from lower-tier chains, with child chains linked to a parent. (5 items)
+- value **paper or physical token** of `wallet_type_storage`: Keys or addresses are stored on a physical medium such as paper, a card, or a note. (5 items)
+- value **researcher / evaluator** of `ecosystem_participant_role`: Participant whose role is to study, measure, benchmark or assess blockchain systems rather than operate, issue or hold assets. (5 items)
+- value **time-locked or recovery-key control** of `unhosted_custody_control_policy`: Control exercised through time-delayed, recovery, or fallback keys that alter who can move assets under given conditions. (5 items)
+- value **fractional equity or security token** of `tokenisation_form`: Token representing fractional ownership, equity, or a security interest in an off-chain asset or enterprise. (5 items)

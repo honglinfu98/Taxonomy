@@ -1,0 +1,216 @@
+{
+ "role": "evolved",
+ "from_version": 0,
+ "iteration": 1,
+ "accepted_candidates": 8,
+ "plan": {
+  "term_types": [
+   {
+    "id": "privacy_mechanism_family",
+    "name": "Privacy mechanism family",
+    "category": "technology",
+    "question": "Which cryptographic or structural technique provides the privacy or confidentiality guarantee?",
+    "description": "The primary cryptographic or structural mechanism used to conceal data, identities, or transaction details. Refines the privacy and anonymity features node.",
+    "values": [
+     "encryption (symmetric or public-key)",
+     "homomorphic encryption",
+     "zero-knowledge proofs",
+     "data slicing or secret sharing",
+     "private channels or data collections",
+     "commitments and hashing"
+    ],
+    "parents": [
+     "privacy_enhancement"
+    ],
+    "merged_from": [
+     "Privacy mechanism family"
+    ],
+    "item_ids": [
+     "paper:116552a483e3bc60c2c10f4159e39ceac30c9876",
+     "paper:238be6da11ff829f647624e7f089b4006875e724",
+     "paper:29717b25795cd599543ccbdfc05e80e3e73d5a38",
+     "patent:10114969",
+     "patent:10652019",
+     "patent:10903980",
+     "patent:10979225",
+     "patent:11144918"
+    ]
+   },
+   {
+    "id": "smart_contract_deployment_context",
+    "name": "Smart contract deployment context",
+    "category": "technology",
+    "question": "In what application context is the smart contract or script deployed?",
+    "description": "Classifies the application domain or deployment setting in which the smart contract logic operates. Refines the script language expressiveness node.",
+    "values": [
+     "supply chain / logistics",
+     "certification / credentials",
+     "decentralized finance",
+     "healthcare data sharing",
+     "IoT / device identity",
+     "general-purpose / unspecified"
+    ],
+    "parents": [
+     "script_language_expressiveness"
+    ],
+    "merged_from": [
+     "smart_contract_deployment_context"
+    ],
+    "item_ids": [
+     "paper:0462049d43a08dfdfeb709d4ff04af074191cfb2",
+     "paper:0a138399cf96d08cb30e28d8c925e793a325cd5d",
+     "paper:1f96c38f9baed69a2bbf8fa6223cf0208ef0e83c",
+     "paper:22c36222351cd786cd5a1d0c03a584292f049339",
+     "paper:240c39ff1de4074e9cc2d0500daca203ac91fd6a",
+     "paper:27ee3fd33d2f2d1141c9daa286b7c979a0143b02"
+    ]
+   },
+   {
+    "id": "smart_contract_usage_domain",
+    "name": "Smart contract usage domain",
+    "category": "technology",
+    "question": "What application domain or function is the smart contract or ledger application designed to serve?",
+    "description": "Splits residual texts by the sector or function the contract or application targets, such as energy, healthcare, copyright, identity, or advertising. Refines the smart contract / distributed ledger application scope node.",
+    "values": [
+     "energy and utilities",
+     "healthcare",
+     "intellectual property and media",
+     "identity and authentication",
+     "supply chain and retail",
+     "IoT and smart cities"
+    ],
+    "parents": [
+     "smart_contract_definition_scope"
+    ],
+    "merged_from": [
+     "smart_contract_usage_domain"
+    ],
+    "item_ids": [
+     "paper:04e890e500126d1ab0c894ad62258d12da293359",
+     "paper:116552a483e3bc60c2c10f4159e39ceac30c9876",
+     "paper:1966fdb4d86ab6b3a98a0aaacf3c8bb9ec649ffa",
+     "paper:1fc71557585d6dece2dab9adbbedcf9c32f17857",
+     "paper:24b9ea46e6ab29d406eb68e3d3d6300b95fd6226",
+     "patent:10725716",
+     "patent:10944565",
+     "patent:11130042"
+    ]
+   },
+   {
+    "id": "identity_binding_mechanism",
+    "name": "Identity binding mechanism",
+    "category": "technology",
+    "question": "How is a participant's identity bound to the ledger entry?",
+    "description": "The mechanism linking a real-world or device identity to ledger addresses, keys, or identifiers. Refines the identity layer and onboarding node.",
+    "values": [
+     "decentralised identifiers (DID)",
+     "trusted third-party attestation",
+     "biometric authentication",
+     "cryptographic key pairs only",
+     "device or hardware identity"
+    ],
+    "parents": [
+     "digital_identity_layer"
+    ],
+    "merged_from": [
+     "identity_binding_mechanism"
+    ],
+    "item_ids": [
+     "paper:240c39ff1de4074e9cc2d0500daca203ac91fd6a",
+     "patent:10944565",
+     "patent:10965461",
+     "patent:11050763",
+     "patent:11138608"
+    ]
+   },
+   {
+    "id": "ledger_purpose",
+    "name": "Ledger purpose",
+    "category": "technology",
+    "question": "What is the primary purpose for which the distributed ledger is used?",
+    "description": "Classifies whether the ledger records transferable value, data integrity or provenance, governance or consent, or identity and access. Refines the digital asset recording and cryptographic linkage node.",
+    "values": [
+     "value transfer",
+     "data integrity and provenance",
+     "consent or governance",
+     "identity and access control"
+    ],
+    "parents": [
+     "digital_asset_recording"
+    ],
+    "merged_from": [
+     "ledger purpose"
+    ],
+    "item_ids": [
+     "patent:10693652",
+     "patent:10944549",
+     "patent:10979225",
+     "patent:10984081",
+     "patent:11030297",
+     "patent:11049148"
+    ]
+   },
+   {
+    "id": "ledger_partitioning_topology",
+    "name": "Ledger partitioning or layering topology",
+    "category": "technology",
+    "question": "Is the ledger a single chain, multiple parallel or layered chains, or partitioned into sub-ledgers?",
+    "description": "Describes how the ledger is divided across chains, layers, shards or partitions regardless of the underlying block or graph structure. Refines the DLT data structure node.",
+    "values": [
+     "single chain",
+     "multiple parallel chains",
+     "layered main and sub-chains",
+     "partitioned ledger",
+     "two-dimensional chains"
+    ],
+    "parents": [
+     "dlt_architecture"
+    ],
+    "merged_from": [
+     "ledger partitioning or layering topology"
+    ],
+    "item_ids": [
+     "paper:1bfdbe6258e30ff5b3cb6194ead1b8bda0e23ddd",
+     "paper:244631542c167cbc506d1fffa86eab6de250cf79",
+     "patent:10601911",
+     "patent:10733341",
+     "patent:11126767"
+    ]
+   }
+  ],
+  "values": [
+   {
+    "term_type": "identity_binding_mechanism",
+    "value": "device / machine identity",
+    "definition": "Ledger identity is assigned to devices, things or digital twins rather than to human participants.",
+    "item_ids": [
+     "paper:0450f3f3a78ffc16d8db71a7dd6c4b1090ccafd1",
+     "paper:240c39ff1de4074e9cc2d0500daca203ac91fd6a",
+     "patent:10944296",
+     "patent:11038950",
+     "patent:11050763"
+    ]
+   },
+   {
+    "term_type": "ledger_purpose",
+    "value": "blockchain used for record-keeping of non-asset data",
+    "definition": "Distributed ledger used to store records, logs, certificates or events rather than a transferable asset or token.",
+    "item_ids": [
+     "patent:10547457",
+     "patent:10885207",
+     "patent:10942956",
+     "patent:10997551",
+     "patent:11128477"
+    ]
+   }
+  ],
+  "dropped": []
+ },
+ "version": 1,
+ "created": "2026-10-26T06:47:31+00:00",
+ "nodes": 99,
+ "edges": 285,
+ "values": 351,
+ "candidate_nodes": 6,
+ "candidate_values": 34
+}

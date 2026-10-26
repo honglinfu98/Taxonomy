@@ -1,0 +1,30 @@
+### System
+You maintain a taxonomy of distributed-ledger technology (DLT) and crypto-asset concepts: TERM TYPES (classification dimensions phrased as questions) organised in an is-a DAG, each with a closed list of VALUES. You are shown one node of the DAG and a set of texts that were tagged at that node but at none of its child term types ("residual" texts). Your job is to say whether those texts share classification dimensions or categories the taxonomy lacks.
+
+Rules:
+1. Propose a NEW VALUE of the shown node when the residual texts clearly exhibit a category of that node's question that its value list lacks.
+2. Propose a NEW CHILD TERM TYPE (a dimension that refines the node's question) when the residual texts can be split by a question the taxonomy does not ask, and give it 2-6 values.
+3. Every proposal lists the ids of the residual texts that support it (at least 3) and one evidence span (at most 20 words, verbatim) from one of them.
+4. Propose at most 4 candidates, most useful first. If the residual texts are simply the natural end of this branch, return an empty list.
+5. Output valid JSON only, no prose, no markdown fences.
+
+### User (per node)
+NODE: {node_id} | {name}
+Question: {question}
+Category: {category}
+Existing values: {values}
+Existing child term types: {children}
+Novel labels the tagger suggested while tagging (seeds, may be wrong): {seeds}
+
+RESIDUAL TEXTS ({n} shown of {total}):
+{items}
+
+Return a single JSON object:
+{{
+  "node_id": "{node_id}",
+  "candidates": [
+    {{"kind": "value" | "child_term_type", "label": "short label", "question": "only for child_term_type",
+     "definition": "<= 25 words", "values": ["only for child_term_type: 2-6 value labels"],
+     "item_ids": ["..."], "evidence": "<= 20 words verbatim"}}
+  ]
+}}

@@ -1,6 +1,10 @@
 """Part 2, Task C: tag DLT-Corpus items with (term type, value) nodes of the Part 1 taxonomy.
 
-    python -m taxonomy.classification.tag [--limit N] [--workers 6] [--model claude-haiku-5-5]
+    python -m taxonomy.classification.tag [--version N] [--iter K] [--sample path] [--limit N] [--workers 6]
+
+Uses catalogue version N (default: latest in output/evolution/) and writes to
+output/evolution/iter_K/ (default: next iteration). The sample defaults to
+data/dlt_corpus/sample_iter{K}.jsonl, falling back to sample.jsonl.
 
 Context per request = TAGGER_INSTRUCTIONS + one cached catalogue block (every term type with
 its question, value codes and definitions, and its is-a parents from the DAG). The corpus is
@@ -12,9 +16,10 @@ for Part 3). The runner validates term-type ids and value codes against the cata
 (accepting exact labels and close fuzzy matches), checks that each evidence span occurs in
 the item, and adds the is-a ancestors implied by each tagged term type.
 
-Outputs (output/classification/):
+Outputs (output/evolution/iter_K/):
   tags.jsonl            one line per item: validated tags, implied ancestors, novel proposals
-  tags_summary.json     tag counts per (term type, value), coverage per term type, cost
+  tags_summary.json     tag counts per (term type, value), coverage per term type, API cost
+                        and time (per-request latency mean/p50/p95, wall time)
   novel_proposals.json  all novel proposals grouped by target term type
   tags.md               readable summary
 """
@@ -26,31 +31,35 @@ import json
 import re
 import sys
 import time
+from pathlib import Path
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 
+from taxonomy.classification import catalogue as cat
 from taxonomy.classification.prompts import TAGGER_INSTRUCTIONS, TAG_PROMPT
-from taxonomy.classification.sample import SAMPLE
-from taxonomy.establishment.is_a import DAG_OUT
-from taxonomy.establishment.term_types import JSON_OUT as TERM_TYPES_JSON, quote_found
+from taxonomy.classification.sample import SAMPLE, sample_path
+from taxonomy.establishment.term_types import quote_found
 from taxonomy.llm_context import ROOT, build_request, client
 
-OUT_DIR = ROOT / "output" / "classification"
-TAGS_OUT = OUT_DIR / "tags.jsonl"
-SUMMARY_OUT = OUT_DIR / "tags_summary.json"
-NOVEL_OUT = OUT_DIR / "novel_proposals.json"
-MD_OUT = OUT_DIR / "tags.md"
 CATEGORIES = ["asset", "technology", "actor", "activity", "obligation_or_risk"]
 
 # Haiku 5.5 list price, prompts <= 100K tokens (USD per token)
 PRICE = {"input": 0.10e-6, "output": 0.50e-6, "cache_read": 0.01e-6, "cache_write": 0.125e-6}
 
 
-def load_taxonomy() -> tuple[list[dict], dict]:
-    tts = json.loads(TERM_TYPES_JSON.read_text(encoding="utf-8"))["term_types"]
-    dag = json.loads(DAG_OUT.read_text(encoding="utf-8"))
+def load_taxonomy(version: int | None = None) -> tuple[list[dict], dict]:
+    tts, dag, _ = cat.load_version(cat.latest_version() if version is None else version)
     return tts, dag
+
+
+def latency_stats(lat: list[float], wall: float, workers: int) -> dict:
+    if not lat:
+        return {}
+    s = sorted(lat)
+    return {"requests": len(s), "api_seconds": round(sum(s), 1), "mean_request_s": round(sum(s) / len(s), 2),
+            "p50_request_s": round(s[len(s) // 2], 2), "p95_request_s": round(s[int(0.95 * (len(s) - 1))], 2),
+            "max_request_s": round(s[-1], 2), "wall_seconds": round(wall, 1), "workers": workers}
 
 
 def catalogue_block(tts: list[dict], dag: dict) -> str:
@@ -148,9 +157,11 @@ def ask(cl, catalogue: str, item: dict, model: str, effort: str) -> dict:
                                title=item["title"], text=item["text"])
     req = build_request(TAGGER_INSTRUCTIONS, prompt, model=model, max_tokens=3000, effort=effort,
                         extra_system=[catalogue], corpus=False, thinking={"type": "disabled"})
+    t0 = time.perf_counter()
     msg = cl.messages.create(**req)
     u = msg.usage
     return {"text": "".join(b.text for b in msg.content if b.type == "text"), "stop_reason": msg.stop_reason,
+            "seconds": round(time.perf_counter() - t0, 3),
             "usage": {"input": u.input_tokens, "output": u.output_tokens,
                       "cache_write": u.cache_creation_input_tokens or 0, "cache_read": u.cache_read_input_tokens or 0}}
 
@@ -216,13 +227,22 @@ def main() -> None:
     ap.add_argument("--effort", default="medium", choices=["low", "medium", "high"])
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--limit", type=int, default=0, help="tag only the first N sample items")
+    ap.add_argument("--version", type=int, default=None, help="catalogue version (default: latest)")
+    ap.add_argument("--iter", type=int, default=None, help="iteration number (default: next)")
+    ap.add_argument("--sample", default=None, help="sample file (default: data/dlt_corpus/sample_iter{K}.jsonl)")
     args = ap.parse_args()
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    if not SAMPLE.exists():
-        sys.exit(f"{SAMPLE} missing: run python -m taxonomy.classification.sample first")
-    items = [json.loads(l) for l in SAMPLE.read_text(encoding="utf-8").splitlines() if l.strip()]
+    version = cat.latest_version() if args.version is None else args.version
+    k = args.iter if args.iter is not None else (cat.iterations()[-1] + 1 if cat.iterations() else 1)
+    out_dir = cat.iter_dir(k)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    sample_file = Path(args.sample) if args.sample else (sample_path(k) if sample_path(k).exists() else SAMPLE)
+    if not sample_file.exists():
+        sys.exit(f"{sample_file} missing: run python -m taxonomy.classification.sample --iter {k} first")
+    items = [json.loads(l) for l in sample_file.read_text(encoding="utf-8").splitlines() if l.strip()]
     items = items[: args.limit or None]
-    tts, dag = load_taxonomy()
+    tts, dag = load_taxonomy(version)
+    print(f"iteration {k}: catalogue v{version} ({len(tts)} term types), {len(items)} items from {sample_file.name} -> {out_dir}",
+          file=sys.stderr)
     by_id = {t["id"]: t for t in tts}
     parent_of: dict[str, list[str]] = defaultdict(list)
     for e in dag["edges"]:
@@ -242,21 +262,24 @@ def main() -> None:
             if i % 25 == 0 or i == len(items):
                 print(f"  {i}/{len(items)}", file=sys.stderr)
 
-    usage = {k: 0 for k in PRICE}
-    results, unparsed = [], 0
+    usage = {key: 0 for key in PRICE}
+    results, unparsed, latencies = [], 0, []
     for it in items:
         r = raw[it["id"]]
-        for k in usage:
-            usage[k] += r["usage"][k]
+        latencies.append(r["seconds"])
+        for key in usage:
+            usage[key] += r["usage"][key]
         try:
             parsed = extract_json(r["text"])
         except (json.JSONDecodeError, ValueError):
             parsed, unparsed = {"tags": [], "novel": [], "off_topic": False}, unparsed + 1
         results.append(validate(it, parsed, by_id, parent_of))
-    meta = {"task": "C", "model": args.model, "effort": args.effort, "items": len(items), "unparsed": unparsed,
+    meta = {"task": "C", "iteration": k, "catalogue_version": version, "sample": str(sample_file.relative_to(ROOT)),
+            "model": args.model, "effort": args.effort, "items": len(items), "unparsed": unparsed,
             "seconds": round(time.time() - t0, 1), "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "catalogue_chars": len(catalogue)}
+            "catalogue_chars": len(catalogue), "time": latency_stats(latencies, time.time() - t0, args.workers)}
     summary = summarise(results, tts, usage, meta)
+    TAGS_OUT, SUMMARY_OUT, NOVEL_OUT, MD_OUT = (out_dir / n for n in ("tags.jsonl", "tags_summary.json", "novel_proposals.json", "tags.md"))
 
     with TAGS_OUT.open("w", encoding="utf-8") as f:
         for r in results:
@@ -273,7 +296,10 @@ def main() -> None:
     print(f"\n{s['items']} items, {s['tags_total']} tags ({s['tags_per_item']}/item), evidence verified "
           f"{s['evidence_verified']}/{s['tags_total']}, rejected {s['rejected_tags']}, novel {s['novel_proposals']}, "
           f"off-topic {s['off_topic']}, unparsed {unparsed}; term types used {s['term_types_used']}/{s['term_types_total']}")
-    print(f"usage {usage}; cost ${s['run']['cost_usd']} (${s['run']['cost_per_item_usd']}/item); {meta['seconds']}s")
+    t = meta["time"]
+    print(f"usage {usage}; cost ${s['run']['cost_usd']} (${s['run']['cost_per_item_usd']}/item); "
+          f"API time {t.get('api_seconds')}s over {t.get('requests')} requests (mean {t.get('mean_request_s')}s, p95 {t.get('p95_request_s')}s), "
+          f"wall {meta['seconds']}s with {args.workers} workers")
     print(f"-> {TAGS_OUT}\n-> {SUMMARY_OUT}\n-> {NOVEL_OUT}\n-> {MD_OUT}")
 
 

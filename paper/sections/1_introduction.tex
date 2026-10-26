@@ -1,5 +1,15 @@
 \section{Introduction}
 \label{sec:intro}
+\begin{figure}[t]
+  \centering
+  \input{figures/fig1_stablecoin}
+  \caption{One term, four sources, one induced term type. Each instrument
+  defines \term{stablecoin} by what the asset references, but the admissible
+  references differ by jurisdiction. \sys makes the dimension explicit, keeps
+  one value per jurisdictional position, and cites the section each value comes
+  from.}
+  \label{fig:one}
+\end{figure}
 
 A taxonomy is a hierarchy of classes that organises a domain's vocabulary so
 that machines and people can classify, browse and retrieve its objects
@@ -10,10 +20,10 @@ wang2021hef,jiang2022taxoenrich,arous2023taxocomplete,shi2024icon}. Crypto-asset
 are a domain in which the vocabulary itself is contested. Tokens are issued by
 smart contracts, traded on exchanges and decentralised venues, and described in
 whitepapers, explorers and social media, and the documents that say what a
-token \emph{is} are themselves Web publications, among them the EU's Markets
-in Crypto-Assets regulation (MiCA), the US GENIUS and CLARITY Acts, the UK's
-cryptoasset regulations, and the guidance of the Financial Action Task Force
-(FATF), the Basel Committee, the FSB and IOSCO, alongside academic
+token \emph{is} are themselves Web publications: the EU's Markets in
+Crypto-Assets regulation (MiCA), the US GENIUS and CLARITY Acts, the UK's
+cryptoasset regulations, the guidance of the Financial Action Task Force
+(FATF), the Basel Committee, the FSB and IOSCO, and academic
 taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy}.
 
 \paragraph{Relevance to the Web.}
@@ -26,25 +36,14 @@ vocabulary that block explorers, exchanges and compliance services can use to
 classify tokens consistently across jurisdictions and to regenerate the
 classification when an instrument changes.
 
-\begin{figure}[t]
-  \centering
-  \input{figures/fig1_stablecoin}
-  \caption{One term, four sources, one induced term type. Each instrument
-  defines \term{stablecoin} by what the asset references, but the admissible
-  references differ by jurisdiction. \sys makes the dimension explicit, keeps
-  one value per jurisdictional position, and cites the section each value comes
-  from.}
-  \label{fig:one}
-\end{figure}
 
 These sources disagree in a specific way. \Cref{fig:one} shows the term
 \term{stablecoin}. \src{MiCA} splits it into e-money tokens, which reference one
 official currency, and asset-referenced tokens, which reference anything else.
 The \src{GENIUS Act} and the UK regulations admit only a fiat currency as the
 reference. The Basel Committee admits a commodity and treats algorithmic
-stabilisation as a different category. None of the texts states that ``what the
-asset references'' is a classification dimension, yet each uses it to draw a
-legal or prudential boundary. We call such a dimension a \emph{term type}, a
+stabilisation as a different category. No text names ``what the asset references'' as a
+dimension, yet each uses it to draw a legal or prudential boundary. We call such a dimension a \emph{term type}, a
 question along which definitions discriminate, together with the set of values
 the sources admit. The reference asset is one of many; the issuer's
 identifiability, the fungibility of the asset, the custody model and the
@@ -60,9 +59,8 @@ completion~\cite{shi2024icon}, hierarchical
 classification~\cite{zhang2025teleclass} and tagging~\cite{wan2024tntllm,
 li2023taggpt} start from a label space that already exists, and ontology
 learning with LLMs~\cite{babaeigiglou2023llms4ol} is evaluated on general-domain
-benchmarks where the gold hierarchy is known. Third, none of these methods ties
-an induced class to the passage that licenses it, which in a legal domain is the
-difference between a taxonomy a compliance team can audit and one it cannot.
+benchmarks where the gold hierarchy is known. Third, none of them ties an induced class to the passage that licenses it,
+which in a legal domain decides whether a compliance team can audit the result.
 
 In this paper we propose \sys, a framework that induces term types from the
 definitions in a corpus of legal instruments and academic taxonomies and
@@ -78,7 +76,13 @@ distribution over the more general term types it specialises, and consolidates
 the weighted edges greedily into a directed acyclic graph (DAG), so that a term
 type can sit under more than one parent. The output is an ontology of term types
 with values, aliases, jurisdictions, recorded conflicts and weighted is-a edges,
-every element of which cites its source.
+every element of which cites its source. The ontology is then put to work as a
+label space: Web content is tagged onto its nodes with evidence spans, the tags
+measure how much each branch discriminates and where items stop short of any
+child, and a discovery step proposes new values and dimensions at those nodes,
+accepting only candidates that raise the information gain and are supported by
+verified evidence. The seed built from law is never modified; what the content
+adds is marked as such.
 
 \smallskip\noindent\textbf{Contributions.}
 \begin{itemize}
@@ -87,16 +91,19 @@ every element of which cites its source.
     provenance, without a seed taxonomy or gold labels (\cref{sec:problem}).
   \item We propose \sys, which combines a definitions-first corpus, single-pass
     extraction over a cached whole-corpus context with mandatory citations, a
-    citation verifier, and a per-node is-a query consolidated into a DAG with
-    metrics for its later maintenance (\cref{sec:method}).
+    citation verifier, a per-node is-a query consolidated into a DAG, and a
+    maintenance loop that tags content onto the DAG and grows it by measured
+    information gain (\cref{sec:method}).
   \item We release \corpus, a definitions-first corpus of 24 documents across
     four jurisdictions, and the resulting ontology of 93 term types with 317
     values, 480 citations and 279 weighted is-a edges
     (\cref{sec:exp:rq1,sec:exp:rq2}).
   \item We evaluate faithfulness and coverage on \corpus: 97.9\% of term-type
     citations verify, every document contributes to at least one term type, 69
-    term types record a cross-source conflict, and the hierarchy resolves
-    \BBits\ bits per root-to-leaf descent under one root per category. \todo{Add the headline comparative
+    term types record a cross-source conflict, the hierarchy resolves \BBits\
+    bits per root-to-leaf descent, and two maintenance iterations over \AllItems\
+    DLT-Corpus items verify 96--97\% of tag evidence and add \AllAddedTypes\
+    dimensions to the graph (\cref{sec:exp:rq3}). \todo{Add the headline comparative
     number from RQ2--RQ4.} Code and data are at an anonymised
     repository.\footnote{\todo{anonymised URL}}
 \end{itemize}

@@ -94,3 +94,45 @@ Return a single JSON object:
   ]
 }}
 """
+
+
+# Evolve: consolidate accepted discovery candidates into the next catalogue version.
+EVOLVE_INSTRUCTIONS = """\
+You maintain a taxonomy of distributed-ledger technology (DLT) and crypto-asset concepts: \
+TERM TYPES (classification dimensions phrased as questions) in an is-a DAG, each with a closed \
+list of VALUES. You receive candidates that a discovery step proposed at various nodes, each \
+with supporting item ids. Consolidate them into the smallest consistent set of additions.
+
+Rules:
+1. Merge candidates that ask the same question even if proposed at different nodes (e.g. an \
+"application domain" question proposed under three nodes becomes one term type); union their \
+values (deduplicated, 2-8 values) and their item ids.
+2. Place each new term type under the existing node(s) it refines. A dimension that applies \
+across a whole category refines that category's root, not a specific child. A candidate may \
+have more than one parent only when it genuinely refines both.
+3. A candidate value is kept as a value of its term type unless it duplicates an existing value.
+4. Give each new term type a snake_case id, a name, the question, and a 1-2 sentence \
+description. Do not invent anything the candidates do not support.
+5. Output valid JSON only, no prose, no markdown fences.
+"""
+
+EVOLVE_PROMPT = """\
+EXISTING NODES (id | category | name | question), by category:
+{nodes}
+
+ACCEPTED CANDIDATES:
+{candidates}
+
+Return a single JSON object:
+{{
+  "term_types": [
+    {{"id": "snake_case", "name": "...", "category": "asset | technology | actor | activity | obligation_or_risk",
+     "question": "...", "description": "...", "values": ["..."], "parents": ["existing node id", "..."],
+     "merged_from": ["candidate labels merged into this"], "item_ids": ["..."]}}
+  ],
+  "values": [
+    {{"term_type": "existing node id", "value": "...", "definition": "...", "item_ids": ["..."]}}
+  ],
+  "dropped": [{{"label": "...", "reason": "..."}}]
+}}
+"""
