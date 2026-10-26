@@ -17,10 +17,9 @@ consistently. On the Web, taxonomies drive product catalogues, search
 verticals and content moderation, and the community has studied how to expand
 and complete them from Web text for years~\cite{shen2020taxoexpan,
 wang2021hef,jiang2022taxoenrich,arous2023taxocomplete,shi2024icon}. Crypto-assets
-are a domain in which the vocabulary itself is contested. Tokens are issued by
-smart contracts, traded on exchanges and decentralised venues, and described in
-whitepapers, explorers and social media, and the documents that say what a
-token \emph{is} are themselves Web publications: the EU's Markets in
+are a domain in which the vocabulary itself is contested. Tokens are issued,
+traded and described on the Web, and the documents that say what a token
+\emph{is} are themselves Web publications: the EU's Markets in
 Crypto-Assets regulation (MiCA), the US GENIUS and CLARITY Acts, the UK's
 cryptoasset regulations, the guidance of the Financial Action Task Force
 (FATF), the Basel Committee, the FSB and IOSCO, and academic
@@ -31,10 +30,9 @@ This work falls under the Semantics and Knowledge track. The research challenge
 is Web-specific because the definitions that govern crypto-assets are
 published, versioned and consumed as Web documents by heterogeneous bodies,
 no shared vocabulary links them, and the assets they describe exist only as records on
-Web-accessible ledgers. The result is a machine-readable, provenance-tracked
-vocabulary that block explorers, exchanges and compliance services can use to
-classify tokens consistently across jurisdictions and to regenerate the
-classification when an instrument changes.
+Web-accessible ledgers. The result is a provenance-tracked vocabulary that
+explorers, exchanges and compliance services can use to classify tokens across
+jurisdictions and regenerate when an instrument changes.
 
 
 These sources disagree in a specific way. \Cref{fig:one} shows the term
@@ -45,10 +43,9 @@ reference. The Basel Committee admits a commodity and treats algorithmic
 stabilisation as a different category. No text names ``what the asset references'' as a
 dimension, yet each uses it to draw a legal or prudential boundary. We call such a dimension a \emph{term type}, a
 question along which definitions discriminate, together with the set of values
-the sources admit. The reference asset is one of many; the issuer's
-identifiability, the fungibility of the asset, the custody model and the
-consensus mechanism are others, and they recur across instruments under
-different names.
+the sources admit. The reference asset is one of many; issuer identifiability,
+fungibility and consensus mechanism are others, recurring across instruments
+under different names.
 
 Existing approaches do not recover term types from such a corpus. First,
 manually built taxonomies of crypto-assets and of blockchain
@@ -74,15 +71,16 @@ the corpus, repairing wrong section labels and rejecting quotes it cannot find.
 It then orders the catalogue. For each term type it asks for a cited probability
 distribution over the more general term types it specialises, and consolidates
 the weighted edges greedily into a directed acyclic graph (DAG), so that a term
-type can sit under more than one parent. The output is an ontology of term types
-with values, aliases, jurisdictions, recorded conflicts and weighted is-a edges,
-every element of which cites its source. The ontology is then put to work as a
-label space: Web content is tagged onto its nodes with evidence spans, the tags
+type can sit under more than one parent. Every element of the resulting ontology cites its source. The ontology is then
+put to work as a label space: Web content is tagged onto its nodes with evidence spans, the tags
 measure how much each branch discriminates and where items stop short of any
 child, and a discovery step proposes new values and dimensions at those nodes,
 accepting only candidates that raise the information gain and are supported by
 verified evidence. The seed built from law is never modified; what the content
-adds is marked as such.
+adds is marked as such. Finally the tagged content is indexed on the graph:
+postings per node, value and subtree are bitsets, queries over them are set
+algebra weighted by is-a path strength, and the facet with the highest
+expected narrowing is the next question to ask.
 
 \smallskip\noindent\textbf{Contributions.}
 \begin{itemize}
@@ -93,17 +91,18 @@ adds is marked as such.
     extraction over a cached whole-corpus context with mandatory citations, a
     citation verifier, a per-node is-a query consolidated into a DAG, and a
     maintenance loop that tags content onto the DAG and grows it by measured
-    information gain (\cref{sec:method}).
+    information gain, and a bitset index that retrieves and navigates the
+    tagged content by the same gain (\cref{sec:method}).
   \item We release \corpus, a definitions-first corpus of 24 documents across
     four jurisdictions, and the resulting ontology of 93 term types with 317
     values, 480 citations and 279 weighted is-a edges
     (\cref{sec:exp:rq1,sec:exp:rq2}).
-  \item We evaluate faithfulness and coverage on \corpus: 97.9\% of term-type
-    citations verify, every document contributes to at least one term type, 69
-    term types record a cross-source conflict, the hierarchy resolves \BBits\
-    bits per root-to-leaf descent, and two maintenance iterations over \AllItems\
-    DLT-Corpus items verify 96--97\% of tag evidence and add \AllAddedTypes\
-    dimensions to the graph (\cref{sec:exp:rq3}). \todo{Add the headline comparative
-    number from RQ2--RQ4.} Code and data are at an anonymised
+  \item We evaluate on \corpus and DLT-Corpus (\cref{sec:exp}): 97.9\% of
+    citations verify, 69 term types record a cross-source conflict, the
+    hierarchy resolves \BBits\ bits per descent, two maintenance iterations
+    over \AllItems\ items verify 96--97\% of tag evidence and add
+    \AllAddedTypes\ dimensions, and the index answers queries over \RItems\
+    items \RSpeedMin\ to \RSpeedMax\ times faster than a flat scan. \todo{Add the headline comparative
+    number from RQ5--RQ7.} Code and data are at an anonymised
     repository.\footnote{\todo{anonymised URL}}
 \end{itemize}

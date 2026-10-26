@@ -4,12 +4,14 @@
 We proposed \sys, which induces the classification dimensions of crypto-asset
 law and research from definitional text with a citation for every element,
 orders them into a DAG by one cited is-a query per node, and maintains the
-DAG from tagged Web content by measured information gain. On 24 documents it
+DAG from tagged Web content by measured information gain, and indexes that
+content on it for retrieval by the same gain. On 24 documents it
 produced 93 term types with 317 values, 97.9\% of whose 480 citations verify,
 and \BEdges\ weighted is-a edges; two maintenance iterations over \AllItems\ DLT-Corpus
 items verified 96--97\% of the tag evidence and grew the graph by \AllAddedTypes\
-dimensions and \AllAddedValues\ values for \$\AllCost. Future work follows the limits of
+dimensions and \AllAddedValues\ values for \$\AllCost; the index answers
+queries over \RItems\ items in microseconds and routes a search to ten items
+in \RGainSteps\ questions. Future work follows the limits of
 this evidence: expert validation of whether verified citations and tags
-support their nodes; repeated runs and a second model, since identifiers are
-not yet stable across runs; and regulatory batches with a trained classifier
+support their nodes; repeated runs and a second model; and regulatory batches with a trained classifier
 replacing the LLM tagger.

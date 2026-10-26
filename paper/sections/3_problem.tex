@@ -3,9 +3,9 @@
 
 \textbf{Corpus.} A corpus $\mathcal{D} = \set{d_1,\dots,d_N}$ is a set of source
 documents, each with metadata (type, jurisdiction, year) and partitioned into
-labelled sections $d_i = \set{s_{i1},\dots,s_{in_i}}$. Documents are of two
-classes: \emph{legal instruments}, from which we keep the definitions articles,
-glossaries, classification conditions and business-model descriptions, and
+labelled sections $d_i = \set{s_{i1},\dots,s_{in_i}}$. Documents are
+\emph{legal instruments}, of which we keep the definitions articles,
+glossaries, classification conditions and business-model descriptions, or
 \emph{taxonomy frameworks}, academic papers that propose classification
 dimensions.
 
@@ -41,7 +41,13 @@ of $y$, measure how much a descent of $G$ discriminates the content and, at
 nodes whose items stop short of every child, propose new values of $y$ or new
 children of $y$, accepting a candidate only when it raises that measure and
 is supported by verified evidence. Additions are marked as candidates; the seed is
-never edited.\footnote{Retrieval by walking the DAG is deferred.}
+never edited.
+
+\textbf{Problem (retrieval).} Given $G$, the tagged items and a query, a
+Boolean combination of nodes, values and subtrees of $G$, return the items it
+denotes, ranked by how strongly each is a kind of the queried nodes along the
+weighted is-a edges, together with the question, a child split or a value
+split of $G$, whose answer would narrow the result most.
 
 \textbf{Desiderata.}
 \begin{enumerate*}[label=(D\arabic*)]
@@ -54,8 +60,8 @@ never edited.\footnote{Retrieval by walking the DAG is deferred.}
 \end{enumerate*}
 
 \textbf{Design principles.} No gold catalogue of term types exists for any
-legal corpus, and building one is the expert annotation we are trying to
-reduce, so we use an LLM as the extractor and shift effort to the corpus,
-restricted to definitional text, and to the output, constrained to cite and
-then checked mechanically. We prioritise faithfulness over recall: an
-ungrounded dimension is dropped and an unfound quote stays flagged.
+legal corpus, and building one is the annotation we want to reduce, so an LLM
+extracts and the effort moves to the input, restricted to definitional text,
+and to the output, constrained to cite and checked mechanically. Faithfulness
+ranks above recall: an ungrounded dimension is dropped and an unfound quote
+stays flagged.

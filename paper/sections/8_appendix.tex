@@ -1,22 +1,13 @@
 %% ============================================================================
 %%  APPENDIX -- optional. Total paper (body + refs + appendix) must be <= 12 pp.
 %% ============================================================================
-
-\section{Prompts}
-\label{app:prompts}
-The system instructions (\cref{fig:promptsys}) precede the cached corpus and are
-identical for every task; the Task A user prompt (\cref{fig:prompttask}) is
-followed at run time by the manifest of document indexes and section labels;
-the tagging prompt (\cref{fig:prompttag}) is sent once per item. The Task B
-is-a prompt, the discovery prompt and the consolidation prompt are in the
-released artefact.
-
+%% All floats come first so that they are encountered on the references page
+%% and can be placed from the next page on; the text follows.
 \begin{figure*}[t]
 \lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_system.txt}
 \caption{System instructions, verbatim.}
 \label{fig:promptsys}
 \end{figure*}
-
 \begin{figure*}[t]
 \lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_task_a.txt}
 \caption{Task A user prompt, verbatim. The manifest appended at run time is
@@ -24,17 +15,12 @@ one line per document: \texttt{doc 4 (Regulation (EU) 2023/1114 ...): "Articles
 2-3: Scope and Definitions"}.}
 \label{fig:prompttask}
 \end{figure*}
-
 \begin{figure*}[t]
 \lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_tag.txt}
 \caption{Task C tagging prompt, verbatim; the catalogue block is a cached
 system block that follows the instructions.}
 \label{fig:prompttag}
 \end{figure*}
-
-\section{Additional Results}
-\label{app:results}
-
 \begin{table*}[t]
   \centering
   \caption{All ten rejected Task A citations. The verifier found no match for
@@ -46,7 +32,6 @@ system block that follows the instructions.}
   \scriptsize
   \input{tables/errors}
 \end{table*}
-
 \begin{table*}[t]
   \centering
   \caption{Case study: the reference-asset term type as induced, with the model's
@@ -59,16 +44,35 @@ system block that follows the instructions.}
   \scriptsize
   \begin{minipage}{0.62\textwidth}\input{tables/case_reference_asset}\end{minipage}
 \end{table*}
-
 \begin{table*}[t]
   \centering
-  \caption{All 93 term types of the seed catalogue, with the number of values
-  and of grounding documents, in the category order returned by the model.}
-  \label{tab:catalogue}
+  \caption{Term types added by the two maintenance iterations
+  (\cref{sec:exp:rq3}), with the node they were discovered under, the number
+  of shown residual items supporting them and the increase in branching gain
+  at that node in bits. Values added to existing nodes (\EAddedValues\ and
+  \TAddedValues) are not listed.}
+  \label{tab:accepted}
   \scriptsize
-  \input{tables/catalogue}
+  \begin{minipage}{0.7\textwidth}\input{tables/new_types}\end{minipage}
 \end{table*}
-
+\begin{table*}[t]
+  \centering
+  \caption{Objectives of each catalogue version from its is-a weights (prior)
+  and from the tags of the batch classified with it (\cref{sec:exp:rq3}).}
+  \label{tab:objectives}
+  \scriptsize
+  \input{tables/objectives_iter}
+\end{table*}
+\begin{figure*}[t]
+  \centering
+  \input{figures/spectrum}
+  \caption{Sensitivity to the display threshold (\cref{sec:exp:rq2}): the
+  sub-DAG keeps only edges with weight at or above the x value. (a) kept edges,
+  roots and leaves; (b) information gain per descent; (c) AUC and effective
+  leaves as a fraction of the 93 nodes. Hiding edges below 0.4 keeps 64 edges
+  and leaves 30 roots.}
+  \label{fig:spectrum}
+\end{figure*}
 \begin{figure*}[t]
   \centering
   \begin{minipage}{0.6\textwidth}\centering\input{tables/tree_asset}\end{minipage}
@@ -79,10 +83,23 @@ system block that follows the instructions.}
 \end{figure*}
 
 
+\section{Prompts}
+\label{app:prompts}
+The system instructions (\cref{fig:promptsys}) precede the cached corpus and are
+identical for every task; the Task A user prompt (\cref{fig:prompttask}) is
+followed at run time by the manifest of document indexes and section labels;
+the tagging prompt (\cref{fig:prompttag}) is sent once per item. The Task B
+is-a prompt, the discovery prompt and the consolidation prompt are in the
+released artefact.
+
+\section{Additional Results}
+\label{app:results}
+
 \Cref{fig:tree} renders the asset category of the DAG discussed in
-\cref{sec:exp:rq2}. \Cref{tab:case} is the case study of \cref{sec:exp:rq1}; \cref{tab:errors}
-lists the rejected citations discussed there; \cref{tab:catalogue} lists every
-term type of the seed catalogue.
-The primary-parent trees of the technology, actor, activity and obligation
-categories, and the full DAG with every distribution, are in the released
-artefact.
+\cref{sec:exp:rq2} and \cref{fig:spectrum} its threshold sweep; \cref{tab:objectives}
+holds the per-version objectives of \cref{sec:exp:rq3}. \Cref{tab:case} is the case study of \cref{sec:exp:rq1}; \cref{tab:errors}
+lists the rejected citations discussed there; \cref{tab:accepted} lists the
+term types the maintenance iterations added. The full seed catalogue of 93
+term types, the primary-parent trees of the other four categories, the Task B,
+discovery and consolidation prompts, and the full DAG with every distribution
+are in the released artefact.

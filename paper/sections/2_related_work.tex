@@ -2,41 +2,49 @@
 \label{sec:related}
 
 \paragraph{Taxonomy construction, expansion and completion.}
+Taxonomy induction from text has a long lineage, from hypernym classifiers and
+definition graphs~\cite{snow2006taxonomy,velardi2013ontolearn,bordea2016texeval}
+to embedding-based construction~\cite{zhang2018taxogen,shen2018hiexpan,huang2020corel}.
 Most work at this venue assumes a seed taxonomy and inserts new concepts into
 it. TaxoExpan~\cite{shen2020taxoexpan} and HEF~\cite{wang2021hef} attach a query
 concept to a parent using self-supervision from the seed's own edges;
 TaxoEnrich~\cite{jiang2022taxoenrich} and TaxoComplete~\cite{arous2023taxocomplete}
-score parent--child positions; ICON~\cite{shi2024icon} generates concepts that
-the seed implies but does not name; TaxoCom~\cite{lee2022taxocom} discovers
+score parent--child positions; ICON~\cite{shi2024icon} inserts implicit
+concepts; TaxoCom~\cite{lee2022taxocom} discovers
 new topic clusters under a partial hierarchy; ToTER~\cite{kang2024toter} uses
 a corpus taxonomy to improve retrieval. Taxonomies built from scratch~\cite{chu2019tifi,redi2019citation}
-decompose the task into stages with their own gold sets. Our setting differs in two ways. There is no seed, and the nodes
-we induce are dimensions of classification rather than leaf concepts, each
-anchored in a cited passage.
+decompose the task into stages with their own gold sets. Our work differs:
+there is no seed, and the nodes we induce are classification dimensions rather
+than leaf concepts, each anchored in a cited passage.
 
 \paragraph{LLMs for classification, tagging and ontology learning.}
-TELEClass~\cite{zhang2025teleclass} enriches a given taxonomy with LLM-mined
-class features; TnT-LLM~\cite{wan2024tntllm} generates a label taxonomy from
+LLMs induce taxonomies zero-shot or from a few examples~\cite{jain2022zeroshot,
+zeng2024chainoflayer,lo2024ollm}, and topic or concept
+induction~\cite{pham2024topicgpt,lam2024lloom} names the categories a corpus
+supports. TaxoClass~\cite{shen2021taxoclass} and TELEClass~\cite{zhang2025teleclass}
+classify under a given taxonomy from class names and LLM-mined features; TnT-LLM~\cite{wan2024tntllm} generates a label taxonomy from
 text at scale; TagGPT~\cite{li2023taggpt} and ICXML~\cite{zhu2024icxml} tag or
 classify zero-shot; LLMs4OL~\cite{babaeigiglou2023llms4ol} benchmarks term
 typing and hierarchy discovery; OntoTune~\cite{liu2025ontotune} aligns an LLM to
-an ontology; Graphusion~\cite{yang2025graphusion} builds a knowledge graph with
-retrieval and a global fusion step. These methods either take the label space
-as given or generate it without provenance, and enrichment from a corpus
-\cite{zhang2025teleclass,lee2022taxocom} adds features or topics without a
-criterion for when the taxonomy should change. Unlike them, we require every
-induced class and value to cite a document and section, verify the citation,
-and admit content-derived additions only when they raise a measured
+an ontology; Graphusion~\cite{yang2025graphusion} fuses retrieved triples into
+a knowledge graph. These methods take the label space as
+given or generate it without provenance, and enrichment from a
+corpus~\cite{zhang2025teleclass,lee2022taxocom} has no criterion for when the
+taxonomy should change. We require every class and value to cite a verified
+passage and admit content-derived additions only when they raise a measured
 information gain.
 
 \paragraph{Crypto-asset taxonomies and grounding.}
-Tasca and Tessone~\cite{tasca2019taxonomy} classify blockchain architectures by
-component; Zhang et al.~\cite{zhang2026cryptotaxonomy} classify assets by
+Tasca and Tessone~\cite{tasca2019taxonomy} and Ballandies et
+al.~\cite{ballandies2022dlt} classify ledger designs by component; Zhang et al.~\cite{zhang2026cryptotaxonomy} classify assets by
 technical standard, centralisation, function and legal status; DLT-Corpus
 \cite{hernandez2026dltcorpus} collects domain text; Avice et
 al.~\cite{cryptotags2024} link attribution tags to knowledge graph entities with
-an LLM. Retrieval-augmented generation~\cite{lewis2020rag} and hierarchical
-retrieval~\cite{sarthi2024raptor} ground an LLM in chunks of a corpus. We
-instead hold the whole definitional corpus in a cached context, because
-recognising one dimension under different names across sources is a
-whole-corpus judgement that chunk retrieval would have to anticipate.
+an LLM. Attribution evaluation and citation generation~\cite{rashkin2023ais,
+gao2023alce,liu2023verifiability} ask whether an output is supported by its
+sources, which our verifier checks mechanically. Retrieval-augmented
+generation~\cite{lewis2020rag} and hierarchical retrieval~\cite{sarthi2024raptor}
+ground an LLM in chunks; we hold the whole definitional corpus in a cached
+context, despite the known loss of mid-context information~\cite{liu2024lostmiddle},
+because recognising one dimension under different names is a whole-corpus
+judgement.

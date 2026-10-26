@@ -11,19 +11,16 @@
   relabelled or rejected (4.4); one cited is-a query per term type gives the
   weighted DAG (4.5). Second row: content is tagged onto the DAG, the tags
   measure each node, and candidates discovered at impure nodes are consolidated
-  into the next catalogue version (4.6). The italic line under each module
-  follows one example through the pipeline.}
+  into the next catalogue version (4.6). Third row: the tagged items are
+  indexed on the DAG as bitsets and retrieved and navigated by the same gain
+  (4.7). The italic line under each module follows one example through the
+  pipeline.}
   \label{fig:overview}
 \end{figure*}
 
-\sys consists of three modules (\cref{fig:overview}): (1) definitions-first
-corpus construction (\cref{sec:method:corpus}); (2) cache-grounded extraction,
-which fixes what the model is asked and how the corpus is served
-(\cref{sec:method:task,sec:method:run}); and (3) citation verification
-(\cref{sec:method:verify}). A fourth module orders the resulting term types into
-a hierarchy (\cref{sec:method:hierarchy}), and a fifth uses the hierarchy as a
-label space for content and grows it from what the content reveals
-(\cref{sec:method:maintain}, second row of \cref{fig:overview}).
+\sys has six modules (\cref{fig:overview}), described in data-flow order:
+corpus construction, extraction, verification, hierarchy, maintenance and
+retrieval.
 
 \subsection{Definitions-First Corpus Construction}
 \label{sec:method:corpus}
@@ -50,15 +47,11 @@ tables removed.
   \input{tables/corpus}
 \end{table}
 
-Each PDF is converted with \texttt{pdftotext} and cut by line ranges or by
-regular-expression markers that we specify once per document. The US bills
-need the layout-preserving mode because their two-column line numbering
-scrambles the plain output, and we drop page footers such as the bill number
-that would otherwise leak into every section. The Senate-reported print of the
-\src{CLARITY Act} reproduces the House-passed text before the Senate
-substitute, so we take Title~I once, from the House file, and only the
-substitute's definitions and its section on network tokens from the Senate
-file. The corpus is one XML-tagged text file in which every document carries an
+Each PDF is converted to text and cut by line ranges or regular-expression
+markers specified once per document; US bills need the layout-preserving mode,
+page footers are dropped, and the Senate print of the \src{CLARITY Act}, which
+reproduces the House text, contributes only the substitute's definitions and
+its network-token section. The corpus is one XML-tagged text file in which every document carries an
 integer index and metadata and is split into \texttt{<section label="...">}
 blocks, so a citation can name a document and a section unambiguously. The file
 holds 32 sections and 97.8 thousand words, which the model's tokeniser counts
@@ -71,10 +64,9 @@ as 235,298 tokens.
 The prompts are given verbatim in \cref{app:prompts}. The system instructions
 define the objects of \cref{sec:problem} in the model's terms and state the grounding and quality
 rules; they precede the corpus and never change, so the cache survives every
-task. The user prompt states the scope, which covers assets, DLT systems,
-actors, activities, and obligations or risks when the sources themselves use
-them as criteria, gives the JSON schema, and asks for ordering by category and
-then by the number of grounding documents. The corpus is declared the model's only source of truth.
+task. The user prompt states the scope (assets, DLT systems, actors, activities,
+obligations or risks), gives the JSON schema, asks for ordering by category
+and grounding count, and declares the corpus the only source of truth.
 
 \textbf{Manifest.} Our first run cited section labels from memory and got
 them wrong in 9\% of citations, with 65 term types. We therefore append a
@@ -89,15 +81,14 @@ file the model sees.
 We place the whole corpus in the system prompt, after the stable instructions
 and behind a prompt-cache breakpoint with a one-hour lifetime; the task prompt
 is the user message. Every later task, and every prompt iteration, then pays
-only for the small uncached part. The choice is also methodological. Quality
-rule four asks the model to recognise that \src{MiCA}'s ``referencing the value
-of one official currency'' and the \src{GENIUS Act}'s ``fixed amount of monetary
-value'' answer the same question. A retriever would have to anticipate that two
-passages that share few words define the same dimension; a model that sees all
-24 documents at once does not. The cost of a run is therefore linear in the
+only for the small uncached part. The choice is also methodological:
+recognising that \src{MiCA}'s ``referencing the value of one official
+currency'' and the \src{GENIUS Act}'s ``fixed amount of monetary value'' answer
+the same question needs both passages in view, which a retriever would have to
+anticipate. The cost of a run is therefore linear in the
 corpus size, with the corpus priced at the cache-read rate and only the task
 prompt and the output priced in full; we report measurements in
-\cref{sec:exp:cost}.
+\cref{sec:exp:rq1,sec:exp:rq2}.
 
 A single streamed call produces the output. We disable the model's adaptive
 thinking because on a first attempt it spent more than 100,000 thinking tokens
@@ -114,14 +105,12 @@ look up the document and section, normalise both the quote and the section text
 to lower-case alphanumerics, and accept the quote if it is a substring. If it is
 not, we split the quote into 12-character shingles and accept it when at least
 80\% of them occur inside one window of the section twice the quote's length.
-Localising the matches tolerates footnote markers, hyphenation and the spacing
-artefacts of PDF extraction, and rejects a paraphrase stitched from phrases
-that occur in different places. When a quote fails under the cited label but
+The window tolerates footnote markers and PDF spacing and rejects a paraphrase
+stitched from distant phrases. When a quote fails under the cited label but
 passes under another label of the same document, we \emph{relabel} it,
 correcting the section, keeping the model's label alongside, and counting the
-citation as verified. Everything else is rejected and listed in a report. Every citation in the published output
-carries a \texttt{verified} flag, and the rejection rate is our measure of
-desideratum~(D1). Verification establishes that the quote exists where the
+citation as verified. Everything else is rejected; every citation carries a
+verified flag, and the rejection rate measures desideratum~(D1). Verification establishes that the quote exists where the
 model says it does; it does not establish that the quote supports the
 dimension, a limit we return to in \cref{sec:exp:rq1}.
 
@@ -131,16 +120,14 @@ dimension, a limit we return to in \cref{sec:exp:rq1}.
 \textbf{One question per node.} With the catalogue $\mathcal{Y}$ in hand we ask
 the model, for each term type $x$, how probable it is that $x$ is-a $y$ for every
 other term type $y$ in the same category, plus \emph{none}, meaning $x$ is a
-top-level dimension. The question is one user message per $x$ that contains the definition
-of is-a from \cref{sec:problem}, the full record of $x$ (question, description,
-aliases, values with definitions), and the list of candidate parents by
+top-level dimension. One user message per $x$ carries the definition of is-a
+from \cref{sec:problem}, the full record of $x$ and the candidate parents by
 identifier, name and question. The model returns at most $k{=}6$ entries, each
 with a probability, a rationale of at most thirty words, and citations in the
 format of Task~A; the top entry, unless it is \emph{none}, must cite at least
-one passage. The context is the same cached corpus followed by a second cached
-block holding the compact catalogue of all 93 term types, so that each of the 93
-calls reads the corpus and the catalogue from cache and sends only the record of
-$x$ and its candidates.
+one passage. The corpus and a second cached block holding the compact
+catalogue are read from cache, so each call sends only the record of $x$ and
+its candidates.
 
 \textbf{Normalisation.} We drop parents that are not in the candidate set, merge
 duplicates, remove the \emph{none} entry while keeping its mass as $p_{\text{none}}(x)$
@@ -151,15 +138,12 @@ are verified exactly as in \cref{sec:method:verify}.
 edges in decreasing weight and keep each one unless the parent already descends
 from the child, which would close a cycle; a mutual pair $x \to y$, $y \to x$
 thus resolves to the stronger direction, and an exact tie resolves by identifier
-order and is reported. No weight threshold is applied: the DAG keeps every
-acyclic edge, and a display threshold can hide weak edges later without
-re-running anything. The first kept edge of a node is its primary parent, which
-gives a tree view; the others are additional parents. Acyclicity is asserted
-after consolidation.
+order and is reported. No weight threshold is applied; a display threshold
+can hide weak edges later. The first kept edge of a node is its primary parent,
+which gives a tree view.
 
-\textbf{Metrics for maintenance.} Later parts of this programme will merge,
-split and prune nodes, so we attach to the DAG three measures of how well it
-discriminates. At a node $y$ with children $C(y)$ the kept edge weights define a
+\textbf{Metrics for maintenance.} We attach to the DAG three measures of how
+well it discriminates. At a node $y$ with children $C(y)$ the kept edge weights define a
 branching distribution
 \begin{equation}
   q_y(c) = \frac{w(c \to y)}{\sum_{c' \in C(y)} w(c' \to y)}, \qquad c \in C(y),
@@ -192,11 +176,10 @@ definitions, and its is-a parents with weights. The Part~1 corpus is not sent.
 For each content item, a title and abstract, it returns tags $(y, v, c, e)$: a
 term type, a value code, a confidence, and an evidence span of at most twenty
 words copied from the item; optional proposals of a value or term type the
-catalogue lacks; and an off-topic flag. We reject unknown identifiers,
-resolve value codes or labels to catalogue values, verify every evidence span
-against the item with the matcher of \cref{sec:method:verify}, and record the
-is-a ancestors of each tagged term type as implied, since a text classified
-under a specialised dimension is classified by the general ones too.
+catalogue lacks; and an off-topic flag. We reject unknown identifiers, verify
+every evidence span against the item with the matcher of
+\cref{sec:method:verify}, and record the is-a ancestors of each tagged term
+type as implied.
 
 \textbf{Label space.} Tagging places an item on node $y$ and, by is-a, on every
 ancestor. For node $y$ let $S(y)$ be the items tagged directly at $y$, $C(y)$
@@ -207,19 +190,18 @@ split), its dominance (share of the top value), the \emph{branching gain}, the
 entropy of the split of $C(y)$ over its children plus the residual, and the
 residual fraction $|R(y)|/|C(y)|$. A random descent now starts at a root with
 probability proportional to its closure and at $y$ stops with the residual
-share or moves to a child in proportion to the child's closure, which gives the
-objectives of \cref{eq:branch,eq:auc} from content rather than from the model's
-prior weights; both are reported side by side.
+share or moves to a child in proportion to its closure, which gives the
+objectives of \cref{eq:branch,eq:auc} from content rather than from the prior
+weights; both are reported.
 
 \textbf{Proposals and discovery (Task E).} The measurements name \emph{dormant}
 nodes ($C(y) = \emptyset$), \emph{collapsed} nodes (dominance $\ge 0.85$ with at
 least ten items), the highest-gain nodes, and \emph{discovery targets}, nodes
 with at least five residual items making up at least 30\% of the closure. For
-each target the model is shown the node, its values and children, the tagger's
-seeds for it, and up to forty residual items with their evidence spans,
-and proposes at most four candidates: a new value of $y$ or a new child term
-type with two to six values, each with supporting item identifiers and one
-evidence span. Because the items shown are a sample of the residual, the share of shown items
+each target the model sees the node, its values and children, the tagger's
+seeds and up to forty residual items with evidence spans, and proposes at most
+four candidates, new values of $y$ or new child term types with two to six
+values, each with supporting items and one evidence span. Because the items shown are a sample of the residual, the share of shown items
 that support a candidate is extrapolated to the whole residual. A candidate is
 accepted when at least five of the shown items support it, when making it a
 child that captures its estimated support would raise the branching gain at
@@ -227,11 +209,47 @@ $y$ by at least 0.1 bit, and when its evidence span is found verbatim in a
 supporting item. Dormant and collapsed nodes are reported, not
 removed.
 
-\textbf{Evolution.} One model call consolidates the accepted candidates of an
-iteration into the next catalogue version, merging candidates that ask the
-same question at different nodes, placing each new term type under the node it
-refines, and dropping duplicate values; the answer is validated and written as
-version $n{+}1$ with the additions marked as candidates and their edges at
-weight one until the is-a query of \cref{sec:method:hierarchy} re-estimates
-them. The seed is never modified, every iteration appends its sample, tags,
-objectives, additions, cost and time to a log, and batches are disjoint.
+\textbf{Evolution.} One model call consolidates the accepted candidates into
+version $n{+}1$, merging candidates that ask the same question at different
+nodes, placing each new term type under the node it refines and dropping
+duplicate values; additions are marked as candidates with edges at weight one
+until the is-a query of \cref{sec:method:hierarchy} re-estimates them. The
+seed is never modified, batches are disjoint, and every iteration appends its
+sample, tags, objectives, additions, cost and time to a log.
+
+\subsection{Retrieval over the DAG}
+\label{sec:method:retrieval}
+
+\textbf{Index.} The tagged items of every iteration are placed on the current
+version of $G$ and numbered $0..N{-}1$, and every posting list is a bitset, so
+set algebra on postings is one integer operation. Node $y$ carries $S(y)$, one
+bitset per value $v \in V(y)$, and its closure $C(y)$, the union of $S$ over
+its descendants; each category carries the union of its nodes. From $G$ we
+precompute, in topological order, the descendants and ancestors of every node,
+the best is-a path strength $s(d, a)$, the maximum over paths from $d$ to $a$
+of the product of edge weights, the lowest common ancestors of any node set,
+and the information content $\mathrm{IC}(y) = -\log_2 |C(y)|/N$.
+
+\textbf{Queries.} An atom denotes the subtree $C(y)$, the direct items $S(y)$,
+the items with value $v$ at $y$, the descendants $d$ of $y$ with
+$s(d, y) \ge \sigma$, or a category; atoms combine with AND, OR and NOT. An
+item's score is the sum over the positive atoms of its match strength, the tag
+confidence for a direct or value match and $\max_d c(d)\,s(d, y)$ over its
+tagged descendants $d$ for a subtree match, so an item reached only by weak
+edges ranks below one tagged at $y$ itself. The lowest common ancestors of the query nodes are
+offered as the generalisation of the query; when fewer than $k$ items match,
+items from the nodes most similar to the query nodes, by
+$\max_c s(a, c)\,s(b, c)$ over common ancestors $c$, are appended and marked.
+
+\textbf{Facets.} For a result set of $n$ items and a node $y$ it touches, the
+child subtrees of $y$ with the residual, and the values of $y$ with the
+untagged items, are the questions a user could be asked next. Picking option
+$o$ with probability proportional to its size $m_o$, the expected narrowing is
+\begin{equation}
+  \label{eq:facet}
+  \mathcal{N}(y) = \sum_{o} \frac{m_o}{\sum_{o'} m_{o'}} \log_2 \frac{n}{m_o},
+\end{equation}
+zero for an option that covers the whole set. The facet with the highest
+$\mathcal{N}$ is the best next question, which is the branching gain of
+\cref{sec:method:maintain} evaluated on a result set instead of a batch: the
+same objective that grows the DAG routes a search through it.

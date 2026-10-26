@@ -1,33 +1,33 @@
 \section{Experiments}
 \label{sec:exp}
 
-We answer six research questions.
+We answer seven research questions.
 \textbf{RQ1}: How many classification dimensions does the corpus support, how
 widely is each shared across sources, and how faithful are the citations?
 \textbf{RQ2}: What hierarchy do the term types form, how confident and how
 grounded are its edges, and how does it change as weak edges are hidden?
 \textbf{RQ3}: Does the DAG serve as a label space for Web content, and does
 the content reveal where it must grow?
-\textbf{RQ4}: How does the induced ontology compare with expert-built
-taxonomies and with LLM baselines that are given the same corpus?
-\textbf{RQ5}: How much do the manifest, the grounding strategy and the model
-matter?
-\textbf{RQ6}: Does the ontology improve a downstream classification of
-Web-sourced token descriptions?
-RQ1 to RQ3 and the manifest part of RQ5 are answered below; the remaining parts
-are framed with the tables they will fill.
+\textbf{RQ4}: Does the DAG index retrieve tagged content faster than a flat
+tag table, and does facet gain navigate to a target item?
+\textbf{RQ5}: How does the ontology compare with expert taxonomies and LLM
+baselines given the same corpus? \textbf{RQ6}: How much do the manifest,
+grounding strategy and model matter? \textbf{RQ7}: Does the ontology improve a
+downstream classification of Web-sourced token descriptions? RQ1 to RQ4 and
+the manifest part of RQ6 are answered below; the rest are framed.
 
 \subsection{Experimental Setup}
 \label{sec:exp:setup}
 
-\textbf{Datasets.} \corpus is described in \cref{tab:corpus}. No standard
-benchmark exists for term type induction, so \corpus is both the input and, via
-its citations, the ground against which faithfulness is checked. For RQ3 the
-content is DLT-Corpus~\cite{hernandez2026dltcorpus}: from its first shard of
-scientific papers (37,440 in the collection) and of USPTO patents (49,023) we
-keep English items whose title or abstract names a DLT term, which 40\% of
-papers and 49\% of patents do, and sample disjoint batches of 150 papers and
-150 patents; an item is the title and abstract capped at 450 words. \todo{Held-out set and expert gold set for RQ4 and RQ6; contamination note.}
+\textbf{Datasets.} \corpus is described in \cref{tab:corpus}. No benchmark
+exists for term type induction, so \corpus is both the input and, via its
+citations, the ground truth for faithfulness. For RQ3 the
+content is DLT-Corpus~\cite{hernandez2026dltcorpus}, 37,440 scientific papers
+and 49,023 USPTO patents, of which we keep English items whose title or
+abstract names a DLT term (40\% of papers, 49\% of patents) and draw disjoint
+batches: a pilot of 150 papers and 150 patents, then a tenth of each
+collection (3,744 papers, 4,902 patents); an item is the title and abstract
+capped at 450 words. For RQ4 the index holds the tagged items of both batches. \todo{Held-out set and expert gold set for RQ5 and RQ7; contamination note.}
 
 \textbf{Baselines.} \todo{Expert taxonomies; zero-shot LLM without the corpus; chunked RAG and
 RAPTOR over it; TnT-LLM and LLMs4OL-style term typing; same corpus, model and
@@ -38,21 +38,21 @@ the verifier finds in the cited document (exact or relabelled), the share
 relabelled, and the rejection rate; smaller rejection is better. For coverage we
 report the number of term types, values and aliases, the number of documents
 grounding each term type, and the number of term types with a recorded
-conflict. For the hierarchy we report edges, roots, leaves, depth, bits per descent,
-expected depth, AUC and effective leaves as defined in
-\cref{sec:method:hierarchy}. \todo{For RQ4 add precision and recall of term
+conflict. For the hierarchy we report the structural counts and the objectives of
+\cref{sec:method:hierarchy}; for retrieval, latency against a flat scan with
+identical results and the steps and bits a navigation needs to reach $k$
+items. \todo{For RQ5 add precision and recall of term
 types against the expert gold set, and coverage of each expert taxonomy's
-dimensions; for RQ6 add macro-F$_1$ of the downstream classifier.}
+dimensions; for RQ7 add macro-F$_1$ of the downstream classifier.}
 
 \textbf{Implementation.} Both tasks use \texttt{claude-haiku-5-5} called
 through the Anthropic Messages API at effort \texttt{high} with adaptive
 thinking disabled; the corpus sits behind a one-hour prompt-cache breakpoint.
-Task~A is one streamed call with an output limit of 120,000 tokens; Task~B is
-93 calls with $k{=}6$, four in parallel, each limited to 4,000 output tokens.
-Task~C runs at effort \texttt{medium} with six items in flight; the discovery
-and consolidation calls use the defaults of \cref{sec:method:maintain}. The verifier uses 12-character
-shingles and an 80\% threshold. All runs are API calls from a laptop; no GPU is
-involved. We report a single run. \todo{Add a second run with the same prompt
+Task~A is one streamed call with a 120,000-token output limit; Task~B is 93
+calls with $k{=}6$, four in parallel; Task~C runs at effort \texttt{medium}
+with six items in flight. All runs are API calls from a laptop; no GPU is
+involved. The retrieval engine is pure Python over integer bitsets and is
+timed on one core of the same laptop. We report a single run. \todo{Add a second run with the same prompt
 and report agreement of term types and values, and a run with
 \texttt{claude-sonnet-5-5}, before submission.}
 
@@ -78,48 +78,40 @@ following observations. (1) Technology dimensions are the largest group,
 because the blockchain taxonomy of Tasca and Tessone contributes architectural
 dimensions that no legal instrument uses, such as the fee regime and the
 interoperability of a ledger. (2) Asset and actor dimensions are the most
-widely shared. An asset term type is grounded in 4.5 documents on average, and
-the status of an actor as a service provider is grounded in 13 of the 24
-documents. (3) Twenty term types rest on a single document, mostly distinctions the
-academic taxonomies draw and the law does not yet make, such as the mechanism
-by which yield reaches a holder. Every document is cited by at least one term
-type; the FATF guidance of 2021 is cited most, by 27, and the DLT-Corpus paper
-least, by one; its sections describe data sources and metrics rather than
-classification criteria.
+widely shared: an asset term type is grounded in 4.5 documents on average,
+and service-provider status in 13 of the 24. (3) Twenty term types rest on a single document, mostly distinctions the
+academic taxonomies draw and the law does not yet make. Every document is
+cited by at least one term type, the 2021 FATF guidance most, by 27, and the
+DLT-Corpus paper least, by one.
 
 
 Sixty-nine term types carry a note recording a disagreement between sources.
 \Cref{tab:case} (\cref{app:results}) shows the reference-asset dimension of
 \cref{fig:one} as returned: five values, seven grounding documents across four
-jurisdictions, and a note recording the jurisdictional split. The
-fungibility dimension likewise records that fungibility is an element of the UK
-and US definitions of the asset class but not of the \src{FATF} or \src{MiCA}
-definitions. These notes are the raw material for the jurisdiction-indexed
-nodes of \cref{sec:method:hierarchy}.
+jurisdictions, and a note recording the jurisdictional split.
 
 
 \textbf{Faithfulness.} Of the 480 citations, 463 matched the cited section
 verbatim under normalisation, 7 were relabelled, and 10 were rejected, a
-rejection rate of 2.1\% (\cref{tab:taska}, last column).1\% for actor dimensions to 100\% for asset and
-activity dimensions. One cited label did not exist, a subsection heading inside
-the FinCEN guidance that the model used in place of the enclosing section's
-label, and six named a real but wrong section of the right document. The verifier located the quote in each of these
-seven cases. \Cref{tab:errors} in \cref{app:results} lists the ten rejections with a
+rejection rate of 2.1\% (\cref{tab:taska}, last column), from 95.1\% for actor
+dimensions to 100\% for asset and activity dimensions. One cited label did not exist, a subsection heading inside
+the FinCEN guidance, and six named a wrong section of the right document; the
+verifier located the quote in all seven. \Cref{tab:errors} in \cref{app:results} lists the ten rejections with a
 diagnosis. Two
 quotes share no five-word sequence with the cited section. Three compress a
 definition, two drop the enumerated items of a statutory list, as in
 ``'blockchain' means any technology (i) where data is shared across a
 network'', and three reproduce most of a sentence and then rephrase its end.
-These quotes point at the right passage but are not verbatim, so we keep them in
-the output as unverified rather than repairing them. Every term type keeps at
+They point at the right passage but are not verbatim, so we keep them as
+unverified. Every term type keeps at
 least one verified citation, but five values were supported only by a rejected
 quote and are therefore unverified.
 
-Verification is a necessary check, not a sufficient one. A verbatim quote can
-still fail to support the dimension it is attached to, and our verifier does not
-read for relevance. Whether the 470 verified citations do support their term
-types is the question the expert annotation planned in \cref{sec:exp:setup} is
-designed to answer, and we have not run it yet.
+Verification checks existence, not relevance: whether the 470 verified
+citations support their term types is the question for the expert annotation
+planned in \cref{sec:exp:setup}, which we have not run. The run is one call of
+302 seconds with 85,729 output tokens and 235,298 cached input tokens, at most
+\$0.33 at list price.
 
 \subsection{RQ2: The Is-a Hierarchy}
 \label{sec:exp:rq2}
@@ -150,41 +142,31 @@ reaches depth 14, and a random descent resolves \BBits\ bits before ending at
 one of \BEffLeaves\ effective leaves. (3) In the asset category (\cref{fig:tree}, \cref{app:results}) the reference-asset dimension
 specialises the legal classification and carries the stablecoin class,
 redemption mechanism and tokenisation form beneath it, but second-choice
-parents carry nearly as much mass: the model gave
-\emph{legal classification} and \emph{stablecoin regulatory class} the same
-weight of 0.32 as parents of \emph{reference asset}, and \BMutual\ pairs of
-nodes were each proposed as the other's parent. The weights are coarse, with a
+parents carry nearly as much mass: \emph{legal classification} and
+\emph{stablecoin regulatory class} both received 0.32 as parents of
+\emph{reference asset}, and \BMutual\ node pairs were each proposed as the
+other's parent. The weights are coarse, with a
 median top weight of \BMedianTop, so we read them as rankings rather than
-calibrated probabilities.
+calibrated probabilities. The \BCalls\ calls took \BSeconds\ seconds and read
+\BCacheTokens\ million cached tokens, at most \$11.7 before the cache-read
+discount. \todo{Exact billing figures; baseline and frontier-model cost.}
 
 
-\begin{figure*}[t]
-  \centering
-  \input{figures/spectrum}
-  \caption{Sensitivity to the display threshold: the sub-DAG keeps only edges
-  with weight at or above the x value. (a) kept edges, roots and leaves; (b)
-  information gain per descent; (c) AUC and effective leaves as a fraction of
-  the 93 nodes. Hiding edges below 0.4 keeps 64 edges and leaves 30 roots.}
-  \label{fig:spectrum}
-\end{figure*}
-
-\textbf{Sensitivity to the threshold.} \Cref{fig:spectrum} sweeps a display
+\textbf{Sensitivity to the threshold.} \Cref{fig:spectrum} (\cref{app:results}) sweeps a display
 threshold over the consolidated DAG. Hiding edges below 0.2 halves the edge
 count and roughly halves the bits per descent; at 0.4 a third of the nodes are
 roots and a descent resolves half a bit; above 0.6 the graph is a forest of
-near-singletons. The full DAG carries the most discrimination; a thresholded
-one is easier to read, and the curves price each cut.
+near-singletons.
 
 \textbf{Faithfulness of edges.} The entries carry \BCites\ citations, of which
 \BVerified\ (\BVerifiedPct\%) verify, \BRelabelled\ after relabelling, and
 \BRejected\ are rejected, a higher rejection rate than in Task~A. Only
 \BEntriesCited\ of the \BWeighted\ entries cite anything, which the prompt
 allows for low-probability entries, and \BTopNoCite\ top entries cite nothing,
-which it does not. Rejected quotes are mostly short phrases cited from
-long sections, such as ``Wrapped tokens''. Verification again checks
-existence, not that the quote evidences the relation.
+which it does not. Rejected quotes are mostly short phrases from long sections, such as
+``Wrapped tokens''.
 \todo{Expert judgement of a sample of 100 edges on a 1--3 scale with agreement,
-following the protocol planned for \cref{sec:exp:rq4}.}
+following the protocol planned for \cref{sec:exp:rq5}.}
 
 \subsection{RQ3: The DAG as a Label Space}
 \label{sec:exp:rq3}
@@ -202,15 +184,6 @@ following the protocol planned for \cref{sec:exp:rq4}.}
   \input{tables/evolution}
 \end{table*}
 
-\begin{table}[t]
-  \centering
-  \caption{Objectives of each catalogue version from its is-a weights (prior)
-  and from the tags of the batch classified with it.}
-  \label{tab:objectives}
-  \scriptsize
-  \input{tables/objectives_iter}
-\end{table}
-
 \textbf{Tagging.} \Cref{tab:evolution} summarises both iterations. The pilot
 batch of \CItems\ items received \CTags\ tags, \CTagsPerItem\ per item, and the
 second batch of \TItems\ items, a tenth of the on-topic collection, received
@@ -220,72 +193,91 @@ the evidence spans were found verbatim in the item, and \CRejected\ and
 observations. (1) The content exercises the technical half of the DAG: in the
 second batch \TCovTech\ items carry a technology tag and \TCovAsset\ an asset
 tag, against \TCovActor\ for actors, \TCovActivity\ for activities and
-\TCovOblig\ for obligations. The legal nodes are dormant on the pilot batch and collapsed on a single
-value on the larger one; testing those branches needs regulatory content. (2) The dimensions discovered in
+\TCovOblig\ for obligations. The legal nodes are dormant or collapsed on one value; testing them needs
+regulatory content. (2) The dimensions discovered in
 iteration 1 are among the most used in iteration 2: ledger purpose was tagged
 on \TLedgerPurpose\ items with a value entropy of \TEntLedgerPurpose\ bits,
 smart-contract usage domain on \TUsageDomain, identity binding on \TIdentity\
 and the privacy-mechanism family on \TPrivacy\ with \TEntPrivacy\ bits, so
 they discriminate the content rather than absorbing it. (3) Tagging cost
-\$\TCostPerItem\ per item at \TMeanLat\ seconds per request; the whole
-on-topic collection of about \OnTopicK\ thousand documents would cost about
-\$\ProjCost\ and \ProjHours\ hours at the same concurrency.
+\$\TCostPerItem\ per item; the whole on-topic collection of \OnTopicK\
+thousand documents would cost about \$\ProjCost\ and \ProjHours\ hours.
 
-\textbf{Measurement.} \Cref{tab:objectives} compares, for each version, the
+\textbf{Measurement.} \Cref{tab:objectives} (\cref{app:results}) compares, for each version, the
 objectives from the model's is-a weights with those measured from the tags. A
 content-driven descent resolves about seven bits against under five from the
 prior and ends at more effective leaves: the content goes deeper and spreads
 wider than the prior weights suggested. Collapsed nodes grow with the batch,
-\TCollapsed\ in iteration 2, led by the DLT data structure with 96\% of 2,377
+\TCollapsed\ in iteration 2, led by the DLT data structure, 96\% of 2,377
 items on ``blockchain''; they are also the largest residual pools, which is
 where discovery is pointed.
-
-\begin{table}[t]
-  \centering
-  \caption{Term types added by the two iterations, with the node they were
-  discovered under, the number of shown residual items supporting them and the
-  increase in branching gain at that node in bits. Values added to existing
-  nodes (\EAddedValues\ and \TAddedValues) are not listed.}
-  \label{tab:accepted}
-  \scriptsize
-  \input{tables/new_types}
-\end{table}
 
 \textbf{Discovery and evolution.} Iteration 1 found \MTargets\ targets and
 accepted \MAccepted\ of \MCandidates\ candidates; iteration 2 found \TTargets\
 targets and accepted \TAccepted\ of \TCandidates, producing version 2 with
 \VTwoNodes\ term types, \VTwoEdges\ edges and \VTwoValues\ values
-(\cref{tab:accepted}). The additions are dimensions a legal corpus would not
-contain, such as the cryptographic family behind a privacy guarantee or the
-custody model of a key, and several iteration-2 values refine iteration-1
-nodes. Two failures are visible. Two application-domain dimensions proposed
-under two smart-contract nodes in iteration 1 ask the same question and were
-not merged by the consolidation call. And with raw support counts, capped by
-the forty items shown, only 10 of 76 candidates cleared the gain test against
-residual pools of thousands in iteration 2; extrapolating support to the
-residual is the rule we report, and the rerun accepted 21 of 81.
+(\cref{tab:accepted}, \cref{app:results}). The additions are dimensions a legal corpus would not
+contain, such as the cryptographic family behind a privacy guarantee, and
+several iteration-2 values refine iteration-1 nodes. Two failures are visible:
+two application-domain dimensions proposed under different smart-contract
+nodes in iteration 1 ask the same question and were not merged by
+consolidation; and with raw support counts, capped by the forty items shown,
+only 10 of 76 candidates cleared the gain test against residual pools of
+thousands in iteration 2, which is why support is extrapolated to the residual
+(21 of 81 accepted).
 
 The tags have no gold labels yet, so verified evidence is the only quality
 signal we report; an evidence span can exist without the tag being right.
 \todo{Expert review of a slice of the tags for precision and recall, and a
 regulatory content batch for the legal branches.}
 
-\subsection{Planned Evaluations (RQ4--RQ6)}
+\subsection{RQ4: Retrieval over the DAG}
 \label{sec:exp:rq4}
+
+\begin{table}[t]
+  \centering
+  \caption{Query latency on the index of \RItems\ items (version 2), per
+  query on one core, best of \RRepeat\ runs for the bitset engine and a single
+  run for the flat scan over the tag table. Hits is the mean result size.
+  Every bitset result was identical to the scan's.}
+  \label{tab:retrieval}
+  \scriptsize
+  \input{tables/retrieval}
+\end{table}
+
+\textbf{Index.} The on-topic, tagged items of both batches, \RItems\ with
+\RTags\ tags, are placed on version 2, where \RNodesTagged\ of \RNodes\ nodes
+and \RPairs\ node--value pairs hold items; the index builds in \RBuildSec\
+seconds and occupies \RIndexMB~MB. \Cref{tab:retrieval} times eight workloads,
+\RQueries\ queries drawn from the nodes and values that hold items, against a
+flat scan that tests one predicate per item with precomputed ancestor sets.
+(1) Every workload runs in \RLatMin\ to \RLatMax\ microseconds against
+\RFlatMinMs\ to \RFlatMaxMs\ milliseconds for the scan, \RSpeedMin\ to
+\RSpeedMax\ times faster, with \RMismatches\ mismatches in \RQueries\ results.
+(2) Navigation by facet gain works. For \RTargets\ random target items we start
+from the whole collection and take the option of the offered facet that
+contains the target until at most $k{=}\RK$ items remain or 15 steps are
+spent; the ideal is \RIdealBits\ bits. The highest-narrowing facet resolves
+\RGainBits\ bits in \RGainSteps\ steps and reaches $k$ for \RGainReached\% of
+the targets, against \RRandBits\ bits in \RRandSteps\ steps and
+\RRandReached\% for a random facet; the mean exceeds the ideal because the last
+step often narrows below $k$, while the targets that miss $k$ leave the mean
+final set at \RGainFinal\ items. (3) The failure is
+inherited from the edge weights: through light is-a edges the subtree of the
+asset root reaches \RTopClosurePct\% of the items, so a bare subtree query on
+a high node returns most of the collection. Restricting the subtree to path strength $\ge 0.3$ cuts the mean
+hit count from 1,474 to 579 at twice the latency, and the candidate edges
+added at weight one will tighten once the is-a query re-estimates them.
+Ranking uses the tagger's confidence; there are no relevance judgements yet. \todo{Relevance judgements
+on a query sample; compare with BM25 over the item text.}
+
+\paragraph{Planned evaluations (RQ5--RQ7).}
 \label{sec:exp:rq5}
 \label{sec:exp:rq6}
-\todo{RQ4: expert taxonomies and LLM baselines (zero-shot, chunked RAG, RAPTOR,
-TnT-LLM) on the same corpus; coverage, new dimensions accepted by experts,
-verification rate. RQ5: ablation rows for grounding strategy, model and prompt
-variants beside the manifest result of \cref{sec:exp:rq1}. RQ6: macro-F$_1$ of
-classifying Web-sourced token descriptions with and without the ontology, with
-one failure case.}
+\label{sec:exp:rq7}
+\todo{RQ5: expert taxonomies and LLM baselines (zero-shot, chunked RAG, RAPTOR,
+TnT-LLM) on the same corpus. RQ6: ablation rows for grounding strategy, model
+and prompt beside the manifest result of \cref{sec:exp:rq1}. RQ7: macro-F$_1$
+with and without the ontology, with one failure case.}
 
-\subsection{Cost}
-\label{sec:exp:cost}
-Task~A is one call of 302 seconds with 85,729 output tokens, 2,542 uncached
-input tokens and 235,298 tokens read from cache: at most \$0.33 at list price
-with cached tokens charged in full. Task~B is \BCalls\ calls in \BSeconds\
-seconds with \BOutTokens\ output tokens and \BCacheTokens\ million cached
-tokens read, at most \$11.7 before the cache-read discount. \todo{Exact billing figures; baseline and frontier-model cost.}
 
