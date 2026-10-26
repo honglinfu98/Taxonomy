@@ -175,7 +175,7 @@ ledger_storage_model,none,0.14,technology
 ledger_storage_model,software_architecture,0.12,technology
 ledger_storage_model,ledger_access_permission,0.1,technology
 ledger_storage_model,native_asset_type,0.08,technology
-interoperability_type,script_language_expressiveness,0.4615,technology
+interoperability_type,script_language_expressiveness,0.4616,technology
 interoperability_type,none,0.2198,technology
 interoperability_type,network_topology,0.1099,technology
 interoperability_type,governance_model,0.0879,technology
@@ -307,7 +307,7 @@ offer_and_issuance_method,crypto_asset_service_type,0.1,activity
 offer_and_issuance_method,staking_arrangement,0.06,activity
 offer_and_issuance_method,none,0.05,activity
 offer_and_issuance_method,transfer_of_crypto_assets,0.04,activity
-minting_mechanism,staking_arrangement,0.2857,activity
+minting_mechanism,staking_arrangement,0.2858,activity
 minting_mechanism,offer_and_issuance_method,0.2857,activity
 minting_mechanism,none,0.2381,activity
 minting_mechanism,crypto_asset_service_type,0.0952,activity
@@ -384,7 +384,7 @@ excluded_instrument_category,virtual_asset_property_status,0.12,obligation_or_ri
 excluded_instrument_category,investment_contract_howey,0.12,obligation_or_risk
 excluded_instrument_category,securities_status_digital_asset,0.1,obligation_or_risk
 excluded_instrument_category,tax_reporting_status,0.06,obligation_or_risk
-central_bank_digital_currency,crypto_asset_scope_criteria,0.5612,asset
+central_bank_digital_currency,crypto_asset_scope_criteria,0.5613,asset
 central_bank_digital_currency,none,0.2551,asset
 central_bank_digital_currency,digital_asset_recording,0.0816,asset
 central_bank_digital_currency,legal_classification_status,0.0612,asset
@@ -462,7 +462,7 @@ regulatory_perimeter_fi_status,none,0.12,actor
 regulatory_perimeter_fi_status,actor_role_in_service,0.1,actor
 regulatory_perimeter_fi_status,fund_or_pooled_vehicle,0.1,actor
 regulatory_perimeter_fi_status,offshore_vasp_status,0.06,actor
-tax_reporting_status,regulated_status_cvc_mst_exemption,0.3614,obligation_or_risk
+tax_reporting_status,regulated_status_cvc_mst_exemption,0.3615,obligation_or_risk
 tax_reporting_status,aml_obligations_applicability,0.3373,obligation_or_risk
 tax_reporting_status,none,0.3012,obligation_or_risk
 regulatory_regime_scope_jurisdictional,service_provider_status,0.5102,actor
@@ -487,7 +487,7 @@ decentralised_or_centralised_offer_model,regulated_transmission_of_value,0.1,act
 decentralised_or_centralised_offer_model,minting_mechanism,0.06,activity
 decentralised_or_centralised_offer_model,none,0.05,activity
 decentralised_or_centralised_offer_model,transfer_of_crypto_assets,0.04,activity
-service_location_nexus,crypto_asset_service_type,0.4545,activity
+service_location_nexus,crypto_asset_service_type,0.4546,activity
 service_location_nexus,none,0.1818,activity
 service_location_nexus,payment_or_transfer_service,0.1091,activity
 service_location_nexus,regulated_transmission_of_value,0.1091,activity

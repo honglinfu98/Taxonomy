@@ -1,0 +1,333 @@
+<title>Term Type DAG Explorer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a control bar, a threshold spectrum, then one left-to-right layered graph per
+   category with a detail panel that follows the selected node. */
+:root {
+  --bg: #f6f7f4; --panel: #ffffff; --fg: #1d2420; --muted: #66706a; --line: #d9ded8;
+  --accent: #0f6e68; --accent-soft: #d6ebe8; --ghost: #a9b1ab;
+  --cat-asset: #4a5bd1; --cat-technology: #0f8a8a; --cat-actor: #c07a12; --cat-activity: #b8386b; --cat-obligation_or_risk: #6d8f1f;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15191a; --panel: #1d2224; --fg: #e6eae6; --muted: #98a39c; --line: #313a3b;
+  --accent: #5fc2b9; --accent-soft: #1f3a38; --ghost: #5b6660;
+  --cat-asset: #8e9af0; --cat-technology: #4fc4c4; --cat-actor: #e2a44a; --cat-activity: #e37aa6; --cat-obligation_or_risk: #a4c95a;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #15191a; --panel: #1d2224; --fg: #e6eae6; --muted: #98a39c; --line: #313a3b;
+  --accent: #5fc2b9; --accent-soft: #1f3a38; --ghost: #5b6660;
+  --cat-asset: #8e9af0; --cat-technology: #4fc4c4; --cat-actor: #e2a44a; --cat-activity: #e37aa6; --cat-obligation_or_risk: #a4c95a;
+  color-scheme: dark; }
+
+body { background: var(--bg); color: var(--fg); font: 14px/1.45 var(--sans); margin: 0;
+  padding-block: 20px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; text-wrap: balance; }
+h2 { font-size: 15px; font-weight: 600; margin: 0; }
+.sub { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1400px; margin: 0 auto; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: end; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.ctl { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ctl label { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.ctl .row { display: flex; align-items: center; gap: 10px; }
+input[type=range] { width: 260px; max-width: 70vw; accent-color: var(--accent); }
+.val { font-family: var(--mono); font-size: 18px; min-width: 3.2ch; }
+.check { display: flex; align-items: center; gap: 6px; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-left: auto; }
+.stat { display: flex; flex-direction: column; }
+.stat b { font-family: var(--mono); font-size: 18px; font-weight: 500; }
+.stat span { font-size: 11px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+.delta { font-size: 12px; color: var(--muted); }
+
+.spectrum { margin-top: 14px; padding: 12px 16px 6px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.spectrum svg { width: 100%; height: 150px; display: block; cursor: crosshair; touch-action: none; }
+.legend { display: flex; gap: 18px; font-size: 12px; color: var(--muted); margin-top: 4px; flex-wrap: wrap; }
+.legend i { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 6px; border-radius: 2px; }
+
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; margin-top: 16px; align-items: start; }
+@media (max-width: 900px) { .main { grid-template-columns: 1fr; } .detail { position: static; } }
+.graphs { min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.cat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px 8px; min-width: 0; }
+.cat header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 6px; }
+.cat header .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.cat header .meta { color: var(--muted); font-size: 12px; }
+.scroller { overflow-x: auto; }
+.g svg { display: block; }
+.node { cursor: pointer; }
+.node rect { fill: var(--panel); stroke-width: 1.2; }
+.node.root rect { stroke-width: 2.2; }
+.node.sel rect { stroke: var(--fg); stroke-width: 2.6; }
+.node text { font: 12px var(--sans); fill: var(--fg); }
+.node .pn { font: 10px var(--mono); fill: var(--muted); }
+.edge { fill: none; }
+.edge.ghost { stroke: var(--ghost); stroke-dasharray: 4 4; opacity: .8; }
+.edge.same { stroke: var(--muted); stroke-dasharray: 2 4; }
+.edgelabel { font: 10px var(--mono); fill: var(--muted); }
+.empty { color: var(--muted); font-size: 13px; padding: 10px 0; }
+
+.detail { position: sticky; top: env(safe-area-inset-top, 0px); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; min-width: 0; max-height: calc(100vh - 24px); overflow: auto; }
+.detail h2 { margin-bottom: 2px; }
+.detail .id { color: var(--muted); font-size: 12px; }
+.detail .q { margin: 10px 0 6px; }
+.detail .vals { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+.dist { display: flex; flex-direction: column; gap: 8px; }
+.d { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; }
+.d.kept { border-color: var(--accent); background: var(--accent-soft); }
+.d .n { font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+.d .p { font-family: var(--mono); }
+.d .bar { grid-column: 1 / -1; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.d .bar i { display: block; height: 100%; background: var(--accent); }
+.d .why { grid-column: 1 / -1; color: var(--muted); font-size: 12px; }
+.d .st { grid-column: 1 / -1; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+.d.kept .st { color: var(--accent); }
+.hint { color: var(--muted); font-size: 13px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) { .edge, .node rect { transition: opacity .15s; } }
+</style>
+
+<div class="wrap">
+  <h1>Term Type DAG Explorer</h1>
+  <p class="sub">Is-a ontology over the <span id="n-nodes" class="mono"></span> term types from Task A, as judged by <span id="run-model"></span> on <span id="run-date"></span>. Each node's distribution over candidate parents plus <em>none</em> sums to 1. Move the threshold to see which edges survive and how the information gain, the reach-a-leaf AUC and the leaf count respond; click a node to read its full distribution and rationales.</p>
+
+  <div class="controls">
+    <div class="ctl">
+      <label for="thr">Threshold P(X is-a Y) ≥</label>
+      <div class="row"><input type="range" id="thr" min="0" max="1" step="0.01" value="0.4"><span class="val" id="thr-val">0.40</span></div>
+    </div>
+    <div class="ctl">
+      <label for="ghost">Below threshold</label>
+      <div class="row check"><input type="checkbox" id="ghost" checked><label for="ghost" style="text-transform:none;letter-spacing:0;font-size:13px;color:var(--fg)">show edges within 0.1 below as dashed</label></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="s-edges">–</b><span>is-a edges</span></div>
+      <div class="stat"><b id="s-roots">–</b><span>roots</span></div>
+      <div class="stat"><b id="s-multi">–</b><span>multi-parent</span></div>
+      <div class="stat"><b id="s-leaves">–</b><span>leaves</span></div>
+      <div class="stat"><b id="s-depth">–</b><span>max depth</span></div>
+      <div class="stat"><b id="s-bits">–</b><span>bits / descent</span></div>
+      <div class="stat"><b id="s-auc">–</b><span>AUC</span></div>
+      <div class="stat"><b id="s-eff">–</b><span>effective leaves</span></div>
+    </div>
+  </div>
+  <div class="delta" id="delta" style="margin:8px 2px 0"></div>
+
+  <div class="spectrum">
+    <svg id="spec" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Edge, root and leaf counts across thresholds"></svg>
+    <div class="legend"><span><i style="background:var(--accent)"></i>is-a edges kept</span><span><i style="background:var(--muted)"></i>roots</span><span><i style="background:var(--cat-activity)"></i>leaves</span><span>Click or drag on either chart to set the threshold.</span></div>
+  </div>
+  <div class="spectrum">
+    <svg id="spec2" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Information gain, AUC and effective leaves across thresholds"></svg>
+    <div class="legend"><span><i style="background:var(--cat-asset)"></i>bits per descent (information gain)</span><span><i style="background:var(--cat-technology)"></i>AUC of reach-a-leaf curve</span><span><i style="background:var(--cat-obligation_or_risk)"></i>effective leaves ÷ nodes</span><span>All three on a 0–1 axis; bits are divided by the maximum over the range.</span></div>
+  </div>
+
+  <div class="main">
+    <div class="graphs" id="graphs"></div>
+    <aside class="detail" id="detail"><p class="hint">Click a node to see how its is-a distribution was split between candidate parents, which entry was kept at the current threshold, and why the model ranked them so.</p></aside>
+  </div>
+</div>
+
+<script>
+const DATA = __DATA__;
+const CATS = ["asset", "technology", "actor", "activity", "obligation_or_risk"];
+const CAT_LABEL = { asset: "Asset", technology: "Technology", actor: "Actor", activity: "Activity", obligation_or_risk: "Obligation or risk" };
+const byId = Object.fromEntries(DATA.nodes.map(n => [n.id, n]));
+const outEdges = {};                       // child -> [{p, w, r, cv, cn}]
+DATA.nodes.forEach(n => outEdges[n.id] = []);
+DATA.edges.forEach(e => outEdges[e.c].push(e));
+const W = {};                              // (child|parent) -> weight
+DATA.edges.forEach(e => W[e.c + "|" + e.p] = e.w);
+
+// Same algorithm as taxonomy/is_a.py consolidate(): tie order mirrors Python's reverse-sorted tuples.
+function consolidate(thr) {
+  const pNone = Object.fromEntries(DATA.nodes.map(n => [n.id, n.pn]));
+  const parents = Object.fromEntries(DATA.nodes.map(n => [n.id, []]));
+  const reaches = (src, dst) => { const st = [src], seen = new Set(); while (st.length) { const n = st.pop(); if (n === dst) return true; if (!seen.has(n)) { seen.add(n); parents[n].forEach(([q]) => st.push(q)); } } return false; };
+  const sorted = [...DATA.edges].sort((a, b) => b.w - a.w || (b.c > a.c ? 1 : b.c < a.c ? -1 : 0) || (b.p > a.p ? 1 : b.p < a.p ? -1 : 0));
+  const status = {};                       // child|parent -> kept | below threshold | below P(none) | would cycle
+  for (const e of sorted) {
+    const k = e.c + "|" + e.p;
+    if (e.w < thr) { status[k] = "below threshold"; continue; }
+    if (e.w <= pNone[e.c]) { status[k] = "below P(none)"; continue; }
+    if (reaches(e.p, e.c)) { status[k] = "would cycle"; continue; }
+    parents[e.c].push([e.p, e.w]); status[k] = "kept";
+  }
+  return { parents, status, pNone };
+}
+
+// Same as taxonomy/dag_metrics.py: branching entropy per node, random-descent AUC, effective leaves.
+function metrics(parents, ids) {
+  const set = new Set(ids || Object.keys(parents));
+  const kids = {}; set.forEach(i => kids[i] = []);
+  set.forEach(c => parents[c].forEach(([q, p]) => { if (set.has(q)) kids[q].push([c, p]); }));
+  const roots = [...set].filter(i => !parents[i].some(([q]) => set.has(q)));
+  const leaves = [...set].filter(i => !kids[i].length);
+  const H = ps => -ps.reduce((s, p) => p > 0 ? s + p * Math.log2(p) : s, 0);
+  const q = {}, ig = {};
+  set.forEach(y => { const tot = kids[y].reduce((s, [, p]) => s + p, 0); q[y] = tot > 0 ? kids[y].map(([c, p]) => [c, p / tot]) : []; ig[y] = H(q[y].map(([, w]) => w)); });
+  let mass = Object.fromEntries(roots.map(r => [r, 1 / roots.length])), reach = {}, stopped = [], bits = 0, depthSum = 0, d = 0;
+  while (Object.keys(mass).length) {
+    const nxt = {}; let st = 0;
+    for (const [y, m] of Object.entries(mass)) {
+      if (!q[y].length) { reach[y] = (reach[y] || 0) + m; st += m; depthSum += m * d; }
+      else { bits += m * ig[y]; q[y].forEach(([c, w]) => nxt[c] = (nxt[c] || 0) + m * w); }
+    }
+    stopped.push(st); mass = nxt; d++; if (d > set.size) break;
+  }
+  const D = stopped.length - 1, F = []; let acc = 0; stopped.forEach(x => { acc += x; F.push(acc); });
+  const auc = D === 0 ? 1 : F.slice(0, -1).reduce((s, f, i) => s + (f + F[i + 1]) / 2, 0) / D;
+  const r = Object.values(reach).sort((a, b) => b - a); const eff = Math.pow(2, H(r));
+  let a90 = 0, n90 = 0; for (const v of r) { a90 += v; n90++; if (a90 >= 0.9 - 1e-12) break; }
+  const edges = [...set].reduce((s, c) => s + parents[c].filter(([q]) => set.has(q)).length, 0);
+  return { nodes: set.size, edges, roots: roots.length, leaves: leaves.length, depth: D, totalBits: Object.values(ig).reduce((s, v) => s + v, 0),
+           bits, auc, expectedDepth: depthSum, eff, n90, ig, multi: [...set].filter(c => parents[c].length > 1).length };
+}
+
+function depthOf(parents) {
+  const d = {};
+  const f = n => { if (d[n] !== undefined) return d[n]; d[n] = parents[n].length ? 1 + Math.max(...parents[n].map(([q]) => f(q))) : 0; return d[n]; };
+  Object.keys(parents).forEach(f);
+  return d;
+}
+
+function stats(res) { return metrics(res.parents); }
+
+// ---- spectrum -------------------------------------------------------------
+const SERIES = [];
+for (let i = 0; i <= 100; i++) { const t = i / 100; SERIES.push({ t, ...stats(consolidate(t)) }); }
+const MAX_BITS = Math.max(...SERIES.map(s => s.bits));
+function drawSpectrum(thr) {
+  const svg = document.getElementById("spec");
+  const Wd = 1000, H = 150, padL = 36, padR = 10, padT = 10, padB = 22;
+  const maxY = Math.max(...SERIES.map(s => Math.max(s.edges, s.roots, s.leaves)));
+  const x = t => padL + t * (Wd - padL - padR), y = v => padT + (1 - v / maxY) * (H - padT - padB);
+  const path = key => SERIES.map((s, i) => (i ? "L" : "M") + x(s.t).toFixed(1) + " " + y(s[key]).toFixed(1)).join(" ");
+  const ticks = [0, 0.2, 0.4, 0.6, 0.8, 1].map(t => `<text x="${x(t)}" y="${H - 6}" class="edgelabel" text-anchor="middle">${t.toFixed(1)}</text>`).join("");
+  const yt = [0, Math.round(maxY / 2), maxY].map(v => `<text x="${padL - 6}" y="${y(v) + 3}" class="edgelabel" text-anchor="end">${v}</text><line x1="${padL}" x2="${Wd - padR}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/>`).join("");
+  const cur = SERIES[Math.round(thr * 100)];
+  svg.innerHTML = `${yt}${ticks}
+    <path d="${path("roots")}" stroke="var(--muted)" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
+    <path d="${path("leaves")}" stroke="var(--cat-activity)" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
+    <path d="${path("edges")}" stroke="var(--accent)" stroke-width="2.5" fill="none" vector-effect="non-scaling-stroke"/>
+    <line x1="${x(thr)}" x2="${x(thr)}" y1="${padT}" y2="${H - padB}" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>
+    <text x="${Math.min(x(thr) + 6, Wd - 160)}" y="${padT + 12}" class="edgelabel" style="fill:var(--fg)">${thr.toFixed(2)}: ${cur.edges} edges, ${cur.roots} roots, ${cur.leaves} leaves</text>`;
+  drawSpectrum2(thr);
+}
+function drawSpectrum2(thr) {
+  const svg = document.getElementById("spec2");
+  const Wd = 1000, H = 150, padL = 36, padR = 10, padT = 10, padB = 22;
+  const x = t => padL + t * (Wd - padL - padR), y = v => padT + (1 - v) * (H - padT - padB);
+  const norm = { bits: s => MAX_BITS ? s.bits / MAX_BITS : 0, auc: s => s.auc, eff: s => s.eff / s.nodes };
+  const path = f => SERIES.map((s, i) => (i ? "L" : "M") + x(s.t).toFixed(1) + " " + y(f(s)).toFixed(1)).join(" ");
+  const ticks = [0, 0.2, 0.4, 0.6, 0.8, 1].map(t => `<text x="${x(t)}" y="${H - 6}" class="edgelabel" text-anchor="middle">${t.toFixed(1)}</text>`).join("");
+  const yt = [0, 0.5, 1].map(v => `<text x="${padL - 6}" y="${y(v) + 3}" class="edgelabel" text-anchor="end">${v}</text><line x1="${padL}" x2="${Wd - padR}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/>`).join("");
+  const cur = SERIES[Math.round(thr * 100)];
+  svg.innerHTML = `${yt}${ticks}
+    <path d="${path(norm.bits)}" stroke="var(--cat-asset)" stroke-width="2.5" fill="none" vector-effect="non-scaling-stroke"/>
+    <path d="${path(norm.auc)}" stroke="var(--cat-technology)" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
+    <path d="${path(norm.eff)}" stroke="var(--cat-obligation_or_risk)" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
+    <line x1="${x(thr)}" x2="${x(thr)}" y1="${padT}" y2="${H - padB}" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>
+    <text x="${Math.min(x(thr) + 6, Wd - 300)}" y="${padT + 12}" class="edgelabel" style="fill:var(--fg)">${thr.toFixed(2)}: ${cur.bits.toFixed(2)} bits/descent, AUC ${cur.auc.toFixed(3)}, ${cur.eff.toFixed(1)} effective leaves, E[depth] ${cur.expectedDepth.toFixed(2)}</text>`;
+}
+for (const id of ["spec", "spec2"]) (function wireSpectrum() {
+  const svg = document.getElementById(id);
+  const set = ev => { const r = svg.getBoundingClientRect(); const px = (ev.clientX - r.left) / r.width * 1000; const t = Math.min(1, Math.max(0, (px - 36) / (1000 - 46))); thrEl.value = (Math.round(t * 100) / 100).toFixed(2); update(); };
+  let down = false;
+  svg.addEventListener("pointerdown", ev => { down = true; svg.setPointerCapture(ev.pointerId); set(ev); });
+  svg.addEventListener("pointermove", ev => { if (down) set(ev); });
+  svg.addEventListener("pointerup", () => down = false);
+  svg.addEventListener("pointercancel", () => down = false);
+})();
+
+// ---- graphs ---------------------------------------------------------------
+const COLW = 270, ROWH = 34, NW = 232, NH = 26, GX = 24;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const trunc = (s, n) => s.length > n ? s.slice(0, n - 1) + "…" : s;
+
+function drawCategory(cat, res, thr, showGhost) {
+  const M = metrics(res.parents, DATA.nodes.filter(n => n.cat === cat).map(n => n.id));
+  const ids = DATA.nodes.filter(n => n.cat === cat).map(n => n.id);
+  const { parents, pNone } = res;
+  const depth = depthOf(parents);
+  const kids = Object.fromEntries(ids.map(i => [i, []]));
+  ids.forEach(c => { if (parents[c].length) kids[parents[c][0][0]].push(c); });
+  const roots = ids.filter(c => !parents[c].length).sort((a, b) => pNone[b] - pNone[a] || (a < b ? -1 : 1));
+  const order = [];
+  const walk = n => { order.push(n); kids[n].sort((a, b) => parents[b][0][1] - parents[a][0][1] || (a < b ? -1 : 1)).forEach(walk); };
+  roots.forEach(walk);
+  const pos = {}; order.forEach((n, i) => pos[n] = { x: GX + depth[n] * COLW, y: 8 + i * ROWH });
+  const maxDepth = Math.max(0, ...ids.map(i => depth[i]));
+  const width = GX * 2 + (maxDepth + 1) * COLW - (COLW - NW), height = 16 + order.length * ROWH;
+  const color = `var(--cat-${cat})`;
+  const parts = [];
+  const curve = (a, b) => { const x1 = pos[a].x + NW, y1 = pos[a].y + NH / 2, x2 = pos[b].x, y2 = pos[b].y + NH / 2; const mx = (x1 + x2) / 2; return `M${x1} ${y1} C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`; };
+  // ghost edges: just below threshold, and would pass the P(none) floor
+  if (showGhost) for (const e of DATA.edges) if (byId[e.c].cat === cat && e.w < thr && e.w >= thr - 0.1 && e.w > pNone[e.c] && depth[e.p] < depth[e.c] + 1)
+    parts.push(`<path class="edge ghost" d="${curve(e.p, e.c)}" stroke-width="1.2"><title>${esc(byId[e.c].name)} is-a ${esc(byId[e.p].name)}: p=${e.w.toFixed(2)} (below threshold)</title></path>`);
+  for (const c of ids) parents[c].forEach(([q, p], i) => parts.push(`<path class="edge" d="${curve(q, c)}" stroke="${color}" stroke-width="${(1 + p * 3).toFixed(1)}" opacity="${i ? .55 : .9}"><title>${esc(byId[c].name)} is-a ${esc(byId[q].name)}: p=${p.toFixed(2)}${i ? " (extra parent)" : ""}</title></path>`));
+  for (const n of order) {
+    const { x, y } = pos[n]; const isRoot = !parents[n].length;
+    const label = (isRoot ? `none ${pNone[n].toFixed(2)}` : `p ${parents[n][0][1].toFixed(2)}`) + (parents[n].length > 1 ? ` +${parents[n].length - 1}` : "") + (M.ig[n] > 0 ? ` · ${M.ig[n].toFixed(2)}b` : "");
+    parts.push(`<g class="node${isRoot ? " root" : ""}${n === selected ? " sel" : ""}" data-id="${n}" tabindex="0" role="button" aria-label="${esc(byId[n].name)}">
+      <rect x="${x}" y="${y}" width="${NW}" height="${NH}" rx="4" stroke="${color}"/>
+      <text x="${x + 8}" y="${y + 17}">${esc(trunc(byId[n].name, 27))}</text>
+      <text class="pn" x="${x + NW - 6}" y="${y + 17}" text-anchor="end">${esc(label)}</text>
+      <title>${esc(byId[n].name)}\n${esc(byId[n].q)}</title></g>`);
+  }
+  return `<section class="cat"><header><h2><span class="dot" style="background:${color}"></span>${CAT_LABEL[cat]}</h2>
+    <span class="meta mono">${ids.length} term types · ${M.edges} edges · ${M.roots} roots · ${M.leaves} leaves · depth ${M.depth} · ${M.bits.toFixed(2)} bits/descent · AUC ${M.auc.toFixed(3)} · ${M.eff.toFixed(1)} effective leaves</span></header>
+    <div class="scroller"><div class="g"><svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">${parts.join("")}</svg></div></div></section>`;
+}
+
+// ---- detail ---------------------------------------------------------------
+function drawDetail(res) {
+  const el = document.getElementById("detail");
+  if (!selected) return;
+  const n = byId[selected];
+  const dist = [...outEdges[selected]].map(e => ({ ...e, st: res.status[e.c + "|" + e.p] })).sort((a, b) => b.w - a.w);
+  const noneSt = res.parents[selected].length ? "" : "kept";
+  const row = (name, w, st, why, cites) => `<div class="d${st === "kept" ? " kept" : ""}"><div class="n">${name}</div><div class="p">${w.toFixed(2)}</div>
+    <div class="bar"><i style="width:${(w * 100).toFixed(1)}%"></i></div>${why ? `<div class="why">${esc(why)}${cites}</div>` : ""}<div class="st">${esc(st)}</div></div>`;
+  const items = dist.map(e => row(`${esc(byId[e.p].name)} <span class="id mono">${esc(e.p)}</span>`, e.w, e.st, e.r, e.cn ? ` <span class="mono">· ${e.cv}/${e.cn} citations verified</span>` : ""));
+  const noneIdx = dist.findIndex(e => e.w < n.pn);
+  const noneRow = row("<em>none</em> (top-level in its category)", n.pn, noneSt || "not kept", "", "");
+  if (noneIdx < 0) items.push(noneRow); else items.splice(noneIdx, 0, noneRow);
+  el.innerHTML = `<h2>${esc(n.name)}</h2><div class="id mono">${esc(n.id)} · ${CAT_LABEL[n.cat]}</div>
+    <p class="q">${esc(n.q)}</p><div class="vals">Values: ${esc(n.vals.join("; "))}</div>
+    <div class="dist">${items.join("")}</div>
+    <p class="hint" style="margin-top:12px">Entries sum to 1. “Kept” means the edge is in the DAG at the current threshold; “would cycle” means a higher-probability chain already makes this parent a descendant. A mutual pair resolves to the stronger direction.</p>`;
+}
+
+// ---- update ---------------------------------------------------------------
+const thrEl = document.getElementById("thr"), ghostEl = document.getElementById("ghost");
+let selected = null;
+const BASE = stats(consolidate(0.4));
+function update() {
+  const thr = +thrEl.value;
+  document.getElementById("thr-val").textContent = thr.toFixed(2);
+  const res = consolidate(thr), s = stats(res);
+  for (const k of ["edges", "roots", "multi", "leaves", "depth"]) document.getElementById("s-" + k).textContent = s[k];
+  document.getElementById("s-bits").textContent = s.bits.toFixed(2);
+  document.getElementById("s-auc").textContent = s.auc.toFixed(3);
+  document.getElementById("s-eff").textContent = s.eff.toFixed(1);
+  const d = s.edges - BASE.edges, r = s.roots - BASE.roots, b = s.bits - BASE.bits, a = s.auc - BASE.auc;
+  const sg = v => (v >= 0 ? "+" : "") + v;
+  document.getElementById("delta").textContent = `Compared with the published DAG (threshold 0.40): ${sg(d)} edges, ${sg(r)} roots, ${sg(b.toFixed(2))} bits/descent, ${sg(a.toFixed(3))} AUC.`;
+  document.getElementById("graphs").innerHTML = CATS.map(c => drawCategory(c, res, thr, ghostEl.checked)).join("");
+  drawSpectrum(thr);
+  drawDetail(res);
+  try { localStorage.setItem("isa.thr", thrEl.value); } catch (e) {}
+}
+document.getElementById("graphs").addEventListener("click", ev => { const g = ev.target.closest(".node"); if (g) { selected = g.dataset.id; update(); } });
+document.getElementById("graphs").addEventListener("keydown", ev => { const g = ev.target.closest(".node"); if (g && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); selected = g.dataset.id; update(); } });
+thrEl.addEventListener("input", update);
+ghostEl.addEventListener("change", update);
+document.getElementById("n-nodes").textContent = DATA.nodes.length;
+document.getElementById("run-model").textContent = DATA.run.model || "the model";
+document.getElementById("run-date").textContent = (DATA.run.timestamp || "").slice(0, 10);
+try { const t = localStorage.getItem("isa.thr"); if (t !== null && !isNaN(+t)) thrEl.value = t; } catch (e) {}
+update();
+</script>

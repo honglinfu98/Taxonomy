@@ -38,6 +38,8 @@ year=…>` blocks, each split into `<section label=…>` blocks. ~98K words, abo
 | `pdf_text.py` | `pdftotext` wrapper, range selection, footer / line-number noise removal. |
 | `build_corpus.py` | Entry point. Extracts everything and writes the corpus. |
 | `prompts.py` | System instructions (stable, before the cached corpus) and per-task user prompts. `TASKS["A"]` is term type generation. |
+| `dashboard.py` + `dashboard_template.html` | `python -m taxonomy.dashboard` embeds `output/is_a.json` into `output/is_a_dashboard.html`: an interactive DAG viewer with a threshold slider that reruns the consolidation in the browser. Rebuild after any Task B run. |
+| `dag_metrics.py` | Information gain, reach-a-leaf AUC and effective-leaf metrics on the DAG, overall / per category / across thresholds. |
 | `is_a.py` | Task B runner: `python -m taxonomy.is_a` asks, per term type, for a probability distribution over is-a parents in its category; verifies citations; writes `output/is_a*.{json,csv,md}`. |
 | `term_types.py` | Task A runner: `python -m taxonomy.term_types` streams the answer, parses the JSON, verifies every `[doc, section, quote]` citation against the corpus, writes `output/term_types*.json`. |
 | `llm_context.py` | `client()` returns an `anthropic.Anthropic` using the key from `.env`; `build_request(instructions, user_prompt)` returns kwargs for `messages.create`, placing the corpus in the system prompt behind a 1-hour prompt-cache breakpoint (default model `claude-haiku-5-5`). |
@@ -111,20 +113,52 @@ Flags: `--k` (max entries per distribution incl. `none`, default 6), `--workers`
 - The model returns `{"child", "distribution": [{"parent", "probability", "rationale",
   "citations"}]}`. The runner drops parents not in the candidate set, merges duplicates,
   renormalises to sum 1, and verifies citations exactly as in Task A.
-- **Consolidation.** Per-child distributions are independent, so taking every child's
-  most probable parent produced 10 mutual pairs (A is-a B and B is-a A) and most nodes in
-  cycles. `consolidate()` builds a DAG greedily: edges in decreasing probability, kept
-  only if >= `--min-p` (0.25), above the child's own P(none), and acyclic. The first kept
-  edge is the primary parent (tree in `is_a.md`), later ones are extra parents.
-  `--render-only` redoes this from the saved JSON. `is_a_edges.csv` keeps every weighted
-  edge for other thresholds.
+- **Consolidation into a DAG.** Per-child distributions are independent, so taking every
+  child's most probable parent produced 10 mutual pairs (A is-a B and B is-a A) and cycles.
+  `consolidate()` keeps is-a edges greedily in decreasing probability if they are
+  >= `--min-p` (default **0.4**), above the child's own P(none), and acyclic. A mutual pair
+  therefore resolves to the stronger direction; an exact tie resolves by id order and is
+  listed under `ties` for review (two at 0.4). The first kept edge is the primary parent
+  (tree in `is_a.md`), later ones are extra parents. The ontology has term types and is-a
+  only; no other relation type. Acyclicity is asserted. `--render-only` redoes this from
+  the saved JSON. Outputs: `is_a.md`, `taxonomy_dag.json` (nodes, edges, ties, metrics),
+  `is_a.dot`, `is_a_edges.csv` (every weighted edge), `dag_metrics.json` (metrics at every
+  threshold 0.00-1.00).
 
-Results (2026-10-26, 93 children, 104 s, ~23M cached tokens read): 26 roots, 14 nodes
-with two parents, 66 children keep their argmax parent; 213/253 citations verified. The
-model's probabilities are coarse (mostly 0.05-0.2 steps, top values 0.3/0.42/0.55/0.62)
-and it rarely chose `none` (argmax in 11/93), so treat the weights as rankings.
+- **Metrics for self-maintenance** (`dag_metrics.py`). At a node y the kept edge weights
+  of its children are normalised into a branching distribution q_y; a *random descent*
+  starts at a uniformly chosen root and follows q_y until a leaf.
+  - *Information gain*: H(q_y) in bits per node (0 for leaves and single-child nodes),
+    summed (`total_bits`) and expected along a descent (`bits_per_descent`).
+  - *AUC*: F(d) = P(descent has reached a leaf by depth d); AUC = area under F over
+    [0, max depth] / max depth. 1.0 means every root is a leaf; lower means branches run
+    deeper. `expected_depth` = E[d].
+  - *Leaves needed*: leaf count, `effective_leaves` = 2^H(leaf-reach distribution), and
+    `leaves_for_90pct`, the fewest leaves holding 90% of descents.
+  These are reported overall and per category, and across the threshold spectrum so
+  Part 3 can trade information gain against depth and leaf count when choosing edges.
+
+Results (2026-10-26, 93 children, 104 s, ~23M cached tokens read, 213/253 citations
+verified). At min-p 0.4: 55 is-a edges, 38 roots, 65 leaves, max depth 2; 17.5 bits total,
+0.43 bits per descent; AUC 0.817, expected depth 0.64; 51.4 effective leaves, 43 leaves
+hold 90% of descents. Across thresholds: 0.2 gives 106 edges, 1.03 bits/descent, AUC 0.84;
+0.5 gives 36 edges, 0.21 bits/descent, AUC 0.92. The model's probabilities are coarse (top
+values 0.3/0.42/0.55/0.62) and it rarely chose `none` (argmax in 11/93), so treat the
+weights as rankings.
+
+## Reviewing the DAG
+
+`python -m taxonomy.dashboard` writes `output/is_a_dashboard.html` (published copy:
+https://claude.ai/artifact/4fCD72T7CAUmyLzjmcpFne). It carries every distribution and
+replays `consolidate()` and `dag_metrics` in JavaScript, so the threshold can be swept
+across 0..1 while the five category graphs, the edge/root/same-as counts and a spectrum
+chart update live, together with bits per descent, AUC and effective leaves (a second
+chart shows the three metrics across the spectrum). Dashed edges are those within 0.1
+below the threshold; clicking a node shows its full distribution with rationales, citation
+counts and why each entry was kept or not (below threshold, below P(none), would cycle).
 
 ## Notes on the sources
+
 
 
 

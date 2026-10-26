@@ -1,0 +1,1366 @@
+{
+  "relation": "is-a",
+  "min_p": 0.4,
+  "nodes": [
+    {
+      "id": "asset_reference_type",
+      "name": "Reference asset type",
+      "category": "asset",
+      "question": "What does the asset reference to maintain a stable value?",
+      "root": true,
+      "p_none": 0.05
+    },
+    {
+      "id": "issuer_presence",
+      "name": "Issuer identifiability",
+      "category": "asset",
+      "question": "Is there an identifiable person or entity that issues the crypto-asset?",
+      "root": true,
+      "p_none": 0.15
+    },
+    {
+      "id": "crypto_asset_scope_criteria",
+      "name": "Crypto-asset definitional criteria",
+      "category": "asset",
+      "question": "Does the digital item meet the criteria to count as a crypto-asset, digital asset or virtual asset?",
+      "root": true,
+      "p_none": 0.05
+    },
+    {
+      "id": "fungibility",
+      "name": "Fungibility",
+      "category": "asset",
+      "question": "Is the crypto-asset fungible, i.e. interchangeable with other units of the same asset?",
+      "root": false,
+      "p_none": 0.25
+    },
+    {
+      "id": "crypto_asset_function",
+      "name": "Economic function of the asset",
+      "category": "asset",
+      "question": "What is the economic purpose the asset serves: payment, investment, access to a service, or governance?",
+      "root": true,
+      "p_none": 0.2
+    },
+    {
+      "id": "native_vs_token_standard",
+      "name": "Native asset versus token standard",
+      "category": "asset",
+      "question": "Is the crypto-asset native to its own blockchain or a token issued under a smart-contract standard on another chain?",
+      "root": true,
+      "p_none": 0.21
+    },
+    {
+      "id": "tokenisation_form",
+      "name": "Tokenisation form",
+      "category": "asset",
+      "question": "Is the asset a token that represents ownership or rights in an off-chain or other asset?",
+      "root": true,
+      "p_none": 0.05
+    },
+    {
+      "id": "wrapped_or_bridged_asset",
+      "name": "Wrapped / cross-chain representation",
+      "category": "asset",
+      "question": "Is the crypto-asset a representation of another asset locked on a different chain or in custody?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "yield_source",
+      "name": "Source of yield",
+      "category": "asset",
+      "question": "From what economic activity or protocol mechanism does the holder's return derive?",
+      "root": true,
+      "p_none": 0.25
+    },
+    {
+      "id": "yield_distribution_mechanism",
+      "name": "Yield distribution mechanism",
+      "category": "asset",
+      "question": "How is yield delivered to holders: by increasing balance, redemption ratio, price, or another asset?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "redemption_mechanism",
+      "name": "Redemption mechanism",
+      "category": "asset",
+      "question": "How and by whom can the holder convert the crypto-asset back into its reference asset?",
+      "root": false,
+      "p_none": 0.04
+    },
+    {
+      "id": "claim_form",
+      "name": "Form of holder claim",
+      "category": "asset",
+      "question": "Does the holder hold a contractual claim against an issuer, a property-type interest in a reserve pool, or no claim?",
+      "root": true,
+      "p_none": 0.1
+    },
+    {
+      "id": "centralisation_level",
+      "name": "Centralisation of control",
+      "category": "asset",
+      "question": "Who controls the critical resources of the asset (governance, minting, yield, redemption), and is that control concentrated in one entity?",
+      "root": false,
+      "p_none": 0.26
+    },
+    {
+      "id": "decentralised_system_status",
+      "name": "Decentralised system certification",
+      "category": "technology",
+      "question": "Does the blockchain system meet the statutory conditions to be treated as a decentralised system or mature blockchain system?",
+      "root": false,
+      "p_none": 0.16
+    },
+    {
+      "id": "legal_classification_status",
+      "name": "Legal classification of crypto-asset",
+      "category": "asset",
+      "question": "Under which regulatory category does the crypto-asset fall: security or financial instrument, stable-value token, fund unit, or other crypto-asset?",
+      "root": true,
+      "p_none": 0.13
+    },
+    {
+      "id": "stablecoin_regulatory_class",
+      "name": "Payment stablecoin / e-money / ART regulatory class",
+      "category": "asset",
+      "question": "Which stablecoin category does the stablecoin fall into under the applicable regime?",
+      "root": false,
+      "p_none": 0.03
+    },
+    {
+      "id": "unhosted_vs_hosted_wallet",
+      "name": "Hosted versus unhosted (self-hosted) wallet",
+      "category": "asset",
+      "question": "Who controls the keys or means of access to the crypto-asset: a service provider, or the user directly?",
+      "root": true,
+      "p_none": 0.3
+    },
+    {
+      "id": "wallet_type_storage",
+      "name": "Wallet storage mode (hot or cold)",
+      "category": "technology",
+      "question": "Is the wallet's key storage connected to the internet (hot) or offline (cold)?",
+      "root": true,
+      "p_none": 0.7292
+    },
+    {
+      "id": "dlt_architecture",
+      "name": "DLT data structure (blockchain vs non-chain DLT)",
+      "category": "technology",
+      "question": "Is the distributed ledger organised as a chain of blocks, or by another structure such as a directed acyclic graph?",
+      "root": true,
+      "p_none": 0.2
+    },
+    {
+      "id": "ledger_access_permission",
+      "name": "Ledger access and permissioning",
+      "category": "technology",
+      "question": "Who may read, write, and maintain consensus on the ledger: anyone, a pre-selected group, or one controlling entity?",
+      "root": true,
+      "p_none": 0.5
+    },
+    {
+      "id": "consensus_mechanism",
+      "name": "Consensus mechanism",
+      "category": "technology",
+      "question": "By what rule or process is a transaction validated and agreed among DLT nodes?",
+      "root": true,
+      "p_none": 0.5
+    },
+    {
+      "id": "consensus_finality",
+      "name": "Finality of agreement",
+      "category": "technology",
+      "question": "Does the consensus protocol settle transactions deterministically or only probabilistically over time?",
+      "root": false,
+      "p_none": 0.2
+    },
+    {
+      "id": "network_topology",
+      "name": "Network topology and node roles",
+      "category": "technology",
+      "question": "How are nodes interconnected and what roles do they hold: decentralised peers, hierarchical tracking and validating nodes, or a central authority?",
+      "root": true,
+      "p_none": 0.12
+    },
+    {
+      "id": "script_language_expressiveness",
+      "name": "Smart contract / script language expressiveness",
+      "category": "technology",
+      "question": "Is the ledger's scripting language Turing-complete, restricted, or supplemented with external data (oracles)?",
+      "root": false,
+      "p_none": 0.14
+    },
+    {
+      "id": "smart_contract_definition_scope",
+      "name": "Smart contract / distributed ledger application scope",
+      "category": "technology",
+      "question": "Is the software deployed on the ledger a smart contract, application, or protocol, and is its source code publicly available?",
+      "root": true,
+      "p_none": 0.78
+    },
+    {
+      "id": "ledger_node_role",
+      "name": "Node / DLT network node role",
+      "category": "technology",
+      "question": "What role does a network node play: full replica holder, partial replica holder, validator, miner, or tracking node?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "dlt_network_access_scope",
+      "name": "Ledger scope: open or closed access by design",
+      "category": "technology",
+      "question": "Is the ledger designed to be open to any network participant or restricted to a closed group for a particular purpose?",
+      "root": false,
+      "p_none": 0.02
+    },
+    {
+      "id": "governance_model",
+      "name": "Governance model of a DLT system",
+      "category": "technology",
+      "question": "Who sets and changes the rules of the ledger: an open-source community, a single company, an industry alliance, or a rules-based decentralised governance system?",
+      "root": false,
+      "p_none": 0.13
+    },
+    {
+      "id": "software_architecture",
+      "name": "Software architecture (monolithic vs polylithic)",
+      "category": "technology",
+      "question": "Is the ledger built as a single integrated application or with decoupled consensus and application layers?",
+      "root": true,
+      "p_none": 0.8182
+    },
+    {
+      "id": "code_license_openness",
+      "name": "Source code openness",
+      "category": "technology",
+      "question": "Is the ledger's source code publicly available under an open licence, or closed?",
+      "root": true,
+      "p_none": 0.08
+    },
+    {
+      "id": "digital_identity_layer",
+      "name": "Identity layer and onboarding",
+      "category": "technology",
+      "question": "Does the ledger verify participant identity through KYC/AML-compliant onboarding, or does it provide no identity layer?",
+      "root": false,
+      "p_none": 0.08
+    },
+    {
+      "id": "privacy_enhancement",
+      "name": "Privacy and anonymity features",
+      "category": "technology",
+      "question": "Does the ledger or asset obfuscate transaction information, and is that obfuscation built in or added on?",
+      "root": true,
+      "p_none": 0.3
+    },
+    {
+      "id": "ledger_storage_model",
+      "name": "Ledger storage model (what is stored on chain)",
+      "category": "technology",
+      "question": "What data does the ledger store: full transactions, user balances, or account states, and in what block structure?",
+      "root": false,
+      "p_none": 0.14
+    },
+    {
+      "id": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "category": "technology",
+      "question": "Can the ledger exchange information with external systems (interoperability) or other blockchains (intraoperability), and by implicit or explicit means?",
+      "root": false,
+      "p_none": 0.2198
+    },
+    {
+      "id": "asset_supply_policy",
+      "name": "Asset supply management (monetary policy)",
+      "category": "technology",
+      "question": "How is the total supply of the native asset determined: capped, unlimited, or pre-mined?",
+      "root": false,
+      "p_none": 0.12
+    },
+    {
+      "id": "native_asset_type",
+      "name": "Native asset presence and type",
+      "category": "technology",
+      "question": "Does the system have a native asset, and if so is it single, multiple or convertible?",
+      "root": true,
+      "p_none": 0.4
+    },
+    {
+      "id": "fee_structure",
+      "name": "Transaction fee regime",
+      "category": "technology",
+      "question": "Are fees optional, mandatory or absent, and are they variable with transaction size or fixed per request?",
+      "root": false,
+      "p_none": 0.32
+    },
+    {
+      "id": "reward_mechanism",
+      "name": "Validator reward mechanism",
+      "category": "technology",
+      "question": "How are validators rewarded: by a fixed lump-sum block reward, or by block plus security/cross-validation rewards?",
+      "root": false,
+      "p_none": 0.2
+    },
+    {
+      "id": "staking_arrangement",
+      "name": "Staking arrangement (self, delegated, custodial, liquid)",
+      "category": "activity",
+      "question": "Who stakes the tokens and operates the validator: the owner, a delegate, a custodian, or through a liquid staking receipt?",
+      "root": false,
+      "p_none": 0.12
+    },
+    {
+      "id": "exchange_venue_type",
+      "name": "Trading venue type",
+      "category": "actor",
+      "question": "Is the platform a centralised exchange, decentralised exchange, broker-dealer, or peer-to-peer venue?",
+      "root": false,
+      "p_none": 0.02
+    },
+    {
+      "id": "actor_role_in_service",
+      "name": "Principal or agent role in transaction",
+      "category": "actor",
+      "question": "Does the actor trade or transact as principal (for its own account) or as agent (for a client)?",
+      "root": false,
+      "p_none": 0.15
+    },
+    {
+      "id": "service_provider_status",
+      "name": "Crypto-asset service provider or VASP status",
+      "category": "actor",
+      "question": "Is the actor a regulated provider of crypto-asset services (CASP, VASP, MSB, or intermediary), and within which category?",
+      "root": true,
+      "p_none": 0.23
+    },
+    {
+      "id": "crypto_asset_service_type",
+      "name": "Crypto-asset service type",
+      "category": "activity",
+      "question": "Which specified service is the actor providing: custody, trading platform operation, exchange, transfer, execution, placement, advice or portfolio management?",
+      "root": true,
+      "p_none": 0.1
+    },
+    {
+      "id": "fund_or_pooled_vehicle",
+      "name": "Pooled investment vehicle structure",
+      "category": "actor",
+      "question": "Is the arrangement a pooled investment vehicle such as a commodity pool, investment company or AIF?",
+      "root": true,
+      "p_none": 0.3158
+    },
+    {
+      "id": "ecosystem_participant_role",
+      "name": "Ecosystem participant role",
+      "category": "actor",
+      "question": "What is the participant's role in the digital asset ecosystem: issuer, developer, validator, holder, trader, infrastructure provider or other?",
+      "root": true,
+      "p_none": 0.15
+    },
+    {
+      "id": "infrastructure_provider_type",
+      "name": "Infrastructure provider type",
+      "category": "actor",
+      "question": "Does the actor supply ancillary technical infrastructure (oracles, bridges, node providers, data providers, auditors) rather than a covered financial service?",
+      "root": false,
+      "p_none": 0.12
+    },
+    {
+      "id": "custodian_or_custody_model",
+      "name": "Custody model",
+      "category": "actor",
+      "question": "Who holds the crypto-asset or the means of access (keys): the holder, a custodian, or a multi-party arrangement?",
+      "root": true,
+      "p_none": 0.12
+    },
+    {
+      "id": "stablecoin_issuer_model",
+      "name": "Stablecoin issuer model",
+      "category": "actor",
+      "question": "Who issues and redeems the stablecoin, and is the issuer a regulated financial institution, bank subsidiary, or nonbank?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "crypto_asset_operator",
+      "name": "Operator of crypto-asset arrangement",
+      "category": "actor",
+      "question": "Is there a single administrative authority operating the cryptoasset arrangement (issuing, establishing rules, maintaining a ledger, redeeming)?",
+      "root": true,
+      "p_none": 0.58
+    },
+    {
+      "id": "decentralised_control_status_actor",
+      "name": "Control or sufficient influence over DeFi arrangement",
+      "category": "actor",
+      "question": "Does an identifiable person maintain control or sufficient influence over the DeFi arrangement (through keys, parameters, profit, or shut-down ability)?",
+      "root": false,
+      "p_none": 0.05
+    },
+    {
+      "id": "offshore_vasp_status",
+      "name": "Offshore VASP status (activity-based or location-based)",
+      "category": "actor",
+      "question": "Is the VASP incorporated or physically located outside the jurisdiction where it serves customers, and does it fall within activity-based licensing?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "transaction_type_p2p",
+      "name": "Peer-to-peer (P2P) transaction",
+      "category": "activity",
+      "question": "Is the transfer conducted directly between users without involvement of a regulated intermediary?",
+      "root": false,
+      "p_none": 0.25
+    },
+    {
+      "id": "transfer_of_crypto_assets",
+      "name": "Transfer of crypto-assets (travel rule scope)",
+      "category": "activity",
+      "question": "Is the transaction a transfer of crypto-assets moving between distributed ledger addresses on behalf of an originator or beneficiary?",
+      "root": false,
+      "p_none": 0.04
+    },
+    {
+      "id": "payment_or_transfer_service",
+      "name": "Payment service and funds transfer",
+      "category": "activity",
+      "question": "Is the transaction a transfer of funds through a payment service provider, such as a credit transfer, direct debit or money remittance?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "convertible_virtual_currency_status",
+      "name": "Convertible virtual currency (CVC) status",
+      "category": "asset",
+      "question": "Is the virtual currency convertible, i.e. does it have an equivalent value to currency or act as a substitute for currency?",
+      "root": false,
+      "p_none": 0.2
+    },
+    {
+      "id": "regulated_transmission_of_value",
+      "name": "Money transmission (acceptance and transmission of value)",
+      "category": "activity",
+      "question": "Does the actor accept value from one person and transmit it to another, such that it is a money transmission service?",
+      "root": false,
+      "p_none": 0.04
+    },
+    {
+      "id": "offer_and_issuance_method",
+      "name": "Offer and issuance method (token distribution)",
+      "category": "activity",
+      "question": "How is the crypto-asset issued or distributed to purchasers: public offer, ICO, airdrop, fork, pre-mine, or end-user distribution?",
+      "root": false,
+      "p_none": 0.05
+    },
+    {
+      "id": "minting_mechanism",
+      "name": "Minting mechanism",
+      "category": "activity",
+      "question": "How are new units of the crypto-asset created: consensus rewards, collateral lock-and-mint, staking, wrapping, algorithmic burn-and-mint, governance emission, pre-mining, or NFT registry?",
+      "root": true,
+      "p_none": 0.2381
+    },
+    {
+      "id": "redemption_risk_criteria",
+      "name": "Redemption and reserve adequacy",
+      "category": "obligation_or_risk",
+      "question": "Are the reserve assets sufficient and redeemable at all times at the peg value, with redemption rights legally enforceable?",
+      "root": true,
+      "p_none": 1.0
+    },
+    {
+      "id": "stablecoin_interest_restriction",
+      "name": "Yield or interest on stablecoin",
+      "category": "obligation_or_risk",
+      "question": "Is the stablecoin yield-bearing or prohibited from paying interest or yield to holders?",
+      "root": false,
+      "p_none": 0.3
+    },
+    {
+      "id": "custody_safeguarding_obligation",
+      "name": "Safeguarding and custody obligation",
+      "category": "obligation_or_risk",
+      "question": "Is the actor safeguarding crypto-assets on behalf of another, and so subject to custody obligations?",
+      "root": true,
+      "p_none": 0.16
+    },
+    {
+      "id": "aml_obligations_applicability",
+      "name": "Anti-money laundering obligations",
+      "category": "obligation_or_risk",
+      "question": "Are the AML/CFT obligations attached to the actor or asset, and in which category of obliged entity does the actor fall?",
+      "root": true,
+      "p_none": 0.12
+    },
+    {
+      "id": "anonymity_enhancing_status",
+      "name": "Anonymity-enhancing crypto-asset status",
+      "category": "obligation_or_risk",
+      "question": "Does the crypto-asset have built-in features that conceal transfer information, and so attract enhanced AML treatment?",
+      "root": false,
+      "p_none": 0.11
+    },
+    {
+      "id": "sanctions_and_freezing_capability",
+      "name": "Freezing and blocking capability",
+      "category": "obligation_or_risk",
+      "question": "Does the asset or issuer have the technical capacity to freeze, block or burn units in response to lawful orders?",
+      "root": false,
+      "p_none": 0.07
+    },
+    {
+      "id": "operational_resilience_risk",
+      "name": "ICT and operational resilience risk",
+      "category": "obligation_or_risk",
+      "question": "Is the entity an ICT third-party or financial entity subject to digital operational resilience requirements and critical-function criteria?",
+      "root": true,
+      "p_none": 0.22
+    },
+    {
+      "id": "settlement_finality_legal_test",
+      "name": "Settlement finality and legal enforceability",
+      "category": "obligation_or_risk",
+      "question": "Are the rights, obligations and settlement finality of the crypto-asset arrangement clearly defined and legally enforceable in all relevant jurisdictions?",
+      "root": false,
+      "p_none": 0.08
+    },
+    {
+      "id": "prudential_classification_group",
+      "name": "Prudential classification group (Basel)",
+      "category": "obligation_or_risk",
+      "question": "Which Basel prudential group does the cryptoasset exposure fall into: Group 1a, 1b, 2a or 2b?",
+      "root": false,
+      "p_none": 0.06
+    },
+    {
+      "id": "tradfi_analogue",
+      "name": "Traditional finance analogue",
+      "category": "obligation_or_risk",
+      "question": "Which traditional financial instrument does the crypto-asset's design most closely resemble (commodity, depositary receipt, pass-through certificate, repo, payment in kind, capitalising share class, voting equity)?",
+      "root": false,
+      "p_none": 0.2
+    },
+    {
+      "id": "investment_contract_howey",
+      "name": "Investment contract (Howey) criteria",
+      "category": "obligation_or_risk",
+      "question": "Does the arrangement involve an investment of money in a common enterprise with an expectation of profits from others' efforts?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "securities_status_digital_asset",
+      "name": "Security status of digital asset (US exclusions)",
+      "category": "obligation_or_risk",
+      "question": "Is the digital asset a security, or excluded from security status by a statutory exclusion (e.g. digital commodity, permitted stablecoin, adjudicated non-security)?",
+      "root": true,
+      "p_none": 0.13
+    },
+    {
+      "id": "financial_instrument_status",
+      "name": "MiFID financial instrument status",
+      "category": "obligation_or_risk",
+      "question": "Does the crypto-asset qualify as a financial instrument under MiFID II (transferable security, fund unit, derivative, or other Annex I class)?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "excluded_instrument_category",
+      "name": "Excluded instrument category (EU scope exclusions)",
+      "category": "obligation_or_risk",
+      "question": "Does the crypto-asset fall within an excluded category (deposit, fund, insurance, pension, securitisation, or the ECB/public bodies) that takes it out of MiCA?",
+      "root": true,
+      "p_none": 0.15
+    },
+    {
+      "id": "central_bank_digital_currency",
+      "name": "Central bank digital currency status",
+      "category": "asset",
+      "question": "Is the digital money a liability of a central bank denominated in the national unit of account, rather than a private crypto-asset?",
+      "root": false,
+      "p_none": 0.2551
+    },
+    {
+      "id": "digital_asset_recording",
+      "name": "Recording and cryptographic linkage",
+      "category": "asset",
+      "question": "Is the asset recorded on a cryptographically secured distributed ledger, and does cryptography link the data to maintain ledger integrity?",
+      "root": false,
+      "p_none": 0.0707
+    },
+    {
+      "id": "virtual_asset_property_status",
+      "name": "Virtual assets as property or proceeds of crime",
+      "category": "obligation_or_risk",
+      "question": "Are virtual assets treated as property, proceeds or funds for the purposes of criminal law, freezing or confiscation?",
+      "root": false,
+      "p_none": 0.06
+    },
+    {
+      "id": "serious_crime_threshold",
+      "name": "Serious crime threshold for predicate offences",
+      "category": "obligation_or_risk",
+      "question": "Does the offence meet the threshold of a serious crime (maximum deprivation of liberty of at least four years) for cybercrime and proceeds-of-crime purposes?",
+      "root": false,
+      "p_none": 0.12
+    },
+    {
+      "id": "ict_system_scope",
+      "name": "Information and communications technology system",
+      "category": "technology",
+      "question": "Does the device or group of interconnected devices perform automatic processing of electronic or computer data under a program?",
+      "root": true,
+      "p_none": 0.55
+    },
+    {
+      "id": "traffic_and_subscriber_data_class",
+      "name": "Data classification (traffic, content, subscriber)",
+      "category": "technology",
+      "question": "Does the electronic data concern communication origin, route and time (traffic), its substance (content), or subscriber identity (subscriber information)?",
+      "root": false,
+      "p_none": 0.4082
+    },
+    {
+      "id": "self_hosted_address_status",
+      "name": "Address linkage to service provider",
+      "category": "actor",
+      "question": "Is the distributed ledger address linked to a crypto-asset service provider (or equivalent third-country entity), or to no provider?",
+      "root": false,
+      "p_none": 0.0816
+    },
+    {
+      "id": "party_role_transfer",
+      "name": "Originator and beneficiary role",
+      "category": "actor",
+      "question": "In a transfer of crypto-assets, is the actor the originator (sending) or the beneficiary (receiving) party?",
+      "root": false,
+      "p_none": 0.1
+    },
+    {
+      "id": "consumer_vs_professional_status",
+      "name": "Consumer or retail versus professional user",
+      "category": "actor",
+      "question": "Is the person acting for purposes outside any trade, business or profession (consumer or retail holder), or on a professional basis?",
+      "root": true,
+      "p_none": 0.88
+    },
+    {
+      "id": "related_person_affiliation",
+      "name": "Related person and affiliated person status",
+      "category": "actor",
+      "question": "Is the person a founder, executive, large holder or insider of the digital asset issuer, and so connected for disclosure or classification purposes?",
+      "root": false,
+      "p_none": 0.11
+    },
+    {
+      "id": "ancillary_asset_status",
+      "name": "Ancillary asset and network token status",
+      "category": "asset",
+      "question": "Is the digital asset an ancillary asset (issued by an originator with related persons holding interests) or a network token (value primarily derived from the distributed ledger system)?",
+      "root": true,
+      "p_none": 0.05
+    },
+    {
+      "id": "native_vs_stable_price_reference_asset_currency",
+      "name": "Reference currency for stablecoin peg (currency vs other)",
+      "category": "asset",
+      "question": "Is the currency to which the stablecoin pegs a fiat currency of a particular country, and is it the currency of the referenced jurisdiction?",
+      "root": false,
+      "p_none": 0.08
+    },
+    {
+      "id": "risk_type_illicit_finance",
+      "name": "Illicit finance risk category",
+      "category": "obligation_or_risk",
+      "question": "Which category of ML/TF/PF or sanctions risk does the crypto-asset activity pose: fraud, terrorist financing, proliferation financing, sanctions evasion, unhosted-wallet P2P risk or regulatory arbitrage?",
+      "root": false,
+      "p_none": 0.07
+    },
+    {
+      "id": "regulated_status_cvc_mst_exemption",
+      "name": "Exemption from MSB status",
+      "category": "obligation_or_risk",
+      "question": "Is the person exempt from money services business status by being a bank, a registered securities or futures firm, or by an integral or payment processor exemption?",
+      "root": false,
+      "p_none": 0.2
+    },
+    {
+      "id": "regulatory_perimeter_fi_status",
+      "name": "Financial institution status for AML",
+      "category": "actor",
+      "question": "Is the entity a credit institution, financial institution, investment firm, or other obliged entity under EU AML law?",
+      "root": false,
+      "p_none": 0.12
+    },
+    {
+      "id": "tax_reporting_status",
+      "name": "Tax reporting obligation status (CARF)",
+      "category": "obligation_or_risk",
+      "question": "Is the cryptoasset service provider subject to crypto-asset reporting and due diligence rules for a given calendar year, and has it notified HMRC?",
+      "root": true,
+      "p_none": 0.3012
+    },
+    {
+      "id": "regulatory_regime_scope_jurisdictional",
+      "name": "Jurisdictional regime and home or host state",
+      "category": "actor",
+      "question": "Which jurisdiction is the home or host state for licensing and supervision, based on registered office, branch or where services are offered?",
+      "root": false,
+      "p_none": 0.1531
+    },
+    {
+      "id": "consensus_participant_validator_capacity",
+      "name": "Validator operation capacity (who may run a node)",
+      "category": "actor",
+      "question": "Who is authorised or able to operate a validator or node: any participant, a pre-selected set, or a central authority?",
+      "root": false,
+      "p_none": 0.12
+    },
+    {
+      "id": "unhosted_custody_control_policy",
+      "name": "Permitted control over client assets (unilateral vs multi-party control)",
+      "category": "actor",
+      "question": "Can one party unilaterally move the crypto-asset, or does moving it require the approval of multiple keys or parties?",
+      "root": false,
+      "p_none": 0.12
+    },
+    {
+      "id": "decentralised_or_centralised_offer_model",
+      "name": "Public offer or private placement",
+      "category": "activity",
+      "question": "Is the crypto-asset offered to the public broadly, or privately to a defined group of investors?",
+      "root": true,
+      "p_none": 0.05
+    },
+    {
+      "id": "service_location_nexus",
+      "name": "Nexus to jurisdiction (services offered in jurisdiction)",
+      "category": "activity",
+      "question": "Are services offered to customers, users or clients in a given jurisdiction, such that licensing or AML obligations apply there?",
+      "root": false,
+      "p_none": 0.1818
+    }
+  ],
+  "edges": [
+    {
+      "child": "fungibility",
+      "parent": "crypto_asset_scope_criteria",
+      "probability": 0.55
+    },
+    {
+      "child": "wrapped_or_bridged_asset",
+      "parent": "native_vs_token_standard",
+      "probability": 0.45
+    },
+    {
+      "child": "yield_distribution_mechanism",
+      "parent": "yield_source",
+      "probability": 0.45
+    },
+    {
+      "child": "redemption_mechanism",
+      "parent": "asset_reference_type",
+      "probability": 0.42
+    },
+    {
+      "child": "centralisation_level",
+      "parent": "issuer_presence",
+      "probability": 0.42
+    },
+    {
+      "child": "decentralised_system_status",
+      "parent": "governance_model",
+      "probability": 0.42
+    },
+    {
+      "child": "stablecoin_regulatory_class",
+      "parent": "asset_reference_type",
+      "probability": 0.45
+    },
+    {
+      "child": "consensus_finality",
+      "parent": "consensus_mechanism",
+      "probability": 0.62
+    },
+    {
+      "child": "script_language_expressiveness",
+      "parent": "smart_contract_definition_scope",
+      "probability": 0.42
+    },
+    {
+      "child": "ledger_node_role",
+      "parent": "network_topology",
+      "probability": 0.5
+    },
+    {
+      "child": "dlt_network_access_scope",
+      "parent": "ledger_access_permission",
+      "probability": 0.8
+    },
+    {
+      "child": "governance_model",
+      "parent": "ledger_access_permission",
+      "probability": 0.42
+    },
+    {
+      "child": "digital_identity_layer",
+      "parent": "ledger_access_permission",
+      "probability": 0.55
+    },
+    {
+      "child": "ledger_storage_model",
+      "parent": "dlt_architecture",
+      "probability": 0.42
+    },
+    {
+      "child": "interoperability_type",
+      "parent": "script_language_expressiveness",
+      "probability": 0.4616
+    },
+    {
+      "child": "asset_supply_policy",
+      "parent": "native_asset_type",
+      "probability": 0.6
+    },
+    {
+      "child": "fee_structure",
+      "parent": "reward_mechanism",
+      "probability": 0.55
+    },
+    {
+      "child": "reward_mechanism",
+      "parent": "consensus_mechanism",
+      "probability": 0.55
+    },
+    {
+      "child": "staking_arrangement",
+      "parent": "crypto_asset_service_type",
+      "probability": 0.5
+    },
+    {
+      "child": "exchange_venue_type",
+      "parent": "service_provider_status",
+      "probability": 0.55
+    },
+    {
+      "child": "actor_role_in_service",
+      "parent": "service_provider_status",
+      "probability": 0.5
+    },
+    {
+      "child": "infrastructure_provider_type",
+      "parent": "service_provider_status",
+      "probability": 0.62
+    },
+    {
+      "child": "stablecoin_issuer_model",
+      "parent": "service_provider_status",
+      "probability": 0.4
+    },
+    {
+      "child": "decentralised_control_status_actor",
+      "parent": "service_provider_status",
+      "probability": 0.55
+    },
+    {
+      "child": "offshore_vasp_status",
+      "parent": "service_provider_status",
+      "probability": 0.62
+    },
+    {
+      "child": "transaction_type_p2p",
+      "parent": "transfer_of_crypto_assets",
+      "probability": 0.55
+    },
+    {
+      "child": "transfer_of_crypto_assets",
+      "parent": "crypto_asset_service_type",
+      "probability": 0.55
+    },
+    {
+      "child": "payment_or_transfer_service",
+      "parent": "transfer_of_crypto_assets",
+      "probability": 0.5
+    },
+    {
+      "child": "convertible_virtual_currency_status",
+      "parent": "crypto_asset_scope_criteria",
+      "probability": 0.55
+    },
+    {
+      "child": "regulated_transmission_of_value",
+      "parent": "transfer_of_crypto_assets",
+      "probability": 0.42
+    },
+    {
+      "child": "offer_and_issuance_method",
+      "parent": "decentralised_or_centralised_offer_model",
+      "probability": 0.55
+    },
+    {
+      "child": "stablecoin_interest_restriction",
+      "parent": "redemption_risk_criteria",
+      "probability": 0.5
+    },
+    {
+      "child": "anonymity_enhancing_status",
+      "parent": "aml_obligations_applicability",
+      "probability": 0.62
+    },
+    {
+      "child": "sanctions_and_freezing_capability",
+      "parent": "aml_obligations_applicability",
+      "probability": 0.55
+    },
+    {
+      "child": "settlement_finality_legal_test",
+      "parent": "redemption_risk_criteria",
+      "probability": 0.52
+    },
+    {
+      "child": "prudential_classification_group",
+      "parent": "redemption_risk_criteria",
+      "probability": 0.42
+    },
+    {
+      "child": "tradfi_analogue",
+      "parent": "redemption_risk_criteria",
+      "probability": 0.5
+    },
+    {
+      "child": "investment_contract_howey",
+      "parent": "securities_status_digital_asset",
+      "probability": 0.55
+    },
+    {
+      "child": "financial_instrument_status",
+      "parent": "excluded_instrument_category",
+      "probability": 0.62
+    },
+    {
+      "child": "central_bank_digital_currency",
+      "parent": "crypto_asset_scope_criteria",
+      "probability": 0.5613
+    },
+    {
+      "child": "digital_asset_recording",
+      "parent": "crypto_asset_scope_criteria",
+      "probability": 0.8081
+    },
+    {
+      "child": "virtual_asset_property_status",
+      "parent": "aml_obligations_applicability",
+      "probability": 0.62
+    },
+    {
+      "child": "serious_crime_threshold",
+      "parent": "virtual_asset_property_status",
+      "probability": 0.42
+    },
+    {
+      "child": "traffic_and_subscriber_data_class",
+      "parent": "ict_system_scope",
+      "probability": 0.5612
+    },
+    {
+      "child": "self_hosted_address_status",
+      "parent": "unhosted_custody_control_policy",
+      "probability": 0.4286
+    },
+    {
+      "child": "party_role_transfer",
+      "parent": "actor_role_in_service",
+      "probability": 0.42
+    },
+    {
+      "child": "related_person_affiliation",
+      "parent": "ecosystem_participant_role",
+      "probability": 0.52
+    },
+    {
+      "child": "native_vs_stable_price_reference_asset_currency",
+      "parent": "asset_reference_type",
+      "probability": 0.62
+    },
+    {
+      "child": "risk_type_illicit_finance",
+      "parent": "aml_obligations_applicability",
+      "probability": 0.62
+    },
+    {
+      "child": "regulated_status_cvc_mst_exemption",
+      "parent": "aml_obligations_applicability",
+      "probability": 0.62
+    },
+    {
+      "child": "regulatory_perimeter_fi_status",
+      "parent": "service_provider_status",
+      "probability": 0.42
+    },
+    {
+      "child": "regulatory_regime_scope_jurisdictional",
+      "parent": "service_provider_status",
+      "probability": 0.5102
+    },
+    {
+      "child": "consensus_participant_validator_capacity",
+      "parent": "ecosystem_participant_role",
+      "probability": 0.42
+    },
+    {
+      "child": "unhosted_custody_control_policy",
+      "parent": "custodian_or_custody_model",
+      "probability": 0.62
+    },
+    {
+      "child": "service_location_nexus",
+      "parent": "crypto_asset_service_type",
+      "probability": 0.4546
+    }
+  ],
+  "ties": [
+    [
+      "ledger_storage_model",
+      "dlt_architecture",
+      0.42
+    ],
+    [
+      "offer_and_issuance_method",
+      "decentralised_or_centralised_offer_model",
+      0.55
+    ]
+  ],
+  "metrics": {
+    "overall": {
+      "nodes": 93,
+      "edges": 55,
+      "roots": 38,
+      "leaves": 65,
+      "max_depth": 2,
+      "information_gain": {
+        "total_bits": 17.5216,
+        "bits_per_descent": 0.4348,
+        "per_node": {
+          "ledger_access_permission": 1.5342,
+          "service_provider_status": 2.9842,
+          "crypto_asset_service_type": 1.5806,
+          "consensus_mechanism": 0.9974,
+          "redemption_risk_criteria": 1.9953,
+          "ecosystem_participant_role": 0.9918,
+          "aml_obligations_applicability": 2.3204,
+          "asset_reference_type": 1.563,
+          "transfer_of_crypto_assets": 1.5762,
+          "crypto_asset_scope_criteria": 1.9783
+        }
+      },
+      "auc": {
+        "value": 0.8171,
+        "expected_depth": 0.642,
+        "reach_leaf_by_depth": [
+          0.4474,
+          0.9106,
+          1.0
+        ]
+      },
+      "leaves_needed": {
+        "leaves": 65,
+        "effective_leaves": 51.365,
+        "leaves_for_90pct": 43,
+        "leaf_mass": {
+          "legal_classification_status": 0.0263,
+          "software_architecture": 0.0263,
+          "operational_resilience_risk": 0.0263,
+          "minting_mechanism": 0.0263,
+          "custody_safeguarding_obligation": 0.0263,
+          "crypto_asset_operator": 0.0263,
+          "tokenisation_form": 0.0263,
+          "fund_or_pooled_vehicle": 0.0263,
+          "crypto_asset_function": 0.0263,
+          "consumer_vs_professional_status": 0.0263,
+          "tax_reporting_status": 0.0263,
+          "code_license_openness": 0.0263,
+          "privacy_enhancement": 0.0263,
+          "unhosted_vs_hosted_wallet": 0.0263,
+          "wallet_type_storage": 0.0263,
+          "claim_form": 0.0263,
+          "ancillary_asset_status": 0.0263,
+          "financial_instrument_status": 0.0263,
+          "traffic_and_subscriber_data_class": 0.0263,
+          "yield_distribution_mechanism": 0.0263,
+          "wrapped_or_bridged_asset": 0.0263,
+          "investment_contract_howey": 0.0263,
+          "centralisation_level": 0.0263,
+          "asset_supply_policy": 0.0263,
+          "ledger_storage_model": 0.0263,
+          "offer_and_issuance_method": 0.0263,
+          "ledger_node_role": 0.0263,
+          "self_hosted_address_status": 0.0263,
+          "interoperability_type": 0.0263,
+          "related_person_affiliation": 0.0146,
+          "consensus_finality": 0.0139,
+          "fee_structure": 0.0124,
+          "dlt_network_access_scope": 0.0119,
+          "consensus_participant_validator_capacity": 0.0118,
+          "native_vs_stable_price_reference_asset_currency": 0.011,
+          "staking_arrangement": 0.0087,
+          "digital_asset_recording": 0.0086,
+          "digital_identity_layer": 0.0082,
+          "service_location_nexus": 0.008,
+          "stablecoin_regulatory_class": 0.0079,
+          "redemption_mechanism": 0.0074,
+          "settlement_finality_legal_test": 0.0071,
+          "stablecoin_interest_restriction": 0.0068,
+          "tradfi_analogue": 0.0068,
+          "decentralised_system_status": 0.0062,
+          "central_bank_digital_currency": 0.006,
+          "convertible_virtual_currency_status": 0.0059,
+          "fungibility": 0.0059,
+          "prudential_classification_group": 0.0057,
+          "risk_type_illicit_finance": 0.0054,
+          "regulated_status_cvc_mst_exemption": 0.0054,
+          "anonymity_enhancing_status": 0.0054,
+          "serious_crime_threshold": 0.0054,
+          "sanctions_and_freezing_capability": 0.0048,
+          "offshore_vasp_status": 0.0039,
+          "infrastructure_provider_type": 0.0039,
+          "transaction_type_p2p": 0.0036,
+          "exchange_venue_type": 0.0035,
+          "decentralised_control_status_actor": 0.0035,
+          "payment_or_transfer_service": 0.0033,
+          "regulatory_regime_scope_jurisdictional": 0.0032,
+          "party_role_transfer": 0.0032,
+          "regulated_transmission_of_value": 0.0027,
+          "regulatory_perimeter_fi_status": 0.0027,
+          "stablecoin_issuer_model": 0.0025
+        }
+      }
+    },
+    "by_category": {
+      "asset": {
+        "nodes": 21,
+        "edges": 10,
+        "roots": 11,
+        "leaves": 16,
+        "max_depth": 1,
+        "information_gain": {
+          "total_bits": 3.5413,
+          "bits_per_descent": 0.3219,
+          "per_node": {
+            "asset_reference_type": 1.563,
+            "crypto_asset_scope_criteria": 1.9783
+          }
+        },
+        "auc": {
+          "value": 0.7727,
+          "expected_depth": 0.4545,
+          "reach_leaf_by_depth": [
+            0.5455,
+            1.0
+          ]
+        },
+        "leaves_needed": {
+          "leaves": 16,
+          "effective_leaves": 13.75,
+          "leaves_for_90pct": 12,
+          "leaf_mass": {
+            "legal_classification_status": 0.0909,
+            "unhosted_vs_hosted_wallet": 0.0909,
+            "claim_form": 0.0909,
+            "ancillary_asset_status": 0.0909,
+            "tokenisation_form": 0.0909,
+            "crypto_asset_function": 0.0909,
+            "yield_distribution_mechanism": 0.0909,
+            "wrapped_or_bridged_asset": 0.0909,
+            "centralisation_level": 0.0909,
+            "native_vs_stable_price_reference_asset_currency": 0.0378,
+            "digital_asset_recording": 0.0297,
+            "stablecoin_regulatory_class": 0.0275,
+            "redemption_mechanism": 0.0256,
+            "central_bank_digital_currency": 0.0207,
+            "convertible_virtual_currency_status": 0.0202,
+            "fungibility": 0.0202
+          }
+        }
+      },
+      "technology": {
+        "nodes": 24,
+        "edges": 13,
+        "roots": 11,
+        "leaves": 14,
+        "max_depth": 2,
+        "information_gain": {
+          "total_bits": 2.5317,
+          "bits_per_descent": 0.2302,
+          "per_node": {
+            "ledger_access_permission": 1.5342,
+            "consensus_mechanism": 0.9974
+          }
+        },
+        "auc": {
+          "value": 0.7633,
+          "expected_depth": 0.7916,
+          "reach_leaf_by_depth": [
+            0.3636,
+            0.8448,
+            1.0
+          ]
+        },
+        "leaves_needed": {
+          "leaves": 14,
+          "effective_leaves": 12.903,
+          "leaves_for_90pct": 11,
+          "leaf_mass": {
+            "code_license_openness": 0.0909,
+            "software_architecture": 0.0909,
+            "privacy_enhancement": 0.0909,
+            "wallet_type_storage": 0.0909,
+            "traffic_and_subscriber_data_class": 0.0909,
+            "ledger_storage_model": 0.0909,
+            "ledger_node_role": 0.0909,
+            "asset_supply_policy": 0.0909,
+            "interoperability_type": 0.0909,
+            "consensus_finality": 0.0482,
+            "fee_structure": 0.0427,
+            "dlt_network_access_scope": 0.0411,
+            "digital_identity_layer": 0.0282,
+            "decentralised_system_status": 0.0216
+          }
+        }
+      },
+      "actor": {
+        "nodes": 19,
+        "edges": 13,
+        "roots": 6,
+        "leaves": 14,
+        "max_depth": 2,
+        "information_gain": {
+          "total_bits": 3.976,
+          "bits_per_descent": 0.6627,
+          "per_node": {
+            "service_provider_status": 2.9842,
+            "ecosystem_participant_role": 0.9918
+          }
+        },
+        "auc": {
+          "value": 0.7817,
+          "expected_depth": 0.6866,
+          "reach_leaf_by_depth": [
+            0.5,
+            0.8134,
+            1.0
+          ]
+        },
+        "leaves_needed": {
+          "leaves": 14,
+          "effective_leaves": 9.498,
+          "leaves_for_90pct": 9,
+          "leaf_mass": {
+            "crypto_asset_operator": 0.1667,
+            "fund_or_pooled_vehicle": 0.1667,
+            "consumer_vs_professional_status": 0.1667,
+            "self_hosted_address_status": 0.1667,
+            "related_person_affiliation": 0.0922,
+            "consensus_participant_validator_capacity": 0.0745,
+            "offshore_vasp_status": 0.0248,
+            "infrastructure_provider_type": 0.0248,
+            "exchange_venue_type": 0.022,
+            "decentralised_control_status_actor": 0.022,
+            "regulatory_regime_scope_jurisdictional": 0.0204,
+            "party_role_transfer": 0.02,
+            "regulatory_perimeter_fi_status": 0.0168,
+            "stablecoin_issuer_model": 0.016
+          }
+        }
+      },
+      "activity": {
+        "nodes": 10,
+        "edges": 7,
+        "roots": 3,
+        "leaves": 7,
+        "max_depth": 2,
+        "information_gain": {
+          "total_bits": 3.1568,
+          "bits_per_descent": 0.7189,
+          "per_node": {
+            "crypto_asset_service_type": 1.5806,
+            "transfer_of_crypto_assets": 1.5762
+          }
+        },
+        "auc": {
+          "value": 0.7724,
+          "expected_depth": 0.7885,
+          "reach_leaf_by_depth": [
+            0.3333,
+            0.8782,
+            1.0
+          ]
+        },
+        "leaves_needed": {
+          "leaves": 7,
+          "effective_leaves": 4.938,
+          "leaves_for_90pct": 5,
+          "leaf_mass": {
+            "minting_mechanism": 0.3333,
+            "offer_and_issuance_method": 0.3333,
+            "staking_arrangement": 0.1108,
+            "service_location_nexus": 0.1007,
+            "transaction_type_p2p": 0.0456,
+            "payment_or_transfer_service": 0.0414,
+            "regulated_transmission_of_value": 0.0348
+          }
+        }
+      },
+      "obligation_or_risk": {
+        "nodes": 19,
+        "edges": 12,
+        "roots": 7,
+        "leaves": 14,
+        "max_depth": 2,
+        "information_gain": {
+          "total_bits": 4.3157,
+          "bits_per_descent": 0.6165,
+          "per_node": {
+            "aml_obligations_applicability": 2.3204,
+            "redemption_risk_criteria": 1.9953
+          }
+        },
+        "auc": {
+          "value": 0.8425,
+          "expected_depth": 0.6007,
+          "reach_leaf_by_depth": [
+            0.4286,
+            0.9708,
+            1.0
+          ]
+        },
+        "leaves_needed": {
+          "leaves": 14,
+          "effective_leaves": 10.732,
+          "leaves_for_90pct": 11,
+          "leaf_mass": {
+            "tax_reporting_status": 0.1429,
+            "operational_resilience_risk": 0.1429,
+            "custody_safeguarding_obligation": 0.1429,
+            "financial_instrument_status": 0.1429,
+            "investment_contract_howey": 0.1429,
+            "settlement_finality_legal_test": 0.0383,
+            "stablecoin_interest_restriction": 0.0368,
+            "tradfi_analogue": 0.0368,
+            "prudential_classification_group": 0.0309,
+            "anonymity_enhancing_status": 0.0292,
+            "risk_type_illicit_finance": 0.0292,
+            "regulated_status_cvc_mst_exemption": 0.0292,
+            "serious_crime_threshold": 0.0292,
+            "sanctions_and_freezing_capability": 0.0259
+          }
+        }
+      }
+    }
+  }
+}

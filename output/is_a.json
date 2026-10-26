@@ -2062,7 +2062,7 @@
       "distribution": [
         {
           "parent": "script_language_expressiveness",
-          "probability": 0.4615,
+          "probability": 0.4616,
           "rationale": "Interoperability is explicitly classified as implicit when the script is Turing-complete, and as explicit when a non-Turing-complete design is used, so the scripting language is the main determinant of the category.",
           "citations": [
             {
@@ -3564,7 +3564,7 @@
       "distribution": [
         {
           "parent": "staking_arrangement",
-          "probability": 0.2857,
+          "probability": 0.2858,
           "rationale": "Staked tokens and liquid staking tokens are minted via staking, so staking arrangement covers one minting route, but minting spans many other mechanisms beyond staking.",
           "citations": [
             {
@@ -4441,7 +4441,7 @@
       "distribution": [
         {
           "parent": "crypto_asset_scope_criteria",
-          "probability": 0.5612,
+          "probability": 0.5613,
           "rationale": "A CBDC is a digital money form, and the corpus's crypto-asset and digital-asset definitions set the scope within which CBDC status is classified; the CBDC question refines whether a digital item is a private crypto-asset.",
           "citations": [
             {
@@ -5283,7 +5283,7 @@
       "distribution": [
         {
           "parent": "regulated_status_cvc_mst_exemption",
-          "probability": 0.3614,
+          "probability": 0.3615,
           "rationale": "CARF status turns on exemption from reporting and due diligence rules, a regulatory-exemption question closest in kind to exemption from MSB status, though the corpus does not link them directly.",
           "citations": [
             {
@@ -5564,7 +5564,7 @@
       "distribution": [
         {
           "parent": "crypto_asset_service_type",
-          "probability": 0.4545,
+          "probability": 0.4546,
           "rationale": "Nexus is a jurisdictional criterion applying to services; it refines when a crypto-asset service is regulated by location, so it specialises the service-type dimension's regulatory scope.",
           "citations": [
             {
@@ -5633,769 +5633,667 @@
     }
   ],
   "dag": {
-    "min_p": 0.25,
-    "asset_reference_type": {
-      "parents": [
-        [
-          "legal_classification_status",
-          0.3
-        ]
-      ],
-      "p_none": 0.05
-    },
-    "issuer_presence": {
-      "parents": [
-        [
-          "legal_classification_status",
-          0.3
-        ]
-      ],
-      "p_none": 0.15
-    },
-    "crypto_asset_scope_criteria": {
-      "parents": [],
-      "p_none": 0.05
-    },
-    "fungibility": {
-      "parents": [
-        [
-          "crypto_asset_scope_criteria",
-          0.55
-        ]
-      ],
-      "p_none": 0.25
-    },
-    "crypto_asset_function": {
-      "parents": [],
-      "p_none": 0.2
-    },
-    "native_vs_token_standard": {
-      "parents": [
-        [
-          "crypto_asset_scope_criteria",
-          0.3
+    "min_p": 0.4,
+    "nodes": {
+      "asset_reference_type": {
+        "parents": [],
+        "p_none": 0.05
+      },
+      "issuer_presence": {
+        "parents": [],
+        "p_none": 0.15
+      },
+      "crypto_asset_scope_criteria": {
+        "parents": [],
+        "p_none": 0.05
+      },
+      "fungibility": {
+        "parents": [
+          [
+            "crypto_asset_scope_criteria",
+            0.55
+          ]
         ],
-        [
-          "digital_asset_recording",
-          0.25
-        ]
-      ],
-      "p_none": 0.21
-    },
-    "tokenisation_form": {
-      "parents": [
-        [
-          "asset_reference_type",
-          0.32
-        ]
-      ],
-      "p_none": 0.05
-    },
-    "wrapped_or_bridged_asset": {
-      "parents": [
-        [
-          "native_vs_token_standard",
-          0.45
+        "p_none": 0.25
+      },
+      "crypto_asset_function": {
+        "parents": [],
+        "p_none": 0.2
+      },
+      "native_vs_token_standard": {
+        "parents": [],
+        "p_none": 0.21
+      },
+      "tokenisation_form": {
+        "parents": [],
+        "p_none": 0.05
+      },
+      "wrapped_or_bridged_asset": {
+        "parents": [
+          [
+            "native_vs_token_standard",
+            0.45
+          ]
         ],
-        [
-          "tokenisation_form",
-          0.25
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "yield_source": {
-      "parents": [],
-      "p_none": 0.25
-    },
-    "yield_distribution_mechanism": {
-      "parents": [
-        [
-          "yield_source",
-          0.45
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "redemption_mechanism": {
-      "parents": [
-        [
-          "asset_reference_type",
-          0.42
-        ]
-      ],
-      "p_none": 0.04
-    },
-    "claim_form": {
-      "parents": [],
-      "p_none": 0.1
-    },
-    "centralisation_level": {
-      "parents": [
-        [
-          "issuer_presence",
-          0.42
-        ]
-      ],
-      "p_none": 0.26
-    },
-    "decentralised_system_status": {
-      "parents": [
-        [
-          "governance_model",
-          0.42
+        "p_none": 0.1
+      },
+      "yield_source": {
+        "parents": [],
+        "p_none": 0.25
+      },
+      "yield_distribution_mechanism": {
+        "parents": [
+          [
+            "yield_source",
+            0.45
+          ]
         ],
-        [
-          "ledger_access_permission",
-          0.3
-        ]
-      ],
-      "p_none": 0.16
-    },
-    "legal_classification_status": {
-      "parents": [
-        [
-          "crypto_asset_function",
-          0.34
-        ]
-      ],
-      "p_none": 0.13
-    },
-    "stablecoin_regulatory_class": {
-      "parents": [
-        [
-          "asset_reference_type",
-          0.45
-        ]
-      ],
-      "p_none": 0.03
-    },
-    "unhosted_vs_hosted_wallet": {
-      "parents": [],
-      "p_none": 0.3
-    },
-    "wallet_type_storage": {
-      "parents": [],
-      "p_none": 0.7292
-    },
-    "dlt_architecture": {
-      "parents": [],
-      "p_none": 0.2
-    },
-    "ledger_access_permission": {
-      "parents": [],
-      "p_none": 0.5
-    },
-    "consensus_mechanism": {
-      "parents": [],
-      "p_none": 0.5
-    },
-    "consensus_finality": {
-      "parents": [
-        [
-          "consensus_mechanism",
-          0.62
-        ]
-      ],
-      "p_none": 0.2
-    },
-    "network_topology": {
-      "parents": [
-        [
-          "dlt_network_access_scope",
-          0.38
+        "p_none": 0.1
+      },
+      "redemption_mechanism": {
+        "parents": [
+          [
+            "asset_reference_type",
+            0.42
+          ]
         ],
-        [
-          "ledger_access_permission",
-          0.3
-        ]
-      ],
-      "p_none": 0.12
-    },
-    "script_language_expressiveness": {
-      "parents": [
-        [
-          "smart_contract_definition_scope",
-          0.42
-        ]
-      ],
-      "p_none": 0.14
-    },
-    "smart_contract_definition_scope": {
-      "parents": [],
-      "p_none": 0.78
-    },
-    "ledger_node_role": {
-      "parents": [
-        [
-          "network_topology",
-          0.5
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "dlt_network_access_scope": {
-      "parents": [
-        [
-          "ledger_access_permission",
-          0.8
-        ]
-      ],
-      "p_none": 0.02
-    },
-    "governance_model": {
-      "parents": [
-        [
-          "ledger_access_permission",
-          0.42
-        ]
-      ],
-      "p_none": 0.13
-    },
-    "software_architecture": {
-      "parents": [],
-      "p_none": 0.8182
-    },
-    "code_license_openness": {
-      "parents": [
-        [
-          "smart_contract_definition_scope",
-          0.36
-        ]
-      ],
-      "p_none": 0.08
-    },
-    "digital_identity_layer": {
-      "parents": [
-        [
-          "ledger_access_permission",
-          0.55
-        ]
-      ],
-      "p_none": 0.08
-    },
-    "privacy_enhancement": {
-      "parents": [],
-      "p_none": 0.3
-    },
-    "ledger_storage_model": {
-      "parents": [
-        [
-          "dlt_architecture",
-          0.42
-        ]
-      ],
-      "p_none": 0.14
-    },
-    "interoperability_type": {
-      "parents": [
-        [
-          "script_language_expressiveness",
-          0.4615
-        ]
-      ],
-      "p_none": 0.2198
-    },
-    "asset_supply_policy": {
-      "parents": [
-        [
-          "native_asset_type",
-          0.6
-        ]
-      ],
-      "p_none": 0.12
-    },
-    "native_asset_type": {
-      "parents": [],
-      "p_none": 0.4
-    },
-    "fee_structure": {
-      "parents": [
-        [
-          "reward_mechanism",
-          0.55
-        ]
-      ],
-      "p_none": 0.32
-    },
-    "reward_mechanism": {
-      "parents": [
-        [
-          "consensus_mechanism",
-          0.55
-        ]
-      ],
-      "p_none": 0.2
-    },
-    "staking_arrangement": {
-      "parents": [
-        [
-          "crypto_asset_service_type",
-          0.5
-        ]
-      ],
-      "p_none": 0.12
-    },
-    "exchange_venue_type": {
-      "parents": [
-        [
-          "service_provider_status",
-          0.55
+        "p_none": 0.04
+      },
+      "claim_form": {
+        "parents": [],
+        "p_none": 0.1
+      },
+      "centralisation_level": {
+        "parents": [
+          [
+            "issuer_presence",
+            0.42
+          ]
         ],
-        [
-          "actor_role_in_service",
-          0.25
-        ]
-      ],
-      "p_none": 0.02
-    },
-    "actor_role_in_service": {
-      "parents": [
-        [
-          "service_provider_status",
-          0.5
-        ]
-      ],
-      "p_none": 0.15
-    },
-    "service_provider_status": {
-      "parents": [],
-      "p_none": 0.23
-    },
-    "crypto_asset_service_type": {
-      "parents": [],
-      "p_none": 0.1
-    },
-    "fund_or_pooled_vehicle": {
-      "parents": [],
-      "p_none": 0.3158
-    },
-    "ecosystem_participant_role": {
-      "parents": [],
-      "p_none": 0.15
-    },
-    "infrastructure_provider_type": {
-      "parents": [
-        [
-          "service_provider_status",
-          0.62
-        ]
-      ],
-      "p_none": 0.12
-    },
-    "custodian_or_custody_model": {
-      "parents": [],
-      "p_none": 0.12
-    },
-    "stablecoin_issuer_model": {
-      "parents": [
-        [
-          "service_provider_status",
-          0.4
+        "p_none": 0.26
+      },
+      "decentralised_system_status": {
+        "parents": [
+          [
+            "governance_model",
+            0.42
+          ]
         ],
-        [
-          "ecosystem_participant_role",
-          0.25
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "crypto_asset_operator": {
-      "parents": [],
-      "p_none": 0.58
-    },
-    "decentralised_control_status_actor": {
-      "parents": [
-        [
-          "service_provider_status",
-          0.55
-        ]
-      ],
-      "p_none": 0.05
-    },
-    "offshore_vasp_status": {
-      "parents": [
-        [
-          "service_provider_status",
-          0.62
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "transaction_type_p2p": {
-      "parents": [
-        [
-          "transfer_of_crypto_assets",
-          0.55
-        ]
-      ],
-      "p_none": 0.25
-    },
-    "transfer_of_crypto_assets": {
-      "parents": [
-        [
-          "crypto_asset_service_type",
-          0.55
-        ]
-      ],
-      "p_none": 0.04
-    },
-    "payment_or_transfer_service": {
-      "parents": [
-        [
-          "transfer_of_crypto_assets",
-          0.5
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "convertible_virtual_currency_status": {
-      "parents": [
-        [
-          "crypto_asset_scope_criteria",
-          0.55
-        ]
-      ],
-      "p_none": 0.2
-    },
-    "regulated_transmission_of_value": {
-      "parents": [
-        [
-          "transfer_of_crypto_assets",
-          0.42
+        "p_none": 0.16
+      },
+      "legal_classification_status": {
+        "parents": [],
+        "p_none": 0.13
+      },
+      "stablecoin_regulatory_class": {
+        "parents": [
+          [
+            "asset_reference_type",
+            0.45
+          ]
         ],
-        [
-          "crypto_asset_service_type",
-          0.25
-        ]
-      ],
-      "p_none": 0.04
-    },
-    "offer_and_issuance_method": {
-      "parents": [
-        [
-          "decentralised_or_centralised_offer_model",
-          0.55
-        ]
-      ],
-      "p_none": 0.05
-    },
-    "minting_mechanism": {
-      "parents": [
-        [
-          "staking_arrangement",
-          0.2857
+        "p_none": 0.03
+      },
+      "unhosted_vs_hosted_wallet": {
+        "parents": [],
+        "p_none": 0.3
+      },
+      "wallet_type_storage": {
+        "parents": [],
+        "p_none": 0.7292
+      },
+      "dlt_architecture": {
+        "parents": [],
+        "p_none": 0.2
+      },
+      "ledger_access_permission": {
+        "parents": [],
+        "p_none": 0.5
+      },
+      "consensus_mechanism": {
+        "parents": [],
+        "p_none": 0.5
+      },
+      "consensus_finality": {
+        "parents": [
+          [
+            "consensus_mechanism",
+            0.62
+          ]
         ],
-        [
-          "offer_and_issuance_method",
-          0.2857
-        ]
-      ],
-      "p_none": 0.2381
-    },
-    "redemption_risk_criteria": {
-      "parents": [],
-      "p_none": 1.0
-    },
-    "stablecoin_interest_restriction": {
-      "parents": [
-        [
-          "redemption_risk_criteria",
-          0.5
-        ]
-      ],
-      "p_none": 0.3
-    },
-    "custody_safeguarding_obligation": {
-      "parents": [
-        [
-          "sanctions_and_freezing_capability",
-          0.3
-        ]
-      ],
-      "p_none": 0.16
-    },
-    "aml_obligations_applicability": {
-      "parents": [],
-      "p_none": 0.12
-    },
-    "anonymity_enhancing_status": {
-      "parents": [
-        [
-          "aml_obligations_applicability",
-          0.62
-        ]
-      ],
-      "p_none": 0.11
-    },
-    "sanctions_and_freezing_capability": {
-      "parents": [
-        [
-          "aml_obligations_applicability",
-          0.55
-        ]
-      ],
-      "p_none": 0.07
-    },
-    "operational_resilience_risk": {
-      "parents": [],
-      "p_none": 0.22
-    },
-    "settlement_finality_legal_test": {
-      "parents": [
-        [
-          "redemption_risk_criteria",
-          0.52
-        ]
-      ],
-      "p_none": 0.08
-    },
-    "prudential_classification_group": {
-      "parents": [
-        [
-          "redemption_risk_criteria",
-          0.42
-        ]
-      ],
-      "p_none": 0.06
-    },
-    "tradfi_analogue": {
-      "parents": [
-        [
-          "redemption_risk_criteria",
-          0.5
-        ]
-      ],
-      "p_none": 0.2
-    },
-    "investment_contract_howey": {
-      "parents": [
-        [
-          "securities_status_digital_asset",
-          0.55
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "securities_status_digital_asset": {
-      "parents": [
-        [
-          "financial_instrument_status",
-          0.25
-        ]
-      ],
-      "p_none": 0.13
-    },
-    "financial_instrument_status": {
-      "parents": [
-        [
-          "excluded_instrument_category",
-          0.62
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "excluded_instrument_category": {
-      "parents": [],
-      "p_none": 0.15
-    },
-    "central_bank_digital_currency": {
-      "parents": [
-        [
-          "crypto_asset_scope_criteria",
-          0.5612
-        ]
-      ],
-      "p_none": 0.2551
-    },
-    "digital_asset_recording": {
-      "parents": [
-        [
-          "crypto_asset_scope_criteria",
-          0.8081
-        ]
-      ],
-      "p_none": 0.0707
-    },
-    "virtual_asset_property_status": {
-      "parents": [
-        [
-          "aml_obligations_applicability",
-          0.62
-        ]
-      ],
-      "p_none": 0.06
-    },
-    "serious_crime_threshold": {
-      "parents": [
-        [
-          "virtual_asset_property_status",
-          0.42
+        "p_none": 0.2
+      },
+      "network_topology": {
+        "parents": [],
+        "p_none": 0.12
+      },
+      "script_language_expressiveness": {
+        "parents": [
+          [
+            "smart_contract_definition_scope",
+            0.42
+          ]
         ],
-        [
-          "risk_type_illicit_finance",
-          0.28
-        ]
-      ],
-      "p_none": 0.12
-    },
-    "ict_system_scope": {
-      "parents": [],
-      "p_none": 0.55
-    },
-    "traffic_and_subscriber_data_class": {
-      "parents": [
-        [
-          "ict_system_scope",
-          0.5612
-        ]
-      ],
-      "p_none": 0.4082
-    },
-    "self_hosted_address_status": {
-      "parents": [
-        [
-          "unhosted_custody_control_policy",
-          0.4286
+        "p_none": 0.14
+      },
+      "smart_contract_definition_scope": {
+        "parents": [],
+        "p_none": 0.78
+      },
+      "ledger_node_role": {
+        "parents": [
+          [
+            "network_topology",
+            0.5
+          ]
         ],
-        [
-          "custodian_or_custody_model",
-          0.3061
-        ]
-      ],
-      "p_none": 0.0816
-    },
-    "party_role_transfer": {
-      "parents": [
-        [
-          "actor_role_in_service",
-          0.42
+        "p_none": 0.1
+      },
+      "dlt_network_access_scope": {
+        "parents": [
+          [
+            "ledger_access_permission",
+            0.8
+          ]
         ],
-        [
-          "service_provider_status",
-          0.3
-        ]
-      ],
-      "p_none": 0.1
-    },
-    "consumer_vs_professional_status": {
-      "parents": [],
-      "p_none": 0.88
-    },
-    "related_person_affiliation": {
-      "parents": [
-        [
-          "ecosystem_participant_role",
-          0.52
-        ]
-      ],
-      "p_none": 0.11
-    },
-    "ancillary_asset_status": {
-      "parents": [
-        [
-          "crypto_asset_function",
-          0.3
+        "p_none": 0.02
+      },
+      "governance_model": {
+        "parents": [
+          [
+            "ledger_access_permission",
+            0.42
+          ]
         ],
-        [
-          "issuer_presence",
-          0.25
-        ]
-      ],
-      "p_none": 0.05
-    },
-    "native_vs_stable_price_reference_asset_currency": {
-      "parents": [
-        [
-          "asset_reference_type",
-          0.62
-        ]
-      ],
-      "p_none": 0.08
-    },
-    "risk_type_illicit_finance": {
-      "parents": [
-        [
-          "aml_obligations_applicability",
-          0.62
-        ]
-      ],
-      "p_none": 0.07
-    },
-    "regulated_status_cvc_mst_exemption": {
-      "parents": [
-        [
-          "aml_obligations_applicability",
-          0.62
-        ]
-      ],
-      "p_none": 0.2
-    },
-    "regulatory_perimeter_fi_status": {
-      "parents": [
-        [
-          "service_provider_status",
-          0.42
-        ]
-      ],
-      "p_none": 0.12
-    },
-    "tax_reporting_status": {
-      "parents": [
-        [
-          "regulated_status_cvc_mst_exemption",
-          0.3614
+        "p_none": 0.13
+      },
+      "software_architecture": {
+        "parents": [],
+        "p_none": 0.8182
+      },
+      "code_license_openness": {
+        "parents": [],
+        "p_none": 0.08
+      },
+      "digital_identity_layer": {
+        "parents": [
+          [
+            "ledger_access_permission",
+            0.55
+          ]
         ],
-        [
-          "aml_obligations_applicability",
-          0.3373
-        ]
-      ],
-      "p_none": 0.3012
-    },
-    "regulatory_regime_scope_jurisdictional": {
-      "parents": [
-        [
-          "service_provider_status",
-          0.5102
+        "p_none": 0.08
+      },
+      "privacy_enhancement": {
+        "parents": [],
+        "p_none": 0.3
+      },
+      "ledger_storage_model": {
+        "parents": [
+          [
+            "dlt_architecture",
+            0.42
+          ]
         ],
-        [
-          "offshore_vasp_status",
-          0.2551
-        ]
-      ],
-      "p_none": 0.1531
+        "p_none": 0.14
+      },
+      "interoperability_type": {
+        "parents": [
+          [
+            "script_language_expressiveness",
+            0.4616
+          ]
+        ],
+        "p_none": 0.2198
+      },
+      "asset_supply_policy": {
+        "parents": [
+          [
+            "native_asset_type",
+            0.6
+          ]
+        ],
+        "p_none": 0.12
+      },
+      "native_asset_type": {
+        "parents": [],
+        "p_none": 0.4
+      },
+      "fee_structure": {
+        "parents": [
+          [
+            "reward_mechanism",
+            0.55
+          ]
+        ],
+        "p_none": 0.32
+      },
+      "reward_mechanism": {
+        "parents": [
+          [
+            "consensus_mechanism",
+            0.55
+          ]
+        ],
+        "p_none": 0.2
+      },
+      "staking_arrangement": {
+        "parents": [
+          [
+            "crypto_asset_service_type",
+            0.5
+          ]
+        ],
+        "p_none": 0.12
+      },
+      "exchange_venue_type": {
+        "parents": [
+          [
+            "service_provider_status",
+            0.55
+          ]
+        ],
+        "p_none": 0.02
+      },
+      "actor_role_in_service": {
+        "parents": [
+          [
+            "service_provider_status",
+            0.5
+          ]
+        ],
+        "p_none": 0.15
+      },
+      "service_provider_status": {
+        "parents": [],
+        "p_none": 0.23
+      },
+      "crypto_asset_service_type": {
+        "parents": [],
+        "p_none": 0.1
+      },
+      "fund_or_pooled_vehicle": {
+        "parents": [],
+        "p_none": 0.3158
+      },
+      "ecosystem_participant_role": {
+        "parents": [],
+        "p_none": 0.15
+      },
+      "infrastructure_provider_type": {
+        "parents": [
+          [
+            "service_provider_status",
+            0.62
+          ]
+        ],
+        "p_none": 0.12
+      },
+      "custodian_or_custody_model": {
+        "parents": [],
+        "p_none": 0.12
+      },
+      "stablecoin_issuer_model": {
+        "parents": [
+          [
+            "service_provider_status",
+            0.4
+          ]
+        ],
+        "p_none": 0.1
+      },
+      "crypto_asset_operator": {
+        "parents": [],
+        "p_none": 0.58
+      },
+      "decentralised_control_status_actor": {
+        "parents": [
+          [
+            "service_provider_status",
+            0.55
+          ]
+        ],
+        "p_none": 0.05
+      },
+      "offshore_vasp_status": {
+        "parents": [
+          [
+            "service_provider_status",
+            0.62
+          ]
+        ],
+        "p_none": 0.1
+      },
+      "transaction_type_p2p": {
+        "parents": [
+          [
+            "transfer_of_crypto_assets",
+            0.55
+          ]
+        ],
+        "p_none": 0.25
+      },
+      "transfer_of_crypto_assets": {
+        "parents": [
+          [
+            "crypto_asset_service_type",
+            0.55
+          ]
+        ],
+        "p_none": 0.04
+      },
+      "payment_or_transfer_service": {
+        "parents": [
+          [
+            "transfer_of_crypto_assets",
+            0.5
+          ]
+        ],
+        "p_none": 0.1
+      },
+      "convertible_virtual_currency_status": {
+        "parents": [
+          [
+            "crypto_asset_scope_criteria",
+            0.55
+          ]
+        ],
+        "p_none": 0.2
+      },
+      "regulated_transmission_of_value": {
+        "parents": [
+          [
+            "transfer_of_crypto_assets",
+            0.42
+          ]
+        ],
+        "p_none": 0.04
+      },
+      "offer_and_issuance_method": {
+        "parents": [
+          [
+            "decentralised_or_centralised_offer_model",
+            0.55
+          ]
+        ],
+        "p_none": 0.05
+      },
+      "minting_mechanism": {
+        "parents": [],
+        "p_none": 0.2381
+      },
+      "redemption_risk_criteria": {
+        "parents": [],
+        "p_none": 1.0
+      },
+      "stablecoin_interest_restriction": {
+        "parents": [
+          [
+            "redemption_risk_criteria",
+            0.5
+          ]
+        ],
+        "p_none": 0.3
+      },
+      "custody_safeguarding_obligation": {
+        "parents": [],
+        "p_none": 0.16
+      },
+      "aml_obligations_applicability": {
+        "parents": [],
+        "p_none": 0.12
+      },
+      "anonymity_enhancing_status": {
+        "parents": [
+          [
+            "aml_obligations_applicability",
+            0.62
+          ]
+        ],
+        "p_none": 0.11
+      },
+      "sanctions_and_freezing_capability": {
+        "parents": [
+          [
+            "aml_obligations_applicability",
+            0.55
+          ]
+        ],
+        "p_none": 0.07
+      },
+      "operational_resilience_risk": {
+        "parents": [],
+        "p_none": 0.22
+      },
+      "settlement_finality_legal_test": {
+        "parents": [
+          [
+            "redemption_risk_criteria",
+            0.52
+          ]
+        ],
+        "p_none": 0.08
+      },
+      "prudential_classification_group": {
+        "parents": [
+          [
+            "redemption_risk_criteria",
+            0.42
+          ]
+        ],
+        "p_none": 0.06
+      },
+      "tradfi_analogue": {
+        "parents": [
+          [
+            "redemption_risk_criteria",
+            0.5
+          ]
+        ],
+        "p_none": 0.2
+      },
+      "investment_contract_howey": {
+        "parents": [
+          [
+            "securities_status_digital_asset",
+            0.55
+          ]
+        ],
+        "p_none": 0.1
+      },
+      "securities_status_digital_asset": {
+        "parents": [],
+        "p_none": 0.13
+      },
+      "financial_instrument_status": {
+        "parents": [
+          [
+            "excluded_instrument_category",
+            0.62
+          ]
+        ],
+        "p_none": 0.1
+      },
+      "excluded_instrument_category": {
+        "parents": [],
+        "p_none": 0.15
+      },
+      "central_bank_digital_currency": {
+        "parents": [
+          [
+            "crypto_asset_scope_criteria",
+            0.5613
+          ]
+        ],
+        "p_none": 0.2551
+      },
+      "digital_asset_recording": {
+        "parents": [
+          [
+            "crypto_asset_scope_criteria",
+            0.8081
+          ]
+        ],
+        "p_none": 0.0707
+      },
+      "virtual_asset_property_status": {
+        "parents": [
+          [
+            "aml_obligations_applicability",
+            0.62
+          ]
+        ],
+        "p_none": 0.06
+      },
+      "serious_crime_threshold": {
+        "parents": [
+          [
+            "virtual_asset_property_status",
+            0.42
+          ]
+        ],
+        "p_none": 0.12
+      },
+      "ict_system_scope": {
+        "parents": [],
+        "p_none": 0.55
+      },
+      "traffic_and_subscriber_data_class": {
+        "parents": [
+          [
+            "ict_system_scope",
+            0.5612
+          ]
+        ],
+        "p_none": 0.4082
+      },
+      "self_hosted_address_status": {
+        "parents": [
+          [
+            "unhosted_custody_control_policy",
+            0.4286
+          ]
+        ],
+        "p_none": 0.0816
+      },
+      "party_role_transfer": {
+        "parents": [
+          [
+            "actor_role_in_service",
+            0.42
+          ]
+        ],
+        "p_none": 0.1
+      },
+      "consumer_vs_professional_status": {
+        "parents": [],
+        "p_none": 0.88
+      },
+      "related_person_affiliation": {
+        "parents": [
+          [
+            "ecosystem_participant_role",
+            0.52
+          ]
+        ],
+        "p_none": 0.11
+      },
+      "ancillary_asset_status": {
+        "parents": [],
+        "p_none": 0.05
+      },
+      "native_vs_stable_price_reference_asset_currency": {
+        "parents": [
+          [
+            "asset_reference_type",
+            0.62
+          ]
+        ],
+        "p_none": 0.08
+      },
+      "risk_type_illicit_finance": {
+        "parents": [
+          [
+            "aml_obligations_applicability",
+            0.62
+          ]
+        ],
+        "p_none": 0.07
+      },
+      "regulated_status_cvc_mst_exemption": {
+        "parents": [
+          [
+            "aml_obligations_applicability",
+            0.62
+          ]
+        ],
+        "p_none": 0.2
+      },
+      "regulatory_perimeter_fi_status": {
+        "parents": [
+          [
+            "service_provider_status",
+            0.42
+          ]
+        ],
+        "p_none": 0.12
+      },
+      "tax_reporting_status": {
+        "parents": [],
+        "p_none": 0.3012
+      },
+      "regulatory_regime_scope_jurisdictional": {
+        "parents": [
+          [
+            "service_provider_status",
+            0.5102
+          ]
+        ],
+        "p_none": 0.1531
+      },
+      "consensus_participant_validator_capacity": {
+        "parents": [
+          [
+            "ecosystem_participant_role",
+            0.42
+          ]
+        ],
+        "p_none": 0.12
+      },
+      "unhosted_custody_control_policy": {
+        "parents": [
+          [
+            "custodian_or_custody_model",
+            0.62
+          ]
+        ],
+        "p_none": 0.12
+      },
+      "decentralised_or_centralised_offer_model": {
+        "parents": [],
+        "p_none": 0.05
+      },
+      "service_location_nexus": {
+        "parents": [
+          [
+            "crypto_asset_service_type",
+            0.4546
+          ]
+        ],
+        "p_none": 0.1818
+      }
     },
-    "consensus_participant_validator_capacity": {
-      "parents": [
-        [
-          "ecosystem_participant_role",
-          0.42
-        ]
+    "ties": [
+      [
+        "ledger_storage_model",
+        "dlt_architecture",
+        0.42
       ],
-      "p_none": 0.12
-    },
-    "unhosted_custody_control_policy": {
-      "parents": [
-        [
-          "custodian_or_custody_model",
-          0.62
-        ]
-      ],
-      "p_none": 0.12
-    },
-    "decentralised_or_centralised_offer_model": {
-      "parents": [],
-      "p_none": 0.05
-    },
-    "service_location_nexus": {
-      "parents": [
-        [
-          "crypto_asset_service_type",
-          0.4545
-        ]
-      ],
-      "p_none": 0.1818
-    }
+      [
+        "offer_and_issuance_method",
+        "decentralised_or_centralised_offer_model",
+        0.55
+      ]
+    ]
   }
 }
