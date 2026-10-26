@@ -149,8 +149,58 @@ dimension, a limit we return to in \cref{sec:exp:rq1}.
 
 \subsection{From Term Types to a Hierarchy}
 \label{sec:method:hierarchy}
-\todo{Task B: for each term type, a probability distribution over more general
-term types in the same category (plus \emph{none}), with rationale and
-citations, asked against the same cached corpus plus the Task A catalogue as a
-second cached block; edges kept greedily by weight unless they close a cycle.
-Describe once the Task B output is reviewed.}
+
+\textbf{One question per node.} With the catalogue $\mathcal{Y}$ in hand we ask
+the model, for each term type $x$, how probable it is that $x$ is-a $y$ for every
+other term type $y$ in the same category, plus \emph{none}, meaning $x$ is a
+top-level dimension. The question is one user message per $x$ that contains the definition
+of is-a from \cref{sec:problem}, the full record of $x$ (question, description,
+aliases, values with definitions), and the list of candidate parents by
+identifier, name and question. The model returns at most $k{=}6$ entries, each
+with a probability, a rationale of at most thirty words, and citations in the
+format of Task~A; the top entry, unless it is \emph{none}, must cite at least
+one passage. The context is the same cached corpus followed by a second cached
+block holding the compact catalogue of all 93 term types, so that each of the 93
+calls reads the corpus and the catalogue from cache and sends only the record of
+$x$ and its candidates (prompt in \cref{app:prompts}).
+
+\textbf{Normalisation.} We drop parents that are not in the candidate set, merge
+duplicates, remove the \emph{none} entry while keeping its mass as $p_{\text{none}}(x)$
+for reference, and renormalise the remaining weights to sum to one. Citations
+are verified exactly as in \cref{sec:method:verify}.
+
+\textbf{Consolidation into a DAG.} Every weighted edge is a candidate. We take
+edges in decreasing weight and keep each one unless the parent already descends
+from the child, which would close a cycle; a mutual pair $x \to y$, $y \to x$
+thus resolves to the stronger direction, and an exact tie resolves by identifier
+order and is reported. No weight threshold is applied: the DAG keeps every
+acyclic edge, and a display threshold can hide weak edges later without
+re-running anything. The first kept edge of a node is its primary parent, which
+gives a tree view; the others are additional parents. Acyclicity is asserted
+after consolidation.
+
+\textbf{Metrics for maintenance.} Later parts of this programme will merge,
+split and prune nodes, so we attach to the DAG three measures of how well it
+discriminates. At a node $y$ with children $C(y)$ the kept edge weights define a
+branching distribution
+\begin{equation}
+  q_y(c) = \frac{w(c \to y)}{\sum_{c' \in C(y)} w(c' \to y)}, \qquad c \in C(y),
+  \label{eq:branch}
+\end{equation}
+and a \emph{random descent} starts at a uniformly chosen root and follows $q_y$
+until it reaches a leaf. The \emph{information gain} at $y$ is the entropy
+$\entropy(q_y)$ in bits, zero for leaves and single-child nodes; we report its
+sum over nodes and its expectation along a descent, the bits a full walk
+resolves. With $F(d)$ the probability that a descent has reached a leaf by depth
+$d$ and $D$ the maximum depth,
+\begin{equation}
+  \mathrm{AUC} = \frac{1}{D}\int_0^D F(d)\,\mathrm{d}d,
+  \qquad
+  \text{effective leaves} = 2^{\entropy(r)},
+  \label{eq:auc}
+\end{equation}
+where $r$ is the distribution of the leaf a descent ends at. AUC is one when
+every root is a leaf and falls as branches run deeper; effective leaves counts
+how many leaves descents use. We compute all three overall, per
+category, and for the sub-DAG obtained at every display threshold from 0 to 1,
+which is the sensitivity study of \cref{sec:exp:rq2}.

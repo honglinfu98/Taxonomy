@@ -1,0 +1,135 @@
+{
+  "NEW_TERM_TYPE": [
+    {
+      "item_id": "paper:049399f024e4abdcea43fba03157a63d58f40479",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "application_domain",
+      "definition": "Industry or sector in which the DLT system is applied, such as education, finance or supply chain.",
+      "evidence": "the Blockcerts project, an open source project launched by MIT and Learning Machine in 2016",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:0ea674233b5b207898f6901963ecc782ff3f8035",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "quantum_security_basis",
+      "definition": "Whether the ledger's security relies on quantum information theory or quantum mechanics rather than classical cryptography.",
+      "evidence": "its security is guaranteed theoretically by virtue of quantum information theory",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:2247dc623bee7f05e42055eed1978cf1516de242",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "blockchain data model standardisation",
+      "definition": "Whether a text proposes or addresses a unified or standardised data model for analysing multiple blockchains.",
+      "evidence": "This master's thesis aims at proposing an unified model for blockchain data.",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:0c18047cf1b66ef8b3c4965dd5236ff78f29b88a",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "supply_chain_application_domain",
+      "definition": "Application domain in which the DLT is deployed to coordinate, track or verify goods in supply chains.",
+      "evidence": "apply institutional cryptoeconomics to the information problems in global trade networks",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:16894b12cfda7bb05f21f84bdc2d6d66a37b5b4b",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "adoption_driver_factor",
+      "definition": "Organisational, environmental or technological factors that determine whether an organisation adopts blockchain technology, as studied in adoption models.",
+      "evidence": "Whether organizations adopt blockchain technology depends on many factors.",
+      "evidence_found": true
+    },
+    {
+      "item_id": "patent:10733341",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "ledger_dimensionality",
+      "definition": "Whether the distributed ledger is organised in one dimension (single chain) or multiple dimensions (e.g. two-dimensional chain arrangements).",
+      "evidence": "The distributed digital ledger may have a plurality of chains of digital blocks in the two-dimensions",
+      "evidence_found": true
+    }
+  ],
+  "crypto_asset_service_type": [
+    {
+      "item_id": "paper:0c18047cf1b66ef8b3c4965dd5236ff78f29b88a",
+      "kind": "value",
+      "term_type": "crypto_asset_service_type",
+      "proposal": "non-financial supply chain coordination",
+      "definition": "DLT used for coordinating goods provenance and quality verification rather than financial services.",
+      "evidence": "blockchain will not simply make supply chains more efficient",
+      "evidence_found": true
+    }
+  ],
+  "crypto_asset_function": [
+    {
+      "item_id": "paper:1fb2123668af4cdf52ae00e5650931c81750bd68",
+      "kind": "value",
+      "term_type": "crypto_asset_function",
+      "proposal": "post-quantum signature for blockchain transactions",
+      "definition": "Blockchain transactions secured by post-quantum (lattice-based) signatures rather than classical cryptography, to resist quantum attack.",
+      "evidence": "a new lattice-based signature scheme has been proposed, which can be used to secure the blockchain network",
+      "evidence_found": true
+    }
+  ],
+  "ledger_storage_model": [
+    {
+      "item_id": "patent:11151261",
+      "kind": "value",
+      "term_type": "ledger_storage_model",
+      "proposal": "partial or full removal of historical data",
+      "definition": "Ledger design allowing past transaction data to be removed from node storage while cryptographic proofs preserve ledger integrity.",
+      "evidence": "data of past transactions can be removed from the storage of network nodes based on node permissions",
+      "evidence_found": true
+    }
+  ],
+  "dlt_architecture": [
+    {
+      "item_id": "patent:10592873",
+      "kind": "value",
+      "term_type": "dlt_architecture",
+      "proposal": "mutable or editable block history",
+      "definition": "Ledger design permitting post-hoc modification or deletion of previously committed blocks while preserving chain linkage via hashes.",
+      "evidence": "a modified block is provided in response to at least an edit transaction that indicates a transaction in an original block",
+      "evidence_found": true
+    }
+  ],
+  "consensus_mechanism": [
+    {
+      "item_id": "patent:11070361",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "node score delegation block generation",
+      "definition": "Block generation authority determined by node scores and delegated between blockchain nodes, rather than by a standard consensus rule.",
+      "evidence": "receiving, by the first blockchain node, a delegation of a block generation authority from a second blockchain node",
+      "evidence_found": true
+    }
+  ],
+  "ledger_access_permission": [
+    {
+      "item_id": "patent:10958419",
+      "kind": "value",
+      "term_type": "ledger_access_permission",
+      "proposal": "jurisdiction-scoped access",
+      "definition": "Ledger membership or access granted to nodes according to the jurisdiction of the recorded event or incident.",
+      "evidence": "A jurisdiction of the new incident is determined. Nodes that are associated with the jurisdiction are identified.",
+      "evidence_found": true
+    }
+  ],
+  "smart_contract_definition_scope": [
+    {
+      "item_id": "patent:11113271",
+      "kind": "value",
+      "term_type": "smart_contract_definition_scope",
+      "proposal": "off-chain smart contract testing",
+      "definition": "Smart contract executed in an off-chain test environment with simulated blockchain context and state, rather than on the live ledger.",
+      "evidence": "performing an off-chain testing on a smart contract",
+      "evidence_found": true
+    }
+  ]
+}

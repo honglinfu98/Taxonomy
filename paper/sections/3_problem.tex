@@ -25,9 +25,16 @@ $\mathcal{Y} = \set{(y, V(y), C(y), A(y), \eta(y))}$ in which every term type $y
 and every value $v \in V(y)$ carries at least one citation in $C(y)$, $A(y)$
 lists the names other sources use for $y$, and $\eta(y)$ records where sources
 disagree on $V(y)$ or on its thresholds, citing each side. No seed taxonomy, gold
-labels or training pairs are given.\footnote{Placing terms under term types and
-ordering term types by generality are later stages; \cref{sec:method:hierarchy}
-sketches the second.}
+labels or training pairs are given.
+
+\textbf{Problem (is-a hierarchy).} Term type $x$ \emph{is-a} term type $y$ when
+$y$ is a more general dimension of which $x$ is a specialisation: everything $x$
+classifies is also classified by $y$, $x$ refines $y$'s question, and the values
+of $x$ could sit beneath one or more values of $y$. Given $\mathcal{Y}$, produce a
+weighted DAG $G = (\mathcal{Y}, E, w)$ with $w(x \to y) \in (0, 1]$ an estimate of
+$P(x \text{ is-a } y)$, every edge cited, and no cycle. A node may have several
+parents, which is what makes $G$ a DAG rather than a tree.\footnote{Placing
+terms under term types is the next part of this programme and out of scope here.}
 
 \textbf{Desiderata.}
 \begin{enumerate*}[label=(D\arabic*)]

@@ -12,9 +12,12 @@ call term types, from the definitions themselves. \sys (1) builds a
 definitions-first corpus from 24 legal instruments and academic taxonomies,
 (2) extracts term types in a single pass over the whole corpus held in a cached
 context, requiring a document, section and verbatim quote for every dimension
-and value, and (3) verifies every quote against the source. On a corpus spanning
-the EU, the UK, the US and six international bodies, \sys produces 93 term types
-with 317 values and 480 citations, 97.9\% of which verify, and records a
-cross-source disagreement for 69 of them, in one five-minute call to a small
-model. \todo{One sentence of comparative evidence once RQ2--RQ4 are run.} The
+and value, (3) verifies every quote against the source, and (4) orders the term
+types into an is-a graph by asking, for each one, for a cited probability
+distribution over the more general dimensions it specialises, consolidated
+greedily into a directed acyclic graph. On a corpus spanning the EU, the UK, the
+US and six international bodies, \sys produces 93 term types with 317 values and
+480 citations, 97.9\% of which verify, records a cross-source disagreement for 69
+of them, and links them by 279 weighted is-a edges under one root per category,
+for a few dollars of API calls. \todo{One sentence of comparative evidence once RQ2--RQ4 are run.} The
 corpus, taxonomy and code are available at an anonymised repository.\footnote{\todo{anonymised URL}}

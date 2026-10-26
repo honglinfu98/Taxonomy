@@ -7,3 +7,5 @@ python-dotenv
 
 # LLM client for taxonomy extraction
 anthropic
+# Parquet reader for the DLT-Corpus shards (Part 2)
+pyarrow

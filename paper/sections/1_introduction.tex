@@ -73,8 +73,12 @@ so that the model can recognise the same dimension under different names across
 sources; it requires a document index, an exact section label and a verbatim
 quote for every term type and every value; and it verifies each quote against
 the corpus, repairing wrong section labels and rejecting quotes it cannot find.
-The output is a catalogue of term types with values, aliases, jurisdictions and
-recorded conflicts, which later stages arrange into a hierarchy.
+It then orders the catalogue. For each term type it asks for a cited probability
+distribution over the more general term types it specialises, and consolidates
+the weighted edges greedily into a directed acyclic graph (DAG), so that a term
+type can sit under more than one parent. The output is an ontology of term types
+with values, aliases, jurisdictions, recorded conflicts and weighted is-a edges,
+every element of which cites its source.
 
 \smallskip\noindent\textbf{Contributions.}
 \begin{itemize}
@@ -82,14 +86,17 @@ recorded conflicts, which later stages arrange into a hierarchy.
     text yields the classification dimensions it uses, with values and
     provenance, without a seed taxonomy or gold labels (\cref{sec:problem}).
   \item We propose \sys, which combines a definitions-first corpus, single-pass
-    extraction over a cached whole-corpus context with mandatory citations, and
-    a citation verifier (\cref{sec:method}).
+    extraction over a cached whole-corpus context with mandatory citations, a
+    citation verifier, and a per-node is-a query consolidated into a DAG with
+    metrics for its later maintenance (\cref{sec:method}).
   \item We release \corpus, a definitions-first corpus of 24 documents across
-    four jurisdictions, and the resulting catalogue of 93 term types with 317
-    values and 480 verified citations (\cref{sec:exp:rq1}).
-  \item We evaluate faithfulness and coverage on \corpus: 97.9\% of citations
-    verify, every document contributes to at least one term type, and 69 term
-    types record a cross-source conflict. \todo{Add the headline comparative
+    four jurisdictions, and the resulting ontology of 93 term types with 317
+    values, 480 citations and 279 weighted is-a edges
+    (\cref{sec:exp:rq1,sec:exp:rq2}).
+  \item We evaluate faithfulness and coverage on \corpus: 97.9\% of term-type
+    citations verify, every document contributes to at least one term type, 69
+    term types record a cross-source conflict, and the hierarchy resolves
+    \BBits\ bits per root-to-leaf descent under one root per category. \todo{Add the headline comparative
     number from RQ2--RQ4.} Code and data are at an anonymised
     repository.\footnote{\todo{anonymised URL}}
 \end{itemize}

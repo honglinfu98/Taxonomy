@@ -1,17 +1,19 @@
 \section{Experiments}
 \label{sec:exp}
 
-We answer four research questions.
+We answer five research questions.
 \textbf{RQ1}: How many classification dimensions does the corpus support, how
 widely is each shared across sources, and how faithful are the citations?
-\textbf{RQ2}: How does the induced catalogue compare with expert-built
+\textbf{RQ2}: What hierarchy do the term types form, how confident and how
+grounded are its edges, and how does it change as weak edges are hidden?
+\textbf{RQ3}: How does the induced ontology compare with expert-built
 taxonomies and with LLM baselines that are given the same corpus?
-\textbf{RQ3}: How much do the manifest, the grounding strategy and the model
+\textbf{RQ4}: How much do the manifest, the grounding strategy and the model
 matter?
-\textbf{RQ4}: Does the catalogue improve a downstream classification of
+\textbf{RQ5}: Does the ontology improve a downstream classification of
 Web-sourced token descriptions?
-RQ1 and the manifest part of RQ3 are answered below; the remaining parts are
-framed with the tables they will fill.
+RQ1, RQ2 and the manifest part of RQ4 are answered below; the remaining parts
+are framed with the tables they will fill.
 
 \subsection{Experimental Setup}
 \label{sec:exp:setup}
@@ -40,14 +42,17 @@ the verifier finds in the cited document (exact or relabelled), the share
 relabelled, and the rejection rate; smaller rejection is better. For coverage we
 report the number of term types, values and aliases, the number of documents
 grounding each term type, and the number of term types with a recorded
-conflict. \todo{For RQ2 add precision and recall of term types against the
-expert gold set, and coverage of each expert taxonomy's dimensions; for RQ4 add
-macro-F$_1$ of the downstream classifier.}
+conflict. For the hierarchy we report edges, roots, leaves, depth, bits per descent,
+expected depth, AUC and effective leaves as defined in
+\cref{sec:method:hierarchy}. \todo{For RQ3 add precision and recall of term
+types against the expert gold set, and coverage of each expert taxonomy's
+dimensions; for RQ5 add macro-F$_1$ of the downstream classifier.}
 
-\textbf{Implementation.} The extractor is \texttt{claude-haiku-5-5} called
+\textbf{Implementation.} Both tasks use \texttt{claude-haiku-5-5} called
 through the Anthropic Messages API at effort \texttt{high} with adaptive
-thinking disabled, streamed, with an output limit of 120,000 tokens; the corpus
-sits behind a one-hour prompt-cache breakpoint. The verifier uses 12-character
+thinking disabled; the corpus sits behind a one-hour prompt-cache breakpoint.
+Task~A is one streamed call with an output limit of 120,000 tokens; Task~B is
+93 calls with $k{=}6$, four in parallel, each limited to 4,000 output tokens. The verifier uses 12-character
 shingles and an 80\% threshold. All runs are API calls from a laptop; no GPU is
 involved. We report a single run. \todo{Add a second run with the same prompt
 and report agreement of term types and values, and a run with
@@ -153,14 +158,91 @@ read for relevance. Whether the 470 verified citations do support their term
 types is the question the expert annotation planned in \cref{sec:exp:setup} is
 designed to answer, and we have not run it yet.
 
-\subsection{RQ2: Comparison with Expert Taxonomies and LLM Baselines}
+\subsection{RQ2: The Is-a Hierarchy}
 \label{sec:exp:rq2}
+
+\begin{table}[t]
+  \centering
+  \caption{The is-a DAG by category after consolidation, no weight threshold.
+  Bits/desc.\ is the information gain of a random root-to-leaf descent;
+  E[depth] its expected length; AUC the area under the reach-a-leaf curve (1 when
+  every root is a leaf); Eff.\,lv.\ is the effective number of leaves
+  $2^{\entropy(r)}$ for the leaf-reach distribution $r$. Single run.}
+  \label{tab:taskb}
+  \scriptsize
+  \input{tables/task_b_summary}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  \input{tables/tree_asset}
+  \caption{Primary-parent tree of the asset category. Each node shows its name,
+  the weight of its primary is-a edge and, as $+n$, the number of additional
+  parents kept in the DAG. The root has no parent.}
+  \label{fig:tree}
+\end{figure}
+
+\textbf{Structure.} The 93 calls returned \BWeighted\ weighted candidate edges,
+of which consolidation kept \BEdges\ and dropped \BDropped\ for closing a cycle,
+with \BTies\ exact tie (\cref{tab:taskb}). We make the following observations.
+(1) Every category closes under a single root, the crypto-asset definitional
+criteria for assets, the governance model for technologies, service-provider
+status for actors, the service type for activities, and AML applicability for
+obligations; the model was free to return \emph{none} for any node and did so
+with median mass 0.13. (2) The DAG is deep and multi-parented: a node keeps
+\BMeanParents\ parents on average and up to \BMaxParents, the technology category
+reaches depth 14, and a random descent resolves \BBits\ bits before ending at
+one of \BEffLeaves\ effective leaves. (3) \Cref{fig:tree} shows the asset
+category. The primary tree is readable, with the reference-asset dimension of
+\cref{fig:one} specialising the legal classification and carrying the
+stablecoin regulatory class, redemption mechanism and tokenisation form beneath
+it, but the second-choice parents carry nearly as much mass: the model gave
+\emph{legal classification} and \emph{stablecoin regulatory class} the same
+weight of 0.32 as parents of \emph{reference asset}, and \BMutual\ pairs of
+nodes were each proposed as the other's parent. The weights are coarse, with a
+median top weight of \BMedianTop, so we read them as rankings rather than
+calibrated probabilities.
+
+\begin{figure*}[t]
+  \centering
+  \input{figures/spectrum}
+  \caption{Sensitivity to the display threshold: the sub-DAG keeps only edges
+  with weight at or above the x value. (a) kept edges, roots and leaves; (b)
+  information gain per descent; (c) AUC and effective leaves as a fraction of
+  the 93 nodes. Hiding edges below 0.4 keeps 64 edges and leaves 30 roots.}
+  \label{fig:spectrum}
+\end{figure*}
+
+\textbf{Sensitivity to the threshold.} \Cref{fig:spectrum} sweeps a display
+threshold over the consolidated DAG. Hiding edges below 0.2 halves the edge
+count and roughly halves the bits per descent; at 0.4 a third of the nodes are
+roots and a descent resolves half a bit; above 0.6 the graph is a forest of
+near-singletons. AUC moves the other way, rising as descents end sooner. The
+trade-off is what the maintenance stage will steer by: the full DAG carries the
+most discrimination, a thresholded one is easier to read, and the curves give
+the price of each cut.
+
+\textbf{Faithfulness of edges.} The entries carry \BCites\ citations, of which
+\BVerified\ (\BVerifiedPct\%) verify, \BRelabelled\ after relabelling, and
+\BRejected\ are rejected, a markedly higher rejection rate than in Task~A. Only
+\BEntriesCited\ of the \BWeighted\ entries cite anything, which the prompt
+allows for low-probability entries, and \BTopNoCite\ top entries cite nothing,
+which it does not. The rejected quotes cluster on the academic taxonomies and
+the FATF updates, long sections in which the model tends to cite a phrase
+rather than a sentence, such as ``Wrapped tokens''. As in Task~A, verification
+checks that a quote exists, not that it evidences the relation; the rationale
+field is the model's argument and remains unaudited.
+\todo{Expert judgement of a sample of 100 edges on a 1--3 scale with agreement,
+following the protocol planned for RQ3.}
+
+\subsection{RQ3: Comparison with Expert Taxonomies and LLM Baselines}
+\label{sec:exp:rq3}
 \todo{Table with rows = expert taxonomies and LLM baselines, columns = number
 of dimensions, coverage of each expert taxonomy's dimensions by \sys, new dimensions accepted by experts, and citation verification rate for the LLM
 baselines on the same corpus. Then ``We make the following observations.''}
 
-\subsection{RQ3: Ablations}
-\label{sec:exp:rq3}
+\subsection{RQ4: Ablations}
+\label{sec:exp:rq4}
 \textbf{Manifest.} Without the manifest the same prompt and model returned 65
 term types and cited a wrong or non-existent section label in 9\% of citations;
 with it, 93 term types and 1.5\% wrong labels, all of which the verifier
@@ -172,17 +254,21 @@ values, verified share and cost per variant in one table.}
 
 \subsection{Cost}
 \label{sec:exp:cost}
-The run reported in \cref{sec:exp:rq1} is one call that ended after 302
-seconds with 85,729 output tokens, 2,542 uncached input tokens for the task
-prompt and manifest, and 235,298 input tokens read from the cache. At the
-model's list price for prompts above 100,000 tokens on 25 October 2026, and
-charging the cached tokens at the full input rate, the call cost at most
-\$0.33; the cached rate makes it lower. \todo{Replace with the exact figure
+Task~A is one call that ended after 302 seconds with 85,729 output tokens,
+2,542 uncached input tokens for the task prompt and manifest, and 235,298 input
+tokens read from the cache. At the model's list price for prompts above 100,000
+tokens on 25 October 2026, and charging the cached tokens at the full input
+rate, the call cost at most \$0.33; the cached rate makes it lower. Task~B is
+\BCalls\ calls that completed in \BSeconds\ seconds with four in flight,
+\BOutTokens\ output tokens, \BInTokens\ uncached input tokens and
+\BCacheTokens\ million tokens read from the cache; the cached reads dominate
+and would cost \$11.7 at the full input rate, which the cache-read discount
+reduces by an order of magnitude. \todo{Replace with the exact figure
 from the billing console and add the cost of the baselines and of a frontier
 model on the same input.}
 
-\subsection{RQ4: Downstream Utility}
-\label{sec:exp:rq4}
+\subsection{RQ5: Downstream Utility}
+\label{sec:exp:rq5}
 \todo{Classify Web-sourced token descriptions with the catalogue as label space
 and without it; report macro-F$_1$ with and without the taxonomy, per
 jurisdiction, and one failure case.}

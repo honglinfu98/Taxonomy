@@ -1,0 +1,23 @@
+%% Figure: hierarchy metrics when edges below a weight are hidden (text width, 1x3).
+\begin{tikzpicture}
+  \begin{groupplot}[
+    group style={group size=3 by 1, horizontal sep=11mm},
+    width=0.34\textwidth, height=3.2cm,
+    xmin=0, xmax=1, xlabel={minimum edge weight}, ylabel near ticks,
+    tick label style={font=\scriptsize}, label style={font=\scriptsize},
+    axis line style={gray!60}, ymajorgrids, grid style={gray!25},
+    legend style={font=\scriptsize, draw=none, fill=none}, legend cell align=left,
+    every axis plot/.append style={mark size=1.2pt, line width=0.8pt}]
+    \nextgroupplot[ylabel={count}, xlabel={minimum edge weight\\(a)}, xlabel style={align=center}, legend pos=north east]
+      \addplot[blue!60!black, mark=*, mark repeat=10] table[x=thr, y=edges] {tables/spectrum.dat};
+      \addplot[orange!80!black, mark=square*, mark repeat=10] table[x=thr, y=roots] {tables/spectrum.dat};
+      \addplot[green!50!black, mark=triangle*, mark repeat=10] table[x=thr, y=leaves] {tables/spectrum.dat};
+      \legend{kept edges, roots, leaves}
+    \nextgroupplot[ylabel={bits per descent}, xlabel={minimum edge weight\\(b)}, xlabel style={align=center}]
+      \addplot[blue!60!black, mark=*, mark repeat=10] table[x=thr, y=bits] {tables/spectrum.dat};
+    \nextgroupplot[ylabel={}, xlabel={minimum edge weight\\(c)}, xlabel style={align=center}, legend pos=south east]
+      \addplot[blue!60!black, mark=*, mark repeat=10] table[x=thr, y=auc] {tables/spectrum.dat};
+      \addplot[orange!80!black, mark=square*, mark repeat=10] table[x=thr, y expr=\thisrow{effleaves}/93] {tables/spectrum.dat};
+      \legend{AUC, eff.\ leaves / 93}
+  \end{groupplot}
+\end{tikzpicture}

@@ -6,7 +6,8 @@
 \label{app:prompts}
 The system instructions (\cref{fig:promptsys}) precede the cached corpus and are
 identical for every task; the Task A user prompt (\cref{fig:prompttask}) is
-followed at run time by the manifest of document indexes and section labels.
+followed at run time by the manifest of document indexes and section labels;
+the Task B user prompt (\cref{fig:prompttaskb}) is sent once per term type.
 
 \begin{figure*}[t]
 \lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{tables/prompt_system.txt}
@@ -20,6 +21,14 @@ followed at run time by the manifest of document indexes and section labels.
 one line per document: \texttt{doc 4 (Regulation (EU) 2023/1114 ...): "Articles
 2-3: Scope and Definitions"}.}
 \label{fig:prompttask}
+\end{figure*}
+
+\begin{figure*}[t]
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{tables/prompt_task_b.txt}
+\caption{Task B user prompt, verbatim. The slots \texttt{\{child\}},
+\texttt{\{candidates\}}, \texttt{\{child\_id\}} and \texttt{\{k\}} are filled per
+term type; the catalogue of all term types is a second cached system block.}
+\label{fig:prompttaskb}
 \end{figure*}
 
 \section{Citation Verification}
@@ -76,12 +85,18 @@ line).}
 
 \Cref{tab:catalogue} lists every term type in the run of \cref{sec:exp:rq1}.
 
-\section{Taxonomy Excerpt}
-\label{app:taxonomy}
-\begin{figure}[t]
+\section{Hierarchy of the Other Categories}
+\label{app:trees}
+\Cref{fig:trees} renders the primary-parent trees of the four categories not
+shown in \cref{fig:tree}; the full DAG with all parents and distributions is in
+the released artefact.
+
+\begin{figure*}[t]
   \centering
-  \todo{Rendered subtree of the is-a hierarchy for the asset category, with
-  jurisdiction-indexed leaves, once Task B is reviewed.}
-  \caption{Excerpt of the induced hierarchy. \todo{caption}}
-  \label{fig:taxonomy}
-\end{figure}
+  \begin{minipage}[t]{0.49\textwidth}\centering\input{tables/tree_technology}\\[2pt]\scriptsize (a) technology\end{minipage}\hfill
+  \begin{minipage}[t]{0.49\textwidth}\centering\input{tables/tree_actor}\\[2pt]\scriptsize (b) actor\\[6pt]\input{tables/tree_activity}\\[2pt]\scriptsize (c) activity\end{minipage}\\[6pt]
+  \begin{minipage}[t]{0.49\textwidth}\centering\input{tables/tree_obligation_or_risk}\\[2pt]\scriptsize (d) obligation or risk\end{minipage}
+  \caption{Primary-parent trees of the remaining categories, in the format of
+  \cref{fig:tree}.}
+  \label{fig:trees}
+\end{figure*}

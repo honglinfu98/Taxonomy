@@ -43,13 +43,14 @@ def load_corpus() -> str:
 
 def build_request(instructions: str, user_prompt: str, *, model: str = DEFAULT_MODEL,
                   max_tokens: int = 16000, effort: str = "medium",
-                  extra_system: list[str] | None = None, **extra) -> dict:
+                  extra_system: list[str] | None = None, corpus: bool = True, **extra) -> dict:
     """Return kwargs for client.messages.create(...).
 
     Keep `instructions` stable across calls: it sits before the cached corpus, and any
     change to it invalidates the cache. Put anything that varies in `user_prompt`.
     `extra_system` blocks (e.g. the Task A catalogue for Task B) go after the corpus, each
     behind its own 1-hour cache breakpoint, so the corpus cache survives when they change.
+    `corpus=False` leaves the corpus out (Part 2 tagging needs only the catalogue block).
     Extra keyword arguments (e.g. thinking={"type": "disabled"}) are passed through.
     """
     cache = {"cache_control": {"type": "ephemeral", "ttl": "1h"}}
@@ -60,7 +61,7 @@ def build_request(instructions: str, user_prompt: str, *, model: str = DEFAULT_M
         "output_config": {"effort": effort},
         "system": [
             {"type": "text", "text": instructions},
-            {"type": "text", "text": load_corpus(), **cache},
+            *([{"type": "text", "text": load_corpus(), **cache}] if corpus else []),
             *({"type": "text", "text": t, **cache} for t in (extra_system or [])),
         ],
         "messages": [{"role": "user", "content": user_prompt}],

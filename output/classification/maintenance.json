@@ -1,0 +1,2892 @@
+{
+ "run": {
+  "timestamp": "2026-10-26T06:18:59+00:00",
+  "model": "claude-haiku-5-5",
+  "min_items": 5,
+  "min_residual": 0.3,
+  "min_gain": 0.1
+ },
+ "items": 300,
+ "tags": 1065,
+ "closure_placements": 4630,
+ "empirical": {
+  "bits_per_descent": 6.9161,
+  "auc": 0.7943,
+  "expected_depth": 3.373,
+  "max_depth": 14,
+  "effective_leaves": 19.73,
+  "nodes": 93,
+  "nodes_with_items": 80,
+  "effective_leaves_over_nodes": 0.2122,
+  "effective_leaves_over_nodes_with_items": 0.2466,
+  "stop_mass_top": {
+   "digital_asset_recording": 0.1448,
+   "dlt_architecture": 0.1065,
+   "smart_contract_definition_scope": 0.0896,
+   "privacy_enhancement": 0.0878,
+   "unhosted_vs_hosted_wallet": 0.0719,
+   "script_language_expressiveness": 0.0717,
+   "native_vs_token_standard": 0.0684,
+   "centralisation_level": 0.0399,
+   "digital_identity_layer": 0.0395,
+   "ledger_node_role": 0.0379,
+   "interoperability_type": 0.0368,
+   "wallet_type_storage": 0.0249,
+   "service_location_nexus": 0.0234,
+   "ecosystem_participant_role": 0.0189,
+   "tokenisation_form": 0.015
+  }
+ },
+ "prior_reference": {
+  "bits_per_descent": 4.7155,
+  "auc": 0.8353,
+  "expected_depth": 2.8056,
+  "effective_leaves": 13.987,
+  "effective_leaves_over_nodes": 0.1504
+ },
+ "nodes": {
+  "asset_reference_type": {
+   "name": "Reference asset type",
+   "category": "asset",
+   "n_direct": 11,
+   "n_closure": 156,
+   "n_children": 7,
+   "value_counts": {
+    "other crypto-assets or none (algorithmic)": 6,
+    "single official currency": 3,
+    "commodity": 1,
+    "fiat currency (US payment stablecoin)": 1
+   },
+   "value_entropy_bits": 1.6172,
+   "value_dominance": 0.545,
+   "branching_gain_bits": 2.388,
+   "residual_items": [
+    "paper:17ac41b2b2e8dc53d7c10703856b256f42ffea9f",
+    "paper:1fb2123668af4cdf52ae00e5650931c81750bd68",
+    "paper:205c310d55574bce730c35b6b05346b2c8b40913",
+    "paper:255e762a3cb9f9a2d5eb31bdcf4499997313cb0b"
+   ],
+   "residual_frac": 0.026
+  },
+  "issuer_presence": {
+   "name": "Issuer identifiability",
+   "category": "asset",
+   "n_direct": 1,
+   "n_closure": 149,
+   "n_children": 6,
+   "value_counts": {
+    "identifiable issuer": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 1.6919,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "crypto_asset_scope_criteria": {
+   "name": "Crypto-asset definitional criteria",
+   "category": "asset",
+   "n_direct": 22,
+   "n_closure": 169,
+   "n_children": 10,
+   "value_counts": {
+    "payment or investment capable virtual asset": 12,
+    "DLT-recorded digital representation of value or right": 11
+   },
+   "value_entropy_bits": 0.9986,
+   "value_dominance": 0.522,
+   "branching_gain_bits": 2.3697,
+   "residual_items": [
+    "paper:12c37ed1451eb3279bac8cf83c7adaf7a1032b43",
+    "paper:235ef066b73efbcdbfa6a7d348c6e045b73a7824",
+    "patent:10817829"
+   ],
+   "residual_frac": 0.018
+  },
+  "fungibility": {
+   "name": "Fungibility",
+   "category": "asset",
+   "n_direct": 5,
+   "n_closure": 12,
+   "n_children": 1,
+   "value_counts": {
+    "unique / non-fungible": 5
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 0.4138,
+   "residual_items": [
+    "paper:28bf13a4662d0d899b1c49ae77ef71bbd2246eaa"
+   ],
+   "residual_frac": 0.083
+  },
+  "crypto_asset_function": {
+   "name": "Economic function of the asset",
+   "category": "asset",
+   "n_direct": 39,
+   "n_closure": 166,
+   "n_children": 9,
+   "value_counts": {
+    "payment or investment purpose": 30,
+    "good, collectible or non-commodity asset": 6,
+    "utility token": 3,
+    "security / financial instrument token": 1,
+    "governance token": 1
+   },
+   "value_entropy_bits": 1.2729,
+   "value_dominance": 0.732,
+   "branching_gain_bits": 2.8315,
+   "residual_items": [
+    "paper:04e890e500126d1ab0c894ad62258d12da293359",
+    "paper:0c2453bf520b2f08cc0f201d71b6fdcef92b8553",
+    "paper:116552a483e3bc60c2c10f4159e39ceac30c9876",
+    "paper:12db2d4c2617964d7d07db6acd3e3a7420739a5b",
+    "paper:1907277df09333e99f818f5e4efda08dc93ab386",
+    "paper:1ad68b02260072b843e1546070de14dc62fa3717",
+    "paper:244c02eaa0e6a69e423d0939993261d74adc4269",
+    "patent:10217037",
+    "patent:10652239"
+   ],
+   "residual_frac": 0.054
+  },
+  "native_vs_token_standard": {
+   "name": "Native asset versus token standard",
+   "category": "asset",
+   "n_direct": 11,
+   "n_closure": 11,
+   "n_children": 1,
+   "value_counts": {
+    "native protocol asset": 5,
+    "other token template (e.g. ERC-721, ERC-1400)": 5,
+    "ERC-20 fungible token": 2
+   },
+   "value_entropy_bits": 1.4834,
+   "value_dominance": 0.417,
+   "branching_gain_bits": 0.4395,
+   "residual_items": [
+    "paper:05229dcf394a57019588022f07b3de23b49f0424",
+    "paper:05289314b0856dfd8cf29478613a5a0a159d83ab",
+    "paper:06495a84ae83e91bbbb71861fffcfb58d0377c92",
+    "paper:07f1a7b13ea7f8b04de3eb1a7ba3558897f3842f",
+    "paper:0c7f041c11ebae9eac5ec86b3be727ba46ca6d86",
+    "paper:1966fdb4d86ab6b3a98a0aaacf3c8bb9ec649ffa",
+    "paper:21be0d045fc3f0a4f9da8696e3e7fd65a517cf08",
+    "paper:2bc97b79ff0d59736fe5699038f56958747447f6",
+    "patent:10946283",
+    "patent:10984400"
+   ],
+   "residual_frac": 0.909
+  },
+  "tokenisation_form": {
+   "name": "Tokenisation form",
+   "category": "asset",
+   "n_direct": 9,
+   "n_closure": 17,
+   "n_children": 2,
+   "value_counts": {
+    "tokenised traditional asset": 6,
+    "native or unbacked tokenised asset": 3
+   },
+   "value_entropy_bits": 0.9183,
+   "value_dominance": 0.667,
+   "branching_gain_bits": 1.1942,
+   "residual_items": [
+    "paper:1997c87ccfdf271220b72cc109a52cad80829e42",
+    "paper:1add496d5659790b5711ef8d04045bdf2b2085c8",
+    "paper:24b9ea46e6ab29d406eb68e3d3d6300b95fd6226",
+    "patent:10635722",
+    "patent:10915895",
+    "patent:11121860"
+   ],
+   "residual_frac": 0.353
+  },
+  "wrapped_or_bridged_asset": {
+   "name": "Wrapped / cross-chain representation",
+   "category": "asset",
+   "n_direct": 1,
+   "n_closure": 1,
+   "n_children": 0,
+   "value_counts": {
+    "wrapped token": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:17cff826c2780dc747534ae5563853c4aaf4dac7"
+   ],
+   "residual_frac": 1.0
+  },
+  "yield_source": {
+   "name": "Source of yield",
+   "category": "asset",
+   "n_direct": 4,
+   "n_closure": 52,
+   "n_children": 1,
+   "value_counts": {
+    "no yield": 4
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 0.3912,
+   "residual_items": [
+    "paper:04f9944957f0bb843e2003573883386539c15b85",
+    "paper:05b8744bdf284b2f9b9ae910173efbf1ac6400c4",
+    "paper:181e9414840c15a24a2f7858c0a7db7201d490be",
+    "paper:22c36222351cd786cd5a1d0c03a584292f049339"
+   ],
+   "residual_frac": 0.077
+  },
+  "yield_distribution_mechanism": {
+   "name": "Yield distribution mechanism",
+   "category": "asset",
+   "n_direct": 0,
+   "n_closure": 48,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": -0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "redemption_mechanism": {
+   "name": "Redemption mechanism",
+   "category": "asset",
+   "n_direct": 1,
+   "n_closure": 61,
+   "n_children": 4,
+   "value_counts": {
+    "off-chain issuer redemption": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 1.6673,
+   "residual_items": [
+    "patent:10977626"
+   ],
+   "residual_frac": 0.016
+  },
+  "claim_form": {
+   "name": "Form of holder claim",
+   "category": "asset",
+   "n_direct": 3,
+   "n_closure": 60,
+   "n_children": 4,
+   "value_counts": {
+    "in personam against issuer": 3
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 1.5626,
+   "residual_items": [
+    "patent:11023604"
+   ],
+   "residual_frac": 0.017
+  },
+  "centralisation_level": {
+   "name": "Centralisation of control",
+   "category": "asset",
+   "n_direct": 32,
+   "n_closure": 48,
+   "n_children": 2,
+   "value_counts": {
+    "decentralised": 13,
+    "centralised": 13,
+    "hybrid": 7
+   },
+   "value_entropy_bits": 1.5334,
+   "value_dominance": 0.394,
+   "branching_gain_bits": 0.9685,
+   "residual_items": [
+    "paper:05289314b0856dfd8cf29478613a5a0a159d83ab",
+    "paper:090b446edccaef588ab66f59cababe5dce311cc8",
+    "paper:093e06c2c43747152fe1d40974fb4f085bf07228",
+    "paper:0b490cead9599dcaa2e795afbd5cea96871497af",
+    "paper:0e55478206ad9e5000d18298cd014f5c94205fa8",
+    "paper:1663d0314630fff2dfb0e345b4f3da197c507794",
+    "paper:16f4d471a3c351c4275d319b0ab1d16627f7cd5d",
+    "paper:17cff826c2780dc747534ae5563853c4aaf4dac7",
+    "paper:1d44545e3d90334c641ae265ab55981c2137de39",
+    "paper:1e66cb1b5918603e4e75b77c15cf0eca16406d97",
+    "paper:1f96c38f9baed69a2bbf8fa6223cf0208ef0e83c",
+    "paper:21be0d045fc3f0a4f9da8696e3e7fd65a517cf08",
+    "paper:22e1720dec892d6c433c878b5784be4883d506b0",
+    "paper:2477d05319e266366c1f84a76dd814693b02bd68",
+    "paper:2493cf82a4922ba9411cef72dccdb6d46095617a",
+    "paper:2a89a55b6867f3245d5dce6d829d321a46971626",
+    "paper:2c6a737ff93296b5d8c624f6f974eb0f40ef86e5",
+    "paper:2d89a307452cab692368ffcb2c236a95312dc163",
+    "patent:10354325",
+    "patent:10585657",
+    "patent:10635722",
+    "patent:10946283",
+    "patent:10984081",
+    "patent:11030297",
+    "patent:11049148",
+    "patent:11068886",
+    "patent:11100090",
+    "patent:11150888",
+    "patent:11176101"
+   ],
+   "residual_frac": 0.604
+  },
+  "decentralised_system_status": {
+   "name": "Decentralised system certification",
+   "category": "technology",
+   "n_direct": 10,
+   "n_closure": 65,
+   "n_children": 2,
+   "value_counts": {
+    "decentralised system": 5,
+    "not decentralised": 4,
+    "mature blockchain system": 1
+   },
+   "value_entropy_bits": 1.361,
+   "value_dominance": 0.5,
+   "branching_gain_bits": 1.234,
+   "residual_items": [
+    "paper:0450f3f3a78ffc16d8db71a7dd6c4b1090ccafd1",
+    "paper:0e55478206ad9e5000d18298cd014f5c94205fa8",
+    "paper:16c83bb8f015bef8a4e19a724e8784a074b6cbea",
+    "paper:1b6d0f137efae08cd932df46b29e09c0893a3ee1",
+    "paper:235ef066b73efbcdbfa6a7d348c6e045b73a7824",
+    "paper:2477d05319e266366c1f84a76dd814693b02bd68",
+    "paper:29caff504c1a6de0af1ad6150ee8c0b33639c06e",
+    "patent:10762478"
+   ],
+   "residual_frac": 0.123
+  },
+  "legal_classification_status": {
+   "name": "Legal classification of crypto-asset",
+   "category": "asset",
+   "n_direct": 3,
+   "n_closure": 157,
+   "n_children": 11,
+   "value_counts": {
+    "other crypto-asset or commodity": 3
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 2.7822,
+   "residual_items": [
+    "paper:2390b5441cd6b65c5cb361f6754a0d40b01f2bd1"
+   ],
+   "residual_frac": 0.006
+  },
+  "stablecoin_regulatory_class": {
+   "name": "Payment stablecoin / e-money / ART regulatory class",
+   "category": "asset",
+   "n_direct": 1,
+   "n_closure": 149,
+   "n_children": 3,
+   "value_counts": {
+    "electronic money token (EMT)": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 0.936,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "unhosted_vs_hosted_wallet": {
+   "name": "Hosted versus unhosted (self-hosted) wallet",
+   "category": "asset",
+   "n_direct": 19,
+   "n_closure": 19,
+   "n_children": 0,
+   "value_counts": {
+    "non-custodial (unhosted/self-hosted) wallet": 14,
+    "custodial (hosted) wallet": 4,
+    "self-hosted address": 1
+   },
+   "value_entropy_bits": 1.0215,
+   "value_dominance": 0.737,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:0462049d43a08dfdfeb709d4ff04af074191cfb2",
+    "paper:0466e0f85861877538fb72cb7a4c4b9c9b51f65d",
+    "paper:0569f686c7a2568fb895d1008b6f3ee11f3d37fc",
+    "paper:0ea674233b5b207898f6901963ecc782ff3f8035",
+    "paper:2656a11eb066e90e0d3fad4870ac119782c84ca6",
+    "patent:10380594",
+    "patent:10528947",
+    "patent:10581841",
+    "patent:10636030",
+    "patent:10659223",
+    "patent:10762478",
+    "patent:10783545",
+    "patent:10915895",
+    "patent:10951401",
+    "patent:11068885",
+    "patent:11093911",
+    "patent:11138608",
+    "patent:11171782",
+    "patent:11176225"
+   ],
+   "residual_frac": 1.0
+  },
+  "wallet_type_storage": {
+   "name": "Wallet storage mode (hot or cold)",
+   "category": "technology",
+   "n_direct": 3,
+   "n_closure": 3,
+   "n_children": 0,
+   "value_counts": {
+    "cold wallet": 3
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:1fb2123668af4cdf52ae00e5650931c81750bd68",
+    "patent:10659223",
+    "patent:10891384"
+   ],
+   "residual_frac": 1.0
+  },
+  "dlt_architecture": {
+   "name": "DLT data structure (blockchain vs non-chain DLT)",
+   "category": "technology",
+   "n_direct": 124,
+   "n_closure": 162,
+   "n_children": 3,
+   "value_counts": {
+    "blockchain (chain of blocks)": 122,
+    "non-blockchain DLT (e.g. DAG, Hashgraph)": 4,
+    "DAG-based (IOTA)": 3
+   },
+   "value_entropy_bits": 0.3577,
+   "value_dominance": 0.946,
+   "branching_gain_bits": 1.2694,
+   "residual_items": [
+    "paper:02c150bf1e09acfa1d7d0c785bcfacbde71ab987",
+    "paper:037a1980cf7f80d3db07ae112b878a4b60b529a1",
+    "paper:0450f3f3a78ffc16d8db71a7dd6c4b1090ccafd1",
+    "paper:049399f024e4abdcea43fba03157a63d58f40479",
+    "paper:04ba6b24c9ef3481aa258c95277f633da554e4be",
+    "paper:0569f686c7a2568fb895d1008b6f3ee11f3d37fc",
+    "paper:05a517151413d40684eae0e69e5a3a7c4d2061a3",
+    "paper:06495a84ae83e91bbbb71861fffcfb58d0377c92",
+    "paper:067c762e59e7001cd57285a4afec400cc2f52c34",
+    "paper:07f1a7b13ea7f8b04de3eb1a7ba3558897f3842f",
+    "paper:0807ccbb403f7f25a53b580fd9bcdaff8b920c00",
+    "paper:090b446edccaef588ab66f59cababe5dce311cc8",
+    "paper:0c18047cf1b66ef8b3c4965dd5236ff78f29b88a",
+    "paper:0e55478206ad9e5000d18298cd014f5c94205fa8",
+    "paper:129af229a9566551a4eb8d93ad554cd85931e113",
+    "paper:13cd8a9f660b5bcf0d36fb6cbe5b8f3b92e48441",
+    "paper:13d47da96b93fce9c490b128692d43f0aa0f1847",
+    "paper:1663d0314630fff2dfb0e345b4f3da197c507794",
+    "paper:167d54b3b4b23351739f408a6425a7cb4423a0af",
+    "paper:16c83bb8f015bef8a4e19a724e8784a074b6cbea",
+    "paper:19b4c56fa733f34d725fb62972f0edfc11215537",
+    "paper:19ba0de3455dad4dabab7ed31c0d9e3998922b09",
+    "paper:19f65cffef882ce7d12d3b6af45f26471a2e9d60",
+    "paper:1b2aabddb66b7ea872c01403458ef1d9e91677c1",
+    "paper:1b6d0f137efae08cd932df46b29e09c0893a3ee1",
+    "paper:1bfdbe6258e30ff5b3cb6194ead1b8bda0e23ddd",
+    "paper:1c9f2d5eeeb7742df0eceb445b9f9d641e8d96e7",
+    "paper:1de8c5d586dbf05f76ee911f37a1212795b066ba",
+    "paper:1e66cb1b5918603e4e75b77c15cf0eca16406d97",
+    "paper:2159f98b0d48a864c0404761cc6f9a563d0f3bde",
+    "paper:21f8123a62aaafb31adb8542cb49a29c28f11994",
+    "paper:2247dc623bee7f05e42055eed1978cf1516de242",
+    "paper:2328ed23fd8024642938ce7729bb4eb9185bee41",
+    "paper:233610691eefc2d314fc9722ab23c06e09dd4e2c",
+    "paper:235ef066b73efbcdbfa6a7d348c6e045b73a7824",
+    "paper:244631542c167cbc506d1fffa86eab6de250cf79",
+    "paper:27794c520c3a812e663a62e54a3cc3dd00e8aab6",
+    "paper:29caff504c1a6de0af1ad6150ee8c0b33639c06e",
+    "paper:2c6a737ff93296b5d8c624f6f974eb0f40ef86e5",
+    "paper:2dffce2d331a9125556af4e557603b08f781786d",
+    "patent:10114969",
+    "patent:10541821",
+    "patent:10565192",
+    "patent:10585657",
+    "patent:10592873",
+    "patent:10594489",
+    "patent:10601911",
+    "patent:10630769",
+    "patent:10635722",
+    "patent:10636030",
+    "patent:10652019",
+    "patent:10673775",
+    "patent:10684783",
+    "patent:10693652",
+    "patent:10699493",
+    "patent:10733341",
+    "patent:10754847",
+    "patent:10762478",
+    "patent:10764142",
+    "patent:10803022",
+    "patent:10817829",
+    "patent:10826695",
+    "patent:10848942",
+    "patent:10873849",
+    "patent:10880071",
+    "patent:10887107",
+    "patent:10901957",
+    "patent:10915512",
+    "patent:10929374",
+    "patent:10944296",
+    "patent:10944549",
+    "patent:10965461",
+    "patent:10965632",
+    "patent:10972475",
+    "patent:10992458",
+    "patent:10997551",
+    "patent:11016962",
+    "patent:11023604",
+    "patent:11032063",
+    "patent:11032260",
+    "patent:11038950",
+    "patent:11050763",
+    "patent:11062308",
+    "patent:11063746",
+    "patent:11068886",
+    "patent:11068915",
+    "patent:11070361",
+    "patent:11113241",
+    "patent:11121860",
+    "patent:11126767",
+    "patent:11133939",
+    "patent:11138608",
+    "patent:11140133",
+    "patent:11150888",
+    "patent:11157952",
+    "patent:11164671",
+    "patent:11176225",
+    "patent:11178157"
+   ],
+   "residual_frac": 0.605
+  },
+  "ledger_access_permission": {
+   "name": "Ledger access and permissioning",
+   "category": "technology",
+   "n_direct": 118,
+   "n_closure": 237,
+   "n_children": 14,
+   "value_counts": {
+    "public / permissionless": 48,
+    "permissioned public": 37,
+    "permissioned private": 37,
+    "public permissionless (US)": 1
+   },
+   "value_entropy_bits": 1.6289,
+   "value_dominance": 0.39,
+   "branching_gain_bits": 3.2748,
+   "residual_items": [
+    "paper:0ff597d00836a6a5b282fabea57377e475497ccb",
+    "paper:23ec04908dba6ffdbcf6223bb66b61e19f424837",
+    "patent:10380594",
+    "patent:10540344",
+    "patent:10547457",
+    "patent:10762516",
+    "patent:11030297",
+    "patent:11106811",
+    "patent:11128477"
+   ],
+   "residual_frac": 0.038
+  },
+  "consensus_mechanism": {
+   "name": "Consensus mechanism",
+   "category": "technology",
+   "n_direct": 51,
+   "n_closure": 219,
+   "n_children": 6,
+   "value_counts": {
+    "proof of work (PoW)": 29,
+    "Byzantine fault tolerant (BFT)": 20,
+    "proof of stake (PoS)": 1,
+    "proof of authority": 1
+   },
+   "value_entropy_bits": 1.2152,
+   "value_dominance": 0.569,
+   "branching_gain_bits": 2.3907,
+   "residual_items": [
+    "paper:08005b248dceda0c10974bc4ac5d31ba92a29f83",
+    "paper:08c64c80ff25d08f054ede7ff80f5aa5af11c7b1",
+    "paper:093e06c2c43747152fe1d40974fb4f085bf07228",
+    "paper:0ec208fb4082e349e02a6e2046ca8313b24d17dc",
+    "paper:12c235f2911cc976aa217f8dceec9587c58a5c95",
+    "paper:156d4ef657118c3c7217e7661fe158d8f1165d41",
+    "paper:22d4182e7f71385cac7bac86d0cd1f54f3581e70",
+    "paper:2477d05319e266366c1f84a76dd814693b02bd68",
+    "paper:2a953d2b0d950a58de125e77e43b0dcb579de9b8",
+    "paper:2ba40cb3e14d1ad74b4f6de92c29ed6fd4efdb07",
+    "patent:10706023",
+    "patent:10915895",
+    "patent:10984081",
+    "patent:11159334"
+   ],
+   "residual_frac": 0.064
+  },
+  "consensus_finality": {
+   "name": "Finality of agreement",
+   "category": "technology",
+   "n_direct": 7,
+   "n_closure": 7,
+   "n_children": 0,
+   "value_counts": {
+    "non-deterministic (probabilistic)": 6,
+    "deterministic": 1
+   },
+   "value_entropy_bits": 0.5917,
+   "value_dominance": 0.857,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:01b198ed09d52a7c601bcf229705508847cf48ca",
+    "paper:0ea674233b5b207898f6901963ecc782ff3f8035",
+    "paper:14ab8ba36288b21ad5f9fba2ad9c8c9d6e1b4e36",
+    "paper:17552df635fe7d2967c382fa589586920a08eaac",
+    "paper:261d19194a2fdae13b3ee438fdf2228aa703bdb4",
+    "patent:10630463",
+    "patent:10785033"
+   ],
+   "residual_frac": 1.0
+  },
+  "network_topology": {
+   "name": "Network topology and node roles",
+   "category": "technology",
+   "n_direct": 45,
+   "n_closure": 223,
+   "n_children": 7,
+   "value_counts": {
+    "decentralised": 24,
+    "hierarchical / consortium": 20,
+    "centralised": 1
+   },
+   "value_entropy_bits": 1.1257,
+   "value_dominance": 0.533,
+   "branching_gain_bits": 2.2522,
+   "residual_items": [
+    "paper:287995c47604909a732f9b73a4328d245bbb3bd8",
+    "patent:10897499",
+    "patent:10942956",
+    "patent:10958419"
+   ],
+   "residual_frac": 0.018
+  },
+  "script_language_expressiveness": {
+   "name": "Smart contract / script language expressiveness",
+   "category": "technology",
+   "n_direct": 19,
+   "n_closure": 24,
+   "n_children": 1,
+   "value_counts": {
+    "Turing complete": 16,
+    "application-specific non-Turing complete": 2,
+    "non-Turing complete with external data": 1
+   },
+   "value_entropy_bits": 0.7742,
+   "value_dominance": 0.842,
+   "branching_gain_bits": 0.8709,
+   "residual_items": [
+    "paper:0462049d43a08dfdfeb709d4ff04af074191cfb2",
+    "paper:05289314b0856dfd8cf29478613a5a0a159d83ab",
+    "paper:0a138399cf96d08cb30e28d8c925e793a325cd5d",
+    "paper:1040d138ab8e2e89adc17be3236fdf3e293eabe7",
+    "paper:1454b9cbd908dcacea404fba9fe739726117eec9",
+    "paper:16f4d471a3c351c4275d319b0ab1d16627f7cd5d",
+    "paper:1add496d5659790b5711ef8d04045bdf2b2085c8",
+    "paper:1cd16aa0225cfb110c22f9f0c4d2f8df38c956f3",
+    "paper:1d44545e3d90334c641ae265ab55981c2137de39",
+    "paper:1f96c38f9baed69a2bbf8fa6223cf0208ef0e83c",
+    "paper:22c36222351cd786cd5a1d0c03a584292f049339",
+    "paper:240c39ff1de4074e9cc2d0500daca203ac91fd6a",
+    "paper:2493cf82a4922ba9411cef72dccdb6d46095617a",
+    "paper:27ee3fd33d2f2d1141c9daa286b7c979a0143b02",
+    "patent:10833960",
+    "patent:10903989",
+    "patent:11113271"
+   ],
+   "residual_frac": 0.708
+  },
+  "smart_contract_definition_scope": {
+   "name": "Smart contract / distributed ledger application scope",
+   "category": "technology",
+   "n_direct": 44,
+   "n_closure": 54,
+   "n_children": 1,
+   "value_counts": {
+    "smart contract (self-executing)": 27,
+    "distributed ledger application (smart contract)": 21,
+    "distributed ledger protocol": 1,
+    "distributed ledger system": 1
+   },
+   "value_entropy_bits": 1.2314,
+   "value_dominance": 0.54,
+   "branching_gain_bits": 0.9911,
+   "residual_items": [
+    "paper:04e890e500126d1ab0c894ad62258d12da293359",
+    "paper:05229dcf394a57019588022f07b3de23b49f0424",
+    "paper:0995fca5dd72ab833d6c30b4403f5185c8ca5ce8",
+    "paper:116552a483e3bc60c2c10f4159e39ceac30c9876",
+    "paper:12c37ed1451eb3279bac8cf83c7adaf7a1032b43",
+    "paper:1966fdb4d86ab6b3a98a0aaacf3c8bb9ec649ffa",
+    "paper:1fc71557585d6dece2dab9adbbedcf9c32f17857",
+    "paper:208a08e7df7ed5f951d1ffddf0e038bb1429aa9f",
+    "paper:23ea0f02919486e16b90f73338baf0e6ebc17110",
+    "paper:244c02eaa0e6a69e423d0939993261d74adc4269",
+    "paper:24665bc368b409b777b89b0202117d4c3c7bb95d",
+    "paper:24b9ea46e6ab29d406eb68e3d3d6300b95fd6226",
+    "patent:10365922",
+    "patent:10581621",
+    "patent:10652239",
+    "patent:10666426",
+    "patent:10687374",
+    "patent:10725716",
+    "patent:10740808",
+    "patent:10871948",
+    "patent:10884725",
+    "patent:10944565",
+    "patent:10946283",
+    "patent:11042934",
+    "patent:11049148",
+    "patent:11100090",
+    "patent:11130042",
+    "patent:11169976",
+    "patent:11171782",
+    "patent:11188909"
+   ],
+   "residual_frac": 0.556
+  },
+  "ledger_node_role": {
+   "name": "Node / DLT network node role",
+   "category": "technology",
+   "n_direct": 38,
+   "n_closure": 83,
+   "n_children": 1,
+   "value_counts": {
+    "validator": 16,
+    "full node (complete replica)": 9,
+    "tracking node (non-validating)": 7,
+    "miner": 6,
+    "partial replica node": 2
+   },
+   "value_entropy_bits": 2.0797,
+   "value_dominance": 0.4,
+   "branching_gain_bits": 0.9695,
+   "residual_items": [
+    "paper:04ba6b24c9ef3481aa258c95277f633da554e4be",
+    "paper:0569f686c7a2568fb895d1008b6f3ee11f3d37fc",
+    "paper:0e85f54f986de278e1a4d8889820251d09212b1b",
+    "paper:13d47da96b93fce9c490b128692d43f0aa0f1847",
+    "paper:14ab8ba36288b21ad5f9fba2ad9c8c9d6e1b4e36",
+    "paper:167d54b3b4b23351739f408a6425a7cb4423a0af",
+    "paper:1e66cb1b5918603e4e75b77c15cf0eca16406d97",
+    "paper:1f96c38f9baed69a2bbf8fa6223cf0208ef0e83c",
+    "paper:2159f98b0d48a864c0404761cc6f9a563d0f3bde",
+    "patent:10541821",
+    "patent:10567393",
+    "patent:10635722",
+    "patent:10666426",
+    "patent:10728020",
+    "patent:10733341",
+    "patent:10785033",
+    "patent:10803022",
+    "patent:10887107",
+    "patent:10903989",
+    "patent:10949548",
+    "patent:10977626",
+    "patent:11016962",
+    "patent:11032057",
+    "patent:11032063",
+    "patent:11063746",
+    "patent:11068886",
+    "patent:11070361",
+    "patent:11093911",
+    "patent:11100090",
+    "patent:11126767",
+    "patent:11150888",
+    "patent:11161409",
+    "patent:11169976"
+   ],
+   "residual_frac": 0.398
+  },
+  "dlt_network_access_scope": {
+   "name": "Ledger scope: open or closed access by design",
+   "category": "technology",
+   "n_direct": 33,
+   "n_closure": 228,
+   "n_children": 5,
+   "value_counts": {
+    "closed-loop system": 15,
+    "open network": 15,
+    "limited network of service providers": 3
+   },
+   "value_entropy_bits": 1.3486,
+   "value_dominance": 0.455,
+   "branching_gain_bits": 1.8519,
+   "residual_items": [
+    "paper:04a57c8e19e751350723079b50a3916dab4dad61",
+    "paper:06dfd6f9a9e633642b82c30f147cd93712246ddf",
+    "paper:1039e1b482afb580651b1b678bba37d2fd95f58b",
+    "patent:10938571",
+    "patent:11126698"
+   ],
+   "residual_frac": 0.022
+  },
+  "governance_model": {
+   "name": "Governance model of a DLT system",
+   "category": "technology",
+   "n_direct": 32,
+   "n_closure": 242,
+   "n_children": 8,
+   "value_counts": {
+    "decentralised governance system": 18,
+    "technical / company-led": 10,
+    "alliance / consortium": 4
+   },
+   "value_entropy_bits": 1.3663,
+   "value_dominance": 0.562,
+   "branching_gain_bits": 2.6437,
+   "residual_items": [
+    "paper:0b490cead9599dcaa2e795afbd5cea96871497af",
+    "paper:0dbe226fa2fa11f08657b94f84c3001e4caf5b9e",
+    "paper:1ad68b02260072b843e1546070de14dc62fa3717",
+    "paper:1d1249f1c186d82b261c161faeddd8212867527e",
+    "paper:2390b5441cd6b65c5cb361f6754a0d40b01f2bd1"
+   ],
+   "residual_frac": 0.021
+  },
+  "software_architecture": {
+   "name": "Software architecture (monolithic vs polylithic)",
+   "category": "technology",
+   "n_direct": 13,
+   "n_closure": 201,
+   "n_children": 5,
+   "value_counts": {
+    "polylithic": 10,
+    "monolithic": 3
+   },
+   "value_entropy_bits": 0.7793,
+   "value_dominance": 0.769,
+   "branching_gain_bits": 2.0168,
+   "residual_items": [
+    "paper:14a8406237dc70584f2313be1278df31b65a0967",
+    "paper:2cad6644c11a7b928c8b934b89718485ef7e7b45",
+    "patent:11176101"
+   ],
+   "residual_frac": 0.015
+  },
+  "code_license_openness": {
+   "name": "Source code openness",
+   "category": "technology",
+   "n_direct": 1,
+   "n_closure": 57,
+   "n_children": 2,
+   "value_counts": {
+    "open source": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 0.2975,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "digital_identity_layer": {
+   "name": "Identity layer and onboarding",
+   "category": "technology",
+   "n_direct": 34,
+   "n_closure": 49,
+   "n_children": 2,
+   "value_counts": {
+    "KYC/AML identity layer": 24,
+    "anonymous / pseudonymous": 10
+   },
+   "value_entropy_bits": 0.874,
+   "value_dominance": 0.706,
+   "branching_gain_bits": 1.2602,
+   "residual_items": [
+    "paper:0450f3f3a78ffc16d8db71a7dd6c4b1090ccafd1",
+    "paper:0462049d43a08dfdfeb709d4ff04af074191cfb2",
+    "paper:068c4326b6bae16ed4393ef9b47ba992b1b0007e",
+    "paper:0fcbf225c214f49e0c715fddfb731b3a8b67552a",
+    "paper:1462d61dd39b15dae32274222fdeb8ff17e2d900",
+    "paper:1fc71557585d6dece2dab9adbbedcf9c32f17857",
+    "paper:240c39ff1de4074e9cc2d0500daca203ac91fd6a",
+    "paper:28bf13a4662d0d899b1c49ae77ef71bbd2246eaa",
+    "patent:10581841",
+    "patent:10636030",
+    "patent:10684783",
+    "patent:10885207",
+    "patent:10936732",
+    "patent:10944296",
+    "patent:10944565",
+    "patent:10965461",
+    "patent:11025409",
+    "patent:11038950",
+    "patent:11050763",
+    "patent:11079128",
+    "patent:11138608",
+    "patent:11157952",
+    "patent:11171782",
+    "patent:11188909"
+   ],
+   "residual_frac": 0.49
+  },
+  "privacy_enhancement": {
+   "name": "Privacy and anonymity features",
+   "category": "technology",
+   "n_direct": 22,
+   "n_closure": 25,
+   "n_children": 1,
+   "value_counts": {
+    "built-in privacy": 14,
+    "add-on privacy": 8
+   },
+   "value_entropy_bits": 0.9457,
+   "value_dominance": 0.636,
+   "branching_gain_bits": 0.5294,
+   "residual_items": [
+    "paper:0466e0f85861877538fb72cb7a4c4b9c9b51f65d",
+    "paper:07232adfd9952bba53b00890cc0b3ed01cc5f9a6",
+    "paper:0a138399cf96d08cb30e28d8c925e793a325cd5d",
+    "paper:116552a483e3bc60c2c10f4159e39ceac30c9876",
+    "paper:1907277df09333e99f818f5e4efda08dc93ab386",
+    "paper:1bfdbe6258e30ff5b3cb6194ead1b8bda0e23ddd",
+    "paper:238be6da11ff829f647624e7f089b4006875e724",
+    "paper:29717b25795cd599543ccbdfc05e80e3e73d5a38",
+    "paper:2a6efac63e49c9f9ca45cca7c66ad0fe03e07750",
+    "paper:2a89a55b6867f3245d5dce6d829d321a46971626",
+    "patent:10114969",
+    "patent:10652019",
+    "patent:10721058",
+    "patent:10861014",
+    "patent:10880072",
+    "patent:10903980",
+    "patent:10979225",
+    "patent:10979410",
+    "patent:11049148",
+    "patent:11068885",
+    "patent:11144918",
+    "patent:11151261"
+   ],
+   "residual_frac": 0.88
+  },
+  "ledger_storage_model": {
+   "name": "Ledger storage model (what is stored on chain)",
+   "category": "technology",
+   "n_direct": 46,
+   "n_closure": 198,
+   "n_children": 3,
+   "value_counts": {
+    "transactions stored": 38,
+    "binary Merkle tree header": 6,
+    "user balance stored": 3,
+    "Patricia Merkle tree header": 1
+   },
+   "value_entropy_bits": 1.0082,
+   "value_dominance": 0.792,
+   "branching_gain_bits": 1.391,
+   "residual_items": [
+    "paper:03609391f97bc49ce419cae8f769de7c6a8fb7cf",
+    "patent:10025797",
+    "patent:10558996",
+    "patent:10853812",
+    "patent:10997159"
+   ],
+   "residual_frac": 0.025
+  },
+  "interoperability_type": {
+   "name": "Interoperability and intraoperability",
+   "category": "technology",
+   "n_direct": 7,
+   "n_closure": 7,
+   "n_children": 0,
+   "value_counts": {
+    "explicit interoperability": 7
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:046368aae015be3a571f23407f47d0191a42c15a",
+    "paper:07232adfd9952bba53b00890cc0b3ed01cc5f9a6",
+    "paper:17cff826c2780dc747534ae5563853c4aaf4dac7",
+    "paper:29cc8eae6bf6fe8e7a38c98af5b79dbee3d7ee61",
+    "patent:10757084",
+    "patent:11032057",
+    "patent:11032064"
+   ],
+   "residual_frac": 1.0
+  },
+  "asset_supply_policy": {
+   "name": "Asset supply management (monetary policy)",
+   "category": "technology",
+   "n_direct": 2,
+   "n_closure": 2,
+   "n_children": 0,
+   "value_counts": {
+    "limited deterministic supply": 1,
+    "pre-mined": 1
+   },
+   "value_entropy_bits": 1.0,
+   "value_dominance": 0.5,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:21be0d045fc3f0a4f9da8696e3e7fd65a517cf08",
+    "patent:10977626"
+   ],
+   "residual_frac": 1.0
+  },
+  "native_asset_type": {
+   "name": "Native asset presence and type",
+   "category": "technology",
+   "n_direct": 11,
+   "n_closure": 203,
+   "n_children": 4,
+   "value_counts": {
+    "own single cryptocurrency": 10,
+    "no native asset": 1
+   },
+   "value_entropy_bits": 0.4395,
+   "value_dominance": 0.909,
+   "branching_gain_bits": 1.3157,
+   "residual_items": [
+    "paper:2b84135954e75e7d3ecd1b6b5688760824babc9b"
+   ],
+   "residual_frac": 0.005
+  },
+  "fee_structure": {
+   "name": "Transaction fee regime",
+   "category": "technology",
+   "n_direct": 5,
+   "n_closure": 204,
+   "n_children": 2,
+   "value_counts": {
+    "optional fee": 3,
+    "variable (size-based) fee": 2
+   },
+   "value_entropy_bits": 0.971,
+   "value_dominance": 0.6,
+   "branching_gain_bits": 0.1231,
+   "residual_items": [
+    "paper:1239c7fc50e605ccf93bc5f6766901321c4c5b15"
+   ],
+   "residual_frac": 0.005
+  },
+  "reward_mechanism": {
+   "name": "Validator reward mechanism",
+   "category": "technology",
+   "n_direct": 9,
+   "n_closure": 205,
+   "n_children": 4,
+   "value_counts": {
+    "lump-sum reward": 8,
+    "block plus security reward": 1
+   },
+   "value_entropy_bits": 0.5033,
+   "value_dominance": 0.889,
+   "branching_gain_bits": 1.167,
+   "residual_items": [
+    "paper:2d5ee66a5fb39167d0f8fac0dc22f9c5e27d5e88"
+   ],
+   "residual_frac": 0.005
+  },
+  "staking_arrangement": {
+   "name": "Staking arrangement (self, delegated, custodial, liquid)",
+   "category": "activity",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "exchange_venue_type": {
+   "name": "Trading venue type",
+   "category": "actor",
+   "n_direct": 6,
+   "n_closure": 20,
+   "n_children": 1,
+   "value_counts": {
+    "centralised exchange (CEX)": 4,
+    "decentralised exchange (DEX)": 2,
+    "order-book exchange service": 1
+   },
+   "value_entropy_bits": 1.3788,
+   "value_dominance": 0.571,
+   "branching_gain_bits": 0.7219,
+   "residual_items": [
+    "paper:235ef066b73efbcdbfa6a7d348c6e045b73a7824",
+    "paper:2d89a307452cab692368ffcb2c236a95312dc163",
+    "patent:10332205",
+    "patent:11068885"
+   ],
+   "residual_frac": 0.2
+  },
+  "actor_role_in_service": {
+   "name": "Principal or agent role in transaction",
+   "category": "actor",
+   "n_direct": 2,
+   "n_closure": 22,
+   "n_children": 8,
+   "value_counts": {
+    "as principal or agent (arranging)": 1,
+    "as agent": 1
+   },
+   "value_entropy_bits": 1.0,
+   "value_dominance": 0.5,
+   "branching_gain_bits": 2.1204,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "service_provider_status": {
+   "name": "Crypto-asset service provider or VASP status",
+   "category": "actor",
+   "n_direct": 7,
+   "n_closure": 27,
+   "n_children": 16,
+   "value_counts": {
+    "crypto-asset service provider (CASP, EU)": 6,
+    "authorised cryptoasset custodian (UK)": 1
+   },
+   "value_entropy_bits": 0.5917,
+   "value_dominance": 0.857,
+   "branching_gain_bits": 3.5334,
+   "residual_items": [
+    "paper:1039e1b482afb580651b1b678bba37d2fd95f58b",
+    "patent:10217037",
+    "patent:11188909"
+   ],
+   "residual_frac": 0.111
+  },
+  "crypto_asset_service_type": {
+   "name": "Crypto-asset service type",
+   "category": "activity",
+   "n_direct": 17,
+   "n_closure": 21,
+   "n_children": 9,
+   "value_counts": {
+    "transfer services": 8,
+    "exchange for funds or other crypto-assets": 4,
+    "operation of trading platform": 3,
+    "staking": 2,
+    "placing or distributing": 1
+   },
+   "value_entropy_bits": 2.0169,
+   "value_dominance": 0.444,
+   "branching_gain_bits": 2.8715,
+   "residual_items": [
+    "paper:17cff826c2780dc747534ae5563853c4aaf4dac7",
+    "paper:1cd16aa0225cfb110c22f9f0c4d2f8df38c956f3",
+    "paper:1d44545e3d90334c641ae265ab55981c2137de39",
+    "paper:235ef066b73efbcdbfa6a7d348c6e045b73a7824",
+    "paper:2d89a307452cab692368ffcb2c236a95312dc163",
+    "patent:10541821",
+    "patent:10687374",
+    "patent:10740808",
+    "patent:10762478",
+    "patent:10853812"
+   ],
+   "residual_frac": 0.476
+  },
+  "fund_or_pooled_vehicle": {
+   "name": "Pooled investment vehicle structure",
+   "category": "actor",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 0,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "ecosystem_participant_role": {
+   "name": "Ecosystem participant role",
+   "category": "actor",
+   "n_direct": 9,
+   "n_closure": 12,
+   "n_children": 4,
+   "value_counts": {
+    "issuer": 3,
+    "blockchain developer / protocol team": 2,
+    "network support (miner, staker, validator, node provider)": 2,
+    "software developer (no VASP status)": 2
+   },
+   "value_entropy_bits": 1.9749,
+   "value_dominance": 0.333,
+   "branching_gain_bits": 1.6226,
+   "residual_items": [
+    "paper:046368aae015be3a571f23407f47d0191a42c15a",
+    "paper:04e890e500126d1ab0c894ad62258d12da293359",
+    "paper:16894b12cfda7bb05f21f84bdc2d6d66a37b5b4b",
+    "paper:1ad68b02260072b843e1546070de14dc62fa3717",
+    "paper:1bbdc53ef3dc4e36b78a4f39843bd4e0f27eb726",
+    "paper:27ee3fd33d2f2d1141c9daa286b7c979a0143b02",
+    "patent:10706472",
+    "patent:10757084",
+    "patent:10902431"
+   ],
+   "residual_frac": 0.75
+  },
+  "infrastructure_provider_type": {
+   "name": "Infrastructure provider type",
+   "category": "actor",
+   "n_direct": 1,
+   "n_closure": 12,
+   "n_children": 2,
+   "value_counts": {
+    "oracle": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 0.3912,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "custodian_or_custody_model": {
+   "name": "Custody model",
+   "category": "actor",
+   "n_direct": 4,
+   "n_closure": 22,
+   "n_children": 6,
+   "value_counts": {
+    "control via means of access": 2,
+    "multi-signature or multi-party computation": 2
+   },
+   "value_entropy_bits": 1.0,
+   "value_dominance": 0.5,
+   "branching_gain_bits": 2.3574,
+   "residual_items": [
+    "patent:10659223",
+    "patent:10891384"
+   ],
+   "residual_frac": 0.091
+  },
+  "stablecoin_issuer_model": {
+   "name": "Stablecoin issuer model",
+   "category": "actor",
+   "n_direct": 0,
+   "n_closure": 3,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": -0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "crypto_asset_operator": {
+   "name": "Operator of crypto-asset arrangement",
+   "category": "actor",
+   "n_direct": 2,
+   "n_closure": 3,
+   "n_children": 2,
+   "value_counts": {
+    "single operator (centralised cryptoasset)": 2
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 0.9183,
+   "residual_items": [
+    "patent:10740808",
+    "patent:10977626"
+   ],
+   "residual_frac": 0.667
+  },
+  "decentralised_control_status_actor": {
+   "name": "Control or sufficient influence over DeFi arrangement",
+   "category": "actor",
+   "n_direct": 1,
+   "n_closure": 16,
+   "n_children": 3,
+   "value_counts": {
+    "no identifiable controller": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 1.0863,
+   "residual_items": [
+    "paper:1d44545e3d90334c641ae265ab55981c2137de39"
+   ],
+   "residual_frac": 0.062
+  },
+  "offshore_vasp_status": {
+   "name": "Offshore VASP status (activity-based or location-based)",
+   "category": "actor",
+   "n_direct": 0,
+   "n_closure": 24,
+   "n_children": 2,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.9986,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "transaction_type_p2p": {
+   "name": "Peer-to-peer (P2P) transaction",
+   "category": "activity",
+   "n_direct": 2,
+   "n_closure": 5,
+   "n_children": 1,
+   "value_counts": {
+    "P2P via unhosted wallet": 1,
+    "person-to-person transfer": 1
+   },
+   "value_entropy_bits": 1.0,
+   "value_dominance": 0.5,
+   "branching_gain_bits": 0.971,
+   "residual_items": [
+    "patent:11038950",
+    "patent:11144918"
+   ],
+   "residual_frac": 0.4
+  },
+  "transfer_of_crypto_assets": {
+   "name": "Transfer of crypto-assets (travel rule scope)",
+   "category": "activity",
+   "n_direct": 6,
+   "n_closure": 11,
+   "n_children": 8,
+   "value_counts": {
+    "transfer of crypto-assets (covered)": 4,
+    "transfer (FATF limb iii)": 2
+   },
+   "value_entropy_bits": 0.9183,
+   "value_dominance": 0.667,
+   "branching_gain_bits": 2.6817,
+   "residual_items": [
+    "patent:10652019",
+    "patent:10783545",
+    "patent:11068885"
+   ],
+   "residual_frac": 0.273
+  },
+  "payment_or_transfer_service": {
+   "name": "Payment service and funds transfer",
+   "category": "activity",
+   "n_direct": 0,
+   "n_closure": 3,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": -0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "convertible_virtual_currency_status": {
+   "name": "Convertible virtual currency (CVC) status",
+   "category": "asset",
+   "n_direct": 4,
+   "n_closure": 135,
+   "n_children": 1,
+   "value_counts": {
+    "convertible virtual currency (CVC)": 4
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 0.1537,
+   "residual_items": [
+    "paper:12337dbd8209d9f723091f4c016b91bd5b5b59ed",
+    "paper:1afcd419ddf1be4f1e8de7f9b6320cc2c58f38a8",
+    "patent:10977626"
+   ],
+   "residual_frac": 0.022
+  },
+  "regulated_transmission_of_value": {
+   "name": "Money transmission (acceptance and transmission of value)",
+   "category": "activity",
+   "n_direct": 0,
+   "n_closure": 8,
+   "n_children": 5,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 1.8732,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "offer_and_issuance_method": {
+   "name": "Offer and issuance method (token distribution)",
+   "category": "activity",
+   "n_direct": 3,
+   "n_closure": 7,
+   "n_children": 3,
+   "value_counts": {
+    "public offer / ICO": 1,
+    "end-user distribution": 1,
+    "pre-mine / initial allocation": 1
+   },
+   "value_entropy_bits": 1.585,
+   "value_dominance": 0.333,
+   "branching_gain_bits": 0.8631,
+   "residual_items": [
+    "patent:10217037",
+    "patent:10977626"
+   ],
+   "residual_frac": 0.286
+  },
+  "minting_mechanism": {
+   "name": "Minting mechanism",
+   "category": "activity",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 0,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "redemption_risk_criteria": {
+   "name": "Redemption and reserve adequacy",
+   "category": "obligation_or_risk",
+   "n_direct": 1,
+   "n_closure": 1,
+   "n_children": 4,
+   "value_counts": {
+    "overcollateralised or reserve-backed at all times": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:2ba40cb3e14d1ad74b4f6de92c29ed6fd4efdb07"
+   ],
+   "residual_frac": 1.0
+  },
+  "stablecoin_interest_restriction": {
+   "name": "Yield or interest on stablecoin",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 1,
+   "n_children": 2,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": -0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "custody_safeguarding_obligation": {
+   "name": "Safeguarding and custody obligation",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 0,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "aml_obligations_applicability": {
+   "name": "Anti-money laundering obligations",
+   "category": "obligation_or_risk",
+   "n_direct": 3,
+   "n_closure": 6,
+   "n_children": 9,
+   "value_counts": {
+    "obliged entity (crypto-asset service provider)": 2,
+    "VASP subject to Recommendation 15 licensing": 1
+   },
+   "value_entropy_bits": 0.9183,
+   "value_dominance": 0.667,
+   "branching_gain_bits": 1.9072,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "anonymity_enhancing_status": {
+   "name": "Anonymity-enhancing crypto-asset status",
+   "category": "obligation_or_risk",
+   "n_direct": 2,
+   "n_closure": 2,
+   "n_children": 0,
+   "value_counts": {
+    "non-anonymity-enhanced": 2
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:03aba981a199c871ea47ce3a89dac3e5928697ac",
+    "paper:2a6efac63e49c9f9ca45cca7c66ad0fe03e07750"
+   ],
+   "residual_frac": 1.0
+  },
+  "sanctions_and_freezing_capability": {
+   "name": "Freezing and blocking capability",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 5,
+   "n_children": 4,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.8631,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "operational_resilience_risk": {
+   "name": "ICT and operational resilience risk",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "settlement_finality_legal_test": {
+   "name": "Settlement finality and legal enforceability",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 3,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "prudential_classification_group": {
+   "name": "Prudential classification group (Basel)",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "tradfi_analogue": {
+   "name": "Traditional finance analogue",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "investment_contract_howey": {
+   "name": "Investment contract (Howey) criteria",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 1,
+   "n_children": 3,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": -0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "securities_status_digital_asset": {
+   "name": "Security status of digital asset (US exclusions)",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 1,
+   "n_children": 2,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 1.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "financial_instrument_status": {
+   "name": "MiFID financial instrument status",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 1,
+   "n_children": 2,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 1.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "excluded_instrument_category": {
+   "name": "Excluded instrument category (EU scope exclusions)",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 1,
+   "n_children": 4,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 1.585,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "central_bank_digital_currency": {
+   "name": "Central bank digital currency status",
+   "category": "asset",
+   "n_direct": 1,
+   "n_closure": 1,
+   "n_children": 0,
+   "value_counts": {
+    "private crypto-asset (not CBDC)": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:04f9944957f0bb843e2003573883386539c15b85"
+   ],
+   "residual_frac": 1.0
+  },
+  "digital_asset_recording": {
+   "name": "Recording and cryptographic linkage",
+   "category": "asset",
+   "n_direct": 113,
+   "n_closure": 132,
+   "n_children": 5,
+   "value_counts": {
+    "recorded on cryptographically secured distributed ledger": 110,
+    "other electronic data": 3
+   },
+   "value_entropy_bits": 0.1768,
+   "value_dominance": 0.973,
+   "branching_gain_bits": 1.7574,
+   "residual_items": [
+    "paper:02c150bf1e09acfa1d7d0c785bcfacbde71ab987",
+    "paper:02df59c12a20e5d67fdeff7d64710336635ffe8b",
+    "paper:037a1980cf7f80d3db07ae112b878a4b60b529a1",
+    "paper:04825d27090488f29e4eacad8686299bc45e60b5",
+    "paper:04a57c8e19e751350723079b50a3916dab4dad61",
+    "paper:05a517151413d40684eae0e69e5a3a7c4d2061a3",
+    "paper:05f541231e2478cc80b6910ed2f7f970a2358df9",
+    "paper:067c762e59e7001cd57285a4afec400cc2f52c34",
+    "paper:068c4326b6bae16ed4393ef9b47ba992b1b0007e",
+    "paper:06dfd6f9a9e633642b82c30f147cd93712246ddf",
+    "paper:0807ccbb403f7f25a53b580fd9bcdaff8b920c00",
+    "paper:0b2d4b565b0ae56e9a70103a22664c2ef4996357",
+    "paper:0e55478206ad9e5000d18298cd014f5c94205fa8",
+    "paper:1039e1b482afb580651b1b678bba37d2fd95f58b",
+    "paper:1239c7fc50e605ccf93bc5f6766901321c4c5b15",
+    "paper:13cd8a9f660b5bcf0d36fb6cbe5b8f3b92e48441",
+    "paper:156d4ef657118c3c7217e7661fe158d8f1165d41",
+    "paper:16f4d471a3c351c4275d319b0ab1d16627f7cd5d",
+    "paper:19b4c56fa733f34d725fb62972f0edfc11215537",
+    "paper:1b2aabddb66b7ea872c01403458ef1d9e91677c1",
+    "paper:1f96c38f9baed69a2bbf8fa6223cf0208ef0e83c",
+    "paper:1fc71807dd748cde9798f1b305bc58c1252b0d38",
+    "paper:21f8123a62aaafb31adb8542cb49a29c28f11994",
+    "paper:22be782b50c415854dc502771771ed90cccdd2ee",
+    "paper:2328ed23fd8024642938ce7729bb4eb9185bee41",
+    "paper:233610691eefc2d314fc9722ab23c06e09dd4e2c",
+    "paper:2493cf82a4922ba9411cef72dccdb6d46095617a",
+    "paper:26b35233ae172fb1a49ab070592ffab91a3d1e5d",
+    "paper:27794c520c3a812e663a62e54a3cc3dd00e8aab6",
+    "paper:27ee3fd33d2f2d1141c9daa286b7c979a0143b02",
+    "paper:29717b25795cd599543ccbdfc05e80e3e73d5a38",
+    "paper:29caff504c1a6de0af1ad6150ee8c0b33639c06e",
+    "paper:2b708129045ec83d882c44099060c7ec11a0dffb",
+    "paper:2ba40cb3e14d1ad74b4f6de92c29ed6fd4efdb07",
+    "paper:2c6a737ff93296b5d8c624f6f974eb0f40ef86e5",
+    "paper:2cad6644c11a7b928c8b934b89718485ef7e7b45",
+    "paper:2d89a307452cab692368ffcb2c236a95312dc163",
+    "patent:10025797",
+    "patent:10365922",
+    "patent:10373129",
+    "patent:10547457",
+    "patent:10558996",
+    "patent:10581621",
+    "patent:10585657",
+    "patent:10592873",
+    "patent:10594489",
+    "patent:10630769",
+    "patent:10693652",
+    "patent:10699493",
+    "patent:10706472",
+    "patent:10721058",
+    "patent:10733341",
+    "patent:10762516",
+    "patent:10785033",
+    "patent:10803022",
+    "patent:10826695",
+    "patent:10861014",
+    "patent:10873849",
+    "patent:10884725",
+    "patent:10885207",
+    "patent:10897499",
+    "patent:10901957",
+    "patent:10903980",
+    "patent:10936732",
+    "patent:10938571",
+    "patent:10942852",
+    "patent:10942956",
+    "patent:10944549",
+    "patent:10944762",
+    "patent:10958419",
+    "patent:10965527",
+    "patent:10972475",
+    "patent:10979225",
+    "patent:10979410",
+    "patent:10984081",
+    "patent:10992458",
+    "patent:10997551",
+    "patent:11016962",
+    "patent:11023604",
+    "patent:11030297",
+    "patent:11039359",
+    "patent:11049148",
+    "patent:11062035",
+    "patent:11062308",
+    "patent:11068886",
+    "patent:11106811",
+    "patent:11113241",
+    "patent:11126698",
+    "patent:11126767",
+    "patent:11128477",
+    "patent:11144918",
+    "patent:11151261",
+    "patent:11161409",
+    "patent:11178157",
+    "patent:11188909"
+   ],
+   "residual_frac": 0.72
+  },
+  "virtual_asset_property_status": {
+   "name": "Virtual assets as property or proceeds of crime",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 6,
+   "n_children": 7,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 2.006,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "serious_crime_threshold": {
+   "name": "Serious crime threshold for predicate offences",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 0,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "ict_system_scope": {
+   "name": "Information and communications technology system",
+   "category": "technology",
+   "n_direct": 1,
+   "n_closure": 50,
+   "n_children": 3,
+   "value_counts": {
+    "ICT / computer system": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 1.5707,
+   "residual_items": [
+    "patent:10754847"
+   ],
+   "residual_frac": 0.02
+  },
+  "traffic_and_subscriber_data_class": {
+   "name": "Data classification (traffic, content, subscriber)",
+   "category": "technology",
+   "n_direct": 0,
+   "n_closure": 25,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": -0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "self_hosted_address_status": {
+   "name": "Address linkage to service provider",
+   "category": "actor",
+   "n_direct": 2,
+   "n_closure": 3,
+   "n_children": 1,
+   "value_counts": {
+    "provider-linked address": 2
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 0.9183,
+   "residual_items": [
+    "patent:10528947",
+    "patent:10853812"
+   ],
+   "residual_frac": 0.667
+  },
+  "party_role_transfer": {
+   "name": "Originator and beneficiary role",
+   "category": "actor",
+   "n_direct": 0,
+   "n_closure": 1,
+   "n_children": 1,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": -0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "consumer_vs_professional_status": {
+   "name": "Consumer or retail versus professional user",
+   "category": "actor",
+   "n_direct": 1,
+   "n_closure": 1,
+   "n_children": 1,
+   "value_counts": {
+    "retail holder / consumer": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "patent:10783545"
+   ],
+   "residual_frac": 1.0
+  },
+  "related_person_affiliation": {
+   "name": "Related person and affiliated person status",
+   "category": "actor",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 0,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "ancillary_asset_status": {
+   "name": "Ancillary asset and network token status",
+   "category": "asset",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 0,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "native_vs_stable_price_reference_asset_currency": {
+   "name": "Reference currency for stablecoin peg (currency vs other)",
+   "category": "asset",
+   "n_direct": 1,
+   "n_closure": 1,
+   "n_children": 0,
+   "value_counts": {
+    "asset expressed in fiat but not fiat-referenced": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:2dffce2d331a9125556af4e557603b08f781786d"
+   ],
+   "residual_frac": 1.0
+  },
+  "risk_type_illicit_finance": {
+   "name": "Illicit finance risk category",
+   "category": "obligation_or_risk",
+   "n_direct": 4,
+   "n_closure": 5,
+   "n_children": 2,
+   "value_counts": {
+    "regulatory arbitrage": 4,
+    "fraud / scam (investment or romance)": 1
+   },
+   "value_entropy_bits": 0.7219,
+   "value_dominance": 0.8,
+   "branching_gain_bits": 0.971,
+   "residual_items": [
+    "paper:1907277df09333e99f818f5e4efda08dc93ab386",
+    "patent:10380594",
+    "patent:10902431"
+   ],
+   "residual_frac": 0.6
+  },
+  "regulated_status_cvc_mst_exemption": {
+   "name": "Exemption from MSB status",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 2,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "regulatory_perimeter_fi_status": {
+   "name": "Financial institution status for AML",
+   "category": "actor",
+   "n_direct": 0,
+   "n_closure": 22,
+   "n_children": 3,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.258,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "tax_reporting_status": {
+   "name": "Tax reporting obligation status (CARF)",
+   "category": "obligation_or_risk",
+   "n_direct": 0,
+   "n_closure": 0,
+   "n_children": 0,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.0,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "regulatory_regime_scope_jurisdictional": {
+   "name": "Jurisdictional regime and home or host state",
+   "category": "actor",
+   "n_direct": 3,
+   "n_closure": 24,
+   "n_children": 5,
+   "value_counts": {
+    "home Member State": 2,
+    "activity-based (offshore) licensing": 1
+   },
+   "value_entropy_bits": 0.9183,
+   "value_dominance": 0.667,
+   "branching_gain_bits": 1.8282,
+   "residual_items": [
+    "paper:12337dbd8209d9f723091f4c016b91bd5b5b59ed",
+    "paper:1907277df09333e99f818f5e4efda08dc93ab386"
+   ],
+   "residual_frac": 0.083
+  },
+  "consensus_participant_validator_capacity": {
+   "name": "Validator operation capacity (who may run a node)",
+   "category": "actor",
+   "n_direct": 1,
+   "n_closure": 1,
+   "n_children": 0,
+   "value_counts": {
+    "pre-selected authorities": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "patent:10706023"
+   ],
+   "residual_frac": 1.0
+  },
+  "unhosted_custody_control_policy": {
+   "name": "Permitted control over client assets (unilateral vs multi-party control)",
+   "category": "actor",
+   "n_direct": 0,
+   "n_closure": 4,
+   "n_children": 2,
+   "value_counts": {},
+   "value_entropy_bits": null,
+   "value_dominance": null,
+   "branching_gain_bits": 0.8113,
+   "residual_items": [],
+   "residual_frac": 0.0
+  },
+  "decentralised_or_centralised_offer_model": {
+   "name": "Public offer or private placement",
+   "category": "activity",
+   "n_direct": 1,
+   "n_closure": 8,
+   "n_children": 3,
+   "value_counts": {
+    "offer to the public": 1
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": 1.2407,
+   "residual_items": [
+    "paper:05289314b0856dfd8cf29478613a5a0a159d83ab"
+   ],
+   "residual_frac": 0.125
+  },
+  "service_location_nexus": {
+   "name": "Nexus to jurisdiction (services offered in jurisdiction)",
+   "category": "activity",
+   "n_direct": 3,
+   "n_closure": 3,
+   "n_children": 0,
+   "value_counts": {
+    "services offered to residents or customers in jurisdiction": 3
+   },
+   "value_entropy_bits": -0.0,
+   "value_dominance": 1.0,
+   "branching_gain_bits": -0.0,
+   "residual_items": [
+    "paper:03aba981a199c871ea47ce3a89dac3e5928697ac",
+    "paper:1bbdc53ef3dc4e36b78a4f39843bd4e0f27eb726",
+    "patent:10332205"
+   ],
+   "residual_frac": 1.0
+  }
+ },
+ "proposals": {
+  "dormant": [
+   "staking_arrangement",
+   "fund_or_pooled_vehicle",
+   "minting_mechanism",
+   "custody_safeguarding_obligation",
+   "operational_resilience_risk",
+   "settlement_finality_legal_test",
+   "prudential_classification_group",
+   "tradfi_analogue",
+   "serious_crime_threshold",
+   "related_person_affiliation",
+   "ancillary_asset_status",
+   "regulated_status_cvc_mst_exemption",
+   "tax_reporting_status"
+  ],
+  "collapsed": [
+   {
+    "node": "dlt_architecture",
+    "n_direct": 124,
+    "dominance": 0.946,
+    "top_value": "blockchain (chain of blocks)"
+   },
+   {
+    "node": "native_asset_type",
+    "n_direct": 11,
+    "dominance": 0.909,
+    "top_value": "own single cryptocurrency"
+   },
+   {
+    "node": "digital_asset_recording",
+    "n_direct": 113,
+    "dominance": 0.973,
+    "top_value": "recorded on cryptographically secured distributed ledger"
+   }
+  ],
+  "high_gain": [
+   {
+    "node": "service_provider_status",
+    "bits": 3.5334,
+    "n_closure": 27
+   },
+   {
+    "node": "ledger_access_permission",
+    "bits": 3.2748,
+    "n_closure": 237
+   },
+   {
+    "node": "crypto_asset_service_type",
+    "bits": 2.8715,
+    "n_closure": 21
+   },
+   {
+    "node": "crypto_asset_function",
+    "bits": 2.8315,
+    "n_closure": 166
+   },
+   {
+    "node": "legal_classification_status",
+    "bits": 2.7822,
+    "n_closure": 157
+   },
+   {
+    "node": "transfer_of_crypto_assets",
+    "bits": 2.6817,
+    "n_closure": 11
+   },
+   {
+    "node": "governance_model",
+    "bits": 2.6437,
+    "n_closure": 242
+   },
+   {
+    "node": "consensus_mechanism",
+    "bits": 2.3907,
+    "n_closure": 219
+   }
+  ],
+  "discovery_targets": [
+   {
+    "node": "dlt_architecture",
+    "residual": 98,
+    "n_closure": 162,
+    "frac": 0.605
+   },
+   {
+    "node": "digital_asset_recording",
+    "residual": 95,
+    "n_closure": 132,
+    "frac": 0.72
+   },
+   {
+    "node": "ledger_node_role",
+    "residual": 33,
+    "n_closure": 83,
+    "frac": 0.398
+   },
+   {
+    "node": "smart_contract_definition_scope",
+    "residual": 30,
+    "n_closure": 54,
+    "frac": 0.556
+   },
+   {
+    "node": "centralisation_level",
+    "residual": 29,
+    "n_closure": 48,
+    "frac": 0.604
+   },
+   {
+    "node": "digital_identity_layer",
+    "residual": 24,
+    "n_closure": 49,
+    "frac": 0.49
+   },
+   {
+    "node": "privacy_enhancement",
+    "residual": 22,
+    "n_closure": 25,
+    "frac": 0.88
+   },
+   {
+    "node": "unhosted_vs_hosted_wallet",
+    "residual": 19,
+    "n_closure": 19,
+    "frac": 1.0
+   },
+   {
+    "node": "script_language_expressiveness",
+    "residual": 17,
+    "n_closure": 24,
+    "frac": 0.708
+   },
+   {
+    "node": "native_vs_token_standard",
+    "residual": 10,
+    "n_closure": 11,
+    "frac": 0.909
+   },
+   {
+    "node": "crypto_asset_service_type",
+    "residual": 10,
+    "n_closure": 21,
+    "frac": 0.476
+   },
+   {
+    "node": "ecosystem_participant_role",
+    "residual": 9,
+    "n_closure": 12,
+    "frac": 0.75
+   },
+   {
+    "node": "consensus_finality",
+    "residual": 7,
+    "n_closure": 7,
+    "frac": 1.0
+   },
+   {
+    "node": "interoperability_type",
+    "residual": 7,
+    "n_closure": 7,
+    "frac": 1.0
+   },
+   {
+    "node": "tokenisation_form",
+    "residual": 6,
+    "n_closure": 17,
+    "frac": 0.353
+   }
+  ]
+ },
+ "discovery": {
+  "calls": 15,
+  "usage": {
+   "input": 73559,
+   "output": 6734,
+   "cache_read": 0,
+   "cache_write": 0
+  },
+  "cost_usd": 0.0107,
+  "candidates": [
+   {
+    "node": "privacy_enhancement",
+    "kind": "child_term_type",
+    "label": "Privacy mechanism family",
+    "question": "Which cryptographic or structural technique provides the privacy or confidentiality guarantee?",
+    "definition": "The primary cryptographic or structural mechanism used to conceal data, identities, or transaction details.",
+    "values": [
+     "encryption (symmetric or public-key)",
+     "homomorphic encryption",
+     "zero-knowledge proofs",
+     "data slicing or secret sharing",
+     "private channels or data collections",
+     "commitments and hashing"
+    ],
+    "item_ids": [
+     "paper:116552a483e3bc60c2c10f4159e39ceac30c9876",
+     "paper:238be6da11ff829f647624e7f089b4006875e724",
+     "paper:29717b25795cd599543ccbdfc05e80e3e73d5a38",
+     "patent:10114969",
+     "patent:10652019",
+     "patent:10903980",
+     "patent:10979225",
+     "patent:11144918"
+    ],
+    "n_support": 8,
+    "gain_bits": 0.8322,
+    "evidence": "homomorphically encrypted vote and a digital signature of the homomorphically encrypted vote",
+    "evidence_found": true,
+    "accepted": true
+   },
+   {
+    "node": "script_language_expressiveness",
+    "kind": "child_term_type",
+    "label": "smart_contract_deployment_context",
+    "question": "In what application context is the smart contract or script deployed?",
+    "definition": "Classifies the application domain or deployment setting in which the smart contract logic operates.",
+    "values": [
+     "supply chain / logistics",
+     "certification / credentials",
+     "decentralized finance",
+     "healthcare data sharing",
+     "IoT / device identity",
+     "general-purpose / unspecified"
+    ],
+    "item_ids": [
+     "paper:0462049d43a08dfdfeb709d4ff04af074191cfb2",
+     "paper:0a138399cf96d08cb30e28d8c925e793a325cd5d",
+     "paper:1f96c38f9baed69a2bbf8fa6223cf0208ef0e83c",
+     "paper:22c36222351cd786cd5a1d0c03a584292f049339",
+     "paper:240c39ff1de4074e9cc2d0500daca203ac91fd6a",
+     "paper:27ee3fd33d2f2d1141c9daa286b7c979a0143b02"
+    ],
+    "n_support": 6,
+    "gain_bits": 0.6635,
+    "evidence": "Supply chain management (SCM) is essential for a company's faster, efficient, and effective product life cycle.",
+    "evidence_found": true,
+    "accepted": true
+   },
+   {
+    "node": "smart_contract_definition_scope",
+    "kind": "child_term_type",
+    "label": "smart_contract_usage_domain",
+    "question": "What application domain or function is the smart contract or ledger application designed to serve?",
+    "definition": "Splits residual texts by the sector or function the contract or application targets, such as energy, healthcare, copyright, identity, or advertising.",
+    "values": [
+     "energy and utilities",
+     "healthcare",
+     "intellectual property and media",
+     "identity and authentication",
+     "supply chain and retail",
+     "IoT and smart cities"
+    ],
+    "item_ids": [
+     "paper:04e890e500126d1ab0c894ad62258d12da293359",
+     "paper:116552a483e3bc60c2c10f4159e39ceac30c9876",
+     "paper:1966fdb4d86ab6b3a98a0aaacf3c8bb9ec649ffa",
+     "paper:1fc71557585d6dece2dab9adbbedcf9c32f17857",
+     "paper:24b9ea46e6ab29d406eb68e3d3d6300b95fd6226",
+     "patent:10725716",
+     "patent:10944565",
+     "patent:11130042"
+    ],
+    "n_support": 8,
+    "gain_bits": 0.4648,
+    "evidence": "A blockchain-based LEM is investigated, where consumers and prosumers in a small community trade energy",
+    "evidence_found": true,
+    "accepted": true
+   },
+   {
+    "node": "digital_identity_layer",
+    "kind": "child_term_type",
+    "label": "identity_binding_mechanism",
+    "question": "How is a participant's identity bound to the ledger entry?",
+    "definition": "The mechanism linking a real-world or device identity to ledger addresses, keys, or identifiers.",
+    "values": [
+     "decentralised identifiers (DID)",
+     "trusted third-party attestation",
+     "biometric authentication",
+     "cryptographic key pairs only",
+     "device or hardware identity"
+    ],
+    "item_ids": [
+     "paper:240c39ff1de4074e9cc2d0500daca203ac91fd6a",
+     "patent:10944565",
+     "patent:10965461",
+     "patent:11050763",
+     "patent:11138608"
+    ],
+    "n_support": 5,
+    "gain_bits": 0.3407,
+    "evidence": "Our research addresses this issue by proposing an approach based on blockchain and decentralised identifiers (DID).",
+    "evidence_found": true,
+    "accepted": true
+   },
+   {
+    "node": "digital_identity_layer",
+    "kind": "value",
+    "label": "device / machine identity",
+    "question": "",
+    "definition": "Ledger identity is assigned to devices, things or digital twins rather than to human participants.",
+    "values": [],
+    "item_ids": [
+     "paper:0450f3f3a78ffc16d8db71a7dd6c4b1090ccafd1",
+     "paper:240c39ff1de4074e9cc2d0500daca203ac91fd6a",
+     "patent:10944296",
+     "patent:11038950",
+     "patent:11050763"
+    ],
+    "n_support": 5,
+    "gain_bits": 0.3407,
+    "evidence": "Identity is a crucial property of Internet of Things (IoT) devices.",
+    "evidence_found": true,
+    "accepted": true
+   },
+   {
+    "node": "digital_asset_recording",
+    "kind": "child_term_type",
+    "label": "ledger purpose",
+    "question": "What is the primary purpose for which the distributed ledger is used?",
+    "definition": "Classifies whether the ledger records transferable value, data integrity or provenance, governance or consent, or identity and access.",
+    "values": [
+     "value transfer",
+     "data integrity and provenance",
+     "consent or governance",
+     "identity and access control"
+    ],
+    "item_ids": [
+     "patent:10693652",
+     "patent:10944549",
+     "patent:10979225",
+     "patent:10984081",
+     "patent:11030297",
+     "patent:11049148"
+    ],
+    "n_support": 6,
+    "gain_bits": 0.2083,
+    "evidence": "A digital distributed ledger including a plurality of a consensus pool of participating processors",
+    "evidence_found": true,
+    "accepted": true
+   },
+   {
+    "node": "digital_asset_recording",
+    "kind": "value",
+    "label": "blockchain used for record-keeping of non-asset data",
+    "question": "",
+    "definition": "Distributed ledger used to store records, logs, certificates or events rather than a transferable asset or token.",
+    "values": [],
+    "item_ids": [
+     "patent:10547457",
+     "patent:10885207",
+     "patent:10942956",
+     "patent:10997551",
+     "patent:11128477"
+    ],
+    "n_support": 5,
+    "gain_bits": 0.1823,
+    "evidence": "blockchain-based permanent storage of manufacture, parts, maintenance, and any other records associated with an automobile",
+    "evidence_found": true,
+    "accepted": true
+   },
+   {
+    "node": "dlt_architecture",
+    "kind": "child_term_type",
+    "label": "ledger partitioning or layering topology",
+    "question": "Is the ledger a single chain, multiple parallel or layered chains, or partitioned into sub-ledgers?",
+    "definition": "Describes how the ledger is divided across chains, layers, shards or partitions regardless of the underlying block or graph structure.",
+    "values": [
+     "single chain",
+     "multiple parallel chains",
+     "layered main and sub-chains",
+     "partitioned ledger",
+     "two-dimensional chains"
+    ],
+    "item_ids": [
+     "paper:1bfdbe6258e30ff5b3cb6194ead1b8bda0e23ddd",
+     "paper:244631542c167cbc506d1fffa86eab6de250cf79",
+     "patent:10601911",
+     "patent:10733341",
+     "patent:11126767"
+    ],
+    "n_support": 5,
+    "gain_bits": 0.1759,
+    "evidence": "a two-dimensional distributed digital ledger may have a plurality of chains of digital blocks",
+    "evidence_found": true,
+    "accepted": true
+   },
+   {
+    "node": "consensus_finality",
+    "kind": "value",
+    "label": "transient (eventually consistent) disagreement",
+    "question": "",
+    "definition": "Protocol allows temporary divergence among participants on the block for an index, resolved later into a single agreed block.",
+    "values": [],
+    "item_ids": [
+     "paper:01b198ed09d52a7c601bcf229705508847cf48ca",
+     "paper:17552df635fe7d2967c382fa589586920a08eaac",
+     "patent:10630463"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.9852,
+    "evidence": "tolerating transient disagreements, where distinct participants select distinct blocks for the same index",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "interoperability_type",
+    "kind": "value",
+    "label": "oracle-mediated interoperability",
+    "question": "",
+    "definition": "The ledger exchanges information with external systems or other chains through a trusted oracle or relay acting as an intermediary.",
+    "values": [],
+    "item_ids": [
+     "paper:046368aae015be3a571f23407f47d0191a42c15a",
+     "paper:29cc8eae6bf6fe8e7a38c98af5b79dbee3d7ee61",
+     "patent:10757084"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.9852,
+    "evidence": "BSM-6G provides an interoperable blockchain Oracle approach which facilitates the real-time interaction",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "interoperability_type",
+    "kind": "value",
+    "label": "cross-chain atomic swap",
+    "question": "",
+    "definition": "Assets move between blockchains via trustless atomic exchange protocols without a centralised intermediary.",
+    "values": [],
+    "item_ids": [
+     "paper:17cff826c2780dc747534ae5563853c4aaf4dac7",
+     "paper:29cc8eae6bf6fe8e7a38c98af5b79dbee3d7ee61",
+     "patent:11032057"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.9852,
+    "evidence": "trustless and efficient cross-chain exchanges using cryptocurrency-backed assets",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "interoperability_type",
+    "kind": "value",
+    "label": "multi-ledger or sidechain linking",
+    "question": "",
+    "definition": "The ledger is split or extended into multiple linked ledgers or sidechains that interoperate with each other.",
+    "values": [],
+    "item_ids": [
+     "paper:07232adfd9952bba53b00890cc0b3ed01cc5f9a6",
+     "patent:11032057",
+     "patent:11032064"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.9852,
+    "evidence": "a multichain structure to improve the efficiency in transaction modification",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "native_vs_token_standard",
+    "kind": "value",
+    "label": "multi-standard token (ERC-1155)",
+    "question": "",
+    "definition": "Token issued under a smart-contract standard that combines fungible and non-fungible assets in one contract.",
+    "values": [],
+    "item_ids": [
+     "paper:05229dcf394a57019588022f07b3de23b49f0424",
+     "paper:06495a84ae83e91bbbb71861fffcfb58d0377c92",
+     "patent:10946283"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.8012,
+    "evidence": "NFT has been further developed to incorporate ERC-1155 protocol, which also integrates Fungible Tokens",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "unhosted_vs_hosted_wallet",
+    "kind": "value",
+    "label": "multi-party or shared-control wallet",
+    "question": "",
+    "definition": "Wallet whose keys or signing authority are split or shared among several parties or nodes, so no single party fully controls access.",
+    "values": [],
+    "item_ids": [
+     "patent:10659223",
+     "patent:11138608",
+     "patent:11176225"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.6292,
+    "evidence": "splitting a verification element into multiple shares; stored at separate locations",
+    "evidence_found": false,
+    "accepted": false
+   },
+   {
+    "node": "unhosted_vs_hosted_wallet",
+    "kind": "value",
+    "label": "identity-linked or credential-gated access",
+    "question": "",
+    "definition": "Access to the crypto-asset is gated by user authentication or identity credentials tied to an external account rather than by possession of keys alone.",
+    "values": [],
+    "item_ids": [
+     "patent:10528947",
+     "patent:11093911",
+     "patent:11171782"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.6292,
+    "evidence": "associates the public cryptocurrency address with the online account of the user",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "privacy_enhancement",
+    "kind": "value",
+    "label": "Selective disclosure or permissioned visibility",
+    "question": "",
+    "definition": "Privacy achieved by controlling which parties or users can view particular data, rather than by global obfuscation.",
+    "values": [],
+    "item_ids": [
+     "paper:0466e0f85861877538fb72cb7a4c4b9c9b51f65d",
+     "paper:2a89a55b6867f3245d5dce6d829d321a46971626",
+     "patent:11049148",
+     "patent:11151261"
+    ],
+    "n_support": 4,
+    "gain_bits": 0.602,
+    "evidence": "data can be made invisible to users based on user-specific or group-specific permissions",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "ecosystem_participant_role",
+    "kind": "value",
+    "label": "end user / consumer / prosumer",
+    "question": "",
+    "definition": "Participant who consumes or trades a resource on a ledger-based platform without issuing, validating, or developing the underlying infrastructure.",
+    "values": [],
+    "item_ids": [
+     "paper:04e890e500126d1ab0c894ad62258d12da293359",
+     "paper:1ad68b02260072b843e1546070de14dc62fa3717",
+     "paper:27ee3fd33d2f2d1141c9daa286b7c979a0143b02"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.5165,
+    "evidence": "consumers and prosumers in a small community trade energy without the need for a third party",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "ecosystem_participant_role",
+    "kind": "value",
+    "label": "organization adopter / enterprise user",
+    "question": "",
+    "definition": "Organisation that adopts or deploys blockchain technology for its own operations rather than as a crypto-asset issuer or validator.",
+    "values": [],
+    "item_ids": [
+     "paper:046368aae015be3a571f23407f47d0191a42c15a",
+     "paper:16894b12cfda7bb05f21f84bdc2d6d66a37b5b4b",
+     "paper:27ee3fd33d2f2d1141c9daa286b7c979a0143b02"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.5165,
+    "evidence": "Whether organizations adopt blockchain technology depends on many factors.",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "ecosystem_participant_role",
+    "kind": "value",
+    "label": "criminal actor / attacker",
+    "question": "",
+    "definition": "Participant who misuses, steals from, or launders through crypto-assets or ledgers, such as fraudsters or thieves.",
+    "values": [],
+    "item_ids": [
+     "paper:1bbdc53ef3dc4e36b78a4f39843bd4e0f27eb726",
+     "patent:10902431"
+    ],
+    "n_support": 2,
+    "gain_bits": 0.4299,
+    "evidence": "the types of market agents that have set out to potentially misuse ICOs",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "centralisation_level",
+    "kind": "value",
+    "label": "partially decentralised (permissioned consortium)",
+    "question": "",
+    "definition": "Control of critical resources is shared among a bounded set of known organisations rather than one entity or open participation.",
+    "values": [],
+    "item_ids": [
+     "paper:2a89a55b6867f3245d5dce6d829d321a46971626",
+     "patent:10635722",
+     "patent:10946283",
+     "patent:11150888"
+    ],
+    "n_support": 4,
+    "gain_bits": 0.3497,
+    "evidence": "hybrid approach that permits certain transactions of game assets to be conducted using an in-game centralized database approach",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "tokenisation_form",
+    "kind": "value",
+    "label": "tokenised electronic document of title",
+    "question": "",
+    "definition": "A token representing title or possession rights over an electronic document, such as a bill of lading or warehouse receipt, held on a ledger.",
+    "values": [],
+    "item_ids": [
+     "patent:10635722",
+     "patent:10915895",
+     "patent:11121860"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.3333,
+    "evidence": "managing electronic documents of title (EDTs)",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "tokenisation_form",
+    "kind": "value",
+    "label": "tokenised intellectual property or copyright",
+    "question": "",
+    "definition": "A token representing rights in a copyrighted work, licence, or other intellectual property managed on a ledger.",
+    "values": [],
+    "item_ids": [
+     "paper:1997c87ccfdf271220b72cc109a52cad80829e42",
+     "paper:24b9ea46e6ab29d406eb68e3d3d6300b95fd6226"
+    ],
+    "n_support": 2,
+    "gain_bits": 0.3061,
+    "evidence": "handle the entire chain of digital copyrights in digital libraries",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "smart_contract_definition_scope",
+    "kind": "value",
+    "label": "smart contract security analysis tool",
+    "question": "",
+    "definition": "Software that analyses, audits, or detects vulnerabilities in smart contract code rather than being a contract itself.",
+    "values": [],
+    "item_ids": [
+     "paper:04e890e500126d1ab0c894ad62258d12da293359",
+     "paper:12c37ed1451eb3279bac8cf83c7adaf7a1032b43",
+     "paper:208a08e7df7ed5f951d1ffddf0e038bb1429aa9f"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.2606,
+    "evidence": "to dig out vulnerabilities within smart contracts based on our ongoing research",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "ledger_node_role",
+    "kind": "value",
+    "label": "storage / archival node",
+    "question": "",
+    "definition": "A node dedicated to storing historical or block data separate from consensus participation.",
+    "values": [],
+    "item_ids": [
+     "paper:04ba6b24c9ef3481aa258c95277f633da554e4be",
+     "patent:10785033",
+     "patent:10949548",
+     "patent:11016962"
+    ],
+    "n_support": 4,
+    "gain_bits": 0.2119,
+    "evidence": "the storage domain only stores block information without consensus",
+    "evidence_found": false,
+    "accepted": false
+   },
+   {
+    "node": "ledger_node_role",
+    "kind": "child_term_type",
+    "label": "node participation level",
+    "question": "Does the node take part in consensus or block production, or only store or relay data?",
+    "definition": "Distinguishes nodes by whether they participate in consensus or only hold, store, or relay ledger data.",
+    "values": [
+     "consensus participant",
+     "storage-only",
+     "relay-only",
+     "observer"
+    ],
+    "item_ids": [
+     "paper:167d54b3b4b23351739f408a6425a7cb4423a0af",
+     "patent:10785033",
+     "patent:10949548",
+     "patent:11032057"
+    ],
+    "n_support": 4,
+    "gain_bits": 0.2119,
+    "evidence": "the storage domain only stores block information without consensus",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "ledger_node_role",
+    "kind": "value",
+    "label": "orderer / ordering service node",
+    "question": "",
+    "definition": "A node that sequences transactions into blocks without necessarily validating or replicating full state, as in permissioned consortium designs.",
+    "values": [],
+    "item_ids": [
+     "paper:0569f686c7a2568fb895d1008b6f3ee11f3d37fc",
+     "patent:10903989",
+     "patent:11032057"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.1747,
+    "evidence": "super peers",
+    "evidence_found": false,
+    "accepted": false
+   },
+   {
+    "node": "ledger_node_role",
+    "kind": "value",
+    "label": "acceleration / relay node",
+    "question": "",
+    "definition": "A node that forwards or accelerates transaction propagation between blockchains or peers without storing or validating the ledger.",
+    "values": [],
+    "item_ids": [
+     "patent:10666426",
+     "patent:11032057",
+     "patent:11100090"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.1747,
+    "evidence": "each acceleration node accessible to at least one node in at least one blockchain",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "crypto_asset_service_type",
+    "kind": "value",
+    "label": "decentralised exchange (DEX) operation",
+    "question": "",
+    "definition": "Operating or using a non-custodial, smart-contract-based exchange where users trade crypto-assets peer-to-pool or via order books without a central intermediary.",
+    "values": [],
+    "item_ids": [
+     "paper:17cff826c2780dc747534ae5563853c4aaf4dac7",
+     "paper:1d44545e3d90334c641ae265ab55981c2137de39",
+     "paper:2d89a307452cab692368ffcb2c236a95312dc163"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.1602,
+    "evidence": "several decentralized exchanges have recently emerged which offer support for atomic cross-chain swaps",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "crypto_asset_service_type",
+    "kind": "value",
+    "label": "supply chain tracking and provenance",
+    "question": "",
+    "definition": "Providing blockchain-based recording, tracking or authentication of goods and business processes across supply chains, rather than financial crypto-asset services.",
+    "values": [],
+    "item_ids": [
+     "paper:1cd16aa0225cfb110c22f9f0c4d2f8df38c956f3",
+     "paper:235ef066b73efbcdbfa6a7d348c6e045b73a7824",
+     "patent:10740808"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.1602,
+    "evidence": "the application of blockchain technology in managing supply chain (SC) business processes like shipment tracking",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "crypto_asset_service_type",
+    "kind": "child_term_type",
+    "label": "transaction_fraud_and_manipulation_risk",
+    "question": "Does the activity involve detecting, preventing or perpetrating manipulative or fraudulent transaction patterns?",
+    "definition": "Classifies whether the service concerns identifying wash trading, unfair trades, fraud or illicit flows in blockchain transactions.",
+    "values": [
+     "detection or analysis of manipulation",
+     "fraud or illicit address scoring",
+     "not applicable"
+    ],
+    "item_ids": [
+     "paper:1d44545e3d90334c641ae265ab55981c2137de39",
+     "paper:2d89a307452cab692368ffcb2c236a95312dc163",
+     "patent:10853812"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.1602,
+    "evidence": "wash trading activity can be identified on two of the first popular limit order book-based decentralized exchanges",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "digital_asset_recording",
+    "kind": "value",
+    "label": "ledger used for data storage or backup",
+    "question": "",
+    "definition": "Blockchain used to store or anchor data, such as backups, encoded objects or storage metadata, rather than transactions.",
+    "values": [],
+    "item_ids": [
+     "patent:10785033",
+     "patent:10903980",
+     "patent:10992458",
+     "patent:11016962"
+    ],
+    "n_support": 4,
+    "gain_bits": 0.1544,
+    "evidence": "Blockchain data storage based on shared nodes and error correction code",
+    "evidence_found": true,
+    "accepted": false
+   },
+   {
+    "node": "dlt_architecture",
+    "kind": "value",
+    "label": "mutable or editable block history",
+    "question": "",
+    "definition": "Ledger design that permits modification or editing of already-recorded blocks or transactions, contrasting with immutable chains.",
+    "values": [],
+    "item_ids": [
+     "patent:10592873",
+     "patent:10901957",
+     "patent:10915512"
+    ],
+    "n_support": 3,
+    "gain_bits": 0.1194,
+    "evidence": "a modified block is provided in response to at least an edit transaction that indicates a transaction in an original block",
+    "evidence_found": true,
+    "accepted": false
+   }
+  ],
+  "seconds": 11.9
+ }
+}

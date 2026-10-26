@@ -1,0 +1,22 @@
+Task B: place one term type in an is-a hierarchy of term types.
+
+"X is-a Y" between two term types means Y is a more general classification dimension of which X is a specialisation: everything X classifies is also classified by Y, X refines Y's question, and X's values could sit beneath one or more of Y's values. The relation is directional and not reflexive. "none" means X is a top-level dimension in its category with no more general term type in the candidate list.
+
+CHILD (X):
+{child}
+
+CANDIDATE PARENTS (Y), all from the same category as X; use their ids exactly:
+{candidates}
+
+Decide how probable it is that X is-a Y for each candidate, using the corpus as the only evidence of how the sources relate these dimensions. Return a single JSON object:
+
+{{
+  "child": "{child_id}",
+  "distribution": [
+    {{"parent": "<candidate id or none>", "probability": 0.0,
+     "rationale": "at most 30 words on why X specialises (or does not specialise) this parent",
+     "citations": [{{"doc": 4, "section": "exact section label", "quote": "verbatim, at most 30 words"}}]}}
+  ]
+}}
+
+Rules: probabilities are non-negative and sum to 1 across the distribution; include "none" as an entry (it may have probability 0); list at most {k} entries and omit candidates whose probability would be below 0.01; order by probability, highest first; citations may be empty for "none" or for low-probability entries, but the top entry (if not "none") must cite at least one passage. Output valid JSON only.
