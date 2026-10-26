@@ -1,0 +1,286 @@
+[
+ {
+  "kind": "value",
+  "query": "dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:ce9483288f1145146dd9a5a67bcb3b13971497e0": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2,
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:d86c38f042ad84ba1bb9717c4cac4946fbcc740d": 2,
+   "paper:42b19084b6b12c02a9faac2c4cfc7e15a5461457": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "value",
+  "query": "ledger_purpose=\"data integrity and provenance\"",
+  "text": "Ledger purpose: data integrity and provenance",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2,
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2
+  }
+ },
+ {
+  "kind": "value",
+  "query": "ledger_purpose=\"supply chain traceability and product provenance\"",
+  "text": "Ledger purpose: supply chain traceability and product provenance",
+  "grades": {
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "value",
+  "query": "smart_contract_usage_domain=\"supply chain and retail\"",
+  "text": "Smart contract usage domain: supply chain and retail",
+  "grades": {
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "node",
+  "query": "code_license_openness",
+  "text": "Source code openness. Is the ledger's source code publicly available under an open licence, or closed?",
+  "grades": {
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 1,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 1,
+   "paper:40ac5770a3f6074c036f8cced75ce3248e9c2ba7": 1,
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 1,
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 1,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 1
+  }
+ },
+ {
+  "kind": "node",
+  "query": "decentralised_system_status",
+  "text": "Decentralised system certification. Does the blockchain system meet the statutory conditions to be treated as a decentralised system or mature blockchain system?",
+  "grades": {
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 1,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 1,
+   "paper:40ac5770a3f6074c036f8cced75ce3248e9c2ba7": 1,
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 1,
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 1,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 1
+  }
+ },
+ {
+  "kind": "node",
+  "query": "smart_contract_definition_scope",
+  "text": "Smart contract / distributed ledger application scope. Is the software deployed on the ledger a smart contract, application, or protocol, and is its source code publicly available?",
+  "grades": {
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 1,
+   "paper:40ac5770a3f6074c036f8cced75ce3248e9c2ba7": 1,
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 1,
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 1,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 1
+  }
+ },
+ {
+  "kind": "and",
+  "query": "dlt_architecture=\"blockchain (chain of blocks)\" AND ledger_purpose=\"data integrity and provenance\"",
+  "text": "DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks); Ledger purpose: data integrity and provenance",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "smart_contract_usage_domain=\"supply chain and retail\" AND ledger_purpose=\"supply chain traceability and product provenance\"",
+  "text": "Smart contract usage domain: supply chain and retail; Ledger purpose: supply chain traceability and product provenance",
+  "grades": {
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"data integrity and provenance\" AND dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "Ledger purpose: data integrity and provenance; DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"data integrity and provenance\" AND dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "Ledger purpose: data integrity and provenance; DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"data integrity and provenance\" AND dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "Ledger purpose: data integrity and provenance; DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"data integrity and provenance\" AND dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "Ledger purpose: data integrity and provenance; DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"data integrity and provenance\" AND dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "Ledger purpose: data integrity and provenance; DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"data integrity and provenance\" AND dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "Ledger purpose: data integrity and provenance; DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "smart_contract_usage_domain=\"supply chain and retail\" AND ledger_purpose=\"supply chain traceability and product provenance\"",
+  "text": "Smart contract usage domain: supply chain and retail; Ledger purpose: supply chain traceability and product provenance",
+  "grades": {
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "dlt_architecture=\"blockchain (chain of blocks)\" AND ledger_purpose=\"data integrity and provenance\"",
+  "text": "DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks); Ledger purpose: data integrity and provenance",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"data integrity and provenance\" AND dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "Ledger purpose: data integrity and provenance; DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"supply chain traceability and product provenance\" AND smart_contract_usage_domain=\"supply chain and retail\"",
+  "text": "Ledger purpose: supply chain traceability and product provenance; Smart contract usage domain: supply chain and retail",
+  "grades": {
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"supply chain traceability and product provenance\" AND smart_contract_usage_domain=\"supply chain and retail\"",
+  "text": "Ledger purpose: supply chain traceability and product provenance; Smart contract usage domain: supply chain and retail",
+  "grades": {
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "dlt_architecture=\"blockchain (chain of blocks)\" AND ledger_purpose=\"data integrity and provenance\"",
+  "text": "DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks); Ledger purpose: data integrity and provenance",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"supply chain traceability and product provenance\" AND smart_contract_usage_domain=\"supply chain and retail\"",
+  "text": "Ledger purpose: supply chain traceability and product provenance; Smart contract usage domain: supply chain and retail",
+  "grades": {
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "dlt_architecture=\"blockchain (chain of blocks)\" AND ledger_purpose=\"data integrity and provenance\"",
+  "text": "DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks); Ledger purpose: data integrity and provenance",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "ledger_purpose=\"data integrity and provenance\" AND dlt_architecture=\"blockchain (chain of blocks)\"",
+  "text": "Ledger purpose: data integrity and provenance; DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks)",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "smart_contract_usage_domain=\"supply chain and retail\" AND ledger_purpose=\"supply chain traceability and product provenance\"",
+  "text": "Smart contract usage domain: supply chain and retail; Ledger purpose: supply chain traceability and product provenance",
+  "grades": {
+   "paper:adaa21caaddec6d0ee7df1b65bfe77c467917338": 2,
+   "paper:a4a8fcb2f3e0fc37b98a7ef58310818ed5900375": 2,
+   "paper:a9c0b0c73f64bd772798650097326b29e46154bd": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "dlt_architecture=\"blockchain (chain of blocks)\" AND ledger_purpose=\"data integrity and provenance\"",
+  "text": "DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks); Ledger purpose: data integrity and provenance",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ },
+ {
+  "kind": "and",
+  "query": "dlt_architecture=\"blockchain (chain of blocks)\" AND ledger_purpose=\"data integrity and provenance\"",
+  "text": "DLT data structure (blockchain vs non-chain DLT): blockchain (chain of blocks); Ledger purpose: data integrity and provenance",
+  "grades": {
+   "paper:b9cc0159d4e1c6313d27f3b7a9bed91d982c37b1": 2,
+   "paper:a4c1255ff0fb48c49d9d488e34862b710ea0f882": 2,
+   "paper:bb5469b6414ee304e212b55c4c650d3a3d0bb725": 2
+  }
+ }
+]

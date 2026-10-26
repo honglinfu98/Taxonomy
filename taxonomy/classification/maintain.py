@@ -274,10 +274,10 @@ def main() -> None:
         sys.exit(f"{TAGS_OUT} missing: run python -m taxonomy.classification.tag --iter {k} first")
     run_meta = json.loads((out_dir / "tags_summary.json").read_text(encoding="utf-8"))["run"]
     version = run_meta["catalogue_version"]
-    rows = [json.loads(l) for l in TAGS_OUT.read_text(encoding="utf-8").splitlines() if l.strip()]
+    rows = [json.loads(l) for l in TAGS_OUT.read_text(encoding="utf-8").split("\n") if l.strip()]
     rows_by_id = {r["item_id"]: r for r in rows}
     sample_file = ROOT / run_meta["sample"]
-    items = {it["id"]: it for it in (json.loads(l) for l in sample_file.read_text(encoding="utf-8").splitlines() if l.strip())}
+    items = {it["id"]: it for it in (json.loads(l) for l in sample_file.read_text(encoding="utf-8").split("\n") if l.strip())}
     tts, dag = load_taxonomy(version)
     print(f"iteration {k}: maintaining catalogue v{version} on {len(rows)} tagged items", file=sys.stderr)
     by_id = {t["id"]: t for t in tts}

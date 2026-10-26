@@ -95,6 +95,21 @@ python -m taxonomy.retrieval.benchmark    # output/retrieval/benchmark.md
 
 Details and results: `taxonomy/retrieval/README.md`.
 
+## Evaluation
+
+Held-out gold set (300 items, two-pass strong-model annotation, adjudicated), tagging
+Micro-F1 / Macro-F1 for the DAG-guided tagger against a zero-shot flat-label LLM and a
+supervised TF-IDF + logistic regression baseline over three runs with sd, and retrieval
+P@k / NDCG@k on judged queries with latency for the DAG index against flat tags and BM25.
+
+```bash
+python -m taxonomy.evaluation.gold select && python -m taxonomy.evaluation.gold annotate
+python -m taxonomy.evaluation.tagging_eval --runs 3
+python -m taxonomy.evaluation.retrieval_eval --runs 3
+```
+
+Protocol and results: `taxonomy/evaluation/README.md`, `output/evaluation/`, `paper/tables/eval_*.tex`.
+
 ## Setup
 
 ```bash
@@ -120,11 +135,13 @@ taxonomy/
   establishment/           Part 1: prompts, Task A/B runners, DAG metrics, dashboard
   classification/          Part 2: sampler, prompts, Task C tagging, maintenance, evolution
   retrieval/               Part 3: DAG index, graph structures, query engine, benchmark
+  evaluation/              gold set, tagging F1 with baselines, retrieval P@k / NDCG@k
 data/dlt_corpus/           downloaded DLT-Corpus shards and the pilot sample (gitignored)
 output/
   establishment/           Part 1 results: term types, is-a distributions, DAG, metrics, viewer
   classification/          Part 2 pilot outputs (superseded by evolution/iter_01)
   evolution/               v0 seed, v1.. evolved catalogues, iter_XX batches, evolution log
   retrieval/               Part 3: index summary, benchmark (index.pkl is rebuilt, not committed)
+  evaluation/              gold set, predictions per run, tagging and retrieval results
 paper/                     the write-up (LaTeX)
 ```

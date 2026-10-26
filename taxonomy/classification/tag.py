@@ -238,7 +238,7 @@ def main() -> None:
     sample_file = Path(args.sample) if args.sample else (sample_path(k) if sample_path(k).exists() else SAMPLE)
     if not sample_file.exists():
         sys.exit(f"{sample_file} missing: run python -m taxonomy.classification.sample --iter {k} first")
-    items = [json.loads(l) for l in sample_file.read_text(encoding="utf-8").splitlines() if l.strip()]
+    items = [json.loads(l) for l in sample_file.read_text(encoding="utf-8").split("\n") if l.strip()]
     items = items[: args.limit or None]
     tts, dag = load_taxonomy(version)
     print(f"iteration {k}: catalogue v{version} ({len(tts)} term types), {len(items)} items from {sample_file.name} -> {out_dir}",

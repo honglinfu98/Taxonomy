@@ -25,12 +25,10 @@ retrieval.
 \subsection{Definitions-First Corpus Construction}
 \label{sec:method:corpus}
 
-We do not give the model whole statutes. A regulation such as \src{MiCA}
-defines its vocabulary in a few articles and spends the rest of its length on
-obligations that refer back to those definitions. The classification criteria
-we are after live in the definitions articles, the glossaries, the
-classification conditions and the descriptions of business models, so we take
-those sections and nothing else. \Cref{tab:corpus} lists the result: 21 legal
+We do not give the model whole statutes: a regulation such as \src{MiCA}
+defines its vocabulary in a few articles and spends the rest on obligations
+that refer back to them, so we take the definitions articles, glossaries,
+classification conditions and business-model descriptions and nothing else. \Cref{tab:corpus} lists the result: 21 legal
 instruments from the EU, the UK, the US and six international bodies, plus two
 academic taxonomies of blockchains~\cite{tasca2019taxonomy} and of
 crypto-assets~\cite{zhang2026cryptotaxonomy} and one paper describing a
@@ -79,7 +77,7 @@ file the model sees.
 \label{sec:method:run}
 
 We place the whole corpus in the system prompt, after the stable instructions
-and behind a prompt-cache breakpoint with a one-hour lifetime; the task prompt
+and behind a prompt-cache breakpoint~\cite{gim2024promptcache} with a one-hour lifetime; the task prompt
 is the user message. Every later task, and every prompt iteration, then pays
 only for the small uncached part. The choice is also methodological:
 recognising that \src{MiCA}'s ``referencing the value of one official
@@ -90,17 +88,15 @@ corpus size, with the corpus priced at the cache-read rate and only the task
 prompt and the output priced in full; we report measurements in
 \cref{sec:exp:rq1,sec:exp:rq2}.
 
-A single streamed call produces the output. We disable the model's adaptive
-thinking because on a first attempt it spent more than 100,000 thinking tokens
-on this corpus without emitting any text, whereas without thinking it answers
-directly. We parse the JSON and, if a response is cut off by the output limit,
+A single streamed call produces the output. We disable adaptive thinking, which on
+a first attempt spent more than 100,000 tokens without emitting text. We parse the JSON and, if a response is cut off by the output limit,
 salvage every complete term type and flag the result as truncated.
 
 \subsection{Citation Verification}
 \label{sec:method:verify}
 
-A quote that the model labels verbatim may still be invented, compressed, or
-attached to the wrong section, so we check all of them. For each citation we
+A quote may be invented, compressed or attached to the wrong section, so we
+check all of them. For each citation we
 look up the document and section, normalise both the quote and the section text
 to lower-case alphanumerics, and accept the quote if it is a substring. If it is
 not, we split the quote into 12-character shingles and accept it when at least

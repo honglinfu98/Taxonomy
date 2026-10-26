@@ -6,6 +6,7 @@ Seed = v0, the Part 1 DAG (never modified). Each iteration tags a disjoint batch
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | v0 | 300 | 3.55 | 6.9161 | 0.7943 | 0.2122 | 32 (8) | v1 | 99 / 285 / 351 | $0.1541 | 8.2 s API, 107.1 s wall |
 | 2 | v1 | 8646 | 4.06 | 6.9602 | 0.7714 | 0.2147 | 81 (21) | v2 | 107 / 293 / 396 | $4.2902 | 15924.6 s API, 2023.9 s wall |
+| 3 | v2 | 8646 | 4.11 | 7.0214 | 0.7781 | 0.2032 | 87 (17) | v3 | 113 / 300 / 433 | $4.4534 | 17081.8 s API, 742.6 s wall |
 
 ## Iteration 1 (catalogue v0, 2026-10-26)
 
@@ -51,3 +52,28 @@ Added to the catalogue:
 - value **researcher / evaluator** of `ecosystem_participant_role`: Participant whose role is to study, measure, benchmark or assess blockchain systems rather than operate, issue or hold assets. (5 items)
 - value **time-locked or recovery-key control** of `unhosted_custody_control_policy`: Control exercised through time-delayed, recovery, or fallback keys that alter who can move assets under given conditions. (5 items)
 - value **fractional equity or security token** of `tokenisation_form`: Token representing fractional ownership, equity, or a security interest in an off-chain asset or enterprise. (5 items)
+
+## Iteration 3 (catalogue v2, 2026-10-26)
+
+Sample: data/dlt_corpus/sample_iter03.jsonl (8646 items; {'paper': {'items': 3744, 'tags_per_item': 3.88}, 'patent': {'items': 4902, 'tags_per_item': 4.29}}). Tags: 35576 (4.11 per item), evidence verified 34302/35576, off-topic 555.
+Objectives from tags: 7.0214 bits/descent, AUC 0.7781, expected depth 3.826, effective leaves 21.747 (0.2032 per node); prior (is-a weights): 4.8413 bits, AUC 0.8506.
+Nodes with items 106/107; dormant 1; collapsed 12; discovery targets 32; candidates 87, accepted 17.
+API: 8679 requests, 6940563 input + 230709115 cached + 2897818 output tokens, $4.4534 (tagging $4.415, discovery $0.0356, consolidation $0.0028); time 17081.8 s in API calls (mean 1.96 s, p95 3.07 s per request), 742.6 s wall with 24 workers.
+Added to the catalogue:
+- term type **Zero-knowledge proof system variant** `zk_proof_system_variant` under `privacy_mechanism_family`: Which form or setup of zero-knowledge proof is used? (values: zk-SNARK, zk-STARK, Sigma protocol / interactive-style proof, Bulletproofs (short range/inner-product proofs), one-out-of-many / ring proofs, non-interactive ZKP (unspecified); from 1 candidate(s), 6 items)
+- term type **Key share distribution topology** `key_share_distribution_topology` under `key_management_control_model, key_splitting_scheme`: How are the key shares distributed across custodial parties or devices? (values: across physical devices, among participants, across data centres, split between client and custodian; from 1 candidate(s), 5 items)
+- term type **Fiat-rail integration** `fiat_rail_integration` under `payment_settlement_mechanism`: How does the crypto settlement interface with traditional fiat payment rails? (values: card-network bridged, bank transfer bridged, no fiat leg; from 1 candidate(s), 5 items)
+- term type **Key recovery mechanism** `key_recovery_mechanism` under `unhosted_vs_hosted_wallet`: How is the wallet's private key or seed material recovered if the user loses access? (values: seed phrase backup, secret sharing / social recovery, service-assisted recovery, threshold multiparty recovery, no recovery supported; from 1 candidate(s), 6 items)
+- term type **Script verification approach** `script_verification_approach` under `script_language_expressiveness`: How is the correctness or safety of the script or contract verified? (values: static analysis, formal verification, runtime metering, fuzzing; from 1 candidate(s), 5 items)
+- term type **Backing of token** `backing_of_token` under `tokenisation_form`: What, if anything, backs the value of the token? (values: fully asset-backed, partially or fractionally backed, collateralised by claims or loans, unbacked; from 1 candidate(s), 5 items)
+- value **services offered to merchants accepting cryptocurrency payments** of `service_location_nexus`: Crypto-asset payment acceptance services offered to merchants or retailers in the jurisdiction, creating a nexus through the merchant-facing service rather than the end user. (5 items)
+- value **traceable-but-pseudonymous ledger** of `anonymity_enhancing_status`: Transfers are publicly visible and linked to pseudonymous addresses, so they can be traced and deanonymised with analytics and clustering. (5 items)
+- value **NFT creation via marketplace or service minting** of `minting_mechanism`: Units created by an NFT creator, marketplace, or platform service minting a token on request, without a consensus, collateral, or protocol-rule trigger. (6 items)
+- value **external data oracle** of `interoperability_type`: Interoperability achieved by an oracle or relay that attests to or forwards data from one chain to another via a trusted or voting-based party. (5 items)
+- value **domain-name-based chain addressing** of `interoperability_type`: Cross-chain access resolves target chains through human-readable blockchain domain names rather than raw network identifiers. (5 items)
+- value **cross-chain transaction forwarding with hop limit** of `interoperability_type`: Transactions or messages are relayed across a bounded sequence of intermediate chains or hops to reach the destination ledger. (5 items)
+- value **DID-anchored verifiable credential** of `identity_binding_mechanism`: Identity is bound by issuing and verifying signed credentials that reference a decentralised identifier held in a user wallet. (5 items)
+- value **wallet risk scoring and taint tracking** of `risk_type_illicit_finance`: Risk assessed by scoring addresses or wallets for criminal association and tracing tainted funds through transaction graphs. (5 items)
+- value **hybrid server-matching with decentralised execution** of `centralisation_level`: Control is split: a central server or operator handles matching, coordination or access while settlement or execution remains decentralised on-chain. (5 items)
+- value **tokenised physical commodity or precious metal** of `tokenisation_form`: A token representing ownership of a physical commodity, precious metal, or natural resource held in custody or inventory. (6 items)
+- value **tokenised intellectual property or contractual claim** of `tokenisation_form`: A token representing rights in intellectual property, receivables, debt, or loan-backed equity rather than a physical asset. (5 items)

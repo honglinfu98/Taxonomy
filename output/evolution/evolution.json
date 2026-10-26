@@ -448,5 +448,234 @@
   "result_nodes": 107,
   "result_edges": 293,
   "result_values": 396
+ },
+ {
+  "iteration": 3,
+  "catalogue_version": 2,
+  "timestamp": "2026-10-26T10:40:40+00:00",
+  "sample": "data/dlt_corpus/sample_iter03.jsonl",
+  "items": 8646,
+  "sources": {
+   "paper": {
+    "items": 3744,
+    "tags_per_item": 3.88
+   },
+   "patent": {
+    "items": 4902,
+    "tags_per_item": 4.29
+   }
+  },
+  "tags": 35576,
+  "tags_per_item": 4.11,
+  "evidence_verified": "34302/35576",
+  "off_topic": 555,
+  "nodes": 107,
+  "nodes_with_items": 106,
+  "dormant": 1,
+  "collapsed": 12,
+  "discovery_targets": 32,
+  "candidates": 87,
+  "accepted": 17,
+  "objectives": {
+   "bits_per_descent": 7.0214,
+   "auc": 0.7781,
+   "expected_depth": 3.826,
+   "effective_leaves": 21.747,
+   "effective_leaves_over_nodes": 0.2032,
+   "prior_bits_per_descent": 4.8413,
+   "prior_auc": 0.8506
+  },
+  "cost": {
+   "requests": 8679,
+   "input_tokens": 6940563,
+   "cache_read_tokens": 230709115,
+   "output_tokens": 2897818,
+   "tagging_usd": 4.415,
+   "discovery_usd": 0.0356,
+   "evolve_usd": 0.0028,
+   "total_usd": 4.4534
+  },
+  "time": {
+   "api_seconds": 17081.8,
+   "wall_seconds": 742.6,
+   "note": null,
+   "mean_request_s": 1.96,
+   "p95_request_s": 3.07,
+   "workers": 24
+  },
+  "produced_version": 3,
+  "added_term_types": [
+   {
+    "id": "zk_proof_system_variant",
+    "name": "Zero-knowledge proof system variant",
+    "question": "Which form or setup of zero-knowledge proof is used?",
+    "values": [
+     "zk-SNARK",
+     "zk-STARK",
+     "Sigma protocol / interactive-style proof",
+     "Bulletproofs (short range/inner-product proofs)",
+     "one-out-of-many / ring proofs",
+     "non-interactive ZKP (unspecified)"
+    ],
+    "parents": [
+     "privacy_mechanism_family"
+    ],
+    "merged_from": 1,
+    "support": 6
+   },
+   {
+    "id": "key_share_distribution_topology",
+    "name": "Key share distribution topology",
+    "question": "How are the key shares distributed across custodial parties or devices?",
+    "values": [
+     "across physical devices",
+     "among participants",
+     "across data centres",
+     "split between client and custodian"
+    ],
+    "parents": [
+     "key_management_control_model",
+     "key_splitting_scheme"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "fiat_rail_integration",
+    "name": "Fiat-rail integration",
+    "question": "How does the crypto settlement interface with traditional fiat payment rails?",
+    "values": [
+     "card-network bridged",
+     "bank transfer bridged",
+     "no fiat leg"
+    ],
+    "parents": [
+     "payment_settlement_mechanism"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "key_recovery_mechanism",
+    "name": "Key recovery mechanism",
+    "question": "How is the wallet's private key or seed material recovered if the user loses access?",
+    "values": [
+     "seed phrase backup",
+     "secret sharing / social recovery",
+     "service-assisted recovery",
+     "threshold multiparty recovery",
+     "no recovery supported"
+    ],
+    "parents": [
+     "unhosted_vs_hosted_wallet"
+    ],
+    "merged_from": 1,
+    "support": 6
+   },
+   {
+    "id": "script_verification_approach",
+    "name": "Script verification approach",
+    "question": "How is the correctness or safety of the script or contract verified?",
+    "values": [
+     "static analysis",
+     "formal verification",
+     "runtime metering",
+     "fuzzing"
+    ],
+    "parents": [
+     "script_language_expressiveness"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "backing_of_token",
+    "name": "Backing of token",
+    "question": "What, if anything, backs the value of the token?",
+    "values": [
+     "fully asset-backed",
+     "partially or fractionally backed",
+     "collateralised by claims or loans",
+     "unbacked"
+    ],
+    "parents": [
+     "tokenisation_form"
+    ],
+    "merged_from": 1,
+    "support": 5
+   }
+  ],
+  "added_values": [
+   {
+    "term_type": "service_location_nexus",
+    "value": "services offered to merchants accepting cryptocurrency payments",
+    "definition": "Crypto-asset payment acceptance services offered to merchants or retailers in the jurisdiction, creating a nexus through the merchant-facing service rather than the end user.",
+    "support": 5
+   },
+   {
+    "term_type": "anonymity_enhancing_status",
+    "value": "traceable-but-pseudonymous ledger",
+    "definition": "Transfers are publicly visible and linked to pseudonymous addresses, so they can be traced and deanonymised with analytics and clustering.",
+    "support": 5
+   },
+   {
+    "term_type": "minting_mechanism",
+    "value": "NFT creation via marketplace or service minting",
+    "definition": "Units created by an NFT creator, marketplace, or platform service minting a token on request, without a consensus, collateral, or protocol-rule trigger.",
+    "support": 6
+   },
+   {
+    "term_type": "interoperability_type",
+    "value": "external data oracle",
+    "definition": "Interoperability achieved by an oracle or relay that attests to or forwards data from one chain to another via a trusted or voting-based party.",
+    "support": 5
+   },
+   {
+    "term_type": "interoperability_type",
+    "value": "domain-name-based chain addressing",
+    "definition": "Cross-chain access resolves target chains through human-readable blockchain domain names rather than raw network identifiers.",
+    "support": 5
+   },
+   {
+    "term_type": "interoperability_type",
+    "value": "cross-chain transaction forwarding with hop limit",
+    "definition": "Transactions or messages are relayed across a bounded sequence of intermediate chains or hops to reach the destination ledger.",
+    "support": 5
+   },
+   {
+    "term_type": "identity_binding_mechanism",
+    "value": "DID-anchored verifiable credential",
+    "definition": "Identity is bound by issuing and verifying signed credentials that reference a decentralised identifier held in a user wallet.",
+    "support": 5
+   },
+   {
+    "term_type": "risk_type_illicit_finance",
+    "value": "wallet risk scoring and taint tracking",
+    "definition": "Risk assessed by scoring addresses or wallets for criminal association and tracing tainted funds through transaction graphs.",
+    "support": 5
+   },
+   {
+    "term_type": "centralisation_level",
+    "value": "hybrid server-matching with decentralised execution",
+    "definition": "Control is split: a central server or operator handles matching, coordination or access while settlement or execution remains decentralised on-chain.",
+    "support": 5
+   },
+   {
+    "term_type": "tokenisation_form",
+    "value": "tokenised physical commodity or precious metal",
+    "definition": "A token representing ownership of a physical commodity, precious metal, or natural resource held in custody or inventory.",
+    "support": 6
+   },
+   {
+    "term_type": "tokenisation_form",
+    "value": "tokenised intellectual property or contractual claim",
+    "definition": "A token representing rights in intellectual property, receivables, debt, or loan-backed equity rather than a physical asset.",
+    "support": 5
+   }
+  ],
+  "dropped": [],
+  "result_nodes": 113,
+  "result_edges": 300,
+  "result_values": 433
  }
 ]

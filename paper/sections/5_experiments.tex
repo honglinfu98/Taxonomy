@@ -2,10 +2,10 @@
 \label{sec:exp}
 
 We answer seven research questions.
-\textbf{RQ1}: How many classification dimensions does the corpus support, how
-widely is each shared across sources, and how faithful are the citations?
-\textbf{RQ2}: What hierarchy do the term types form, how confident and how
-grounded are its edges, and how does it change as weak edges are hidden?
+\textbf{RQ1}: How many dimensions does the corpus support, how widely are
+they shared, and how faithful are the citations?
+\textbf{RQ2}: What hierarchy do the term types form, how grounded are its
+edges, and how does it change as weak edges are hidden?
 \textbf{RQ3}: Does the DAG serve as a label space for Web content, and does
 the content reveal where it must grow?
 \textbf{RQ4}: Does the DAG index retrieve tagged content faster than a flat
@@ -42,7 +42,8 @@ conflict. For the hierarchy we report the structural counts and the objectives o
 \cref{sec:method:hierarchy}; for retrieval, latency against a flat scan with
 identical results and the steps and bits a navigation needs to reach $k$
 items. \todo{For RQ5 add precision and recall of term
-types against the expert gold set, and coverage of each expert taxonomy's
+types against the expert gold set, an LLM judge calibrated against the
+experts~\cite{zheng2023judge}, and coverage of each expert taxonomy's
 dimensions; for RQ7 add macro-F$_1$ of the downstream classifier.}
 
 \textbf{Implementation.} Both tasks use \texttt{claude-haiku-5-5} called
@@ -206,8 +207,7 @@ thousand documents would cost about \$\ProjCost\ and \ProjHours\ hours.
 \textbf{Measurement.} \Cref{tab:objectives} (\cref{app:results}) compares, for each version, the
 objectives from the model's is-a weights with those measured from the tags. A
 content-driven descent resolves about seven bits against under five from the
-prior and ends at more effective leaves: the content goes deeper and spreads
-wider than the prior weights suggested. Collapsed nodes grow with the batch,
+prior and ends at more effective leaves. Collapsed nodes grow with the batch,
 \TCollapsed\ in iteration 2, led by the DLT data structure, 96\% of 2,377
 items on ``blockchain''; they are also the largest residual pools, which is
 where discovery is pointed.
@@ -271,10 +271,7 @@ added at weight one will tighten once the is-a query re-estimates them.
 Ranking uses the tagger's confidence; there are no relevance judgements yet. \todo{Relevance judgements
 on a query sample; compare with BM25 over the item text.}
 
-\paragraph{Planned evaluations (RQ5--RQ7).}
-\label{sec:exp:rq5}
-\label{sec:exp:rq6}
-\label{sec:exp:rq7}
+\textbf{Planned evaluations (RQ5--RQ7).}\label{sec:exp:rq5}\label{sec:exp:rq6}\label{sec:exp:rq7}
 \todo{RQ5: expert taxonomies and LLM baselines (zero-shot, chunked RAG, RAPTOR,
 TnT-LLM) on the same corpus. RQ6: ablation rows for grounding strategy, model
 and prompt beside the manifest result of \cref{sec:exp:rq1}. RQ7: macro-F$_1$

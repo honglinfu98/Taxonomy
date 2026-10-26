@@ -1,0 +1,67 @@
+{
+ "items": 12,
+ "n_queries": 27,
+ "query_kinds": {
+  "value": 4,
+  "node": 3,
+  "and": 20
+ },
+ "k": 10,
+ "runs": 1,
+ "catalogue_version": 3,
+ "systems": {
+  "dag_index": [
+   {
+    "p5": 0.1407,
+    "p10": 0.0704,
+    "r10": 0.1442,
+    "ndcg10": 0.1731,
+    "ap": 0.1388,
+    "latency_us": 8.0,
+    "ndcg10_value": 0.5658,
+    "ndcg10_node": 0.8034,
+    "ndcg10_and": 0.0
+   }
+  ],
+  "flat_tags": [
+   {
+    "p5": 0.0519,
+    "p10": 0.0259,
+    "r10": 0.056,
+    "ndcg10": 0.0715,
+    "ap": 0.056,
+    "latency_us": 21.7,
+    "ndcg10_value": 0.4354,
+    "ndcg10_node": 0.0628,
+    "ndcg10_and": 0.0
+   }
+  ],
+  "supervised": [
+   {
+    "p5": 0.3704,
+    "p10": 0.1889,
+    "r10": 0.515,
+    "ndcg10": 0.6116,
+    "ap": 0.5025,
+    "latency_us": 10.1,
+    "ndcg10_value": 0.8293,
+    "ndcg10_node": 0.6777,
+    "ndcg10_and": 0.5581
+   }
+  ],
+  "bm25": [
+   {
+    "p5": 0.3704,
+    "p10": 0.2889,
+    "r10": 0.8104,
+    "ndcg10": 0.7462,
+    "ap": 0.6081,
+    "latency_us": 36.1,
+    "ndcg10_value": 0.8188,
+    "ndcg10_node": 0.7436,
+    "ndcg10_and": 0.7321
+   }
+  ]
+ },
+ "full_index_items": 8205
+}

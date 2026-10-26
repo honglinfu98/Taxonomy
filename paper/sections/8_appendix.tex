@@ -1,26 +1,8 @@
 %% ============================================================================
 %%  APPENDIX -- optional. Total paper (body + refs + appendix) must be <= 12 pp.
 %% ============================================================================
-%% All floats come first so that they are encountered on the references page
-%% and can be placed from the next page on; the text follows.
-\begin{figure*}[t]
-\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_system.txt}
-\caption{System instructions, verbatim.}
-\label{fig:promptsys}
-\end{figure*}
-\begin{figure*}[t]
-\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_task_a.txt}
-\caption{Task A user prompt, verbatim. The manifest appended at run time is
-one line per document: \texttt{doc 4 (Regulation (EU) 2023/1114 ...): "Articles
-2-3: Scope and Definitions"}.}
-\label{fig:prompttask}
-\end{figure*}
-\begin{figure*}[t]
-\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_tag.txt}
-\caption{Task C tagging prompt, verbatim; the catalogue block is a cached
-system block that follows the instructions.}
-\label{fig:prompttag}
-\end{figure*}
+%% Result floats come first so that they are encountered as early as possible;
+%% the prompt listings are set inline (not floating) so they fill the columns.
 \begin{table*}[t]
   \centering
   \caption{All ten rejected Task A citations. The verifier found no match for
@@ -91,6 +73,25 @@ followed at run time by the manifest of document indexes and section labels;
 the tagging prompt (\cref{fig:prompttag}) is sent once per item. The Task B
 is-a prompt, the discovery prompt and the consolidation prompt are in the
 released artefact.
+
+\noindent
+\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_system.txt}
+\captionof{figure}{System instructions, verbatim.}
+\label{fig:promptsys}
+\smallskip
+\noindent
+\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_task_a.txt}
+\captionof{figure}{Task A user prompt, verbatim. The manifest appended at run time is
+one line per document: \texttt{doc 4 (Regulation (EU) 2023/1114 ...): "Articles
+2-3: Scope and Definitions"}.}
+\label{fig:prompttask}
+\smallskip
+\noindent
+\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_tag.txt}
+\captionof{figure}{Task C tagging prompt, verbatim; the catalogue block is a cached
+system block that follows the instructions.}
+\label{fig:prompttag}
+\smallskip
 
 \section{Additional Results}
 \label{app:results}

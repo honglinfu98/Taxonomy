@@ -2,9 +2,10 @@
 \label{sec:related}
 
 \paragraph{Taxonomy construction, expansion and completion.}
-Taxonomy induction from text has a long lineage, from hypernym classifiers and
-definition graphs~\cite{snow2006taxonomy,velardi2013ontolearn,bordea2016texeval}
-to embedding-based construction~\cite{zhang2018taxogen,shen2018hiexpan,huang2020corel}.
+Taxonomy induction from text has a long lineage, from hypernym patterns,
+definition extraction and definition graphs~\cite{hearst1992,snow2006,navigli2010,velardi2013,bordea2016}
+to embedding-based construction~\cite{zhang2018taxogen,shen2018hiexpan,huang2020corel};
+Probase~\cite{wu2012probase} keeps probabilistic is-a edges at Web scale.
 Most work at this venue assumes a seed taxonomy and inserts new concepts into
 it. TaxoExpan~\cite{shen2020taxoexpan} and HEF~\cite{wang2021hef} attach a query
 concept to a parent using self-supervision from the seed's own edges;
@@ -18,7 +19,7 @@ there is no seed, and the nodes we induce are classification dimensions rather
 than leaf concepts, each anchored in a cited passage.
 
 \paragraph{LLMs for classification, tagging and ontology learning.}
-LLMs induce taxonomies zero-shot or from a few examples~\cite{jain2022zeroshot,
+LLMs induce taxonomies zero-shot or from a few examples~\cite{jain2022hypernymy,
 zeng2024chainoflayer,lo2024ollm}, and topic or concept
 induction~\cite{pham2024topicgpt,lam2024lloom} names the categories a corpus
 supports. TaxoClass~\cite{shen2021taxoclass} and TELEClass~\cite{zhang2025teleclass}
@@ -34,9 +35,12 @@ taxonomy should change. We require every class and value to cite a verified
 passage and admit content-derived additions only when they raise a measured
 information gain.
 
-\paragraph{Crypto-asset taxonomies and grounding.}
-Tasca and Tessone~\cite{tasca2019taxonomy} and Ballandies et
-al.~\cite{ballandies2022dlt} classify ledger designs by component; Zhang et al.~\cite{zhang2026cryptotaxonomy} classify assets by
+\paragraph{Legal text, crypto-asset taxonomies and grounding.}
+Legal NLP benchmarks~\cite{chalkidis2021multieurlex,chalkidis2022lexglue}
+classify documents under label hierarchies that are given, and definition
+extraction~\cite{spala2020deft} finds definitional sentences without inducing
+the dimensions they share. Tasca and Tessone~\cite{tasca2019taxonomy} and Ballandies et
+al.~\cite{ballandies2022decrypting} classify ledger designs by component; Zhang et al.~\cite{zhang2026cryptotaxonomy} classify assets by
 technical standard, centralisation, function and legal status; DLT-Corpus
 \cite{hernandez2026dltcorpus} collects domain text; Avice et
 al.~\cite{cryptotags2024} link attribution tags to knowledge graph entities with
@@ -45,6 +49,6 @@ gao2023alce,liu2023verifiability} ask whether an output is supported by its
 sources, which our verifier checks mechanically. Retrieval-augmented
 generation~\cite{lewis2020rag} and hierarchical retrieval~\cite{sarthi2024raptor}
 ground an LLM in chunks; we hold the whole definitional corpus in a cached
-context, despite the known loss of mid-context information~\cite{liu2024lostmiddle},
+context, despite the known loss of mid-context information~\cite{liu2024lost},
 because recognising one dimension under different names is a whole-corpus
 judgement.

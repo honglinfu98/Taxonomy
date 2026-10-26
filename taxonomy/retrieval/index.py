@@ -141,7 +141,9 @@ def build(version: int | None, iters: list[int] | None) -> Index:
         if not tags_file.exists():
             continue
         metas = scan_sample(k)
-        for line in tags_file.read_text(encoding="utf-8").splitlines():
+        for line in tags_file.read_text(encoding="utf-8").split("\n"):
+            if not line.strip():
+                continue
             r = json.loads(line)
             if r.get("off_topic"):
                 skipped["off_topic"] += 1

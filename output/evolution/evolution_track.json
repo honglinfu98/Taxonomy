@@ -1,0 +1,792 @@
+{
+ "versions": [
+  {
+   "version": 0,
+   "iteration": null,
+   "nodes": 93,
+   "edges": 279,
+   "values": 317,
+   "candidate_nodes": 0,
+   "candidate_values": 0,
+   "roots": 5,
+   "leaves": 18,
+   "max_depth": 14,
+   "mean_parents": 3.0,
+   "by_category": {
+    "asset": 21,
+    "technology": 24,
+    "activity": 10,
+    "actor": 19,
+    "obligation_or_risk": 19
+   },
+   "prior_bits_per_descent": 4.7155,
+   "prior_auc": 0.8353,
+   "prior_expected_depth": 2.8056,
+   "prior_effective_leaves": 13.987,
+   "new_term_types": []
+  },
+  {
+   "version": 1,
+   "iteration": 1,
+   "nodes": 99,
+   "edges": 285,
+   "values": 351,
+   "candidate_nodes": 6,
+   "candidate_values": 34,
+   "roots": 5,
+   "leaves": 24,
+   "max_depth": 14,
+   "mean_parents": 2.88,
+   "by_category": {
+    "asset": 21,
+    "technology": 30,
+    "activity": 10,
+    "actor": 19,
+    "obligation_or_risk": 19
+   },
+   "prior_bits_per_descent": 4.8239,
+   "prior_auc": 0.8427,
+   "prior_expected_depth": 2.7029,
+   "prior_effective_leaves": 18.496,
+   "new_term_types": [
+    {
+     "id": "privacy_mechanism_family",
+     "name": "Privacy mechanism family",
+     "category": "technology",
+     "parents": [
+      "privacy_enhancement"
+     ],
+     "values": 6
+    },
+    {
+     "id": "smart_contract_deployment_context",
+     "name": "Smart contract deployment context",
+     "category": "technology",
+     "parents": [
+      "script_language_expressiveness"
+     ],
+     "values": 6
+    },
+    {
+     "id": "smart_contract_usage_domain",
+     "name": "Smart contract usage domain",
+     "category": "technology",
+     "parents": [
+      "smart_contract_definition_scope"
+     ],
+     "values": 6
+    },
+    {
+     "id": "identity_binding_mechanism",
+     "name": "Identity binding mechanism",
+     "category": "technology",
+     "parents": [
+      "digital_identity_layer"
+     ],
+     "values": 6
+    },
+    {
+     "id": "ledger_purpose",
+     "name": "Ledger purpose",
+     "category": "technology",
+     "parents": [
+      "digital_asset_recording"
+     ],
+     "values": 5
+    },
+    {
+     "id": "ledger_partitioning_topology",
+     "name": "Ledger partitioning or layering topology",
+     "category": "technology",
+     "parents": [
+      "dlt_architecture"
+     ],
+     "values": 5
+    }
+   ]
+  },
+  {
+   "version": 2,
+   "iteration": 2,
+   "nodes": 107,
+   "edges": 293,
+   "values": 396,
+   "candidate_nodes": 14,
+   "candidate_values": 79,
+   "roots": 5,
+   "leaves": 28,
+   "max_depth": 15,
+   "mean_parents": 2.74,
+   "by_category": {
+    "asset": 22,
+    "technology": 35,
+    "activity": 12,
+    "actor": 19,
+    "obligation_or_risk": 19
+   },
+   "prior_bits_per_descent": 4.8413,
+   "prior_auc": 0.8506,
+   "prior_expected_depth": 2.7404,
+   "prior_effective_leaves": 22.452,
+   "new_term_types": [
+    {
+     "id": "cross_chain_transfer_mechanism",
+     "name": "Cross-chain transfer mechanism",
+     "category": "asset",
+     "parents": [
+      "wrapped_or_bridged_asset"
+     ],
+     "values": 5
+    },
+    {
+     "id": "key_custody_control_model",
+     "name": "Key custody and control model",
+     "category": "technology",
+     "parents": [
+      "wallet_type_storage"
+     ],
+     "values": 4
+    },
+    {
+     "id": "finality_mechanism",
+     "name": "Finality mechanism",
+     "category": "technology",
+     "parents": [
+      "consensus_finality"
+     ],
+     "values": 4
+    },
+    {
+     "id": "key_isolation_from_network",
+     "name": "Key isolation from network connectivity",
+     "category": "technology",
+     "parents": [
+      "unhosted_vs_hosted_wallet"
+     ],
+     "values": 3
+    },
+    {
+     "id": "payment_settlement_mechanism",
+     "name": "Payment settlement mechanism",
+     "category": "activity",
+     "parents": [
+      "payment_or_transfer_service"
+     ],
+     "values": 5
+    },
+    {
+     "id": "key_splitting_scheme",
+     "name": "Key splitting scheme",
+     "category": "technology",
+     "parents": [
+      "unhosted_custody_control_policy"
+     ],
+     "values": 4
+    },
+    {
+     "id": "expressiveness_claim_basis",
+     "name": "Expressiveness claim basis",
+     "category": "technology",
+     "parents": [
+      "script_language_expressiveness"
+     ],
+     "values": 3
+    },
+    {
+     "id": "key_management_control_model",
+     "name": "Key management control model",
+     "category": "activity",
+     "parents": [
+      "crypto_asset_service_type"
+     ],
+     "values": 4
+    }
+   ]
+  }
+ ],
+ "iterations": [
+  {
+   "iteration": 1,
+   "catalogue_version": 0,
+   "timestamp": "2026-10-26T06:47:31+00:00",
+   "sample": "data/dlt_corpus/sample.jsonl",
+   "items": 300,
+   "sources": {
+    "paper": {
+     "items": 150,
+     "tags_per_item": 3.64
+    },
+    "patent": {
+     "items": 150,
+     "tags_per_item": 3.46
+    }
+   },
+   "tags": 1065,
+   "tags_per_item": 3.55,
+   "evidence_verified": "1026/1065",
+   "off_topic": 20,
+   "nodes": 93,
+   "nodes_with_items": 80,
+   "dormant": 13,
+   "collapsed": 3,
+   "discovery_targets": 15,
+   "candidates": 32,
+   "accepted": 8,
+   "objectives": {
+    "bits_per_descent": 6.9161,
+    "auc": 0.7943,
+    "expected_depth": 3.373,
+    "effective_leaves": 19.73,
+    "effective_leaves_over_nodes": 0.2122,
+    "prior_bits_per_descent": 4.7155,
+    "prior_auc": 0.8353
+   },
+   "cost": {
+    "requests": 316,
+    "input_tokens": 319014,
+    "cache_read_tokens": 7229700,
+    "output_tokens": 99719,
+    "tagging_usd": 0.1413,
+    "discovery_usd": 0.0107,
+    "evolve_usd": 0.0021,
+    "total_usd": 0.1541
+   },
+   "time": {
+    "api_seconds": 8.2,
+    "wall_seconds": 107.1,
+    "note": "per-request latency not recorded in the pilot",
+    "mean_request_s": null,
+    "p95_request_s": null,
+    "workers": 6
+   },
+   "produced_version": 1,
+   "added_term_types": [
+    {
+     "id": "privacy_mechanism_family",
+     "name": "Privacy mechanism family",
+     "question": "Which cryptographic or structural technique provides the privacy or confidentiality guarantee?",
+     "values": [
+      "encryption (symmetric or public-key)",
+      "homomorphic encryption",
+      "zero-knowledge proofs",
+      "data slicing or secret sharing",
+      "private channels or data collections",
+      "commitments and hashing"
+     ],
+     "parents": [
+      "privacy_enhancement"
+     ],
+     "merged_from": 1,
+     "support": 8
+    },
+    {
+     "id": "smart_contract_deployment_context",
+     "name": "Smart contract deployment context",
+     "question": "In what application context is the smart contract or script deployed?",
+     "values": [
+      "supply chain / logistics",
+      "certification / credentials",
+      "decentralized finance",
+      "healthcare data sharing",
+      "IoT / device identity",
+      "general-purpose / unspecified"
+     ],
+     "parents": [
+      "script_language_expressiveness"
+     ],
+     "merged_from": 1,
+     "support": 6
+    },
+    {
+     "id": "smart_contract_usage_domain",
+     "name": "Smart contract usage domain",
+     "question": "What application domain or function is the smart contract or ledger application designed to serve?",
+     "values": [
+      "energy and utilities",
+      "healthcare",
+      "intellectual property and media",
+      "identity and authentication",
+      "supply chain and retail",
+      "IoT and smart cities"
+     ],
+     "parents": [
+      "smart_contract_definition_scope"
+     ],
+     "merged_from": 1,
+     "support": 8
+    },
+    {
+     "id": "identity_binding_mechanism",
+     "name": "Identity binding mechanism",
+     "question": "How is a participant's identity bound to the ledger entry?",
+     "values": [
+      "decentralised identifiers (DID)",
+      "trusted third-party attestation",
+      "biometric authentication",
+      "cryptographic key pairs only",
+      "device or hardware identity"
+     ],
+     "parents": [
+      "digital_identity_layer"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "ledger_purpose",
+     "name": "Ledger purpose",
+     "question": "What is the primary purpose for which the distributed ledger is used?",
+     "values": [
+      "value transfer",
+      "data integrity and provenance",
+      "consent or governance",
+      "identity and access control"
+     ],
+     "parents": [
+      "digital_asset_recording"
+     ],
+     "merged_from": 1,
+     "support": 6
+    },
+    {
+     "id": "ledger_partitioning_topology",
+     "name": "Ledger partitioning or layering topology",
+     "question": "Is the ledger a single chain, multiple parallel or layered chains, or partitioned into sub-ledgers?",
+     "values": [
+      "single chain",
+      "multiple parallel chains",
+      "layered main and sub-chains",
+      "partitioned ledger",
+      "two-dimensional chains"
+     ],
+     "parents": [
+      "dlt_architecture"
+     ],
+     "merged_from": 1,
+     "support": 5
+    }
+   ],
+   "added_values": [
+    {
+     "term_type": "identity_binding_mechanism",
+     "value": "device / machine identity",
+     "definition": "Ledger identity is assigned to devices, things or digital twins rather than to human participants.",
+     "support": 5
+    },
+    {
+     "term_type": "ledger_purpose",
+     "value": "blockchain used for record-keeping of non-asset data",
+     "definition": "Distributed ledger used to store records, logs, certificates or events rather than a transferable asset or token.",
+     "support": 5
+    }
+   ],
+   "dropped": [],
+   "result_nodes": 99,
+   "result_edges": 285,
+   "result_values": 351
+  },
+  {
+   "iteration": 2,
+   "catalogue_version": 1,
+   "timestamp": "2026-10-26T07:26:41+00:00",
+   "sample": "data/dlt_corpus/sample_iter02.jsonl",
+   "items": 8646,
+   "sources": {
+    "paper": {
+     "items": 3744,
+     "tags_per_item": 3.83
+    },
+    "patent": {
+     "items": 4902,
+     "tags_per_item": 4.23
+    }
+   },
+   "tags": 35099,
+   "tags_per_item": 4.06,
+   "evidence_verified": "33962/35099",
+   "off_topic": 596,
+   "nodes": 99,
+   "nodes_with_items": 98,
+   "dormant": 1,
+   "collapsed": 11,
+   "discovery_targets": 32,
+   "candidates": 81,
+   "accepted": 21,
+   "objectives": {
+    "bits_per_descent": 6.9602,
+    "auc": 0.7714,
+    "expected_depth": 3.6958,
+    "effective_leaves": 21.256,
+    "effective_leaves_over_nodes": 0.2147,
+    "prior_bits_per_descent": 4.8239,
+    "prior_auc": 0.8427
+   },
+   "cost": {
+    "requests": 8679,
+    "input_tokens": 6980250,
+    "cache_read_tokens": 215995325,
+    "output_tokens": 2858174,
+    "tagging_usd": 4.2509,
+    "discovery_usd": 0.0357,
+    "evolve_usd": 0.0036,
+    "total_usd": 4.2902
+   },
+   "time": {
+    "api_seconds": 15924.6,
+    "wall_seconds": 2023.9,
+    "note": null,
+    "mean_request_s": 1.83,
+    "p95_request_s": 2.84,
+    "workers": 8
+   },
+   "produced_version": 2,
+   "added_term_types": [
+    {
+     "id": "cross_chain_transfer_mechanism",
+     "name": "Cross-chain transfer mechanism",
+     "question": "How is the asset moved or represented across chains?",
+     "values": [
+      "lock-and-mint bridge",
+      "pegged sidechain",
+      "atomic swap / hashlock",
+      "cross-chain messaging / relay",
+      "token linking or coloured coin"
+     ],
+     "parents": [
+      "wrapped_or_bridged_asset"
+     ],
+     "merged_from": 1,
+     "support": 8
+    },
+    {
+     "id": "key_custody_control_model",
+     "name": "Key custody and control model",
+     "question": "Who or what controls the keys: the user alone, a custodian, a multi-party scheme, or a split/recovered secret?",
+     "values": [
+      "self-custody single key",
+      "custodial third party",
+      "multi-party or threshold signing",
+      "split seed or secret sharing"
+     ],
+     "parents": [
+      "wallet_type_storage"
+     ],
+     "merged_from": 1,
+     "support": 7
+    },
+    {
+     "id": "finality_mechanism",
+     "name": "Finality mechanism",
+     "question": "What mechanism produces finality for confirmed transactions?",
+     "values": [
+      "quorum certificate / BFT voting",
+      "longest-chain depth (k-deep confirmation)",
+      "checkpointing / finalized prefix",
+      "no global ordering (causal or asynchronous settlement)"
+     ],
+     "parents": [
+      "consensus_finality"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "key_isolation_from_network",
+     "name": "Key isolation from network connectivity",
+     "question": "Is the key-holding device or environment connected to a network at the time keys are used or transactions are signed?",
+     "values": [
+      "online/hot (network-connected)",
+      "offline/cold (air-gapped)",
+      "hybrid (offline signing with online broadcast)"
+     ],
+     "parents": [
+      "unhosted_vs_hosted_wallet"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "payment_settlement_mechanism",
+     "name": "Payment settlement mechanism",
+     "question": "What mechanism settles the payment between payer and payee?",
+     "values": [
+      "on-chain direct settlement",
+      "off-chain payment channel",
+      "escrow or smart-contract conditional release",
+      "fiat conversion and merchant settlement",
+      "multi-chain cross-ledger settlement"
+     ],
+     "parents": [
+      "payment_or_transfer_service"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "key_splitting_scheme",
+     "name": "Key splitting scheme",
+     "question": "How is the signing key divided or shared among parties or devices?",
+     "values": [
+      "threshold secret sharing (t-of-n shards)",
+      "multi-party computation key generation/signing",
+      "partial key split across devices or servers",
+      "no key splitting (single complete key)"
+     ],
+     "parents": [
+      "unhosted_custody_control_policy"
+     ],
+     "merged_from": 1,
+     "support": 8
+    },
+    {
+     "id": "expressiveness_claim_basis",
+     "name": "Expressiveness claim basis",
+     "question": "What basis does the source use to characterise the ledger's scripting expressiveness?",
+     "values": [
+      "explicitly Turing-complete claim",
+      "Turing-incomplete by design",
+      "not stated / implicit"
+     ],
+     "parents": [
+      "script_language_expressiveness"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "key_management_control_model",
+     "name": "Key management control model",
+     "question": "How are the private keys or signing authority for custodied crypto-assets controlled?",
+     "values": [
+      "multi-party computation / threshold signing",
+      "hardware security module with approval policy",
+      "sharded key distribution",
+      "single-party key storage"
+     ],
+     "parents": [
+      "crypto_asset_service_type"
+     ],
+     "merged_from": 1,
+     "support": 6
+    }
+   ],
+   "added_values": [
+    {
+     "term_type": "ledger_purpose",
+     "value": "supply chain traceability and product provenance",
+     "definition": "Ledger used to record and trace the movement or origin of physical goods through a supply chain.",
+     "support": 6
+    },
+    {
+     "term_type": "ledger_purpose",
+     "value": "educational credential and achievement verification",
+     "definition": "Ledger used to issue, store, or verify academic certificates, diplomas, and learning records.",
+     "support": 6
+    },
+    {
+     "term_type": "unhosted_vs_hosted_wallet",
+     "value": "hardware-embedded key storage on physical medium",
+     "definition": "Keys are held in dedicated hardware (hardware wallet, secure element, or key stored on a physical card or token) rather than in software controlled by a provider or the user's general device.",
+     "support": 5
+    },
+    {
+     "term_type": "ledger_purpose",
+     "value": "electronic health and medical record management",
+     "definition": "Ledger used to store, share, or audit patient health records and medical supply or waste data.",
+     "support": 5
+    },
+    {
+     "term_type": "identity_binding_mechanism",
+     "value": "decentralised identifiers (DID) resolved via blockchain",
+     "definition": "Identity is bound through a DID whose DID document is anchored and resolved on a distributed ledger, including DID-based authentication and credential flows.",
+     "support": 5
+    },
+    {
+     "term_type": "smart_contract_usage_domain",
+     "value": "energy trading and grid management",
+     "definition": "Smart contracts for peer-to-peer energy trading, demand response, and local energy markets involving prosumers and grid operators.",
+     "support": 5
+    },
+    {
+     "term_type": "smart_contract_usage_domain",
+     "value": "electronic health records and medical data sharing",
+     "definition": "Ledger applications for storing, sharing, and governing patient medical records and health data access.",
+     "support": 5
+    },
+    {
+     "term_type": "ledger_partitioning_topology",
+     "value": "sharded chain",
+     "definition": "Ledger is split into shards or committees that each process a subset of transactions in parallel.",
+     "support": 5
+    },
+    {
+     "term_type": "ledger_partitioning_topology",
+     "value": "tiered parent-child chain hierarchy",
+     "definition": "Blockchains arranged in tiers where higher-tier integrity derives from lower-tier chains, with child chains linked to a parent.",
+     "support": 5
+    },
+    {
+     "term_type": "wallet_type_storage",
+     "value": "paper or physical token",
+     "definition": "Keys or addresses are stored on a physical medium such as paper, a card, or a note.",
+     "support": 5
+    },
+    {
+     "term_type": "ecosystem_participant_role",
+     "value": "researcher / evaluator",
+     "definition": "Participant whose role is to study, measure, benchmark or assess blockchain systems rather than operate, issue or hold assets.",
+     "support": 5
+    },
+    {
+     "term_type": "unhosted_custody_control_policy",
+     "value": "time-locked or recovery-key control",
+     "definition": "Control exercised through time-delayed, recovery, or fallback keys that alter who can move assets under given conditions.",
+     "support": 5
+    },
+    {
+     "term_type": "tokenisation_form",
+     "value": "fractional equity or security token",
+     "definition": "Token representing fractional ownership, equity, or a security interest in an off-chain asset or enterprise.",
+     "support": 5
+    }
+   ],
+   "dropped": [],
+   "result_nodes": 107,
+   "result_edges": 293,
+   "result_values": 396
+  }
+ ],
+ "candidate_usage": {
+  "privacy_mechanism_family": {
+   "discovered_in_iteration": 1,
+   "version": 1,
+   "parents": [
+    "privacy_enhancement"
+   ],
+   "usage": {
+    "iter_2": 613
+   }
+  },
+  "smart_contract_deployment_context": {
+   "discovered_in_iteration": 1,
+   "version": 1,
+   "parents": [
+    "script_language_expressiveness"
+   ],
+   "usage": {
+    "iter_2": 161
+   }
+  },
+  "smart_contract_usage_domain": {
+   "discovered_in_iteration": 1,
+   "version": 1,
+   "parents": [
+    "smart_contract_definition_scope"
+   ],
+   "usage": {
+    "iter_2": 1347
+   }
+  },
+  "identity_binding_mechanism": {
+   "discovered_in_iteration": 1,
+   "version": 1,
+   "parents": [
+    "digital_identity_layer"
+   ],
+   "usage": {
+    "iter_2": 994
+   }
+  },
+  "ledger_purpose": {
+   "discovered_in_iteration": 1,
+   "version": 1,
+   "parents": [
+    "digital_asset_recording"
+   ],
+   "usage": {
+    "iter_2": 4890
+   }
+  },
+  "ledger_partitioning_topology": {
+   "discovered_in_iteration": 1,
+   "version": 1,
+   "parents": [
+    "dlt_architecture"
+   ],
+   "usage": {
+    "iter_2": 340
+   }
+  },
+  "cross_chain_transfer_mechanism": {
+   "discovered_in_iteration": 2,
+   "version": 2,
+   "parents": [
+    "wrapped_or_bridged_asset"
+   ],
+   "usage": {}
+  },
+  "key_custody_control_model": {
+   "discovered_in_iteration": 2,
+   "version": 2,
+   "parents": [
+    "wallet_type_storage"
+   ],
+   "usage": {}
+  },
+  "finality_mechanism": {
+   "discovered_in_iteration": 2,
+   "version": 2,
+   "parents": [
+    "consensus_finality"
+   ],
+   "usage": {}
+  },
+  "key_isolation_from_network": {
+   "discovered_in_iteration": 2,
+   "version": 2,
+   "parents": [
+    "unhosted_vs_hosted_wallet"
+   ],
+   "usage": {}
+  },
+  "payment_settlement_mechanism": {
+   "discovered_in_iteration": 2,
+   "version": 2,
+   "parents": [
+    "payment_or_transfer_service"
+   ],
+   "usage": {}
+  },
+  "key_splitting_scheme": {
+   "discovered_in_iteration": 2,
+   "version": 2,
+   "parents": [
+    "unhosted_custody_control_policy"
+   ],
+   "usage": {}
+  },
+  "expressiveness_claim_basis": {
+   "discovered_in_iteration": 2,
+   "version": 2,
+   "parents": [
+    "script_language_expressiveness"
+   ],
+   "usage": {}
+  },
+  "key_management_control_model": {
+   "discovered_in_iteration": 2,
+   "version": 2,
+   "parents": [
+    "crypto_asset_service_type"
+   ],
+   "usage": {}
+  }
+ },
+ "categories": [
+  "asset",
+  "technology",
+  "actor",
+  "activity",
+  "obligation_or_risk"
+ ]
+}

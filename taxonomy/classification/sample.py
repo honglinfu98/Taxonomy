@@ -47,7 +47,7 @@ def sample_path(k: int) -> Path:
 def already_sampled() -> set[str]:
     ids = set()
     for f in (ROOT / "data" / "dlt_corpus").glob("sample*.jsonl"):
-        ids |= {json.loads(l)["id"] for l in f.read_text(encoding="utf-8").splitlines() if l.strip()}
+        ids |= {json.loads(l)["id"] for l in f.read_text(encoding="utf-8").split("\n") if l.strip()}
     return ids
 
 

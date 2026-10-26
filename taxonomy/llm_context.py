@@ -34,7 +34,7 @@ def client():
 
     if not os.environ.get("ANTHROPIC_API_KEY"):
         raise SystemExit("ANTHROPIC_API_KEY not set: add it to .env (see .env.example)")
-    return anthropic.Anthropic()
+    return anthropic.Anthropic(max_retries=6)   # back off on 429s when running many workers
 
 
 def load_corpus() -> str:
