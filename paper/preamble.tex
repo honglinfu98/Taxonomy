@@ -1,0 +1,74 @@
+%% ============================================================================
+%%  preamble.tex -- packages and project-wide macros
+%%  acmart already loads: amsmath, amssymb, hyperref, graphicx, xcolor,
+%%  booktabs, natbib, microtype, caption, float, geometry.  Do NOT reload them.
+%% ============================================================================
+
+%% ---- Tables & floats --------------------------------------------------------
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{subcaption}        % \begin{subfigure} ... (compatible with acmart)
+\usepackage{siunitx}           % \num{}, \SI{}, S-columns for aligned decimals
+\sisetup{detect-all, group-separator={,}, group-minimum-digits=4}
+
+%% ---- Algorithms & code ------------------------------------------------------
+\usepackage[ruled,linesnumbered,vlined]{algorithm2e}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize, breaklines=true, columns=fullflexible,
+        frame=single, framerule=0.3pt, xleftmargin=0.5em, numbers=none}
+
+%% ---- Figures ----------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\graphicspath{{figures/}}
+
+%% ---- Lists ------------------------------------------------------------------
+\usepackage[inline]{enumitem}
+\setlist{nosep, leftmargin=*}
+
+%% ---- Cross-referencing (load LAST) ------------------------------------------
+\usepackage{balance}           % \balance before \bibliography for even columns
+\usepackage[capitalise,noabbrev,nameinlink]{cleveref}
+\crefname{section}{Section}{Sections}
+\crefname{algorithm}{Algorithm}{Algorithms}
+\crefname{appendix}{Appendix}{Appendices}
+
+%% ---- Editorial macros (disabled automatically in camera-ready) -------------
+\ifcameraready
+  \newcommand{\todo}[1]{}
+  \newcommand{\note}[1]{}
+  \newcommand{\cut}[1]{}
+\else
+  \newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+  \newcommand{\note}[1]{\textcolor{blue}{\textit{[#1]}}}
+  \newcommand{\cut}[1]{\textcolor{gray}{#1}}   % text under consideration for removal
+\fi
+
+%% ---- Domain macros ----------------------------------------------------------
+%% Edit these once; use them everywhere so renames are painless.
+\newcommand{\sys}{\textsc{TaxLex}\xspace}                 % TODO: system / artefact name
+\newcommand{\corpus}{\textsc{CryptoDef}\xspace}            % TODO: corpus name
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\etal}{et al.\xspace}
+\newcommand{\cf}{cf.\xspace}
+\newcommand{\vs}{vs.\xspace}
+\newcommand{\term}[1]{\textit{#1}}                         % a term being defined
+\newcommand{\ttype}[1]{\texttt{#1}}                        % a term *type* / class label
+\newcommand{\src}[1]{\textsf{#1}}                          % a source instrument (MiCA, FATF, ...)
+\usepackage{xspace}
+
+%% ---- Math -------------------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\DeclareMathOperator{\entropy}{H}
+\DeclareMathOperator{\KL}{KL}
+
+%% ---- Space-saving knobs (use sparingly; reviewers notice squeezed papers) --
+%\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+%\setlength{\abovecaptionskip}{4pt}

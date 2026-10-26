@@ -1,0 +1,153 @@
+{
+  "run": {
+    "task": "B",
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "k": 6,
+    "children": 2,
+    "seconds": 17.2,
+    "timestamp": "2026-10-26T03:59:54+00:00",
+    "usage": {
+      "input_tokens": 4317,
+      "output_tokens": 1541,
+      "cache_creation_input_tokens": 250881,
+      "cache_read_input_tokens": 250881
+    },
+    "citations": 6,
+    "citations_verified": 6
+  },
+  "is_a": [
+    {
+      "child": "asset_reference_type",
+      "name": "Reference asset type",
+      "category": "asset",
+      "distribution": [
+        {
+          "parent": "legal_classification_status",
+          "probability": 0.3,
+          "rationale": "Reference type determines whether a stablecoin is an EMT (single currency) or ART (basket/other), which feeds the legal category; the corpus ties stablecoin classes to the regulatory category.",
+          "citations": [
+            {
+              "doc": 4,
+              "section": "Articles 2-3: Scope and Definitions",
+              "quote": "‘electronic money token’ or ‘e-money token’ means a type of crypto-asset that purports to maintain a stable value by referencing the value of one official currency",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "parent": "stablecoin_regulatory_class",
+          "probability": 0.28,
+          "rationale": "The reference asset is the defining criterion separating EMT, ART and payment stablecoin classes, so X refines the stablecoin class question along the referenced-asset axis.",
+          "citations": [
+            {
+              "doc": 4,
+              "section": "Articles 2-3: Scope and Definitions",
+              "quote": "‘asset-referenced token’ means a type of crypto-asset that is not an electronic money token and that purports to maintain a stable value by referencing another value or right or a combination thereof",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "parent": "native_vs_stable_price_reference_asset_currency",
+          "probability": 0.2,
+          "rationale": "Both concern the currency to which a stablecoin pegs; the candidate asks whether the peg is a fiat currency, which is a specific case of X's single-official-currency value.",
+          "citations": [
+            {
+              "doc": 8,
+              "section": "Regulation 2: Interpretation",
+              "quote": "“qualifying stablecoin” has the meaning given by article 88G of the Regulated Activities Order",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "parent": "redemption_mechanism",
+          "probability": 0.12,
+          "rationale": "Redemption is tied to the reference asset, but redemption mechanism asks how conversion happens rather than what asset is referenced, so only partial specialisation.",
+          "citations": [
+            {
+              "doc": 20,
+              "section": "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+              "quote": "The cryptoasset is designed to be redeemable for a predefined amount of a reference asset or assets (eg 1 USD, 1 oz gold)",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "parent": "crypto_asset_function",
+          "probability": 0.05,
+          "rationale": "Stablecoin reference shapes payment or investment use, but function is a broader purpose dimension that does not classify the referenced asset.",
+          "citations": []
+        },
+        {
+          "parent": "none",
+          "probability": 0.05,
+          "rationale": "Reference type is a top-level stablecoin dimension with no clearly more general asset dimension covering it fully.",
+          "citations": []
+        }
+      ],
+      "dropped_parents": [],
+      "stop_reason": "end_turn"
+    },
+    {
+      "child": "issuer_presence",
+      "name": "Issuer identifiability",
+      "category": "asset",
+      "distribution": [
+        {
+          "parent": "legal_classification_status",
+          "probability": 0.3,
+          "rationale": "Issuer identifiability is a structural precondition for classifying assets under issuer-based regimes (MiCA issuer obligations), so it informs but does not itself define the legal category.",
+          "citations": [
+            {
+              "doc": 4,
+              "section": "Articles 2-3: Scope and Definitions",
+              "quote": "This Regulation does not apply to crypto-assets that are unique and not fungible with other crypto-assets.",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "parent": "centralisation_level",
+          "probability": 0.25,
+          "rationale": "Identifiable issuer status and centralisation of control over minting and governance overlap heavily; the corpus ties no identifiable issuer to decentralised assets.",
+          "citations": [
+            {
+              "doc": 2,
+              "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+              "quote": "Where crypto-assets have no identifiable issuer, they should not fall within the scope of Title II, III or IV",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "parent": "none",
+          "probability": 0.2,
+          "rationale": "Issuer identifiability is a distinct, top-level question about who creates the asset, not a specialisation of any listed dimension.",
+          "citations": []
+        },
+        {
+          "parent": "redemption_mechanism",
+          "probability": 0.1,
+          "rationale": "Issuer presence determines who can perform off-chain redemption, but redemption is a separate question about the holder's conversion route.",
+          "citations": []
+        },
+        {
+          "parent": "crypto_asset_function",
+          "probability": 0.08,
+          "rationale": "Issuer presence does not determine the economic purpose of the asset, though issuer type can correlate with function.",
+          "citations": []
+        },
+        {
+          "parent": "crypto_asset_scope_criteria",
+          "probability": 0.07,
+          "rationale": "Scope criteria define what counts as a crypto-asset; issuer identifiability is a separate attribute that applies after the asset is in scope.",
+          "citations": []
+        }
+      ],
+      "dropped_parents": [],
+      "stop_reason": "end_turn"
+    }
+  ]
+}

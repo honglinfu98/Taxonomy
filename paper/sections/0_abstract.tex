@@ -1,0 +1,22 @@
+%% Abstract: ~150-200 words. Formula that reviews well at WWW:
+%%   (1) problem + why it matters on the Web  (2) gap in prior work
+%%   (3) what we build  (4) headline quantitative result  (5) artefact released
+Crypto-assets are defined differently by every regulator, standard-setter and
+academic taxonomy that touches them, and the resulting vocabulary fragmentation
+hampers compliance, cross-jurisdictional analysis and automated classification of
+Web-native financial activity.
+\todo{Problem sentence: name the concrete pain (\eg the same token is a
+``crypto-asset'' under MiCA, a ``digital commodity'' under CLARITY and a
+``virtual asset'' under FATF).}
+We present \sys, a framework that uses large language models (LLMs) to extract
+\emph{term types}---the classification dimensions along which a term is defined---from
+a curated corpus of \todo{N} legal instruments across the EU, UK, US and
+international bodies, together with \todo{M} academic taxonomies, and to reconcile
+them into a single provenance-tracked taxonomy.
+\todo{Method sentence: what is new (definitions-first extraction, cached
+long-context grounding, cross-source reconciliation, entropy-based consolidation,
+\ldots).}
+\todo{Results sentence with numbers: agreement with expert annotation, coverage of
+\corpus, comparison against zero-shot / RAG / ontology-learning baselines.}
+We release the corpus, the taxonomy and the extraction pipeline to support
+reproducible research on Web-scale classification of digital assets.

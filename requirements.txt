@@ -4,3 +4,6 @@ pandas
 python-dotenv
 
 # Add project-specific dependencies below.
+
+# LLM client for taxonomy extraction
+anthropic

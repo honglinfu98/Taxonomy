@@ -1,0 +1,13 @@
+child,parent,probability,category
+asset_reference_type,legal_classification_status,0.3,asset
+asset_reference_type,stablecoin_regulatory_class,0.28,asset
+asset_reference_type,native_vs_stable_price_reference_asset_currency,0.2,asset
+asset_reference_type,redemption_mechanism,0.12,asset
+asset_reference_type,crypto_asset_function,0.05,asset
+asset_reference_type,none,0.05,asset
+issuer_presence,legal_classification_status,0.3,asset
+issuer_presence,centralisation_level,0.25,asset
+issuer_presence,none,0.2,asset
+issuer_presence,redemption_mechanism,0.1,asset
+issuer_presence,crypto_asset_function,0.08,asset
+issuer_presence,crypto_asset_scope_criteria,0.07,asset

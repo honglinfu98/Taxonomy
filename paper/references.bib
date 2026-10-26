@@ -1,0 +1,299 @@
+%% ============================================================================
+%%  references.bib -- seeded from literature review/ and legal/ in this repo.
+%%  Entries marked  note = {TODO verify}  were filled from memory: check
+%%  authors / venue / year against the PDF or DBLP before submission.
+%%  ACM-Reference-Format needs a `year` and prefers DOIs; keep URLs for legal texts.
+%% ============================================================================
+
+%% ---- Crypto-asset / DLT taxonomies and corpora -----------------------------
+@article{tasca2019taxonomy,
+  author  = {Tasca, Paolo and Tessone, Claudio J.},
+  title   = {A Taxonomy of Blockchain Technologies: Principles of Identification and Classification},
+  journal = {Ledger},
+  volume  = {4},
+  year    = {2019},
+  doi     = {10.5195/ledger.2019.140}
+}
+
+@misc{zhang2026cryptotaxonomy,
+  author        = {Zhang, Xiao and Ibanez, Juan Ignacio and Xu, Jiahua},
+  title         = {Crypto-asset Taxonomy for Investors and Regulators},
+  year          = {2026},
+  eprint        = {2602.05098},
+  archivePrefix = {arXiv},
+  primaryClass  = {q-fin.GN},
+  note          = {TODO verify}
+}
+
+@inproceedings{hernandez2026dltcorpus,
+  author    = {Hernandez Cruz, Walter and Devine, Peter and Vadgama, Nikhil and Tasca, Paolo and Xu, Jiahua},
+  title     = {{DLT-Corpus}: A Large-Scale Text Collection for the Distributed Ledger Technology Domain},
+  booktitle = {Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '26)},
+  year      = {2026},
+  publisher = {ACM},
+  note      = {TODO verify}
+}
+
+@misc{cryptotags2024,
+  author        = {Avice, R{\'e}gnier and Haslhofer, Bernhard and Li, Zhidong and Zhou, Jianlong},
+  title         = {Linking Cryptoasset Attribution Tags to Knowledge Graph Entities: An {LLM}-based Approach},
+  year          = {2025},
+  eprint        = {2502.10453},
+  archivePrefix = {arXiv},
+  note          = {TODO verify}
+}
+
+%% ---- LLMs for text classification and tagging ------------------------------
+@inproceedings{sun2023textclassllm,
+  author    = {Sun, Xiaofei and Li, Xiaoya and Li, Jiwei and Wu, Fei and Guo, Shangwei and Zhang, Tianwei and Wang, Guoyin},
+  title     = {Text Classification via Large Language Models},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2023},
+  year      = {2023},
+  pages     = {8990--9005},
+  doi       = {10.18653/v1/2023.findings-emnlp.603}
+}
+
+@misc{wang2023zeroshot,
+  author        = {Wang, Zhiqiang and Pang, Yiran and Lin, Yanbin},
+  title         = {Large Language Models Are Zero-Shot Text Classifiers},
+  year          = {2023},
+  eprint        = {2312.01044},
+  archivePrefix = {arXiv},
+  note          = {TODO verify}
+}
+
+@article{yu2023llmclassification,
+  author  = {Chae, Youngjin and Davidson, Thomas},
+  title   = {Large Language Models for Text Classification: From Zero-Shot Learning to Instruction-Tuning},
+  journal = {Sociological Methods \& Research},
+  year    = {2025},
+  note    = {TODO verify (preprint 2023, SocArXiv)}
+}
+
+@inproceedings{zhu2024icxml,
+  author    = {Zhu, Yaxin and Zamani, Hamed},
+  title     = {{ICXML}: An In-Context Learning Framework for Zero-Shot Extreme Multi-Label Classification},
+  booktitle = {Findings of the Association for Computational Linguistics: NAACL 2024},
+  year      = {2024},
+  doi       = {10.18653/v1/2024.findings-naacl.141}
+}
+
+@misc{li2023taggpt,
+  author        = {Li, Chen and Ge, Yixiao and Mao, Jiayong and Li, Dian and Shan, Ying},
+  title         = {{TagGPT}: Large Language Models are Zero-shot Multimodal Taggers},
+  year          = {2023},
+  eprint        = {2304.03022},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{wu2025llm4tag,
+  author    = {TODO},
+  title     = {{LLM4Tag}: Automatic Tagging System for Information Retrieval via Large Language Models},
+  booktitle = {TODO},
+  year      = {2025},
+  note      = {TODO verify}
+}
+
+@inproceedings{wan2024tntllm,
+  author    = {Wan, Mengting and Safavi, Tara and Jauhar, Sujay Kumar and Kim, Yujin and Counts, Scott and Neville, Jennifer and Suri, Siddharth and Shah, Chirag and White, Ryen W. and Yang, Longqi and Andersen, Reid and Buscher, Georg and Joshi, Dhruv and Rangan, Nagu},
+  title     = {{TnT-LLM}: Text Mining at Scale with Large Language Models},
+  booktitle = {Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '24)},
+  year      = {2024},
+  pages     = {5836--5847},
+  doi       = {10.1145/3637528.3671647}
+}
+
+@misc{entropyclustering2024,
+  author = {TODO},
+  title  = {New Topic Discovery Using {LLM} Analysis and Entropy-Based Clustering of Short Texts},
+  year   = {2024},
+  note   = {TODO verify}
+}
+
+@inproceedings{agrawal2025entropy,
+  author    = {Agarwal, Shivam and Zhang, Zimin and Yuan, Lifan and Han, Jiawei and Peng, Hao},
+  title     = {The Unreasonable Effectiveness of Entropy Minimization in {LLM} Reasoning},
+  booktitle = {Advances in Neural Information Processing Systems 38 (NeurIPS 2025)},
+  year      = {2025},
+  note      = {TODO verify}
+}
+
+%% ---- Retrieval-augmented generation and orchestration ----------------------
+@inproceedings{lewis2020rag,
+  author    = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and K{\"u}ttler, Heinrich and Lewis, Mike and Yih, Wen-tau and Rockt{\"a}schel, Tim and Riedel, Sebastian and Kiela, Douwe},
+  title     = {Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
+  booktitle = {Advances in Neural Information Processing Systems 33 (NeurIPS 2020)},
+  year      = {2020},
+  pages     = {9459--9474}
+}
+
+@inproceedings{sarthi2024raptor,
+  author    = {Sarthi, Parth and Abdullah, Salman and Tuli, Aditi and Khanna, Shubh and Goldie, Anna and Manning, Christopher D.},
+  title     = {{RAPTOR}: Recursive Abstractive Processing for Tree-Organized Retrieval},
+  booktitle = {The Twelfth International Conference on Learning Representations (ICLR 2024)},
+  year      = {2024}
+}
+
+@misc{ragontologies2024,
+  author = {TODO},
+  title  = {{RAG} and Ontologies for Information Retrieval: A Literature Review},
+  year   = {2024},
+  note   = {TODO verify}
+}
+
+@misc{orchestration2025,
+  author = {TODO},
+  title  = {When Does {LLM} Orchestration Pay?},
+  year   = {2025},
+  note   = {TODO verify}
+}
+
+%% ---- Ontology learning -------------------------------------------------------
+@inproceedings{babaeigiglou2023llms4ol,
+  author    = {Babaei Giglou, Hamed and D'Souza, Jennifer and Auer, S{\"o}ren},
+  title     = {{LLMs4OL}: Large Language Models for Ontology Learning},
+  booktitle = {The Semantic Web -- ISWC 2023},
+  series    = {LNCS},
+  volume    = {14265},
+  pages     = {408--427},
+  publisher = {Springer},
+  year      = {2023},
+  doi       = {10.1007/978-3-031-47240-4_22}
+}
+
+%% ---- Legal instruments (cite as misc entries with the institution as author) -----------
+@misc{eu2023mica,
+  author = {{European Parliament and Council}},
+  title  = {Regulation (EU) 2023/1114 on Markets in Crypto-Assets ({MiCA})},
+  year   = {2023},
+  howpublished = {Official Journal of the European Union, L 150},
+  url    = {http://data.europa.eu/eli/reg/2023/1114/oj}
+}
+
+@misc{eu2023tfr,
+  author = {{European Parliament and Council}},
+  title  = {Regulation (EU) 2023/1113 on Information Accompanying Transfers of Funds and Certain Crypto-Assets},
+  year   = {2023},
+  url    = {http://data.europa.eu/eli/reg/2023/1113/oj}
+}
+
+@misc{eu2024amlr,
+  author = {{European Parliament and Council}},
+  title  = {Regulation (EU) 2024/1624 on the Prevention of the Use of the Financial System for Money Laundering or Terrorist Financing},
+  year   = {2024},
+  url    = {http://data.europa.eu/eli/reg/2024/1624/oj}
+}
+
+@misc{eu2022dora,
+  author = {{European Parliament and Council}},
+  title  = {Regulation (EU) 2022/2554 on Digital Operational Resilience for the Financial Sector ({DORA})},
+  year   = {2022},
+  url    = {http://data.europa.eu/eli/reg/2022/2554/oj}
+}
+
+@misc{uk2026fsma,
+  author = {{HM Treasury}},
+  title  = {The Financial Services and Markets Act 2000 (Cryptoassets) Regulations 2026 (SI 2026/102)},
+  year   = {2026},
+  note   = {TODO verify SI number and URL}
+}
+
+@misc{uk2025carf,
+  author = {{HM Treasury}},
+  title  = {The Reporting Cryptoasset Service Providers Regulations 2025 (SI 2025/744)},
+  year   = {2025},
+  note   = {TODO verify}
+}
+
+@misc{us2025genius,
+  author = {{United States Congress}},
+  title  = {Guiding and Establishing National Innovation for {U.S.} Stablecoins ({GENIUS}) Act, Pub.\ L.\ 119-27},
+  year   = {2025}
+}
+
+@misc{us2025clarity,
+  author = {{United States Congress}},
+  title  = {Digital Asset Market Clarity Act of 2025, H.R.\ 3633 (House-passed)},
+  year   = {2025}
+}
+
+@misc{us2026claritysenate,
+  author = {{United States Congress}},
+  title  = {Digital Asset Market Clarity Act, H.R.\ 3633 (Senate-reported)},
+  year   = {2026}
+}
+
+@misc{us2024fit21,
+  author = {{United States Congress}},
+  title  = {Financial Innovation and Technology for the 21st Century Act ({FIT21}), H.R.\ 4763},
+  year   = {2024}
+}
+
+@misc{us2025eo14178,
+  author = {{The White House}},
+  title  = {Executive Order 14178: Strengthening American Leadership in Digital Financial Technology},
+  year   = {2025}
+}
+
+@misc{us2025pwg,
+  author = {{President's Working Group on Digital Asset Markets}},
+  title  = {Strengthening American Leadership in Digital Financial Technology: Report},
+  year   = {2025},
+  note   = {TODO verify title}
+}
+
+@misc{us2019fincen,
+  author = {{Financial Crimes Enforcement Network}},
+  title  = {Application of {FinCEN}'s Regulations to Certain Business Models Involving Convertible Virtual Currencies, FIN-2019-G001},
+  year   = {2019}
+}
+
+@misc{fatf2021guidance,
+  author = {{Financial Action Task Force}},
+  title  = {Updated Guidance for a Risk-Based Approach to Virtual Assets and Virtual Asset Service Providers},
+  year   = {2021},
+  url    = {https://www.fatf-gafi.org/}
+}
+
+@misc{fatf2025update,
+  author = {{Financial Action Task Force}},
+  title  = {Targeted Update on Implementation of the {FATF} Standards on Virtual Assets and Virtual Asset Service Providers (6th)},
+  year   = {2025}
+}
+
+@misc{fatf2026update,
+  author = {{Financial Action Task Force}},
+  title  = {Targeted Update on Implementation of the {FATF} Standards on Virtual Assets and Virtual Asset Service Providers (7th)},
+  year   = {2026}
+}
+
+@misc{basel2022sco60,
+  author = {{Basel Committee on Banking Supervision}},
+  title  = {Prudential Treatment of Cryptoasset Exposures ({SCO60})},
+  year   = {2022},
+  url    = {https://www.bis.org/bcbs/publ/d545.htm}
+}
+
+@misc{fsb2023recommendations,
+  author = {{Financial Stability Board}},
+  title  = {High-Level Recommendations for the Regulation, Supervision and Oversight of Crypto-Asset Activities and Markets},
+  year   = {2023}
+}
+
+@misc{iosco2023recommendations,
+  author = {{International Organization of Securities Commissions}},
+  title  = {Policy Recommendations for Crypto and Digital Asset Markets: Final Report},
+  year   = {2023}
+}
+
+@misc{un2024cybercrime,
+  author = {{United Nations General Assembly}},
+  title  = {United Nations Convention against Cybercrime, A/RES/79/243},
+  year   = {2024}
+}
+
+@misc{coe2001budapest,
+  author = {{Council of Europe}},
+  title  = {Convention on Cybercrime (Budapest Convention), ETS No.\ 185},
+  year   = {2001}
+}

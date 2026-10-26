@@ -1,0 +1,61 @@
+\section{Experiments}
+\label{sec:exp}
+
+%% Target: 2-2.5 pages. Open with research questions; close each subsection
+%% with a bold one-sentence answer. WWW reviewers look for: strong baselines,
+%% ablations, significance tests, error analysis, cost.
+
+We answer the following research questions:
+\begin{enumerate}[label=\textbf{RQ\arabic*}, leftmargin=3em]
+  \item \todo{Faithfulness: how often are extracted term types correctly grounded
+    in the cited source?}
+  \item \todo{Quality: how does the induced taxonomy compare with expert-built
+    taxonomies and with LLM ontology-learning / tagging baselines?}
+  \item \todo{Grounding strategy: does cached whole-corpus grounding beat
+    chunked RAG at equal or lower cost?}
+  \item \todo{Utility: does the taxonomy improve downstream classification of
+    Web-sourced crypto-asset descriptions?}
+\end{enumerate}
+
+\subsection{Experimental Setup}
+\label{sec:exp:setup}
+\paragraph{Datasets.}
+\todo{\corpus (\cref{tab:corpus}); term list and how it was sampled; held-out
+Web-sourced evaluation set (token descriptions, whitepaper excerpts).}
+\paragraph{Gold standard.}
+\todo{Expert annotation protocol: $k$ annotators with legal/technical
+background, guidelines, inter-annotator agreement (Cohen's/Krippendorff's).}
+\paragraph{Baselines.}
+\todo{Zero-shot LLM classification~\cite{wang2023zeroshot}; chunked
+RAG~\cite{lewis2020rag}; RAPTOR~\cite{sarthi2024raptor}; TnT-LLM
+\cite{wan2024tntllm}; LLMs4OL-style term typing~\cite{babaeigiglou2023llms4ol};
+expert taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy}.}
+\paragraph{Metrics.}
+\todo{Citation precision/recall, term-type P/R/F$_1$ vs.\ gold, taxonomy
+similarity (\eg edge F$_1$, hierarchy-aware metrics), downstream macro-F$_1$,
+USD cost and latency per term.}
+
+\subsection{RQ1: Faithfulness of Extraction}
+\label{sec:exp:rq1}
+\todo{Table: citation verification rate and grounded F$_1$ per model and per
+jurisdiction. Analyse failure modes (hallucinated section labels,
+over-generalised types).}
+
+\subsection{RQ2: Taxonomy Quality}
+\label{sec:exp:rq2}
+\todo{Compare \sys taxonomy against expert taxonomies and LLM baselines; include
+a qualitative excerpt (\cref{fig:taxonomy}).}
+
+\subsection{RQ3: Grounding Strategy and Cost}
+\label{sec:exp:rq3}
+\todo{Ablation: whole-corpus cached vs.\ top-$k$ chunk RAG vs.\ per-document
+calls; model size ablation; cost--quality Pareto plot.}
+
+\subsection{RQ4: Downstream Utility}
+\label{sec:exp:rq4}
+\todo{Classify Web-sourced asset descriptions with and without the taxonomy as
+label space; report macro-F$_1$ and per-jurisdiction breakdown.}
+
+\subsection{Error Analysis}
+\label{sec:exp:errors}
+\todo{Categorise residual errors; give 2--3 concrete examples with source text.}

@@ -1,0 +1,34 @@
+\section{Problem Formulation}
+\label{sec:problem}
+
+%% Target: 0.5-0.75 page. Define every symbol once; reviewers reward precision.
+
+\subsection{Terminology}
+\todo{Define \term{term}, \term{definition}, \term{term type} (a classification
+dimension along which a definition discriminates, \eg \ttype{legal-status},
+\ttype{technical-standard}, \ttype{economic-function}, \ttype{issuer-type}),
+\term{source instrument} and \term{jurisdiction}.}
+
+\subsection{Corpus Model}
+Let $\mathcal{D} = \set{d_1,\dots,d_N}$ be a set of source documents, each
+partitioned into labelled sections $d_i = \set{s_{i1},\dots,s_{in_i}}$ with
+metadata (type, jurisdiction, year).
+\todo{State the two document classes: \emph{legal instruments} and
+\emph{taxonomy frameworks}.}
+
+\subsection{Task Definition}
+\todo{Formalise: given a term $t$ and $\mathcal{D}$, return a set of term types
+$\mathcal{Y}_t = \set{(y, \mathcal{P}_y)}$ where each $y$ carries provenance
+$\mathcal{P}_y \subseteq \bigcup_i d_i$ (document $\times$ section citations).
+Then define the reconciliation task: merge $\set{\mathcal{Y}_t}_{t\in\mathcal{T}}$
+into a taxonomy $\mathcal{G}=(V,E)$ with jurisdiction-indexed nodes.}
+
+\subsection{Desiderata}
+\begin{enumerate*}[label=(D\arabic*)]
+  \item \emph{faithfulness} -- every term type must be traceable to a cited
+    section;
+  \item \emph{coverage} -- all instruments that define $t$ are represented;
+  \item \emph{consistency} -- equivalent types across sources are merged, conflicting
+    ones are preserved with their jurisdiction;
+  \item \emph{cost} -- extraction scales to the full corpus within a stated token budget.
+\end{enumerate*}

@@ -1,0 +1,91 @@
+\section{The \sys Framework}
+\label{sec:method}
+
+%% Target: 2 pages. Lead with an overview figure; one subsection per stage.
+%% Every design choice should map to an ablation in Section 5.
+
+\begin{figure*}[t]
+  \centering
+  \todo{Overview figure: corpus construction $\rightarrow$ cached long-context
+  grounding $\rightarrow$ term-type extraction with citations $\rightarrow$
+  cross-source reconciliation $\rightarrow$ taxonomy + provenance.}
+  %\includegraphics[width=\textwidth]{overview.pdf}
+  \caption{Overview of \sys. \todo{caption}}
+  \label{fig:overview}
+\end{figure*}
+
+\subsection{Definitions-First Corpus Construction}
+\label{sec:method:corpus}
+\todo{Describe extraction of definitions articles, glossaries, classification
+criteria and business-model sections from each instrument (regex/line ranges
+over \texttt{pdftotext} output; layout mode for two-column US bills). Table with
+instruments, jurisdiction, year, sections kept, token counts
+(\cref{tab:corpus}). Justify \emph{definitions-first} over full-text: precision
+of grounding and token cost.}
+
+\begin{table}[t]
+  \centering
+  \caption{\corpus: source instruments and taxonomy frameworks. \todo{fill}}
+  \label{tab:corpus}
+  \small
+  \begin{tabular}{@{}llrr@{}}
+    \toprule
+    Jurisdiction & Instrument & Sections & Tokens \\
+    \midrule
+    EU   & MiCA (Reg.\ 2023/1114)          & \todo{} & \todo{} \\
+    EU   & AMLR (Reg.\ 2024/1624)          & \todo{} & \todo{} \\
+    UK   & FSMA Cryptoassets Regs 2026     & \todo{} & \todo{} \\
+    US   & CLARITY Act (H.R.\ 3633)        & \todo{} & \todo{} \\
+    US   & GENIUS Act (Pub.\ L.\ 119-27)   & \todo{} & \todo{} \\
+    Intl & FATF VA/VASP Guidance 2021      & \todo{} & \todo{} \\
+    Intl & Basel SCO60                     & \todo{} & \todo{} \\
+    \multicolumn{2}{@{}l}{\ldots}          &         &         \\
+    \midrule
+    \multicolumn{2}{@{}l}{Total}           & \todo{} & \todo{} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Cache-Grounded Long-Context Extraction}
+\label{sec:method:extraction}
+\todo{The whole XML-tagged corpus sits in the system prompt behind a prompt-cache
+breakpoint; stable instructions precede it, per-term queries follow. Contrast
+with chunked RAG: no retrieval misses, deterministic context, amortised cost.
+Give the prompt schema (instructions, citation format
+\texttt{[doc~$i$, section~$\ell$]}, output JSON schema). Show the per-call cost
+model: $c = c_{\text{cached}}\cdot|\mathcal{D}| + c_{\text{in}}\cdot|q| +
+c_{\text{out}}\cdot|a|$.}
+
+\begin{algorithm}[t]
+  \caption{Term-type extraction for a term $t$. \todo{finalise}}
+  \label{alg:extract}
+  \KwIn{term $t$, corpus $\mathcal{D}$, instructions $I$}
+  \KwOut{typed definitions $\mathcal{Y}_t$ with provenance}
+  $\mathcal{Y}_t \gets \emptyset$\;
+  $a \gets \textsc{LLM}(I \,\|\, \mathcal{D} \,\|\, q(t))$ \tcp*{$\mathcal{D}$ served from cache}
+  \ForEach{$(y, \text{cites}) \in \textsc{Parse}(a)$}{
+    \If{$\textsc{Verify}(\text{cites}, \mathcal{D})$}{
+      $\mathcal{Y}_t \gets \mathcal{Y}_t \cup \set{(y, \text{cites})}$\;
+    }
+  }
+  \Return $\mathcal{Y}_t$\;
+\end{algorithm}
+
+\subsection{Citation Verification}
+\label{sec:method:verify}
+\todo{Every emitted term type must cite (document, section). Verification checks
+the cited section exists and contains the quoted span (fuzzy match). Report the
+rejection rate as a faithfulness diagnostic.}
+
+\subsection{Cross-Source Reconciliation}
+\label{sec:method:reconcile}
+\todo{Merge equivalent term types across instruments (embedding similarity +
+LLM adjudication), keep jurisdictional conflicts as sibling nodes, produce
+taxonomy $\mathcal{G}$. If using entropy-based consolidation
+\cite{entropyclustering2024,agrawal2025entropy}, define the objective here.}
+
+\subsection{Implementation Details}
+\label{sec:method:impl}
+\todo{Models (name, version, date), decoding settings, cache TTL, total tokens
+and USD cost, hardware, random seeds. Move verbose details to
+\cref{app:impl}.}

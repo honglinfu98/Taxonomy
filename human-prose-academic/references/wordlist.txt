@@ -1,0 +1,131 @@
+# Words and phrases that scripts/tells.py flags. One per line, case-insensitive,
+# matched on word boundaries. Lines starting with # are comments.
+# Section markers (## ...) are informational; the script ignores them.
+# Review each hit in context. Precise disciplinary usage can be appropriate.
+
+## Metaphors to review when used figuratively
+load bearing
+load-bearing
+loadbearing
+rails
+guardrails
+guard rails
+on rails
+off the rails
+
+## Vocabulary to review for precision or a plainer synonym
+utilize
+utilise
+leverage
+facilitate
+robust
+seamless
+seamlessly
+crucial
+crucially
+pivotal
+paramount
+comprehensive
+delve
+dive into
+underscores
+underscore
+highlights
+a testament to
+landscape
+tapestry
+ecosystem
+streamline
+streamlined
+navigate
+foster
+harness
+unlock
+empower
+elevate
+holistic
+nuanced
+meticulous
+meticulously
+in the realm of
+in the context of
+in terms of
+serves as
+acts as
+functions as
+plays a role
+plays a crucial role
+aligns with
+ensure that
+ensures that
+non-trivial
+nontrivial
+orthogonal
+footprint
+at its core
+it's worth noting
+it is worth noting
+worth noting
+note that
+importantly
+in today's
+journey
+game-changer
+game changer
+paradigm
+synergy
+cutting-edge
+state-of-the-art
+best practices
+best-in-class
+battle-tested
+production-grade
+production-ready
+first-class
+fine-grained
+purpose-built
+real-world
+drop-in
+end-to-end
+double-edged sword
+silver bullet
+low-hanging fruit
+moving forward
+going forward
+deep dive
+key takeaway
+key takeaways
+takeaways
+
+## Filler
+very
+really
+actually
+unfortunately
+basically
+essentially
+simply
+quite
+
+## Throat clearing and sign-offs
+great question
+certainly
+absolutely
+let's dive in
+here's the thing
+the key insight
+at the end of the day
+i hope this helps
+let me know if
+happy to elaborate
+happy to help
+
+## Closing-summary openers
+in short
+in summary
+to summarize
+to sum up
+overall
+ultimately
+all in all
+in conclusion

@@ -1,0 +1,59 @@
+\section{Introduction}
+\label{sec:intro}
+
+%% ---------------------------------------------------------------------------
+%% WWW CFP REQUIREMENT: the FIRST PAGE must state how the work relates to the
+%% Web and to the chosen track. Put that paragraph here (see \paragraph below)
+%% or the paper risks desk rejection.
+%% Target: 1.25 pages including contributions. Reviewers decide in the intro.
+%% ---------------------------------------------------------------------------
+
+%% P1 -- Hook: why crypto-asset classification is a Web problem, now.
+\todo{Opening paragraph. Scale of Web-native digital assets; the Web is where
+tokens are issued, traded and described (DEX front-ends, explorers, whitepapers,
+social media). Cite \corpus-style domain corpora~\cite{hernandez2026dltcorpus}.}
+
+%% P2 -- The problem: definitional fragmentation across sources.
+\todo{Illustrate with one concrete term (\eg \term{stablecoin}) and show three
+incompatible definitions: \src{MiCA} Art.~3 (asset-referenced / e-money token),
+\src{GENIUS Act} \S2 (payment stablecoin), \src{FATF} 2021 guidance (so-called
+stablecoin as VA). Then generalise: definitions encode different \emph{term
+types} (legal status, technical standard, economic function, issuer type).}
+
+%% P3 -- Why existing approaches fall short.
+\todo{Manual taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy} are
+expert-built, static and single-perspective. LLM text classification / tagging
+\cite{wan2024tntllm,li2023taggpt,zhu2024icxml} assumes a fixed label space.
+Ontology learning with LLMs~\cite{babaeigiglou2023llms4ol} is evaluated on
+general-domain benchmarks and ignores legal provenance.}
+
+%% P4 -- Our approach (one paragraph, no details).
+\todo{We propose \sys: (i) definitions-first corpus construction from
+\todo{N} instruments; (ii) long-context, cache-grounded LLM extraction of term
+types with mandatory source citation; (iii) cross-source reconciliation into a
+taxonomy with per-node provenance; (iv) evaluation against expert annotation
+and downstream classification.}
+
+%% P5 -- Relevance to the Web and the track (REQUIRED on first page).
+\paragraph{Relevance to the Web.}
+\todo{One explicit paragraph. Suggested track: \emph{Semantics and Knowledge}
+(taxonomy / ontology induction, knowledge organisation) or \emph{Web Economics
+and Digital Society} (regulation of Web-native finance). Say which, and why the
+research challenge is Web-specific rather than merely using Web data.}
+
+%% P6 -- Contributions (bulleted, each one checkable by a reviewer).
+\smallskip\noindent In summary, our contributions are:
+\begin{itemize}
+  \item \textbf{Corpus.} \todo{\corpus: a definitions-first corpus of \todo{N}
+    legal instruments (EU, UK, US, FATF, Basel, FSB, IOSCO, UN, CoE) and
+    \todo{M} academic taxonomies, segmented and labelled by section.}
+  \item \textbf{Method.} \todo{\sys, an LLM-based pipeline for term-type
+    extraction and cross-source reconciliation with verifiable provenance.}
+  \item \textbf{Taxonomy.} \todo{A \todo{K}-dimension crypto-asset taxonomy that
+    reconciles \todo{T} term types across \todo{J} jurisdictions.}
+  \item \textbf{Evaluation.} \todo{Expert agreement, ablations over grounding
+    strategy and model, and a downstream classification study showing
+    \todo{+X pp} over zero-shot and RAG baselines.}
+  \item \textbf{Artefacts.} \todo{Code, corpus and taxonomy released under an open
+    licence (anonymised link during review).}
+\end{itemize}
