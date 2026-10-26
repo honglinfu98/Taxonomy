@@ -7,8 +7,9 @@
 
 We answer the following research questions:
 \begin{enumerate}[label=\textbf{RQ\arabic*}, leftmargin=3em]
-  \item \todo{Faithfulness: how often are extracted term types correctly grounded
-    in the cited source?}
+  \item How many classification dimensions does the corpus support, how widely
+    is each shared across sources, and how often does a cited passage exist
+    where the model says it does?
   \item \todo{Quality: how does the induced taxonomy compare with expert-built
     taxonomies and with LLM ontology-learning / tagging baselines?}
   \item \todo{Grounding strategy: does cached whole-corpus grounding beat
@@ -35,11 +36,78 @@ expert taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy}.}
 similarity (\eg edge F$_1$, hierarchy-aware metrics), downstream macro-F$_1$,
 USD cost and latency per term.}
 
-\subsection{RQ1: Faithfulness of Extraction}
+\subsection{RQ1: Term Types Generated and Their Faithfulness}
 \label{sec:exp:rq1}
-\todo{Table: citation verification rate and grounded F$_1$ per model and per
-jurisdiction. Analyse failure modes (hallucinated section labels,
-over-generalised types).}
+
+\begin{table}[t]
+  \centering
+  \caption{Task A output by category. Docs is the mean number of source
+  documents grounding a term type; Single counts term types grounded in one
+  document; Confl.\ counts term types whose notes record a disagreement
+  between sources; Verif.\ is the share of citations whose quote the verifier
+  found in the cited document.}
+  \label{tab:taska}
+  \scriptsize
+  \input{tables/task_a_summary}
+\end{table}
+
+\paragraph{What the corpus supports.}
+The run produced 93 term types with 317 values and 212 aliases
+(\cref{tab:taska}). Technology dimensions are the largest group, because the
+blockchain taxonomy of Tasca and Tessone contributes architectural dimensions
+that no legal instrument uses, such as the fee regime and the
+interoperability of a ledger. Asset and actor dimensions are the most widely
+shared. An asset term type is grounded in 4.5 documents on average, and
+the status of an actor as a service provider is grounded in 13 of the 24
+documents. Twenty
+term types rest on a single document. Most of these come from the two academic
+taxonomies, which draw distinctions the law does not yet make, such as the
+mechanism by which yield reaches a holder, or from instruments with a
+specialised vocabulary, such as the serious-crime threshold of the UN
+cybercrime convention. Thirty-one term types are grounded in both a legal
+instrument and an academic paper. Every document is cited by at least one term
+type; the FATF guidance of 2021 is cited most, by 27, and the DLT-Corpus paper
+least, by one. The model's own coverage notes explain the latter. That paper's sections
+describe data sources and metrics rather than classification criteria.
+
+Sixty-nine term types carry a note recording a disagreement between sources.
+The reference-asset dimension is typical. It is grounded in seven documents
+across four jurisdictions and takes five values, and its note records that
+\src{MiCA} splits stablecoins by whether they reference one official currency
+or anything else, that the \src{GENIUS Act} and the UK regulations admit only
+fiat references, and that \src{FATF} and the \src{FSB} apply their standards
+whatever the reference. The fungibility dimension records that fungibility is
+an element of the UK and US definitions of the asset class but not of the FATF
+or \src{MiCA} definitions. These notes are the raw material for the
+jurisdiction-indexed nodes of \cref{sec:method:hierarchy}.
+
+\paragraph{Faithfulness.}
+Of the 480 citations, 463 matched the cited section verbatim under
+normalisation, 7 were relabelled, and 10 were rejected, a rejection rate of
+2.1\%. The manifest did what we built it for. One cited label did not exist, a
+subsection heading inside the FinCEN guidance that the model used in place of
+the enclosing section's label, and six named a real but wrong section of the
+right document (three cite the FATF glossary for passages in its Part Two, three
+shorten a long label of the crypto-asset taxonomy). The verifier located the
+quote in each of these seven cases. Wrong or non-existent labels therefore fell
+from 9\% of citations in the run without the manifest to 1.5\%, and the number
+of term types rose from 65 to 93.
+
+All ten rejections are quotes the verifier could not find. Two share no
+five-word sequence with the cited section. The other eight are recognisable
+compressions of the source. The model drops enumerated items or connectives
+from a statutory list, as in ``'blockchain' means any technology (i) where data
+is shared across a network'', or it reproduces most of a sentence and then
+rephrases its end. These quotes point at the right passage but are not
+verbatim, so we keep them in the output as unverified rather than repairing
+them. Every term type keeps at least one verified citation, but five values
+were supported only by a rejected quote and are therefore unverified.
+
+Verification is a necessary check, not a sufficient one. A verbatim quote can
+still fail to support the dimension it is attached to, and our verifier does
+not read for relevance. Whether the 470 verified citations do support their
+term types is the question the expert annotation of \cref{sec:exp:setup} is
+designed to answer, and we have not run it yet.
 
 \subsection{RQ2: Taxonomy Quality}
 \label{sec:exp:rq2}

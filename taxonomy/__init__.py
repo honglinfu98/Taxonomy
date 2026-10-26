@@ -5,7 +5,8 @@ Modules:
   pdf_text      pdftotext wrapper, range selection, noise removal
   build_corpus  entry point: `python -m taxonomy.build_corpus` -> context/taxonomy_corpus.txt
   llm_context   client() from .env; build_request(...) kwargs with the corpus cached
-  prompts       system instructions + per-task prompts (Task A: term type generation)
+  prompts       system instructions + per-task prompts (Task A term types, Task B is-a)
+  is_a          entry point: `python -m taxonomy.is_a` -> output/is_a.json (is-a distributions)
   term_types    entry point: `python -m taxonomy.term_types` -> output/term_types.json (+ citation verification)
 """
 

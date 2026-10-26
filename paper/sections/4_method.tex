@@ -1,91 +1,152 @@
-\section{The \sys Framework}
+\section{Term Type Generation}
 \label{sec:method}
 
-%% Target: 2 pages. Lead with an overview figure; one subsection per stage.
-%% Every design choice should map to an ablation in Section 5.
+We build the taxonomy in stages. The first stage, which this section describes,
+asks a single question of the sources. Along which dimensions do they classify
+crypto-assets, the systems that record them, the actors that handle them, the
+activities those actors perform, and the obligations attached to each? We call
+these dimensions \emph{term types}. Later stages place terms under the term
+types and link the term types to one another (\cref{sec:method:hierarchy}).
+A term type exists in our output only if the model can quote a passage that
+uses it as a criterion, and we check every quote against the corpus after the
+run.
 
 \begin{figure*}[t]
   \centering
-  \todo{Overview figure: corpus construction $\rightarrow$ cached long-context
-  grounding $\rightarrow$ term-type extraction with citations $\rightarrow$
-  cross-source reconciliation $\rightarrow$ taxonomy + provenance.}
+  \todo{Overview figure: PDFs $\rightarrow$ definitions-first extraction
+  $\rightarrow$ XML corpus behind a prompt cache $\rightarrow$ one extraction
+  call $\rightarrow$ JSON term types $\rightarrow$ citation verifier
+  $\rightarrow$ verified catalogue.}
   %\includegraphics[width=\textwidth]{overview.pdf}
-  \caption{Overview of \sys. \todo{caption}}
+  \caption{Overview of the term type generation stage of \sys. \todo{caption}}
   \label{fig:overview}
 \end{figure*}
 
-\subsection{Definitions-First Corpus Construction}
+\subsection{A Definitions-First Corpus}
 \label{sec:method:corpus}
-\todo{Describe extraction of definitions articles, glossaries, classification
-criteria and business-model sections from each instrument (regex/line ranges
-over \texttt{pdftotext} output; layout mode for two-column US bills). Table with
-instruments, jurisdiction, year, sections kept, token counts
-(\cref{tab:corpus}). Justify \emph{definitions-first} over full-text: precision
-of grounding and token cost.}
+
+We do not give the model whole statutes. A regulation such as \src{MiCA}
+defines its vocabulary in a few articles and spends the rest of its length on
+obligations that refer back to those definitions. The classification criteria
+we are after live in the definitions articles, the glossaries, the
+classification conditions and the descriptions of business models. We take
+those sections and nothing else. \Cref{tab:corpus} lists the result: 21 legal
+instruments from the EU, the UK, the US and six international bodies, plus two
+academic taxonomies of blockchains~\cite{tasca2019taxonomy} and of
+crypto-assets~\cite{zhang2026cryptotaxonomy} and one paper describing a
+domain corpus~\cite{hernandez2026dltcorpus}, with reference lists and large
+tables removed.
 
 \begin{table}[t]
   \centering
-  \caption{\corpus: source instruments and taxonomy frameworks. \todo{fill}}
+  \caption{\corpus: the 24 source documents, the sections we kept from each,
+  their length, and the number of Task A term types that cite them.}
   \label{tab:corpus}
-  \small
-  \begin{tabular}{@{}llrr@{}}
-    \toprule
-    Jurisdiction & Instrument & Sections & Tokens \\
-    \midrule
-    EU   & MiCA (Reg.\ 2023/1114)          & \todo{} & \todo{} \\
-    EU   & AMLR (Reg.\ 2024/1624)          & \todo{} & \todo{} \\
-    UK   & FSMA Cryptoassets Regs 2026     & \todo{} & \todo{} \\
-    US   & CLARITY Act (H.R.\ 3633)        & \todo{} & \todo{} \\
-    US   & GENIUS Act (Pub.\ L.\ 119-27)   & \todo{} & \todo{} \\
-    Intl & FATF VA/VASP Guidance 2021      & \todo{} & \todo{} \\
-    Intl & Basel SCO60                     & \todo{} & \todo{} \\
-    \multicolumn{2}{@{}l}{\ldots}          &         &         \\
-    \midrule
-    \multicolumn{2}{@{}l}{Total}           & \todo{} & \todo{} \\
-    \bottomrule
-  \end{tabular}
+  \scriptsize
+  \input{tables/corpus}
 \end{table}
 
-\subsection{Cache-Grounded Long-Context Extraction}
-\label{sec:method:extraction}
-\todo{The whole XML-tagged corpus sits in the system prompt behind a prompt-cache
-breakpoint; stable instructions precede it, per-term queries follow. Contrast
-with chunked RAG: no retrieval misses, deterministic context, amortised cost.
-Give the prompt schema (instructions, citation format
-\texttt{[doc~$i$, section~$\ell$]}, output JSON schema). Show the per-call cost
-model: $c = c_{\text{cached}}\cdot|\mathcal{D}| + c_{\text{in}}\cdot|q| +
-c_{\text{out}}\cdot|a|$.}
+Each PDF is converted with \texttt{pdftotext} and cut by line ranges or by
+regular-expression markers that we specify once per document. The US bills
+need the layout-preserving mode because their two-column line numbering
+scrambles the plain output, and we drop page footers such as the bill number
+that would otherwise leak into every section. The Senate-reported print of the
+\src{CLARITY Act} reproduces the House-passed text before the Senate
+substitute, so we take Title~I once, from the House file, and only the
+substitute's definitions and its section on network tokens from the Senate
+file. The corpus is one XML-tagged text file. Every document carries an integer
+index and metadata (type, jurisdiction, title, year) and is split into
+\texttt{<section label="...">} blocks, so a citation can name a document and a
+section unambiguously. The file holds 32 sections and 97.8 thousand words,
+which the model's tokeniser counts as 235,298 tokens.
 
-\begin{algorithm}[t]
-  \caption{Term-type extraction for a term $t$. \todo{finalise}}
-  \label{alg:extract}
-  \KwIn{term $t$, corpus $\mathcal{D}$, instructions $I$}
-  \KwOut{typed definitions $\mathcal{Y}_t$ with provenance}
-  $\mathcal{Y}_t \gets \emptyset$\;
-  $a \gets \textsc{LLM}(I \,\|\, \mathcal{D} \,\|\, q(t))$ \tcp*{$\mathcal{D}$ served from cache}
-  \ForEach{$(y, \text{cites}) \in \textsc{Parse}(a)$}{
-    \If{$\textsc{Verify}(\text{cites}, \mathcal{D})$}{
-      $\mathcal{Y}_t \gets \mathcal{Y}_t \cup \set{(y, \text{cites})}$\;
-    }
-  }
-  \Return $\mathcal{Y}_t$\;
-\end{algorithm}
+\subsection{The Extraction Task}
+\label{sec:method:task}
+
+The system prompt defines the objects we want. A \emph{term} is a word or
+phrase the corpus defines or classifies, such as \term{crypto-asset} or
+\term{permissioned ledger}. A \emph{term type} is a question along which the
+corpus's definitions discriminate between things, such as \ttype{reference
+asset} or \ttype{consensus mechanism}, and it has \emph{values}, the categories
+a thing can take on that dimension. A term type is \emph{grounded} when at
+least one passage uses it as a criterion or defines several terms that differ
+along it. The model is told that the corpus is its only source of truth and
+that outside knowledge may be used to recognise what the corpus says, never to
+add to it.
+
+Three grounding rules follow. Every term type and every value must carry at
+least one citation of the form \{document index, section label, quote\}; the
+quote must be verbatim and at most thirty words; a candidate that cannot be
+grounded must be omitted. Four quality rules shape the output: one question per
+term type, with differently named versions of the same question merged and the
+other names kept as aliases; jurisdictional disagreement about values or
+thresholds recorded in a notes field with citations for each side; preference
+for dimensions that recur across sources or that a source uses to draw a legal,
+prudential or technical boundary, while still keeping an unusual dimension that
+a single source grounds clearly; and JSON only.
+
+The user prompt states the scope, which covers assets, DLT systems, actors,
+activities, and obligations or risks when the sources themselves use them as
+criteria, and gives the JSON schema. Each term type has an identifier, a name,
+the category it applies to, the question it answers, a short description, its
+aliases, its values with their own definitions and citations, its own
+citations, the documents, jurisdictions and document classes that ground it,
+and the notes field. The model is asked to order term types by category and
+then by the number of documents that ground them, and to aim for completeness.
+
+Our first run cited section labels from memory and got them wrong in
+9\% of citations, with 65 term types. We therefore append to the user prompt a
+\emph{manifest}: one line per document listing its index, title and every exact
+section label, with the instruction that no other labels exist. The manifest is
+generated from the corpus at run time, so it cannot drift from the file the
+model sees.
+
+\subsection{One Call over a Cached Corpus}
+\label{sec:method:run}
+
+We place the whole corpus in the system prompt, after the stable instructions
+and behind a prompt-cache breakpoint with a one-hour lifetime; the task prompt
+is the user message. Every later task, and every prompt iteration, then pays
+only for the small uncached part. This choice is also a methodological one.
+Quality rule four asks the model to recognise that \src{MiCA}'s ``referencing
+the value of one official currency'' and the \src{GENIUS Act}'s ``fixed amount
+of monetary value'' answer the same question. A retriever would have to
+anticipate that two passages that share few words define the same dimension;
+a model that sees all 24 documents at once does not.
+
+A single call to \texttt{claude-haiku-5-5} at high effort produced the output
+we analyse. We disable adaptive thinking because on a first attempt the model
+spent more than 100,000 thinking tokens on this corpus without emitting any
+text, whereas without thinking it answers directly. We stream the response, allow up
+to 120,000 output tokens, and parse the JSON; if a response is cut off, the
+parser salvages every complete term type and flags the result as truncated.
+The run reported here ended normally after 302 seconds with 85,729 output
+tokens, 2,542 uncached input tokens for the task prompt and manifest, and
+235,298 input tokens read from the cache.
 
 \subsection{Citation Verification}
 \label{sec:method:verify}
-\todo{Every emitted term type must cite (document, section). Verification checks
-the cited section exists and contains the quoted span (fuzzy match). Report the
-rejection rate as a faithfulness diagnostic.}
 
-\subsection{Cross-Source Reconciliation}
-\label{sec:method:reconcile}
-\todo{Merge equivalent term types across instruments (embedding similarity +
-LLM adjudication), keep jurisdictional conflicts as sibling nodes, produce
-taxonomy $\mathcal{G}$. If using entropy-based consolidation
-\cite{entropyclustering2024,agrawal2025entropy}, define the objective here.}
+A quote that the model labels verbatim may still be invented, compressed, or
+attached to the wrong section, so we check all of them. For each citation we
+look up the document and section, normalise both the quote and the section text
+to lower-case alphanumerics, and accept the quote if it is a substring. If it is
+not, we split the quote into 12-character shingles and accept it when at least
+80\% of them occur inside one window of the section twice the quote's length.
+Localising the matches tolerates footnote markers, hyphenation and the spacing
+artefacts of PDF extraction, and rejects a paraphrase stitched from phrases
+that occur in different places. When a quote fails under the cited label but passes under another label of
+the same document, we \emph{relabel} it, correcting the section, keeping the
+model's label alongside, and counting the citation as verified. Everything else is rejected and listed in a report.
+Every citation in the published output carries a \texttt{verified} flag, and
+the rejection rate is our measure of desideratum~(D1), faithfulness.
+Verification establishes that the quote exists where the model says it does;
+it does not establish that the quote supports the dimension. We return to this
+limit in \cref{sec:exp:rq1}.
 
-\subsection{Implementation Details}
-\label{sec:method:impl}
-\todo{Models (name, version, date), decoding settings, cache TTL, total tokens
-and USD cost, hardware, random seeds. Move verbose details to
-\cref{app:impl}.}
+\subsection{From Term Types to a Hierarchy}
+\label{sec:method:hierarchy}
+\todo{Task B: for each term type, a probability distribution over more general
+term types in the same category (plus \emph{none}), with rationale and
+citations, asked against the same cached corpus plus the Task A catalogue as a
+second cached block. Describe once the Task B run is reviewed.}

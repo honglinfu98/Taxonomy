@@ -6,7 +6,15 @@ For every term type X in output/term_types.json, asks the model (same cached cor
 Task A catalogue as a second cached system block) for a probability distribution over
 "X is-a Y" with Y ranging over the other term types in X's category, plus "none".
 Writes output/is_a.json (all distributions, verified citations), output/is_a_edges.csv
-(child, parent, probability) and output/is_a.md (per-category hierarchy by argmax parent).
+(child, parent, probability) and output/is_a.md: per category, the consolidated DAG.
+
+Consolidation: the per-child distributions are independent, so taking each child's most
+probable parent yields cycles (A is-a B and B is-a A). The DAG is built greedily: edges
+are considered in order of decreasing probability and kept only if they are at least
+--min-p, beat the child's own p(none), and do not close a cycle. The first kept edge per
+child is its primary parent (used for the tree rendering); later kept edges are extra
+parents (the DAG part). Children with no kept edge are roots. --render-only redoes this
+step from the saved is_a.json without calling the API.
 """
 from __future__ import annotations
 
@@ -113,43 +121,64 @@ def ask(cl, instructions: str, template: str, catalogue: str, child: dict, cands
                       "cache_read_input_tokens": u.cache_read_input_tokens}}
 
 
-def render_md(results: list[dict], by_id: dict[str, dict]) -> str:
-    lines = ["# Task B output: is-a hierarchy of term types", "",
-             "For each term type X (child), the most probable parent Y with P(X is-a Y); `none` means "
-             "X is top-level in its category. Full distributions are in `output/is_a.json`.", ""]
-    for cat in CATEGORIES:
-        rows = [r for r in results if r["category"] == cat]
-        if not rows:
-            continue
-        lines += [f"## {cat}", ""]
-        parent_of = {r["child"]: r["distribution"][0]["parent"] for r in rows}
-        children: dict[str, list[str]] = {}
-        for c, p in parent_of.items():
-            children.setdefault(p, []).append(c)
-        probs = {r["child"]: r["distribution"][0]["probability"] for r in rows}
+def consolidate(results: list[dict], min_p: float) -> dict[str, dict]:
+    """Greedy acyclic selection of is-a edges. Returns {child: {"parents": [(parent, p), ...]}},
+    primary parent first; an empty list means root."""
+    p_none = {r["child"]: next((e["probability"] for e in r["distribution"] if e["parent"] == "none"), 0.0)
+              for r in results}
+    edges = sorted(((e["probability"], r["child"], e["parent"]) for r in results for e in r["distribution"]
+                    if e["parent"] != "none"), reverse=True)
+    parents: dict[str, list[tuple[str, float]]] = {r["child"]: [] for r in results}
 
-        def walk(node: str, depth: int, seen: set[str]) -> None:
-            for c in sorted(children.get(node, []), key=lambda x: -probs[x]):
-                if c in seen:          # cycle guard
-                    lines.append("  " * depth + f"- {by_id[c]['name']} `{c}` (cycle)")
-                    continue
-                tag = "" if node == "none" else f"  (p={probs[c]})"
-                lines.append("  " * depth + f"- {by_id[c]['name']} `{c}`{tag}")
-                walk(c, depth + 1, seen | {c})
-
-        walk("none", 0, set())
-        # nodes unreachable from the roots (members of cycles)
-        reachable = set()
-        stack = list(children.get("none", []))
+    def reaches(src: str, dst: str) -> bool:        # is dst an ancestor of src (so dst->src... would cycle)?
+        stack, seen = [src], set()
         while stack:
             n = stack.pop()
-            if n not in reachable:
-                reachable.add(n)
-                stack.extend(children.get(n, []))
-        for r in rows:
-            if r["child"] not in reachable:
-                lines.append(f"- {by_id[r['child']]['name']} `{r['child']}` is-a `{parent_of[r['child']]}` "
-                             f"(p={probs[r['child']]}) — in a cycle, no root")
+            if n == dst:
+                return True
+            if n not in seen:
+                seen.add(n)
+                stack.extend(pp for pp, _ in parents.get(n, []))
+        return False
+
+    for p, child, parent in edges:
+        if p < min_p or p <= p_none[child]:
+            continue
+        if reaches(parent, child):                   # parent already descends from child -> cycle
+            continue
+        parents[child].append((parent, p))
+    return {c: {"parents": ps, "p_none": p_none[c]} for c, ps in parents.items()}
+
+
+def render_md(results: list[dict], by_id: dict[str, dict], dag: dict[str, dict], min_p: float) -> str:
+    lines = ["# Task B output: is-a hierarchy of term types", "",
+             f"Consolidated DAG per category. Each child keeps the most probable parents that are >= {min_p}, "
+             "exceed its own P(none) and do not create a cycle; the first is the primary parent used for the "
+             "tree below, further parents are listed as *also under*. Roots are children with no kept parent. "
+             "Full distributions: `output/is_a.json`; all weighted edges: `output/is_a_edges.csv`.", ""]
+    for cat in CATEGORIES:
+        ids = [r["child"] for r in results if r["category"] == cat]
+        if not ids:
+            continue
+        children: dict[str, list[str]] = {}
+        for c in ids:
+            prim = dag[c]["parents"][0][0] if dag[c]["parents"] else "none"
+            children.setdefault(prim, []).append(c)
+        n_multi = sum(1 for c in ids if len(dag[c]["parents"]) > 1)
+        lines += [f"## {cat}", "", f"{len(ids)} term types, {len(children.get('none', []))} roots, "
+                  f"{n_multi} with more than one parent.", ""]
+
+        def walk(node: str, depth: int) -> None:
+            kids = children.get(node, [])
+            kids.sort(key=lambda x: -(dag[x]["parents"][0][1] if dag[x]["parents"] else dag[x]["p_none"]))
+            for c in kids:
+                ps = dag[c]["parents"]
+                tag = f"  (p={ps[0][1]:.2f})" if ps else f"  (root, P(none)={dag[c]['p_none']:.2f})"
+                also = "; also under " + ", ".join(f"`{q}` (p={pq:.2f})" for q, pq in ps[1:]) if len(ps) > 1 else ""
+                lines.append("  " * depth + f"- {by_id[c]['name']} `{c}`{tag}{also}")
+                walk(c, depth + 1)
+
+        walk("none", 0)
         lines.append("")
     return "\n".join(lines)
 
@@ -162,11 +191,22 @@ def main() -> None:
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--only", default="", help="comma-separated categories to run")
     ap.add_argument("--limit", type=int, default=0, help="run only the first N children (smoke test)")
+    ap.add_argument("--min-p", type=float, default=0.25, help="minimum probability for a kept is-a edge")
+    ap.add_argument("--render-only", action="store_true", help="rebuild the DAG and is_a.md from saved is_a.json")
     args = ap.parse_args()
     OUT_DIR.mkdir(exist_ok=True)
 
     tts = load_term_types()
     by_id = {t["id"]: t for t in tts}
+    if args.render_only:
+        saved = json.loads(JSON_OUT.read_text(encoding="utf-8"))
+        results = saved["is_a"]
+        dag = consolidate(results, args.min_p)
+        saved["dag"] = {"min_p": args.min_p, **dag}
+        JSON_OUT.write_text(json.dumps(saved, indent=2, ensure_ascii=False), encoding="utf-8")
+        MD_OUT.write_text(render_md(results, by_id, dag, args.min_p), encoding="utf-8")
+        print_dag(results, dag)
+        return
     cats = [c for c in args.only.split(",") if c] or CATEGORIES
     children = [t for t in tts if t["applies_to"] in cats][: args.limit or None]
     instructions, template = TASKS["B"]
@@ -211,22 +251,33 @@ def main() -> None:
     meta = {"task": "B", "model": args.model, "effort": args.effort, "k": args.k, "children": len(children),
             "seconds": round(time.time() - t0, 1), "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "usage": usage, "citations": n_cit[0], "citations_verified": n_cit[1]}
-    JSON_OUT.write_text(json.dumps({"run": meta, "is_a": results}, indent=2, ensure_ascii=False), encoding="utf-8")
+    dag = consolidate(results, args.min_p)
+    JSON_OUT.write_text(json.dumps({"run": meta, "is_a": results, "dag": {"min_p": args.min_p, **dag}},
+                                   indent=2, ensure_ascii=False), encoding="utf-8")
     with EDGES_OUT.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["child", "parent", "probability", "category"])
         for r in results:
             for e in r["distribution"]:
                 w.writerow([r["child"], e["parent"], e["probability"], r["category"]])
-    MD_OUT.write_text(render_md(results, by_id), encoding="utf-8")
+    MD_OUT.write_text(render_md(results, by_id, dag, args.min_p), encoding="utf-8")
+    print_dag(results, dag)
+    print(f"citations {n_cit[1]}/{n_cit[0]} verified; usage {usage}; {meta['seconds']}s"
+          f"\n-> {JSON_OUT}\n-> {EDGES_OUT}\n-> {MD_OUT}")
 
+
+def print_dag(results: list[dict], dag: dict[str, dict]) -> None:
     for r in results:
-        top = r["distribution"][0]
-        print(f"{r['child'][:38]:38} is-a {top['parent'][:38]:38} p={top['probability']:.2f}"
-              + (f"  dropped={r['dropped_parents']}" if r["dropped_parents"] else ""))
-    roots = sum(1 for r in results if r["distribution"][0]["parent"] == "none")
-    print(f"\n{len(results)} children, {roots} top-level; citations {n_cit[1]}/{n_cit[0]} verified; "
-          f"usage {usage}; {meta['seconds']}s\n-> {JSON_OUT}\n-> {EDGES_OUT}\n-> {MD_OUT}")
+        ps = dag[r["child"]]["parents"]
+        head = f"{ps[0][0][:36]:36} p={ps[0][1]:.2f}" if ps else f"{'ROOT':36} P(none)={dag[r['child']]['p_none']:.2f}"
+        extra = f"  +{len(ps) - 1} more parent(s)" if len(ps) > 1 else ""
+        print(f"{r['child'][:38]:38} is-a {head}{extra}")
+    roots = sum(1 for r in results if not dag[r["child"]]["parents"])
+    multi = sum(1 for r in results if len(dag[r["child"]]["parents"]) > 1)
+    argmax_kept = sum(1 for r in results if dag[r["child"]]["parents"]
+                      and dag[r["child"]]["parents"][0][0] == r["distribution"][0]["parent"])
+    print(f"\n{len(results)} children, {roots} roots, {multi} with multiple parents, "
+          f"{argmax_kept} keep their argmax parent")
 
 
 if __name__ == "__main__":

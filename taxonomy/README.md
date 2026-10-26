@@ -38,6 +38,7 @@ year=…>` blocks, each split into `<section label=…>` blocks. ~98K words, abo
 | `pdf_text.py` | `pdftotext` wrapper, range selection, footer / line-number noise removal. |
 | `build_corpus.py` | Entry point. Extracts everything and writes the corpus. |
 | `prompts.py` | System instructions (stable, before the cached corpus) and per-task user prompts. `TASKS["A"]` is term type generation. |
+| `is_a.py` | Task B runner: `python -m taxonomy.is_a` asks, per term type, for a probability distribution over is-a parents in its category; verifies citations; writes `output/is_a*.{json,csv,md}`. |
 | `term_types.py` | Task A runner: `python -m taxonomy.term_types` streams the answer, parses the JSON, verifies every `[doc, section, quote]` citation against the corpus, writes `output/term_types*.json`. |
 | `llm_context.py` | `client()` returns an `anthropic.Anthropic` using the key from `.env`; `build_request(instructions, user_prompt)` returns kwargs for `messages.create`, placing the corpus in the system prompt behind a 1-hour prompt-cache breakpoint (default model `claude-haiku-5-5`). |
 
@@ -93,7 +94,38 @@ rejected (2.1%). A first run without the manifest gave 65 coarser term types wit
 label errors; ids are not stable across runs, so reconciliation across runs/sources is
 later work (Part 3).
 
+## Task B: is-a hierarchy
+
+```bash
+python -m taxonomy.is_a                       # all 93 children, 4 parallel requests
+python -m taxonomy.is_a --only asset --limit 3 # smoke test
+```
+
+Flags: `--k` (max entries per distribution incl. `none`, default 6), `--workers`,
+`--only <categories>`, `--limit N`, `--model`, `--effort`.
+
+- Context = system instructions + cached corpus + a second cached block holding the
+  Task A catalogue (id, name, category, question, values, aliases of every term type),
+  so each per-child call reads ~251K tokens from cache and sends only the child's full
+  record and the candidate list (the other term types in its category).
+- The model returns `{"child", "distribution": [{"parent", "probability", "rationale",
+  "citations"}]}`. The runner drops parents not in the candidate set, merges duplicates,
+  renormalises to sum 1, and verifies citations exactly as in Task A.
+- **Consolidation.** Per-child distributions are independent, so taking every child's
+  most probable parent produced 10 mutual pairs (A is-a B and B is-a A) and most nodes in
+  cycles. `consolidate()` builds a DAG greedily: edges in decreasing probability, kept
+  only if >= `--min-p` (0.25), above the child's own P(none), and acyclic. The first kept
+  edge is the primary parent (tree in `is_a.md`), later ones are extra parents.
+  `--render-only` redoes this from the saved JSON. `is_a_edges.csv` keeps every weighted
+  edge for other thresholds.
+
+Results (2026-10-26, 93 children, 104 s, ~23M cached tokens read): 26 roots, 14 nodes
+with two parents, 66 children keep their argmax parent; 213/253 citations verified. The
+model's probabilities are coarse (mostly 0.05-0.2 steps, top values 0.3/0.42/0.55/0.62)
+and it rarely chose `none` (argmax in 11/93), so treat the weights as rankings.
+
 ## Notes on the sources
+
 
 
 - Line numbers in `sources.py` refer to plain `pdftotext` output split on `\n`

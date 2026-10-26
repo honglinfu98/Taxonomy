@@ -29,7 +29,7 @@ The LLM (Claude, default `claude-haiku-5-5`) is fed one fixed context, the
 | Task | Question to the LLM | Output |
 |---|---|---|
 | **A. Term type generation** (done 2026-10-26) | Which *classification dimensions* (term types) does the corpus use, explicitly or implicitly, to classify assets, technologies, actors, activities and obligations? Every dimension and value must cite `[doc index, section label]` with a verbatim quote. | `output/term_types.json`: 93 term types, 480 citations, 98% verified against the corpus (`output/term_types.verification.json`) |
-| **B.** | *to be defined after Task A is reviewed* (also corpus-grounded) | |
+| **B. Is-a hierarchy** (done 2026-10-26) | For each term type X, over the other term types Y in its category: how probable is it that *X is-a Y* (Y is the more general dimension X specialises)? Answer is a probability distribution over candidate parents plus `none` (top-level), each entry with rationale and citations. Context = the same corpus plus the Task A catalogue. | `output/is_a.json`, `output/is_a_edges.csv`, `output/is_a.md` (hierarchy by most probable parent) |
 
 A **term type** is a classification dimension along which definitions
 discriminate, e.g. *issuer type*, *reference asset*, *legal status*, *consensus
@@ -42,6 +42,7 @@ the dimensions; later tasks populate and link the terms under them.
 . venv/bin/activate
 python -m taxonomy.build_corpus      # rebuild context/taxonomy_corpus.txt from the PDFs
 python -m taxonomy.term_types        # Task A -> output/term_types.json
+python -m taxonomy.is_a              # Task B -> output/is_a.json (needs Task A output)
 ```
 
 `taxonomy/README.md` documents the package (corpus construction, API helpers,
