@@ -971,5 +971,402 @@
   "result_nodes": 124,
   "result_edges": 311,
   "result_values": 491
+ },
+ {
+  "iteration": 5,
+  "catalogue_version": 4,
+  "timestamp": "2026-10-26T11:07:42+00:00",
+  "sample": "data/dlt_corpus/sample_iter05.jsonl",
+  "items": 8646,
+  "sources": {
+   "paper": {
+    "items": 3744,
+    "tags_per_item": 3.86
+   },
+   "patent": {
+    "items": 4902,
+    "tags_per_item": 4.27
+   }
+  },
+  "tags": 35392,
+  "tags_per_item": 4.09,
+  "evidence_verified": "33957/35392",
+  "off_topic": 581,
+  "nodes": 124,
+  "nodes_with_items": 123,
+  "dormant": 1,
+  "collapsed": 12,
+  "discovery_targets": 45,
+  "candidates": 127,
+  "accepted": 24,
+  "objectives": {
+   "bits_per_descent": 7.2712,
+   "auc": 0.7734,
+   "expected_depth": 3.8959,
+   "effective_leaves": 24.792,
+   "effective_leaves_over_nodes": 0.1999,
+   "prior_bits_per_descent": 5.0082,
+   "prior_auc": 0.8332
+  },
+  "cost": {
+   "requests": 8692,
+   "input_tokens": 7033233,
+   "cache_read_tokens": 258407695,
+   "output_tokens": 2878424,
+   "tagging_usd": 4.678,
+   "discovery_usd": 0.0485,
+   "evolve_usd": 0.0039,
+   "total_usd": 4.7304
+  },
+  "time": {
+   "api_seconds": 17391.5,
+   "wall_seconds": 762.0,
+   "note": null,
+   "mean_request_s": 1.99,
+   "p95_request_s": 3.18,
+   "workers": 24
+  },
+  "produced_version": 5,
+  "added_term_types": [
+   {
+    "id": "isolation_mechanism",
+    "name": "Key isolation mechanism",
+    "question": "What mechanism isolates the key material from network-accessible components?",
+    "values": [
+     "secure element/chip",
+     "trusted execution environment or secure enclave",
+     "hardware security module",
+     "network-disabled device",
+     "software-only isolation"
+    ],
+    "parents": [
+     "key_isolation_from_network"
+    ],
+    "merged_from": 1,
+    "support": 7
+   },
+   {
+    "id": "key_distribution_method",
+    "name": "Key distribution method across isolation boundary",
+    "question": "How is key material or signed data moved between the isolated and connected environments?",
+    "values": [
+     "QR code or optical",
+     "USB or wired cable",
+     "NFC or contactless",
+     "Bluetooth or wireless short-range",
+     "manual entry or paper"
+    ],
+    "parents": [
+     "key_isolation_from_network",
+     "physical_transfer_mechanism_air_gap"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "finality_guarantee_mode",
+    "name": "Finality guarantee mode",
+    "question": "Once a transaction is included, can it be reversed by any party, and under what condition?",
+    "values": [
+     "absolute finality",
+     "probabilistic finality",
+     "quorum-conditional finality",
+     "no finality (forks possible)"
+    ],
+    "parents": [
+     "consensus_finality"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "key_share_cryptographic_primitive",
+    "name": "Key share cryptographic primitive",
+    "question": "Which cryptographic primitive is used to split or share the signing key?",
+    "values": [
+     "Shamir secret sharing",
+     "threshold ECDSA/signature scheme",
+     "MPC protocol",
+     "identity-based or threshold encryption",
+     "Merkle-tree or hash-based key management"
+    ],
+    "parents": [
+     "key_splitting_scheme"
+    ],
+    "merged_from": 1,
+    "support": 5
+   }
+  ],
+  "added_values": [
+   {
+    "term_type": "service_location_nexus",
+    "value": "physical point-of-sale or kiosk deployment in jurisdiction",
+    "definition": "Crypto-asset services delivered through physical terminals, kiosks or ATMs located in the jurisdiction, creating a local nexus.",
+    "support": 5
+   },
+   {
+    "term_type": "backing_mechanism",
+    "value": "tokenized real-world asset in vault or escrow",
+    "definition": "Backing asset is a physical or real-world item held in a vault, escrow account, or custodial store and represented one-to-one by an on-chain token.",
+    "support": 5
+   },
+   {
+    "term_type": "key_management_control_model",
+    "value": "multi-party cryptographic co-signing of redemption",
+    "definition": "Signing authority is split across parties via MPC or threshold signatures, with no single party holding a complete key, specifically for redeeming or transferring assets.",
+    "support": 8
+   },
+   {
+    "term_type": "zk_proof_system_variant",
+    "value": "zk-SNARK with trusted setup",
+    "definition": "Succinct non-interactive argument of knowledge whose construction requires a trusted setup ceremony for common reference string generation.",
+    "support": 5
+   },
+   {
+    "term_type": "key_recovery_mechanism",
+    "value": "recovery key / escrow-based recovery",
+    "definition": "Recovery is performed by a dedicated recovery key or escrowed key held separately from the owner keys and used to re-authorise or re-encrypt access.",
+    "support": 5
+   },
+   {
+    "term_type": "validator_selection_mechanism",
+    "value": "capability-score threshold plus random selection",
+    "definition": "Nodes are first filtered by a computed capability, credit, or trust score threshold, then selected randomly from the qualifying set.",
+    "support": 5
+   },
+   {
+    "term_type": "validator_selection_mechanism",
+    "value": "score-based endorsement",
+    "definition": "Nodes are chosen to form a committee or endorse blocks according to an aggregated trust, credit, or evaluation score computed by peers.",
+    "support": 5
+   },
+   {
+    "term_type": "validator_selection_mechanism",
+    "value": "shareholder or bid-based voting",
+    "definition": "Validators are chosen by votes or bids weighted by shares, tokens, or auction offers held by candidate nodes.",
+    "support": 5
+   },
+   {
+    "term_type": "cross_chain_interoperability_mechanism",
+    "value": "notary or multi-signature attestation",
+    "definition": "Cross-chain state or value is moved via a committee, notary group, or threshold signature attesting to source-chain events.",
+    "support": 5
+   },
+   {
+    "term_type": "cross_chain_interoperability_mechanism",
+    "value": "hashed timelock contract (HTLC) swap",
+    "definition": "Assets are exchanged across chains using hashlocks and timelocks so that either both transfers complete or neither does.",
+    "support": 5
+   },
+   {
+    "term_type": "deanonymisation_tracing_approach",
+    "value": "graph neural network representation learning",
+    "definition": "Learns node or subgraph embeddings from transaction graphs with neural architectures such as GNNs, GAT, or attention models to classify addresses.",
+    "support": 5
+   },
+   {
+    "term_type": "interoperability_type",
+    "value": "external data oracle relay",
+    "definition": "Ledger obtains external or cross-chain state via a dedicated oracle or relay that verifies source-chain data for the target chain.",
+    "support": 5
+   },
+   {
+    "term_type": "smart_contract_usage_domain",
+    "value": "supply chain traceability and provenance",
+    "definition": "Ledger applications that track goods, food, or pharmaceuticals across supply chain stages to verify origin and authenticity.",
+    "support": 5
+   },
+   {
+    "term_type": "smart_contract_usage_domain",
+    "value": "peer-to-peer energy trading",
+    "definition": "Ledger applications enabling prosumers and consumers to trade electricity directly, often via auctions or microgrid markets.",
+    "support": 5
+   },
+   {
+    "term_type": "script_verification_approach",
+    "value": "deductive / theorem-proving verification",
+    "definition": "Correctness is established by interactive or automated proof assistants reasoning over the code's semantics with Hoare logic, invariants, or weakest preconditions.",
+    "support": 5
+   },
+   {
+    "term_type": "ledger_partitioning_topology",
+    "value": "main-chain with slave/side-chain attached",
+    "definition": "A primary chain with one or more subsidiary chains that are anchored to or validated through the mainchain.",
+    "support": 5
+   },
+   {
+    "term_type": "key_management_control_model",
+    "value": "key-derivation from parent key or device-bound seed",
+    "definition": "Signing authority is controlled by deriving child or wallet keys from a parent key, seed, or physically unclonable function response rather than storing a standalone key.",
+    "support": 5
+   },
+   {
+    "term_type": "key_splitting_scheme",
+    "value": "single whole key",
+    "definition": "The signing key is held intact in one location without division.",
+    "support": 5
+   },
+   {
+    "term_type": "script_language_expressiveness",
+    "value": "Bitcoin script with transaction-chaining state machine",
+    "definition": "Restricted base script whose expressiveness is extended by chaining transactions to emulate state machines or complex logic across multiple transactions.",
+    "support": 5
+   }
+  ],
+  "dropped": [
+   {
+    "label": "physical_transfer_mechanism_air_gap",
+    "reason": "Existing node is referenced as a parent for key_distribution_method, but the candidate list does not propose it as a new node; only used as parent"
+   },
+   {
+    "label": "isolation_mechanism (duplicate proposals)",
+    "reason": "Merged with the single candidate proposing the same question; no duplicate retained"
+   }
+  ],
+  "result_nodes": 128,
+  "result_edges": 316,
+  "result_values": 529
+ },
+ {
+  "iteration": 6,
+  "catalogue_version": 5,
+  "timestamp": "2026-10-26T11:11:14+00:00",
+  "sample": "data/dlt_corpus/sample_iter06.jsonl",
+  "items": 1818,
+  "sources": {
+   "paper": {
+    "items": 1472,
+    "tags_per_item": 3.99
+   },
+   "patent": {
+    "items": 346,
+    "tags_per_item": 4.22
+   }
+  },
+  "tags": 7330,
+  "tags_per_item": 4.03,
+  "evidence_verified": "7057/7330",
+  "off_topic": 154,
+  "nodes": 128,
+  "nodes_with_items": 119,
+  "dormant": 9,
+  "collapsed": 9,
+  "discovery_targets": 36,
+  "candidates": 79,
+  "accepted": 6,
+  "objectives": {
+   "bits_per_descent": 7.0636,
+   "auc": 0.7734,
+   "expected_depth": 3.8953,
+   "effective_leaves": 22.947,
+   "effective_leaves_over_nodes": 0.1793,
+   "prior_bits_per_descent": 5.0241,
+   "prior_auc": 0.8331
+  },
+  "cost": {
+   "requests": 1855,
+   "input_tokens": 1732478,
+   "cache_read_tokens": 57355422,
+   "output_tokens": 635959,
+   "tagging_usd": 1.0366,
+   "discovery_usd": 0.0302,
+   "evolve_usd": 0.0019,
+   "total_usd": 1.0687
+  },
+  "time": {
+   "api_seconds": 3671.7,
+   "wall_seconds": 175.4,
+   "note": null,
+   "mean_request_s": 1.96,
+   "p95_request_s": 3.13,
+   "workers": 24
+  },
+  "produced_version": 6,
+  "added_term_types": [
+   {
+    "id": "zk_proof_application_role",
+    "name": "ZKP application role",
+    "question": "What role does the zero-knowledge proof play within the system?",
+    "values": [
+     "scaling / rollup validity proof",
+     "data or identity privacy",
+     "verifiable computation / virtual machine",
+     "range or rating correctness"
+    ],
+    "parents": [
+     "zk_proof_system_variant"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "key_storage_medium",
+    "name": "Key storage medium or environment",
+    "question": "Where is the private key physically or logically stored while not in use?",
+    "values": [
+     "volatile memory with power-down erasure",
+     "hardware security module or trusted execution environment",
+     "user mobile or desktop device",
+     "physical card or bearer medium",
+     "cloud or remote encrypted server"
+    ],
+    "parents": [
+     "key_custody_control_model"
+    ],
+    "merged_from": 1,
+    "support": 5
+   },
+   {
+    "id": "ledger_parent_child_coupling",
+    "name": "Parent-child coupling mechanism",
+    "question": "How are the sub-chains or partitions linked to the parent or peer ledgers?",
+    "values": [
+     "merged mining",
+     "sidechain two-way peg",
+     "coupled pair anchoring",
+     "interlinked peer chains",
+     "none or independent"
+    ],
+    "parents": [
+     "ledger_partitioning_topology"
+    ],
+    "merged_from": 1,
+    "support": 6
+   },
+   {
+    "id": "finality_guarantee_source",
+    "name": "Finality guarantee source",
+    "question": "What mechanism or assumption bounds the reversal of a settled transaction?",
+    "values": [
+     "quorum-based BFT finality",
+     "confirmation-depth finality",
+     "economic-penalty finality",
+     "checkpoint or justification finality"
+    ],
+    "parents": [
+     "consensus_finality"
+    ],
+    "merged_from": 1,
+    "support": 5
+   }
+  ],
+  "added_values": [
+   {
+    "term_type": "ledger_partitioning_topology",
+    "value": "hierarchical multi-blockchain with main and multiple subchains",
+    "definition": "Topology where a main chain anchors or coordinates several subchains or sidechains that each process a partition of state or tasks.",
+    "support": 6
+   },
+   {
+    "term_type": "centralisation_locus",
+    "value": "identity_or_access_control",
+    "definition": "Centralisation of who may join, authorise, or hold access rights, such as a single controlling address or a trusted authority issuing keys or approvals.",
+    "support": 5
+   }
+  ],
+  "dropped": [],
+  "result_nodes": 132,
+  "result_edges": 320,
+  "result_values": 549
  }
 ]

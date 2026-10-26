@@ -6,9 +6,9 @@ Taxonomy induction from text has a long lineage, from hypernym patterns,
 definition extraction and definition graphs~\cite{hearst1992,snow2006,navigli2010,velardi2013,bordea2016}
 to embedding-based construction~\cite{zhang2018taxogen,shen2018hiexpan,huang2020corel};
 Probase~\cite{wu2012probase} keeps probabilistic is-a edges at Web scale.
-Most work at this venue assumes a seed taxonomy and inserts new concepts into
-it. TaxoExpan~\cite{shen2020taxoexpan} and HEF~\cite{wang2021hef} attach a query
-concept to a parent using self-supervision from the seed's own edges;
+Most WWW work inserts new concepts into a seed taxonomy:
+TaxoExpan~\cite{shen2020taxoexpan} and HEF~\cite{wang2021hef} attach a query
+concept to a parent with self-supervision from the seed's edges;
 TaxoEnrich~\cite{jiang2022taxoenrich} and TaxoComplete~\cite{arous2023taxocomplete}
 score parent--child positions; ICON~\cite{shi2024icon} inserts implicit
 concepts; TaxoCom~\cite{lee2022taxocom} discovers
@@ -37,13 +37,11 @@ information gain.
 
 \paragraph{Legal text, crypto-asset taxonomies and grounding.}
 Legal NLP benchmarks~\cite{chalkidis2021multieurlex,chalkidis2022lexglue}
-classify documents under label hierarchies that are given, and definition
+classify under given label hierarchies, and definition
 extraction~\cite{spala2020deft} finds definitional sentences without inducing
-the dimensions they share. Tasca and Tessone~\cite{tasca2019taxonomy} and Ballandies et
+their dimensions. Tasca and Tessone~\cite{tasca2019taxonomy} and Ballandies et
 al.~\cite{ballandies2022decrypting} classify ledger designs by component; Zhang et al.~\cite{zhang2026cryptotaxonomy} classify assets by
-technical standard, centralisation, function and legal status; DLT-Corpus
-\cite{hernandez2026dltcorpus} collects domain text; Avice et
-al.~\cite{cryptotags2024} link attribution tags to knowledge graph entities with
+technical standard, centralisation, function and legal status; Avice et al.~\cite{cryptotags2024} link attribution tags to knowledge graph entities with
 an LLM. Attribution evaluation and citation generation~\cite{rashkin2023ais,
 gao2023alce,liu2023verifiability} ask whether an output is supported by its
 sources, which our verifier checks mechanically. Retrieval-augmented

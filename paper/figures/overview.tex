@@ -22,7 +22,7 @@
   \node[mod=blue, right=of content, minimum height=2.0cm] (tag) {\textbf{4.6 Tagging (Task C)}\\[2pt]\scriptsize Catalogue block (types, value codes, is-a parents) cached; per item: tags (type, value, confidence, evidence $\le$20 words), proposals, off-topic\\[2pt]evidence verified; ancestors implied};
   \node[mod=green, right=of tag, minimum height=2.0cm] (measure) {\textbf{4.6 Label space \& objectives}\\[2pt]\scriptsize items on nodes and their is-a ancestors; per node: value entropy, branching gain, residual\\[2pt]bits/descent, AUC, effective leaves from content vs.\ prior};
   \node[mod=orange, right=of measure, minimum height=2.0cm] (discover) {\textbf{4.6 Discovery (Task E) \& evolution}\\[2pt]\scriptsize at impure nodes: residual items $\to$ candidate values / child types; accept if support $\ge$5, gain $\ge$0.1 bit, evidence verified\\[2pt]consolidate $\to$ catalogue v1};
-  \node[io, right=of discover] (v1) {v2: 107 types\\[1pt]\tiny 293 edges, 396 values\\[2pt]$\circlearrowleft$ next batch};
+  \node[io, right=of discover] (v1) {v\VLastNum: \VLastNodes\ types\\[1pt]\tiny \VLastEdges\ edges, \VLastValues\ values\\[2pt]$\circlearrowleft$ next batch};
   \draw[arr] (content) -- (tag);
   \draw[arr] (tag) -- (measure);
   \draw[arr] (measure) -- (discover);
@@ -33,8 +33,8 @@
   \node[ex, below=1mm of discover.south] {+ ledger partitioning topology (5 items, 0.3 bit)};
   %% ==== third row: Part 3, retrieval over the DAG
   \node[mod=purple, below=8mm of measure.south, anchor=north, text width=9.4cm, minimum height=1.4cm] (retr) {\textbf{4.7 Retrieval over the DAG}\\[2pt]\scriptsize Tagged items $\to$ bitsets per node: direct, per value, subtree closure. Query atoms $y$, $y!$, $y{=}v$, $y{\sim}\sigma$ (path strength), category; AND / OR / NOT as integer ops. Rank by confidence $\times$ best is-a path strength; generalise by lowest common ancestor; facet = next question by expected narrowing (same gain as 4.6)};
-  \node[io, right=of retr, text width=2.2cm] (answer) {8,205 items\\[1pt]\tiny 2--10 $\mu$s per query, 935--2,439$\times$ over a flat scan};
+  \node[io, right=of retr, text width=2.2cm] (answer) {\RItems\ items\\[1pt]\tiny \RLatMin--\RLatMax\ $\mu$s per query, \RSpeedMin--\RSpeedMax$\times$ over a flat scan};
   \draw[arr] (v1.south) -- ++(0,-3mm) -| (answer.north);
   \draw[arr] (answer) -- (retr);
-  \node[ex, text width=9.6cm, below=1mm of retr.south] {ledger\_purpose = value transfer $\to$ service\_provider\_status: residual $\to\ \cdots\to$ 10 items in 7 questions};
+  \node[ex, text width=9.6cm, below=1mm of retr.south] {facet gain: \RGainBits\ bits resolved in \RGainSteps\ questions on average, \RRandBits\ bits for a random facet};
 \end{tikzpicture}

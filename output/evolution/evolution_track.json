@@ -202,6 +202,337 @@
      "values": 4
     }
    ]
+  },
+  {
+   "version": 3,
+   "iteration": 3,
+   "nodes": 113,
+   "edges": 300,
+   "values": 433,
+   "candidate_nodes": 20,
+   "candidate_values": 116,
+   "roots": 5,
+   "leaves": 30,
+   "max_depth": 15,
+   "mean_parents": 2.65,
+   "by_category": {
+    "asset": 23,
+    "technology": 39,
+    "activity": 13,
+    "actor": 19,
+    "obligation_or_risk": 19
+   },
+   "prior_bits_per_descent": 4.8767,
+   "prior_auc": 0.8427,
+   "prior_expected_depth": 2.8591,
+   "prior_effective_leaves": 23.087,
+   "new_term_types": [
+    {
+     "id": "zk_proof_system_variant",
+     "name": "Zero-knowledge proof system variant",
+     "category": "technology",
+     "parents": [
+      "privacy_mechanism_family"
+     ],
+     "values": 6
+    },
+    {
+     "id": "key_share_distribution_topology",
+     "name": "Key share distribution topology",
+     "category": "technology",
+     "parents": [
+      "key_management_control_model",
+      "key_splitting_scheme"
+     ],
+     "values": 4
+    },
+    {
+     "id": "fiat_rail_integration",
+     "name": "Fiat-rail integration",
+     "category": "activity",
+     "parents": [
+      "payment_settlement_mechanism"
+     ],
+     "values": 3
+    },
+    {
+     "id": "key_recovery_mechanism",
+     "name": "Key recovery mechanism",
+     "category": "technology",
+     "parents": [
+      "unhosted_vs_hosted_wallet"
+     ],
+     "values": 5
+    },
+    {
+     "id": "script_verification_approach",
+     "name": "Script verification approach",
+     "category": "technology",
+     "parents": [
+      "script_language_expressiveness"
+     ],
+     "values": 4
+    },
+    {
+     "id": "backing_of_token",
+     "name": "Backing of token",
+     "category": "asset",
+     "parents": [
+      "tokenisation_form"
+     ],
+     "values": 4
+    }
+   ]
+  },
+  {
+   "version": 4,
+   "iteration": 4,
+   "nodes": 124,
+   "edges": 311,
+   "values": 491,
+   "candidate_nodes": 31,
+   "candidate_values": 174,
+   "roots": 5,
+   "leaves": 35,
+   "max_depth": 15,
+   "mean_parents": 2.51,
+   "by_category": {
+    "asset": 25,
+    "technology": 45,
+    "activity": 14,
+    "actor": 20,
+    "obligation_or_risk": 20
+   },
+   "prior_bits_per_descent": 5.0082,
+   "prior_auc": 0.8332,
+   "prior_expected_depth": 3.0022,
+   "prior_effective_leaves": 25.719,
+   "new_term_types": [
+    {
+     "id": "deanonymisation_tracing_approach",
+     "name": "Deanonymisation / tracing approach",
+     "category": "obligation_or_risk",
+     "parents": [
+      "anonymity_enhancing_status"
+     ],
+     "values": 5
+    },
+    {
+     "id": "backing_mechanism",
+     "name": "Backing mechanism",
+     "category": "asset",
+     "parents": [
+      "backing_of_token"
+     ],
+     "values": 4
+    },
+    {
+     "id": "settlement_finality_timing",
+     "name": "Settlement finality timing",
+     "category": "activity",
+     "parents": [
+      "payment_settlement_mechanism"
+     ],
+     "values": 4
+    },
+    {
+     "id": "settlement_counterparty",
+     "name": "Settlement counterparty",
+     "category": "actor",
+     "parents": [
+      "fiat_rail_integration"
+     ],
+     "values": 4
+    },
+    {
+     "id": "physical_transfer_mechanism_air_gap",
+     "name": "Physical transfer mechanism across air gap",
+     "category": "technology",
+     "parents": [
+      "key_isolation_from_network"
+     ],
+     "values": 5
+    },
+    {
+     "id": "validator_selection_mechanism",
+     "name": "Validator selection mechanism",
+     "category": "technology",
+     "parents": [
+      "consensus_participant_validator_capacity"
+     ],
+     "values": 5
+    },
+    {
+     "id": "sharding_partition_basis",
+     "name": "Sharding partition basis",
+     "category": "technology",
+     "parents": [
+      "ledger_partitioning_topology"
+     ],
+     "values": 4
+    },
+    {
+     "id": "wallet_interface_delivery_form",
+     "name": "Wallet interface or delivery form",
+     "category": "technology",
+     "parents": [
+      "unhosted_vs_hosted_wallet"
+     ],
+     "values": 5
+    },
+    {
+     "id": "share_recovery_mechanism",
+     "name": "Share recovery mechanism",
+     "category": "technology",
+     "parents": [
+      "key_splitting_scheme"
+     ],
+     "values": 4
+    },
+    {
+     "id": "centralisation_locus",
+     "name": "Centralisation locus",
+     "category": "asset",
+     "parents": [
+      "centralisation_level"
+     ],
+     "values": 6
+    },
+    {
+     "id": "cross_chain_interoperability_mechanism",
+     "name": "Cross-chain interoperability mechanism",
+     "category": "technology",
+     "parents": [
+      "wrapped_or_bridged_asset"
+     ],
+     "values": 5
+    }
+   ]
+  },
+  {
+   "version": 5,
+   "iteration": 5,
+   "nodes": 128,
+   "edges": 316,
+   "values": 529,
+   "candidate_nodes": 35,
+   "candidate_values": 212,
+   "roots": 5,
+   "leaves": 38,
+   "max_depth": 15,
+   "mean_parents": 2.47,
+   "by_category": {
+    "asset": 25,
+    "technology": 49,
+    "activity": 14,
+    "actor": 20,
+    "obligation_or_risk": 20
+   },
+   "prior_bits_per_descent": 5.0241,
+   "prior_auc": 0.8331,
+   "prior_expected_depth": 3.0033,
+   "prior_effective_leaves": 26.075,
+   "new_term_types": [
+    {
+     "id": "isolation_mechanism",
+     "name": "Key isolation mechanism",
+     "category": "technology",
+     "parents": [
+      "key_isolation_from_network"
+     ],
+     "values": 5
+    },
+    {
+     "id": "key_distribution_method",
+     "name": "Key distribution method across isolation boundary",
+     "category": "technology",
+     "parents": [
+      "key_isolation_from_network",
+      "physical_transfer_mechanism_air_gap"
+     ],
+     "values": 5
+    },
+    {
+     "id": "finality_guarantee_mode",
+     "name": "Finality guarantee mode",
+     "category": "technology",
+     "parents": [
+      "consensus_finality"
+     ],
+     "values": 4
+    },
+    {
+     "id": "key_share_cryptographic_primitive",
+     "name": "Key share cryptographic primitive",
+     "category": "technology",
+     "parents": [
+      "key_splitting_scheme"
+     ],
+     "values": 5
+    }
+   ]
+  },
+  {
+   "version": 6,
+   "iteration": 6,
+   "nodes": 132,
+   "edges": 320,
+   "values": 549,
+   "candidate_nodes": 39,
+   "candidate_values": 232,
+   "roots": 5,
+   "leaves": 40,
+   "max_depth": 16,
+   "mean_parents": 2.42,
+   "by_category": {
+    "asset": 25,
+    "technology": 53,
+    "activity": 14,
+    "actor": 20,
+    "obligation_or_risk": 20
+   },
+   "prior_bits_per_descent": 5.037,
+   "prior_auc": 0.8402,
+   "prior_expected_depth": 3.0568,
+   "prior_effective_leaves": 26.308,
+   "new_term_types": [
+    {
+     "id": "zk_proof_application_role",
+     "name": "ZKP application role",
+     "category": "technology",
+     "parents": [
+      "zk_proof_system_variant"
+     ],
+     "values": 4
+    },
+    {
+     "id": "key_storage_medium",
+     "name": "Key storage medium or environment",
+     "category": "technology",
+     "parents": [
+      "key_custody_control_model"
+     ],
+     "values": 5
+    },
+    {
+     "id": "ledger_parent_child_coupling",
+     "name": "Parent-child coupling mechanism",
+     "category": "technology",
+     "parents": [
+      "ledger_partitioning_topology"
+     ],
+     "values": 5
+    },
+    {
+     "id": "finality_guarantee_source",
+     "name": "Finality guarantee source",
+     "category": "technology",
+     "parents": [
+      "consensus_finality"
+     ],
+     "values": 4
+    }
+   ]
   }
  ],
  "iterations": [
@@ -654,6 +985,926 @@
    "result_nodes": 107,
    "result_edges": 293,
    "result_values": 396
+  },
+  {
+   "iteration": 3,
+   "catalogue_version": 2,
+   "timestamp": "2026-10-26T10:40:40+00:00",
+   "sample": "data/dlt_corpus/sample_iter03.jsonl",
+   "items": 8646,
+   "sources": {
+    "paper": {
+     "items": 3744,
+     "tags_per_item": 3.88
+    },
+    "patent": {
+     "items": 4902,
+     "tags_per_item": 4.29
+    }
+   },
+   "tags": 35576,
+   "tags_per_item": 4.11,
+   "evidence_verified": "34302/35576",
+   "off_topic": 555,
+   "nodes": 107,
+   "nodes_with_items": 106,
+   "dormant": 1,
+   "collapsed": 12,
+   "discovery_targets": 32,
+   "candidates": 87,
+   "accepted": 17,
+   "objectives": {
+    "bits_per_descent": 7.0214,
+    "auc": 0.7781,
+    "expected_depth": 3.826,
+    "effective_leaves": 21.747,
+    "effective_leaves_over_nodes": 0.2032,
+    "prior_bits_per_descent": 4.8413,
+    "prior_auc": 0.8506
+   },
+   "cost": {
+    "requests": 8679,
+    "input_tokens": 6940563,
+    "cache_read_tokens": 230709115,
+    "output_tokens": 2897818,
+    "tagging_usd": 4.415,
+    "discovery_usd": 0.0356,
+    "evolve_usd": 0.0028,
+    "total_usd": 4.4534
+   },
+   "time": {
+    "api_seconds": 17081.8,
+    "wall_seconds": 742.6,
+    "note": null,
+    "mean_request_s": 1.96,
+    "p95_request_s": 3.07,
+    "workers": 24
+   },
+   "produced_version": 3,
+   "added_term_types": [
+    {
+     "id": "zk_proof_system_variant",
+     "name": "Zero-knowledge proof system variant",
+     "question": "Which form or setup of zero-knowledge proof is used?",
+     "values": [
+      "zk-SNARK",
+      "zk-STARK",
+      "Sigma protocol / interactive-style proof",
+      "Bulletproofs (short range/inner-product proofs)",
+      "one-out-of-many / ring proofs",
+      "non-interactive ZKP (unspecified)"
+     ],
+     "parents": [
+      "privacy_mechanism_family"
+     ],
+     "merged_from": 1,
+     "support": 6
+    },
+    {
+     "id": "key_share_distribution_topology",
+     "name": "Key share distribution topology",
+     "question": "How are the key shares distributed across custodial parties or devices?",
+     "values": [
+      "across physical devices",
+      "among participants",
+      "across data centres",
+      "split between client and custodian"
+     ],
+     "parents": [
+      "key_management_control_model",
+      "key_splitting_scheme"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "fiat_rail_integration",
+     "name": "Fiat-rail integration",
+     "question": "How does the crypto settlement interface with traditional fiat payment rails?",
+     "values": [
+      "card-network bridged",
+      "bank transfer bridged",
+      "no fiat leg"
+     ],
+     "parents": [
+      "payment_settlement_mechanism"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "key_recovery_mechanism",
+     "name": "Key recovery mechanism",
+     "question": "How is the wallet's private key or seed material recovered if the user loses access?",
+     "values": [
+      "seed phrase backup",
+      "secret sharing / social recovery",
+      "service-assisted recovery",
+      "threshold multiparty recovery",
+      "no recovery supported"
+     ],
+     "parents": [
+      "unhosted_vs_hosted_wallet"
+     ],
+     "merged_from": 1,
+     "support": 6
+    },
+    {
+     "id": "script_verification_approach",
+     "name": "Script verification approach",
+     "question": "How is the correctness or safety of the script or contract verified?",
+     "values": [
+      "static analysis",
+      "formal verification",
+      "runtime metering",
+      "fuzzing"
+     ],
+     "parents": [
+      "script_language_expressiveness"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "backing_of_token",
+     "name": "Backing of token",
+     "question": "What, if anything, backs the value of the token?",
+     "values": [
+      "fully asset-backed",
+      "partially or fractionally backed",
+      "collateralised by claims or loans",
+      "unbacked"
+     ],
+     "parents": [
+      "tokenisation_form"
+     ],
+     "merged_from": 1,
+     "support": 5
+    }
+   ],
+   "added_values": [
+    {
+     "term_type": "service_location_nexus",
+     "value": "services offered to merchants accepting cryptocurrency payments",
+     "definition": "Crypto-asset payment acceptance services offered to merchants or retailers in the jurisdiction, creating a nexus through the merchant-facing service rather than the end user.",
+     "support": 5
+    },
+    {
+     "term_type": "anonymity_enhancing_status",
+     "value": "traceable-but-pseudonymous ledger",
+     "definition": "Transfers are publicly visible and linked to pseudonymous addresses, so they can be traced and deanonymised with analytics and clustering.",
+     "support": 5
+    },
+    {
+     "term_type": "minting_mechanism",
+     "value": "NFT creation via marketplace or service minting",
+     "definition": "Units created by an NFT creator, marketplace, or platform service minting a token on request, without a consensus, collateral, or protocol-rule trigger.",
+     "support": 6
+    },
+    {
+     "term_type": "interoperability_type",
+     "value": "external data oracle",
+     "definition": "Interoperability achieved by an oracle or relay that attests to or forwards data from one chain to another via a trusted or voting-based party.",
+     "support": 5
+    },
+    {
+     "term_type": "interoperability_type",
+     "value": "domain-name-based chain addressing",
+     "definition": "Cross-chain access resolves target chains through human-readable blockchain domain names rather than raw network identifiers.",
+     "support": 5
+    },
+    {
+     "term_type": "interoperability_type",
+     "value": "cross-chain transaction forwarding with hop limit",
+     "definition": "Transactions or messages are relayed across a bounded sequence of intermediate chains or hops to reach the destination ledger.",
+     "support": 5
+    },
+    {
+     "term_type": "identity_binding_mechanism",
+     "value": "DID-anchored verifiable credential",
+     "definition": "Identity is bound by issuing and verifying signed credentials that reference a decentralised identifier held in a user wallet.",
+     "support": 5
+    },
+    {
+     "term_type": "risk_type_illicit_finance",
+     "value": "wallet risk scoring and taint tracking",
+     "definition": "Risk assessed by scoring addresses or wallets for criminal association and tracing tainted funds through transaction graphs.",
+     "support": 5
+    },
+    {
+     "term_type": "centralisation_level",
+     "value": "hybrid server-matching with decentralised execution",
+     "definition": "Control is split: a central server or operator handles matching, coordination or access while settlement or execution remains decentralised on-chain.",
+     "support": 5
+    },
+    {
+     "term_type": "tokenisation_form",
+     "value": "tokenised physical commodity or precious metal",
+     "definition": "A token representing ownership of a physical commodity, precious metal, or natural resource held in custody or inventory.",
+     "support": 6
+    },
+    {
+     "term_type": "tokenisation_form",
+     "value": "tokenised intellectual property or contractual claim",
+     "definition": "A token representing rights in intellectual property, receivables, debt, or loan-backed equity rather than a physical asset.",
+     "support": 5
+    }
+   ],
+   "dropped": [],
+   "result_nodes": 113,
+   "result_edges": 300,
+   "result_values": 433
+  },
+  {
+   "iteration": 4,
+   "catalogue_version": 3,
+   "timestamp": "2026-10-26T10:54:25+00:00",
+   "sample": "data/dlt_corpus/sample_iter04.jsonl",
+   "items": 8646,
+   "sources": {
+    "paper": {
+     "items": 3744,
+     "tags_per_item": 3.87
+    },
+    "patent": {
+     "items": 4902,
+     "tags_per_item": 4.38
+    }
+   },
+   "tags": 35952,
+   "tags_per_item": 4.16,
+   "evidence_verified": "34608/35952",
+   "off_topic": 520,
+   "nodes": 113,
+   "nodes_with_items": 113,
+   "dormant": 0,
+   "collapsed": 13,
+   "discovery_targets": 42,
+   "candidates": 106,
+   "accepted": 18,
+   "objectives": {
+    "bits_per_descent": 7.2153,
+    "auc": 0.7796,
+    "expected_depth": 3.8027,
+    "effective_leaves": 24.68,
+    "effective_leaves_over_nodes": 0.2184,
+    "prior_bits_per_descent": 4.8767,
+    "prior_auc": 0.8427
+   },
+   "cost": {
+    "requests": 8689,
+    "input_tokens": 6982643,
+    "cache_read_tokens": 242630570,
+    "output_tokens": 2923586,
+    "tagging_usd": 4.544,
+    "discovery_usd": 0.0425,
+    "evolve_usd": 0.0034,
+    "total_usd": 4.5899
+   },
+   "time": {
+    "api_seconds": 17928.7,
+    "wall_seconds": 789.5,
+    "note": null,
+    "mean_request_s": 2.06,
+    "p95_request_s": 3.24,
+    "workers": 24
+   },
+   "produced_version": 4,
+   "added_term_types": [
+    {
+     "id": "deanonymisation_tracing_approach",
+     "name": "Deanonymisation / tracing approach",
+     "question": "What technique is used to trace or link pseudonymous transactions back to identities?",
+     "values": [
+      "address clustering heuristic",
+      "graph-based machine learning",
+      "transaction time-series analysis",
+      "wallet risk scoring",
+      "argumentation or legal reasoning"
+     ],
+     "parents": [
+      "anonymity_enhancing_status"
+     ],
+     "merged_from": 1,
+     "support": 6
+    },
+    {
+     "id": "backing_mechanism",
+     "name": "Backing mechanism",
+     "question": "How is the backing asset held or secured against the token?",
+     "values": [
+      "custodial reserve held by third party",
+      "pledged or encumbered on a ledger",
+      "oracle-priced collateral",
+      "algorithmic peg without collateral"
+     ],
+     "parents": [
+      "backing_of_token"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "settlement_finality_timing",
+     "name": "Settlement finality timing",
+     "question": "When does the payment become final relative to its initiation?",
+     "values": [
+      "real-time or instant",
+      "batch or net settlement",
+      "condition- or event-triggered",
+      "periodic or scheduled"
+     ],
+     "parents": [
+      "payment_settlement_mechanism"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "settlement_counterparty",
+     "name": "Settlement counterparty",
+     "question": "Which entity actually moves the fiat funds to the merchant or seller?",
+     "values": [
+      "merchant acquirer / bank",
+      "payment platform remits fiat",
+      "commercial bank node",
+      "not applicable"
+     ],
+     "parents": [
+      "fiat_rail_integration"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "physical_transfer_mechanism_air_gap",
+     "name": "Physical transfer mechanism across air gap",
+     "question": "By what physical channel, if any, is data moved across the isolation boundary between the key-holding device and the network?",
+     "values": [
+      "none (fully disconnected)",
+      "removable storage media",
+      "optical/visual codes",
+      "acoustic",
+      "electrical diode or one-way link"
+     ],
+     "parents": [
+      "key_isolation_from_network"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "validator_selection_mechanism",
+     "name": "Validator selection mechanism",
+     "question": "How are the validators or consensus nodes chosen for a given round?",
+     "values": [
+      "random or verifiable-random selection",
+      "stake or share weighted selection",
+      "reputation based selection",
+      "fixed rotation or leader election",
+      "all eligible nodes participate"
+     ],
+     "parents": [
+      "consensus_participant_validator_capacity"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "sharding_partition_basis",
+     "name": "Sharding partition basis",
+     "question": "On what basis is the ledger or validator set partitioned into shards?",
+     "values": [
+      "validator/node grouping",
+      "account or state partition",
+      "transaction-graph or workload-based partition",
+      "jurisdiction or location partition"
+     ],
+     "parents": [
+      "ledger_partitioning_topology"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "wallet_interface_delivery_form",
+     "name": "Wallet interface or delivery form",
+     "question": "In what form or interface is the wallet's key material delivered to or accessed by the user?",
+     "values": [
+      "software wallet application",
+      "physical card or token",
+      "physical object (e.g., sphere or coin)",
+      "hardware device",
+      "browser or web extension"
+     ],
+     "parents": [
+      "unhosted_vs_hosted_wallet"
+     ],
+     "merged_from": 1,
+     "support": 6
+    },
+    {
+     "id": "share_recovery_mechanism",
+     "name": "Share recovery mechanism",
+     "question": "How can the divided key shares be recombined or recovered if some shares are lost or unavailable?",
+     "values": [
+      "threshold reconstruction from quorum",
+      "escrow recovery by third party",
+      "proactive resharing over time",
+      "no recovery path"
+     ],
+     "parents": [
+      "key_splitting_scheme"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "centralisation_locus",
+     "name": "Centralisation locus",
+     "question": "Which component or layer of the system is centralised (consensus/mining, block building, governance, token issuance, data storage, or validation)?",
+     "values": [
+      "consensus_or_mining",
+      "block_building_or_ordering",
+      "governance_voting",
+      "token_issuance_or_monetary_policy",
+      "data_storage_or_oracles",
+      "validator_or_node_operation"
+     ],
+     "parents": [
+      "centralisation_level"
+     ],
+     "merged_from": 1,
+     "support": 6
+    },
+    {
+     "id": "cross_chain_interoperability_mechanism",
+     "name": "Cross-chain interoperability mechanism",
+     "question": "How does the mechanism move state or value between blockchains?",
+     "values": [
+      "side-chain peg / two-way transfer",
+      "cross-chain relay or oracle verification",
+      "atomic cross-chain swap",
+      "software bridge between protocols",
+      "cross-chain smart contract execution"
+     ],
+     "parents": [
+      "wrapped_or_bridged_asset"
+     ],
+     "merged_from": 1,
+     "support": 7
+    }
+   ],
+   "added_values": [
+    {
+     "term_type": "key_share_distribution_topology",
+     "value": "among blockchain network nodes",
+     "definition": "Key shares are held by nodes of a blockchain or decentralized network, such that a threshold of nodes must cooperate to reconstruct the key.",
+     "support": 5
+    },
+    {
+     "term_type": "backing_of_token",
+     "value": "backed by physical commodities or precious metals",
+     "definition": "The token's value is backed by physical commodities, precious metals, gems or other tangible goods held in custody.",
+     "support": 5
+    },
+    {
+     "term_type": "fiat_rail_integration",
+     "value": "card-network-issued crypto payment card",
+     "definition": "The crypto settlement is triggered by a payment card whose authorization flows through a card network.",
+     "support": 5
+    },
+    {
+     "term_type": "fiat_rail_integration",
+     "value": "ledger-tokenized fiat settlement",
+     "definition": "Fiat settlement is replaced by settlement tokens or in-network tokens on a distributed ledger rather than a bridged rail.",
+     "support": 5
+    },
+    {
+     "term_type": "minting_mechanism",
+     "value": "NFT minting for media and content licensing",
+     "definition": "Units minted as NFTs representing a media asset, royalty split, or content authorisation, typically via a marketplace or digital vault.",
+     "support": 5
+    },
+    {
+     "term_type": "key_custody_control_model",
+     "value": "air-gapped offline signing device",
+     "definition": "Private keys are generated and stored on a device never connected to a network, with signing performed offline via QR codes, cards, or isolated chambers.",
+     "support": 5
+    },
+    {
+     "term_type": "native_vs_token_standard",
+     "value": "NFT standard token",
+     "definition": "Non-fungible token issued under a smart-contract standard, such as ERC-721 or ERC-1155, representing unique assets.",
+     "support": 5
+    }
+   ],
+   "dropped": [
+    {
+     "label": "fiat_rail_integration (ledger-tokenized fiat settlement) duplicated across candidates",
+     "reason": "Retained as a value of fiat_rail_integration; no duplicate term type created."
+    }
+   ],
+   "result_nodes": 124,
+   "result_edges": 311,
+   "result_values": 491
+  },
+  {
+   "iteration": 5,
+   "catalogue_version": 4,
+   "timestamp": "2026-10-26T11:07:42+00:00",
+   "sample": "data/dlt_corpus/sample_iter05.jsonl",
+   "items": 8646,
+   "sources": {
+    "paper": {
+     "items": 3744,
+     "tags_per_item": 3.86
+    },
+    "patent": {
+     "items": 4902,
+     "tags_per_item": 4.27
+    }
+   },
+   "tags": 35392,
+   "tags_per_item": 4.09,
+   "evidence_verified": "33957/35392",
+   "off_topic": 581,
+   "nodes": 124,
+   "nodes_with_items": 123,
+   "dormant": 1,
+   "collapsed": 12,
+   "discovery_targets": 45,
+   "candidates": 127,
+   "accepted": 24,
+   "objectives": {
+    "bits_per_descent": 7.2712,
+    "auc": 0.7734,
+    "expected_depth": 3.8959,
+    "effective_leaves": 24.792,
+    "effective_leaves_over_nodes": 0.1999,
+    "prior_bits_per_descent": 5.0082,
+    "prior_auc": 0.8332
+   },
+   "cost": {
+    "requests": 8692,
+    "input_tokens": 7033233,
+    "cache_read_tokens": 258407695,
+    "output_tokens": 2878424,
+    "tagging_usd": 4.678,
+    "discovery_usd": 0.0485,
+    "evolve_usd": 0.0039,
+    "total_usd": 4.7304
+   },
+   "time": {
+    "api_seconds": 17391.5,
+    "wall_seconds": 762.0,
+    "note": null,
+    "mean_request_s": 1.99,
+    "p95_request_s": 3.18,
+    "workers": 24
+   },
+   "produced_version": 5,
+   "added_term_types": [
+    {
+     "id": "isolation_mechanism",
+     "name": "Key isolation mechanism",
+     "question": "What mechanism isolates the key material from network-accessible components?",
+     "values": [
+      "secure element/chip",
+      "trusted execution environment or secure enclave",
+      "hardware security module",
+      "network-disabled device",
+      "software-only isolation"
+     ],
+     "parents": [
+      "key_isolation_from_network"
+     ],
+     "merged_from": 1,
+     "support": 7
+    },
+    {
+     "id": "key_distribution_method",
+     "name": "Key distribution method across isolation boundary",
+     "question": "How is key material or signed data moved between the isolated and connected environments?",
+     "values": [
+      "QR code or optical",
+      "USB or wired cable",
+      "NFC or contactless",
+      "Bluetooth or wireless short-range",
+      "manual entry or paper"
+     ],
+     "parents": [
+      "key_isolation_from_network",
+      "physical_transfer_mechanism_air_gap"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "finality_guarantee_mode",
+     "name": "Finality guarantee mode",
+     "question": "Once a transaction is included, can it be reversed by any party, and under what condition?",
+     "values": [
+      "absolute finality",
+      "probabilistic finality",
+      "quorum-conditional finality",
+      "no finality (forks possible)"
+     ],
+     "parents": [
+      "consensus_finality"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "key_share_cryptographic_primitive",
+     "name": "Key share cryptographic primitive",
+     "question": "Which cryptographic primitive is used to split or share the signing key?",
+     "values": [
+      "Shamir secret sharing",
+      "threshold ECDSA/signature scheme",
+      "MPC protocol",
+      "identity-based or threshold encryption",
+      "Merkle-tree or hash-based key management"
+     ],
+     "parents": [
+      "key_splitting_scheme"
+     ],
+     "merged_from": 1,
+     "support": 5
+    }
+   ],
+   "added_values": [
+    {
+     "term_type": "service_location_nexus",
+     "value": "physical point-of-sale or kiosk deployment in jurisdiction",
+     "definition": "Crypto-asset services delivered through physical terminals, kiosks or ATMs located in the jurisdiction, creating a local nexus.",
+     "support": 5
+    },
+    {
+     "term_type": "backing_mechanism",
+     "value": "tokenized real-world asset in vault or escrow",
+     "definition": "Backing asset is a physical or real-world item held in a vault, escrow account, or custodial store and represented one-to-one by an on-chain token.",
+     "support": 5
+    },
+    {
+     "term_type": "key_management_control_model",
+     "value": "multi-party cryptographic co-signing of redemption",
+     "definition": "Signing authority is split across parties via MPC or threshold signatures, with no single party holding a complete key, specifically for redeeming or transferring assets.",
+     "support": 8
+    },
+    {
+     "term_type": "zk_proof_system_variant",
+     "value": "zk-SNARK with trusted setup",
+     "definition": "Succinct non-interactive argument of knowledge whose construction requires a trusted setup ceremony for common reference string generation.",
+     "support": 5
+    },
+    {
+     "term_type": "key_recovery_mechanism",
+     "value": "recovery key / escrow-based recovery",
+     "definition": "Recovery is performed by a dedicated recovery key or escrowed key held separately from the owner keys and used to re-authorise or re-encrypt access.",
+     "support": 5
+    },
+    {
+     "term_type": "validator_selection_mechanism",
+     "value": "capability-score threshold plus random selection",
+     "definition": "Nodes are first filtered by a computed capability, credit, or trust score threshold, then selected randomly from the qualifying set.",
+     "support": 5
+    },
+    {
+     "term_type": "validator_selection_mechanism",
+     "value": "score-based endorsement",
+     "definition": "Nodes are chosen to form a committee or endorse blocks according to an aggregated trust, credit, or evaluation score computed by peers.",
+     "support": 5
+    },
+    {
+     "term_type": "validator_selection_mechanism",
+     "value": "shareholder or bid-based voting",
+     "definition": "Validators are chosen by votes or bids weighted by shares, tokens, or auction offers held by candidate nodes.",
+     "support": 5
+    },
+    {
+     "term_type": "cross_chain_interoperability_mechanism",
+     "value": "notary or multi-signature attestation",
+     "definition": "Cross-chain state or value is moved via a committee, notary group, or threshold signature attesting to source-chain events.",
+     "support": 5
+    },
+    {
+     "term_type": "cross_chain_interoperability_mechanism",
+     "value": "hashed timelock contract (HTLC) swap",
+     "definition": "Assets are exchanged across chains using hashlocks and timelocks so that either both transfers complete or neither does.",
+     "support": 5
+    },
+    {
+     "term_type": "deanonymisation_tracing_approach",
+     "value": "graph neural network representation learning",
+     "definition": "Learns node or subgraph embeddings from transaction graphs with neural architectures such as GNNs, GAT, or attention models to classify addresses.",
+     "support": 5
+    },
+    {
+     "term_type": "interoperability_type",
+     "value": "external data oracle relay",
+     "definition": "Ledger obtains external or cross-chain state via a dedicated oracle or relay that verifies source-chain data for the target chain.",
+     "support": 5
+    },
+    {
+     "term_type": "smart_contract_usage_domain",
+     "value": "supply chain traceability and provenance",
+     "definition": "Ledger applications that track goods, food, or pharmaceuticals across supply chain stages to verify origin and authenticity.",
+     "support": 5
+    },
+    {
+     "term_type": "smart_contract_usage_domain",
+     "value": "peer-to-peer energy trading",
+     "definition": "Ledger applications enabling prosumers and consumers to trade electricity directly, often via auctions or microgrid markets.",
+     "support": 5
+    },
+    {
+     "term_type": "script_verification_approach",
+     "value": "deductive / theorem-proving verification",
+     "definition": "Correctness is established by interactive or automated proof assistants reasoning over the code's semantics with Hoare logic, invariants, or weakest preconditions.",
+     "support": 5
+    },
+    {
+     "term_type": "ledger_partitioning_topology",
+     "value": "main-chain with slave/side-chain attached",
+     "definition": "A primary chain with one or more subsidiary chains that are anchored to or validated through the mainchain.",
+     "support": 5
+    },
+    {
+     "term_type": "key_management_control_model",
+     "value": "key-derivation from parent key or device-bound seed",
+     "definition": "Signing authority is controlled by deriving child or wallet keys from a parent key, seed, or physically unclonable function response rather than storing a standalone key.",
+     "support": 5
+    },
+    {
+     "term_type": "key_splitting_scheme",
+     "value": "single whole key",
+     "definition": "The signing key is held intact in one location without division.",
+     "support": 5
+    },
+    {
+     "term_type": "script_language_expressiveness",
+     "value": "Bitcoin script with transaction-chaining state machine",
+     "definition": "Restricted base script whose expressiveness is extended by chaining transactions to emulate state machines or complex logic across multiple transactions.",
+     "support": 5
+    }
+   ],
+   "dropped": [
+    {
+     "label": "physical_transfer_mechanism_air_gap",
+     "reason": "Existing node is referenced as a parent for key_distribution_method, but the candidate list does not propose it as a new node; only used as parent"
+    },
+    {
+     "label": "isolation_mechanism (duplicate proposals)",
+     "reason": "Merged with the single candidate proposing the same question; no duplicate retained"
+    }
+   ],
+   "result_nodes": 128,
+   "result_edges": 316,
+   "result_values": 529
+  },
+  {
+   "iteration": 6,
+   "catalogue_version": 5,
+   "timestamp": "2026-10-26T11:11:14+00:00",
+   "sample": "data/dlt_corpus/sample_iter06.jsonl",
+   "items": 1818,
+   "sources": {
+    "paper": {
+     "items": 1472,
+     "tags_per_item": 3.99
+    },
+    "patent": {
+     "items": 346,
+     "tags_per_item": 4.22
+    }
+   },
+   "tags": 7330,
+   "tags_per_item": 4.03,
+   "evidence_verified": "7057/7330",
+   "off_topic": 154,
+   "nodes": 128,
+   "nodes_with_items": 119,
+   "dormant": 9,
+   "collapsed": 9,
+   "discovery_targets": 36,
+   "candidates": 79,
+   "accepted": 6,
+   "objectives": {
+    "bits_per_descent": 7.0636,
+    "auc": 0.7734,
+    "expected_depth": 3.8953,
+    "effective_leaves": 22.947,
+    "effective_leaves_over_nodes": 0.1793,
+    "prior_bits_per_descent": 5.0241,
+    "prior_auc": 0.8331
+   },
+   "cost": {
+    "requests": 1855,
+    "input_tokens": 1732478,
+    "cache_read_tokens": 57355422,
+    "output_tokens": 635959,
+    "tagging_usd": 1.0366,
+    "discovery_usd": 0.0302,
+    "evolve_usd": 0.0019,
+    "total_usd": 1.0687
+   },
+   "time": {
+    "api_seconds": 3671.7,
+    "wall_seconds": 175.4,
+    "note": null,
+    "mean_request_s": 1.96,
+    "p95_request_s": 3.13,
+    "workers": 24
+   },
+   "produced_version": 6,
+   "added_term_types": [
+    {
+     "id": "zk_proof_application_role",
+     "name": "ZKP application role",
+     "question": "What role does the zero-knowledge proof play within the system?",
+     "values": [
+      "scaling / rollup validity proof",
+      "data or identity privacy",
+      "verifiable computation / virtual machine",
+      "range or rating correctness"
+     ],
+     "parents": [
+      "zk_proof_system_variant"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "key_storage_medium",
+     "name": "Key storage medium or environment",
+     "question": "Where is the private key physically or logically stored while not in use?",
+     "values": [
+      "volatile memory with power-down erasure",
+      "hardware security module or trusted execution environment",
+      "user mobile or desktop device",
+      "physical card or bearer medium",
+      "cloud or remote encrypted server"
+     ],
+     "parents": [
+      "key_custody_control_model"
+     ],
+     "merged_from": 1,
+     "support": 5
+    },
+    {
+     "id": "ledger_parent_child_coupling",
+     "name": "Parent-child coupling mechanism",
+     "question": "How are the sub-chains or partitions linked to the parent or peer ledgers?",
+     "values": [
+      "merged mining",
+      "sidechain two-way peg",
+      "coupled pair anchoring",
+      "interlinked peer chains",
+      "none or independent"
+     ],
+     "parents": [
+      "ledger_partitioning_topology"
+     ],
+     "merged_from": 1,
+     "support": 6
+    },
+    {
+     "id": "finality_guarantee_source",
+     "name": "Finality guarantee source",
+     "question": "What mechanism or assumption bounds the reversal of a settled transaction?",
+     "values": [
+      "quorum-based BFT finality",
+      "confirmation-depth finality",
+      "economic-penalty finality",
+      "checkpoint or justification finality"
+     ],
+     "parents": [
+      "consensus_finality"
+     ],
+     "merged_from": 1,
+     "support": 5
+    }
+   ],
+   "added_values": [
+    {
+     "term_type": "ledger_partitioning_topology",
+     "value": "hierarchical multi-blockchain with main and multiple subchains",
+     "definition": "Topology where a main chain anchors or coordinates several subchains or sidechains that each process a partition of state or tasks.",
+     "support": 6
+    },
+    {
+     "term_type": "centralisation_locus",
+     "value": "identity_or_access_control",
+     "definition": "Centralisation of who may join, authorise, or hold access rights, such as a single controlling address or a trusted authority issuing keys or approvals.",
+     "support": 5
+    }
+   ],
+   "dropped": [],
+   "result_nodes": 132,
+   "result_edges": 320,
+   "result_values": 549
   }
  ],
  "candidate_usage": {
@@ -664,7 +1915,11 @@
     "privacy_enhancement"
    ],
    "usage": {
-    "iter_2": 613
+    "iter_2": 613,
+    "iter_3": 567,
+    "iter_4": 569,
+    "iter_5": 564,
+    "iter_6": 110
    }
   },
   "smart_contract_deployment_context": {
@@ -674,7 +1929,11 @@
     "script_language_expressiveness"
    ],
    "usage": {
-    "iter_2": 161
+    "iter_2": 161,
+    "iter_3": 142,
+    "iter_4": 83,
+    "iter_5": 116,
+    "iter_6": 37
    }
   },
   "smart_contract_usage_domain": {
@@ -684,7 +1943,11 @@
     "smart_contract_definition_scope"
    ],
    "usage": {
-    "iter_2": 1347
+    "iter_2": 1347,
+    "iter_3": 1416,
+    "iter_4": 1471,
+    "iter_5": 1608,
+    "iter_6": 426
    }
   },
   "identity_binding_mechanism": {
@@ -694,7 +1957,11 @@
     "digital_identity_layer"
    ],
    "usage": {
-    "iter_2": 994
+    "iter_2": 994,
+    "iter_3": 1281,
+    "iter_4": 1200,
+    "iter_5": 1139,
+    "iter_6": 206
    }
   },
   "ledger_purpose": {
@@ -704,7 +1971,11 @@
     "digital_asset_recording"
    ],
    "usage": {
-    "iter_2": 4890
+    "iter_2": 4890,
+    "iter_3": 5629,
+    "iter_4": 5004,
+    "iter_5": 5447,
+    "iter_6": 1057
    }
   },
   "ledger_partitioning_topology": {
@@ -714,7 +1985,11 @@
     "dlt_architecture"
    ],
    "usage": {
-    "iter_2": 340
+    "iter_2": 340,
+    "iter_3": 513,
+    "iter_4": 547,
+    "iter_5": 518,
+    "iter_6": 147
    }
   },
   "cross_chain_transfer_mechanism": {
@@ -723,7 +1998,12 @@
    "parents": [
     "wrapped_or_bridged_asset"
    ],
-   "usage": {}
+   "usage": {
+    "iter_3": 86,
+    "iter_4": 51,
+    "iter_5": 29,
+    "iter_6": 0
+   }
   },
   "key_custody_control_model": {
    "discovered_in_iteration": 2,
@@ -731,7 +2011,12 @@
    "parents": [
     "wallet_type_storage"
    ],
-   "usage": {}
+   "usage": {
+    "iter_3": 277,
+    "iter_4": 267,
+    "iter_5": 203,
+    "iter_6": 21
+   }
   },
   "finality_mechanism": {
    "discovered_in_iteration": 2,
@@ -739,7 +2024,12 @@
    "parents": [
     "consensus_finality"
    ],
-   "usage": {}
+   "usage": {
+    "iter_3": 21,
+    "iter_4": 17,
+    "iter_5": 37,
+    "iter_6": 9
+   }
   },
   "key_isolation_from_network": {
    "discovered_in_iteration": 2,
@@ -747,7 +2037,12 @@
    "parents": [
     "unhosted_vs_hosted_wallet"
    ],
-   "usage": {}
+   "usage": {
+    "iter_3": 55,
+    "iter_4": 60,
+    "iter_5": 42,
+    "iter_6": 10
+   }
   },
   "payment_settlement_mechanism": {
    "discovered_in_iteration": 2,
@@ -755,7 +2050,12 @@
    "parents": [
     "payment_or_transfer_service"
    ],
-   "usage": {}
+   "usage": {
+    "iter_3": 71,
+    "iter_4": 120,
+    "iter_5": 83,
+    "iter_6": 9
+   }
   },
   "key_splitting_scheme": {
    "discovered_in_iteration": 2,
@@ -763,7 +2063,12 @@
    "parents": [
     "unhosted_custody_control_policy"
    ],
-   "usage": {}
+   "usage": {
+    "iter_3": 111,
+    "iter_4": 97,
+    "iter_5": 101,
+    "iter_6": 12
+   }
   },
   "expressiveness_claim_basis": {
    "discovered_in_iteration": 2,
@@ -771,13 +2076,290 @@
    "parents": [
     "script_language_expressiveness"
    ],
-   "usage": {}
+   "usage": {
+    "iter_3": 2,
+    "iter_4": 8,
+    "iter_5": 4,
+    "iter_6": 1
+   }
   },
   "key_management_control_model": {
    "discovered_in_iteration": 2,
    "version": 2,
    "parents": [
     "crypto_asset_service_type"
+   ],
+   "usage": {
+    "iter_3": 35,
+    "iter_4": 81,
+    "iter_5": 76,
+    "iter_6": 7
+   }
+  },
+  "zk_proof_system_variant": {
+   "discovered_in_iteration": 3,
+   "version": 3,
+   "parents": [
+    "privacy_mechanism_family"
+   ],
+   "usage": {
+    "iter_4": 36,
+    "iter_5": 60,
+    "iter_6": 7
+   }
+  },
+  "key_share_distribution_topology": {
+   "discovered_in_iteration": 3,
+   "version": 3,
+   "parents": [
+    "key_management_control_model",
+    "key_splitting_scheme"
+   ],
+   "usage": {
+    "iter_4": 19,
+    "iter_5": 32,
+    "iter_6": 4
+   }
+  },
+  "fiat_rail_integration": {
+   "discovered_in_iteration": 3,
+   "version": 3,
+   "parents": [
+    "payment_settlement_mechanism"
+   ],
+   "usage": {
+    "iter_4": 30,
+    "iter_5": 42,
+    "iter_6": 4
+   }
+  },
+  "key_recovery_mechanism": {
+   "discovered_in_iteration": 3,
+   "version": 3,
+   "parents": [
+    "unhosted_vs_hosted_wallet"
+   ],
+   "usage": {
+    "iter_4": 42,
+    "iter_5": 38,
+    "iter_6": 2
+   }
+  },
+  "script_verification_approach": {
+   "discovered_in_iteration": 3,
+   "version": 3,
+   "parents": [
+    "script_language_expressiveness"
+   ],
+   "usage": {
+    "iter_4": 51,
+    "iter_5": 42,
+    "iter_6": 27
+   }
+  },
+  "backing_of_token": {
+   "discovered_in_iteration": 3,
+   "version": 3,
+   "parents": [
+    "tokenisation_form"
+   ],
+   "usage": {
+    "iter_4": 25,
+    "iter_5": 38,
+    "iter_6": 4
+   }
+  },
+  "deanonymisation_tracing_approach": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "anonymity_enhancing_status"
+   ],
+   "usage": {
+    "iter_5": 39,
+    "iter_6": 11
+   }
+  },
+  "backing_mechanism": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "backing_of_token"
+   ],
+   "usage": {
+    "iter_5": 22,
+    "iter_6": 6
+   }
+  },
+  "settlement_finality_timing": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "payment_settlement_mechanism"
+   ],
+   "usage": {
+    "iter_5": 37,
+    "iter_6": 6
+   }
+  },
+  "settlement_counterparty": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "fiat_rail_integration"
+   ],
+   "usage": {
+    "iter_5": 8,
+    "iter_6": 0
+   }
+  },
+  "physical_transfer_mechanism_air_gap": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "key_isolation_from_network"
+   ],
+   "usage": {
+    "iter_5": 8,
+    "iter_6": 3
+   }
+  },
+  "validator_selection_mechanism": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "consensus_participant_validator_capacity"
+   ],
+   "usage": {
+    "iter_5": 92,
+    "iter_6": 38
+   }
+  },
+  "sharding_partition_basis": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "ledger_partitioning_topology"
+   ],
+   "usage": {
+    "iter_5": 36,
+    "iter_6": 9
+   }
+  },
+  "wallet_interface_delivery_form": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "unhosted_vs_hosted_wallet"
+   ],
+   "usage": {
+    "iter_5": 50,
+    "iter_6": 9
+   }
+  },
+  "share_recovery_mechanism": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "key_splitting_scheme"
+   ],
+   "usage": {
+    "iter_5": 17,
+    "iter_6": 1
+   }
+  },
+  "centralisation_locus": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "centralisation_level"
+   ],
+   "usage": {
+    "iter_5": 304,
+    "iter_6": 70
+   }
+  },
+  "cross_chain_interoperability_mechanism": {
+   "discovered_in_iteration": 4,
+   "version": 4,
+   "parents": [
+    "wrapped_or_bridged_asset"
+   ],
+   "usage": {
+    "iter_5": 108,
+    "iter_6": 22
+   }
+  },
+  "isolation_mechanism": {
+   "discovered_in_iteration": 5,
+   "version": 5,
+   "parents": [
+    "key_isolation_from_network"
+   ],
+   "usage": {
+    "iter_6": 6
+   }
+  },
+  "key_distribution_method": {
+   "discovered_in_iteration": 5,
+   "version": 5,
+   "parents": [
+    "key_isolation_from_network",
+    "physical_transfer_mechanism_air_gap"
+   ],
+   "usage": {
+    "iter_6": 3
+   }
+  },
+  "finality_guarantee_mode": {
+   "discovered_in_iteration": 5,
+   "version": 5,
+   "parents": [
+    "consensus_finality"
+   ],
+   "usage": {
+    "iter_6": 4
+   }
+  },
+  "key_share_cryptographic_primitive": {
+   "discovered_in_iteration": 5,
+   "version": 5,
+   "parents": [
+    "key_splitting_scheme"
+   ],
+   "usage": {
+    "iter_6": 6
+   }
+  },
+  "zk_proof_application_role": {
+   "discovered_in_iteration": 6,
+   "version": 6,
+   "parents": [
+    "zk_proof_system_variant"
+   ],
+   "usage": {}
+  },
+  "key_storage_medium": {
+   "discovered_in_iteration": 6,
+   "version": 6,
+   "parents": [
+    "key_custody_control_model"
+   ],
+   "usage": {}
+  },
+  "ledger_parent_child_coupling": {
+   "discovered_in_iteration": 6,
+   "version": 6,
+   "parents": [
+    "ledger_partitioning_topology"
+   ],
+   "usage": {}
+  },
+  "finality_guarantee_source": {
+   "discovered_in_iteration": 6,
+   "version": 6,
+   "parents": [
+    "consensus_finality"
    ],
    "usage": {}
   }

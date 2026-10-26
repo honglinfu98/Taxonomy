@@ -1,23 +1,23 @@
 # Retrieval index
 
-Catalogue v2, iterations [1, 2]: 8205 items, 35884 tags (4.37 per item), skipped {'off_topic': 616, 'no_tags': 125, 'duplicate': 0}. Sources: {'paper': 3449, 'patent': 4756}.
-DAG: 107 nodes, 293 edges, 5 roots, 28 leaves; 91 nodes carry direct tags, 285 (node, value) pairs are used.
-Postings: {'direct': 91, 'pair': 285, 'closure': 107}. Build time 0.24 s.
+Catalogue v6, iterations [1, 2, 3, 4, 5, 6]: 33581 items, 149256 tags (4.44 per item), skipped {'off_topic': 2426, 'no_tags': 695, 'duplicate': 0}. Sources: {'paper': 14706, 'patent': 18875}.
+DAG: 132 nodes, 320 edges, 5 roots, 40 leaves; 125 nodes carry direct tags, 463 (node, value) pairs are used.
+Postings: {'direct': 125, 'pair': 463, 'closure': 132}. Build time 1.16 s.
 
 | largest closures | items | | most direct tags | items | | highest information content (bits) | IC |
 |---|---|---|---|---|---|---|---|
-| `crypto_asset_scope_criteria` | 6733 | | `ledger_purpose` | 4825 | | `fund_or_pooled_vehicle` | 13.0 |
-| `crypto_asset_function` | 6653 | | `dlt_architecture` | 2492 | | `serious_crime_threshold` | 13.0 |
-| `governance_model` | 6549 | | `ledger_access_permission` | 2465 | | `tax_reporting_status` | 13.0 |
-| `ledger_access_permission` | 6472 | | `digital_asset_recording` | 2383 | | `custody_safeguarding_obligation` | 11.0 |
-| `legal_classification_status` | 6459 | | `smart_contract_definition_scope` | 1553 | | `settlement_finality_legal_test` | 10.42 |
-| `asset_reference_type` | 6434 | | `smart_contract_usage_domain` | 1343 | | `regulated_status_cvc_mst_exemption` | 10.42 |
-| `issuer_presence` | 6336 | | `consensus_mechanism` | 1306 | | `redemption_risk_criteria` | 9.83 |
-| `stablecoin_regulatory_class` | 6332 | | `crypto_asset_function` | 1249 | | `native_vs_stable_price_reference_asset_currency` | 9.68 |
-| `dlt_network_access_scope` | 6285 | | `network_topology` | 1161 | | `consumer_vs_professional_status` | 9.54 |
-| `network_topology` | 6202 | | `identity_binding_mechanism` | 992 | | `ancillary_asset_status` | 9.54 |
-| `convertible_virtual_currency_status` | 6106 | | `ledger_node_role` | 933 | | `party_role_transfer` | 9.19 |
-| `consensus_mechanism` | 6056 | | `ledger_storage_model` | 896 | | `investment_contract_howey` | 9.0 |
-| `digital_asset_recording` | 6047 | | `digital_identity_layer` | 887 | | `securities_status_digital_asset` | 9.0 |
-| `reward_mechanism` | 5837 | | `crypto_asset_scope_criteria` | 806 | | `self_hosted_address_status` | 8.61 |
-| `fee_structure` | 5790 | | `centralisation_level` | 708 | | `service_location_nexus` | 8.36 |
+| `crypto_asset_scope_criteria` | 28539 | | `ledger_purpose` | 21717 | | `related_person_affiliation` | 13.45 |
+| `crypto_asset_function` | 28265 | | `dlt_architecture` | 8471 | | `key_distribution_method` | 13.45 |
+| `legal_classification_status` | 27454 | | `digital_asset_recording` | 8335 | | `finality_guarantee_mode` | 13.04 |
+| `asset_reference_type` | 27329 | | `ledger_access_permission` | 8298 | | `serious_crime_threshold` | 12.71 |
+| `issuer_presence` | 26946 | | `smart_contract_usage_domain` | 6242 | | `fund_or_pooled_vehicle` | 12.45 |
+| `stablecoin_regulatory_class` | 26933 | | `smart_contract_definition_scope` | 6079 | | `isolation_mechanism` | 12.45 |
+| `governance_model` | 26651 | | `consensus_mechanism` | 5258 | | `key_share_cryptographic_primitive` | 12.45 |
+| `ledger_access_permission` | 26347 | | `network_topology` | 4886 | | `settlement_counterparty` | 12.04 |
+| `convertible_virtual_currency_status` | 25960 | | `crypto_asset_function` | 4866 | | `tax_reporting_status` | 11.87 |
+| `digital_asset_recording` | 25770 | | `identity_binding_mechanism` | 4808 | | `custody_safeguarding_obligation` | 11.71 |
+| `dlt_network_access_scope` | 25747 | | `digital_identity_layer` | 3493 | | `operational_resilience_risk` | 11.45 |
+| `network_topology` | 25450 | | `ledger_node_role` | 3448 | | `physical_transfer_mechanism_air_gap` | 11.45 |
+| `consensus_mechanism` | 24880 | | `ledger_storage_model` | 3230 | | `prudential_classification_group` | 11.33 |
+| `reward_mechanism` | 23988 | | `centralisation_level` | 3134 | | `expressiveness_claim_basis` | 11.13 |
+| `fee_structure` | 23761 | | `crypto_asset_scope_criteria` | 2957 | | `share_recovery_mechanism` | 10.87 |

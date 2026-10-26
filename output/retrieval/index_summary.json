@@ -1,217 +1,221 @@
 {
- "catalogue_version": 2,
+ "catalogue_version": 6,
  "iterations": [
   1,
-  2
+  2,
+  3,
+  4,
+  5,
+  6
  ],
- "items": 8205,
- "tags": 35884,
- "tags_per_item": 4.37,
+ "items": 33581,
+ "tags": 149256,
+ "tags_per_item": 4.44,
  "skipped": {
-  "off_topic": 616,
-  "no_tags": 125,
+  "off_topic": 2426,
+  "no_tags": 695,
   "duplicate": 0
  },
- "nodes": 107,
- "edges": 293,
+ "nodes": 132,
+ "edges": 320,
  "roots": 5,
- "leaves": 28,
- "nodes_with_items": 91,
- "pairs_with_items": 285,
+ "leaves": 40,
+ "nodes_with_items": 125,
+ "pairs_with_items": 463,
  "postings": {
-  "direct": 91,
-  "pair": 285,
-  "closure": 107
+  "direct": 125,
+  "pair": 463,
+  "closure": 132
  },
  "closure_size_top": [
   [
    "crypto_asset_scope_criteria",
-   6733
+   28539
   ],
   [
    "crypto_asset_function",
-   6653
-  ],
-  [
-   "governance_model",
-   6549
-  ],
-  [
-   "ledger_access_permission",
-   6472
+   28265
   ],
   [
    "legal_classification_status",
-   6459
+   27454
   ],
   [
    "asset_reference_type",
-   6434
+   27329
   ],
   [
    "issuer_presence",
-   6336
+   26946
   ],
   [
    "stablecoin_regulatory_class",
-   6332
+   26933
   ],
   [
-   "dlt_network_access_scope",
-   6285
+   "governance_model",
+   26651
   ],
   [
-   "network_topology",
-   6202
+   "ledger_access_permission",
+   26347
   ],
   [
    "convertible_virtual_currency_status",
-   6106
-  ],
-  [
-   "consensus_mechanism",
-   6056
+   25960
   ],
   [
    "digital_asset_recording",
-   6047
+   25770
+  ],
+  [
+   "dlt_network_access_scope",
+   25747
+  ],
+  [
+   "network_topology",
+   25450
+  ],
+  [
+   "consensus_mechanism",
+   24880
   ],
   [
    "reward_mechanism",
-   5837
+   23988
   ],
   [
    "fee_structure",
-   5790
+   23761
   ]
  ],
  "direct_size_top": [
   [
    "ledger_purpose",
-   4825
+   21717
   ],
   [
    "dlt_architecture",
-   2492
-  ],
-  [
-   "ledger_access_permission",
-   2465
+   8471
   ],
   [
    "digital_asset_recording",
-   2383
+   8335
   ],
   [
-   "smart_contract_definition_scope",
-   1553
+   "ledger_access_permission",
+   8298
   ],
   [
    "smart_contract_usage_domain",
-   1343
+   6242
+  ],
+  [
+   "smart_contract_definition_scope",
+   6079
   ],
   [
    "consensus_mechanism",
-   1306
-  ],
-  [
-   "crypto_asset_function",
-   1249
+   5258
   ],
   [
    "network_topology",
-   1161
+   4886
+  ],
+  [
+   "crypto_asset_function",
+   4866
   ],
   [
    "identity_binding_mechanism",
-   992
-  ],
-  [
-   "ledger_node_role",
-   933
-  ],
-  [
-   "ledger_storage_model",
-   896
+   4808
   ],
   [
    "digital_identity_layer",
-   887
+   3493
   ],
   [
-   "crypto_asset_scope_criteria",
-   806
+   "ledger_node_role",
+   3448
+  ],
+  [
+   "ledger_storage_model",
+   3230
   ],
   [
    "centralisation_level",
-   708
+   3134
+  ],
+  [
+   "crypto_asset_scope_criteria",
+   2957
   ]
  ],
  "information_content_top": [
   [
-   "fund_or_pooled_vehicle",
-   13.0
+   "related_person_affiliation",
+   13.45
+  ],
+  [
+   "key_distribution_method",
+   13.45
+  ],
+  [
+   "finality_guarantee_mode",
+   13.04
   ],
   [
    "serious_crime_threshold",
-   13.0
+   12.71
+  ],
+  [
+   "fund_or_pooled_vehicle",
+   12.45
+  ],
+  [
+   "isolation_mechanism",
+   12.45
+  ],
+  [
+   "key_share_cryptographic_primitive",
+   12.45
+  ],
+  [
+   "settlement_counterparty",
+   12.04
   ],
   [
    "tax_reporting_status",
-   13.0
+   11.87
   ],
   [
    "custody_safeguarding_obligation",
-   11.0
+   11.71
   ],
   [
-   "settlement_finality_legal_test",
-   10.42
+   "operational_resilience_risk",
+   11.45
   ],
   [
-   "regulated_status_cvc_mst_exemption",
-   10.42
+   "physical_transfer_mechanism_air_gap",
+   11.45
   ],
   [
-   "redemption_risk_criteria",
-   9.83
+   "prudential_classification_group",
+   11.33
   ],
   [
-   "native_vs_stable_price_reference_asset_currency",
-   9.68
+   "expressiveness_claim_basis",
+   11.13
   ],
   [
-   "consumer_vs_professional_status",
-   9.54
-  ],
-  [
-   "ancillary_asset_status",
-   9.54
-  ],
-  [
-   "party_role_transfer",
-   9.19
-  ],
-  [
-   "investment_contract_howey",
-   9.0
-  ],
-  [
-   "securities_status_digital_asset",
-   9.0
-  ],
-  [
-   "self_hosted_address_status",
-   8.61
-  ],
-  [
-   "service_location_nexus",
-   8.36
+   "share_recovery_mechanism",
+   10.87
   ]
  ],
  "by_source": {
-  "paper": 3449,
-  "patent": 4756
+  "paper": 14706,
+  "patent": 18875
  },
- "build_seconds": 0.24
+ "build_seconds": 1.16
 }

@@ -16,35 +16,50 @@
 \end{table*}
 \begin{table*}[t]
   \centering
-  \caption{Case study: the reference-asset term type as induced, with the model's
-  definition of each value and the source its first citation points to. The
-  notes field (not shown) records that \src{MiCA} splits by single currency
-  versus any other reference, that the \src{GENIUS Act} and UK regulations admit
-  fiat only, and that \src{FATF} and the \src{FSB} apply their standards to any
-  reference.}
-  \label{tab:case}
-  \scriptsize
-  \begin{minipage}{0.62\textwidth}\input{tables/case_reference_asset}\end{minipage}
-\end{table*}
-\begin{table*}[t]
-  \centering
-  \caption{Term types added by the two maintenance iterations
+  \caption{Term types added by the \NIterWord\ maintenance iterations
   (\cref{sec:exp:rq3}), with the node they were discovered under, the number
   of shown residual items supporting them and the increase in branching gain
   at that node in bits. Values added to existing nodes (\EAddedValues\ and
   \TAddedValues) are not listed.}
   \label{tab:accepted}
   \scriptsize
-  \begin{minipage}{0.7\textwidth}\input{tables/new_types}\end{minipage}
+  \begin{minipage}[t]{0.49\textwidth}\input{tables/new_types_a}\end{minipage}\hfill
+  \begin{minipage}[t]{0.49\textwidth}\input{tables/new_types_b}\end{minipage}
 \end{table*}
 \begin{table*}[t]
   \centering
-  \caption{Objectives of each catalogue version from its is-a weights (prior)
-  and from the tags of the batch classified with it (\cref{sec:exp:rq3}).}
-  \label{tab:objectives}
+  \caption{Pilot tagging evaluation on \GItems\ held-out items with \GLabels\
+  gold labels adjudicated from two passes of \texttt{\GModel} (pass agreement
+  micro-F$_1$ \GAgreement\%; no human labels), catalogue version \EvalCat,
+  one run per system. Label metrics are over (term type, value) pairs, type
+  metrics over term types.}
+  \label{tab:evaltag}
   \scriptsize
-  \input{tables/objectives_iter}
+  \begin{minipage}{0.78\textwidth}\input{tables/eval_tagging_paper}\end{minipage}
 \end{table*}
+
+\begin{table*}[t]
+  \centering
+  \caption{Pilot retrieval evaluation on the same \GItems\ items over
+  \NQueries\ judged queries (\NQValue\ value, \NQNode\ node, \NQAnd\ two-atom
+  AND), $k{=}10$, relevance graded from the gold labels. Each system ranks
+  with its own tags or text; the last column is the mean latency per query
+  on the judged collection.}
+  \label{tab:evalret}
+  \scriptsize
+  \begin{minipage}{0.86\textwidth}\input{tables/eval_retrieval_paper}\end{minipage}
+\end{table*}
+
+\begin{table*}[t]
+  \centering
+  \caption{Recorded API usage and cost of every stage at list price (USD);
+  cached tokens are read at a tenth of the input rate. Task~A and~B prompts
+  exceed 100K tokens and are priced on the long-prompt card.}
+  \label{tab:billing}
+  \scriptsize
+  \begin{minipage}{0.8\textwidth}\input{tables/billing}\end{minipage}
+\end{table*}
+
 \begin{figure*}[t]
   \centering
   \input{figures/spectrum}
@@ -55,15 +70,6 @@
   and leaves 30 roots.}
   \label{fig:spectrum}
 \end{figure*}
-\begin{figure*}[t]
-  \centering
-  \begin{minipage}{0.6\textwidth}\centering\input{tables/tree_asset}\end{minipage}
-  \caption{Primary-parent tree of the asset category. Each node shows its name,
-  the weight of its primary is-a edge and, as $+n$, the number of additional
-  parents kept in the DAG. The root has no parent.}
-  \label{fig:tree}
-\end{figure*}
-
 
 \section{Prompts}
 \label{app:prompts}
@@ -96,11 +102,15 @@ system block that follows the instructions.}
 \section{Additional Results}
 \label{app:results}
 
-\Cref{fig:tree} renders the asset category of the DAG discussed in
-\cref{sec:exp:rq2} and \cref{fig:spectrum} its threshold sweep; \cref{tab:objectives}
-holds the per-version objectives of \cref{sec:exp:rq3}. \Cref{tab:case} is the case study of \cref{sec:exp:rq1}; \cref{tab:errors}
+\Cref{fig:spectrum} is the threshold sweep of \cref{sec:exp:rq2}.
+\Cref{tab:errors}
 lists the rejected citations discussed there; \cref{tab:accepted} lists the
-term types the maintenance iterations added. The full seed catalogue of 93
-term types, the primary-parent trees of the other four categories, the Task B,
-discovery and consolidation prompts, and the full DAG with every distribution
-are in the released artefact.
+term types the maintenance iterations added; \cref{tab:evaltag,tab:evalret}
+hold the pilot gold-set evaluation of \cref{sec:exp:rq3}: \GItems\ held-out
+items were annotated twice by \texttt{\GModel} at effort high, and a (term
+type, value) label is gold when both passes assert it with verified evidence
+(pass agreement micro-F$_1$ \GAgreement\%, \GDropped\ labels dropped); no
+human labels are involved, and one run per system is reported. \Cref{tab:billing}
+is the billing of every stage. The seed catalogue, the case study,
+the category trees, the remaining prompts and the full DAG are in the
+released artefact.

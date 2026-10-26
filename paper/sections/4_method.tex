@@ -29,11 +29,10 @@ We do not give the model whole statutes: a regulation such as \src{MiCA}
 defines its vocabulary in a few articles and spends the rest on obligations
 that refer back to them, so we take the definitions articles, glossaries,
 classification conditions and business-model descriptions and nothing else. \Cref{tab:corpus} lists the result: 21 legal
-instruments from the EU, the UK, the US and six international bodies, plus two
-academic taxonomies of blockchains~\cite{tasca2019taxonomy} and of
-crypto-assets~\cite{zhang2026cryptotaxonomy} and one paper describing a
-domain corpus~\cite{hernandez2026dltcorpus}, with reference lists and large
-tables removed.
+instruments from the EU, the UK, the US and six international bodies, two
+academic taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy} and the
+DLT-Corpus paper~\cite{hernandez2026dltcorpus}, with reference lists and
+large tables removed.
 
 \begin{table}[t]
   \centering
@@ -78,8 +77,7 @@ file the model sees.
 
 We place the whole corpus in the system prompt, after the stable instructions
 and behind a prompt-cache breakpoint~\cite{gim2024promptcache} with a one-hour lifetime; the task prompt
-is the user message. Every later task, and every prompt iteration, then pays
-only for the small uncached part. The choice is also methodological:
+is the user message. Every later call pays only for the uncached part. The choice is also methodological:
 recognising that \src{MiCA}'s ``referencing the value of one official
 currency'' and the \src{GENIUS Act}'s ``fixed amount of monetary value'' answer
 the same question needs both passages in view, which a retriever would have to
@@ -220,7 +218,7 @@ sample, tags, objectives, additions, cost and time to a log.
 version of $G$ and numbered $0..N{-}1$, and every posting list is a bitset, so
 set algebra on postings is one integer operation. Node $y$ carries $S(y)$, one
 bitset per value $v \in V(y)$, and its closure $C(y)$, the union of $S$ over
-its descendants; each category carries the union of its nodes. From $G$ we
+its descendants. From $G$ we
 precompute, in topological order, the descendants and ancestors of every node,
 the best is-a path strength $s(d, a)$, the maximum over paths from $d$ to $a$
 of the product of edge weights, the lowest common ancestors of any node set,
@@ -245,7 +243,7 @@ $o$ with probability proportional to its size $m_o$, the expected narrowing is
   \label{eq:facet}
   \mathcal{N}(y) = \sum_{o} \frac{m_o}{\sum_{o'} m_{o'}} \log_2 \frac{n}{m_o},
 \end{equation}
-zero for an option that covers the whole set. The facet with the highest
-$\mathcal{N}$ is the best next question, which is the branching gain of
-\cref{sec:method:maintain} evaluated on a result set instead of a batch: the
-same objective that grows the DAG routes a search through it.
+zero for an option that covers the whole set; the facet with the highest
+$\mathcal{N}$ is the next question, the branching gain of
+\cref{sec:method:maintain} evaluated on a result set: the objective that
+grows the DAG also routes a search through it.

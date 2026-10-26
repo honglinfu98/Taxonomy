@@ -1,0 +1,2193 @@
+{
+  "run": {
+    "task": "C",
+    "iteration": 6,
+    "catalogue_version": 5,
+    "sample": "data/dlt_corpus/sample_iter06.jsonl",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "items": 1818,
+    "unparsed": 36,
+    "seconds": 154.2,
+    "timestamp": "2026-10-26T11:10:46+00:00",
+    "catalogue_chars": 88569,
+    "time": {
+      "requests": 1818,
+      "api_seconds": 3558.8,
+      "mean_request_s": 1.96,
+      "p50_request_s": 1.88,
+      "p95_request_s": 3.13,
+      "max_request_s": 6.95,
+      "wall_seconds": 154.2,
+      "workers": 24
+    },
+    "usage": {
+      "input": 1505394,
+      "output": 617169,
+      "cache_read": 57355422,
+      "cache_write": 31566
+    },
+    "cost_usd": 1.0366,
+    "cost_per_item_usd": 0.00057
+  },
+  "items": 1818,
+  "off_topic": 154,
+  "tags_total": 7330,
+  "tags_per_item": 4.03,
+  "evidence_verified": 7057,
+  "value_match": {
+    "code": 7330
+  },
+  "rejected_tags": 45,
+  "novel_proposals": 46,
+  "term_types_used": 105,
+  "term_types_total": 128,
+  "coverage_by_category": {
+    "asset": 752,
+    "technology": 1451,
+    "actor": 102,
+    "activity": 63,
+    "obligation_or_risk": 37
+  },
+  "term_type_item_counts": {
+    "ledger_purpose": 1057,
+    "smart_contract_usage_domain": 426,
+    "ledger_access_permission": 342,
+    "dlt_architecture": 320,
+    "smart_contract_definition_scope": 291,
+    "consensus_mechanism": 284,
+    "digital_asset_recording": 282,
+    "network_topology": 264,
+    "crypto_asset_function": 258,
+    "centralisation_level": 211,
+    "identity_binding_mechanism": 206,
+    "crypto_asset_scope_criteria": 150,
+    "ledger_partitioning_topology": 147,
+    "governance_model": 141,
+    "digital_identity_layer": 133,
+    "privacy_enhancement": 126,
+    "privacy_mechanism_family": 110,
+    "script_language_expressiveness": 106,
+    "ledger_storage_model": 103,
+    "ledger_node_role": 95,
+    "asset_reference_type": 73,
+    "centralisation_locus": 70,
+    "dlt_network_access_scope": 69,
+    "reward_mechanism": 67,
+    "native_asset_type": 65,
+    "native_vs_token_standard": 64,
+    "interoperability_type": 61,
+    "software_architecture": 58,
+    "tokenisation_form": 48,
+    "ecosystem_participant_role": 48,
+    "legal_classification_status": 46,
+    "validator_selection_mechanism": 38,
+    "fungibility": 38,
+    "smart_contract_deployment_context": 37,
+    "convertible_virtual_currency_status": 34,
+    "consensus_finality": 33,
+    "crypto_asset_service_type": 27,
+    "script_verification_approach": 27,
+    "decentralised_system_status": 26,
+    "service_provider_status": 25,
+    "cross_chain_interoperability_mechanism": 22,
+    "asset_supply_policy": 21,
+    "unhosted_vs_hosted_wallet": 21,
+    "key_custody_control_model": 21,
+    "fee_structure": 20,
+    "yield_source": 17,
+    "anonymity_enhancing_status": 16,
+    "risk_type_illicit_finance": 16,
+    "aml_obligations_applicability": 16,
+    "central_bank_digital_currency": 15,
+    "custodian_or_custody_model": 14,
+    "issuer_presence": 14,
+    "code_license_openness": 13,
+    "key_splitting_scheme": 12,
+    "deanonymisation_tracing_approach": 11,
+    "wrapped_or_bridged_asset": 11,
+    "wallet_type_storage": 11,
+    "stablecoin_regulatory_class": 10,
+    "key_isolation_from_network": 10,
+    "wallet_interface_delivery_form": 9,
+    "sharding_partition_basis": 9,
+    "finality_mechanism": 9,
+    "payment_settlement_mechanism": 9,
+    "consensus_participant_validator_capacity": 8,
+    "offer_and_issuance_method": 8,
+    "payment_or_transfer_service": 8,
+    "exchange_venue_type": 8,
+    "zk_proof_system_variant": 7,
+    "minting_mechanism": 7,
+    "key_management_control_model": 7,
+    "redemption_mechanism": 7,
+    "actor_role_in_service": 6,
+    "isolation_mechanism": 6,
+    "backing_mechanism": 6,
+    "key_share_cryptographic_primitive": 6,
+    "settlement_finality_timing": 6,
+    "ancillary_asset_status": 6,
+    "regulatory_regime_scope_jurisdictional": 5,
+    "transfer_of_crypto_assets": 5,
+    "finality_guarantee_mode": 4,
+    "ict_system_scope": 4,
+    "key_share_distribution_topology": 4,
+    "backing_of_token": 4,
+    "fiat_rail_integration": 4,
+    "decentralised_control_status_actor": 3,
+    "decentralised_or_centralised_offer_model": 3,
+    "claim_form": 3,
+    "key_distribution_method": 3,
+    "physical_transfer_mechanism_air_gap": 3,
+    "virtual_asset_property_status": 2,
+    "service_location_nexus": 2,
+    "unhosted_custody_control_policy": 2,
+    "settlement_finality_legal_test": 2,
+    "infrastructure_provider_type": 2,
+    "key_recovery_mechanism": 2,
+    "crypto_asset_operator": 2,
+    "staking_arrangement": 1,
+    "redemption_risk_criteria": 1,
+    "fund_or_pooled_vehicle": 1,
+    "transaction_type_p2p": 1,
+    "serious_crime_threshold": 1,
+    "expressiveness_claim_basis": 1,
+    "native_vs_stable_price_reference_asset_currency": 1,
+    "consumer_vs_professional_status": 1,
+    "share_recovery_mechanism": 1
+  },
+  "pair_counts": [
+    {
+      "term_type": "ledger_purpose",
+      "name": "Ledger purpose",
+      "value": "data integrity and provenance",
+      "items": 585
+    },
+    {
+      "term_type": "ledger_purpose",
+      "name": "Ledger purpose",
+      "value": "value transfer",
+      "items": 322
+    },
+    {
+      "term_type": "dlt_architecture",
+      "name": "DLT data structure (blockchain vs non-chain DLT)",
+      "value": "blockchain (chain of blocks)",
+      "items": 297
+    },
+    {
+      "term_type": "digital_asset_recording",
+      "name": "Recording and cryptographic linkage",
+      "value": "recorded on cryptographically secured distributed ledger",
+      "items": 265
+    },
+    {
+      "term_type": "crypto_asset_function",
+      "name": "Economic function of the asset",
+      "value": "payment or investment purpose",
+      "items": 227
+    },
+    {
+      "term_type": "ledger_purpose",
+      "name": "Ledger purpose",
+      "value": "identity and access control",
+      "items": 215
+    },
+    {
+      "term_type": "network_topology",
+      "name": "Network topology and node roles",
+      "value": "decentralised",
+      "items": 192
+    },
+    {
+      "term_type": "smart_contract_definition_scope",
+      "name": "Smart contract / distributed ledger application scope",
+      "value": "smart contract (self-executing)",
+      "items": 188
+    },
+    {
+      "term_type": "ledger_purpose",
+      "name": "Ledger purpose",
+      "value": "supply chain traceability and product provenance",
+      "items": 153
+    },
+    {
+      "term_type": "ledger_purpose",
+      "name": "Ledger purpose",
+      "value": "consent or governance",
+      "items": 141
+    },
+    {
+      "term_type": "centralisation_level",
+      "name": "Centralisation of control",
+      "value": "decentralised",
+      "items": 136
+    },
+    {
+      "term_type": "ledger_access_permission",
+      "name": "Ledger access and permissioning",
+      "value": "permissioned public",
+      "items": 136
+    },
+    {
+      "term_type": "consensus_mechanism",
+      "name": "Consensus mechanism",
+      "value": "proof of work (PoW)",
+      "items": 134
+    },
+    {
+      "term_type": "consensus_mechanism",
+      "name": "Consensus mechanism",
+      "value": "Byzantine fault tolerant (BFT)",
+      "items": 130
+    },
+    {
+      "term_type": "ledger_access_permission",
+      "name": "Ledger access and permissioning",
+      "value": "public / permissionless",
+      "items": 127
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "IoT and smart cities",
+      "items": 125
+    },
+    {
+      "term_type": "smart_contract_definition_scope",
+      "name": "Smart contract / distributed ledger application scope",
+      "value": "distributed ledger application (smart contract)",
+      "items": 108
+    },
+    {
+      "term_type": "digital_identity_layer",
+      "name": "Identity layer and onboarding",
+      "value": "KYC/AML identity layer",
+      "items": 102
+    },
+    {
+      "term_type": "crypto_asset_scope_criteria",
+      "name": "Crypto-asset definitional criteria",
+      "value": "payment or investment capable virtual asset",
+      "items": 101
+    },
+    {
+      "term_type": "ledger_purpose",
+      "name": "Ledger purpose",
+      "value": "electronic health and medical record management",
+      "items": 99
+    },
+    {
+      "term_type": "ledger_access_permission",
+      "name": "Ledger access and permissioning",
+      "value": "permissioned private",
+      "items": 95
+    },
+    {
+      "term_type": "script_language_expressiveness",
+      "name": "Smart contract / script language expressiveness",
+      "value": "Turing complete",
+      "items": 93
+    },
+    {
+      "term_type": "privacy_enhancement",
+      "name": "Privacy and anonymity features",
+      "value": "built-in privacy",
+      "items": 90
+    },
+    {
+      "term_type": "identity_binding_mechanism",
+      "name": "Identity binding mechanism",
+      "value": "cryptographic key pairs only",
+      "items": 88
+    },
+    {
+      "term_type": "governance_model",
+      "name": "Governance model of a DLT system",
+      "value": "decentralised governance system",
+      "items": 86
+    },
+    {
+      "term_type": "ledger_storage_model",
+      "name": "Ledger storage model (what is stored on chain)",
+      "value": "transactions stored",
+      "items": 80
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "supply chain traceability and provenance",
+      "items": 69
+    },
+    {
+      "term_type": "privacy_mechanism_family",
+      "name": "Privacy mechanism family",
+      "value": "encryption (symmetric or public-key)",
+      "items": 68
+    },
+    {
+      "term_type": "network_topology",
+      "name": "Network topology and node roles",
+      "value": "hierarchical / consortium",
+      "items": 67
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "electronic health records and medical data sharing",
+      "items": 67
+    },
+    {
+      "term_type": "ledger_purpose",
+      "name": "Ledger purpose",
+      "value": "blockchain used for record-keeping of non-asset data",
+      "items": 65
+    },
+    {
+      "term_type": "reward_mechanism",
+      "name": "Validator reward mechanism",
+      "value": "lump-sum reward",
+      "items": 60
+    },
+    {
+      "term_type": "native_asset_type",
+      "name": "Native asset presence and type",
+      "value": "own single cryptocurrency",
+      "items": 56
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "energy trading and grid management",
+      "items": 50
+    },
+    {
+      "term_type": "crypto_asset_scope_criteria",
+      "name": "Crypto-asset definitional criteria",
+      "value": "DLT-recorded digital representation of value or right",
+      "items": 50
+    },
+    {
+      "term_type": "ledger_partitioning_topology",
+      "name": "Ledger partitioning or layering topology",
+      "value": "single chain",
+      "items": 50
+    },
+    {
+      "term_type": "asset_reference_type",
+      "name": "Reference asset type",
+      "value": "other crypto-assets or none (algorithmic)",
+      "items": 45
+    },
+    {
+      "term_type": "software_architecture",
+      "name": "Software architecture (monolithic vs polylithic)",
+      "value": "polylithic",
+      "items": 44
+    },
+    {
+      "term_type": "centralisation_level",
+      "name": "Centralisation of control",
+      "value": "hybrid",
+      "items": 40
+    },
+    {
+      "term_type": "centralisation_level",
+      "name": "Centralisation of control",
+      "value": "centralised",
+      "items": 40
+    },
+    {
+      "term_type": "ledger_purpose",
+      "name": "Ledger purpose",
+      "value": "educational credential and achievement verification",
+      "items": 40
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "healthcare",
+      "items": 36
+    },
+    {
+      "term_type": "legal_classification_status",
+      "name": "Legal classification of crypto-asset",
+      "value": "other crypto-asset or commodity",
+      "items": 36
+    },
+    {
+      "term_type": "native_vs_token_standard",
+      "name": "Native asset versus token standard",
+      "value": "NFT standard token",
+      "items": 35
+    },
+    {
+      "term_type": "privacy_enhancement",
+      "name": "Privacy and anonymity features",
+      "value": "add-on privacy",
+      "items": 34
+    },
+    {
+      "term_type": "ledger_node_role",
+      "name": "Node / DLT network node role",
+      "value": "validator",
+      "items": 34
+    },
+    {
+      "term_type": "convertible_virtual_currency_status",
+      "name": "Convertible virtual currency (CVC) status",
+      "value": "convertible virtual currency (CVC)",
+      "items": 33
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "supply chain and retail",
+      "items": 32
+    },
+    {
+      "term_type": "ledger_partitioning_topology",
+      "name": "Ledger partitioning or layering topology",
+      "value": "layered main and sub-chains",
+      "items": 32
+    },
+    {
+      "term_type": "consensus_mechanism",
+      "name": "Consensus mechanism",
+      "value": "proof of stake (PoS)",
+      "items": 31
+    },
+    {
+      "term_type": "digital_identity_layer",
+      "name": "Identity layer and onboarding",
+      "value": "anonymous / pseudonymous",
+      "items": 31
+    },
+    {
+      "term_type": "dlt_network_access_scope",
+      "name": "Ledger scope: open or closed access by design",
+      "value": "open network",
+      "items": 31
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "intellectual property and media",
+      "items": 30
+    },
+    {
+      "term_type": "identity_binding_mechanism",
+      "name": "Identity binding mechanism",
+      "value": "trusted third-party attestation",
+      "items": 29
+    },
+    {
+      "term_type": "fungibility",
+      "name": "Fungibility",
+      "value": "unique / non-fungible",
+      "items": 28
+    },
+    {
+      "term_type": "ecosystem_participant_role",
+      "name": "Ecosystem participant role",
+      "value": "researcher / evaluator",
+      "items": 28
+    },
+    {
+      "term_type": "ledger_partitioning_topology",
+      "name": "Ledger partitioning or layering topology",
+      "value": "multiple parallel chains",
+      "items": 27
+    },
+    {
+      "term_type": "crypto_asset_function",
+      "name": "Economic function of the asset",
+      "value": "good, collectible or non-commodity asset",
+      "items": 27
+    },
+    {
+      "term_type": "identity_binding_mechanism",
+      "name": "Identity binding mechanism",
+      "value": "device / machine identity",
+      "items": 26
+    },
+    {
+      "term_type": "dlt_network_access_scope",
+      "name": "Ledger scope: open or closed access by design",
+      "value": "closed-loop system",
+      "items": 26
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "energy and utilities",
+      "items": 25
+    },
+    {
+      "term_type": "governance_model",
+      "name": "Governance model of a DLT system",
+      "value": "technical / company-led",
+      "items": 24
+    },
+    {
+      "term_type": "centralisation_locus",
+      "name": "Centralisation locus",
+      "value": "data_storage_or_oracles",
+      "items": 23
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "peer-to-peer energy trading",
+      "items": 23
+    },
+    {
+      "term_type": "ledger_node_role",
+      "name": "Node / DLT network node role",
+      "value": "full node (complete replica)",
+      "items": 22
+    },
+    {
+      "term_type": "consensus_finality",
+      "name": "Finality of agreement",
+      "value": "deterministic",
+      "items": 22
+    },
+    {
+      "term_type": "native_vs_token_standard",
+      "name": "Native asset versus token standard",
+      "value": "native protocol asset",
+      "items": 22
+    },
+    {
+      "term_type": "ledger_node_role",
+      "name": "Node / DLT network node role",
+      "value": "miner",
+      "items": 22
+    },
+    {
+      "term_type": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "value": "external data oracle",
+      "items": 21
+    },
+    {
+      "term_type": "smart_contract_deployment_context",
+      "name": "Smart contract deployment context",
+      "value": "general-purpose / unspecified",
+      "items": 20
+    },
+    {
+      "term_type": "identity_binding_mechanism",
+      "name": "Identity binding mechanism",
+      "value": "DID-anchored verifiable credential",
+      "items": 20
+    },
+    {
+      "term_type": "privacy_mechanism_family",
+      "name": "Privacy mechanism family",
+      "value": "commitments and hashing",
+      "items": 20
+    },
+    {
+      "term_type": "identity_binding_mechanism",
+      "name": "Identity binding mechanism",
+      "value": "device or hardware identity",
+      "items": 19
+    },
+    {
+      "term_type": "ledger_node_role",
+      "name": "Node / DLT network node role",
+      "value": "tracking node (non-validating)",
+      "items": 19
+    },
+    {
+      "term_type": "ledger_partitioning_topology",
+      "name": "Ledger partitioning or layering topology",
+      "value": "sharded chain",
+      "items": 19
+    },
+    {
+      "term_type": "ledger_storage_model",
+      "name": "Ledger storage model (what is stored on chain)",
+      "value": "binary Merkle tree header",
+      "items": 18
+    },
+    {
+      "term_type": "dlt_architecture",
+      "name": "DLT data structure (blockchain vs non-chain DLT)",
+      "value": "non-blockchain DLT (e.g. DAG, Hashgraph)",
+      "items": 18
+    },
+    {
+      "term_type": "crypto_asset_function",
+      "name": "Economic function of the asset",
+      "value": "security / financial instrument token",
+      "items": 18
+    },
+    {
+      "term_type": "asset_supply_policy",
+      "name": "Asset supply management (monetary policy)",
+      "value": "limited deterministic supply",
+      "items": 17
+    },
+    {
+      "term_type": "governance_model",
+      "name": "Governance model of a DLT system",
+      "value": "alliance / consortium",
+      "items": 17
+    },
+    {
+      "term_type": "digital_asset_recording",
+      "name": "Recording and cryptographic linkage",
+      "value": "other electronic data",
+      "items": 17
+    },
+    {
+      "term_type": "asset_reference_type",
+      "name": "Reference asset type",
+      "value": "single official currency",
+      "items": 16
+    },
+    {
+      "term_type": "governance_model",
+      "name": "Governance model of a DLT system",
+      "value": "open-source community",
+      "items": 16
+    },
+    {
+      "term_type": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "value": "explicit interoperability",
+      "items": 15
+    },
+    {
+      "term_type": "software_architecture",
+      "name": "Software architecture (monolithic vs polylithic)",
+      "value": "monolithic",
+      "items": 15
+    },
+    {
+      "term_type": "centralisation_locus",
+      "name": "Centralisation locus",
+      "value": "consensus_or_mining",
+      "items": 15
+    },
+    {
+      "term_type": "privacy_mechanism_family",
+      "name": "Privacy mechanism family",
+      "value": "zero-knowledge proofs",
+      "items": 15
+    },
+    {
+      "term_type": "dlt_architecture",
+      "name": "DLT data structure (blockchain vs non-chain DLT)",
+      "value": "DAG-based (IOTA)",
+      "items": 15
+    },
+    {
+      "term_type": "aml_obligations_applicability",
+      "name": "Anti-money laundering obligations",
+      "value": "obliged entity (crypto-asset service provider)",
+      "items": 15
+    },
+    {
+      "term_type": "yield_source",
+      "name": "Source of yield",
+      "value": "no yield",
+      "items": 15
+    },
+    {
+      "term_type": "tokenisation_form",
+      "name": "Tokenisation form",
+      "value": "native or unbacked tokenised asset",
+      "items": 15
+    },
+    {
+      "term_type": "centralisation_locus",
+      "name": "Centralisation locus",
+      "value": "governance_voting",
+      "items": 14
+    },
+    {
+      "term_type": "consensus_mechanism",
+      "name": "Consensus mechanism",
+      "value": "proof of authority",
+      "items": 14
+    },
+    {
+      "term_type": "key_custody_control_model",
+      "name": "Key custody and control model",
+      "value": "self-custody single key",
+      "items": 14
+    },
+    {
+      "term_type": "tokenisation_form",
+      "name": "Tokenisation form",
+      "value": "tokenised traditional asset",
+      "items": 14
+    },
+    {
+      "term_type": "centralisation_locus",
+      "name": "Centralisation locus",
+      "value": "validator_or_node_operation",
+      "items": 13
+    },
+    {
+      "term_type": "ledger_partitioning_topology",
+      "name": "Ledger partitioning or layering topology",
+      "value": "main-chain with slave/side-chain attached",
+      "items": 13
+    },
+    {
+      "term_type": "service_provider_status",
+      "name": "Crypto-asset service provider or VASP status",
+      "value": "crypto-asset service provider (CASP, EU)",
+      "items": 13
+    },
+    {
+      "term_type": "code_license_openness",
+      "name": "Source code openness",
+      "value": "open source",
+      "items": 13
+    },
+    {
+      "term_type": "smart_contract_usage_domain",
+      "name": "Smart contract usage domain",
+      "value": "identity and authentication",
+      "items": 13
+    },
+    {
+      "term_type": "dlt_network_access_scope",
+      "name": "Ledger scope: open or closed access by design",
+      "value": "limited network of service providers",
+      "items": 12
+    },
+    {
+      "term_type": "central_bank_digital_currency",
+      "name": "Central bank digital currency status",
+      "value": "central bank digital currency",
+      "items": 12
+    },
+    {
+      "term_type": "script_verification_approach",
+      "name": "Script verification approach",
+      "value": "static analysis",
+      "items": 12
+    },
+    {
+      "term_type": "unhosted_vs_hosted_wallet",
+      "name": "Hosted versus unhosted (self-hosted) wallet",
+      "value": "non-custodial (unhosted/self-hosted) wallet",
+      "items": 12
+    },
+    {
+      "term_type": "tokenisation_form",
+      "name": "Tokenisation form",
+      "value": "tokenised intellectual property or contractual claim",
+      "items": 11
+    },
+    {
+      "term_type": "crypto_asset_function",
+      "name": "Economic function of the asset",
+      "value": "utility token",
+      "items": 11
+    },
+    {
+      "term_type": "anonymity_enhancing_status",
+      "name": "Anonymity-enhancing crypto-asset status",
+      "value": "traceable-but-pseudonymous ledger",
+      "items": 11
+    },
+    {
+      "term_type": "consensus_finality",
+      "name": "Finality of agreement",
+      "value": "non-deterministic (probabilistic)",
+      "items": 11
+    },
+    {
+      "term_type": "identity_binding_mechanism",
+      "name": "Identity binding mechanism",
+      "value": "biometric authentication",
+      "items": 11
+    },
+    {
+      "term_type": "script_verification_approach",
+      "name": "Script verification approach",
+      "value": "formal verification",
+      "items": 11
+    },
+    {
+      "term_type": "identity_binding_mechanism",
+      "name": "Identity binding mechanism",
+      "value": "decentralised identifiers (DID) resolved via blockchain",
+      "items": 11
+    },
+    {
+      "term_type": "fungibility",
+      "name": "Fungibility",
+      "value": "fungible",
+      "items": 11
+    },
+    {
+      "term_type": "ledger_partitioning_topology",
+      "name": "Ledger partitioning or layering topology",
+      "value": "partitioned ledger",
+      "items": 11
+    },
+    {
+      "term_type": "network_topology",
+      "name": "Network topology and node roles",
+      "value": "centralised",
+      "items": 10
+    },
+    {
+      "term_type": "decentralised_system_status",
+      "name": "Decentralised system certification",
+      "value": "not decentralised",
+      "items": 10
+    },
+    {
+      "term_type": "identity_binding_mechanism",
+      "name": "Identity binding mechanism",
+      "value": "decentralised identifiers (DID)",
+      "items": 10
+    },
+    {
+      "term_type": "privacy_mechanism_family",
+      "name": "Privacy mechanism family",
+      "value": "homomorphic encryption",
+      "items": 10
+    },
+    {
+      "term_type": "decentralised_system_status",
+      "name": "Decentralised system certification",
+      "value": "decentralised system",
+      "items": 10
+    },
+    {
+      "term_type": "fee_structure",
+      "name": "Transaction fee regime",
+      "value": "optional fee",
+      "items": 9
+    },
+    {
+      "term_type": "privacy_mechanism_family",
+      "name": "Privacy mechanism family",
+      "value": "private channels or data collections",
+      "items": 9
+    },
+    {
+      "term_type": "ledger_storage_model",
+      "name": "Ledger storage model (what is stored on chain)",
+      "value": "user balance stored",
+      "items": 9
+    },
+    {
+      "term_type": "issuer_presence",
+      "name": "Issuer identifiability",
+      "value": "identifiable issuer",
+      "items": 9
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "name": "Crypto-asset service type",
+      "value": "transfer services",
+      "items": 9
+    },
+    {
+      "term_type": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "value": "external data oracle relay",
+      "items": 8
+    },
+    {
+      "term_type": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "value": "inter-blockchain protocol (IBC)",
+      "items": 8
+    },
+    {
+      "term_type": "risk_type_illicit_finance",
+      "name": "Illicit finance risk category",
+      "value": "regulatory arbitrage",
+      "items": 8
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "name": "Crypto-asset service type",
+      "value": "operation of trading platform",
+      "items": 8
+    },
+    {
+      "term_type": "risk_type_illicit_finance",
+      "name": "Illicit finance risk category",
+      "value": "fraud / scam (investment or romance)",
+      "items": 8
+    },
+    {
+      "term_type": "smart_contract_deployment_context",
+      "name": "Smart contract deployment context",
+      "value": "IoT / device identity",
+      "items": 8
+    },
+    {
+      "term_type": "payment_or_transfer_service",
+      "name": "Payment service and funds transfer",
+      "value": "transfer of funds",
+      "items": 8
+    },
+    {
+      "term_type": "validator_selection_mechanism",
+      "name": "Validator selection mechanism",
+      "value": "shareholder or bid-based voting",
+      "items": 8
+    },
+    {
+      "term_type": "asset_reference_type",
+      "name": "Reference asset type",
+      "value": "fiat currency (US payment stablecoin)",
+      "items": 8
+    },
+    {
+      "term_type": "ledger_node_role",
+      "name": "Node / DLT network node role",
+      "value": "partial replica node",
+      "items": 8
+    },
+    {
+      "term_type": "validator_selection_mechanism",
+      "name": "Validator selection mechanism",
+      "value": "random or verifiable-random selection",
+      "items": 7
+    },
+    {
+      "term_type": "reward_mechanism",
+      "name": "Validator reward mechanism",
+      "value": "staking reward",
+      "items": 7
+    },
+    {
+      "term_type": "central_bank_digital_currency",
+      "name": "Central bank digital currency status",
+      "value": "private crypto-asset (not CBDC)",
+      "items": 7
+    },
+    {
+      "term_type": "unhosted_vs_hosted_wallet",
+      "name": "Hosted versus unhosted (self-hosted) wallet",
+      "value": "custodial (hosted) wallet",
+      "items": 7
+    },
+    {
+      "term_type": "sharding_partition_basis",
+      "name": "Sharding partition basis",
+      "value": "validator/node grouping",
+      "items": 7
+    },
+    {
+      "term_type": "finality_mechanism",
+      "name": "Finality mechanism",
+      "value": "quorum certificate / BFT voting",
+      "items": 7
+    },
+    {
+      "term_type": "asset_reference_type",
+      "name": "Reference asset type",
+      "value": "commodity",
+      "items": 7
+    },
+    {
+      "term_type": "script_language_expressiveness",
+      "name": "Smart contract / script language expressiveness",
+      "value": "non-Turing complete (generic)",
+      "items": 7
+    },
+    {
+      "term_type": "cross_chain_interoperability_mechanism",
+      "name": "Cross-chain interoperability mechanism",
+      "value": "side-chain peg / two-way transfer",
+      "items": 7
+    },
+    {
+      "term_type": "offer_and_issuance_method",
+      "name": "Offer and issuance method (token distribution)",
+      "value": "public offer / ICO",
+      "items": 7
+    },
+    {
+      "term_type": "service_provider_status",
+      "name": "Crypto-asset service provider or VASP status",
+      "value": "virtual asset service provider (VASP, FATF)",
+      "items": 7
+    },
+    {
+      "term_type": "custodian_or_custody_model",
+      "name": "Custody model",
+      "value": "third-party custodian",
+      "items": 7
+    },
+    {
+      "term_type": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "value": "implicit interoperability",
+      "items": 7
+    },
+    {
+      "term_type": "fee_structure",
+      "name": "Transaction fee regime",
+      "value": "variable (size-based) fee",
+      "items": 7
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "name": "Crypto-asset service type",
+      "value": "custody and administration",
+      "items": 7
+    },
+    {
+      "term_type": "wallet_type_storage",
+      "name": "Wallet storage mode (hot or cold)",
+      "value": "hot wallet",
+      "items": 7
+    },
+    {
+      "term_type": "native_asset_type",
+      "name": "Native asset presence and type",
+      "value": "no native asset",
+      "items": 7
+    },
+    {
+      "term_type": "validator_selection_mechanism",
+      "name": "Validator selection mechanism",
+      "value": "reputation based selection",
+      "items": 7
+    },
+    {
+      "term_type": "legal_classification_status",
+      "name": "Legal classification of crypto-asset",
+      "value": "security or financial instrument",
+      "items": 7
+    },
+    {
+      "term_type": "validator_selection_mechanism",
+      "name": "Validator selection mechanism",
+      "value": "capability-score threshold plus random selection",
+      "items": 6
+    },
+    {
+      "term_type": "validator_selection_mechanism",
+      "name": "Validator selection mechanism",
+      "value": "all eligible nodes participate",
+      "items": 6
+    },
+    {
+      "term_type": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "value": "no interoperability",
+      "items": 6
+    },
+    {
+      "term_type": "deanonymisation_tracing_approach",
+      "name": "Deanonymisation / tracing approach",
+      "value": "address clustering heuristic",
+      "items": 6
+    },
+    {
+      "term_type": "asset_reference_type",
+      "name": "Reference asset type",
+      "value": "basket or other assets/rights",
+      "items": 6
+    },
+    {
+      "term_type": "native_vs_token_standard",
+      "name": "Native asset versus token standard",
+      "value": "ERC-20 fungible token",
+      "items": 6
+    },
+    {
+      "term_type": "decentralised_system_status",
+      "name": "Decentralised system certification",
+      "value": "mature blockchain system",
+      "items": 6
+    },
+    {
+      "term_type": "ecosystem_participant_role",
+      "name": "Ecosystem participant role",
+      "value": "network support (miner, staker, validator, node provider)",
+      "items": 6
+    },
+    {
+      "term_type": "wrapped_or_bridged_asset",
+      "name": "Wrapped / cross-chain representation",
+      "value": "wrapped token",
+      "items": 6
+    },
+    {
+      "term_type": "tokenisation_form",
+      "name": "Tokenisation form",
+      "value": "fractional equity or security token",
+      "items": 6
+    },
+    {
+      "term_type": "smart_contract_deployment_context",
+      "name": "Smart contract deployment context",
+      "value": "supply chain / logistics",
+      "items": 6
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "name": "Crypto-asset service type",
+      "value": "exchange for funds or other crypto-assets",
+      "items": 6
+    },
+    {
+      "term_type": "key_custody_control_model",
+      "name": "Key custody and control model",
+      "value": "multi-party or threshold signing",
+      "items": 6
+    },
+    {
+      "term_type": "validator_selection_mechanism",
+      "name": "Validator selection mechanism",
+      "value": "stake or share weighted selection",
+      "items": 5
+    },
+    {
+      "term_type": "consensus_participant_validator_capacity",
+      "name": "Validator operation capacity (who may run a node)",
+      "value": "pre-selected authorities",
+      "items": 5
+    },
+    {
+      "term_type": "key_splitting_scheme",
+      "name": "Key splitting scheme",
+      "value": "threshold secret sharing (t-of-n shards)",
+      "items": 5
+    },
+    {
+      "term_type": "privacy_mechanism_family",
+      "name": "Privacy mechanism family",
+      "value": "data slicing or secret sharing",
+      "items": 5
+    },
+    {
+      "term_type": "key_isolation_from_network",
+      "name": "Key isolation from network connectivity",
+      "value": "offline/cold (air-gapped)",
+      "items": 5
+    },
+    {
+      "term_type": "ecosystem_participant_role",
+      "name": "Ecosystem participant role",
+      "value": "software developer (no VASP status)",
+      "items": 5
+    },
+    {
+      "term_type": "wrapped_or_bridged_asset",
+      "name": "Wrapped / cross-chain representation",
+      "value": "non-wrapped asset",
+      "items": 5
+    },
+    {
+      "term_type": "key_share_cryptographic_primitive",
+      "name": "Key share cryptographic primitive",
+      "value": "Shamir secret sharing",
+      "items": 5
+    },
+    {
+      "term_type": "smart_contract_definition_scope",
+      "name": "Smart contract / distributed ledger application scope",
+      "value": "distributed ledger system",
+      "items": 5
+    },
+    {
+      "term_type": "exchange_venue_type",
+      "name": "Trading venue type",
+      "value": "centralised exchange (CEX)",
+      "items": 5
+    },
+    {
+      "term_type": "zk_proof_system_variant",
+      "name": "Zero-knowledge proof system variant",
+      "value": "non-interactive ZKP (unspecified)",
+      "items": 5
+    },
+    {
+      "term_type": "script_language_expressiveness",
+      "name": "Smart contract / script language expressiveness",
+      "value": "Bitcoin script with transaction-chaining state machine",
+      "items": 5
+    },
+    {
+      "term_type": "redemption_mechanism",
+      "name": "Redemption mechanism",
+      "value": "off-chain issuer redemption",
+      "items": 5
+    },
+    {
+      "term_type": "transfer_of_crypto_assets",
+      "name": "Transfer of crypto-assets (travel rule scope)",
+      "value": "transfer of crypto-assets (covered)",
+      "items": 5
+    },
+    {
+      "term_type": "wallet_interface_delivery_form",
+      "name": "Wallet interface or delivery form",
+      "value": "browser or web extension",
+      "items": 4
+    },
+    {
+      "term_type": "key_isolation_from_network",
+      "name": "Key isolation from network connectivity",
+      "value": "online/hot (network-connected)",
+      "items": 4
+    },
+    {
+      "term_type": "cross_chain_interoperability_mechanism",
+      "name": "Cross-chain interoperability mechanism",
+      "value": "cross-chain relay or oracle verification",
+      "items": 4
+    },
+    {
+      "term_type": "cross_chain_interoperability_mechanism",
+      "name": "Cross-chain interoperability mechanism",
+      "value": "notary or multi-signature attestation",
+      "items": 4
+    },
+    {
+      "term_type": "ecosystem_participant_role",
+      "name": "Ecosystem participant role",
+      "value": "blockchain developer / protocol team",
+      "items": 4
+    },
+    {
+      "term_type": "stablecoin_regulatory_class",
+      "name": "Payment stablecoin / e-money / ART regulatory class",
+      "value": "electronic money token (EMT)",
+      "items": 4
+    },
+    {
+      "term_type": "script_verification_approach",
+      "name": "Script verification approach",
+      "value": "deductive / theorem-proving verification",
+      "items": 4
+    },
+    {
+      "term_type": "ict_system_scope",
+      "name": "Information and communications technology system",
+      "value": "ICT / computer system",
+      "items": 4
+    },
+    {
+      "term_type": "cross_chain_interoperability_mechanism",
+      "name": "Cross-chain interoperability mechanism",
+      "value": "software bridge between protocols",
+      "items": 4
+    },
+    {
+      "term_type": "wallet_type_storage",
+      "name": "Wallet storage mode (hot or cold)",
+      "value": "cold wallet",
+      "items": 4
+    },
+    {
+      "term_type": "issuer_presence",
+      "name": "Issuer identifiability",
+      "value": "no identifiable issuer",
+      "items": 4
+    },
+    {
+      "term_type": "service_provider_status",
+      "name": "Crypto-asset service provider or VASP status",
+      "value": "digital asset service provider (US)",
+      "items": 4
+    },
+    {
+      "term_type": "anonymity_enhancing_status",
+      "name": "Anonymity-enhancing crypto-asset status",
+      "value": "non-anonymity-enhanced",
+      "items": 4
+    },
+    {
+      "term_type": "consensus_mechanism",
+      "name": "Consensus mechanism",
+      "value": "proof of capacity / storage",
+      "items": 4
+    },
+    {
+      "term_type": "regulatory_regime_scope_jurisdictional",
+      "name": "Jurisdictional regime and home or host state",
+      "value": "home Member State",
+      "items": 4
+    },
+    {
+      "term_type": "centralisation_locus",
+      "name": "Centralisation locus",
+      "value": "token_issuance_or_monetary_policy",
+      "items": 4
+    },
+    {
+      "term_type": "exchange_venue_type",
+      "name": "Trading venue type",
+      "value": "decentralised exchange (DEX)",
+      "items": 4
+    },
+    {
+      "term_type": "stablecoin_regulatory_class",
+      "name": "Payment stablecoin / e-money / ART regulatory class",
+      "value": "global stablecoin (GSC)",
+      "items": 4
+    },
+    {
+      "term_type": "wallet_interface_delivery_form",
+      "name": "Wallet interface or delivery form",
+      "value": "software wallet application",
+      "items": 4
+    },
+    {
+      "term_type": "custodian_or_custody_model",
+      "name": "Custody model",
+      "value": "self-custody",
+      "items": 4
+    },
+    {
+      "term_type": "ancillary_asset_status",
+      "name": "Ancillary asset and network token status",
+      "value": "network token",
+      "items": 4
+    },
+    {
+      "term_type": "tokenisation_form",
+      "name": "Tokenisation form",
+      "value": "tokenised physical commodity or precious metal",
+      "items": 4
+    },
+    {
+      "term_type": "key_splitting_scheme",
+      "name": "Key splitting scheme",
+      "value": "partial key split across devices or servers",
+      "items": 4
+    },
+    {
+      "term_type": "validator_selection_mechanism",
+      "name": "Validator selection mechanism",
+      "value": "fixed rotation or leader election",
+      "items": 3
+    },
+    {
+      "term_type": "custodian_or_custody_model",
+      "name": "Custody model",
+      "value": "multi-signature or multi-party computation",
+      "items": 3
+    },
+    {
+      "term_type": "ecosystem_participant_role",
+      "name": "Ecosystem participant role",
+      "value": "governance body / central developer (stablecoin)",
+      "items": 3
+    },
+    {
+      "term_type": "backing_mechanism",
+      "name": "Backing mechanism",
+      "value": "tokenized real-world asset in vault or escrow",
+      "items": 3
+    },
+    {
+      "term_type": "finality_guarantee_mode",
+      "name": "Finality guarantee mode",
+      "value": "probabilistic finality",
+      "items": 3
+    },
+    {
+      "term_type": "ledger_storage_model",
+      "name": "Ledger storage model (what is stored on chain)",
+      "value": "Patricia Merkle tree header",
+      "items": 3
+    },
+    {
+      "term_type": "script_verification_approach",
+      "name": "Script verification approach",
+      "value": "runtime metering",
+      "items": 3
+    },
+    {
+      "term_type": "smart_contract_deployment_context",
+      "name": "Smart contract deployment context",
+      "value": "healthcare data sharing",
+      "items": 3
+    },
+    {
+      "term_type": "payment_settlement_mechanism",
+      "name": "Payment settlement mechanism",
+      "value": "off-chain payment channel",
+      "items": 3
+    },
+    {
+      "term_type": "decentralised_or_centralised_offer_model",
+      "name": "Public offer or private placement",
+      "value": "offer to the public",
+      "items": 3
+    },
+    {
+      "term_type": "asset_supply_policy",
+      "name": "Asset supply management (monetary policy)",
+      "value": "fixed supply (US PWG)",
+      "items": 3
+    },
+    {
+      "term_type": "consensus_participant_validator_capacity",
+      "name": "Validator operation capacity (who may run a node)",
+      "value": "open validator participation",
+      "items": 3
+    },
+    {
+      "term_type": "payment_settlement_mechanism",
+      "name": "Payment settlement mechanism",
+      "value": "fiat conversion and merchant settlement",
+      "items": 3
+    },
+    {
+      "term_type": "minting_mechanism",
+      "name": "Minting mechanism",
+      "value": "consensus-based minting",
+      "items": 3
+    },
+    {
+      "term_type": "fee_structure",
+      "name": "Transaction fee regime",
+      "value": "no fee",
+      "items": 3
+    },
+    {
+      "term_type": "script_language_expressiveness",
+      "name": "Smart contract / script language expressiveness",
+      "value": "non-Turing complete with external data",
+      "items": 3
+    },
+    {
+      "term_type": "ledger_access_permission",
+      "name": "Ledger access and permissioning",
+      "value": "public permissionless (US)",
+      "items": 3
+    },
+    {
+      "term_type": "minting_mechanism",
+      "name": "Minting mechanism",
+      "value": "NFT registry minting",
+      "items": 3
+    },
+    {
+      "term_type": "privacy_enhancement",
+      "name": "Privacy and anonymity features",
+      "value": "anonymity-enhanced CVC (privacy coin)",
+      "items": 3
+    },
+    {
+      "term_type": "settlement_finality_timing",
+      "name": "Settlement finality timing",
+      "value": "real-time or instant",
+      "items": 3
+    },
+    {
+      "term_type": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "value": "cross-chain transaction forwarding with hop limit",
+      "items": 3
+    },
+    {
+      "term_type": "key_management_control_model",
+      "name": "Key management control model",
+      "value": "multi-party computation / threshold signing",
+      "items": 3
+    },
+    {
+      "term_type": "actor_role_in_service",
+      "name": "Principal or agent role in transaction",
+      "value": "for or on behalf of another",
+      "items": 3
+    },
+    {
+      "term_type": "decentralised_control_status_actor",
+      "name": "Control or sufficient influence over DeFi arrangement",
+      "value": "no identifiable controller",
+      "items": 2
+    },
+    {
+      "term_type": "cross_chain_interoperability_mechanism",
+      "name": "Cross-chain interoperability mechanism",
+      "value": "cross-chain smart contract execution",
+      "items": 2
+    },
+    {
+      "term_type": "anonymity_enhancing_status",
+      "name": "Anonymity-enhancing crypto-asset status",
+      "value": "anonymity-enhancing coin (AEC)",
+      "items": 2
+    },
+    {
+      "term_type": "isolation_mechanism",
+      "name": "Key isolation mechanism",
+      "value": "trusted execution environment or secure enclave",
+      "items": 2
+    },
+    {
+      "term_type": "zk_proof_system_variant",
+      "name": "Zero-knowledge proof system variant",
+      "value": "zk-SNARK with trusted setup",
+      "items": 2
+    },
+    {
+      "term_type": "sharding_partition_basis",
+      "name": "Sharding partition basis",
+      "value": "transaction-graph or workload-based partition",
+      "items": 2
+    },
+    {
+      "term_type": "risk_type_illicit_finance",
+      "name": "Illicit finance risk category",
+      "value": "wallet risk scoring and taint tracking",
+      "items": 2
+    },
+    {
+      "term_type": "backing_mechanism",
+      "name": "Backing mechanism",
+      "value": "algorithmic peg without collateral",
+      "items": 2
+    },
+    {
+      "term_type": "reward_mechanism",
+      "name": "Validator reward mechanism",
+      "value": "block plus security reward",
+      "items": 2
+    },
+    {
+      "term_type": "ledger_partitioning_topology",
+      "name": "Ledger partitioning or layering topology",
+      "value": "tiered parent-child chain hierarchy",
+      "items": 2
+    },
+    {
+      "term_type": "service_provider_status",
+      "name": "Crypto-asset service provider or VASP status",
+      "value": "authorised cryptoasset custodian (UK)",
+      "items": 2
+    },
+    {
+      "term_type": "virtual_asset_property_status",
+      "name": "Virtual assets as property or proceeds of crime",
+      "value": "property / funds or other assets",
+      "items": 2
+    },
+    {
+      "term_type": "key_share_distribution_topology",
+      "name": "Key share distribution topology",
+      "value": "across physical devices",
+      "items": 2
+    },
+    {
+      "term_type": "validator_selection_mechanism",
+      "name": "Validator selection mechanism",
+      "value": "score-based endorsement",
+      "items": 2
+    },
+    {
+      "term_type": "deanonymisation_tracing_approach",
+      "name": "Deanonymisation / tracing approach",
+      "value": "graph neural network representation learning",
+      "items": 2
+    },
+    {
+      "term_type": "settlement_finality_timing",
+      "name": "Settlement finality timing",
+      "value": "condition- or event-triggered",
+      "items": 2
+    },
+    {
+      "term_type": "actor_role_in_service",
+      "name": "Principal or agent role in transaction",
+      "value": "as principal",
+      "items": 2
+    },
+    {
+      "term_type": "native_asset_type",
+      "name": "Native asset presence and type",
+      "value": "native token used for fees (US)",
+      "items": 2
+    },
+    {
+      "term_type": "claim_form",
+      "name": "Form of holder claim",
+      "value": "no claim",
+      "items": 2
+    },
+    {
+      "term_type": "aml_obligations_applicability",
+      "name": "Anti-money laundering obligations",
+      "value": "VASP subject to Recommendation 15 licensing",
+      "items": 2
+    },
+    {
+      "term_type": "service_location_nexus",
+      "name": "Nexus to jurisdiction (services offered in jurisdiction)",
+      "value": "services offered to residents or customers in jurisdiction",
+      "items": 2
+    },
+    {
+      "term_type": "legal_classification_status",
+      "name": "Legal classification of crypto-asset",
+      "value": "stable-value token (ART/EMT)",
+      "items": 2
+    },
+    {
+      "term_type": "key_share_distribution_topology",
+      "name": "Key share distribution topology",
+      "value": "among blockchain network nodes",
+      "items": 2
+    },
+    {
+      "term_type": "unhosted_custody_control_policy",
+      "name": "Permitted control over client assets (unilateral vs multi-party control)",
+      "value": "multi-party or multi-signature control",
+      "items": 2
+    },
+    {
+      "term_type": "asset_supply_policy",
+      "name": "Asset supply management (monetary policy)",
+      "value": "unlimited deterministic supply",
+      "items": 2
+    },
+    {
+      "term_type": "centralisation_locus",
+      "name": "Centralisation locus",
+      "value": "block_building_or_ordering",
+      "items": 2
+    },
+    {
+      "term_type": "script_verification_approach",
+      "name": "Script verification approach",
+      "value": "fuzzing",
+      "items": 2
+    },
+    {
+      "term_type": "risk_type_illicit_finance",
+      "name": "Illicit finance risk category",
+      "value": "terrorist financing",
+      "items": 2
+    },
+    {
+      "term_type": "physical_transfer_mechanism_air_gap",
+      "name": "Physical transfer mechanism across air gap",
+      "value": "optical/visual codes",
+      "items": 2
+    },
+    {
+      "term_type": "legal_classification_status",
+      "name": "Legal classification of crypto-asset",
+      "value": "fund / AIF-type",
+      "items": 2
+    },
+    {
+      "term_type": "ancillary_asset_status",
+      "name": "Ancillary asset and network token status",
+      "value": "ancillary asset",
+      "items": 2
+    },
+    {
+      "term_type": "deanonymisation_tracing_approach",
+      "name": "Deanonymisation / tracing approach",
+      "value": "transaction time-series analysis",
+      "items": 2
+    },
+    {
+      "term_type": "ecosystem_participant_role",
+      "name": "Ecosystem participant role",
+      "value": "issuer",
+      "items": 2
+    },
+    {
+      "term_type": "payment_settlement_mechanism",
+      "name": "Payment settlement mechanism",
+      "value": "on-chain direct settlement",
+      "items": 2
+    },
+    {
+      "term_type": "backing_of_token",
+      "name": "Backing of token",
+      "value": "fully asset-backed",
+      "items": 2
+    },
+    {
+      "term_type": "settlement_finality_legal_test",
+      "name": "Settlement finality and legal enforceability",
+      "value": "legally enforceable and final",
+      "items": 2
+    },
+    {
+      "term_type": "native_vs_token_standard",
+      "name": "Native asset versus token standard",
+      "value": "other token template (e.g. ERC-721, ERC-1400)",
+      "items": 2
+    },
+    {
+      "term_type": "key_recovery_mechanism",
+      "name": "Key recovery mechanism",
+      "value": "no recovery supported",
+      "items": 2
+    },
+    {
+      "term_type": "key_distribution_method",
+      "name": "Key distribution method across isolation boundary",
+      "value": "QR code or optical",
+      "items": 2
+    },
+    {
+      "term_type": "key_splitting_scheme",
+      "name": "Key splitting scheme",
+      "value": "no key splitting (single complete key)",
+      "items": 2
+    },
+    {
+      "term_type": "fiat_rail_integration",
+      "name": "Fiat-rail integration",
+      "value": "bank transfer bridged",
+      "items": 2
+    },
+    {
+      "term_type": "key_management_control_model",
+      "name": "Key management control model",
+      "value": "single-party key storage",
+      "items": 2
+    },
+    {
+      "term_type": "isolation_mechanism",
+      "name": "Key isolation mechanism",
+      "value": "secure element/chip",
+      "items": 2
+    },
+    {
+      "term_type": "actor_role_in_service",
+      "name": "Principal or agent role in transaction",
+      "value": "as agent",
+      "items": 1
+    },
+    {
+      "term_type": "staking_arrangement",
+      "name": "Staking arrangement (self, delegated, custodial, liquid)",
+      "value": "custodial or ancillary staking service",
+      "items": 1
+    },
+    {
+      "term_type": "staking_arrangement",
+      "name": "Staking arrangement (self, delegated, custodial, liquid)",
+      "value": "liquid staking",
+      "items": 1
+    },
+    {
+      "term_type": "decentralised_control_status_actor",
+      "name": "Control or sufficient influence over DeFi arrangement",
+      "value": "identifiable controlling person (VASP)",
+      "items": 1
+    },
+    {
+      "term_type": "stablecoin_regulatory_class",
+      "name": "Payment stablecoin / e-money / ART regulatory class",
+      "value": "payment stablecoin (US)",
+      "items": 1
+    },
+    {
+      "term_type": "deanonymisation_tracing_approach",
+      "name": "Deanonymisation / tracing approach",
+      "value": "argumentation or legal reasoning",
+      "items": 1
+    },
+    {
+      "term_type": "crypto_asset_function",
+      "name": "Economic function of the asset",
+      "value": "governance token",
+      "items": 1
+    },
+    {
+      "term_type": "unhosted_vs_hosted_wallet",
+      "name": "Hosted versus unhosted (self-hosted) wallet",
+      "value": "self-hosted address",
+      "items": 1
+    },
+    {
+      "term_type": "cross_chain_interoperability_mechanism",
+      "name": "Cross-chain interoperability mechanism",
+      "value": "atomic cross-chain swap",
+      "items": 1
+    },
+    {
+      "term_type": "redemption_risk_criteria",
+      "name": "Redemption and reserve adequacy",
+      "value": "redeemable for fixed monetary value",
+      "items": 1
+    },
+    {
+      "term_type": "fund_or_pooled_vehicle",
+      "name": "Pooled investment vehicle structure",
+      "value": "commodity pool or pooled investment vehicle (US)",
+      "items": 1
+    },
+    {
+      "term_type": "convertible_virtual_currency_status",
+      "name": "Convertible virtual currency (CVC) status",
+      "value": "non-convertible virtual currency",
+      "items": 1
+    },
+    {
+      "term_type": "privacy_enhancement",
+      "name": "Privacy and anonymity features",
+      "value": "anonymity-enhancing coins (EU)",
+      "items": 1
+    },
+    {
+      "term_type": "unhosted_vs_hosted_wallet",
+      "name": "Hosted versus unhosted (self-hosted) wallet",
+      "value": "hardware-embedded key storage on physical medium",
+      "items": 1
+    },
+    {
+      "term_type": "transaction_type_p2p",
+      "name": "Peer-to-peer (P2P) transaction",
+      "value": "P2P via unhosted wallet",
+      "items": 1
+    },
+    {
+      "term_type": "crypto_asset_scope_criteria",
+      "name": "Crypto-asset definitional criteria",
+      "value": "fungible digital representation of value (US digital asset)",
+      "items": 1
+    },
+    {
+      "term_type": "sharding_partition_basis",
+      "name": "Sharding partition basis",
+      "value": "jurisdiction or location partition",
+      "items": 1
+    },
+    {
+      "term_type": "yield_source",
+      "name": "Source of yield",
+      "value": "direct yield (economic activity)",
+      "items": 1
+    },
+    {
+      "term_type": "serious_crime_threshold",
+      "name": "Serious crime threshold for predicate offences",
+      "value": "serious crime",
+      "items": 1
+    },
+    {
+      "term_type": "regulatory_regime_scope_jurisdictional",
+      "name": "Jurisdictional regime and home or host state",
+      "value": "host Member State",
+      "items": 1
+    },
+    {
+      "term_type": "cross_chain_interoperability_mechanism",
+      "name": "Cross-chain interoperability mechanism",
+      "value": "hashed timelock contract (HTLC) swap",
+      "items": 1
+    },
+    {
+      "term_type": "finality_mechanism",
+      "name": "Finality mechanism",
+      "value": "no global ordering (causal or asynchronous settlement)",
+      "items": 1
+    },
+    {
+      "term_type": "interoperability_type",
+      "name": "Interoperability and intraoperability",
+      "value": "domain-name-based chain addressing",
+      "items": 1
+    },
+    {
+      "term_type": "expressiveness_claim_basis",
+      "name": "Expressiveness claim basis",
+      "value": "explicitly Turing-complete claim",
+      "items": 1
+    },
+    {
+      "term_type": "fee_structure",
+      "name": "Transaction fee regime",
+      "value": "mandatory fee",
+      "items": 1
+    },
+    {
+      "term_type": "fee_structure",
+      "name": "Transaction fee regime",
+      "value": "fixed (request-based) fee",
+      "items": 1
+    },
+    {
+      "term_type": "key_splitting_scheme",
+      "name": "Key splitting scheme",
+      "value": "multi-party computation key generation/signing",
+      "items": 1
+    },
+    {
+      "term_type": "key_share_cryptographic_primitive",
+      "name": "Key share cryptographic primitive",
+      "value": "MPC protocol",
+      "items": 1
+    },
+    {
+      "term_type": "smart_contract_definition_scope",
+      "name": "Smart contract / distributed ledger application scope",
+      "value": "distributed ledger protocol",
+      "items": 1
+    },
+    {
+      "term_type": "offer_and_issuance_method",
+      "name": "Offer and issuance method (token distribution)",
+      "value": "pre-mine / initial allocation",
+      "items": 1
+    },
+    {
+      "term_type": "offer_and_issuance_method",
+      "name": "Offer and issuance method (token distribution)",
+      "value": "end-user distribution",
+      "items": 1
+    },
+    {
+      "term_type": "key_management_control_model",
+      "name": "Key management control model",
+      "value": "hardware security module with approval policy",
+      "items": 1
+    },
+    {
+      "term_type": "key_distribution_method",
+      "name": "Key distribution method across isolation boundary",
+      "value": "NFC or contactless",
+      "items": 1
+    },
+    {
+      "term_type": "finality_guarantee_mode",
+      "name": "Finality guarantee mode",
+      "value": "absolute finality",
+      "items": 1
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "name": "Crypto-asset service type",
+      "value": "advice or portfolio management",
+      "items": 1
+    },
+    {
+      "term_type": "script_language_expressiveness",
+      "name": "Smart contract / script language expressiveness",
+      "value": "application-specific non-Turing complete",
+      "items": 1
+    },
+    {
+      "term_type": "minting_mechanism",
+      "name": "Minting mechanism",
+      "value": "NFT creation via marketplace or service minting",
+      "items": 1
+    },
+    {
+      "term_type": "stablecoin_regulatory_class",
+      "name": "Payment stablecoin / e-money / ART regulatory class",
+      "value": "asset-referenced token (ART)",
+      "items": 1
+    },
+    {
+      "term_type": "native_vs_stable_price_reference_asset_currency",
+      "name": "Reference currency for stablecoin peg (currency vs other)",
+      "value": "asset expressed in fiat but not fiat-referenced",
+      "items": 1
+    },
+    {
+      "term_type": "consumer_vs_professional_status",
+      "name": "Consumer or retail versus professional user",
+      "value": "retail holder / consumer",
+      "items": 1
+    },
+    {
+      "term_type": "isolation_mechanism",
+      "name": "Key isolation mechanism",
+      "value": "hardware security module",
+      "items": 1
+    },
+    {
+      "term_type": "key_management_control_model",
+      "name": "Key management control model",
+      "value": "key-derivation from parent key or device-bound seed",
+      "items": 1
+    },
+    {
+      "term_type": "payment_settlement_mechanism",
+      "name": "Payment settlement mechanism",
+      "value": "escrow or smart-contract conditional release",
+      "items": 1
+    },
+    {
+      "term_type": "fiat_rail_integration",
+      "name": "Fiat-rail integration",
+      "value": "ledger-tokenized fiat settlement",
+      "items": 1
+    },
+    {
+      "term_type": "infrastructure_provider_type",
+      "name": "Infrastructure provider type",
+      "value": "ICT third-party service provider",
+      "items": 1
+    },
+    {
+      "term_type": "backing_of_token",
+      "name": "Backing of token",
+      "value": "collateralised by claims or loans",
+      "items": 1
+    },
+    {
+      "term_type": "redemption_mechanism",
+      "name": "Redemption mechanism",
+      "value": "burn-to-unlock (programmatic)",
+      "items": 1
+    },
+    {
+      "term_type": "backing_mechanism",
+      "name": "Backing mechanism",
+      "value": "pledged or encumbered on a ledger",
+      "items": 1
+    },
+    {
+      "term_type": "wallet_interface_delivery_form",
+      "name": "Wallet interface or delivery form",
+      "value": "physical card or token",
+      "items": 1
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "name": "Crypto-asset service type",
+      "value": "lending or borrowing",
+      "items": 1
+    },
+    {
+      "term_type": "key_custody_control_model",
+      "name": "Key custody and control model",
+      "value": "custodial third party",
+      "items": 1
+    },
+    {
+      "term_type": "settlement_finality_timing",
+      "name": "Settlement finality timing",
+      "value": "batch or net settlement",
+      "items": 1
+    },
+    {
+      "term_type": "finality_mechanism",
+      "name": "Finality mechanism",
+      "value": "checkpointing / finalized prefix",
+      "items": 1
+    },
+    {
+      "term_type": "share_recovery_mechanism",
+      "name": "Share recovery mechanism",
+      "value": "no recovery path",
+      "items": 1
+    },
+    {
+      "term_type": "crypto_asset_operator",
+      "name": "Operator of crypto-asset arrangement",
+      "value": "single operator (centralised cryptoasset)",
+      "items": 1
+    },
+    {
+      "term_type": "deanonymisation_tracing_approach",
+      "name": "Deanonymisation / tracing approach",
+      "value": "wallet risk scoring",
+      "items": 1
+    },
+    {
+      "term_type": "offer_and_issuance_method",
+      "name": "Offer and issuance method (token distribution)",
+      "value": "airdrop",
+      "items": 1
+    },
+    {
+      "term_type": "key_isolation_from_network",
+      "name": "Key isolation from network connectivity",
+      "value": "hybrid (offline signing with online broadcast)",
+      "items": 1
+    },
+    {
+      "term_type": "physical_transfer_mechanism_air_gap",
+      "name": "Physical transfer mechanism across air gap",
+      "value": "none (fully disconnected)",
+      "items": 1
+    },
+    {
+      "term_type": "claim_form",
+      "name": "Form of holder claim",
+      "value": "in personam against issuer",
+      "items": 1
+    },
+    {
+      "term_type": "yield_source",
+      "name": "Source of yield",
+      "value": "incentive yield (protocol emission)",
+      "items": 1
+    },
+    {
+      "term_type": "wallet_interface_delivery_form",
+      "name": "Wallet interface or delivery form",
+      "value": "hardware device",
+      "items": 1
+    },
+    {
+      "term_type": "fiat_rail_integration",
+      "name": "Fiat-rail integration",
+      "value": "card-network bridged",
+      "items": 1
+    },
+    {
+      "term_type": "backing_of_token",
+      "name": "Backing of token",
+      "value": "unbacked",
+      "items": 1
+    },
+    {
+      "term_type": "redemption_mechanism",
+      "name": "Redemption mechanism",
+      "value": "no redemption right",
+      "items": 1
+    },
+    {
+      "term_type": "issuer_presence",
+      "name": "Issuer identifiability",
+      "value": "protocol issuance / DAO",
+      "items": 1
+    },
+    {
+      "term_type": "crypto_asset_operator",
+      "name": "Operator of crypto-asset arrangement",
+      "value": "no single operator (decentralised)",
+      "items": 1
+    },
+    {
+      "term_type": "isolation_mechanism",
+      "name": "Key isolation mechanism",
+      "value": "software-only isolation",
+      "items": 1
+    },
+    {
+      "term_type": "infrastructure_provider_type",
+      "name": "Infrastructure provider type",
+      "value": "oracle",
+      "items": 1
+    }
+  ],
+  "by_source": {
+    "paper": {
+      "items": 1472,
+      "tags_per_item": 3.99
+    },
+    "patent": {
+      "items": 346,
+      "tags_per_item": 4.22
+    }
+  }
+}

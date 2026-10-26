@@ -8,6 +8,8 @@ Seed = v0, the Part 1 DAG (never modified). Each iteration tags a disjoint batch
 | 2 | v1 | 8646 | 4.06 | 6.9602 | 0.7714 | 0.2147 | 81 (21) | v2 | 107 / 293 / 396 | $4.2902 | 15924.6 s API, 2023.9 s wall |
 | 3 | v2 | 8646 | 4.11 | 7.0214 | 0.7781 | 0.2032 | 87 (17) | v3 | 113 / 300 / 433 | $4.4534 | 17081.8 s API, 742.6 s wall |
 | 4 | v3 | 8646 | 4.16 | 7.2153 | 0.7796 | 0.2184 | 106 (18) | v4 | 124 / 311 / 491 | $4.5899 | 17928.7 s API, 789.5 s wall |
+| 5 | v4 | 8646 | 4.09 | 7.2712 | 0.7734 | 0.1999 | 127 (24) | v5 | 128 / 316 / 529 | $4.7304 | 17391.5 s API, 762.0 s wall |
+| 6 | v5 | 1818 | 4.03 | 7.0636 | 0.7734 | 0.1793 | 79 (6) | v6 | 132 / 320 / 549 | $1.0687 | 3671.7 s API, 175.4 s wall |
 
 ## Iteration 1 (catalogue v0, 2026-10-26)
 
@@ -104,3 +106,48 @@ Added to the catalogue:
 - value **NFT minting for media and content licensing** of `minting_mechanism`: Units minted as NFTs representing a media asset, royalty split, or content authorisation, typically via a marketplace or digital vault. (5 items)
 - value **air-gapped offline signing device** of `key_custody_control_model`: Private keys are generated and stored on a device never connected to a network, with signing performed offline via QR codes, cards, or isolated chambers. (5 items)
 - value **NFT standard token** of `native_vs_token_standard`: Non-fungible token issued under a smart-contract standard, such as ERC-721 or ERC-1155, representing unique assets. (5 items)
+
+## Iteration 5 (catalogue v4, 2026-10-26)
+
+Sample: data/dlt_corpus/sample_iter05.jsonl (8646 items; {'paper': {'items': 3744, 'tags_per_item': 3.86}, 'patent': {'items': 4902, 'tags_per_item': 4.27}}). Tags: 35392 (4.09 per item), evidence verified 33957/35392, off-topic 581.
+Objectives from tags: 7.2712 bits/descent, AUC 0.7734, expected depth 3.8959, effective leaves 24.792 (0.1999 per node); prior (is-a weights): 5.0082 bits, AUC 0.8332.
+Nodes with items 123/124; dormant 1; collapsed 12; discovery targets 45; candidates 127, accepted 24.
+API: 8692 requests, 7033233 input + 258407695 cached + 2878424 output tokens, $4.7304 (tagging $4.678, discovery $0.0485, consolidation $0.0039); time 17391.5 s in API calls (mean 1.99 s, p95 3.18 s per request), 762.0 s wall with 24 workers.
+Added to the catalogue:
+- term type **Key isolation mechanism** `isolation_mechanism` under `key_isolation_from_network`: What mechanism isolates the key material from network-accessible components? (values: secure element/chip, trusted execution environment or secure enclave, hardware security module, network-disabled device, software-only isolation; from 1 candidate(s), 7 items)
+- term type **Key distribution method across isolation boundary** `key_distribution_method` under `key_isolation_from_network, physical_transfer_mechanism_air_gap`: How is key material or signed data moved between the isolated and connected environments? (values: QR code or optical, USB or wired cable, NFC or contactless, Bluetooth or wireless short-range, manual entry or paper; from 1 candidate(s), 5 items)
+- term type **Finality guarantee mode** `finality_guarantee_mode` under `consensus_finality`: Once a transaction is included, can it be reversed by any party, and under what condition? (values: absolute finality, probabilistic finality, quorum-conditional finality, no finality (forks possible); from 1 candidate(s), 5 items)
+- term type **Key share cryptographic primitive** `key_share_cryptographic_primitive` under `key_splitting_scheme`: Which cryptographic primitive is used to split or share the signing key? (values: Shamir secret sharing, threshold ECDSA/signature scheme, MPC protocol, identity-based or threshold encryption, Merkle-tree or hash-based key management; from 1 candidate(s), 5 items)
+- value **physical point-of-sale or kiosk deployment in jurisdiction** of `service_location_nexus`: Crypto-asset services delivered through physical terminals, kiosks or ATMs located in the jurisdiction, creating a local nexus. (5 items)
+- value **tokenized real-world asset in vault or escrow** of `backing_mechanism`: Backing asset is a physical or real-world item held in a vault, escrow account, or custodial store and represented one-to-one by an on-chain token. (5 items)
+- value **multi-party cryptographic co-signing of redemption** of `key_management_control_model`: Signing authority is split across parties via MPC or threshold signatures, with no single party holding a complete key, specifically for redeeming or transferring assets. (8 items)
+- value **zk-SNARK with trusted setup** of `zk_proof_system_variant`: Succinct non-interactive argument of knowledge whose construction requires a trusted setup ceremony for common reference string generation. (5 items)
+- value **recovery key / escrow-based recovery** of `key_recovery_mechanism`: Recovery is performed by a dedicated recovery key or escrowed key held separately from the owner keys and used to re-authorise or re-encrypt access. (5 items)
+- value **capability-score threshold plus random selection** of `validator_selection_mechanism`: Nodes are first filtered by a computed capability, credit, or trust score threshold, then selected randomly from the qualifying set. (5 items)
+- value **score-based endorsement** of `validator_selection_mechanism`: Nodes are chosen to form a committee or endorse blocks according to an aggregated trust, credit, or evaluation score computed by peers. (5 items)
+- value **shareholder or bid-based voting** of `validator_selection_mechanism`: Validators are chosen by votes or bids weighted by shares, tokens, or auction offers held by candidate nodes. (5 items)
+- value **notary or multi-signature attestation** of `cross_chain_interoperability_mechanism`: Cross-chain state or value is moved via a committee, notary group, or threshold signature attesting to source-chain events. (5 items)
+- value **hashed timelock contract (HTLC) swap** of `cross_chain_interoperability_mechanism`: Assets are exchanged across chains using hashlocks and timelocks so that either both transfers complete or neither does. (5 items)
+- value **graph neural network representation learning** of `deanonymisation_tracing_approach`: Learns node or subgraph embeddings from transaction graphs with neural architectures such as GNNs, GAT, or attention models to classify addresses. (5 items)
+- value **external data oracle relay** of `interoperability_type`: Ledger obtains external or cross-chain state via a dedicated oracle or relay that verifies source-chain data for the target chain. (5 items)
+- value **supply chain traceability and provenance** of `smart_contract_usage_domain`: Ledger applications that track goods, food, or pharmaceuticals across supply chain stages to verify origin and authenticity. (5 items)
+- value **peer-to-peer energy trading** of `smart_contract_usage_domain`: Ledger applications enabling prosumers and consumers to trade electricity directly, often via auctions or microgrid markets. (5 items)
+- value **deductive / theorem-proving verification** of `script_verification_approach`: Correctness is established by interactive or automated proof assistants reasoning over the code's semantics with Hoare logic, invariants, or weakest preconditions. (5 items)
+- value **main-chain with slave/side-chain attached** of `ledger_partitioning_topology`: A primary chain with one or more subsidiary chains that are anchored to or validated through the mainchain. (5 items)
+- value **key-derivation from parent key or device-bound seed** of `key_management_control_model`: Signing authority is controlled by deriving child or wallet keys from a parent key, seed, or physically unclonable function response rather than storing a standalone key. (5 items)
+- value **single whole key** of `key_splitting_scheme`: The signing key is held intact in one location without division. (5 items)
+- value **Bitcoin script with transaction-chaining state machine** of `script_language_expressiveness`: Restricted base script whose expressiveness is extended by chaining transactions to emulate state machines or complex logic across multiple transactions. (5 items)
+
+## Iteration 6 (catalogue v5, 2026-10-26)
+
+Sample: data/dlt_corpus/sample_iter06.jsonl (1818 items; {'paper': {'items': 1472, 'tags_per_item': 3.99}, 'patent': {'items': 346, 'tags_per_item': 4.22}}). Tags: 7330 (4.03 per item), evidence verified 7057/7330, off-topic 154.
+Objectives from tags: 7.0636 bits/descent, AUC 0.7734, expected depth 3.8953, effective leaves 22.947 (0.1793 per node); prior (is-a weights): 5.0241 bits, AUC 0.8331.
+Nodes with items 119/128; dormant 9; collapsed 9; discovery targets 36; candidates 79, accepted 6.
+API: 1855 requests, 1732478 input + 57355422 cached + 635959 output tokens, $1.0687 (tagging $1.0366, discovery $0.0302, consolidation $0.0019); time 3671.7 s in API calls (mean 1.96 s, p95 3.13 s per request), 175.4 s wall with 24 workers.
+Added to the catalogue:
+- term type **ZKP application role** `zk_proof_application_role` under `zk_proof_system_variant`: What role does the zero-knowledge proof play within the system? (values: scaling / rollup validity proof, data or identity privacy, verifiable computation / virtual machine, range or rating correctness; from 1 candidate(s), 5 items)
+- term type **Key storage medium or environment** `key_storage_medium` under `key_custody_control_model`: Where is the private key physically or logically stored while not in use? (values: volatile memory with power-down erasure, hardware security module or trusted execution environment, user mobile or desktop device, physical card or bearer medium, cloud or remote encrypted server; from 1 candidate(s), 5 items)
+- term type **Parent-child coupling mechanism** `ledger_parent_child_coupling` under `ledger_partitioning_topology`: How are the sub-chains or partitions linked to the parent or peer ledgers? (values: merged mining, sidechain two-way peg, coupled pair anchoring, interlinked peer chains, none or independent; from 1 candidate(s), 6 items)
+- term type **Finality guarantee source** `finality_guarantee_source` under `consensus_finality`: What mechanism or assumption bounds the reversal of a settled transaction? (values: quorum-based BFT finality, confirmation-depth finality, economic-penalty finality, checkpoint or justification finality; from 1 candidate(s), 5 items)
+- value **hierarchical multi-blockchain with main and multiple subchains** of `ledger_partitioning_topology`: Topology where a main chain anchors or coordinates several subchains or sidechains that each process a partition of state or tasks. (6 items)
+- value **identity_or_access_control** of `centralisation_locus`: Centralisation of who may join, authorise, or hold access rights, such as a single controlling address or a trusted authority issuing keys or approvals. (5 items)

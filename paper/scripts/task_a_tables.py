@@ -475,6 +475,13 @@ if __name__ == "__main__":
     (TABLES / "evolution.tex").write_text(evolution_table())
     (TABLES / "objectives_iter.tex").write_text(objectives_iter_table())
     (TABLES / "new_types.tex").write_text(new_types_table())
+    _nt = new_types_table().split("\n"); _hdr = [l for l in _nt if not l.startswith("    ") or "&" not in l]
+    _rows = [l for l in _nt if l.startswith("    ") and "&" in l and "New term type" not in l]
+    _h = (len(_rows) + 1) // 2
+    _top = [l for l in _nt[:_nt.index("    \\midrule") + 1]]
+    _bot = ["    \\bottomrule", "\\end{tabularx}", ""]
+    (TABLES / "new_types_a.tex").write_text("\n".join(_top + _rows[:_h] + _bot))
+    (TABLES / "new_types_b.tex").write_text("\n".join(_top + _rows[_h:] + _bot))
     with (TABLES / "numbers.tex").open("a") as f:
         f.write(iter2_numbers())
     print("wrote evolution, objectives and new-type tables and iteration-2 numbers")
@@ -520,7 +527,7 @@ def retrieval_numbers() -> str:
         "RSkippedOff": s["skipped"]["off_topic"], "RSkippedNoTags": s["skipped"]["no_tags"],
         "RPapers": f"{s['by_source']['paper']:,}", "RPatents": f"{s['by_source']['patent']:,}",
         "RNodes": s["nodes"], "REdges": s["edges"], "RLeaves": s["leaves"], "RNodesTagged": s["nodes_with_items"], "RPairs": s["pairs_with_items"],
-        "RBuildSec": f"{s['build_seconds']:.1f}", "RIndexMB": "9",
+        "RBuildSec": f"{s['build_seconds']:.1f}", "RIndexMB": f"{(RETR / 'index.pkl').stat().st_size / 1e6:.0f}" if (RETR / "index.pkl").exists() else "--",
         "RTopClosureName": top_closure[0].replace("_", " "), "RTopClosurePct": f"{100 * top_closure[1] / s['items']:.0f}",
         "RTopDirectName": s["direct_size_top"][0][0].replace("_", " "), "RTopDirect": f"{s['direct_size_top'][0][1]:,}",
         "RLatMin": f"{min(r['bitset_us_mean'] for r in lat):.1f}", "RLatMax": f"{max(r['bitset_us_mean'] for r in lat):.1f}",
@@ -533,6 +540,9 @@ def retrieval_numbers() -> str:
         "RRandSteps": f"{nav['random']['mean_steps']:.1f}", "RRandBits": f"{nav['random']['mean_bits']:.1f}", "RRandBps": f"{nav['random']['bits_per_step']:.2f}",
         "RRandReached": f"{100 * nav['random']['reached_k']:.0f}", "RRandFinal": f"{nav['random']['mean_final_size']:.0f}",
         "RGainTraceLen": len(nav["gain"]["example_trace"]),
+        "RCat": s["catalogue_version"], "RIterCount": len(s["iterations"]), "RIterWord": {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven"}.get(len(s["iterations"]), str(len(s["iterations"]))),
+        "RClosureHits": f"{b['latency']['closure (1 node)']['mean_result_size']:,.0f}", "RStrengthHits": f"{b['latency']['closure, strength >= 0.3']['mean_result_size']:,.0f}",
+        "RStrengthLatRatio": f"{b['latency']['closure, strength >= 0.3']['bitset_us_mean'] / b['latency']['closure (1 node)']['bitset_us_mean']:.1f}",
     }
     return "\n".join(f"\\newcommand{{\\{k}}}{{{v}}}" for k, v in vals.items()) + "\n"
 
@@ -543,3 +553,158 @@ if __name__ == "__main__":
     with (TABLES / "numbers.tex").open("a") as f:
         f.write(retrieval_numbers())
     print("wrote retrieval and navigation tables and Part 3 numbers")
+
+
+# ---- All iterations to date, evaluation pilot and billing --------------------------------
+EVAL = ROOT / "output" / "evaluation"
+
+
+def pretty(tt_id: str) -> str:
+    return tt_id.replace("_", " ")
+
+
+def seq(vals: list[str]) -> str:
+    return ", ".join(vals[:-1]) + " and " + vals[-1] if len(vals) > 1 else vals[0]
+
+
+def latest_numbers() -> str:
+    last = EVOL_ALL[-1]; k = last["iteration"]
+    t, m = iter_files(k); r = t["run"]
+    first_t, first_m = iter_files(1)
+    on_topic = 0.40 * 37440 + 0.49 * 49023
+    bits = [f"{iter_files(e['iteration'])[1]['empirical']['bits_per_descent']:.2f}" for e in EVOL_ALL]
+    aucs = [f"{iter_files(e['iteration'])[1]['empirical']['auc']:.3f}" for e in EVOL_ALL]
+    vals = {
+        "NIter": len(EVOL_ALL), "NIterWord": {2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}[len(EVOL_ALL)],
+        "NIterCap": {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six"}[len(EVOL_ALL)],
+        "NBatches": len(EVOL_ALL) - 1, "NBatchesWord": {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}[len(EVOL_ALL) - 1],
+        "LIter": k, "LCat": last["catalogue_version"], "LItems": f"{last['items']:,}", "LTags": f"{last['tags']:,}", "LTagsPerItem": f"{last['tags_per_item']:.2f}",
+        "LEvidencePct": f"{100 * t['evidence_verified'] / t['tags_total']:.1f}", "LTypesUsed": t["term_types_used"], "LTypesTotal": t["term_types_total"],
+        "LNodesWithItems": m["empirical"]["nodes_with_items"], "LNodes": m["empirical"]["nodes"],
+        "LDormant": last["dormant"], "LCollapsed": last["collapsed"], "LTargets": last["discovery_targets"], "LCandidates": last["candidates"], "LAccepted": last["accepted"],
+        "LAddedTypes": len(last["added_term_types"]), "LAddedValues": last["accepted"] - len(last["added_term_types"]),
+        "VLastNum": last["produced_version"], "VLastNodes": last["result_nodes"], "VLastEdges": last["result_edges"], "VLastValues": last["result_values"],
+        "LCost": f"{last['cost']['total_usd']:.2f}", "LCostPerItem": f"{r['cost_per_item_usd']:.5f}", "LWallMin": f"{last['time']['wall_seconds'] / 60:.0f}",
+        "LWorkers": last["time"]["workers"], "LMeanLat": f"{last['time']['mean_request_s']:.2f}",
+        "LBits": f"{m['empirical']['bits_per_descent']:.2f}", "LAUC": f"{m['empirical']['auc']:.3f}", "LEffLeaves": f"{m['empirical']['effective_leaves']:.1f}",
+        "LEffPerNode": f"{m['empirical']['effective_leaves_over_nodes']:.3f}", "LPriorBits": f"{m['prior_reference']['bits_per_descent']:.2f}",
+        "LPriorAUC": f"{m['prior_reference']['auc']:.3f}",
+        "BitsSeq": seq(bits), "AUCSeq": seq(aucs),
+        "CollapsedSeq": seq([str(e["collapsed"]) for e in EVOL_ALL]), "TargetsSeq": seq([str(e["discovery_targets"]) for e in EVOL_ALL]),
+        "AcceptedSeq": seq([str(e["accepted"]) for e in EVOL_ALL]), "CandidatesSeq": seq([str(e["candidates"]) for e in EVOL_ALL]),
+        "CostSeq": seq([f"{e['cost']['total_usd']:.2f}" for e in EVOL_ALL]),
+        "AllWallMin": f"{sum(e['time']['wall_seconds'] for e in EVOL_ALL) / 60:.0f}", "AllTags": f"{sum(e['tags'] for e in EVOL_ALL):,}",
+        "WorkersMin": min(e["time"]["workers"] for e in EVOL_ALL), "WorkersMax": max(e["time"]["workers"] for e in EVOL_ALL),
+        "MDormantFirst": EVOL_ALL[0]["dormant"], "VersionsSeq": seq([f"v{e['produced_version']}" for e in EVOL_ALL]),
+        "EvidMin": f"{min(100 * int(e['evidence_verified'].split('/')[0]) / int(e['evidence_verified'].split('/')[1]) for e in EVOL_ALL):.0f}",
+        "EvidMax": f"{max(100 * int(e['evidence_verified'].split('/')[0]) / int(e['evidence_verified'].split('/')[1]) for e in EVOL_ALL):.0f}",
+    }
+    # usage, in iteration k, of the term types added in iteration k-1
+    words = {0: "none", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten", 11: "eleven", 12: "twelve"}
+    for e in EVOL_ALL[1:]:
+        kk = e["iteration"]; tk, _ = iter_files(kk); c = tk["term_type_item_counts"]
+        prev = EVOL_ALL[kk - 2]["added_term_types"]
+        used = sorted(((x["id"], c.get(x["id"], 0)) for x in prev), key=lambda z: -z[1])
+        tag = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six"}[kk]
+        vals[f"UsedIn{tag}Added"] = words.get(len(prev), str(len(prev))); vals[f"UsedIn{tag}"] = words.get(sum(1 for _, n in used if n), str(sum(1 for _, n in used if n)))
+        vals[f"UsedIn{tag}TopName"] = pretty(used[0][0]); vals[f"UsedIn{tag}TopItems"] = f"{used[0][1]:,}"
+    out = "\n".join(f"\\newcommand{{\\{k}}}{{{v}}}" for k, v in vals.items())
+    out += f"\n\\renewcommand{{\\ProjCost}}{{{on_topic * r['cost_per_item_usd']:.0f}}}"
+    out += f"\n\\renewcommand{{\\ProjHours}}{{{on_topic / last['items'] * last['time']['wall_seconds'] / 3600:.1f}}}\n"
+    return out
+
+
+def eval_numbers() -> str:
+    tg = json.loads((EVAL / "tagging_eval.json").read_text()); rt = json.loads((EVAL / "retrieval_eval.json").read_text())
+    gs = json.loads((EVAL / "gold_summary.json").read_text()); bill = json.loads((EVAL / "billing.json").read_text())
+    g = tg["gold"]
+    def mean(rows, path):
+        xs = []
+        for row in rows:
+            v = row
+            for p in path: v = v[p]
+            xs.append(v)
+        return sum(xs) / len(xs)
+    sysn = {"dag": "Dag", "flat": "Flat", "supervised": "Sup"}
+    vals = {"GItems": g["items"], "GLabels": g["labels"], "GPerItem": f"{g['labels_per_item']:.1f}", "GDistinct": g["distinct_labels"], "GTypes": g["distinct_term_types"],
+            "GAgreement": f"{100 * g['pass_agreement']:.0f}", "GDropped": g["dropped_disagreement"], "GModel": g["model"], "GCost": f"{gs['cost_usd']:.2f}",
+            "EvalRuns": tg["runs"], "EvalCat": tg["catalogue_version"], "NQueries": rt["n_queries"], "NQValue": rt["query_kinds"]["value"], "NQNode": rt["query_kinds"]["node"], "NQAnd": rt["query_kinds"]["and"]}
+    for s, name in sysn.items():
+        rows = tg["systems"][s]
+        for lvl, L in (("label", ""), ("type", "Type")):
+            vals[f"{name}{L}Micro"] = f"{mean(rows, ['metrics', lvl, 'micro_f1']):.3f}"; vals[f"{name}{L}Macro"] = f"{mean(rows, ['metrics', lvl, 'macro_f1']):.3f}"
+        vals[f"{name}P"] = f"{mean(rows, ['metrics', 'label', 'micro_p']):.3f}"; vals[f"{name}R"] = f"{mean(rows, ['metrics', 'label', 'micro_r']):.3f}"
+    rsys = {"dag_index": "RetDag", "flat_tags": "RetFlat", "supervised": "RetSup", "bm25": "RetBM"}
+    for s, name in rsys.items():
+        rows = rt["systems"][s]
+        for key, L in (("ndcg10", "NDCG"), ("p10", "PTen"), ("ap", "MAP"), ("r10", "RTen"), ("ndcg10_value", "Value"), ("ndcg10_node", "Node"), ("ndcg10_and", "And")):
+            vals[f"{name}{L}"] = f"{mean(rows, [key]):.3f}"
+        vals[f"{name}Lat"] = f"{mean(rows, ['latency_us']):.0f}"
+    rows = bill["rows"]
+    def usd(prefix):
+        return sum(x["usd"] for x in rows if x["stage"].startswith(prefix))
+    vals.update({"BillTaskA": f"{usd('Task A'):.2f}", "BillTaskB": f"{usd('Task B'):.2f}", "BillIters": f"{usd('Iteration'):.2f}", "BillGold": f"{usd('Gold'):.2f}",
+                 "BillEval": f"{usd('Evaluation'):.2f}", "BillTotal": f"{bill['total_usd']:.2f}"})
+    return "\n".join(f"\\newcommand{{\\{k}}}{{{v}}}" for k, v in vals.items()) + "\n"
+
+
+def eval_tables() -> None:
+    tg = json.loads((EVAL / "tagging_eval.json").read_text()); rt = json.loads((EVAL / "retrieval_eval.json").read_text())
+    def ms(rows, get, fmt="{:.3f}"):
+        xs = [get(r) for r in rows]; mu = sum(xs) / len(xs)
+        if len(xs) < 2: return fmt.format(mu)
+        sd = (sum((x - mu) ** 2 for x in xs) / (len(xs) - 1)) ** 0.5
+        return fmt.format(mu) + " $\\pm$ " + fmt.format(sd)
+    names = {"dag": "DAG-guided LLM (ours)", "flat": "Same LLM, flat label list", "supervised": "TF-IDF + logistic regression"}
+    lines = ["%% Generated by paper/scripts/task_a_tables.py from output/evaluation/tagging_eval.json.", "\\setlength{\\tabcolsep}{3pt}",
+             "\\begin{tabular}{@{}lrrrrrr@{}}", "    \\toprule", "    System & Micro-F$_1$ & Macro-F$_1$ & P & R & Type micro-F$_1$ & Type macro-F$_1$ \\\\", "    \\midrule"]
+    for s, n in names.items():
+        rows = tg["systems"][s]
+        lines.append(f"    {n} & " + " & ".join([ms(rows, lambda r: r['metrics']['label']['micro_f1']), ms(rows, lambda r: r['metrics']['label']['macro_f1']),
+                     ms(rows, lambda r: r['metrics']['label']['micro_p']), ms(rows, lambda r: r['metrics']['label']['micro_r']),
+                     ms(rows, lambda r: r['metrics']['type']['micro_f1']), ms(rows, lambda r: r['metrics']['type']['macro_f1'])]) + " \\\\")
+    lines += ["    \\bottomrule", "\\end{tabular}", ""]
+    (TABLES / "eval_tagging_paper.tex").write_text("\n".join(lines))
+    rnames = {"dag_index": "DAG index on our tags", "flat_tags": "Boolean match on flat tags", "supervised": "Supervised labels, DAG index", "bm25": "BM25 over item text"}
+    lines = ["%% Generated by paper/scripts/task_a_tables.py from output/evaluation/retrieval_eval.json.", "\\setlength{\\tabcolsep}{3pt}",
+             "\\begin{tabular}{@{}lrrrrrrrr@{}}", "    \\toprule", "    System & P@10 & R@10 & NDCG@10 & MAP & NDCG value & NDCG node & NDCG AND & $\\mu$s \\\\", "    \\midrule"]
+    for s, n in rnames.items():
+        rows = rt["systems"][s]
+        lines.append(f"    {n} & " + " & ".join([ms(rows, lambda r: r['p10']), ms(rows, lambda r: r['r10']), ms(rows, lambda r: r['ndcg10']), ms(rows, lambda r: r['ap']),
+                     ms(rows, lambda r: r['ndcg10_value']), ms(rows, lambda r: r['ndcg10_node']), ms(rows, lambda r: r['ndcg10_and']), ms(rows, lambda r: r['latency_us'], "{:.0f}")]) + " \\\\")
+    lines += ["    \\bottomrule", "\\end{tabular}", ""]
+    (TABLES / "eval_retrieval_paper.tex").write_text("\n".join(lines))
+
+
+if __name__ == "__main__":
+    eval_tables()
+    with (TABLES / "numbers.tex").open("a") as f:
+        f.write(latest_numbers())
+        f.write(eval_numbers())
+    print("wrote latest-iteration numbers, evaluation tables and numbers, billing numbers")
+
+
+# ---- Task A repeat runs: agreement with the first run ----------------------------------
+REPEATS = ROOT / "output" / "establishment" / "repeats"
+
+
+def agreement_numbers() -> str:
+    vals = {}
+    for tag, prefix in (("haiku_run2", "AgH"), ("sonnet", "AgS")):
+        f = REPEATS / f"term_types.{tag}.agreement.json"
+        if not f.exists():
+            continue
+        a = json.loads(f.read_text()); d = json.loads((REPEATS / f"term_types.{tag}.json").read_text())
+        v = json.loads((REPEATS / f"term_types.{tag}.verification.json").read_text())
+        vals.update({f"{prefix}Model": a["model_b"], f"{prefix}Types": a["term_types_b"], f"{prefix}Values": a["values_b"], f"{prefix}Matched": a["matched"],
+                     f"{prefix}RecallA": f"{100 * a['agreement_recall_of_a']:.0f}", f"{prefix}PrecB": f"{100 * a['agreement_precision_of_b']:.0f}",
+                     f"{prefix}F": f"{a['f1']:.2f}", f"{prefix}Jaccard": f"{a['mean_value_jaccard']:.2f}", f"{prefix}SameCat": f"{100 * a['same_category_share']:.0f}",
+                     f"{prefix}Cites": v["citations"], f"{prefix}VerifiedPct": f"{100 * v['verified'] / v['citations']:.1f}", f"{prefix}Seconds": f"{d['run']['seconds']:.0f}",
+                     f"{prefix}Truncated": "truncated" if d.get("truncated") else "complete"})
+    return "\n".join(f"\\newcommand{{\\{k}}}{{{v}}}" for k, v in vals.items()) + "\n"
+
+
+if __name__ == "__main__":
+    with (TABLES / "numbers.tex").open("a") as f:
+        f.write(agreement_numbers())
+    print("wrote repeat-run agreement numbers")

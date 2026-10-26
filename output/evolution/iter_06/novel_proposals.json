@@ -1,0 +1,452 @@
+{
+  "smart_contract_usage_domain": [
+    {
+      "item_id": "paper:81fbb911501df6b6f4a6b5ce2be9bf45a0ec89c1",
+      "kind": "value",
+      "term_type": "smart_contract_usage_domain",
+      "proposal": "smart city sharing services",
+      "definition": "Ledger applications supporting shared-economy services and urban sharing platforms in smart city contexts.",
+      "evidence": "discuss what emerging blockchain technology may contribute to these factors and how its elements can help smart cities develop sharing services",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:bb505828e62dc5d21a6751b31043b98b72193c14",
+      "kind": "value",
+      "term_type": "smart_contract_usage_domain",
+      "proposal": "fraud and scam detection",
+      "definition": "Smart contract applications focused on detecting scams, Ponzi schemes, honeypots, or phishing contracts on a ledger.",
+      "evidence": "SCSGuard, a novel deep learning scam detection framework",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:aee00087b36b7e9a8b6e7017f4559999bff8a9a8",
+      "kind": "value",
+      "term_type": "smart_contract_usage_domain",
+      "proposal": "insurance products and policies",
+      "definition": "Smart contracts or ledger applications used to automate insurance policy issuance, premium or claims processing.",
+      "evidence": "insurance policies using blockchain and smart contracts",
+      "evidence_found": true
+    },
+    {
+      "item_id": "patent:20190272601",
+      "kind": "value",
+      "term_type": "smart_contract_usage_domain",
+      "proposal": "energy trading and grid management",
+      "definition": "Smart contracts for peer-to-peer energy trading, demand response, and local energy markets involving prosumers and grid operators.",
+      "evidence": "transmitted power amount information indicating the amount of power transmitted to power accumulation equipment",
+      "evidence_found": true
+    }
+  ],
+  "ledger_purpose": [
+    {
+      "item_id": "paper:dd0fb1a99e56bbd4674f57a375110d9382dcfbce",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "security attack evaluation (transaction malleability)",
+      "definition": "Ledger application studied for vulnerability to transaction malleability and double-spending attacks, with simulation of attack conditions.",
+      "evidence": "Simulation of transaction malleability attack for blockchain-based e-Voting",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:97ca3a2dc24ec8fb17d8a32d3dc6cb6b06d41185",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "transaction ordering / MEV mitigation",
+      "definition": "Ledger application purpose is mitigating miner or validator reordering and insertion of transactions to prevent maximal extractable value.",
+      "evidence": "designed to mitigate MEV attacks in blockchain systems",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:dfced71914b5ecdbf124147555de7a3ef994e8c6",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "energy trading",
+      "definition": "Ledger used to record and settle peer-to-peer energy transactions among microgrid participants.",
+      "evidence": "A double-layer framework of energy transactions based on blockchain in multi-microgrids is proposed",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:bbc11b94aafb10c195f2edf7a753fa6fd9639542",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "smart city information systems",
+      "definition": "Distributed ledger used to support public urban information systems and city services.",
+      "evidence": "blockchain systems are just the right solution for smart city information systems",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:94709d23f76aaff5e878e22a854bd1926927f5fe",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "marketing and customer engagement",
+      "definition": "Distributed ledger used to support marketing communication, customer loyalty and reward programmes, and brand connection.",
+      "evidence": "Blockchain technology could also lower the cost of the product and service",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:492243b294a43a56884fb472d5217e07b24a8ca9",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "redactable blockchain for data correction",
+      "definition": "Ledger designed so authorised parties can modify or delete erroneous records and access permissions after recording, e.g. via chameleon hash.",
+      "evidence": "introduce a chameleon hash function to provide data modification capabilities",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:89be0a960fe74c6f543cbf7944e91c39177ce312",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "personal data management and sovereignty",
+      "definition": "Ledger used to manage individuals' personal data flows, access authorisation and audit trails under data-protection rules such as GDPR.",
+      "evidence": "The centralization of control over the processing of personal data threatens the privacy of individuals",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:b4f0ea2afd76b943d471124c2df9ae595ad237ed",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "programmable money with embedded policies",
+      "definition": "Ledger used to attach executable spending policies and conditions directly to units of money rather than to accounts.",
+      "evidence": "programmed policies are not attached to accounts, but instead to money itself",
+      "evidence_found": true
+    },
+    {
+      "item_id": "patent:20190130416",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "location attestation / proof of presence",
+      "definition": "Ledger used to record and attest a participant's physical location, notarised by a trusted witness device.",
+      "evidence": "A Notary can notarise her use of an app at a location.",
+      "evidence_found": true
+    },
+    {
+      "item_id": "patent:11983706",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "rights and disposition modelling",
+      "definition": "Ledger used to model digital asset rights and their disposition among multiple parties under consent-based function instances.",
+      "evidence": "modeling and interpreting a modeled digital asset and its evolution with respect to the rights of a plurality of parties",
+      "evidence_found": true
+    },
+    {
+      "item_id": "patent:11893601",
+      "kind": "value",
+      "term_type": "ledger_purpose",
+      "proposal": "loyalty points / rewards settlement",
+      "definition": "Distributed ledger used to record and settle loyalty or reward point balances and redemptions for merchant or issuer programmes.",
+      "evidence": "establishing and conducting payment processing with loyalty points using distributed ledger",
+      "evidence_found": true
+    }
+  ],
+  "governance_model": [
+    {
+      "item_id": "paper:9d8c34803782be9aacde6944f3a95c545092c0f3",
+      "kind": "value",
+      "term_type": "governance_model",
+      "proposal": "decentralised autonomous organisation (DAO) for neighbourhood-scale coordination",
+      "definition": "Blockchain-based autonomous organisation governing neighbourhood-scale activities and citizen relationships through decentralised rules rather than a central operator.",
+      "evidence": "new types of autonomous organizations that can manage activities on a neighborhood scale",
+      "evidence_found": true
+    }
+  ],
+  "consensus_mechanism": [
+    {
+      "item_id": "paper:bec4e1592af4087bbb617f1ad2ba4aa68de42b3d",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "proof of useful work",
+      "definition": "Consensus where miners' computational work performs external useful tasks, here carbon dioxide removal verification.",
+      "evidence": "a blockchain that uses a Proof-of-Useful-Work (PoUW) consensus mechanism",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:b87452c6d500227d770d4364b3eb44d467af2d5f",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "proof by location",
+      "definition": "Consensus where validators are weighted or selected by verifiable geographic location of participants, typically via smartphone attestation, rather than work or stake.",
+      "evidence": "We have developed an alternative to Proof-of-Work and Proof-of-Stake, called Proof-by-Location",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:19d3c0d1d492c7d86e164f341190e5f9ecdf3415",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "quantum measurement-based consensus",
+      "definition": "Consensus whose validation is based on quantum measurement randomness, irreversibility and uncertainty, avoiding computationally intensive mathematical problems.",
+      "evidence": "based on the stochasticity, irreversibility, and uncertainty of quantum measurement",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:145a04a159e82994eee690c82aca65f67f3d20ba",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "proof of solution (PoSo)",
+      "definition": "Consensus in which agents verify each other's optimization solutions against KKT conditions in a decentralised, symmetric manner.",
+      "evidence": "a novel consensus mechanism based on Proof of Solution (PoSo) is proposed for P2P energy trading",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:9c93ee72de441639a45dfee2aca30c2ac49086ea",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "proof of efficiency (PoE)",
+      "definition": "Consensus where node selection or weighting reflects ecological and activity characteristics of nodes in a media ecosystem.",
+      "evidence": "a consensus mechanism named proof of efficiency (PoE)",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:d9cc9e42261056af129d5ee9739196942b78c677",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "proof of delivery",
+      "definition": "Consensus in which validation is based on proof that goods or items were delivered along a supply chain.",
+      "evidence": "Proof of delivery is used as a consensus mechanism for the proposed solution.",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:d75a43af10d5d009c8e1659d5dc3a6a5f9eafda4",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "quantum-assisted consensus",
+      "definition": "Consensus where agreement randomness or coordination is supplied by quantum protocols such as time-bin conference key agreement.",
+      "evidence": "hybrid classical-quantum solutions to the Byzantine Agreement problem",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:0a31a6837da6076095b0f7200e7c58f3099ba426",
+      "kind": "value",
+      "term_type": "consensus_mechanism",
+      "proposal": "proof of path (PoP)",
+      "definition": "Protocol letting an operator or digital twin verify data on demand by checking the path of data provenance through the DAG.",
+      "evidence": "proposes a novel proof-of-path (PoP) protocol that allows an operator or digital twin to verify data in an on-demand manner",
+      "evidence_found": true
+    }
+  ],
+  "NEW_TERM_TYPE": [
+    {
+      "item_id": "paper:2b827b9fe4f46ebd5f181fba4edae8346cdbe312",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "gambling_like_design_features",
+      "definition": "Whether a crypto-asset product incorporates gambling-like situational or structural features such as gamification, speculative trading or variable value.",
+      "evidence": "we analyse the gambling-like features that fan tokens include in their product design",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:3174c2d03f0046ea64c40cbdfa93263475b6e7b6",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "technology_framing_and_discourse",
+      "definition": "Whether a blockchain technology is framed by stakeholders as radical promise, hype, or governance-challenged hyperobject in public discourse.",
+      "evidence": "Blockchain has turned into a bounty of possibilities and promises and is now acquiring an ever-wider scope.",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:05a6ee29af635191d977de73d6e41c27d2a4771b",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "mining pool reward distribution strategy",
+      "definition": "The scheme by which pooled miners' earnings are split among participants, such as geometric pay pools or proportional payouts.",
+      "evidence": "one of the pooling strategies actually employed in practice—the so-called geometric pay pool",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:ad606b35d43ab4599a238cb270d995857b63ebc6",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "data availability verification technique",
+      "definition": "The coding or sampling technique by which nodes verify that the full data of a block is published and retrievable.",
+      "evidence": "mitigate DA attacks. While these codes have demonstrated improved performance across a variety of metrics",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:a687a00841008f5dc4385a1d8a06155ed795a628",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "fog_layer_architecture",
+      "definition": "Whether the system inserts an intermediary fog computing layer between edge devices and the ledger or cloud back-end.",
+      "evidence": "adding an intermediary Fog layer near to the edge to improve their capabilities and resources",
+      "evidence_found": true
+    },
+    {
+      "item_id": "paper:6cce6b113d4fe58534a3f16a6ecc0edfaddc9f09",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "market_manipulation_scheme_type",
+      "definition": "Type of market manipulation pattern used to inflate and sell crypto-asset prices, such as pump-and-dump or target-based pumps coordinated by promoter groups.",
+      "evidence": "One popular strategy is when actors promote coordinated purchases of coins in hopes of temporarily driving up prices.",
+      "evidence_found": true
+    },
+    {
+      "item_id": "patent:20230078996",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "integrity verification method",
+      "definition": "Technique used to verify ledger data integrity, such as approximate or reduced-step hash verification for tamper detection.",
+      "evidence": "performing an approximate hash verification on the reduced-step hashes stored among the sequence of blocks",
+      "evidence_found": true
+    },
+    {
+      "item_id": "patent:20250014031",
+      "kind": "term_type",
+      "term_type": null,
+      "proposal": "nft_fraud_scoring_method",
+      "definition": "Approach producing an authenticity or confidence score for an NFT by combining marketplace, visual and wallet-history signals.",
+      "evidence": "calculating a confidence score for the NFT based on a combination of the marketplace, visual, and wallet authenticity scores",
+      "evidence_found": true
+    }
+  ],
+  "smart_contract_definition_scope": [
+    {
+      "item_id": "paper:8a702e34feb1c25e1abc32d1469ca978f0b7b976",
+      "kind": "value",
+      "term_type": "smart_contract_definition_scope",
+      "proposal": "self-adaptive smart contract",
+      "definition": "Smart contract whose security mechanisms or execution plan can be autonomously adapted at runtime in response to detected threats.",
+      "evidence": "the contract can be adapted to execute a new plan",
+      "evidence_found": true
+    }
+  ],
+  "ledger_partitioning_topology": [
+    {
+      "item_id": "paper:281b3858f75a1b5bd7316362cf96c0d6ed550462",
+      "kind": "value",
+      "term_type": "ledger_partitioning_topology",
+      "proposal": "parallel transaction sharding by dependency groups",
+      "definition": "Block transactions are statically analysed for dependencies and partitioned into independent groups executed concurrently.",
+      "evidence": "creates different groups (shards) of independent transactions",
+      "evidence_found": true
+    },
+    {
+      "item_id": "patent:20200076576",
+      "kind": "value",
+      "term_type": "ledger_partitioning_topology",
+      "proposal": "finite or pruned blockchain",
+      "definition": "Blockchain whose history is bounded by expiry-based deletion of blocks preceding a reincarnation block, making it finite in length.",
+      "evidence": "creating a finite blockchain is provided",
+      "evidence_found": true
+    }
+  ],
+  "script_verification_approach": [
+    {
+      "item_id": "paper:9ce9703a9bae62916e83146a6763c564b0d1e289",
+      "kind": "value",
+      "term_type": "script_verification_approach",
+      "proposal": "graph neural network vulnerability detection",
+      "definition": "Verification of code by learning representations over code graphs with attention networks to flag vulnerable statements.",
+      "evidence": "utilize the graph attention mechanism GAT, splice the obtained vectors to form the features of each line of statements",
+      "evidence_found": true
+    }
+  ],
+  "block_building_or_ordering": [
+    {
+      "item_id": "paper:fdef7f94a51f923fd7844363cdb8b401e7462c2f",
+      "kind": "value",
+      "term_type": "block_building_or_ordering",
+      "proposal": "sequencer-based ordering",
+      "definition": "Transaction ordering determined by a designated sequencer component, centralised or decentralised, in layer-2 rollup systems.",
+      "evidence": "they currently rely on a centralized sequencer to determine transaction ordering",
+      "evidence_found": true
+    }
+  ],
+  "market_efficiency_property": [
+    {
+      "item_id": "paper:9126bace9f53be7bb28e822035c22e846fda897d",
+      "kind": "value",
+      "term_type": "market_efficiency_property",
+      "proposal": "market efficiency / predictability",
+      "definition": "Whether asset pricing is predictable and consistent with the Efficient Market Hypothesis, tested via long-memory methods.",
+      "evidence": "the Efficient Market Hypothesis is rejected and speculation is feasible via trading",
+      "evidence_found": true
+    }
+  ],
+  "script_language_expressiveness": [
+    {
+      "item_id": "patent:20220066756",
+      "kind": "value",
+      "term_type": "script_language_expressiveness",
+      "proposal": "bytecode-compiled execution (AoT)",
+      "definition": "Smart contract bytecode is compiled ahead of time to machine code for faster execution, with interpretation as fallback when no machine code is stored locally.",
+      "evidence": "compile the bytecode of the smart contract into a machine code by using ahead of time (AoT) compilation and storing the machine code",
+      "evidence_found": true
+    }
+  ],
+  "privacy_mechanism_family": [
+    {
+      "item_id": "patent:20200092088",
+      "kind": "value",
+      "term_type": "privacy_mechanism_family",
+      "proposal": "data erasure via key deletion",
+      "definition": "Privacy guarantee achieved by destroying or withholding encryption keys so ledger-stored encrypted data becomes unreadable on request.",
+      "evidence": "storing the one or more encryption keys in one or more key stores of the blockchain network",
+      "evidence_found": true
+    }
+  ],
+  "key_management_control_model": [
+    {
+      "item_id": "patent:11329819",
+      "kind": "value",
+      "term_type": "key_management_control_model",
+      "proposal": "multi-node-assisted public key rotation",
+      "definition": "Key management where a user's public key is changed with assistance from a set of randomly selected service nodes that co-sign the transition contract.",
+      "evidence": "public key change assistance service, second nodes 2 for providing a public key change assistance service",
+      "evidence_found": true
+    }
+  ],
+  "crypto_asset_function": [
+    {
+      "item_id": "patent:20240187399",
+      "kind": "value",
+      "term_type": "crypto_asset_function",
+      "proposal": "rule-controlled transaction token",
+      "definition": "Token whose transfers are constrained by customized rules such as geofencing, alerts, or automated transaction controls embedded at issuance.",
+      "evidence": "provide geofencing and/or regional restrictions for transactions of a specified type",
+      "evidence_found": true
+    }
+  ],
+  "identity_binding_mechanism": [
+    {
+      "item_id": "patent:20240177144",
+      "kind": "value",
+      "term_type": "identity_binding_mechanism",
+      "proposal": "soulbound token identity",
+      "definition": "Identity or status is bound to a wallet via a non-transferable token that cannot be sold or transferred to another address.",
+      "evidence": "The circuitry generates a soulbound token, and airdrops the soulbound token into the wallet.",
+      "evidence_found": true
+    }
+  ],
+  "ledger_node_role": [
+    {
+      "item_id": "patent:20190124146",
+      "kind": "value",
+      "term_type": "ledger_node_role",
+      "proposal": "blobber (data storage node)",
+      "definition": "Node specialised in storing and handling data for transaction types, separated from miners that process transactions.",
+      "evidence": "separation of roles for a miner and a blobber",
+      "evidence_found": true
+    }
+  ],
+  "wallet_interface_delivery_form": [
+    {
+      "item_id": "patent:20240127233",
+      "kind": "value",
+      "term_type": "wallet_interface_delivery_form",
+      "proposal": "paper token certificate",
+      "definition": "Wallet or asset control represented by a physical paper certificate that carries or unlocks the digital token transfer right.",
+      "evidence": "upon issuance of a paper token certificate",
+      "evidence_found": true
+    }
+  ],
+  "key_distribution_method": [
+    {
+      "item_id": "patent:20210073795",
+      "kind": "value",
+      "term_type": "key_distribution_method",
+      "proposal": "acoustic channel",
+      "definition": "Key material or signed data transmitted between the isolated device and a connected endpoint as audio signals over an acoustic channel.",
+      "evidence": "transmit the signature obtained in this way in the form of a response consisting of successive words from S, over the acoustic channel",
+      "evidence_found": true
+    }
+  ]
+}

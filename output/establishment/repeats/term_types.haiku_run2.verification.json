@@ -1,0 +1,117 @@
+{
+  "citations": 399,
+  "verified": 387,
+  "exact": 384,
+  "relabelled": 3,
+  "rejection_rate": 0.0301,
+  "rejected": [
+    {
+      "term_type": "centralisation_degree",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "The degree of centralisation",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_access_permission",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Private blockchains tend to be closed networks where block-adding is restricted to a defined set of participants",
+      "verified": false
+    },
+    {
+      "term_type": "software_licensing_openness",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "‘‘(10) DISTRIBUTED LEDGER APPLICATION.—The term ‘distributed ledger application’ means executable software",
+      "verified": false
+    },
+    {
+      "term_type": "interoperability_capability",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 19,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "cross-chain transactions",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_scalability_limits",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Limits to Scalability imposes different kinds of limits to the way in which a specific implementation scales",
+      "verified": false
+    },
+    {
+      "term_type": "cryptographic_primitive",
+      "where": "value:cryptography linking data to ledger (generic)",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "(B) in which cryptography is used to link the data described in subparagraph (A) to— (i) maintain the integrity of the digital ledger",
+      "verified": false
+    },
+    {
+      "term_type": "actor_validator_miner_node_operator",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "‘‘(ii) validates a digital commodity transaction, operates a node, or engages in similar activity to participate in facilitating, operating, or securing a blockchain system",
+      "verified": false
+    },
+    {
+      "term_type": "actor_validator_miner_node_operator",
+      "where": "value:validator / staker (PoS)",
+      "status": "quote_not_found",
+      "doc": 22,
+      "section": "Annex A: Glossary of Relevant Terms and Definitions",
+      "quote": "Validators: an entity that commits transactions blocks to the distributed ledger network.",
+      "verified": false
+    },
+    {
+      "term_type": "actor_governance_participant",
+      "where": "value:token-holder governance participant",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "An individual token holder in such a scenario does not have such responsibility if the holder does not exercise control or sufficient influence",
+      "verified": false
+    },
+    {
+      "term_type": "actor_control_or_influence",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 19,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "identifying individuals or entities exercising control or influence over DeFi arrangements",
+      "verified": false
+    },
+    {
+      "term_type": "activity_trading_dealing",
+      "where": "value:digital commodity dealer (market maker)",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "holds itself out as a dealer in a digital commodity; (II) makes a market in a digital commodity",
+      "verified": false
+    },
+    {
+      "term_type": "risk_sanctions_asset_freezing",
+      "where": "value:freeze-resistant design",
+      "status": "no_such_section",
+      "doc": 18,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "launched a USD-pegged stablecoin marketed as immune to asset freezing and outside the oversight of traditional regulatory authorities.",
+      "verified": false
+    }
+  ]
+}

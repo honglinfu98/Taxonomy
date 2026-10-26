@@ -19,11 +19,9 @@ and complete them from Web text for years~\cite{shen2020taxoexpan,
 wang2021hef,jiang2022taxoenrich,arous2023taxocomplete,shi2024icon}. Crypto-assets
 are a domain in which the vocabulary itself is contested. Tokens are issued,
 traded and described on the Web, and the documents that say what a token
-\emph{is} are themselves Web publications: the EU's Markets in
-Crypto-Assets regulation (MiCA), the US GENIUS and CLARITY Acts, the UK's
-cryptoasset regulations, the guidance of the Financial Action Task Force
-(FATF), the Basel Committee, the FSB and IOSCO, and academic
-taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy}.
+\emph{is} are themselves Web publications: MiCA in the EU, the GENIUS and CLARITY Acts in the US, the UK's
+cryptoasset regulations, the guidance of FATF, the Basel Committee, the FSB
+and IOSCO, and academic taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy}.
 
 \paragraph{Relevance to the Web.}
 This work falls under the Semantics and Knowledge track. The research challenge
@@ -50,14 +48,13 @@ under different names.
 Existing approaches do not recover term types from such a corpus. First,
 manually built taxonomies of crypto-assets and of blockchain
 architectures~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy} encode one
-perspective each, a technical or an investor's one, and cannot be regenerated
-when an instrument changes. Second, LLM methods for taxonomy
+perspective each and cannot be regenerated when an instrument changes. Second, LLM methods for taxonomy
 completion~\cite{shi2024icon}, hierarchical
 classification~\cite{zhang2025teleclass} and tagging~\cite{wan2024tntllm,
 li2023taggpt} start from a label space that already exists, and ontology
 learning with LLMs~\cite{babaeigiglou2023llms4ol} is evaluated on general-domain
 benchmarks where the gold hierarchy is known. Third, none of them ties an induced class to the passage that licenses it,
-which in a legal domain decides whether a compliance team can audit the result.
+which decides whether a compliance team can audit the result.
 
 In this paper we propose \sys, a framework that induces term types from the
 definitions in a corpus of legal instruments and academic taxonomies and
@@ -77,10 +74,9 @@ measure how much each branch discriminates and where items stop short of any
 child, and a discovery step proposes new values and dimensions at those nodes,
 accepting only candidates that raise the information gain and are supported by
 verified evidence. The seed built from law is never modified; what the content
-adds is marked as such. Finally the tagged content is indexed on the graph:
-postings per node, value and subtree are bitsets, queries over them are set
-algebra weighted by is-a path strength, and the facet with the highest
-expected narrowing is the next question to ask.
+adds is marked as such. Finally the tagged content is indexed on the graph as bitsets,
+queried by set algebra weighted by is-a path strength, and navigated by the
+facet with the highest expected narrowing.
 
 \smallskip\noindent\textbf{Contributions.}
 \begin{itemize}
@@ -99,10 +95,10 @@ expected narrowing is the next question to ask.
     (\cref{sec:exp:rq1,sec:exp:rq2}).
   \item We evaluate on \corpus and DLT-Corpus (\cref{sec:exp}): 97.9\% of
     citations verify, 69 term types record a cross-source conflict, the
-    hierarchy resolves \BBits\ bits per descent, two maintenance iterations
-    over \AllItems\ items verify 96--97\% of tag evidence and add
-    \AllAddedTypes\ dimensions, and the index answers queries over \RItems\
+    hierarchy resolves \BBits\ bits per descent, \NIterWord\ maintenance
+    iterations over the whole on-topic DLT-Corpus of \AllItems\ items verify
+    \EvidMin--\EvidMax\% of tag evidence and add \AllAddedTypes\ dimensions, and the index answers queries over \RItems\
     items \RSpeedMin\ to \RSpeedMax\ times faster than a flat scan. \todo{Add the headline comparative
     number from RQ5--RQ7.} Code and data are at an anonymised
-    repository.\footnote{\todo{anonymised URL}}
+    repository.\footnote{\url{https://anonymous.4open.science/r/Taxonomy-77BF/}}
 \end{itemize}

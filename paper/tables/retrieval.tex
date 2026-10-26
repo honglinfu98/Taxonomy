@@ -2,13 +2,13 @@
 \toprule
 Workload & Queries & Hits & Bitset ($\mu$s) & Flat (ms) & Speed-up \\
 \midrule
-subtree, 1 node & 107 & 1,474 & 2.1 & 5.1 & 2,439$\times$ \\
-direct, 1 node & 91 & 360 & 2.1 & 2.0 & 935$\times$ \\
-value, 1 node & 285 & 126 & 2.8 & 6.5 & 2,286$\times$ \\
-subtree, $s \ge 0.3$ & 107 & 579 & 4.9 & 5.4 & 1,111$\times$ \\
-AND, 2 atoms & 300 & 63 & 5.6 & 7.3 & 1,304$\times$ \\
-OR, 2 atoms & 300 & 1,071 & 5.7 & 12.5 & 2,192$\times$ \\
-AND NOT, 2 atoms & 300 & 476 & 6.9 & 7.5 & 1,090$\times$ \\
-mixed, 3 atoms & 200 & 53 & 9.9 & 14.2 & 1,437$\times$ \\
+subtree, 1 node & 132 & 5,083 & 2.1 & 22.1 & 10,461$\times$ \\
+direct, 1 node & 125 & 1,068 & 2.1 & 8.3 & 3,903$\times$ \\
+value, 1 node & 463 & 322 & 2.9 & 26.7 & 9,100$\times$ \\
+subtree, $s \ge 0.3$ & 132 & 1,992 & 6.0 & 22.5 & 3,755$\times$ \\
+AND, 2 atoms & 300 & 146 & 6.5 & 29.8 & 4,562$\times$ \\
+OR, 2 atoms & 300 & 2,456 & 6.4 & 53.1 & 8,349$\times$ \\
+AND NOT, 2 atoms & 300 & 1,479 & 9.1 & 30.9 & 3,384$\times$ \\
+mixed, 3 atoms & 200 & 154 & 11.1 & 58.4 & 5,262$\times$ \\
 \bottomrule
 \end{tabular}

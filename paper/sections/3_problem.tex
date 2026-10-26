@@ -43,11 +43,10 @@ children of $y$, accepting a candidate only when it raises that measure and
 is supported by verified evidence. Additions are marked as candidates; the seed is
 never edited.
 
-\textbf{Problem (retrieval).} Given $G$, the tagged items and a query, a
-Boolean combination of nodes, values and subtrees of $G$, return the items it
-denotes, ranked by how strongly each is a kind of the queried nodes along the
-weighted is-a edges, together with the question, a child split or a value
-split of $G$, whose answer would narrow the result most.
+\textbf{Problem (retrieval).} Given $G$, the tagged items and a Boolean
+query over nodes, values and subtrees of $G$, return the items it denotes,
+ranked by how strongly each is a kind of the queried nodes along the weighted
+is-a edges, with the child or value split of $G$ that would narrow the result most.
 
 \textbf{Desiderata.}
 \begin{enumerate*}[label=(D\arabic*)]

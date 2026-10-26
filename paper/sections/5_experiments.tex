@@ -4,12 +4,12 @@
 We answer seven research questions.
 \textbf{RQ1}: How many dimensions does the corpus support, how widely are
 they shared, and how faithful are the citations?
-\textbf{RQ2}: What hierarchy do the term types form, how grounded are its
-edges, and how does it change as weak edges are hidden?
+\textbf{RQ2}: What hierarchy do the term types form and how grounded are its
+edges?
 \textbf{RQ3}: Does the DAG serve as a label space for Web content, and does
 the content reveal where it must grow?
-\textbf{RQ4}: Does the DAG index retrieve tagged content faster than a flat
-tag table, and does facet gain navigate to a target item?
+\textbf{RQ4}: Does the DAG index beat a flat tag table on latency, and does
+facet gain navigate to a target?
 \textbf{RQ5}: How does the ontology compare with expert taxonomies and LLM
 baselines given the same corpus? \textbf{RQ6}: How much do the manifest,
 grounding strategy and model matter? \textbf{RQ7}: Does the ontology improve a
@@ -26,36 +26,43 @@ content is DLT-Corpus~\cite{hernandez2026dltcorpus}, 37,440 scientific papers
 and 49,023 USPTO patents, of which we keep English items whose title or
 abstract names a DLT term (40\% of papers, 49\% of patents) and draw disjoint
 batches: a pilot of 150 papers and 150 patents, then a tenth of each
-collection (3,744 papers, 4,902 patents); an item is the title and abstract
-capped at 450 words. For RQ4 the index holds the tagged items of both batches. \todo{Held-out set and expert gold set for RQ5 and RQ7; contamination note.}
+collection (3,744 papers, 4,902 patents) per iteration until the on-topic
+pool of \AllItems\ items is exhausted; an item is the title and abstract
+capped at 450 words. For RQ4 the index holds the tagged
+items of all \RIterWord\ batches on version \RCat. A held-out gold set of 300 items is
+excluded from the supervised baseline's training; \GItems\ are annotated so far. \todo{Annotate the full gold set; contamination note.}
 
-\textbf{Baselines.} \todo{Expert taxonomies; zero-shot LLM without the corpus; chunked RAG and
-RAPTOR over it; TnT-LLM and LLMs4OL-style term typing; same corpus, model and
-schema for all.}
+\textbf{Baselines.} For tagging, the same model given a flat list of term
+types and value labels without questions, definitions or hierarchy, and a
+supervised TF-IDF with one-vs-rest logistic regression trained on the
+production tags outside the gold set. For retrieval, Boolean match on the
+flat tags, the supervised labels through our index, and BM25 over title and
+text with the query rendered as the term type's name, question and values.
+\todo{Expert taxonomies and LLM baselines over the same corpus (chunked RAG,
+RAPTOR, TnT-LLM) for RQ5.}
 
-\textbf{Metrics.} For faithfulness we report the share of citations whose quote
-the verifier finds in the cited document (exact or relabelled), the share
-relabelled, and the rejection rate; smaller rejection is better. For coverage we
-report the number of term types, values and aliases, the number of documents
-grounding each term type, and the number of term types with a recorded
-conflict. For the hierarchy we report the structural counts and the objectives of
+\textbf{Metrics.} For faithfulness, the share of citations whose quote the
+verifier finds in the cited document (exact or relabelled) and the rejection
+rate; smaller is better. For coverage, the number of term types, values, aliases, grounding documents
+per term type and recorded conflicts. For the hierarchy we report the structural counts and the objectives of
 \cref{sec:method:hierarchy}; for retrieval, latency against a flat scan with
 identical results and the steps and bits a navigation needs to reach $k$
-items. \todo{For RQ5 add precision and recall of term
-types against the expert gold set, an LLM judge calibrated against the
-experts~\cite{zheng2023judge}, and coverage of each expert taxonomy's
-dimensions; for RQ7 add macro-F$_1$ of the downstream classifier.}
+items. For tagging against the gold set, micro- and macro-F$_1$ over
+(term type, value) labels and over term types; for retrieval on the gold
+items, P@10, R@10, NDCG@10 and MAP with relevance graded from the gold
+labels. \todo{For RQ5 add precision and recall of term types against an
+expert gold set, an LLM judge calibrated against the
+experts~\cite{zheng2023judge}, and coverage of each expert taxonomy.}
 
-\textbf{Implementation.} Both tasks use \texttt{claude-haiku-5-5} called
-through the Anthropic Messages API at effort \texttt{high} with adaptive
-thinking disabled; the corpus sits behind a one-hour prompt-cache breakpoint.
+\textbf{Implementation.} Tasks A and B use \texttt{claude-haiku-5-5} at
+effort \texttt{high} with thinking disabled, the corpus behind a one-hour
+prompt cache.
 Task~A is one streamed call with a 120,000-token output limit; Task~B is 93
 calls with $k{=}6$, four in parallel; Task~C runs at effort \texttt{medium}
-with six items in flight. All runs are API calls from a laptop; no GPU is
+with 6 to 24 items in flight; gold annotation uses \texttt{claude-opus-5-5}
+at effort \texttt{high}. All runs are API calls from a laptop; no GPU is
 involved. The retrieval engine is pure Python over integer bitsets and is
-timed on one core of the same laptop. We report a single run. \todo{Add a second run with the same prompt
-and report agreement of term types and values, and a run with
-\texttt{claude-sonnet-5-5}, before submission.}
+timed on one core of the same laptop. Repeat runs are compared in \cref{sec:exp:rq1}.
 
 \subsection{RQ1: Term Types Generated and Their Faithfulness}
 \label{sec:exp:rq1}
@@ -77,19 +84,17 @@ and report agreement of term types and values, and a run with
 values and 212 aliases (\cref{tab:taska}). We make the
 following observations. (1) Technology dimensions are the largest group,
 because the blockchain taxonomy of Tasca and Tessone contributes architectural
-dimensions that no legal instrument uses, such as the fee regime and the
-interoperability of a ledger. (2) Asset and actor dimensions are the most
+dimensions that no legal instrument uses. (2) Asset and actor dimensions are the most
 widely shared: an asset term type is grounded in 4.5 documents on average,
 and service-provider status in 13 of the 24. (3) Twenty term types rest on a single document, mostly distinctions the
 academic taxonomies draw and the law does not yet make. Every document is
-cited by at least one term type, the 2021 FATF guidance most, by 27, and the
-DLT-Corpus paper least, by one.
+cited by at least one term type, the 2021 FATF guidance most, by 27.
 
 
 Sixty-nine term types carry a note recording a disagreement between sources.
-\Cref{tab:case} (\cref{app:results}) shows the reference-asset dimension of
-\cref{fig:one} as returned: five values, seven grounding documents across four
-jurisdictions, and a note recording the jurisdictional split.
+The reference-asset dimension of \cref{fig:one} is returned with five
+values, seven grounding documents across four jurisdictions, and a note
+recording the jurisdictional split (full record in the artefact).
 
 
 \textbf{Faithfulness.} Of the 480 citations, 463 matched the cited section
@@ -109,10 +114,19 @@ least one verified citation, but five values were supported only by a rejected
 quote and are therefore unverified.
 
 Verification checks existence, not relevance: whether the 470 verified
-citations support their term types is left to the expert validation deferred to the next version
-(\cref{sec:conclusion}). The run is one call of
-302 seconds with 85,729 output tokens and 235,298 cached input tokens, at most
-\$0.33 at list price.
+citations support their term types is left to the expert validation deferred
+to the next version (\cref{sec:conclusion}). The run is one call of 302
+seconds with 85,729 output tokens and 235,298 cached input tokens,
+\$\BillTaskA\ at list price.
+
+\textbf{Stability.} A second Haiku run with the same prompt returned
+\AgHTypes\ term types, \AgHMatched\ of which match one of the first run's 93
+by name, question or alias (F$_1$ \AgHF, value Jaccard \AgHJaccard), with
+\AgHVerifiedPct\% of its \AgHCites\ citations verified; a
+\texttt{claude-sonnet-5-5} run, cut off at the output limit, returned
+\AgSTypes\ with \AgSMatched\ matched (F$_1$ \AgSF) and \AgSVerifiedPct\% of
+\AgSCites\ verified. Grounding holds across runs and models; the set of
+dimensions does not.
 
 \subsection{RQ2: The Is-a Hierarchy}
 \label{sec:exp:rq2}
@@ -140,7 +154,7 @@ obligations; the model was free to return \emph{none} for any node and did so
 with median mass 0.13. (2) The DAG is deep and multi-parented: a node keeps
 \BMeanParents\ parents on average and up to \BMaxParents, the technology category
 reaches depth 14, and a random descent resolves \BBits\ bits before ending at
-one of \BEffLeaves\ effective leaves. (3) In the asset category (\cref{fig:tree}, \cref{app:results}) the reference-asset dimension
+one of \BEffLeaves\ effective leaves. (3) In the asset category the reference-asset dimension
 specialises the legal classification and carries the stablecoin class,
 redemption mechanism and tokenisation form beneath it, but second-choice
 parents carry nearly as much mass: \emph{legal classification} and
@@ -149,22 +163,22 @@ parents carry nearly as much mass: \emph{legal classification} and
 other's parent. The weights are coarse, with a
 median top weight of \BMedianTop, so we read them as rankings rather than
 calibrated probabilities. The \BCalls\ calls took \BSeconds\ seconds and read
-\BCacheTokens\ million cached tokens, at most \$11.7 before the cache-read
-discount. \todo{Exact billing figures; baseline and frontier-model cost.}
+\BCacheTokens\ million cached tokens, \$\BillTaskB\ at list price; every
+stage's recorded usage is in \cref{tab:billing} (\cref{app:results}),
+\$\BillTotal\ in all.
 
 
 \textbf{Sensitivity to the threshold.} \Cref{fig:spectrum} (\cref{app:results}) sweeps a display
-threshold over the consolidated DAG. Hiding edges below 0.2 halves the edge
-count and roughly halves the bits per descent; at 0.4 a third of the nodes are
-roots and a descent resolves half a bit; above 0.6 the graph is a forest of
-near-singletons.
+threshold over the consolidated DAG. Hiding edges below 0.2 halves the edges
+and the bits per descent; at 0.4 a third of the nodes are roots and a descent
+resolves half a bit; above 0.6 the graph is a forest of singletons.
 
 \textbf{Faithfulness of edges.} The entries carry \BCites\ citations, of which
 \BVerified\ (\BVerifiedPct\%) verify, \BRelabelled\ after relabelling, and
 \BRejected\ are rejected, a higher rejection rate than in Task~A. Only
-\BEntriesCited\ of the \BWeighted\ entries cite anything, which the prompt
-allows for low-probability entries, and \BTopNoCite\ top entries cite nothing,
-which it does not. Rejected quotes are mostly short phrases from long sections, such as
+\BEntriesCited\ of the \BWeighted\ entries cite anything, allowed for
+low-probability entries, and \BTopNoCite\ top entries cite nothing, which is
+not. Rejected quotes are mostly short phrases from long sections, such as
 ``Wrapped tokens''.
 
 \subsection{RQ3: The DAG as a Label Space}
@@ -172,68 +186,71 @@ which it does not. Rejected quotes are mostly short phrases from long sections, 
 
 \begin{table*}[t]
   \centering
-  \caption{Two maintenance iterations. Each tags a disjoint batch with the
+  \caption{\NIterCap\ maintenance iterations. Each tags a disjoint batch with the
   catalogue version in force, measures the DAG on it, discovers candidates at
   the target nodes and consolidates the accepted ones into the next version.
   Evid.\ is the share of evidence spans found verbatim in the item; Nodes used
   counts nodes that received at least one item; USD and minutes cover tagging,
-  discovery and consolidation at list price with eight workers.}
+  discovery and consolidation at list price, with \WorkersMin\ to \WorkersMax\
+  parallel requests.}
   \label{tab:evolution}
   \scriptsize
   \input{tables/evolution}
 \end{table*}
 
-\textbf{Tagging.} \Cref{tab:evolution} summarises both iterations. The pilot
-batch of \CItems\ items received \CTags\ tags, \CTagsPerItem\ per item, and the
-second batch of \TItems\ items, a tenth of the on-topic collection, received
-\TTags\ tags, \TTagsPerItem\ per item; \CEvidencePct\% and \TEvidencePct\% of
-the evidence spans were found verbatim in the item, and \CRejected\ and
-\TRejected\ tags were rejected for unknown identifiers. We make the following
-observations. (1) The content exercises the technical half of the DAG: in the
-second batch \TCovTech\ items carry a technology tag and \TCovAsset\ an asset
-tag, against \TCovActor\ for actors, \TCovActivity\ for activities and
-\TCovOblig\ for obligations. The legal nodes are dormant or collapsed on one value; testing them needs
-regulatory content. (2) The dimensions discovered in
-iteration 1 are among the most used in iteration 2: ledger purpose was tagged
-on \TLedgerPurpose\ items with a value entropy of \TEntLedgerPurpose\ bits,
-smart-contract usage domain on \TUsageDomain, identity binding on \TIdentity\
-and the privacy-mechanism family on \TPrivacy\ with \TEntPrivacy\ bits, so
-they discriminate the content rather than absorbing it. (3) Tagging cost
-\$\TCostPerItem\ per item; the whole on-topic collection of \OnTopicK\
-thousand documents would cost about \$\ProjCost\ and \ProjHours\ hours.
+\textbf{Tagging.} \Cref{tab:evolution} summarises the \NIterWord\ iterations:
+a pilot of \CItems\ items on the seed, then batches of \TItems\ items on
+versions 1 to \LCat, the last being the \LItems-item remainder of the pool,
+so the whole on-topic collection, \AllItems\ items with \AllTags\ tags, is
+tagged. \EvidMin--\EvidMax\% of the evidence spans are found verbatim in the
+item. We make three observations. (1) The content exercises the technical
+half of the DAG: in iteration 2, \TCovTech\ items carry a technology tag
+against \TCovActor\ an actor tag and \TCovOblig\ an obligation tag; the legal
+nodes need regulatory content. (2) Dimensions discovered in one iteration are among the
+most used in the next: ledger purpose, added in iteration 1, was tagged on
+\TLedgerPurpose\ items in iteration 2 with a value entropy of
+\TEntLedgerPurpose\ bits, and every dimension added in iterations 2 and 3
+received items in the next. (3) Tagging cost \$\LCostPerItem\ per item; all \NIterWord\ iterations took
+\$\AllCost\ and \AllWallMin\ minutes at up to \WorkersMax\ parallel requests.
 
-\textbf{Measurement.} \Cref{tab:objectives} (\cref{app:results}) compares, for each version, the
-objectives from the model's is-a weights with those measured from the tags. A
-content-driven descent resolves about seven bits against under five from the
-prior and ends at more effective leaves. Collapsed nodes grow with the batch,
-\TCollapsed\ in iteration 2, led by the DLT data structure, 96\% of 2,377
-items on ``blockchain''; they are also the largest residual pools, which is
-where discovery is pointed.
+\textbf{Measurement.} Measured from the tags, a content-driven descent
+resolves \BitsSeq\ bits over the \NIterWord\ iterations against \EBitsPrior\
+to \LPriorBits\ from the prior weights: the gain rises from the
+seed as discovered nodes absorb residual mass and then settles near seven
+bits. Collapsed nodes, \CollapsedSeq\ per iteration, are led by the DLT data
+structure with 96\% of its items on ``blockchain'' and are also the largest
+residual pools, where discovery is pointed; dormant nodes fall from
+\MDormantFirst\ on the pilot batch to none by iteration 4.
 
-\textbf{Discovery and evolution.} Iteration 1 found \MTargets\ targets and
-accepted \MAccepted\ of \MCandidates\ candidates; iteration 2 found \TTargets\
-targets and accepted \TAccepted\ of \TCandidates, producing version 2 with
-\VTwoNodes\ term types, \VTwoEdges\ edges and \VTwoValues\ values
-(\cref{tab:accepted}, \cref{app:results}). The additions are dimensions a legal corpus would not
-contain, such as the cryptographic family behind a privacy guarantee, and
-several iteration-2 values refine iteration-1 nodes. Two failures are visible:
-two application-domain dimensions proposed under different smart-contract
-nodes in iteration 1 ask the same question and were not merged by
-consolidation; and with raw support counts, capped by the forty items shown,
-only 10 of 76 candidates cleared the gain test against residual pools of
-thousands in iteration 2, which is why support is extrapolated to the residual
-(21 of 81 accepted).
+\textbf{Discovery and evolution.} The iterations found \TargetsSeq\ targets
+and accepted \AcceptedSeq\ of \CandidatesSeq\ candidates, producing version
+\VLastNum\ with \VLastNodes\ term types, \VLastEdges\ edges and \VLastValues\
+values (\cref{tab:accepted}, \cref{app:results}). The additions are
+dimensions a legal corpus would not contain, such as the cryptographic family
+behind a privacy guarantee, and later iterations refine earlier ones, as when
+iteration 3 placed a zero-knowledge proof system variant under that family. Two failures are visible. Consolidation does
+not always merge candidates that ask the same question: iteration 1 kept two
+application-domain dimensions under different smart-contract nodes, and
+iteration 4 added a cross-chain interoperability mechanism beside the
+cross-chain transfer mechanism of iteration 2. And with raw support counts, capped by the forty items shown, only
+10 of 76 candidates cleared the gain test against residual pools of thousands
+in iteration 2, which is why support is extrapolated to the residual (21 of
+81 accepted). \todo{A regulatory content batch for the legal branches.}
 
-The tags have no gold labels yet, so verified evidence is the only quality
-signal we report; an evidence span can exist without the tag being right.
-\todo{A regulatory content batch for the legal branches.}
+\textbf{Pilot gold-set evaluation.} Verified evidence shows that a span
+exists, not that the tag is right. On \GItems\ held-out items with \GLabels\
+LLM-adjudicated labels (\cref{tab:evaltag,tab:evalret}, \cref{app:results}) the DAG-guided tagger reaches
+label micro-F$_1$ \DagMicro\ against \FlatMicro\ for the same model with a
+flat label list and \SupMicro\ for a supervised classifier, while BM25 beats
+our index on retrieval (NDCG@10 \RetBMNDCG\ against \RetDagNDCG) because the
+tags miss the second atom of most AND queries.
 
 \subsection{RQ4: Retrieval over the DAG}
 \label{sec:exp:rq4}
 
 \begin{table}[t]
   \centering
-  \caption{Query latency on the index of \RItems\ items (version 2), per
+  \caption{Query latency on the index of \RItems\ items (version \RCat), per
   query on one core, best of \RRepeat\ runs for the bitset engine and a single
   run for the flat scan over the tag table. Hits is the mean result size.
   Every bitset result was identical to the scan's.}
@@ -242,35 +259,32 @@ signal we report; an evidence span can exist without the tag being right.
   \input{tables/retrieval}
 \end{table}
 
-\textbf{Index.} The on-topic, tagged items of both batches, \RItems\ with
-\RTags\ tags, are placed on version 2, where \RNodesTagged\ of \RNodes\ nodes
-and \RPairs\ node--value pairs hold items; the index builds in \RBuildSec\
+\textbf{Index.} The on-topic, tagged items of all \RIterWord\ batches,
+\RItems\ with \RTags\ tags, are placed on version \RCat, where \RNodesTagged\
+of \RNodes\ nodes and \RPairs\ node--value pairs hold items; the index builds in \RBuildSec\
 seconds and occupies \RIndexMB~MB. \Cref{tab:retrieval} times eight workloads,
-\RQueries\ queries drawn from the nodes and values that hold items, against a
-flat scan that tests one predicate per item with precomputed ancestor sets.
+\RQueries\ queries over the nodes and values that hold items, against a flat
+scan with precomputed ancestor sets.
 (1) Every workload runs in \RLatMin\ to \RLatMax\ microseconds against
 \RFlatMinMs\ to \RFlatMaxMs\ milliseconds for the scan, \RSpeedMin\ to
 \RSpeedMax\ times faster, with \RMismatches\ mismatches in \RQueries\ results.
-(2) Navigation by facet gain works. For \RTargets\ random target items we start
-from the whole collection and take the option of the offered facet that
-contains the target until at most $k{=}\RK$ items remain or 15 steps are
-spent; the ideal is \RIdealBits\ bits. The highest-narrowing facet resolves
-\RGainBits\ bits in \RGainSteps\ steps and reaches $k$ for \RGainReached\% of
-the targets, against \RRandBits\ bits in \RRandSteps\ steps and
-\RRandReached\% for a random facet; the mean exceeds the ideal because the last
-step often narrows below $k$, while the targets that miss $k$ leave the mean
-final set at \RGainFinal\ items. (3) The failure is
+(2) Navigation by facet gain works. For \RTargets\ random target items we
+take, from the whole collection, the option of the offered facet that contains
+the target until at most $k{=}\RK$ items remain or 15 steps are spent (ideal
+\RIdealBits\ bits). The highest-narrowing facet resolves \RGainBits\ bits in
+\RGainSteps\ steps and reaches $k$ for \RGainReached\% of the targets, against
+\RRandBits\ bits in \RRandSteps\ steps and \RRandReached\% for a random facet. (3) The failure is
 inherited from the edge weights: through light is-a edges the subtree of the
 asset root reaches \RTopClosurePct\% of the items, so a bare subtree query on
-a high node returns most of the collection. Restricting the subtree to path strength $\ge 0.3$ cuts the mean
-hit count from 1,474 to 579 at twice the latency, and the candidate edges
-added at weight one will tighten once the is-a query re-estimates them.
-Ranking uses the tagger's confidence; there are no relevance judgements yet. \todo{Compare with BM25 over the item text.}
+a high node returns most of the collection; restricting it to path strength
+$\ge 0.3$ cuts the mean hit count from \RClosureHits\ to \RStrengthHits\ at
+\RStrengthLatRatio\ times the latency.
+Ranking quality against BM25 is reported in \cref{sec:exp:rq3}.
 
 \textbf{Planned evaluations (RQ5--RQ7).}\label{sec:exp:rq5}\label{sec:exp:rq6}\label{sec:exp:rq7}
-\todo{RQ5: expert taxonomies and LLM baselines (zero-shot, chunked RAG, RAPTOR,
-TnT-LLM) on the same corpus. RQ6: ablation rows for grounding strategy, model
-and prompt beside the manifest result of \cref{sec:exp:rq1}. RQ7: macro-F$_1$
-with and without the ontology, with one failure case.}
+\todo{RQ5: expert taxonomies and RAG and TnT-LLM baselines on the same
+corpus. RQ6: ablations of grounding, model and prompt beside the manifest
+result. RQ7: the gold-set evaluation on all 300 items, three runs, one
+failure case.}
 
 

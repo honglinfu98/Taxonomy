@@ -1,0 +1,152 @@
+{
+ "role": "evolved",
+ "from_version": 5,
+ "iteration": 6,
+ "accepted_candidates": 6,
+ "plan": {
+  "term_types": [
+   {
+    "id": "zk_proof_application_role",
+    "name": "ZKP application role",
+    "category": "technology",
+    "question": "What role does the zero-knowledge proof play within the system?",
+    "description": "Distinguishes whether the ZKP is used for rollup validity, identity or privacy of data, verifiable computation, or range and rating validation.",
+    "values": [
+     "scaling / rollup validity proof",
+     "data or identity privacy",
+     "verifiable computation / virtual machine",
+     "range or rating correctness"
+    ],
+    "parents": [
+     "zk_proof_system_variant"
+    ],
+    "merged_from": [
+     "ZKP application role"
+    ],
+    "item_ids": [
+     "paper:5ab7edd7242d293dfec3b4e05c01811691a015f7",
+     "paper:7622d9405b687596d5c8a68d20e1f2a5c4c2348f",
+     "paper:90ba5bb696a240224ff782f16206c8e9afb10b95",
+     "paper:dc2ded111f015fbfbbea4163764006c221f82677",
+     "paper:ec196fe99f9f4d611c8e16ffd2e7e8e4749a9e8d"
+    ]
+   },
+   {
+    "id": "key_storage_medium",
+    "name": "Key storage medium or environment",
+    "category": "technology",
+    "question": "Where is the private key physically or logically stored while not in use?",
+    "description": "Distinguishes whether keys reside in volatile memory, hardware security modules, trusted execution environments, or are only on a user's device.",
+    "values": [
+     "volatile memory with power-down erasure",
+     "hardware security module or trusted execution environment",
+     "user mobile or desktop device",
+     "physical card or bearer medium",
+     "cloud or remote encrypted server"
+    ],
+    "parents": [
+     "key_custody_control_model"
+    ],
+    "merged_from": [
+     "key storage medium or environment"
+    ],
+    "item_ids": [
+     "patent:10887097",
+     "patent:11418338",
+     "patent:20190199516",
+     "patent:20220122066",
+     "patent:20230023857"
+    ]
+   },
+   {
+    "id": "ledger_parent_child_coupling",
+    "name": "Parent-child coupling mechanism",
+    "category": "technology",
+    "question": "How are the sub-chains or partitions linked to the parent or peer ledgers?",
+    "description": "Distinguishes how partitions or subchains are bound to the main ledger, which affects cross-chain verification and security inheritance.",
+    "values": [
+     "merged mining",
+     "sidechain two-way peg",
+     "coupled pair anchoring",
+     "interlinked peer chains",
+     "none or independent"
+    ],
+    "parents": [
+     "ledger_partitioning_topology"
+    ],
+    "merged_from": [
+     "parent-child coupling mechanism"
+    ],
+    "item_ids": [
+     "paper:9b34db969ce30d5a299cc372b013c4d9e2b868e1",
+     "paper:a90e712e392bbf75a1fe1560f7373efa402dce3f",
+     "patent:12341892",
+     "patent:20200210413",
+     "patent:20210026814",
+     "patent:20240223390"
+    ]
+   },
+   {
+    "id": "finality_guarantee_source",
+    "name": "Finality guarantee source",
+    "category": "technology",
+    "question": "What mechanism or assumption bounds the reversal of a settled transaction?",
+    "description": "Whether finality comes from quorum intersection, chain depth or confirmation count, economic stake slashing, or a checkpoint/justification gadget.",
+    "values": [
+     "quorum-based BFT finality",
+     "confirmation-depth finality",
+     "economic-penalty finality",
+     "checkpoint or justification finality"
+    ],
+    "parents": [
+     "consensus_finality"
+    ],
+    "merged_from": [
+     "Finality guarantee source"
+    ],
+    "item_ids": [
+     "paper:394b5a6037932672db06eeb05a23196e7eec676c",
+     "paper:6090558104375cc06e8ca7d7fe26b5e27c5eb7e7",
+     "paper:88f670fe9c8ff0963fb7281f61e3abcbb12406ef",
+     "paper:ae2009f9f9fdb8b46579ac93fdc9e9f40f02c48b",
+     "paper:ffc27e1a71df5007266a6a3508ced5f2b769ea93"
+    ]
+   }
+  ],
+  "values": [
+   {
+    "term_type": "ledger_partitioning_topology",
+    "value": "hierarchical multi-blockchain with main and multiple subchains",
+    "definition": "Topology where a main chain anchors or coordinates several subchains or sidechains that each process a partition of state or tasks.",
+    "item_ids": [
+     "paper:4d307e73433911c083ce4a468c3a6c0495325b43",
+     "paper:d7c4479b58f238918028451c0f323e01725a8da1",
+     "paper:dafca96bcbb935fcad264489858158fd64b1b2cf",
+     "paper:ea8d96f4da7c75288edc9eb14b421f9d35befac4",
+     "paper:f8644322a6f2f83cb91773f84f43e86143a713a7",
+     "patent:11956346"
+    ]
+   },
+   {
+    "term_type": "centralisation_locus",
+    "value": "identity_or_access_control",
+    "definition": "Centralisation of who may join, authorise, or hold access rights, such as a single controlling address or a trusted authority issuing keys or approvals.",
+    "item_ids": [
+     "paper:201ae862af6fd9c4c336e40d7a403eb6b4b6126e",
+     "paper:371f301013488ad97c8e5e6e8e5b511f59fb3bad",
+     "paper:4499efe02ca3cee0e48546ef75f6f3133d10aba1",
+     "paper:e0b363edeadc43f039cb28e2c41e4f493b378592",
+     "patent:20190268319"
+    ]
+   }
+  ],
+  "dropped": []
+ },
+ "version": 6,
+ "created": "2026-10-26T11:11:14+00:00",
+ "nodes": 132,
+ "edges": 320,
+ "values": 549,
+ "candidate_nodes": 39,
+ "candidate_values": 232
+}
