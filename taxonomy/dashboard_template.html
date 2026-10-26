@@ -91,16 +91,16 @@ input[type=range] { width: 260px; max-width: 70vw; accent-color: var(--accent); 
 
 <div class="wrap">
   <h1>Term Type DAG Explorer</h1>
-  <p class="sub">Is-a ontology over the <span id="n-nodes" class="mono"></span> term types from Task A, as judged by <span id="run-model"></span> on <span id="run-date"></span>. Each node's distribution over candidate parents plus <em>none</em> sums to 1. Move the threshold to see which edges survive and how the information gain, the reach-a-leaf AUC and the leaf count respond; click a node to read its full distribution and rationales.</p>
+  <p class="sub">Is-a ontology over the <span id="n-nodes" class="mono"></span> term types from Task A, as judged by <span id="run-model"></span> on <span id="run-date"></span>. Each node's weights over its candidate parents sum to 1; every weighted edge is in the graph unless it would close a cycle. Hide the lighter edges to see how the structure, the information gain, the reach-a-leaf AUC and the leaf count respond; click a node to read its full distribution and rationales.</p>
 
   <div class="controls">
     <div class="ctl">
-      <label for="thr">Threshold P(X is-a Y) ≥</label>
-      <div class="row"><input type="range" id="thr" min="0" max="1" step="0.01" value="0.4"><span class="val" id="thr-val">0.40</span></div>
+      <label for="thr">Hide edges with weight below (display only)</label>
+      <div class="row"><input type="range" id="thr" min="0" max="1" step="0.01" value="0"><span class="val" id="thr-val">0.00</span></div>
     </div>
     <div class="ctl">
-      <label for="ghost">Below threshold</label>
-      <div class="row check"><input type="checkbox" id="ghost" checked><label for="ghost" style="text-transform:none;letter-spacing:0;font-size:13px;color:var(--fg)">show edges within 0.1 below as dashed</label></div>
+      <label for="ghost">Hidden edges</label>
+      <div class="row check"><input type="checkbox" id="ghost"><label for="ghost" style="text-transform:none;letter-spacing:0;font-size:13px;color:var(--fg)">draw hidden edges as dashed</label></div>
     </div>
     <div class="stats">
       <div class="stat"><b id="s-edges">–</b><span>is-a edges</span></div>
@@ -116,11 +116,11 @@ input[type=range] { width: 260px; max-width: 70vw; accent-color: var(--accent); 
   <div class="delta" id="delta" style="margin:8px 2px 0"></div>
 
   <div class="spectrum">
-    <svg id="spec" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Edge, root and leaf counts across thresholds"></svg>
-    <div class="legend"><span><i style="background:var(--accent)"></i>is-a edges kept</span><span><i style="background:var(--muted)"></i>roots</span><span><i style="background:var(--cat-activity)"></i>leaves</span><span>Click or drag on either chart to set the threshold.</span></div>
+    <svg id="spec" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Edge, root and leaf counts across display weights"></svg>
+    <div class="legend"><span><i style="background:var(--accent)"></i>is-a edges kept</span><span><i style="background:var(--muted)"></i>roots</span><span><i style="background:var(--cat-activity)"></i>leaves</span><span>Click or drag on either chart to set the display weight.</span></div>
   </div>
   <div class="spectrum">
-    <svg id="spec2" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Information gain, AUC and effective leaves across thresholds"></svg>
+    <svg id="spec2" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Information gain, AUC and effective leaves across display weights"></svg>
     <div class="legend"><span><i style="background:var(--cat-asset)"></i>bits per descent (information gain)</span><span><i style="background:var(--cat-technology)"></i>AUC of reach-a-leaf curve</span><span><i style="background:var(--cat-obligation_or_risk)"></i>effective leaves ÷ nodes</span><span>All three on a 0–1 axis; bits are divided by the maximum over the range.</span></div>
   </div>
 
@@ -141,21 +141,27 @@ DATA.edges.forEach(e => outEdges[e.c].push(e));
 const W = {};                              // (child|parent) -> weight
 DATA.edges.forEach(e => W[e.c + "|" + e.p] = e.w);
 
-// Same algorithm as taxonomy/is_a.py consolidate(): tie order mirrors Python's reverse-sorted tuples.
-function consolidate(thr) {
-  const pNone = Object.fromEntries(DATA.nodes.map(n => [n.id, n.pn]));
+// Same algorithm as taxonomy/is_a.py consolidate(): every edge in decreasing weight unless it closes a cycle.
+const FULL = (() => {
   const parents = Object.fromEntries(DATA.nodes.map(n => [n.id, []]));
   const reaches = (src, dst) => { const st = [src], seen = new Set(); while (st.length) { const n = st.pop(); if (n === dst) return true; if (!seen.has(n)) { seen.add(n); parents[n].forEach(([q]) => st.push(q)); } } return false; };
   const sorted = [...DATA.edges].sort((a, b) => b.w - a.w || (b.c > a.c ? 1 : b.c < a.c ? -1 : 0) || (b.p > a.p ? 1 : b.p < a.p ? -1 : 0));
-  const status = {};                       // child|parent -> kept | below threshold | below P(none) | would cycle
+  const status = {};
   for (const e of sorted) {
     const k = e.c + "|" + e.p;
-    if (e.w < thr) { status[k] = "below threshold"; continue; }
-    if (e.w <= pNone[e.c]) { status[k] = "below P(none)"; continue; }
+    if (e.w <= 0) { status[k] = "zero weight"; continue; }
     if (reaches(e.p, e.c)) { status[k] = "would cycle"; continue; }
     parents[e.c].push([e.p, e.w]); status[k] = "kept";
   }
-  return { parents, status, pNone };
+  return { parents, status };
+})();
+function consolidate(thr) {                 // display filter: hide kept edges lighter than thr
+  const parents = {}, status = { ...FULL.status };
+  for (const [c, ps] of Object.entries(FULL.parents)) {
+    parents[c] = ps.filter(([, w]) => w >= thr - 1e-12);
+    ps.forEach(([q, w]) => { if (w < thr - 1e-12) status[c + "|" + q] = "hidden by display weight"; });
+  }
+  return { parents, status, pNone: Object.fromEntries(DATA.nodes.map(n => [n.id, n.pn])) };
 }
 
 // Same as taxonomy/dag_metrics.py: branching entropy per node, random-descent AUC, effective leaves.
@@ -213,7 +219,7 @@ function drawSpectrum(thr) {
     <path d="${path("leaves")}" stroke="var(--cat-activity)" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
     <path d="${path("edges")}" stroke="var(--accent)" stroke-width="2.5" fill="none" vector-effect="non-scaling-stroke"/>
     <line x1="${x(thr)}" x2="${x(thr)}" y1="${padT}" y2="${H - padB}" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>
-    <text x="${Math.min(x(thr) + 6, Wd - 160)}" y="${padT + 12}" class="edgelabel" style="fill:var(--fg)">${thr.toFixed(2)}: ${cur.edges} edges, ${cur.roots} roots, ${cur.leaves} leaves</text>`;
+    <text x="${Math.min(x(thr) + 6, Wd - 200)}" y="${padT + 12}" class="edgelabel" style="fill:var(--fg)">hide below ${thr.toFixed(2)}: ${cur.edges} edges, ${cur.roots} roots, ${cur.leaves} leaves</text>`;
   drawSpectrum2(thr);
 }
 function drawSpectrum2(thr) {
@@ -230,7 +236,7 @@ function drawSpectrum2(thr) {
     <path d="${path(norm.auc)}" stroke="var(--cat-technology)" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
     <path d="${path(norm.eff)}" stroke="var(--cat-obligation_or_risk)" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
     <line x1="${x(thr)}" x2="${x(thr)}" y1="${padT}" y2="${H - padB}" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>
-    <text x="${Math.min(x(thr) + 6, Wd - 300)}" y="${padT + 12}" class="edgelabel" style="fill:var(--fg)">${thr.toFixed(2)}: ${cur.bits.toFixed(2)} bits/descent, AUC ${cur.auc.toFixed(3)}, ${cur.eff.toFixed(1)} effective leaves, E[depth] ${cur.expectedDepth.toFixed(2)}</text>`;
+    <text x="${Math.min(x(thr) + 6, Wd - 300)}" y="${padT + 12}" class="edgelabel" style="fill:var(--fg)">hide below ${thr.toFixed(2)}: ${cur.bits.toFixed(2)} bits/descent, AUC ${cur.auc.toFixed(3)}, ${cur.eff.toFixed(1)} effective leaves, E[depth] ${cur.expectedDepth.toFixed(2)}</text>`;
 }
 for (const id of ["spec", "spec2"]) (function wireSpectrum() {
   const svg = document.getElementById(id);
@@ -254,7 +260,7 @@ function drawCategory(cat, res, thr, showGhost) {
   const depth = depthOf(parents);
   const kids = Object.fromEntries(ids.map(i => [i, []]));
   ids.forEach(c => { if (parents[c].length) kids[parents[c][0][0]].push(c); });
-  const roots = ids.filter(c => !parents[c].length).sort((a, b) => pNone[b] - pNone[a] || (a < b ? -1 : 1));
+  const roots = ids.filter(c => !parents[c].length).sort((a, b) => (a < b ? -1 : 1));
   const order = [];
   const walk = n => { order.push(n); kids[n].sort((a, b) => parents[b][0][1] - parents[a][0][1] || (a < b ? -1 : 1)).forEach(walk); };
   roots.forEach(walk);
@@ -264,13 +270,13 @@ function drawCategory(cat, res, thr, showGhost) {
   const color = `var(--cat-${cat})`;
   const parts = [];
   const curve = (a, b) => { const x1 = pos[a].x + NW, y1 = pos[a].y + NH / 2, x2 = pos[b].x, y2 = pos[b].y + NH / 2; const mx = (x1 + x2) / 2; return `M${x1} ${y1} C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`; };
-  // ghost edges: just below threshold, and would pass the P(none) floor
-  if (showGhost) for (const e of DATA.edges) if (byId[e.c].cat === cat && e.w < thr && e.w >= thr - 0.1 && e.w > pNone[e.c] && depth[e.p] < depth[e.c] + 1)
-    parts.push(`<path class="edge ghost" d="${curve(e.p, e.c)}" stroke-width="1.2"><title>${esc(byId[e.c].name)} is-a ${esc(byId[e.p].name)}: p=${e.w.toFixed(2)} (below threshold)</title></path>`);
-  for (const c of ids) parents[c].forEach(([q, p], i) => parts.push(`<path class="edge" d="${curve(q, c)}" stroke="${color}" stroke-width="${(1 + p * 3).toFixed(1)}" opacity="${i ? .55 : .9}"><title>${esc(byId[c].name)} is-a ${esc(byId[q].name)}: p=${p.toFixed(2)}${i ? " (extra parent)" : ""}</title></path>`));
+  // hidden edges: kept in the DAG but lighter than the display weight
+  if (showGhost) for (const c of ids) FULL.parents[c].forEach(([q, w]) => { if (w < thr - 1e-12)
+    parts.push(`<path class="edge ghost" d="${curve(q, c)}" stroke-width="1"><title>${esc(byId[c].name)} is-a ${esc(byId[q].name)}: w=${w.toFixed(2)} (hidden)</title></path>`); });
+  for (const c of ids) parents[c].forEach(([q, p], i) => parts.push(`<path class="edge" d="${curve(q, c)}" stroke="${color}" stroke-width="${(0.6 + p * 4).toFixed(1)}" opacity="${(0.25 + p * 0.75).toFixed(2)}"><title>${esc(byId[c].name)} is-a ${esc(byId[q].name)}: w=${p.toFixed(2)}${i ? " (extra parent)" : ""}</title></path>`));
   for (const n of order) {
     const { x, y } = pos[n]; const isRoot = !parents[n].length;
-    const label = (isRoot ? `none ${pNone[n].toFixed(2)}` : `p ${parents[n][0][1].toFixed(2)}`) + (parents[n].length > 1 ? ` +${parents[n].length - 1}` : "") + (M.ig[n] > 0 ? ` · ${M.ig[n].toFixed(2)}b` : "");
+    const label = (isRoot ? "root" : `w ${parents[n][0][1].toFixed(2)}`) + (parents[n].length > 1 ? ` +${parents[n].length - 1}` : "") + (M.ig[n] > 0 ? ` · ${M.ig[n].toFixed(2)}b` : "");
     parts.push(`<g class="node${isRoot ? " root" : ""}${n === selected ? " sel" : ""}" data-id="${n}" tabindex="0" role="button" aria-label="${esc(byId[n].name)}">
       <rect x="${x}" y="${y}" width="${NW}" height="${NH}" rx="4" stroke="${color}"/>
       <text x="${x + 8}" y="${y + 17}">${esc(trunc(byId[n].name, 27))}</text>
@@ -288,23 +294,19 @@ function drawDetail(res) {
   if (!selected) return;
   const n = byId[selected];
   const dist = [...outEdges[selected]].map(e => ({ ...e, st: res.status[e.c + "|" + e.p] })).sort((a, b) => b.w - a.w);
-  const noneSt = res.parents[selected].length ? "" : "kept";
   const row = (name, w, st, why, cites) => `<div class="d${st === "kept" ? " kept" : ""}"><div class="n">${name}</div><div class="p">${w.toFixed(2)}</div>
     <div class="bar"><i style="width:${(w * 100).toFixed(1)}%"></i></div>${why ? `<div class="why">${esc(why)}${cites}</div>` : ""}<div class="st">${esc(st)}</div></div>`;
   const items = dist.map(e => row(`${esc(byId[e.p].name)} <span class="id mono">${esc(e.p)}</span>`, e.w, e.st, e.r, e.cn ? ` <span class="mono">· ${e.cv}/${e.cn} citations verified</span>` : ""));
-  const noneIdx = dist.findIndex(e => e.w < n.pn);
-  const noneRow = row("<em>none</em> (top-level in its category)", n.pn, noneSt || "not kept", "", "");
-  if (noneIdx < 0) items.push(noneRow); else items.splice(noneIdx, 0, noneRow);
   el.innerHTML = `<h2>${esc(n.name)}</h2><div class="id mono">${esc(n.id)} · ${CAT_LABEL[n.cat]}</div>
     <p class="q">${esc(n.q)}</p><div class="vals">Values: ${esc(n.vals.join("; "))}</div>
     <div class="dist">${items.join("")}</div>
-    <p class="hint" style="margin-top:12px">Entries sum to 1. “Kept” means the edge is in the DAG at the current threshold; “would cycle” means a higher-probability chain already makes this parent a descendant. A mutual pair resolves to the stronger direction.</p>`;
+    <p class="hint" style="margin-top:12px">Weights sum to 1 over the candidate parents (the model also gave <em>none</em> ${n.pn.toFixed(2)} before renormalisation). “Would cycle” means a heavier chain already makes this parent a descendant; a mutual pair resolves to the stronger direction.</p>`;
 }
 
 // ---- update ---------------------------------------------------------------
 const thrEl = document.getElementById("thr"), ghostEl = document.getElementById("ghost");
 let selected = null;
-const BASE = stats(consolidate(0.4));
+const BASE = stats(consolidate(0));
 function update() {
   const thr = +thrEl.value;
   document.getElementById("thr-val").textContent = thr.toFixed(2);
@@ -315,11 +317,11 @@ function update() {
   document.getElementById("s-eff").textContent = s.eff.toFixed(1);
   const d = s.edges - BASE.edges, r = s.roots - BASE.roots, b = s.bits - BASE.bits, a = s.auc - BASE.auc;
   const sg = v => (v >= 0 ? "+" : "") + v;
-  document.getElementById("delta").textContent = `Compared with the published DAG (threshold 0.40): ${sg(d)} edges, ${sg(r)} roots, ${sg(b.toFixed(2))} bits/descent, ${sg(a.toFixed(3))} AUC.`;
+  document.getElementById("delta").textContent = thr > 0 ? `Compared with the full DAG (all ${BASE.edges} acyclic edges): ${sg(d)} edges, ${sg(r)} roots, ${sg(b.toFixed(2))} bits/descent, ${sg(a.toFixed(3))} AUC.` : `Full DAG: ${BASE.edges} of ${DATA.edges.length} weighted edges kept; ${DATA.edges.length - BASE.edges} dropped because they would close a cycle.`;
   document.getElementById("graphs").innerHTML = CATS.map(c => drawCategory(c, res, thr, ghostEl.checked)).join("");
   drawSpectrum(thr);
   drawDetail(res);
-  try { localStorage.setItem("isa.thr", thrEl.value); } catch (e) {}
+  try { localStorage.setItem("isa.thr2", thrEl.value); } catch (e) {}
 }
 document.getElementById("graphs").addEventListener("click", ev => { const g = ev.target.closest(".node"); if (g) { selected = g.dataset.id; update(); } });
 document.getElementById("graphs").addEventListener("keydown", ev => { const g = ev.target.closest(".node"); if (g && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); selected = g.dataset.id; update(); } });
@@ -328,6 +330,6 @@ ghostEl.addEventListener("change", update);
 document.getElementById("n-nodes").textContent = DATA.nodes.length;
 document.getElementById("run-model").textContent = DATA.run.model || "the model";
 document.getElementById("run-date").textContent = (DATA.run.timestamp || "").slice(0, 10);
-try { const t = localStorage.getItem("isa.thr"); if (t !== null && !isNaN(+t)) thrEl.value = t; } catch (e) {}
+try { const t = localStorage.getItem("isa.thr2"); if (t !== null && !isNaN(+t)) thrEl.value = t; } catch (e) {}
 update();
 </script>

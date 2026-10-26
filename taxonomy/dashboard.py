@@ -3,10 +3,10 @@
     python -m taxonomy.dashboard
 
 Embeds every Task B distribution (output/is_a.json) and the Task A term types into one
-self-contained HTML page with a threshold slider. The page re-runs the same consolidation
-as is_a.consolidate() in the browser (greedy acyclic is-a edges >= threshold, above the
-child's P(none); same-as for near-symmetric mutual pairs), so you can watch the DAG change
-across the whole 0..1 spectrum and inspect every node's distribution and rationales.
+self-contained HTML page with a display-weight slider. The page re-runs the same consolidation
+as is_a.consolidate() in the browser (every weighted edge kept unless it closes a cycle) and
+lets you hide edges below a weight to see how the DAG and its metrics respond, and inspect
+every node's distribution and rationales.
 """
 from __future__ import annotations
 
@@ -28,10 +28,9 @@ def build_data() -> dict:
     nodes, edges = [], []
     for r in saved["is_a"]:
         t = by_id[r["child"]]
-        p_none = 0.0
+        p_none = r.get("p_none", 0.0)
         for e in r["distribution"]:
             if e["parent"] == "none":
-                p_none = e["probability"]
                 continue
             edges.append({"c": r["child"], "p": e["parent"], "w": e["probability"],
                           "r": e.get("rationale", ""),
@@ -40,7 +39,7 @@ def build_data() -> dict:
         nodes.append({"id": t["id"], "name": t["name"], "cat": t["applies_to"], "q": t["question"],
                       "pn": p_none, "vals": [v["value"] for v in t["values"]]})
     run = saved.get("run", {})
-    return {"nodes": nodes, "edges": edges, "defaults": {"thr": 0.4, "margin": 0.1},
+    return {"nodes": nodes, "edges": edges, "defaults": {"thr": 0.0},
             "run": {"model": run.get("model"), "timestamp": run.get("timestamp"),
                     "children": run.get("children"), "citations": run.get("citations"),
                     "verified": run.get("citations_verified")}}
