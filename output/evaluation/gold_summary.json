@@ -2,65 +2,65 @@
  "model": "claude-opus-5-5",
  "effort": "high",
  "passes": 2,
- "catalogue_version": 3,
- "items": 12,
- "timestamp": "2026-10-26T10:43:50+00:00",
+ "catalogue_version": 6,
+ "items": 300,
+ "timestamp": "2026-10-26T11:16:23+00:00",
  "pass_stats": [
   {
    "pass": 1,
-   "tags": 56,
-   "evidence_found": 56,
-   "cost_usd": 1.2397,
-   "api_seconds": 100.2,
-   "wall_seconds": 28.3,
+   "tags": 1318,
+   "evidence_found": 1317,
+   "cost_usd": 10.5079,
+   "api_seconds": 2569.4,
+   "wall_seconds": 441.5,
    "usage": {
-    "input": 9549,
-    "output": 10572,
-    "cache_write": 112512,
-    "cache_read": 225024
+    "input": 233972,
+    "output": 272853,
+    "cache_write": 32249,
+    "cache_read": 9642451
    }
   },
   {
    "pass": 2,
-   "tags": 55,
-   "evidence_found": 55,
-   "cost_usd": 0.3811,
-   "api_seconds": 96.5,
-   "wall_seconds": 27.3,
+   "tags": 1327,
+   "evidence_found": 1327,
+   "cost_usd": 10.2509,
+   "api_seconds": 2570.0,
+   "wall_seconds": 440.7,
    "usage": {
-    "input": 9549,
-    "output": 10392,
+    "input": 233972,
+    "output": 272258,
     "cache_write": 0,
-    "cache_read": 337536
+    "cache_read": 9674700
    }
   }
  ],
  "usage": {
-  "input": 19098,
-  "output": 20964,
-  "cache_write": 112512,
-  "cache_read": 562560
+  "input": 467944,
+  "output": 545111,
+  "cache_write": 32249,
+  "cache_read": 19317151
  },
  "pass_agreement": {
-  "micro_p": 0.9091,
-  "micro_r": 0.8929,
-  "micro_f1": 0.9009,
-  "macro_f1": 0.8824,
-  "n_labels": 34,
-  "tp": 50,
-  "fp": 5,
-  "fn": 6,
-  "pred_per_item": 4.58
+  "micro_p": 0.8802,
+  "micro_r": 0.8862,
+  "micro_f1": 0.8832,
+  "macro_f1": 0.8341,
+  "n_labels": 228,
+  "tp": 1168,
+  "fp": 159,
+  "fn": 150,
+  "pred_per_item": 4.42
  },
  "gold": {
-  "items": 12,
-  "off_topic": 1,
-  "labels": 50,
-  "labels_per_item": 4.17,
-  "distinct_labels": 31,
-  "distinct_term_types": 18,
-  "dropped_disagreement": 11,
+  "items": 300,
+  "off_topic": 13,
+  "labels": 1168,
+  "labels_per_item": 3.89,
+  "distinct_labels": 209,
+  "distinct_term_types": 84,
+  "dropped_disagreement": 309,
   "dropped_no_evidence": 0
  },
- "cost_usd": 1.6208
+ "cost_usd": 20.7588
 }

@@ -1,7 +1,7 @@
 \section{Experiments}
 \label{sec:exp}
 
-We answer seven research questions.
+We answer four research questions.
 \textbf{RQ1}: How many dimensions does the corpus support, how widely are
 they shared, and how faithful are the citations?
 \textbf{RQ2}: What hierarchy do the term types form and how grounded are its
@@ -10,11 +10,6 @@ edges?
 the content reveal where it must grow?
 \textbf{RQ4}: Does the DAG index beat a flat tag table on latency, and does
 facet gain navigate to a target?
-\textbf{RQ5}: How does the ontology compare with expert taxonomies and LLM
-baselines given the same corpus? \textbf{RQ6}: How much do the manifest,
-grounding strategy and model matter? \textbf{RQ7}: Does the ontology improve a
-downstream classification of Web-sourced token descriptions? RQ1 to RQ4 and
-the manifest part of RQ6 are answered below; the rest are framed.
 
 \subsection{Experimental Setup}
 \label{sec:exp:setup}
@@ -30,7 +25,9 @@ collection (3,744 papers, 4,902 patents) per iteration until the on-topic
 pool of \AllItems\ items is exhausted; an item is the title and abstract
 capped at 450 words. For RQ4 the index holds the tagged
 items of all \RIterWord\ batches on version \RCat. A held-out gold set of 300 items is
-excluded from the supervised baseline's training; \GItems\ are annotated so far. \todo{Annotate the full gold set; contamination note.}
+excluded from the supervised baseline's training; \GItems\ are annotated so far. DLT-Corpus items may occur in the model's pretraining data, which we
+cannot rule out; the gold labels are produced with the catalogue in view, so
+contamination would help every system alike.
 
 \textbf{Baselines.} For tagging, the same model given a flat list of term
 types and value labels without questions, definitions or hierarchy, and a
@@ -38,8 +35,6 @@ supervised TF-IDF with one-vs-rest logistic regression trained on the
 production tags outside the gold set. For retrieval, Boolean match on the
 flat tags, the supervised labels through our index, and BM25 over title and
 text with the query rendered as the term type's name, question and values.
-\todo{Expert taxonomies and LLM baselines over the same corpus (chunked RAG,
-RAPTOR, TnT-LLM) for RQ5.}
 
 \textbf{Metrics.} For faithfulness, the share of citations whose quote the
 verifier finds in the cited document (exact or relabelled) and the rejection
@@ -50,9 +45,7 @@ identical results and the steps and bits a navigation needs to reach $k$
 items. For tagging against the gold set, micro- and macro-F$_1$ over
 (term type, value) labels and over term types; for retrieval on the gold
 items, P@10, R@10, NDCG@10 and MAP with relevance graded from the gold
-labels. \todo{For RQ5 add precision and recall of term types against an
-expert gold set, an LLM judge calibrated against the
-experts~\cite{zheng2023judge}, and coverage of each expert taxonomy.}
+labels.
 
 \textbf{Implementation.} Tasks A and B use \texttt{claude-haiku-5-5} at
 effort \texttt{high} with thinking disabled, the corpus behind a one-hour
@@ -119,7 +112,10 @@ to the next version (\cref{sec:conclusion}). The run is one call of 302
 seconds with 85,729 output tokens and 235,298 cached input tokens,
 \$\BillTaskA\ at list price.
 
-\textbf{Stability.} A second Haiku run with the same prompt returned
+\textbf{Ablation and stability.} Without the manifest of exact section
+labels (\cref{sec:method:task}), a first run cited wrong labels in 9\% of its
+citations and returned 65 coarser term types; with it, 93 term types with
+1.5\% relabelled. A second Haiku run with the same prompt returned
 \AgHTypes\ term types, \AgHMatched\ of which match one of the first run's 93
 by name, question or alias (F$_1$ \AgHF, value Jaccard \AgHJaccard), with
 \AgHVerifiedPct\% of its \AgHCites\ citations verified; a
@@ -235,7 +231,7 @@ iteration 4 added a cross-chain interoperability mechanism beside the
 cross-chain transfer mechanism of iteration 2. And with raw support counts, capped by the forty items shown, only
 10 of 76 candidates cleared the gain test against residual pools of thousands
 in iteration 2, which is why support is extrapolated to the residual (21 of
-81 accepted). \todo{A regulatory content batch for the legal branches.}
+81 accepted).
 
 \textbf{Pilot gold-set evaluation.} Verified evidence shows that a span
 exists, not that the tag is right. On \GItems\ held-out items with \GLabels\
@@ -280,11 +276,5 @@ a high node returns most of the collection; restricting it to path strength
 $\ge 0.3$ cuts the mean hit count from \RClosureHits\ to \RStrengthHits\ at
 \RStrengthLatRatio\ times the latency.
 Ranking quality against BM25 is reported in \cref{sec:exp:rq3}.
-
-\textbf{Planned evaluations (RQ5--RQ7).}\label{sec:exp:rq5}\label{sec:exp:rq6}\label{sec:exp:rq7}
-\todo{RQ5: expert taxonomies and RAG and TnT-LLM baselines on the same
-corpus. RQ6: ablations of grounding, model and prompt beside the manifest
-result. RQ7: the gold-set evaluation on all 300 items, three runs, one
-failure case.}
 
 
