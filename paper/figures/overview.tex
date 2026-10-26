@@ -1,0 +1,21 @@
+%% Figure 2: method overview (text width). Section numbers printed on the blocks.
+\begin{tikzpicture}[
+  font=\footnotesize,
+  mod/.style={draw=#1!60!black, fill=#1!10, rounded corners=3pt, text width=3.45cm, minimum height=2.6cm, inner sep=4pt, align=left},
+  io/.style={draw=gray!60, fill=white, rounded corners=2pt, text width=1.9cm, inner sep=3pt, align=center, font=\scriptsize},
+  arr/.style={-{Latex[length=2mm]}, thick, gray!70!black},
+  ex/.style={font=\scriptsize\itshape, text=blue!50!black},
+  node distance=3mm and 4mm]
+  \node[io] (pdfs) {24 PDFs\\[1pt]\tiny 21 legal instruments\\3 academic papers};
+  \node[mod=orange, right=of pdfs] (corpus) {\textbf{4.1 Definitions-first corpus}\\[2pt]\scriptsize Per-PDF section ranges or regex markers; footers stripped; one XML file:\\[1pt]\texttt{<document index=4 jurisdiction=EU>}\\\texttt{\ \ <section label="Art.\ 2-3">}\\[2pt]32 sections, 97.8k words, 235k tokens};
+  \node[mod=blue, right=of corpus] (prompt) {\textbf{4.2--4.3 Cache-grounded extraction}\\[2pt]\scriptsize System: instructions $\|$ corpus \textcolor{blue!60!black}{[cached 1h]}\\User: Task A + manifest of exact labels\\[2pt]One call, JSON out:\\\texttt{\{id, question, values[\{value,}\\\texttt{\ \ citations[\{doc,section,quote\}]\}],}\\\texttt{\ \ aliases, sources, notes\}}};
+  \node[mod=green, right=of prompt] (verify) {\textbf{4.4 Citation verifier}\\[2pt]\scriptsize normalise(quote) $\subseteq$ normalise(section)?\\else $\ge 80\%$ of 12-char shingles in one window\\else found under another label $\Rightarrow$ relabel\\else reject\\[2pt]480 cites: 463 ok, 7 relabelled, 10 rejected};
+  \node[io, right=of verify] (out) {93 term types\\[1pt]\tiny 317 values, provenance on every node\\[2pt]$\downarrow$ 4.5 is-a hierarchy};
+  \draw[arr] (pdfs) -- (corpus);
+  \draw[arr] (corpus) -- (prompt);
+  \draw[arr] (prompt) -- (verify);
+  \draw[arr] (verify) -- (out);
+  \node[ex, below=1mm of corpus.south] {MiCA Art.\ 3(7): ``\ldots one official currency''};
+  \node[ex, below=1mm of prompt.south] {$\to$ reference asset: \{single official currency\}};
+  \node[ex, below=1mm of verify.south] {quote found in doc 4, ``Articles 2-3'' $\Rightarrow$ ok};
+\end{tikzpicture}

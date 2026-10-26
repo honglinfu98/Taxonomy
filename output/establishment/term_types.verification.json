@@ -1,0 +1,99 @@
+{
+  "citations": 480,
+  "verified": 470,
+  "exact": 463,
+  "relabelled": 7,
+  "rejection_rate": 0.0208,
+  "rejected": [
+    {
+      "term_type": "smart_contract_definition_scope",
+      "where": "value:distributed ledger protocol",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "'distributed ledger protocol' means publicly available source code of a distributed ledger that is executed by the network participants",
+      "verified": false
+    },
+    {
+      "term_type": "software_architecture",
+      "where": "value:monolithic",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "all the aspects of a decentralised ledger are handled by a blockchain built as a single-tier software application without modularity",
+      "verified": false
+    },
+    {
+      "term_type": "code_license_openness",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "'blockchain' means any technology— (i) where data is— shared across a network",
+      "verified": false
+    },
+    {
+      "term_type": "custodian_or_custody_model",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "'safeguarding' of qualifying cryptoassets on behalf of another",
+      "verified": false
+    },
+    {
+      "term_type": "decentralised_control_status_actor",
+      "where": "value:control via governance token (token holders)",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "An individual token holder in such a scenario does not have such responsibility if the holder does not exercise control or sufficient influence",
+      "verified": false
+    },
+    {
+      "term_type": "aml_obligations_applicability",
+      "where": "value:money services business (US)",
+      "status": "quote_not_found",
+      "doc": 16,
+      "section": "Sec. 1.2.1: Definitions",
+      "quote": "In 2011, FinCEN issued a final rule defining a money services business",
+      "verified": false
+    },
+    {
+      "term_type": "related_person_affiliation",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 12,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "'related person' means, with respect to a digital asset issuer",
+      "verified": false
+    },
+    {
+      "term_type": "related_person_affiliation",
+      "where": "value:related person (founder or officer)",
+      "status": "quote_not_found",
+      "doc": 12,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "'related person' means, with respect to a digital asset issuer— (A) a founder, promoter, employee, consultant, advisor",
+      "verified": false
+    },
+    {
+      "term_type": "risk_type_illicit_finance",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 19,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "Participants at the April 2025 VACG noted the evolution of the stablecoin ecosystem",
+      "verified": false
+    },
+    {
+      "term_type": "consensus_participant_validator_capacity",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "Decentralized, permissionless staking protocols compete with staking services",
+      "verified": false
+    }
+  ]
+}

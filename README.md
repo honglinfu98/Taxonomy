@@ -15,11 +15,11 @@ so the taxonomy can be audited and regenerated when the sources change.
 
 | Part | Role | Status |
 |---|---|---|
-| **1. Taxonomy** | Establish the graph from a grounded corpus of legal instruments and academic taxonomies. | **in progress (this repo)** |
-| **2. Classification** | Tag incoming content (documents, transactions, news, code) with taxonomy nodes; serve retrieval by node. | not started |
+| **1. Taxonomy establishment** | Establish the graph from a grounded corpus of legal instruments and academic taxonomies. | **complete (2026-10-26)**: `taxonomy/establishment/`, `output/establishment/` |
+| **2. Classification** | Tag incoming content (documents, transactions, news, code) with taxonomy nodes; serve retrieval by node. | **in progress**: `taxonomy/classification/` |
 | **3. Optimization** | Keep the graph self-maintaining: merge / split / prune nodes from classification feedback and retrieval usage, ingest new sources, re-verify citations. | not started |
 
-## Part 1: taxonomy establishment
+## Part 1: taxonomy establishment (complete)
 
 The LLM (Claude, default `claude-haiku-5-5`) is fed one fixed context, the
 **taxonomy corpus** (`context/taxonomy_corpus.txt`), built from 21 legal PDFs in
@@ -45,14 +45,21 @@ the dimensions; later tasks populate and link the terms under them.
 
 ```bash
 . venv/bin/activate
-python -m taxonomy.build_corpus      # rebuild context/taxonomy_corpus.txt from the PDFs
-python -m taxonomy.term_types        # Task A -> output/term_types.json
-python -m taxonomy.is_a              # Task B -> output/is_a.json, taxonomy_dag.json, dag_metrics.json
-python -m taxonomy.dashboard         # interactive DAG viewer -> output/is_a_dashboard.html
+python -m taxonomy.corpus.build_corpus          # rebuild context/taxonomy_corpus.txt from the PDFs
+python -m taxonomy.establishment.term_types     # Task A -> output/establishment/term_types.json
+python -m taxonomy.establishment.is_a           # Task B -> is_a.json, taxonomy_dag.json, dag_metrics.json
+python -m taxonomy.establishment.dashboard      # DAG viewer -> output/establishment/is_a_dashboard.html
 ```
 
-`taxonomy/README.md` documents the package (corpus construction, API helpers,
-prompts, runners).
+`taxonomy/establishment/README.md` documents Part 1 in full (corpus construction,
+prompts, runners, consolidation rules, metrics, results). The published DAG viewer is
+https://claude.ai/artifact/4fCD72T7CAUmyLzjmcpFne.
+
+## Part 2: classification (in progress)
+
+Tag content with the ontology's (term type, value) nodes and retrieve by walking the DAG.
+Design and open questions: `taxonomy/classification/README.md`. Outputs will go to
+`output/classification/`.
 
 ## Setup
 
@@ -71,9 +78,15 @@ is active. There is no `pyproject.toml`; the package lives flat at the repo root
 ## Layout
 
 ```
-legal/        21 source PDFs (EU, UK, US, FATF, Basel, FSB, IOSCO, UN, CoE)
-context/      3 taxonomy papers (PDF) + taxonomy_corpus.txt (derived, API-ready)
-taxonomy/     the package: corpus builder, API helpers, prompts, task runners
-output/       task results (JSON) and verification reports
-paper/        the write-up (LaTeX)
+legal/                     21 source PDFs (EU, UK, US, FATF, Basel, FSB, IOSCO, UN, CoE)
+context/                   3 taxonomy papers (PDF) + taxonomy_corpus.txt (derived, API-ready)
+taxonomy/
+  llm_context.py           shared Claude client + cached-corpus request builder
+  corpus/                  PDF extraction spec and corpus builder
+  establishment/           Part 1: prompts, Task A/B runners, DAG metrics, dashboard
+  classification/          Part 2: (starting)
+output/
+  establishment/           Part 1 results: term types, is-a distributions, DAG, metrics, viewer
+  classification/          Part 2 results
+paper/                     the write-up (LaTeX)
 ```

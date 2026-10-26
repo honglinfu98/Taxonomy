@@ -12,7 +12,7 @@
 %%                      Short paper: 4 pages INCLUDING references + appendix.
 %% ============================================================================
 
-%% ---- Submission mode toggle -------------------------------------------------
+%% ==== Submission mode toggle =================================================
 \newif\ifcameraready
 \camerareadyfalse        % <- set \camerareadytrue for the final version
 %% `make camera` passes \def\forcecamera{} on the command line instead.
@@ -24,10 +24,10 @@
   \documentclass[sigconf, anonymous, review]{acmart}
 \fi
 
-%% ---- Packages and project macros -------------------------------------------
+%% ==== Packages and project macros ===========================================
 \input{preamble}
 
-%% ---- ACM metadata -----------------------------------------------------------
+%% ==== ACM metadata ===========================================================
 %% Rights/DOI/ISBN are filled in by ACM after acceptance; placeholders below
 %% keep the class quiet during review.
 \copyrightyear{2027}
@@ -48,13 +48,13 @@
 
 \begin{document}
 
-%% ---- Title ------------------------------------------------------------------
+%% ==== Title ==================================================================
 %% TODO: final title. Keep it specific; name the artefact (taxonomy), the
 %% method (LLM-based extraction) and the domain (crypto-assets / DLT).
 \title[LLM-Grounded Crypto-Asset Taxonomy]{Grounding a Crypto-Asset Taxonomy in Law and Literature:\\
 LLM-Based Term-Type Extraction from Regulatory and Academic Corpora}
 
-%% ---- Authors (hidden by the `anonymous` option) ----------------------------
+%% ==== Authors (hidden by the `anonymous` option) ============================
 \author{Anonymous Author(s)}
 \affiliation{%
   \institution{Anonymous Institution}
@@ -65,12 +65,12 @@ LLM-Based Term-Type Extraction from Regulatory and Academic Corpora}
 %% Short author list for running heads.
 \renewcommand{\shortauthors}{Anon. et al.}
 
-%% ---- Abstract ---------------------------------------------------------------
+%% ==== Abstract ===============================================================
 \begin{abstract}
 \input{sections/0_abstract}
 \end{abstract}
 
-%% ---- CCS concepts & keywords ------------------------------------------------
+%% ==== CCS concepts & keywords ================================================
 %% Generate the CCS block at https://dl.acm.org/ccs and paste it here.
 \begin{CCSXML}
 <ccs2012>

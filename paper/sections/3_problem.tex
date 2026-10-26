@@ -1,34 +1,50 @@
 \section{Problem Formulation}
 \label{sec:problem}
 
-%% Target: 0.5-0.75 page. Define every symbol once; reviewers reward precision.
+\textbf{Corpus.} A corpus $\mathcal{D} = \set{d_1,\dots,d_N}$ is a set of source
+documents, each with metadata (type, jurisdiction, year) and partitioned into
+labelled sections $d_i = \set{s_{i1},\dots,s_{in_i}}$. Documents are of two
+classes: \emph{legal instruments}, from which we keep the definitions articles,
+glossaries, classification conditions and business-model descriptions, and
+\emph{taxonomy frameworks}, academic papers that propose classification
+dimensions.
 
-\subsection{Terminology}
-\todo{Define \term{term}, \term{definition}, \term{term type} (a classification
-dimension along which a definition discriminates, \eg \ttype{legal-status},
-\ttype{technical-standard}, \ttype{economic-function}, \ttype{issuer-type}),
-\term{source instrument} and \term{jurisdiction}.}
+\textbf{Term and term type.} A \emph{term} is a word or phrase that some section
+defines or classifies, such as \term{e-money token} or \term{permissioned
+ledger}. A \emph{term type} $y$ is a question along which definitions
+discriminate, such as \ttype{reference asset} or \ttype{consensus mechanism},
+together with a set of \emph{values} $V(y)$, the categories a thing can take on
+that dimension. A term type is \emph{grounded} in $\mathcal{D}$ when at least one
+section uses it as a criterion, or defines several terms that differ along it.
+A \emph{citation} is a triple $(i, \ell, q)$ naming a document index, an exact
+section label and a verbatim quote $q \subseteq s_{i\ell}$ of at most thirty
+words.
 
-\subsection{Corpus Model}
-Let $\mathcal{D} = \set{d_1,\dots,d_N}$ be a set of source documents, each
-partitioned into labelled sections $d_i = \set{s_{i1},\dots,s_{in_i}}$ with
-metadata (type, jurisdiction, year).
-\todo{State the two document classes: \emph{legal instruments} and
-\emph{taxonomy frameworks}.}
+\textbf{Problem (term type induction).} Given $\mathcal{D}$, produce a catalogue
+$\mathcal{Y} = \set{(y, V(y), C(y), A(y), \eta(y))}$ in which every term type $y$
+and every value $v \in V(y)$ carries at least one citation in $C(y)$, $A(y)$
+lists the names other sources use for $y$, and $\eta(y)$ records where sources
+disagree on $V(y)$ or on its thresholds, citing each side. No seed taxonomy, gold
+labels or training pairs are given.\footnote{Placing terms under term types and
+ordering term types by generality are later stages; \cref{sec:method:hierarchy}
+sketches the second.}
 
-\subsection{Task Definition}
-\todo{Formalise: given a term $t$ and $\mathcal{D}$, return a set of term types
-$\mathcal{Y}_t = \set{(y, \mathcal{P}_y)}$ where each $y$ carries provenance
-$\mathcal{P}_y \subseteq \bigcup_i d_i$ (document $\times$ section citations).
-Then define the reconciliation task: merge $\set{\mathcal{Y}_t}_{t\in\mathcal{T}}$
-into a taxonomy $\mathcal{G}=(V,E)$ with jurisdiction-indexed nodes.}
-
-\subsection{Desiderata}
+\textbf{Desiderata.}
 \begin{enumerate*}[label=(D\arabic*)]
-  \item \emph{faithfulness} -- every term type must be traceable to a cited
-    section;
-  \item \emph{coverage} -- all instruments that define $t$ are represented;
-  \item \emph{consistency} -- equivalent types across sources are merged, conflicting
-    ones are preserved with their jurisdiction;
-  \item \emph{cost} -- extraction scales to the full corpus within a stated token budget.
+  \item \emph{faithfulness}: every citation resolves to a passage that exists
+    where it is said to exist;
+  \item \emph{coverage}: every document that grounds a dimension is represented;
+  \item \emph{consistency}: one dimension appears once, with aliases, and
+    conflicting values are kept with their jurisdiction rather than resolved;
+  \item \emph{cost}: induction over the full corpus fits a stated token budget.
 \end{enumerate*}
+
+\textbf{Design principles.} It may seem natural to cast the problem as
+supervised structure prediction, but no gold catalogue of term types exists for
+any legal corpus, and building one is the expert annotation we are trying to
+reduce. We therefore use an LLM as the extractor and shift effort to two cheaper
+places, the corpus, which we restrict to definitional text so that
+every passage the model sees is a candidate criterion, and the output, which we
+constrain to cite and then check mechanically. We prioritise faithfulness over
+recall. A dimension the model cannot ground is dropped, and a quote the verifier
+cannot find stays flagged rather than repaired.

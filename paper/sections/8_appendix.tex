@@ -1,34 +1,87 @@
 %% ============================================================================
 %%  APPENDIX -- optional. Total paper (body + refs + appendix) must be <= 12 pp.
-%%  Reviewers are NOT required to read this; nothing essential belongs here.
 %% ============================================================================
 
-\section{Implementation Details}
-\label{app:impl}
-\todo{Full prompt templates (system instructions, per-term query, JSON output
-schema); model identifiers and dates; decoding parameters; cache configuration;
-total token usage and cost.}
+\section{Prompts}
+\label{app:prompts}
+The system instructions (\cref{fig:promptsys}) precede the cached corpus and are
+identical for every task; the Task A user prompt (\cref{fig:prompttask}) is
+followed at run time by the manifest of document indexes and section labels.
+
+\begin{figure*}[t]
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{tables/prompt_system.txt}
+\caption{System instructions, verbatim.}
+\label{fig:promptsys}
+\end{figure*}
+
+\begin{figure*}[t]
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{tables/prompt_task_a.txt}
+\caption{Task A user prompt, verbatim. The manifest appended at run time is
+one line per document: \texttt{doc 4 (Regulation (EU) 2023/1114 ...): "Articles
+2-3: Scope and Definitions"}.}
+\label{fig:prompttask}
+\end{figure*}
+
+\section{Citation Verification}
+\label{app:verify}
+
+\begin{algorithm}[t]
+  \caption{Verify one citation $(i, \ell, q)$ against corpus $\mathcal{D}$.}
+  \label{alg:verify}
+  \KwIn{document index $i$, section label $\ell$, quote $q$; shingle length $k{=}12$, threshold $\tau{=}0.8$}
+  \KwOut{status $\in$ \{ok, relabelled, rejected\}, possibly corrected $\ell$}
+  \If{$d_i \notin \mathcal{D}$}{\Return rejected\;}
+  \If{$\ell \in d_i$ \textbf{and} \textsc{Found}$(q, s_{i\ell})$}{\Return ok\;}
+  \ForEach{$\ell' \in d_i$}{
+    \If{\textsc{Found}$(q, s_{i\ell'})$}{$\ell \gets \ell'$; \Return relabelled\;}
+  }
+  \Return rejected\;
+  \BlankLine
+  \SetKwFunction{Found}{Found}
+  \SetKwProg{Fn}{Function}{:}{}
+  \Fn{\Found{$q$, $s$}}{
+    $q, s \gets \textsc{Norm}(q), \textsc{Norm}(s)$ \tcp*{lower-case alphanumerics}
+    \lIf{$q \subseteq s$}{\Return true}
+    $G \gets$ $k$-shingles of $q$; $H \gets$ positions of each $g \in G$ in $s$\;
+    \Return $\max_{\text{window } w \subseteq s,\ |w| = 2|q|} |\{g \in G : g \text{ occurs in } w\}| / |G| \ge \tau$\;
+  }
+\end{algorithm}
+
+\Cref{alg:verify} is the procedure of \cref{sec:method:verify}. Normalisation
+removes everything but lower-case letters and digits, so line breaks,
+hyphenation and the spacing artefacts of PDF extraction do not matter. The
+window constraint is what distinguishes a compressed quote, whose shingles
+cluster in one place, from a paraphrase assembled from phrases that occur far
+apart.
 
 \section{Corpus Construction Details}
 \label{app:corpus}
-\todo{Per-instrument section ranges / regexes used for extraction; cleaning
-rules; known PDF extraction artefacts.}
+\todo{Per-instrument section ranges and regular-expression markers as specified
+in the source specification; cleaning rules (form feeds stripped, footer
+patterns removed); known extraction artefacts (tables read as one value per
+line).}
 
-\section{Annotation Guidelines}
-\label{app:annotation}
-\todo{Instructions given to expert annotators; examples; adjudication protocol.}
+\section{Full Catalogue of Term Types}
+\label{app:catalogue}
 
-\section{Additional Results}
-\label{app:results}
-\todo{Per-jurisdiction and per-term breakdowns; full ablation tables;
-significance tests.}
+\begin{table*}[t]
+  \centering
+  \caption{All 93 term types, with the number of values and of grounding
+  documents. Category order: asset, technology, actor, activity, obligation or
+  risk, as returned by the model.}
+  \label{tab:catalogue}
+  \scriptsize
+  \input{tables/catalogue}
+\end{table*}
+
+\Cref{tab:catalogue} lists every term type in the run of \cref{sec:exp:rq1}.
 
 \section{Taxonomy Excerpt}
 \label{app:taxonomy}
-\begin{figure}[h]
+\begin{figure}[t]
   \centering
-  \todo{Rendered subtree of the taxonomy for \term{stablecoin} with
-  jurisdiction-indexed leaves.}
-  \caption{Excerpt of the induced taxonomy. \todo{caption}}
+  \todo{Rendered subtree of the is-a hierarchy for the asset category, with
+  jurisdiction-indexed leaves, once Task B is reviewed.}
+  \caption{Excerpt of the induced hierarchy. \todo{caption}}
   \label{fig:taxonomy}
 \end{figure}

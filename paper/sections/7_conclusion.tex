@@ -1,11 +1,18 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-%% Target: 0.25 page. Restate contribution + headline number + one future direction.
-\todo{We introduced \sys and \corpus \ldots\ Headline result \ldots\ Future work:
-multilingual instruments, temporal versioning of the taxonomy as laws change,
-integration with on-chain metadata.}
-
-%% \balance is called here so the last page's columns are even. Keep it as the
-%% last command before the bibliography if the last body page is unbalanced.
+We studied how to induce the classification dimensions that legal instruments
+and academic taxonomies use for crypto-assets, and proposed \sys, which reduces
+each source to its definitional sections, extracts term types in one pass over
+the whole corpus held in a cached context, and verifies every citation. On 24
+documents from four jurisdictions, \sys produced 93 term types with 317 values,
+97.9\% of whose 480 citations verify, and recorded a cross-source conflict for
+69 of them, in one call costing well under a dollar. Future work follows the
+limits of this evidence: (i) expert validation of whether the verified
+citations support their term types, with annotator agreement; (ii) repeated
+runs and a second model to measure the stability of the catalogue, whose
+identifiers are not yet stable across runs; (iii) ordering the term types into
+a hierarchy and placing terms under them, for which a first run exists; and
+(iv) using the catalogue as the label space for classifying Web-sourced token
+descriptions.
 \balance

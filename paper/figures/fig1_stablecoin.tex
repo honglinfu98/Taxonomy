@@ -1,0 +1,25 @@
+%% Figure 1: one real term, four sources, one induced term type (column width).
+\begin{tikzpicture}[
+  font=\footnotesize,
+  src/.style={draw=gray!70, fill=gray!8, rounded corners=2pt, text width=2.75cm, inner sep=2.5pt, align=left},
+  tt/.style={draw=blue!60!black, fill=blue!6, rounded corners=2pt, text width=3.25cm, inner sep=3pt, align=left},
+  val/.style={font=\scriptsize, inner sep=1pt},
+  arr/.style={-{Latex[length=1.6mm]}, gray!80, thin},
+  node distance=2mm and 5mm]
+  \node[src] (mica) {\textbf{MiCA} Art.~3(6--7)\\[1pt]\scriptsize ``e-money token \ldots\ referencing the value of \emph{one official currency}''; ``asset-referenced token \ldots\ referencing \emph{another value or right} or a combination''};
+  \node[src, below=of mica] (genius) {\textbf{GENIUS Act} \S2(22)\\[1pt]\scriptsize ``maintain \ldots\ a stable value relative to \ldots\ a \emph{fixed amount of monetary value}''};
+  \node[src, below=of genius] (uk) {\textbf{UK SI 2026/102} art.~88G\\[1pt]\scriptsize ``a stable value in relation to \emph{a particular fiat currency}''};
+  \node[src, below=of uk] (basel) {\textbf{Basel SCO60.6}\\[1pt]\scriptsize Group~1b: ``cryptoassets with effective \emph{stabilisation mechanisms}''; Group~2: ``stablecoins and unbacked cryptoassets''};
+  \node[tt, right=of $(genius.east)!0.5!(uk.east)$] (tt) {\textbf{Term type: reference asset}\\[1pt]\scriptsize\emph{What does the asset reference to maintain a stable value?}\\[3pt]
+    \scriptsize
+    \textbullet~single official currency (EU)\\
+    \textbullet~basket or other assets (EU)\\
+    \textbullet~fiat currency (US, UK)\\
+    \textbullet~commodity (Basel)\\
+    \textbullet~other crypto-assets / none (Basel)};
+  \draw[arr] (mica.east) -- (tt.west|-mica.east) -- ([yshift=4mm]tt.west);
+  \draw[arr] (genius.east) -- ([yshift=1mm]tt.west);
+  \draw[arr] (uk.east) -- ([yshift=-1mm]tt.west);
+  \draw[arr] (basel.east) -- (tt.west|-basel.east) -- ([yshift=-4mm]tt.west);
+  \node[font=\scriptsize\itshape, gray!90, above=1mm of mica.north west, anchor=south west] {term: \emph{stablecoin}};
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+%% Figure 3: how widely shared and how fine-grained the term types are (column width).
+\begin{tikzpicture}
+  \begin{groupplot}[
+    group style={group size=2 by 1, horizontal sep=9mm},
+    width=0.56\columnwidth, height=3.1cm,
+    ybar,
+    ymin=0, ylabel={\# term types}, ylabel near ticks,
+    tick label style={font=\scriptsize}, label style={font=\scriptsize},
+    enlarge x limits=0.08, xtick=data, xticklabel style={font=\tiny},
+    axis line style={gray!60}, ymajorgrids, grid style={gray!25}]
+    \nextgroupplot[xlabel={documents grounding the type\\(a)}, xlabel style={align=center}]
+      \addplot[bar width=4pt, fill=blue!60!black, draw=blue!60!black] table[x=n, y=count] {tables/docs_per_type.dat};
+    \nextgroupplot[xlabel={values per type\\(b)}, xlabel style={align=center}]
+      \addplot[bar width=4pt, fill=blue!60!black, draw=blue!60!black] table[x=n, y=count] {tables/values_per_type.dat};
+  \end{groupplot}
+\end{tikzpicture}

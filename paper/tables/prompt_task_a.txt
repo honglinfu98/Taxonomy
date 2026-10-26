@@ -1,0 +1,35 @@
+Task A: enumerate the term types available in the corpus.
+
+Read the whole corpus. Produce every grounded term type used, explicitly or implicitly, to classify (a) crypto-assets, digital assets and tokens, (b) DLT systems, networks and protocols, (c) actors, service providers and intermediaries, (d) activities, services and transactions, and (e) obligations, risks and regulatory treatments when they are themselves used as classification criteria.
+
+Return a single JSON object with exactly this schema:
+
+{
+  "term_types": [
+    {
+      "id": "snake_case_identifier",
+      "name": "Human-readable name",
+      "applies_to": "asset | technology | actor | activity | obligation_or_risk",
+      "question": "The one question this dimension answers, e.g. 'What does the asset reference to maintain a stable value?'",
+      "description": "2-3 sentences on how the corpus uses this dimension and why it matters for classification.",
+      "aliases": ["other names the sources use for the same dimension"],
+      "values": [
+        {
+          "value": "short label",
+          "definition": "at most 25 words",
+          "citations": [{"doc": 4, "section": "exact section label", "quote": "verbatim, at most 30 words"}]
+        }
+      ],
+      "citations": [{"doc": 4, "section": "exact section label", "quote": "verbatim, at most 30 words"}],
+      "sources": {
+        "documents": [4, 13],
+        "jurisdictions": ["EU", "US"],
+        "document_classes": ["legal_instrument", "taxonomy_framework"]
+      },
+      "notes": "Jurisdictional or source conflicts and boundary cases, or an empty string."
+    }
+  ],
+  "coverage_notes": "Dimensions considered but omitted as ungrounded, and sections found to contain no classification criteria."
+}
+
+Order term types by applies_to (asset, technology, actor, activity, obligation_or_risk), then by the number of documents that ground them, most first. Aim for completeness: a thorough result has several dozen term types. Keep quotes short and verbatim.

@@ -1,129 +1,188 @@
 \section{Experiments}
 \label{sec:exp}
 
-%% Target: 2-2.5 pages. Open with research questions; close each subsection
-%% with a bold one-sentence answer. WWW reviewers look for: strong baselines,
-%% ablations, significance tests, error analysis, cost.
-
-We answer the following research questions:
-\begin{enumerate}[label=\textbf{RQ\arabic*}, leftmargin=3em]
-  \item How many classification dimensions does the corpus support, how widely
-    is each shared across sources, and how often does a cited passage exist
-    where the model says it does?
-  \item \todo{Quality: how does the induced taxonomy compare with expert-built
-    taxonomies and with LLM ontology-learning / tagging baselines?}
-  \item \todo{Grounding strategy: does cached whole-corpus grounding beat
-    chunked RAG at equal or lower cost?}
-  \item \todo{Utility: does the taxonomy improve downstream classification of
-    Web-sourced crypto-asset descriptions?}
-\end{enumerate}
+We answer four research questions.
+\textbf{RQ1}: How many classification dimensions does the corpus support, how
+widely is each shared across sources, and how faithful are the citations?
+\textbf{RQ2}: How does the induced catalogue compare with expert-built
+taxonomies and with LLM baselines that are given the same corpus?
+\textbf{RQ3}: How much do the manifest, the grounding strategy and the model
+matter?
+\textbf{RQ4}: Does the catalogue improve a downstream classification of
+Web-sourced token descriptions?
+RQ1 and the manifest part of RQ3 are answered below; the remaining parts are
+framed with the tables they will fill.
 
 \subsection{Experimental Setup}
 \label{sec:exp:setup}
-\paragraph{Datasets.}
-\todo{\corpus (\cref{tab:corpus}); term list and how it was sampled; held-out
-Web-sourced evaluation set (token descriptions, whitepaper excerpts).}
-\paragraph{Gold standard.}
-\todo{Expert annotation protocol: $k$ annotators with legal/technical
-background, guidelines, inter-annotator agreement (Cohen's/Krippendorff's).}
-\paragraph{Baselines.}
-\todo{Zero-shot LLM classification~\cite{wang2023zeroshot}; chunked
-RAG~\cite{lewis2020rag}; RAPTOR~\cite{sarthi2024raptor}; TnT-LLM
-\cite{wan2024tntllm}; LLMs4OL-style term typing~\cite{babaeigiglou2023llms4ol};
-expert taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy}.}
-\paragraph{Metrics.}
-\todo{Citation precision/recall, term-type P/R/F$_1$ vs.\ gold, taxonomy
-similarity (\eg edge F$_1$, hierarchy-aware metrics), downstream macro-F$_1$,
-USD cost and latency per term.}
+
+\textbf{Datasets.} \corpus is described in \cref{tab:corpus}. No standard
+benchmark exists for term type induction, so \corpus is both the input and, via
+its citations, the ground against which faithfulness is checked. \todo{Add the
+held-out set for RQ4: Web-sourced token descriptions (explorer pages, whitepaper
+excerpts) with their jurisdictional classification, and the expert gold set for
+RQ2 with annotator count and agreement.} Eleven of the 21 instruments are dated
+2024 or later. \todo{State whether the model's training data could contain
+them and what, if anything, this changes about the faithfulness argument; the
+verifier checks quotes against the corpus, not against the model's memory.}
+
+\textbf{Baselines.} \todo{Group by family and give one sentence each: (i)
+expert taxonomies~\cite{tasca2019taxonomy,zhang2026cryptotaxonomy} as a
+coverage reference; (ii) a zero-shot frontier LLM asked the same Task A
+question without the corpus, and with chunked RAG~\cite{lewis2020rag} and
+RAPTOR~\cite{sarthi2024raptor} over the same corpus, prompts in the appendix;
+(iii) LLM taxonomy generation at scale, TnT-LLM~\cite{wan2024tntllm}, and
+term typing as in LLMs4OL~\cite{babaeigiglou2023llms4ol}. Fairness sentence:
+same corpus, same model, same output schema.}
+
+\textbf{Metrics.} For faithfulness we report the share of citations whose quote
+the verifier finds in the cited document (exact or relabelled), the share
+relabelled, and the rejection rate; smaller rejection is better. For coverage we
+report the number of term types, values and aliases, the number of documents
+grounding each term type, and the number of term types with a recorded
+conflict. \todo{For RQ2 add precision and recall of term types against the
+expert gold set, and coverage of each expert taxonomy's dimensions; for RQ4 add
+macro-F$_1$ of the downstream classifier.}
+
+\textbf{Implementation.} The extractor is \texttt{claude-haiku-5-5} called
+through the Anthropic Messages API at effort \texttt{high} with adaptive
+thinking disabled, streamed, with an output limit of 120,000 tokens; the corpus
+sits behind a one-hour prompt-cache breakpoint. The verifier uses 12-character
+shingles and an 80\% threshold. All runs are API calls from a laptop; no GPU is
+involved. We report a single run. \todo{Add a second run with the same prompt
+and report agreement of term types and values, and a run with
+\texttt{claude-sonnet-5-5}, before submission.}
 
 \subsection{RQ1: Term Types Generated and Their Faithfulness}
 \label{sec:exp:rq1}
 
 \begin{table}[t]
   \centering
-  \caption{Task A output by category. Docs is the mean number of source
-  documents grounding a term type; Single counts term types grounded in one
-  document; Confl.\ counts term types whose notes record a disagreement
-  between sources; Verif.\ is the share of citations whose quote the verifier
-  found in the cited document.}
+  \caption{Term types by category. Docs is the mean number of source documents
+  grounding a term type; Single counts term types grounded in one document;
+  Confl.\ counts term types whose notes record a disagreement between sources;
+  Verif.\ is the share of citations whose quote the verifier found in the cited
+  document, exact or relabelled. Single run.}
   \label{tab:taska}
   \scriptsize
   \input{tables/task_a_summary}
 \end{table}
 
-\paragraph{What the corpus supports.}
-The run produced 93 term types with 317 values and 212 aliases
-(\cref{tab:taska}). Technology dimensions are the largest group, because the
-blockchain taxonomy of Tasca and Tessone contributes architectural dimensions
-that no legal instrument uses, such as the fee regime and the
-interoperability of a ledger. Asset and actor dimensions are the most widely
-shared. An asset term type is grounded in 4.5 documents on average, and
+\begin{figure}[t]
+  \centering
+  \input{figures/distributions}
+  \caption{(a) Number of source documents grounding each term type; (b) number
+  of values per term type. Twenty term types rest on one document; two are
+  grounded in more than ten.}
+  \label{fig:dist}
+\end{figure}
+
+\textbf{What the corpus supports.} The run produced 93 term types with 317
+values and 212 aliases (\cref{tab:taska}, \cref{fig:dist}). We make the
+following observations. (1) Technology dimensions are the largest group,
+because the blockchain taxonomy of Tasca and Tessone contributes architectural
+dimensions that no legal instrument uses, such as the fee regime and the
+interoperability of a ledger. (2) Asset and actor dimensions are the most
+widely shared. An asset term type is grounded in 4.5 documents on average, and
 the status of an actor as a service provider is grounded in 13 of the 24
-documents. Twenty
-term types rest on a single document. Most of these come from the two academic
-taxonomies, which draw distinctions the law does not yet make, such as the
-mechanism by which yield reaches a holder, or from instruments with a
-specialised vocabulary, such as the serious-crime threshold of the UN
+documents. (3) Twenty term types rest on a single document. Most come from the
+two academic taxonomies, which draw distinctions the law does not yet make,
+such as the mechanism by which yield reaches a holder, or from instruments with
+a specialised vocabulary, such as the serious-crime threshold of the UN
 cybercrime convention. Thirty-one term types are grounded in both a legal
 instrument and an academic paper. Every document is cited by at least one term
 type; the FATF guidance of 2021 is cited most, by 27, and the DLT-Corpus paper
-least, by one. The model's own coverage notes explain the latter. That paper's sections
-describe data sources and metrics rather than classification criteria.
+least, by one. The model's own coverage notes explain the latter: that paper's
+sections describe data sources and metrics rather than classification criteria.
+
+\begin{table}[t]
+  \centering
+  \caption{Case study: the reference-asset term type as induced, with the model's
+  definition of each value and the source its first citation points to. The
+  notes field (not shown) records that \src{MiCA} splits by single currency
+  versus any other reference, that the \src{GENIUS Act} and UK regulations admit
+  fiat only, and that \src{FATF} and the \src{FSB} apply their standards to any
+  reference.}
+  \label{tab:case}
+  \scriptsize
+  \input{tables/case_reference_asset}
+\end{table}
 
 Sixty-nine term types carry a note recording a disagreement between sources.
-The reference-asset dimension is typical. It is grounded in seven documents
-across four jurisdictions and takes five values, and its note records that
-\src{MiCA} splits stablecoins by whether they reference one official currency
-or anything else, that the \src{GENIUS Act} and the UK regulations admit only
-fiat references, and that \src{FATF} and the \src{FSB} apply their standards
-whatever the reference. The fungibility dimension records that fungibility is
-an element of the UK and US definitions of the asset class but not of the FATF
-or \src{MiCA} definitions. These notes are the raw material for the
-jurisdiction-indexed nodes of \cref{sec:method:hierarchy}.
+\Cref{tab:case} shows the reference-asset dimension of \cref{fig:one} as the
+model returned it: five values, seven grounding documents across four
+jurisdictions, and a note that records the jurisdictional split. The
+fungibility dimension likewise records that fungibility is an element of the UK
+and US definitions of the asset class but not of the \src{FATF} or \src{MiCA}
+definitions. These notes are the raw material for the jurisdiction-indexed
+nodes of \cref{sec:method:hierarchy}.
 
-\paragraph{Faithfulness.}
-Of the 480 citations, 463 matched the cited section verbatim under
-normalisation, 7 were relabelled, and 10 were rejected, a rejection rate of
-2.1\%. The manifest did what we built it for. One cited label did not exist, a
-subsection heading inside the FinCEN guidance that the model used in place of
-the enclosing section's label, and six named a real but wrong section of the
-right document (three cite the FATF glossary for passages in its Part Two, three
-shorten a long label of the crypto-asset taxonomy). The verifier located the
-quote in each of these seven cases. Wrong or non-existent labels therefore fell
-from 9\% of citations in the run without the manifest to 1.5\%, and the number
-of term types rose from 65 to 93.
+\begin{table*}[t]
+  \centering
+  \caption{All ten rejected citations. The verifier found no match for the quote
+  in the cited section; the diagnosis comes from comparing the quote with the
+  section text. Two quotes share no five-word sequence with the section; the
+  other eight are compressions or partial rewrites of a passage that is there.}
+  \label{tab:errors}
+  \scriptsize
+  \input{tables/errors}
+\end{table*}
 
-All ten rejections are quotes the verifier could not find. Two share no
-five-word sequence with the cited section. The other eight are recognisable
-compressions of the source. The model drops enumerated items or connectives
-from a statutory list, as in ``'blockchain' means any technology (i) where data
-is shared across a network'', or it reproduces most of a sentence and then
-rephrases its end. These quotes point at the right passage but are not
-verbatim, so we keep them in the output as unverified rather than repairing
-them. Every term type keeps at least one verified citation, but five values
-were supported only by a rejected quote and are therefore unverified.
+\textbf{Faithfulness.} Of the 480 citations, 463 matched the cited section
+verbatim under normalisation, 7 were relabelled, and 10 were rejected, a
+rejection rate of 2.1\% (\cref{tab:taska}, last column). Per category the
+verified share ranges from 95.1\% for actor dimensions to 100\% for asset and
+activity dimensions. One cited label did not exist, a subsection heading inside
+the FinCEN guidance that the model used in place of the enclosing section's
+label, and six named a real but wrong section of the right document (three cite
+the FATF glossary for passages in its Part Two, three shorten a long label of
+the crypto-asset taxonomy). The verifier located the quote in each of these
+seven cases. \Cref{tab:errors} lists the ten rejections with a diagnosis. Two
+quotes share no five-word sequence with the cited section. Three compress a
+definition, two drop the enumerated items of a statutory list, as in
+``'blockchain' means any technology (i) where data is shared across a
+network'', and three reproduce most of a sentence and then rephrase its end.
+These quotes point at the right passage but are not verbatim, so we keep them in
+the output as unverified rather than repairing them. Every term type keeps at
+least one verified citation, but five values were supported only by a rejected
+quote and are therefore unverified.
 
 Verification is a necessary check, not a sufficient one. A verbatim quote can
-still fail to support the dimension it is attached to, and our verifier does
-not read for relevance. Whether the 470 verified citations do support their
-term types is the question the expert annotation of \cref{sec:exp:setup} is
+still fail to support the dimension it is attached to, and our verifier does not
+read for relevance. Whether the 470 verified citations do support their term
+types is the question the expert annotation planned in \cref{sec:exp:setup} is
 designed to answer, and we have not run it yet.
 
-\subsection{RQ2: Taxonomy Quality}
+\subsection{RQ2: Comparison with Expert Taxonomies and LLM Baselines}
 \label{sec:exp:rq2}
-\todo{Compare \sys taxonomy against expert taxonomies and LLM baselines; include
-a qualitative excerpt (\cref{fig:taxonomy}).}
+\todo{Table with rows = expert taxonomies and LLM baselines, columns = number
+of dimensions, coverage of each expert taxonomy's dimensions by \sys, new dimensions accepted by experts, and citation verification rate for the LLM
+baselines on the same corpus. Then ``We make the following observations.''}
 
-\subsection{RQ3: Grounding Strategy and Cost}
+\subsection{RQ3: Ablations}
 \label{sec:exp:rq3}
-\todo{Ablation: whole-corpus cached vs.\ top-$k$ chunk RAG vs.\ per-document
-calls; model size ablation; cost--quality Pareto plot.}
+\textbf{Manifest.} Without the manifest the same prompt and model returned 65
+term types and cited a wrong or non-existent section label in 9\% of citations;
+with it, 93 term types and 1.5\% wrong labels, all of which the verifier
+repaired. \todo{Add rows for: grounding strategy (whole corpus cached vs.\
+top-$k$ chunk RAG vs.\ one call per document, then merge); model
+(\texttt{claude-haiku-5-5} vs.\ \texttt{claude-sonnet-5-5}); prompt variants
+(without the citation requirement, without the alias rule). Report term types,
+values, verified share and cost per variant in one table.}
+
+\subsection{Cost}
+\label{sec:exp:cost}
+The run reported in \cref{sec:exp:rq1} is one call that ended after 302
+seconds with 85,729 output tokens, 2,542 uncached input tokens for the task
+prompt and manifest, and 235,298 input tokens read from the cache. At the
+model's list price for prompts above 100,000 tokens on 25 October 2026, and
+charging the cached tokens at the full input rate, the call cost at most
+\$0.33; the cached rate makes it lower. \todo{Replace with the exact figure
+from the billing console and add the cost of the baselines and of a frontier
+model on the same input.}
 
 \subsection{RQ4: Downstream Utility}
 \label{sec:exp:rq4}
-\todo{Classify Web-sourced asset descriptions with and without the taxonomy as
-label space; report macro-F$_1$ and per-jurisdiction breakdown.}
-
-\subsection{Error Analysis}
-\label{sec:exp:errors}
-\todo{Categorise residual errors; give 2--3 concrete examples with source text.}
+\todo{Classify Web-sourced token descriptions with the catalogue as label space
+and without it; report macro-F$_1$ with and without the taxonomy, per
+jurisdiction, and one failure case.}

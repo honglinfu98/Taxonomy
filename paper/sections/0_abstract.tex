@@ -1,22 +1,20 @@
-%% Abstract: ~150-200 words. Formula that reviews well at WWW:
-%%   (1) problem + why it matters on the Web  (2) gap in prior work
-%%   (3) what we build  (4) headline quantitative result  (5) artefact released
-Crypto-assets are defined differently by every regulator, standard-setter and
-academic taxonomy that touches them, and the resulting vocabulary fragmentation
-hampers compliance, cross-jurisdictional analysis and automated classification of
-Web-native financial activity.
-\todo{Problem sentence: name the concrete pain (\eg the same token is a
-``crypto-asset'' under MiCA, a ``digital commodity'' under CLARITY and a
-``virtual asset'' under FATF).}
-We present \sys, a framework that uses large language models (LLMs) to extract
-\emph{term types}---the classification dimensions along which a term is defined---from
-a curated corpus of \todo{N} legal instruments across the EU, UK, US and
-international bodies, together with \todo{M} academic taxonomies, and to reconcile
-them into a single provenance-tracked taxonomy.
-\todo{Method sentence: what is new (definitions-first extraction, cached
-long-context grounding, cross-source reconciliation, entropy-based consolidation,
-\ldots).}
-\todo{Results sentence with numbers: agreement with expert annotation, coverage of
-\corpus, comparison against zero-shot / RAG / ontology-learning baselines.}
-We release the corpus, the taxonomy and the extraction pipeline to support
-reproducible research on Web-scale classification of digital assets.
+Crypto-assets are issued, traded and described on the Web, and the vocabulary
+that governs them is published as Web documents by regulators, standard-setters
+and researchers who do not share a dictionary. The same token is a crypto-asset
+under the EU's MiCA regulation, a digital asset under US law and a virtual asset
+under the FATF standards, and each definition discriminates along dimensions
+that the text never names. Manually built taxonomies capture one perspective at
+a time and go stale as instruments change, while LLM methods for taxonomy
+construction and ontology learning assume a fixed label space or a general-domain
+benchmark and do not trace their output to a legal source. In this paper we
+propose \sys, a framework that induces the classification dimensions, which we
+call term types, from the definitions themselves. \sys (1) builds a
+definitions-first corpus from 24 legal instruments and academic taxonomies,
+(2) extracts term types in a single pass over the whole corpus held in a cached
+context, requiring a document, section and verbatim quote for every dimension
+and value, and (3) verifies every quote against the source. On a corpus spanning
+the EU, the UK, the US and six international bodies, \sys produces 93 term types
+with 317 values and 480 citations, 97.9\% of which verify, and records a
+cross-source disagreement for 69 of them, in one five-minute call to a small
+model. \todo{One sentence of comparative evidence once RQ2--RQ4 are run.} The
+corpus, taxonomy and code are available at an anonymised repository.\footnote{\todo{anonymised URL}}

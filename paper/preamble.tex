@@ -4,37 +4,40 @@
 %%  booktabs, natbib, microtype, caption, float, geometry.  Do NOT reload them.
 %% ============================================================================
 
-%% ---- Tables & floats --------------------------------------------------------
+%% ==== Tables & floats ========================================================
 \usepackage{multirow}
 \usepackage{tabularx}
+\usepackage{array}
 \usepackage{subcaption}        % \begin{subfigure} ... (compatible with acmart)
 \usepackage{siunitx}           % \num{}, \SI{}, S-columns for aligned decimals
 \sisetup{detect-all, group-separator={,}, group-minimum-digits=4}
 
-%% ---- Algorithms & code ------------------------------------------------------
+%% ==== Algorithms & code ======================================================
 \usepackage[ruled,linesnumbered,vlined]{algorithm2e}
 \usepackage{listings}
 \lstset{basicstyle=\ttfamily\footnotesize, breaklines=true, columns=fullflexible,
         frame=single, framerule=0.3pt, xleftmargin=0.5em, numbers=none}
 
-%% ---- Figures ----------------------------------------------------------------
+%% ==== Figures ================================================================
 \usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,fit,shapes.misc}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
 \graphicspath{{figures/}}
 
-%% ---- Lists ------------------------------------------------------------------
+%% ==== Lists ==================================================================
 \usepackage[inline]{enumitem}
 \setlist{nosep, leftmargin=*}
 
-%% ---- Cross-referencing (load LAST) ------------------------------------------
+%% ==== Cross-referencing (load LAST) ==========================================
 \usepackage{balance}           % \balance before \bibliography for even columns
 \usepackage[capitalise,noabbrev,nameinlink]{cleveref}
 \crefname{section}{Section}{Sections}
 \crefname{algorithm}{Algorithm}{Algorithms}
 \crefname{appendix}{Appendix}{Appendices}
 
-%% ---- Editorial macros (disabled automatically in camera-ready) -------------
+%% ==== Editorial macros (disabled automatically in camera-ready) =============
 \ifcameraready
   \newcommand{\todo}[1]{}
   \newcommand{\note}[1]{}
@@ -45,7 +48,7 @@
   \newcommand{\cut}[1]{\textcolor{gray}{#1}}   % text under consideration for removal
 \fi
 
-%% ---- Domain macros ----------------------------------------------------------
+%% ==== Domain macros ==========================================================
 %% Edit these once; use them everywhere so renames are painless.
 \newcommand{\sys}{\textsc{TaxLex}\xspace}                 % TODO: system / artefact name
 \newcommand{\corpus}{\textsc{CryptoDef}\xspace}            % TODO: corpus name
@@ -59,7 +62,7 @@
 \newcommand{\src}[1]{\textsf{#1}}                          % a source instrument (MiCA, FATF, ...)
 \usepackage{xspace}
 
-%% ---- Math -------------------------------------------------------------------
+%% ==== Math ===================================================================
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\argmax}{\operatorname*{arg\,max}}
@@ -69,6 +72,6 @@
 \DeclareMathOperator{\entropy}{H}
 \DeclareMathOperator{\KL}{KL}
 
-%% ---- Space-saving knobs (use sparingly; reviewers notice squeezed papers) --
+%% ==== Space-saving knobs (use sparingly; reviewers notice squeezed papers) --
 %\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
 %\setlength{\abovecaptionskip}{4pt}

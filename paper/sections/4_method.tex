@@ -1,35 +1,33 @@
-\section{Term Type Generation}
+\section{The \sys Framework}
 \label{sec:method}
-
-We build the taxonomy in stages. The first stage, which this section describes,
-asks a single question of the sources. Along which dimensions do they classify
-crypto-assets, the systems that record them, the actors that handle them, the
-activities those actors perform, and the obligations attached to each? We call
-these dimensions \emph{term types}. Later stages place terms under the term
-types and link the term types to one another (\cref{sec:method:hierarchy}).
-A term type exists in our output only if the model can quote a passage that
-uses it as a criterion, and we check every quote against the corpus after the
-run.
 
 \begin{figure*}[t]
   \centering
-  \todo{Overview figure: PDFs $\rightarrow$ definitions-first extraction
-  $\rightarrow$ XML corpus behind a prompt cache $\rightarrow$ one extraction
-  call $\rightarrow$ JSON term types $\rightarrow$ citation verifier
-  $\rightarrow$ verified catalogue.}
-  %\includegraphics[width=\textwidth]{overview.pdf}
-  \caption{Overview of the term type generation stage of \sys. \todo{caption}}
+  \input{figures/overview}
+  \caption{Overview of \sys. Definitional sections of 24 documents become one
+  XML corpus (4.1), which is held in a cached system prompt; one call with the
+  task prompt and a manifest of exact section labels returns term types as JSON
+  (4.2--4.3); every citation is checked against the corpus and either accepted,
+  relabelled or rejected (4.4). The italic line under each module follows one
+  value of the reference-asset dimension through the pipeline.}
   \label{fig:overview}
 \end{figure*}
 
-\subsection{A Definitions-First Corpus}
+\sys consists of three modules (\cref{fig:overview}): (1) definitions-first
+corpus construction (\cref{sec:method:corpus}); (2) cache-grounded extraction,
+which fixes what the model is asked and how the corpus is served
+(\cref{sec:method:task,sec:method:run}); and (3) citation verification
+(\cref{sec:method:verify}). A fourth stage orders the resulting term types into
+a hierarchy (\cref{sec:method:hierarchy}).
+
+\subsection{Definitions-First Corpus Construction}
 \label{sec:method:corpus}
 
 We do not give the model whole statutes. A regulation such as \src{MiCA}
 defines its vocabulary in a few articles and spends the rest of its length on
 obligations that refer back to those definitions. The classification criteria
 we are after live in the definitions articles, the glossaries, the
-classification conditions and the descriptions of business models. We take
+classification conditions and the descriptions of business models, so we take
 those sections and nothing else. \Cref{tab:corpus} lists the result: 21 legal
 instruments from the EU, the UK, the US and six international bodies, plus two
 academic taxonomies of blockchains~\cite{tasca2019taxonomy} and of
@@ -39,8 +37,9 @@ tables removed.
 
 \begin{table}[t]
   \centering
-  \caption{\corpus: the 24 source documents, the sections we kept from each,
-  their length, and the number of Task A term types that cite them.}
+  \caption{\corpus: the 24 source documents, the sections kept from each,
+  their length in thousands of words, and the number of term types that cite
+  each document in the run of \cref{sec:exp:rq1}.}
   \label{tab:corpus}
   \scriptsize
   \input{tables/corpus}
@@ -54,52 +53,56 @@ that would otherwise leak into every section. The Senate-reported print of the
 \src{CLARITY Act} reproduces the House-passed text before the Senate
 substitute, so we take Title~I once, from the House file, and only the
 substitute's definitions and its section on network tokens from the Senate
-file. The corpus is one XML-tagged text file. Every document carries an integer
-index and metadata (type, jurisdiction, title, year) and is split into
-\texttt{<section label="...">} blocks, so a citation can name a document and a
-section unambiguously. The file holds 32 sections and 97.8 thousand words,
-which the model's tokeniser counts as 235,298 tokens.
+file. The corpus is one XML-tagged text file in which every document carries an
+integer index and metadata and is split into \texttt{<section label="...">}
+blocks, so a citation can name a document and a section unambiguously. The file
+holds 32 sections and 97.8 thousand words, which the model's tokeniser counts
+as 235,298 tokens.
 
 \subsection{The Extraction Task}
 \label{sec:method:task}
 
-The system prompt defines the objects we want. A \emph{term} is a word or
-phrase the corpus defines or classifies, such as \term{crypto-asset} or
-\term{permissioned ledger}. A \emph{term type} is a question along which the
-corpus's definitions discriminate between things, such as \ttype{reference
-asset} or \ttype{consensus mechanism}, and it has \emph{values}, the categories
-a thing can take on that dimension. A term type is \emph{grounded} when at
-least one passage uses it as a criterion or defines several terms that differ
-along it. The model is told that the corpus is its only source of truth and
-that outside knowledge may be used to recognise what the corpus says, never to
-add to it.
+\begin{figure}[t]
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true, escapechar=|]
+|\textbf{System}| (stable; precedes the cached corpus)
+  You are an expert taxonomist of crypto-asset and DLT terminology ...
+  A TERM is a word or phrase the corpus defines or classifies ...
+  A TERM TYPE is a classification dimension: a question along which
+  the corpus's definitions ... discriminate ... Each term type has VALUES.
+  Grounding rules: every term type and value carries >= 1 citation
+  {"doc": <index>, "section": "<label copied exactly>",
+   "quote": "<verbatim, <= 30 words>"}; never paraphrase; omit if
+  ungrounded. Quality rules: one question per term type; merge
+  renamings as aliases; record disagreements in "notes"; JSON only.
+|\textbf{System}| (cached, 1 h)   <context_corpus> ... 24 documents ... </context_corpus>
+|\textbf{User}|
+  Task A: enumerate the term types available in the corpus ...
+  Return {"term_types": [{"id", "name", "applies_to", "question",
+    "description", "aliases", "values": [{"value", "definition",
+    "citations"}], "citations", "sources", "notes"}], "coverage_notes"}
+  Order by applies_to, then by number of grounding documents.
+  |\textit{Manifest:}| doc 4 (MiCA): "Articles 2-3: Scope and Definitions" | ...
+\end{lstlisting}
+\caption{Prompt structure of \sys (abridged). Full text in \cref{app:prompts}.}
+\label{fig:prompt}
+\end{figure}
 
-Three grounding rules follow. Every term type and every value must carry at
-least one citation of the form \{document index, section label, quote\}; the
-quote must be verbatim and at most thirty words; a candidate that cannot be
-grounded must be omitted. Four quality rules shape the output: one question per
-term type, with differently named versions of the same question merged and the
-other names kept as aliases; jurisdictional disagreement about values or
-thresholds recorded in a notes field with citations for each side; preference
-for dimensions that recur across sources or that a source uses to draw a legal,
-prudential or technical boundary, while still keeping an unusual dimension that
-a single source grounds clearly; and JSON only.
+\Cref{fig:prompt} shows the prompt. The system instructions define the objects
+of \cref{sec:problem} in the model's terms and state the grounding and quality
+rules; they precede the corpus and never change, so the cache survives every
+task. The user prompt states the scope, which covers assets, DLT systems,
+actors, activities, and obligations or risks when the sources themselves use
+them as criteria, gives the JSON schema, and asks for ordering by category and
+then by the number of grounding documents. The model is told that the corpus is
+its only source of truth and that outside knowledge may be used to recognise
+what the corpus says, never to add to it.
 
-The user prompt states the scope, which covers assets, DLT systems, actors,
-activities, and obligations or risks when the sources themselves use them as
-criteria, and gives the JSON schema. Each term type has an identifier, a name,
-the category it applies to, the question it answers, a short description, its
-aliases, its values with their own definitions and citations, its own
-citations, the documents, jurisdictions and document classes that ground it,
-and the notes field. The model is asked to order term types by category and
-then by the number of documents that ground them, and to aim for completeness.
-
-Our first run cited section labels from memory and got them wrong in
-9\% of citations, with 65 term types. We therefore append to the user prompt a
-\emph{manifest}: one line per document listing its index, title and every exact
-section label, with the instruction that no other labels exist. The manifest is
-generated from the corpus at run time, so it cannot drift from the file the
-model sees.
+\textbf{Manifest.} Our first run cited section labels from memory and got
+them wrong in 9\% of citations, with 65 term types. We therefore append a
+\emph{manifest}: one line per document listing its index, title and every
+exact section label, with the instruction that no other labels exist. The
+manifest is generated from the corpus at run time, so it cannot drift from the
+file the model sees.
 
 \subsection{One Call over a Cached Corpus}
 \label{sec:method:run}
@@ -107,22 +110,21 @@ model sees.
 We place the whole corpus in the system prompt, after the stable instructions
 and behind a prompt-cache breakpoint with a one-hour lifetime; the task prompt
 is the user message. Every later task, and every prompt iteration, then pays
-only for the small uncached part. This choice is also a methodological one.
-Quality rule four asks the model to recognise that \src{MiCA}'s ``referencing
-the value of one official currency'' and the \src{GENIUS Act}'s ``fixed amount
-of monetary value'' answer the same question. A retriever would have to
-anticipate that two passages that share few words define the same dimension;
-a model that sees all 24 documents at once does not.
+only for the small uncached part. The choice is also methodological. Quality
+rule four asks the model to recognise that \src{MiCA}'s ``referencing the value
+of one official currency'' and the \src{GENIUS Act}'s ``fixed amount of monetary
+value'' answer the same question. A retriever would have to anticipate that two
+passages that share few words define the same dimension; a model that sees all
+24 documents at once does not. The cost of a run is therefore linear in the
+corpus size, with the corpus priced at the cache-read rate and only the task
+prompt and the output priced in full; we report measurements in
+\cref{sec:exp:cost}.
 
-A single call to \texttt{claude-haiku-5-5} at high effort produced the output
-we analyse. We disable adaptive thinking because on a first attempt the model
-spent more than 100,000 thinking tokens on this corpus without emitting any
-text, whereas without thinking it answers directly. We stream the response, allow up
-to 120,000 output tokens, and parse the JSON; if a response is cut off, the
-parser salvages every complete term type and flags the result as truncated.
-The run reported here ended normally after 302 seconds with 85,729 output
-tokens, 2,542 uncached input tokens for the task prompt and manifest, and
-235,298 input tokens read from the cache.
+A single streamed call produces the output. We disable the model's adaptive
+thinking because on a first attempt it spent more than 100,000 thinking tokens
+on this corpus without emitting any text, whereas without thinking it answers
+directly. We parse the JSON and, if a response is cut off by the output limit,
+salvage every complete term type and flag the result as truncated.
 
 \subsection{Citation Verification}
 \label{sec:method:verify}
@@ -135,18 +137,20 @@ not, we split the quote into 12-character shingles and accept it when at least
 80\% of them occur inside one window of the section twice the quote's length.
 Localising the matches tolerates footnote markers, hyphenation and the spacing
 artefacts of PDF extraction, and rejects a paraphrase stitched from phrases
-that occur in different places. When a quote fails under the cited label but passes under another label of
-the same document, we \emph{relabel} it, correcting the section, keeping the
-model's label alongside, and counting the citation as verified. Everything else is rejected and listed in a report.
-Every citation in the published output carries a \texttt{verified} flag, and
-the rejection rate is our measure of desideratum~(D1), faithfulness.
-Verification establishes that the quote exists where the model says it does;
-it does not establish that the quote supports the dimension. We return to this
-limit in \cref{sec:exp:rq1}.
+that occur in different places. When a quote fails under the cited label but
+passes under another label of the same document, we \emph{relabel} it,
+correcting the section, keeping the model's label alongside, and counting the
+citation as verified. Everything else is rejected and listed in a report
+(pseudo-code in \cref{app:verify}). Every citation in the published output
+carries a \texttt{verified} flag, and the rejection rate is our measure of
+desideratum~(D1). Verification establishes that the quote exists where the
+model says it does; it does not establish that the quote supports the
+dimension, a limit we return to in \cref{sec:exp:rq1}.
 
 \subsection{From Term Types to a Hierarchy}
 \label{sec:method:hierarchy}
 \todo{Task B: for each term type, a probability distribution over more general
 term types in the same category (plus \emph{none}), with rationale and
 citations, asked against the same cached corpus plus the Task A catalogue as a
-second cached block. Describe once the Task B run is reviewed.}
+second cached block; edges kept greedily by weight unless they close a cycle.
+Describe once the Task B output is reviewed.}
