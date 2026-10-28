@@ -78,7 +78,7 @@ describe the state before the run.
 gold = the site's own 28 retained categories (independent of our catalogue). Catalogue as prompt
 context: no gain (0.570 vs 0.571 micro-F1). Ontology tags alone (no description): 0.535. Supervised:
 tag features 0.478 / 0.402 (micro / macro) vs TF-IDF 0.487 / 0.257, both 0.514 / 0.423. Failure
-case: Stacks (Bitcoin L2) classed Layer 1 through the catalogue, which has no layer-2 value.
+case: Stacks (Bitcoin L2) classed Layer 1 through the catalogue, which asks no base-chain vs second-layer question (only a candidate layering value two levels down, unused).
 The notes below describe the state before the run.
 
 As written it assumes a separate dataset of Web-sourced token descriptions that was never

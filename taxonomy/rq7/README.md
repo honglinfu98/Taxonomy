@@ -73,9 +73,11 @@ What the numbers say:
   site's own category assignment is sparser than what the descriptions support.
 - **Failure case (catalogue gap).** Stacks, a Bitcoin layer 2 (gold: Infrastructure, Layer 2,
   Smart Contract Platform). Description only is exactly right; with the catalogue the model
-  claims dlt_architecture = v1 and returns Layer 1. Catalogue v6 has no value for a second-layer
-  or rollup architecture (the only mention is a ZK-proof role), so classifying through the
-  catalogue forces a base-chain reading. The same mechanism works the other way for KuCoin:
+  claims dlt_architecture = v1 and returns Layer 1. Catalogue v6 has no term type whose question
+  asks whether a system is a base chain or a second layer: the nearest is the discovered child
+  ledger_partitioning_topology ("layered main and sub-chains", candidate status, two levels
+  below dlt_architecture) and a ZK-proof role value mentioning rollups, and the model used
+  neither, so classifying through the catalogue forced a base-chain reading. The same mechanism works the other way for KuCoin:
   the actor dimensions (exchange_venue_type, crypto_asset_service_type) lead the catalogue
   prompt to the gold Exchange-based Tokens, which the description-only prompt misses.
   14 items are right only without the catalogue and 18 only with it (`failure_cases.md`).
