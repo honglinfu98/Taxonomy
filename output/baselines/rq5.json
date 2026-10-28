@@ -1,0 +1,389 @@
+{
+ "judge_model": "claude-haiku-5-5",
+ "expert_key": {
+  "size": 39,
+  "docs": {
+   "1": {
+    "title": "Taxonomy of Blockchain Technologies. Principles of Identification and Classification",
+    "extracted": 27,
+    "kept": 27,
+    "quote_verified": 27,
+    "name_only": 0
+   },
+   "2": {
+    "title": "Crypto-asset Taxonomy for Investors and Regulators",
+    "extracted": 12,
+    "kept": 12,
+    "quote_verified": 11,
+    "name_only": 1
+   }
+  },
+  "contaminated_for": [
+   "ours",
+   "repeat",
+   "rag",
+   "raptor",
+   "tnt"
+  ]
+ },
+ "catalogues": {
+  "ours": {
+   "name": "ours (whole corpus, one context)",
+   "term_types": 93,
+   "values": 317,
+   "citations": 480,
+   "citations_verified": 470,
+   "verified_rate": 0.979,
+   "cost_usd": 0.2274,
+   "wall_seconds": 302.1,
+   "run": {
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "calls": null,
+    "stop_reason": "end_turn"
+   },
+   "expert_key": {
+    "coverage": 0.667,
+    "precision": 0.28,
+    "matched": 26,
+    "key_size": 39
+   },
+   "structure": {
+    "nodes": 93,
+    "edges": 279,
+    "roots": 5,
+    "leaves": 18,
+    "max_depth": 14,
+    "total_bits": 90.4955,
+    "bits_per_descent": 4.7155,
+    "auc": 0.8353,
+    "expected_depth": 2.8056,
+    "effective_leaves": 13.987,
+    "leaves_for_90pct": 12
+   },
+   "downstream": {
+    "micro_f1": [
+     0.3395,
+     0.007250517222929692
+    ],
+    "macro_f1": [
+     0.1949,
+     0.0171219157806596
+    ],
+    "micro_p": [
+     0.33143333333333336,
+     0.0024583192089989753
+    ],
+    "micro_r": [
+     0.3481333333333333,
+     0.013126436429333496
+    ],
+    "mapped_types": 93,
+    "runs": 3
+   }
+  },
+  "repeat": {
+   "name": "ours, second run",
+   "term_types": 76,
+   "values": 260,
+   "citations": 399,
+   "citations_verified": 387,
+   "verified_rate": 0.97,
+   "cost_usd": 0.4178,
+   "wall_seconds": 257.0,
+   "run": {
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "calls": null,
+    "stop_reason": "end_turn"
+   },
+   "agreement_lexical": {
+    "f1": 0.509,
+    "recall_of_ours": 0.462,
+    "precision": 0.566,
+    "matched": 43
+   },
+   "agreement_judged": {
+    "f1": 0.604,
+    "recall_of_ours": 0.548,
+    "precision": 0.671,
+    "matched": 51
+   },
+   "expert_key": {
+    "coverage": 0.667,
+    "precision": 0.342,
+    "matched": 26,
+    "key_size": 39
+   },
+   "structure": null
+  },
+  "zeroshot": {
+   "name": "zero-shot, no corpus",
+   "term_types": 32,
+   "values": 102,
+   "citations": 0,
+   "citations_verified": 0,
+   "verified_rate": null,
+   "cost_usd": 0.007,
+   "wall_seconds": 53.7,
+   "run": {
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "calls": 1,
+    "stop_reason": "end_turn"
+   },
+   "agreement_lexical": {
+    "f1": 0.176,
+    "recall_of_ours": 0.118,
+    "precision": 0.344,
+    "matched": 11
+   },
+   "agreement_judged": {
+    "f1": 0.304,
+    "recall_of_ours": 0.204,
+    "precision": 0.594,
+    "matched": 19
+   },
+   "expert_key": {
+    "coverage": 0.256,
+    "precision": 0.312,
+    "matched": 10,
+    "key_size": 39
+   },
+   "structure": {
+    "nodes": 32,
+    "edges": 84,
+    "roots": 5,
+    "leaves": 5,
+    "max_depth": 6,
+    "total_bits": 33.2778,
+    "bits_per_descent": 3.6053,
+    "auc": 0.6205,
+    "expected_depth": 2.7771,
+    "effective_leaves": 5.0,
+    "leaves_for_90pct": 5
+   },
+   "downstream": {
+    "micro_f1": [
+     0.20276666666666668,
+     0.0023501772982763144
+    ],
+    "macro_f1": [
+     0.054066666666666666,
+     0.0014364307617610167
+    ],
+    "micro_p": [
+     0.19676666666666667,
+     0.0020256686138984585
+    ],
+    "micro_r": [
+     0.20916666666666667,
+     0.0029569128044860137
+    ],
+    "mapped_types": 21,
+    "runs": 3
+   }
+  },
+  "rag": {
+   "name": "chunked RAG (BM25, k=8)",
+   "term_types": 81,
+   "values": 750,
+   "citations": 1439,
+   "citations_verified": 1431,
+   "verified_rate": 0.994,
+   "cost_usd": 0.2674,
+   "wall_seconds": 221.7,
+   "run": {
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "calls": 42,
+    "stop_reason": null
+   },
+   "agreement_lexical": {
+    "f1": 0.483,
+    "recall_of_ours": 0.452,
+    "precision": 0.519,
+    "matched": 42
+   },
+   "agreement_judged": {
+    "f1": 0.471,
+    "recall_of_ours": 0.441,
+    "precision": 0.506,
+    "matched": 41
+   },
+   "expert_key": {
+    "coverage": 0.59,
+    "precision": 0.284,
+    "matched": 23,
+    "key_size": 39
+   },
+   "structure": {
+    "nodes": 81,
+    "edges": 249,
+    "roots": 8,
+    "leaves": 15,
+    "max_depth": 16,
+    "total_bits": 86.2327,
+    "bits_per_descent": 4.2664,
+    "auc": 0.8502,
+    "expected_depth": 2.8971,
+    "effective_leaves": 12.337,
+    "leaves_for_90pct": 11
+   },
+   "downstream": {
+    "micro_f1": [
+     0.2381,
+     0.002007485989988478
+    ],
+    "macro_f1": [
+     0.11086666666666667,
+     0.0015631165450257767
+    ],
+    "micro_p": [
+     0.24143333333333333,
+     0.004965212315030782
+    ],
+    "micro_r": [
+     0.2349,
+     0.0029461839725312467
+    ],
+    "mapped_types": 39,
+    "runs": 3
+   }
+  },
+  "raptor": {
+   "name": "RAPTOR (tree + BM25, k=8)",
+   "term_types": 65,
+   "values": 631,
+   "citations": 1359,
+   "citations_verified": 1185,
+   "verified_rate": 0.872,
+   "cost_usd": 0.2739,
+   "wall_seconds": 237.8,
+   "run": {
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "calls": 74,
+    "stop_reason": null
+   },
+   "agreement_lexical": {
+    "f1": 0.38,
+    "recall_of_ours": 0.323,
+    "precision": 0.462,
+    "matched": 30
+   },
+   "agreement_judged": {
+    "f1": 0.43,
+    "recall_of_ours": 0.366,
+    "precision": 0.523,
+    "matched": 34
+   },
+   "expert_key": {
+    "coverage": 0.564,
+    "precision": 0.338,
+    "matched": 22,
+    "key_size": 39
+   },
+   "structure": {
+    "nodes": 65,
+    "edges": 193,
+    "roots": 6,
+    "leaves": 14,
+    "max_depth": 11,
+    "total_bits": 70.5709,
+    "bits_per_descent": 4.874,
+    "auc": 0.7269,
+    "expected_depth": 3.5041,
+    "effective_leaves": 8.223,
+    "leaves_for_90pct": 8
+   },
+   "downstream": {
+    "micro_f1": [
+     0.17830000000000001,
+     0.008750428560933473
+    ],
+    "macro_f1": [
+     0.08166666666666667,
+     0.006690540586031396
+    ],
+    "micro_p": [
+     0.18073333333333333,
+     0.008126704949321908
+    ],
+    "micro_r": [
+     0.176,
+     0.009487360012142475
+    ],
+    "mapped_types": 36,
+    "runs": 3
+   }
+  },
+  "tnt": {
+   "name": "TnT-LLM (summarise, build, review)",
+   "term_types": 170,
+   "values": 485,
+   "citations": 0,
+   "citations_verified": 0,
+   "verified_rate": null,
+   "cost_usd": 0.169,
+   "wall_seconds": 650.0,
+   "run": {
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "calls": 135,
+    "stop_reason": null
+   },
+   "agreement_lexical": {
+    "f1": 0.175,
+    "recall_of_ours": 0.247,
+    "precision": 0.135,
+    "matched": 23
+   },
+   "agreement_judged": {
+    "f1": 0.327,
+    "recall_of_ours": 0.462,
+    "precision": 0.253,
+    "matched": 43
+   },
+   "expert_key": {
+    "coverage": 0.769,
+    "precision": 0.176,
+    "matched": 30,
+    "key_size": 39
+   },
+   "structure": {
+    "nodes": 170,
+    "edges": 516,
+    "roots": 6,
+    "leaves": 30,
+    "max_depth": 18,
+    "total_bits": 166.7844,
+    "bits_per_descent": 5.8459,
+    "auc": 0.8229,
+    "expected_depth": 3.6876,
+    "effective_leaves": 19.474,
+    "leaves_for_90pct": 19
+   },
+   "downstream": {
+    "micro_f1": [
+     0.12303333333333334,
+     0.00622923216242045
+    ],
+    "macro_f1": [
+     0.07913333333333333,
+     0.013168269944580166
+    ],
+    "micro_p": [
+     0.1143,
+     0.00571576766497729
+    ],
+    "micro_r": [
+     0.1332,
+     0.006947661477072704
+    ],
+    "mapped_types": 37,
+    "runs": 3
+   }
+  }
+ }
+}

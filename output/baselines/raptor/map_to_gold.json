@@ -1,0 +1,239 @@
+{
+ "map": {
+  "issuer_type": "issuer_presence",
+  "fungibility": "fungibility",
+  "legal_classification": "legal_classification_status",
+  "stablecoin_reference_type": "asset_reference_type",
+  "redemption_mechanism": "redemption_mechanism",
+  "form_of_claim": "claim_form",
+  "yield_source": "yield_source",
+  "yield_distribution_mechanism": "yield_distribution_mechanism",
+  "minting_mechanism": "minting_mechanism",
+  "centralisation": "centralisation_level",
+  "technical_standard": "native_vs_token_standard",
+  "consensus_mechanism": "consensus_mechanism",
+  "ledger_access_model": "ledger_access_permission",
+  "ledger_architecture": "dlt_architecture",
+  "custody_arrangement": "unhosted_vs_hosted_wallet",
+  "wallet_connectivity": "wallet_type_storage",
+  "privacy_and_anonymity": "privacy_enhancement",
+  "fee_model": "fee_structure",
+  "staking_participation_model": "staking_arrangement",
+  "crypto_asset_service_type": "crypto_asset_service_type",
+  "provider_role_in_transaction": "party_role_transfer",
+  "vasp_status_and_scope": "service_provider_status",
+  "prudential_classification_group": "prudential_classification_group",
+  "tradfi_analogue": "tradfi_analogue",
+  "governance_rules_type": "governance_model",
+  "interoperability_level": "interoperability_type",
+  "stablecoin_anonymity_identity_layer": "digital_identity_layer",
+  "distribution_mode": "offer_and_issuance_method",
+  "multi_entity_operation": "crypto_asset_operator",
+  "defi_control_status": "decentralised_control_status_actor",
+  "network_value_source": "ancillary_asset_status",
+  "payment_transaction_purpose": "payment_or_transfer_service",
+  "stablecoin_reach": "stablecoin_regulatory_class",
+  "key_storage_location": "key_storage_medium",
+  "issuer_freeze_capability": "sanctions_and_freezing_capability",
+  "cryptographic_scheme": "zk_proof_system_variant"
+ },
+ "info": {
+  "judge": "claude-haiku-5-5",
+  "gold_types": 132,
+  "catalogue_types": 65,
+  "matched": 36,
+  "model": "claude-haiku-5-5",
+  "calls": 2,
+  "usage": {
+   "input": 42610,
+   "output": 4987,
+   "cache_write": 0,
+   "cache_read": 0
+  },
+  "cost_usd": 0.0068,
+  "api_seconds": 17.1,
+  "wall_seconds": 18.1
+ },
+ "pairs": [
+  {
+   "a": "issuer_presence",
+   "b": "issuer_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "fungibility",
+   "b": "fungibility",
+   "confidence": "high"
+  },
+  {
+   "a": "legal_classification_status",
+   "b": "legal_classification",
+   "confidence": "medium"
+  },
+  {
+   "a": "asset_reference_type",
+   "b": "stablecoin_reference_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "redemption_mechanism",
+   "b": "redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "claim_form",
+   "b": "form_of_claim",
+   "confidence": "high"
+  },
+  {
+   "a": "yield_source",
+   "b": "yield_source",
+   "confidence": "high"
+  },
+  {
+   "a": "yield_distribution_mechanism",
+   "b": "yield_distribution_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "minting_mechanism",
+   "b": "minting_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "centralisation_level",
+   "b": "centralisation",
+   "confidence": "medium"
+  },
+  {
+   "a": "native_vs_token_standard",
+   "b": "technical_standard",
+   "confidence": "medium"
+  },
+  {
+   "a": "consensus_mechanism",
+   "b": "consensus_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "ledger_access_permission",
+   "b": "ledger_access_model",
+   "confidence": "high"
+  },
+  {
+   "a": "dlt_architecture",
+   "b": "ledger_architecture",
+   "confidence": "medium"
+  },
+  {
+   "a": "unhosted_vs_hosted_wallet",
+   "b": "custody_arrangement",
+   "confidence": "medium"
+  },
+  {
+   "a": "wallet_type_storage",
+   "b": "wallet_connectivity",
+   "confidence": "high"
+  },
+  {
+   "a": "privacy_enhancement",
+   "b": "privacy_and_anonymity",
+   "confidence": "medium"
+  },
+  {
+   "a": "fee_structure",
+   "b": "fee_model",
+   "confidence": "high"
+  },
+  {
+   "a": "staking_arrangement",
+   "b": "staking_participation_model",
+   "confidence": "high"
+  },
+  {
+   "a": "crypto_asset_service_type",
+   "b": "crypto_asset_service_type",
+   "confidence": "high"
+  },
+  {
+   "a": "party_role_transfer",
+   "b": "provider_role_in_transaction",
+   "confidence": "medium"
+  },
+  {
+   "a": "service_provider_status",
+   "b": "vasp_status_and_scope",
+   "confidence": "medium"
+  },
+  {
+   "a": "prudential_classification_group",
+   "b": "prudential_classification_group",
+   "confidence": "high"
+  },
+  {
+   "a": "tradfi_analogue",
+   "b": "tradfi_analogue",
+   "confidence": "high"
+  },
+  {
+   "a": "governance_model",
+   "b": "governance_rules_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "interoperability_type",
+   "b": "interoperability_level",
+   "confidence": "medium"
+  },
+  {
+   "a": "digital_identity_layer",
+   "b": "stablecoin_anonymity_identity_layer",
+   "confidence": "medium"
+  },
+  {
+   "a": "offer_and_issuance_method",
+   "b": "distribution_mode",
+   "confidence": "medium"
+  },
+  {
+   "a": "crypto_asset_operator",
+   "b": "multi_entity_operation",
+   "confidence": "medium"
+  },
+  {
+   "a": "decentralised_control_status_actor",
+   "b": "defi_control_status",
+   "confidence": "high"
+  },
+  {
+   "a": "ancillary_asset_status",
+   "b": "network_value_source",
+   "confidence": "high"
+  },
+  {
+   "a": "payment_or_transfer_service",
+   "b": "payment_transaction_purpose",
+   "confidence": "medium"
+  },
+  {
+   "a": "stablecoin_regulatory_class",
+   "b": "stablecoin_reach",
+   "confidence": "low"
+  },
+  {
+   "a": "key_storage_medium",
+   "b": "key_storage_location",
+   "confidence": "medium"
+  },
+  {
+   "a": "sanctions_and_freezing_capability",
+   "b": "issuer_freeze_capability",
+   "confidence": "high"
+  },
+  {
+   "a": "zk_proof_system_variant",
+   "b": "cryptographic_scheme",
+   "confidence": "low"
+  }
+ ]
+}

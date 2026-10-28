@@ -1,0 +1,537 @@
+{
+ "gold_version": 6,
+ "items": 300,
+ "systems": {
+  "ours": {
+   "gold_version": 6,
+   "items": 300,
+   "term_types": 93,
+   "mapped_types": 93,
+   "mapping": {
+    "judge": "identity"
+   },
+   "runs": [
+    {
+     "run": 1,
+     "metrics": {
+      "micro_p": 0.333,
+      "micro_r": 0.3465,
+      "micro_f1": 0.3396,
+      "macro_f1": 0.2013,
+      "n_labels": 84,
+      "tp": 359,
+      "fp": 719,
+      "fn": 677,
+      "pred_per_item": 3.59,
+      "mapped_share": 1.0
+     },
+     "run_info": {
+      "cost_usd": 0.1363,
+      "api_seconds": 616.9,
+      "wall_seconds": 105.4,
+      "usage": {
+       "input": 233972,
+       "output": 97344,
+       "cache_write": 20614,
+       "cache_read": 6163586
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 2,
+     "metrics": {
+      "micro_p": 0.3286,
+      "micro_r": 0.3359,
+      "micro_f1": 0.3322,
+      "macro_f1": 0.1755,
+      "n_labels": 84,
+      "tp": 348,
+      "fp": 711,
+      "fn": 688,
+      "pred_per_item": 3.53,
+      "mapped_share": 1.0
+     },
+     "run_info": {
+      "cost_usd": 0.133,
+      "api_seconds": 599.4,
+      "wall_seconds": 102.9,
+      "usage": {
+       "input": 233972,
+       "output": 95570,
+       "cache_write": 0,
+       "cache_read": 6184200
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 3,
+     "metrics": {
+      "micro_p": 0.3327,
+      "micro_r": 0.362,
+      "micro_f1": 0.3467,
+      "macro_f1": 0.2079,
+      "n_labels": 84,
+      "tp": 375,
+      "fp": 752,
+      "fn": 661,
+      "pred_per_item": 3.76,
+      "mapped_share": 1.0
+     },
+     "run_info": {
+      "cost_usd": 0.1348,
+      "api_seconds": 575.3,
+      "wall_seconds": 98.2,
+      "usage": {
+       "input": 233972,
+       "output": 99183,
+       "cache_write": 0,
+       "cache_read": 6184200
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    }
+   ]
+  },
+  "rag": {
+   "gold_version": 6,
+   "items": 300,
+   "term_types": 81,
+   "mapped_types": 39,
+   "mapping": {
+    "judge": "claude-haiku-5-5",
+    "gold_types": 132,
+    "catalogue_types": 81,
+    "matched": 39,
+    "model": "claude-haiku-5-5",
+    "calls": 2,
+    "usage": {
+     "input": 46080,
+     "output": 6171,
+     "cache_write": 0,
+     "cache_read": 0
+    },
+    "cost_usd": 0.0077,
+    "api_seconds": 21.2,
+    "wall_seconds": 22.1
+   },
+   "runs": [
+    {
+     "run": 1,
+     "metrics": {
+      "micro_p": 0.2429,
+      "micro_r": 0.2317,
+      "micro_f1": 0.2372,
+      "macro_f1": 0.1111,
+      "n_labels": 84,
+      "tp": 240,
+      "fp": 748,
+      "fn": 796,
+      "pred_per_item": 3.29,
+      "mapped_share": 0.732
+     },
+     "run_info": {
+      "cost_usd": 0.1946,
+      "api_seconds": 649.4,
+      "wall_seconds": 110.6,
+      "usage": {
+       "input": 233972,
+       "output": 93893,
+       "cache_write": 39895,
+       "cache_read": 11928605
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 2,
+     "metrics": {
+      "micro_p": 0.2455,
+      "micro_r": 0.2355,
+      "micro_f1": 0.2404,
+      "macro_f1": 0.1123,
+      "n_labels": 84,
+      "tp": 244,
+      "fp": 750,
+      "fn": 792,
+      "pred_per_item": 3.31,
+      "mapped_share": 0.733
+     },
+     "run_info": {
+      "cost_usd": 0.1917,
+      "api_seconds": 648.4,
+      "wall_seconds": 110.9,
+      "usage": {
+       "input": 233972,
+       "output": 97177,
+       "cache_write": 0,
+       "cache_read": 11968500
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 3,
+     "metrics": {
+      "micro_p": 0.2359,
+      "micro_r": 0.2375,
+      "micro_f1": 0.2367,
+      "macro_f1": 0.1092,
+      "n_labels": 84,
+      "tp": 246,
+      "fp": 797,
+      "fn": 790,
+      "pred_per_item": 3.48,
+      "mapped_share": 0.705
+     },
+     "run_info": {
+      "cost_usd": 0.1909,
+      "api_seconds": 603.7,
+      "wall_seconds": 103.4,
+      "usage": {
+       "input": 233972,
+       "output": 95615,
+       "cache_write": 0,
+       "cache_read": 11968500
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    }
+   ]
+  },
+  "raptor": {
+   "gold_version": 6,
+   "items": 300,
+   "term_types": 65,
+   "mapped_types": 36,
+   "mapping": {
+    "judge": "claude-haiku-5-5",
+    "gold_types": 132,
+    "catalogue_types": 65,
+    "matched": 36,
+    "model": "claude-haiku-5-5",
+    "calls": 2,
+    "usage": {
+     "input": 42610,
+     "output": 4987,
+     "cache_write": 0,
+     "cache_read": 0
+    },
+    "cost_usd": 0.0068,
+    "api_seconds": 17.1,
+    "wall_seconds": 18.1
+   },
+   "runs": [
+    {
+     "run": 1,
+     "metrics": {
+      "micro_p": 0.1868,
+      "micro_r": 0.1805,
+      "micro_f1": 0.1836,
+      "macro_f1": 0.0868,
+      "n_labels": 84,
+      "tp": 187,
+      "fp": 814,
+      "fn": 849,
+      "pred_per_item": 3.34,
+      "mapped_share": 0.66
+     },
+     "run_info": {
+      "cost_usd": 0.1715,
+      "api_seconds": 650.5,
+      "wall_seconds": 112.4,
+      "usage": {
+       "input": 233972,
+       "output": 95255,
+       "cache_write": 32249,
+       "cache_read": 9642451
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 2,
+     "metrics": {
+      "micro_p": 0.1715,
+      "micro_r": 0.1651,
+      "micro_f1": 0.1682,
+      "macro_f1": 0.0741,
+      "n_labels": 84,
+      "tp": 171,
+      "fp": 826,
+      "fn": 865,
+      "pred_per_item": 3.32,
+      "mapped_share": 0.646
+     },
+     "run_info": {
+      "cost_usd": 0.1675,
+      "api_seconds": 641.9,
+      "wall_seconds": 109.6,
+      "usage": {
+       "input": 233972,
+       "output": 94618,
+       "cache_write": 0,
+       "cache_read": 9674700
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 3,
+     "metrics": {
+      "micro_p": 0.1839,
+      "micro_r": 0.1824,
+      "micro_f1": 0.1831,
+      "macro_f1": 0.0841,
+      "n_labels": 84,
+      "tp": 189,
+      "fp": 839,
+      "fn": 847,
+      "pred_per_item": 3.43,
+      "mapped_share": 0.674
+     },
+     "run_info": {
+      "cost_usd": 0.1679,
+      "api_seconds": 602.0,
+      "wall_seconds": 102.9,
+      "usage": {
+       "input": 233972,
+       "output": 95489,
+       "cache_write": 0,
+       "cache_read": 9674700
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    }
+   ]
+  },
+  "tnt": {
+   "gold_version": 6,
+   "items": 300,
+   "term_types": 170,
+   "mapped_types": 37,
+   "mapping": {
+    "judge": "claude-haiku-5-5",
+    "gold_types": 132,
+    "catalogue_types": 170,
+    "matched": 37,
+    "model": "claude-haiku-5-5",
+    "calls": 2,
+    "usage": {
+     "input": 53772,
+     "output": 9509,
+     "cache_write": 0,
+     "cache_read": 0
+    },
+    "cost_usd": 0.0101,
+    "api_seconds": 33.1,
+    "wall_seconds": 34.1
+   },
+   "runs": [
+    {
+     "run": 1,
+     "metrics": {
+      "micro_p": 0.1176,
+      "micro_r": 0.1351,
+      "micro_f1": 0.1258,
+      "macro_f1": 0.0932,
+      "n_labels": 84,
+      "tp": 140,
+      "fp": 1050,
+      "fn": 896,
+      "pred_per_item": 3.97,
+      "mapped_share": 0.489
+     },
+     "run_info": {
+      "cost_usd": 0.1597,
+      "api_seconds": 648.4,
+      "wall_seconds": 85.5,
+      "usage": {
+       "input": 233972,
+       "output": 110856,
+       "cache_write": 25969,
+       "cache_read": 7764731
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 2,
+     "metrics": {
+      "micro_p": 0.1077,
+      "micro_r": 0.1255,
+      "micro_f1": 0.1159,
+      "macro_f1": 0.0671,
+      "n_labels": 84,
+      "tp": 130,
+      "fp": 1077,
+      "fn": 906,
+      "pred_per_item": 4.02,
+      "mapped_share": 0.485
+     },
+     "run_info": {
+      "cost_usd": 0.156,
+      "api_seconds": 641.6,
+      "wall_seconds": 83.6,
+      "usage": {
+       "input": 233972,
+       "output": 109316,
+       "cache_write": 0,
+       "cache_read": 7790700
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 3,
+     "metrics": {
+      "micro_p": 0.1176,
+      "micro_r": 0.139,
+      "micro_f1": 0.1274,
+      "macro_f1": 0.0771,
+      "n_labels": 84,
+      "tp": 144,
+      "fp": 1080,
+      "fn": 892,
+      "pred_per_item": 4.08,
+      "mapped_share": 0.484
+     },
+     "run_info": {
+      "cost_usd": 0.1571,
+      "api_seconds": 652.7,
+      "wall_seconds": 86.3,
+      "usage": {
+       "input": 233972,
+       "output": 111500,
+       "cache_write": 0,
+       "cache_read": 7790700
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    }
+   ]
+  },
+  "zeroshot": {
+   "gold_version": 6,
+   "items": 300,
+   "term_types": 32,
+   "mapped_types": 21,
+   "mapping": {
+    "judge": "claude-haiku-5-5",
+    "gold_types": 132,
+    "catalogue_types": 32,
+    "matched": 21,
+    "model": "claude-haiku-5-5",
+    "calls": 2,
+    "usage": {
+     "input": 33344,
+     "output": 2699,
+     "cache_write": 0,
+     "cache_read": 0
+    },
+    "cost_usd": 0.0047,
+    "api_seconds": 11.2,
+    "wall_seconds": 12.2
+   },
+   "runs": [
+    {
+     "run": 1,
+     "metrics": {
+      "micro_p": 0.1945,
+      "micro_r": 0.2066,
+      "micro_f1": 0.2004,
+      "macro_f1": 0.0557,
+      "n_labels": 84,
+      "tp": 214,
+      "fp": 886,
+      "fn": 822,
+      "pred_per_item": 3.67,
+      "mapped_share": 0.714
+     },
+     "run_info": {
+      "cost_usd": 0.0911,
+      "api_seconds": 577.5,
+      "wall_seconds": 99.3,
+      "usage": {
+       "input": 233972,
+       "output": 98878,
+       "cache_write": 5851,
+       "cache_read": 1749449
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 2,
+     "metrics": {
+      "micro_p": 0.1984,
+      "micro_r": 0.2124,
+      "micro_f1": 0.2051,
+      "macro_f1": 0.0535,
+      "n_labels": 84,
+      "tp": 220,
+      "fp": 889,
+      "fn": 816,
+      "pred_per_item": 3.7,
+      "mapped_share": 0.709
+     },
+     "run_info": {
+      "cost_usd": 0.0914,
+      "api_seconds": 614.2,
+      "wall_seconds": 105.2,
+      "usage": {
+       "input": 233972,
+       "output": 100838,
+       "cache_write": 0,
+       "cache_read": 1755300
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    },
+    {
+     "run": 3,
+     "metrics": {
+      "micro_p": 0.1974,
+      "micro_r": 0.2085,
+      "micro_f1": 0.2028,
+      "macro_f1": 0.053,
+      "n_labels": 84,
+      "tp": 216,
+      "fp": 878,
+      "fn": 820,
+      "pred_per_item": 3.65,
+      "mapped_share": 0.72
+     },
+     "run_info": {
+      "cost_usd": 0.0898,
+      "api_seconds": 562.7,
+      "wall_seconds": 96.1,
+      "usage": {
+       "input": 233972,
+       "output": 97771,
+       "cache_write": 0,
+       "cache_read": 1755300
+      },
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+     }
+    }
+   ]
+  }
+ }
+}

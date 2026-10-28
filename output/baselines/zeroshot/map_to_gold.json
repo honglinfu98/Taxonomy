@@ -1,0 +1,149 @@
+{
+ "map": {
+  "asset_issuance_model": "issuer_presence",
+  "asset_fungibility_and_unique_token": "fungibility",
+  "asset_reference_type": "asset_reference_type",
+  "asset_legal_status": "legal_classification_status",
+  "asset_function_purpose": "crypto_asset_function",
+  "asset_transferability_and_redemption": "redemption_mechanism",
+  "asset_tokenised_real_world_asset": "tokenisation_form",
+  "dlt_access_permissions": "ledger_access_permission",
+  "dlt_consensus_mechanism": "consensus_mechanism",
+  "dlt_ledger_architecture": "dlt_architecture",
+  "dlt_network_architecture": "network_topology",
+  "activity_service_category": "crypto_asset_service_type",
+  "actor_custody_control_arrangement": "custodian_or_custody_model",
+  "actor_supervisory_role": "ecosystem_participant_role",
+  "obligation_licensing_exemption": "regulated_status_cvc_mst_exemption",
+  "obligation_investor_protection_class": "consumer_vs_professional_status",
+  "obligation_financial_crime_control": "aml_obligations_applicability",
+  "obligation_ict_resilience_scope": "operational_resilience_risk",
+  "obligation_prudential_treatment": "prudential_classification_group",
+  "obligation_risk_category": "risk_type_illicit_finance",
+  "activity_transaction_type": "transaction_type_p2p"
+ },
+ "info": {
+  "judge": "claude-haiku-5-5",
+  "gold_types": 132,
+  "catalogue_types": 32,
+  "matched": 21,
+  "model": "claude-haiku-5-5",
+  "calls": 2,
+  "usage": {
+   "input": 33344,
+   "output": 2699,
+   "cache_write": 0,
+   "cache_read": 0
+  },
+  "cost_usd": 0.0047,
+  "api_seconds": 11.2,
+  "wall_seconds": 12.2
+ },
+ "pairs": [
+  {
+   "a": "issuer_presence",
+   "b": "asset_issuance_model",
+   "confidence": "high"
+  },
+  {
+   "a": "fungibility",
+   "b": "asset_fungibility_and_unique_token",
+   "confidence": "high"
+  },
+  {
+   "a": "asset_reference_type",
+   "b": "asset_reference_type",
+   "confidence": "high"
+  },
+  {
+   "a": "legal_classification_status",
+   "b": "asset_legal_status",
+   "confidence": "medium"
+  },
+  {
+   "a": "crypto_asset_function",
+   "b": "asset_function_purpose",
+   "confidence": "medium"
+  },
+  {
+   "a": "redemption_mechanism",
+   "b": "asset_transferability_and_redemption",
+   "confidence": "medium"
+  },
+  {
+   "a": "tokenisation_form",
+   "b": "asset_tokenised_real_world_asset",
+   "confidence": "medium"
+  },
+  {
+   "a": "ledger_access_permission",
+   "b": "dlt_access_permissions",
+   "confidence": "high"
+  },
+  {
+   "a": "consensus_mechanism",
+   "b": "dlt_consensus_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "dlt_architecture",
+   "b": "dlt_ledger_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "network_topology",
+   "b": "dlt_network_architecture",
+   "confidence": "medium"
+  },
+  {
+   "a": "crypto_asset_service_type",
+   "b": "activity_service_category",
+   "confidence": "medium"
+  },
+  {
+   "a": "custodian_or_custody_model",
+   "b": "actor_custody_control_arrangement",
+   "confidence": "medium"
+  },
+  {
+   "a": "ecosystem_participant_role",
+   "b": "actor_supervisory_role",
+   "confidence": "medium"
+  },
+  {
+   "a": "regulated_status_cvc_mst_exemption",
+   "b": "obligation_licensing_exemption",
+   "confidence": "medium"
+  },
+  {
+   "a": "consumer_vs_professional_status",
+   "b": "obligation_investor_protection_class",
+   "confidence": "medium"
+  },
+  {
+   "a": "aml_obligations_applicability",
+   "b": "obligation_financial_crime_control",
+   "confidence": "medium"
+  },
+  {
+   "a": "operational_resilience_risk",
+   "b": "obligation_ict_resilience_scope",
+   "confidence": "medium"
+  },
+  {
+   "a": "prudential_classification_group",
+   "b": "obligation_prudential_treatment",
+   "confidence": "medium"
+  },
+  {
+   "a": "risk_type_illicit_finance",
+   "b": "obligation_risk_category",
+   "confidence": "medium"
+  },
+  {
+   "a": "transaction_type_p2p",
+   "b": "activity_transaction_type",
+   "confidence": "medium"
+  }
+ ]
+}

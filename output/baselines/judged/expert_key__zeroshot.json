@@ -1,0 +1,129 @@
+{
+ "a": "expert_key",
+ "b": "zeroshot",
+ "judge_model": "claude-haiku-5-5",
+ "term_types_a": 39,
+ "term_types_b": 32,
+ "matched": 10,
+ "recall_of_a": 0.256,
+ "precision_of_b": 0.312,
+ "f1": 0.282,
+ "pairs": [
+  {
+   "a": "d1_consensus_immutability_and_failure_tolerance",
+   "b": "dlt_consensus_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_network_topology",
+   "b": "dlt_network_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_access_and_control_layer",
+   "b": "dlt_access_permissions",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_encryption",
+   "b": "dlt_cryptographic_primitives",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_script_language",
+   "b": "dlt_smart_contract_capability",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_legal_classification",
+   "b": "asset_legal_status",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_asset_function",
+   "b": "asset_function_purpose",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_issuer",
+   "b": "asset_issuance_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_redemption_mechanism",
+   "b": "asset_transferability_and_redemption",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_tokenisation",
+   "b": "asset_tokenised_real_world_asset",
+   "confidence": "medium"
+  }
+ ],
+ "unmatched_a": [
+  "d1_gossiping",
+  "d1_consensus_agreement_latency",
+  "d1_consensus_agreement_finality",
+  "d1_data_structure_in_the_blockheader",
+  "d1_transaction_model",
+  "d1_server_storage",
+  "d1_block_storage",
+  "d1_limits_to_scalability",
+  "d1_native_asset",
+  "d1_asset_supply_management",
+  "d1_interoperability",
+  "d1_intraoperability",
+  "d1_governance",
+  "d1_data_privacy",
+  "d1_coding_language",
+  "d1_code_license",
+  "d1_software_architecture",
+  "d1_identity_layer",
+  "d1_reward_system",
+  "d1_fees_reward",
+  "d1_fee_structure",
+  "d2_technical_standard",
+  "d2_centralisation",
+  "d2_minting_mechanism",
+  "d2_yield_source",
+  "d2_yield_distribution_mechanism",
+  "d2_redemption_reference_asset",
+  "d2_form_of_claim",
+  "d2_tradfi_analogy"
+ ],
+ "unmatched_b": [
+  "asset_reference_type",
+  "asset_scale_systemic_significance",
+  "asset_fungibility_and_unique_token",
+  "dlt_ledger_architecture",
+  "dlt_ledger_scope_application",
+  "actor_service_provider_type",
+  "actor_vasp_definition_status",
+  "actor_custody_control_arrangement",
+  "actor_legal_form",
+  "actor_supervisory_role",
+  "actor_jurisdiction_location",
+  "activity_service_category",
+  "activity_transaction_type",
+  "activity_cross_border_status",
+  "activity_transfer_value_threshold",
+  "activity_tax_reporting_category",
+  "obligation_prudential_treatment",
+  "obligation_risk_category",
+  "obligation_ict_resilience_scope",
+  "obligation_financial_crime_control",
+  "obligation_investor_protection_class",
+  "obligation_licensing_exemption"
+ ],
+ "model": "claude-haiku-5-5",
+ "calls": 2,
+ "usage": {
+  "input": 11530,
+  "output": 1597,
+  "cache_write": 0,
+  "cache_read": 0
+ },
+ "cost_usd": 0.002,
+ "api_seconds": 6.0,
+ "wall_seconds": 6.0
+}

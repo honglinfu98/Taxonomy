@@ -1,0 +1,5026 @@
+{
+  "run": {
+    "task": "A-tnt",
+    "effort": "high",
+    "batch": 30,
+    "summaries": 129,
+    "batches": 5,
+    "model": "claude-haiku-5-5",
+    "calls": 135,
+    "usage": {
+      "input": 472617,
+      "output": 243491,
+      "cache_write": 0,
+      "cache_read": 0
+    },
+    "cost_usd": 0.169,
+    "api_seconds": 910.5,
+    "wall_seconds": 650.0,
+    "timestamp": "2026-10-27T12:08:35+00:00",
+    "baseline": "tnt"
+  },
+  "term_types": [
+    {
+      "id": "consensus_network_topology",
+      "name": "Consensus network topology",
+      "applies_to": "technology",
+      "question": "How are nodes arranged and which nodes participate in maintaining consensus?",
+      "description": "Classifies blockchain systems by how network nodes are organised, distinguishing equal peer participation from split roles and central control.",
+      "aliases": [
+        "network topology",
+        "node layout"
+      ],
+      "values": [
+        {
+          "value": "decentralised",
+          "definition": "All nodes are equivalent peers in a P2P network, each able to validate and propagate transactions.",
+          "citations": []
+        },
+        {
+          "value": "hierarchical",
+          "definition": "Nodes are split into tracking and validating roles, often in consortium blockchains.",
+          "citations": []
+        },
+        {
+          "value": "centralised",
+          "definition": "A central authority operates the nodes and controls validation, with a single point of control.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "block_adding_access_restriction",
+      "name": "Block-adding access restriction",
+      "applies_to": "technology",
+      "question": "Who is permitted to add blocks to the ledger?",
+      "description": "Distinguishes systems where block-adding is restricted to a defined signer set from those open to anyone.",
+      "aliases": [
+        "public versus private blockchain",
+        "permissioned status"
+      ],
+      "values": [
+        {
+          "value": "public",
+          "definition": "Anyone can participate in adding blocks without restriction to a defined set of signers.",
+          "citations": []
+        },
+        {
+          "value": "private",
+          "definition": "Block-adding is restricted to a defined set of signers chosen by the operator.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ledger_governance_model",
+      "name": "Ledger read, write and consensus governance model",
+      "applies_to": "technology",
+      "question": "Who has read access, write access, and the right to manage consensus on the ledger?",
+      "description": "Classifies ledgers by which parties hold read, write and consensus-management rights, distinguishing open public models from permissioned and private ones.",
+      "aliases": [
+        "access and control model",
+        "read-write-consensus governance"
+      ],
+      "values": [
+        {
+          "value": "public_open",
+          "definition": "Open read, write and consensus rights for all participants.",
+          "citations": []
+        },
+        {
+          "value": "permissioned_public",
+          "definition": "Open read, but write or consensus rights restricted to approved participants.",
+          "citations": []
+        },
+        {
+          "value": "permissioned_private",
+          "definition": "All rights granted and controlled by a central organisation.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "consensus_mechanism",
+      "name": "Consensus mechanism",
+      "applies_to": "technology",
+      "question": "What rule is used to agree which transactions are recorded and validated?",
+      "description": "Classifies the method by which the network reaches agreement on the ledger state.",
+      "aliases": [
+        "validation mechanism",
+        "block-production mechanism"
+      ],
+      "values": [
+        {
+          "value": "proof_of_work",
+          "definition": "Validators compete through computational work to add blocks.",
+          "citations": []
+        },
+        {
+          "value": "proof_of_stake",
+          "definition": "Validators are selected in proportion to tokens locked as collateral, with randomised or coin-age selection rules.",
+          "citations": []
+        },
+        {
+          "value": "delegated_proof_of_stake",
+          "definition": "Stakeholders elect forgers who produce blocks and are penalised for misbehaviour.",
+          "citations": []
+        },
+        {
+          "value": "proof_of_authority",
+          "definition": "Block creation is restricted to pre-selected, identified trusted signers.",
+          "citations": []
+        },
+        {
+          "value": "proof_of_capacity",
+          "definition": "Block production depends on committed storage or disk space capacity.",
+          "citations": []
+        },
+        {
+          "value": "proof_of_burn",
+          "definition": "Validation rights are obtained by destroying tokens at unspendable addresses.",
+          "citations": []
+        },
+        {
+          "value": "byzantine_fault_tolerant",
+          "definition": "Deterministic agreement via Lamport-style BFT voting among known validators, as in federated systems.",
+          "citations": []
+        },
+        {
+          "value": "hybrid",
+          "definition": "Combines two or more base mechanisms, such as PoB with PoS or PoW, often with checkpoints.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "consensus_fault_tolerance_threshold",
+      "name": "Consensus fault tolerance threshold",
+      "applies_to": "technology",
+      "question": "What proportion of corrupted or malicious participants can the consensus tolerate before failing?",
+      "description": "Classifies consensus mechanisms by the adversarial share they withstand, such as the one-third BFT bound or the 25 percent coordinated-attack threshold of proof-of-work.",
+      "aliases": [
+        "attack threshold",
+        "failure tolerance"
+      ],
+      "values": [
+        {
+          "value": "below_one_third",
+          "definition": "Tolerates corruption of up to one third of nodes, as in BFT mechanisms.",
+          "citations": []
+        },
+        {
+          "value": "around_one_quarter_coordinated",
+          "definition": "Coordinated attack threshold of about 25 percent of computational or validation power, as in proof-of-work.",
+          "citations": []
+        },
+        {
+          "value": "stake_majority_based",
+          "definition": "Security depends on the proportion of stake controlled by honest parties rather than a fixed node fraction.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "energy_intensity_class",
+      "name": "Network energy intensity",
+      "applies_to": "technology",
+      "question": "How energy-intensive is the network's consensus process?",
+      "description": "Classifies networks by their energy consumption relative to other systems.",
+      "aliases": [
+        "energy use"
+      ],
+      "values": [
+        {
+          "value": "high_energy",
+          "definition": "Consensus consumes energy at a level comparable to proof-of-work systems such as Bitcoin.",
+          "citations": []
+        },
+        {
+          "value": "low_energy",
+          "definition": "Consensus consumes substantially less energy, as in proof-of-stake systems.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "transaction_finality_type",
+      "name": "Transaction finality type",
+      "applies_to": "technology",
+      "question": "Is transaction finality reached with certainty at a fixed point or only probabilistically?",
+      "description": "Classifies whether transaction confirmation is guaranteed deterministically or accumulates probabilistically.",
+      "aliases": [
+        "finality type",
+        "block confirmation timing"
+      ],
+      "values": [
+        {
+          "value": "deterministic",
+          "definition": "A transaction is final once a defined confirmation point is reached with certainty.",
+          "citations": []
+        },
+        {
+          "value": "stochastic",
+          "definition": "Finality is probabilistic and grows as further blocks are added.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "network_message_propagation",
+      "name": "Network message propagation scope",
+      "applies_to": "technology",
+      "question": "Is consensus reached locally before propagation, or are messages gossiped globally to random peers?",
+      "description": "Classifies how transactions and consensus messages spread across the network, locally within neighbourhoods or globally across peers.",
+      "aliases": [
+        "gossiping",
+        "propagation model"
+      ],
+      "values": [
+        {
+          "value": "local_consensus_before_propagation",
+          "definition": "Consensus is reached within a local neighbourhood before propagation, as in federated consensus.",
+          "citations": []
+        },
+        {
+          "value": "global_gossip",
+          "definition": "Messages propagate to randomly selected peers in an unstructured topology, as in Bitcoin and Ethereum.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "message_timing_model",
+      "name": "Message delivery timing model",
+      "applies_to": "technology",
+      "question": "Are message delays bounded, or can they be unbounded?",
+      "description": "Classifies communication timing assumptions as synchronous with bounded delays or asynchronous with unbounded delays.",
+      "aliases": [
+        "synchrony model",
+        "latency model"
+      ],
+      "values": [
+        {
+          "value": "synchronous",
+          "definition": "Message delays are bounded, enabling timestamp and clock-based rules.",
+          "citations": []
+        },
+        {
+          "value": "asynchronous",
+          "definition": "Message delays are unbounded, with no guaranteed delivery time.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "immutability_governance",
+      "name": "Immutability and governance basis",
+      "applies_to": "technology",
+      "question": "How is ledger immutability maintained, and by whom can it be altered?",
+      "description": "Classifies how resistant the ledger is to change and whether informal governance can alter it, as with forks.",
+      "aliases": [
+        "fork susceptibility",
+        "ledger immutability"
+      ],
+      "values": [
+        {
+          "value": "protocol_enforced",
+          "definition": "Records are altered only through formal protocol mechanisms with broad consensus.",
+          "citations": []
+        },
+        {
+          "value": "informal_governance_fork",
+          "definition": "Records may be changed through community-driven forks reflecting informal governance.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "fork_type",
+      "name": "Fork type",
+      "applies_to": "technology",
+      "question": "Is the ledger change a backward-compatible or incompatible fork?",
+      "description": "Classifies protocol changes by compatibility with existing ledger rules.",
+      "aliases": [
+        "protocol fork"
+      ],
+      "values": [
+        {
+          "value": "soft_fork",
+          "definition": "Backward-compatible change that tightens existing rules.",
+          "citations": []
+        },
+        {
+          "value": "hard_fork",
+          "definition": "Non-backward-compatible change that splits the ledger.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "performance_scalability_layout",
+      "name": "Layout effect on performance",
+      "applies_to": "technology",
+      "question": "How does the count of a given element class affect global system behaviour?",
+      "description": "Rates how detrimental a system layout is to performance as system size grows.",
+      "aliases": [
+        "complexity class",
+        "scaling behaviour"
+      ],
+      "values": [
+        {
+          "value": "indifferent",
+          "definition": "Element count does not materially affect global performance.",
+          "citations": []
+        },
+        {
+          "value": "at_most_linear",
+          "definition": "Global performance degrades at most in proportion to element count.",
+          "citations": []
+        },
+        {
+          "value": "at_most_quadratic",
+          "definition": "Global performance degrades at most with the square of element count.",
+          "citations": []
+        },
+        {
+          "value": "worse_than_quadratic",
+          "definition": "Global performance degrades faster than quadratically with element count.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "scaling_binding_constraint",
+      "name": "Scaling binding constraint",
+      "applies_to": "technology",
+      "question": "Which resource (transactions, users or account states, nodes, or traffic) limits the system's scalability?",
+      "description": "Identifies the resource that becomes the binding limit on system scalability, distinct from how performance degrades with size.",
+      "aliases": [
+        "scalability limit",
+        "bottleneck type"
+      ],
+      "values": [
+        {
+          "value": "transaction_count",
+          "definition": "Throughput limited by the number of transactions processed.",
+          "citations": []
+        },
+        {
+          "value": "user_or_account_state_count",
+          "definition": "Limited by the number of users or stored account states.",
+          "citations": []
+        },
+        {
+          "value": "node_count",
+          "definition": "Limited by the number of nodes participating in the network.",
+          "citations": []
+        },
+        {
+          "value": "network_traffic",
+          "definition": "Limited by the volume of network traffic generated.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "node_storage_model",
+      "name": "Node data storage model",
+      "applies_to": "technology",
+      "question": "Do nodes hold full equivalent copies of the data, or only a subset of it?",
+      "description": "Classifies whether nodes are fully equivalent replicas or thin nodes holding only part of the ledger.",
+      "aliases": [
+        "thin versus full node"
+      ],
+      "values": [
+        {
+          "value": "full_equivalent_node",
+          "definition": "Holds a complete copy of the data and is equivalent to other peers, giving redundancy and resilience.",
+          "citations": []
+        },
+        {
+          "value": "thin_node",
+          "definition": "Holds only a subset of the data, improving scalability at some cost to resiliency.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "block_storage_content",
+      "name": "Block storage content",
+      "applies_to": "technology",
+      "question": "Does the ledger store transactions or the resulting user balances?",
+      "description": "Classifies ledgers by whether they record transaction histories or account balance states, which affects accountability and rollback ability.",
+      "aliases": [
+        "transaction versus balance storage"
+      ],
+      "values": [
+        {
+          "value": "stores_transactions",
+          "definition": "Records the transaction history itself, supporting accountability and rollback.",
+          "citations": []
+        },
+        {
+          "value": "stores_balances",
+          "definition": "Records resulting user account balances rather than the full transaction history.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ledger_fee_model",
+      "name": "Transaction fee model",
+      "applies_to": "technology",
+      "question": "Is the transaction fee variable with transaction size or fixed by request type?",
+      "description": "Classifies how transaction fees are priced, either scaling with transaction size or fixed per request type.",
+      "aliases": [
+        "fee structure"
+      ],
+      "values": [
+        {
+          "value": "variable_size_based",
+          "definition": "Fees scale with transaction size, as in satoshis per byte, with priority bidding to avoid queuing.",
+          "citations": []
+        },
+        {
+          "value": "fixed_request_based",
+          "definition": "Fees are fixed by the type of request or operation rather than its size.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "native_asset_status",
+      "name": "Native currency status",
+      "applies_to": "technology",
+      "question": "Does the system have its own native asset, and if so how many?",
+      "description": "Classifies blockchain systems by whether they issue a native cryptocurrency or convert between multiple assets.",
+      "aliases": [
+        "native currency",
+        "native asset"
+      ],
+      "values": [
+        {
+          "value": "none",
+          "definition": "The system has no native asset or cryptocurrency.",
+          "citations": []
+        },
+        {
+          "value": "own_cryptocurrency",
+          "definition": "The system issues its own single native cryptocurrency.",
+          "citations": []
+        },
+        {
+          "value": "convertible_multiple_assets",
+          "definition": "The system supports convertible multiple native assets.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "tokenisation_provision",
+      "name": "Tokenisation provision",
+      "applies_to": "technology",
+      "question": "How is tokenisation provided by the system?",
+      "description": "Classifies whether a system supports asset tokenisation natively or through add-ons.",
+      "aliases": [
+        "tokenisation method"
+      ],
+      "values": [
+        {
+          "value": "none",
+          "definition": "The system provides no tokenisation capability.",
+          "citations": []
+        },
+        {
+          "value": "third_party_add_on",
+          "definition": "Tokenisation is provided through third-party add-on layers or tools.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "tokenisation_platform_type",
+      "name": "Tokenisation platform blockchain environment",
+      "applies_to": "technology",
+      "question": "Does the tokenisation platform run on a private permissioned blockchain or a permissioned system atop a public permissionless chain?",
+      "description": "Classifies tokenisation platforms by the blockchain environment on which they operate.",
+      "aliases": [
+        "platform blockchain environment"
+      ],
+      "values": [
+        {
+          "value": "private_permissioned_chain",
+          "definition": "Runs on a private permissioned blockchain.",
+          "citations": []
+        },
+        {
+          "value": "permissioned_on_public_chain",
+          "definition": "Runs as a permissioned system atop a public permissionless chain.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "privacy_technique",
+      "name": "Privacy-enhancing technique",
+      "applies_to": "technology",
+      "question": "Which technique is used to obscure transaction parties or links on a public blockchain?",
+      "description": "Distinguishes privacy techniques by whether they mix transactions externally, share secrets, or add cryptographic hiding tools.",
+      "aliases": [
+        "privacy mechanism"
+      ],
+      "values": [
+        {
+          "value": "external_mixing",
+          "definition": "Transactions are grouped with others through external mixing services such as CoinJoin.",
+          "citations": []
+        },
+        {
+          "value": "secret_sharing",
+          "definition": "Secrets are split so that a K-of-N subset is needed to reconstruct them.",
+          "citations": []
+        },
+        {
+          "value": "cryptographic_add_on",
+          "definition": "Tools such as ring signatures or stealth addresses hide senders or recipients.",
+          "citations": []
+        },
+        {
+          "value": "built_in_cryptographic_privacy",
+          "definition": "Privacy built into the protocol, such as ZK-SNARKs, secure multi-party computation or node-to-node encryption.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "data_encryption_method",
+      "name": "Data encryption and validation method",
+      "applies_to": "technology",
+      "question": "How is ledger data secured and validated cryptographically without disclosing underlying inputs?",
+      "description": "Classifies cryptographic techniques by whether validation requires supplied public-key or data inputs.",
+      "aliases": [
+        "hashing and proof method"
+      ],
+      "values": [
+        {
+          "value": "hash_with_supplied_inputs",
+          "definition": "Validation requires the issuer's public-key or data input, as with SHA-2 hashing.",
+          "citations": []
+        },
+        {
+          "value": "zero_knowledge_proof",
+          "definition": "Validation proves a statement without revealing or requiring the supplied data, as with ZK-SNARKs.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "codebase_language",
+      "name": "Codebase coding language",
+      "applies_to": "technology",
+      "question": "Is the system implemented in one programming language or several?",
+      "description": "Classifies blockchain codebases by the number of programming languages used.",
+      "aliases": [
+        "coding language"
+      ],
+      "values": [
+        {
+          "value": "single_language",
+          "definition": "The codebase is written in one programming language.",
+          "citations": []
+        },
+        {
+          "value": "multiple_languages",
+          "definition": "The codebase is written in more than one programming language.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "smart_contract_expressiveness",
+      "name": "Scripting language expressiveness",
+      "applies_to": "technology",
+      "question": "How computationally general is the scripting language, and can it access data outside the blockchain?",
+      "description": "Classifies on-chain scripting languages by Turing completeness and whether they draw on external data via oracles.",
+      "aliases": [
+        "scripting language type",
+        "script expressiveness"
+      ],
+      "values": [
+        {
+          "value": "turing_complete",
+          "definition": "Computationally general language capable of arbitrary computation, as in Ethereum.",
+          "citations": []
+        },
+        {
+          "value": "generic_non_turing_complete",
+          "definition": "General-purpose but non-Turing complete scripting, as in Bitcoin.",
+          "citations": []
+        },
+        {
+          "value": "application_specific_non_turing_complete",
+          "definition": "Restricted to a specific application domain and non-Turing complete, as in DAML.",
+          "citations": []
+        },
+        {
+          "value": "non_turing_complete_with_oracles",
+          "definition": "Non-Turing complete language that accesses external data through oracles.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "governance_model_type",
+      "name": "Protocol governance model",
+      "applies_to": "technology",
+      "question": "Who sets the technical rules of the system: an open community, a single firm, or an industry alliance?",
+      "description": "Classifies blockchain governance by the party that defines and maintains the technical rules.",
+      "aliases": [
+        "technical governance type"
+      ],
+      "values": [
+        {
+          "value": "open_source_community",
+          "definition": "Rules are set by an open-source community of contributors, as with Bitcoin and Ethereum.",
+          "citations": []
+        },
+        {
+          "value": "technical_proprietary",
+          "definition": "Rules are set by a single firm offering a proprietary system.",
+          "citations": []
+        },
+        {
+          "value": "alliance",
+          "definition": "Rules are set by an industry consortium with defined membership criteria.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "code_license",
+      "name": "Code license openness",
+      "applies_to": "technology",
+      "question": "Is the source code publicly available and open?",
+      "description": "Classifies blockchain software by whether its source code is open or closed.",
+      "aliases": [
+        "source code license",
+        "open versus closed source"
+      ],
+      "values": [
+        {
+          "value": "open_source",
+          "definition": "Source code is publicly available under an open licence.",
+          "citations": []
+        },
+        {
+          "value": "closed_source",
+          "definition": "Source code is proprietary and not publicly available.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "software_architecture",
+      "name": "Software architecture",
+      "applies_to": "technology",
+      "question": "Is the codebase built as a single unit or as separable components?",
+      "description": "Classifies blockchain software by whether it is monolithic or modular in design.",
+      "aliases": [
+        "codebase architecture"
+      ],
+      "values": [
+        {
+          "value": "monolithic",
+          "definition": "The software is a single integrated unit.",
+          "citations": []
+        },
+        {
+          "value": "polylithic",
+          "definition": "The software is composed of separable interacting components.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "automation_mechanism",
+      "name": "Automation mechanism",
+      "applies_to": "technology",
+      "question": "Are transaction rules enforced automatically by self-executing code?",
+      "description": "Distinguishes systems whose rules execute automatically through smart contracts from those relying on manual enforcement.",
+      "aliases": [
+        "smart contract automation"
+      ],
+      "values": [
+        {
+          "value": "smart_contract",
+          "definition": "Self-executing code enforces rules and prevents double entries automatically.",
+          "citations": []
+        },
+        {
+          "value": "manual",
+          "definition": "Rules are enforced through manual or intermediary processes.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "data_storage_location",
+      "name": "Data storage location",
+      "applies_to": "technology",
+      "question": "Where is the data associated with a transaction stored?",
+      "description": "Classifies whether transaction data sits on-chain within ledger limits or off-chain.",
+      "aliases": [
+        "storage layer"
+      ],
+      "values": [
+        {
+          "value": "on_chain",
+          "definition": "Data is stored directly on the distributed ledger, subject to size limits.",
+          "citations": []
+        },
+        {
+          "value": "off_chain",
+          "definition": "Data is stored outside the ledger, with references or meta-coins recorded on-chain.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "dlt_definition_basis",
+      "name": "Distributed ledger definitional basis",
+      "applies_to": "technology",
+      "question": "Does the technology qualify as a distributed ledger, and is it a blockchain?",
+      "description": "Distinguishes DLT in general from blockchain as a subtype using the statutory definitional criteria.",
+      "aliases": [
+        "blockchain versus DLT"
+      ],
+      "values": [
+        {
+          "value": "distributed_ledger_general",
+          "definition": "A shared ledger recorded across distributed nodes without the full blockchain features.",
+          "citations": []
+        },
+        {
+          "value": "blockchain",
+          "definition": "A DLT meeting shared network ledger, cryptographic linking, automated distribution and public source code criteria.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "blockchain_definition_test",
+      "name": "Blockchain definition criteria met",
+      "applies_to": "technology",
+      "question": "Does the system satisfy all statutory blockchain criteria: shared, cryptographically linked, automatically distributed public ledger with public source code?",
+      "description": "Tests whether a system meets the statutory blockchain definition, which requires shared, linked, distributed and publicly available source code features.",
+      "aliases": [
+        "blockchain definition test",
+        "source code availability"
+      ],
+      "values": [
+        {
+          "value": "meets_blockchain_definition",
+          "definition": "Shared, cryptographically linked, automatically distributed public ledger with publicly available source code.",
+          "citations": []
+        },
+        {
+          "value": "fails_blockchain_definition",
+          "definition": "Lacks one or more of the shared, linked, distributed, or public source code features.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "dlt_application_type",
+      "name": "Distributed ledger component type",
+      "applies_to": "technology",
+      "question": "Is the distributed ledger component a protocol, application, or whole system?",
+      "description": "Distinguishes distributed ledger protocols, applications, and systems as components, including blockchain applications and protocols.",
+      "aliases": [
+        "DLT layer"
+      ],
+      "values": [
+        {
+          "value": "protocol",
+          "definition": "The underlying rules and shared data layer, including public source code executed by network participants.",
+          "citations": []
+        },
+        {
+          "value": "application",
+          "definition": "Software built on a distributed ledger protocol, including executable smart contracts, providing user functions.",
+          "citations": []
+        },
+        {
+          "value": "system",
+          "definition": "The combination of protocol, applications, and participants forming the whole ledger environment.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "network_layer_position",
+      "name": "Network layer position",
+      "applies_to": "technology",
+      "question": "Is the network a base blockchain or a secondary network built on top of one?",
+      "description": "Classifies networks by whether they are base layers or built atop another blockchain.",
+      "aliases": [
+        "layer 1 versus layer 2"
+      ],
+      "values": [
+        {
+          "value": "layer_1_base",
+          "definition": "A base blockchain providing its own consensus and settlement.",
+          "citations": []
+        },
+        {
+          "value": "layer_2_built_on_base",
+          "definition": "A network built atop a base blockchain that relies on it for settlement.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "defi_stack_layer",
+      "name": "DeFi technology stack layer",
+      "applies_to": "technology",
+      "question": "Which layer of the DeFi stack does a component belong to, and what function does it perform?",
+      "description": "Classifies DeFi architecture components by the functional layer they occupy, from base settlement to user interface.",
+      "aliases": [
+        "technology stack layer",
+        "DeFi architecture layer"
+      ],
+      "values": [
+        {
+          "value": "application_interface",
+          "definition": "User-facing layer through which users interact with protocols.",
+          "citations": []
+        },
+        {
+          "value": "broadcast",
+          "definition": "Layer that transmits transactions and messages between participants and the network.",
+          "citations": []
+        },
+        {
+          "value": "smart_contract_protocol",
+          "definition": "Layer of self-executing contracts implementing protocol logic.",
+          "citations": []
+        },
+        {
+          "value": "asset",
+          "definition": "Layer representing tokenised assets recorded on the stack.",
+          "citations": []
+        },
+        {
+          "value": "base_settlement",
+          "definition": "Underlying chain layer providing final settlement and consensus.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "network_decentralisation_status",
+      "name": "Network decentralisation status",
+      "applies_to": "technology",
+      "question": "Is the network sufficiently decentralised that no person or group controls its governance?",
+      "description": "Classifies a network by whether its governance and operation are free from control by a person or group.",
+      "aliases": [
+        "decentralised governance system"
+      ],
+      "values": [
+        {
+          "value": "decentralised_governance",
+          "definition": "Transparent rules-based system with participation not controlled by any person or group under common control.",
+          "citations": []
+        },
+        {
+          "value": "controlled_governance",
+          "definition": "Governance is controlled by a person or group under common control.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "decentralisation_test_outcome",
+      "name": "Decentralisation test outcome",
+      "applies_to": "technology",
+      "question": "Can any person unilaterally alter rules, and do holdings, voting power or source-code changes exceed control thresholds over the test period?",
+      "description": "Applies quantitative and unilateral-control tests (such as 20 percent holdings or voting power thresholds) to determine decentralisation.",
+      "aliases": [
+        "decentralisation test"
+      ],
+      "values": [
+        {
+          "value": "decentralised",
+          "definition": "No person can unilaterally alter rules, and no holder exceeds control thresholds over the test periods.",
+          "citations": []
+        },
+        {
+          "value": "not_decentralised",
+          "definition": "A person can unilaterally alter rules, or holdings, voting power or source-code changes exceed thresholds.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "defi_trading_protocol_status",
+      "name": "Decentralised finance trading protocol status",
+      "applies_to": "technology",
+      "question": "Is the system a decentralised finance trading protocol operating on predetermined, non-discretionary rules without intermediaries or common control?",
+      "description": "Determines whether a blockchain system qualifies as a DeFi trading protocol, which requires predetermined rules, no reliance on intermediaries, and absence of common control.",
+      "aliases": [
+        "DeFi protocol classification"
+      ],
+      "values": [
+        {
+          "value": "defi_trading_protocol",
+          "definition": "Blockchain system with predetermined, non-discretionary rules, no intermediary reliance, and not under common control.",
+          "citations": []
+        },
+        {
+          "value": "not_defi_trading_protocol",
+          "definition": "Under common control, not governed solely by encoded rules, or relies on intermediaries.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "defi_messaging_system_status",
+      "name": "Decentralised finance messaging system status",
+      "applies_to": "technology",
+      "question": "Is the software a messaging system that lets users submit instructions to a protocol without third-party control over funds or execution?",
+      "description": "Distinguishes DeFi messaging software that merely relays user instructions from software that gives third parties control over funds or execution.",
+      "aliases": [
+        "DeFi messaging classification"
+      ],
+      "values": [
+        {
+          "value": "defi_messaging_system",
+          "definition": "Software letting users submit instructions to a protocol, without third parties controlling funds or execution.",
+          "citations": []
+        },
+        {
+          "value": "not_defi_messaging_system",
+          "definition": "Gives third parties control over funds or execution, so falls outside the messaging definition.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "wallet_signing_arrangement",
+      "name": "Wallet signing arrangement",
+      "applies_to": "technology",
+      "question": "Is a wallet single-signature or multiple-signature, and how is signing authority split among keys?",
+      "description": "Distinguishes single-signature from multiple-signature and multi-party computation wallet arrangements.",
+      "aliases": [
+        "signature scheme"
+      ],
+      "values": [
+        {
+          "value": "single_signature",
+          "definition": "A single key controls the wallet's assets.",
+          "citations": []
+        },
+        {
+          "value": "multiple_signature",
+          "definition": "Multiple keys are required to authorise transactions, possibly held by different parties.",
+          "citations": []
+        },
+        {
+          "value": "multi_party_computation",
+          "definition": "Signing authority is split across parties via cryptographic computation rather than discrete keys.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "wallet_connectivity",
+      "name": "Wallet connectivity",
+      "applies_to": "technology",
+      "question": "Is the wallet connected to the internet, trading security against speed?",
+      "description": "Classifies wallets by whether their keys are held online, trading speed against security.",
+      "aliases": [
+        "hot versus cold wallet"
+      ],
+      "values": [
+        {
+          "value": "hot_wallet",
+          "definition": "Wallet keys are held online and connected to the internet, enabling faster transfers.",
+          "citations": []
+        },
+        {
+          "value": "cold_wallet",
+          "definition": "Wallet keys are held offline, offering greater security but slower transfers.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "dlt_access_permission_basis",
+      "name": "DLT access permission basis",
+      "applies_to": "technology",
+      "question": "Can any party participate without approval, or does participation require approval by an authority?",
+      "description": "Classifies a DLT system by whether participation is permissionless or requires authority approval, after confirming it meets the distributed ledger definition.",
+      "aliases": [
+        "permissionless versus permissioned",
+        "basel DLT definition"
+      ],
+      "values": [
+        {
+          "value": "permissionless",
+          "definition": "Any party can participate without approval.",
+          "citations": []
+        },
+        {
+          "value": "permissioned",
+          "definition": "Participation requires approval by an authority.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "quantum_threat_exposure",
+      "name": "Quantum threat exposure",
+      "applies_to": "technology",
+      "question": "Does the system rely on public-key cryptography exposed to quantum attack, and can it migrate to standardised post-quantum algorithms?",
+      "description": "Classifies systems by exposure to quantum threats against their public-key cryptography, and by readiness for post-quantum migration.",
+      "aliases": [
+        "post-quantum risk",
+        "PQC readiness"
+      ],
+      "values": [
+        {
+          "value": "exposed_public_key",
+          "definition": "Relies on public-key cryptography vulnerable to quantum attacks that could expose private keys.",
+          "citations": []
+        },
+        {
+          "value": "post_quantum_standardised",
+          "definition": "Uses or can migrate to standardised post-quantum algorithms such as NIST FIPS 203, 204 or 205.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "cryptographic_agility_level",
+      "name": "Cryptographic agility",
+      "applies_to": "technology",
+      "question": "Can the platform replace cryptographic algorithms without disrupting operations?",
+      "description": "Classifies platforms by their capacity to swap algorithms for migration or to retire weak ones.",
+      "aliases": [
+        "crypto agility"
+      ],
+      "values": [
+        {
+          "value": "agile",
+          "definition": "Can replace algorithms without disrupting operations, supporting migration and retirement of weak algorithms.",
+          "citations": []
+        },
+        {
+          "value": "non_agile",
+          "definition": "Algorithm replacement would disrupt operations or is impractical, for example due to immutability or public-key reuse.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "node_role",
+      "name": "Node role",
+      "applies_to": "actor",
+      "question": "Does the node validate transactions, record data, or commit blocks?",
+      "description": "Classifies network nodes by their role in recording, validating, and committing data.",
+      "aliases": [
+        "validator role"
+      ],
+      "values": [
+        {
+          "value": "recording_node",
+          "definition": "Records data on the ledger.",
+          "citations": []
+        },
+        {
+          "value": "validator_node",
+          "definition": "Validates transactions or commits transaction blocks.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "asset_underlying_basis",
+      "name": "Asset definitional basis",
+      "applies_to": "asset",
+      "question": "Is the asset defined by its underlying technology or by its use case?",
+      "description": "Distinguishes definitions that classify assets by the ledger technology they are recorded on from use-case definitions.",
+      "aliases": [
+        "technology-based definition"
+      ],
+      "values": [
+        {
+          "value": "technology_based",
+          "definition": "Defined by being a digital representation of value recorded on a distributed ledger.",
+          "citations": []
+        },
+        {
+          "value": "use_case_based",
+          "definition": "Defined by the function or purpose the asset serves in transactions.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "asset_fungibility",
+      "name": "Fungibility",
+      "applies_to": "asset",
+      "question": "Is the asset interchangeable unit for unit with others of its kind?",
+      "description": "Separates fungible digital assets from non-fungible units such as NFTs.",
+      "aliases": [
+        "fungible versus non-fungible"
+      ],
+      "values": [
+        {
+          "value": "fungible",
+          "definition": "Units are interchangeable and equivalent to one another.",
+          "citations": []
+        },
+        {
+          "value": "non_fungible",
+          "definition": "Each unit is unique and not interchangeable with other units.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "asset_technical_standard",
+      "name": "Asset technical standard",
+      "applies_to": "asset",
+      "question": "Is the token native to its chain or a smart-contract standard token, and is it fungible or non-fungible?",
+      "description": "Classifies tokens by the technical standard they follow, distinguishing native chain assets from contract-based fungible or non-fungible standards.",
+      "aliases": [
+        "token standard",
+        "native versus ERC-20"
+      ],
+      "values": [
+        {
+          "value": "native_chain_asset",
+          "definition": "Native asset of its own chain, such as BTC or ETH.",
+          "citations": []
+        },
+        {
+          "value": "fungible_smart_contract_token",
+          "definition": "Fungible token issued via smart contract, such as an ERC-20 token.",
+          "citations": []
+        },
+        {
+          "value": "non_fungible_token_standard",
+          "definition": "Unique token issued under a non-fungible standard such as ERC-721.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "virtual_asset_status",
+      "name": "Virtual asset status",
+      "applies_to": "asset",
+      "question": "Does the digital representation of value fall within the virtual asset definition, or is it another financial asset?",
+      "description": "Determines whether an item is a virtual asset, excluded fiat or securities representation, or other financial asset.",
+      "aliases": [
+        "VA definition scope"
+      ],
+      "values": [
+        {
+          "value": "virtual_asset",
+          "definition": "A digital representation of value that can be traded, transferred, and used for payment or investment.",
+          "citations": []
+        },
+        {
+          "value": "excluded_fiat_or_security",
+          "definition": "A digital representation of fiat currency or securities already covered elsewhere, excluded from the VA definition.",
+          "citations": []
+        },
+        {
+          "value": "other_financial_asset",
+          "definition": "A blockchain-based asset classed as a financial asset rather than a virtual asset, judged by function rather than technology.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "crypto_asset_scope_qualification",
+      "name": "Qualifying cryptoasset scope",
+      "applies_to": "asset",
+      "question": "Is the cryptoasset fungible and transferable, and not solely a record of value or contractual rights?",
+      "description": "Tests whether a cryptoasset qualifies under the regulatory definition, excluding specified investments, e-money, currency and limited-network tokens.",
+      "aliases": [
+        "qualifying cryptoasset test"
+      ],
+      "values": [
+        {
+          "value": "qualifying_cryptoasset",
+          "definition": "Fungible and transferable, not solely a record of value or contractual rights, and not excluded investment, e-money or currency.",
+          "citations": []
+        },
+        {
+          "value": "excluded_from_scope",
+          "definition": "Fails the fungibility or transferability tests, or falls within an excluded investment, e-money, currency or limited-network category.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "legal_tender_status",
+      "name": "Legal tender status",
+      "applies_to": "asset",
+      "question": "Does the asset have legal tender status?",
+      "description": "Distinguishes virtual currency that lacks legal tender status from currency with legal tender status.",
+      "aliases": [
+        "currency status"
+      ],
+      "values": [
+        {
+          "value": "legal_tender",
+          "definition": "Recognised as legal tender by a sovereign authority.",
+          "citations": []
+        },
+        {
+          "value": "non_legal_tender",
+          "definition": "Operates as a medium of exchange without legal tender status.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "currency_substitution",
+      "name": "Convertibility and currency substitution",
+      "applies_to": "asset",
+      "question": "Does the asset have equivalent value to currency or substitute for it?",
+      "description": "Identifies convertible virtual currency by whether it functions as a substitute for currency.",
+      "aliases": [
+        "convertible virtual currency test"
+      ],
+      "values": [
+        {
+          "value": "convertible",
+          "definition": "Has equivalent value to currency or substitutes for currency in transactions.",
+          "citations": []
+        },
+        {
+          "value": "non_convertible",
+          "definition": "Does not have equivalent value to currency or substitute for it.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "value_substitute_status",
+      "name": "Value substitute for currency",
+      "applies_to": "asset",
+      "question": "Is the value a substitute for currency, whether created for that use or repurposed by an administrator?",
+      "description": "Determines whether value that may not involve funds functions as a currency substitute, either originally or by repurposing.",
+      "aliases": [
+        "currency substitute"
+      ],
+      "values": [
+        {
+          "value": "currency_substitute",
+          "definition": "Functions as a substitute for currency, either created for that use or repurposed by an administrator.",
+          "citations": []
+        },
+        {
+          "value": "not_currency_substitute",
+          "definition": "Does not function as a substitute for currency.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "asset_minting_mechanism",
+      "name": "Minting mechanism",
+      "applies_to": "asset",
+      "question": "How does the crypto-asset originate?",
+      "description": "Classifies crypto-assets by how units are created.",
+      "aliases": [
+        "issuance mechanism",
+        "origination"
+      ],
+      "values": [
+        {
+          "value": "consensus_based_minting",
+          "definition": "Units are minted as rewards for consensus work, stake, or similar validation.",
+          "citations": []
+        },
+        {
+          "value": "collateralised_lock_and_mint",
+          "definition": "Units are minted against locked collateral held elsewhere.",
+          "citations": []
+        },
+        {
+          "value": "staked_token",
+          "definition": "Units represent tokens locked in staking and issued as receipts.",
+          "citations": []
+        },
+        {
+          "value": "wrapped_token",
+          "definition": "Units represent another asset held in custody and issued on a different chain.",
+          "citations": []
+        },
+        {
+          "value": "algorithmic_burn_and_mint",
+          "definition": "Units are created and destroyed according to an algorithmic equilibrium.",
+          "citations": []
+        },
+        {
+          "value": "governance_or_emission_minting",
+          "definition": "Units are created through governance decisions or scheduled emission.",
+          "citations": []
+        },
+        {
+          "value": "pre_mining_or_initial_allocation",
+          "definition": "Units are created and allocated before or at launch.",
+          "citations": []
+        },
+        {
+          "value": "nft_minting",
+          "definition": "Unique tokens are created to represent individual items or rights.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "issuer_presence",
+      "name": "Issuer presence",
+      "applies_to": "asset",
+      "question": "Is there a single identifiable issuer, a protocol issuer, or no issuer?",
+      "description": "Classifies the issuer arrangement behind a crypto-asset.",
+      "aliases": [
+        "issuer identity"
+      ],
+      "values": [
+        {
+          "value": "centralised_issuer",
+          "definition": "A single identifiable legal entity creates and controls issuance.",
+          "citations": []
+        },
+        {
+          "value": "protocol_issuance",
+          "definition": "Units are issued according to protocol rules without a controlling entity.",
+          "citations": []
+        },
+        {
+          "value": "no_issuer",
+          "definition": "No party issues the asset; it arises from network activity or mining.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "yield_type",
+      "name": "Yield type",
+      "applies_to": "asset",
+      "question": "Does the asset return capital appreciation, yield, or neither?",
+      "description": "Separates capital appreciation from yield and classifies yield by its source.",
+      "aliases": [
+        "return type"
+      ],
+      "values": [
+        {
+          "value": "capital_appreciation",
+          "definition": "Return arises from increase in the market value of the asset.",
+          "citations": []
+        },
+        {
+          "value": "direct_yield",
+          "definition": "Return is paid from lending, liquidity fees, staking, or revenue sharing.",
+          "citations": []
+        },
+        {
+          "value": "incentive_yield",
+          "definition": "Return is paid through emission-based or burn-and-mint incentives.",
+          "citations": []
+        },
+        {
+          "value": "no_yield",
+          "definition": "The asset generates neither capital appreciation nor yield by design.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "yield_distribution_mechanism",
+      "name": "Yield distribution mechanism",
+      "applies_to": "asset",
+      "question": "How is yield delivered to holders: by increasing quantity, value, or price, or by external redistribution?",
+      "description": "Classifies how yield reaches holders, distinguishing rebasing quantity accrual, value accrual, price accrual, and external redistribution.",
+      "aliases": [
+        "yield accrual method"
+      ],
+      "values": [
+        {
+          "value": "quantity_accrual_rebasing",
+          "definition": "Holder balances increase in quantity over time, as with rebasing tokens.",
+          "citations": []
+        },
+        {
+          "value": "value_accrual",
+          "definition": "Yield accrues to the value of each unit held without changing quantity.",
+          "citations": []
+        },
+        {
+          "value": "price_accrual",
+          "definition": "Yield is realised through an increase in the market price of the token.",
+          "citations": []
+        },
+        {
+          "value": "external_redistribution",
+          "definition": "Yield is paid out to holders from revenue or fees redistributed externally.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "control_model",
+      "name": "Control model",
+      "applies_to": "asset",
+      "question": "Who controls governance, issuance, yield, and redemption?",
+      "description": "Classifies crypto-assets as centralised, decentralised, or hybrid by who holds control.",
+      "aliases": [
+        "centralisation model"
+      ],
+      "values": [
+        {
+          "value": "centralised",
+          "definition": "A single legal entity controls governance, issuance, yield, and redemption.",
+          "citations": []
+        },
+        {
+          "value": "decentralised",
+          "definition": "Control is distributed across protocol participants without a controlling entity.",
+          "citations": []
+        },
+        {
+          "value": "hybrid",
+          "definition": "Control is shared between a legal entity and protocol mechanisms.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "economic_function",
+      "name": "Economic function",
+      "applies_to": "asset",
+      "question": "What economic role does the token play for its holders?",
+      "description": "Separates tokens by their economic function as governance, utility, or security instruments.",
+      "aliases": [
+        "token function",
+        "token type"
+      ],
+      "values": [
+        {
+          "value": "governance_token",
+          "definition": "Confers voting or governance rights over a protocol or network.",
+          "citations": []
+        },
+        {
+          "value": "utility_token",
+          "definition": "Provides access to a good or service on a platform, as defined under MiCAR.",
+          "citations": []
+        },
+        {
+          "value": "security_token",
+          "definition": "Qualifies as a financial instrument under MiFID II.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "holder_rights_form",
+      "name": "Holder rights form",
+      "applies_to": "asset",
+      "question": "Are holder rights contractual or property-type, and is the claim against the issuer's balance sheet or a segregated reserve?",
+      "description": "Classifies the legal form of holder rights along personal versus property and balance-sheet versus segregated-reserve axes, relevant to insolvency and credit exposure.",
+      "aliases": [
+        "rights form",
+        "claim type"
+      ],
+      "values": [
+        {
+          "value": "in_personam_balance_sheet",
+          "definition": "Contractual claim against the issuer's general balance sheet.",
+          "citations": []
+        },
+        {
+          "value": "in_personam_segregated_reserve",
+          "definition": "Contractual claim against a segregated reserve of backing assets.",
+          "citations": []
+        },
+        {
+          "value": "in_rem_balance_sheet",
+          "definition": "Property-type right with claim against the issuer's balance sheet.",
+          "citations": []
+        },
+        {
+          "value": "in_rem_segregated_reserve",
+          "definition": "Property-type right backed by a segregated reserve of assets.",
+          "citations": []
+        },
+        {
+          "value": "no_claim",
+          "definition": "Holder has no claim on the issuer or any reserve.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "redemption_mechanism",
+      "name": "Redemption mechanism",
+      "applies_to": "asset",
+      "question": "How and by whom can holders redeem or exit the asset for its underlying value?",
+      "description": "Classifies redemption by whether it is custodial, on-chain, market-based, or queued.",
+      "aliases": [
+        "exit mechanism"
+      ],
+      "values": [
+        {
+          "value": "custodial_burn_or_lock_bridging",
+          "definition": "Redemption is handled off-chain by a custodian that burns or locks the underlying asset.",
+          "citations": []
+        },
+        {
+          "value": "secondary_market_exit",
+          "definition": "Holders exit by selling the asset on a market rather than redeeming with the issuer.",
+          "citations": []
+        },
+        {
+          "value": "protocol_scheduled_queued_withdrawal",
+          "definition": "Redemption is processed by the protocol through a scheduled withdrawal queue.",
+          "citations": []
+        },
+        {
+          "value": "protocol_par_redemption",
+          "definition": "The protocol redeems units at par through a built-in mechanism.",
+          "citations": []
+        },
+        {
+          "value": "claim_from_pool",
+          "definition": "Holders redeem a claim against a pool of underlying assets.",
+          "citations": []
+        },
+        {
+          "value": "burn_to_unlock_smart_contract",
+          "definition": "Smart contract releases the underlying upon burning of the token.",
+          "citations": []
+        },
+        {
+          "value": "bridge_burn_and_release",
+          "definition": "Cross-chain bridge burns tokens on one chain and releases the underlying on another.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "redemption_reference_asset",
+      "name": "Redemption reference asset type",
+      "applies_to": "asset",
+      "question": "What does the asset's redemption right or value reference: fiat, physical or collateral assets, other tokens, or nothing?",
+      "description": "Classifies tokens by the asset that redemption or the stable value refers to, including fiat-pegged, asset-referenced, and non-stablecoin redeemable forms.",
+      "aliases": [
+        "redemption referent"
+      ],
+      "values": [
+        {
+          "value": "fiat_pegged",
+          "definition": "Redeemable or pegged to one or more fiat currencies, such as EMTs or payment stablecoins.",
+          "citations": []
+        },
+        {
+          "value": "asset_referenced",
+          "definition": "Redeemable for physical commodities or collateral assets, such as ARTs.",
+          "citations": []
+        },
+        {
+          "value": "non_stablecoin_redeemable",
+          "definition": "Not a stablecoin but with redemption features, such as wrapped or liquid staking tokens.",
+          "citations": []
+        },
+        {
+          "value": "no_redemption",
+          "definition": "Has no redemption feature with any reference asset.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "redemption_legal_claim",
+      "name": "Redemption legal character",
+      "applies_to": "asset",
+      "question": "Does redemption create a legal claim, a regulatory obligation, or only market exposure?",
+      "description": "Distinguishes whether redemption rights give a legal claim, regulatory obligation, or only market exposure.",
+      "aliases": [
+        "redemption rights character"
+      ],
+      "values": [
+        {
+          "value": "legal_claim",
+          "definition": "Holders have an enforceable legal claim against an issuer or custodian for redemption.",
+          "citations": []
+        },
+        {
+          "value": "regulatory_obligation",
+          "definition": "Redemption is subject to a regulatory obligation on the issuer.",
+          "citations": []
+        },
+        {
+          "value": "market_exposure_only",
+          "definition": "Holders have no enforceable redemption right, only exposure to market price.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "legal_security_classification",
+      "name": "Securities classification",
+      "applies_to": "asset",
+      "question": "Is the asset a security or financial instrument under the applicable test?",
+      "description": "Classifies whether an asset is an investment contract or financial instrument under tests such as Howey or MiFID.",
+      "aliases": [
+        "security or non-security status"
+      ],
+      "values": [
+        {
+          "value": "security_or_financial_instrument",
+          "definition": "Qualifies as an investment contract or financial instrument under the applicable test.",
+          "citations": []
+        },
+        {
+          "value": "non_security",
+          "definition": "Does not satisfy the investment contract or financial instrument criteria.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_asset_security_category",
+      "name": "Digital asset security category",
+      "applies_to": "asset",
+      "question": "Does the digital asset fall within a listed security, security derivative, or other instrument category?",
+      "description": "Classifies digital assets against the security definitions, including investment contracts, security derivatives, and other listed instrument categories.",
+      "aliases": [
+        "security category test"
+      ],
+      "values": [
+        {
+          "value": "investment_contract_or_security",
+          "definition": "Investment contract, note, or profit-sharing interest giving ownership, creditor, or income rights.",
+          "citations": []
+        },
+        {
+          "value": "security_derivative",
+          "definition": "Security futures, security-based swaps, or options on securities.",
+          "citations": []
+        },
+        {
+          "value": "permitted_payment_stablecoin",
+          "definition": "Qualifies as a permitted payment stablecoin, excluded from security status.",
+          "citations": []
+        },
+        {
+          "value": "commodity_or_commodity_derivative",
+          "definition": "Commodity or commodity derivative under the applicable definition.",
+          "citations": []
+        },
+        {
+          "value": "banking_deposit_or_account",
+          "definition": "Banking deposit or account instrument.",
+          "citations": []
+        },
+        {
+          "value": "pooled_investment_vehicle",
+          "definition": "Interest in a pooled investment vehicle.",
+          "citations": []
+        },
+        {
+          "value": "goods_or_non_commodity_asset",
+          "definition": "Goods, collectibles or other non-commodity assets.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_asset_ownership_rights",
+      "name": "Digital asset ownership and creditor rights",
+      "applies_to": "asset",
+      "question": "Does the asset give holders an ownership, creditor, interest or income right in an enterprise?",
+      "description": "Determines whether the asset gives holders an ownership interest, creditor interest, or right to interest or principal, relevant to security status.",
+      "aliases": [
+        "economic rights test"
+      ],
+      "values": [
+        {
+          "value": "ownership_or_creditor_rights",
+          "definition": "Gives holders an ownership or creditor interest, or a right to interest or principal.",
+          "citations": []
+        },
+        {
+          "value": "no_ownership_or_creditor_rights",
+          "definition": "Does not give holders ownership, creditor interest or income rights in an enterprise.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_commodity_status",
+      "name": "Digital commodity status",
+      "applies_to": "asset",
+      "question": "Is the asset a digital commodity under the applicable framework?",
+      "description": "Determines whether an asset is a digital commodity, versus a security or other asset, including tests of intrinsic blockchain linkage and functional use.",
+      "aliases": [
+        "commodity classification"
+      ],
+      "values": [
+        {
+          "value": "digital_commodity",
+          "definition": "Intrinsically linked to a blockchain system and value derived from its programmatic functioning.",
+          "citations": []
+        },
+        {
+          "value": "not_digital_commodity",
+          "definition": "Does not meet the criteria for a digital commodity.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_asset_value_source",
+      "name": "Digital commodity value source",
+      "applies_to": "asset",
+      "question": "Is the asset's value derived from the programmatic functioning of its network or from others' managerial efforts?",
+      "description": "Distinguishes assets whose value comes from a network's programmatic operation from those whose value depends on others' managerial or entrepreneurial efforts.",
+      "aliases": [
+        "value derivation basis"
+      ],
+      "values": [
+        {
+          "value": "programmatic_network_value",
+          "definition": "Value derived from the programmatic functioning of a network.",
+          "citations": []
+        },
+        {
+          "value": "managerial_effort_value",
+          "definition": "Value dependent on the managerial or entrepreneurial efforts of others.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_asset_blockchain_linkage",
+      "name": "Intrinsic blockchain linkage",
+      "applies_to": "asset",
+      "question": "Is the digital asset intrinsically linked to a blockchain system, with functional uses such as fees, governance or incentives within it?",
+      "description": "Tests whether an asset's value and uses are tied to a blockchain system, the basis of the digital commodity definition.",
+      "aliases": [
+        "blockchain linkage test"
+      ],
+      "values": [
+        {
+          "value": "intrinsically_linked",
+          "definition": "Functional uses such as fees, governance or incentives arise within the blockchain system.",
+          "citations": []
+        },
+        {
+          "value": "not_intrinsically_linked",
+          "definition": "No intrinsic functional link to a blockchain system.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "legal_asset_category",
+      "name": "Legal asset category",
+      "applies_to": "asset",
+      "question": "Which legal category does the asset fall into among securities, stablecoins, funds, and other crypto-assets?",
+      "description": "Sorts assets into legal categories using the Howey, MiFID, ART/AIF, and MiCAR stablecoin tests.",
+      "aliases": [
+        "regulatory category"
+      ],
+      "values": [
+        {
+          "value": "security_or_financial_instrument",
+          "definition": "Securities or financial instruments under Howey or MiFID tests.",
+          "citations": []
+        },
+        {
+          "value": "stable_value_token",
+          "definition": "Asset-referenced or e-money token with a stable value purpose under MiCAR.",
+          "citations": []
+        },
+        {
+          "value": "fund_or_aif_type",
+          "definition": "Asset meeting the ART or AIF test for pooled investment.",
+          "citations": []
+        },
+        {
+          "value": "other_crypto_asset_or_commodity",
+          "definition": "Crypto-asset or commodity not falling into the above categories.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stable_value_purpose",
+      "name": "Stable value purpose",
+      "applies_to": "asset",
+      "question": "Is the asset designed to maintain a stable value against a reference?",
+      "description": "Identifies whether the asset's purpose is to hold a stable value relative to a reference asset.",
+      "aliases": [
+        "stablecoin status"
+      ],
+      "values": [
+        {
+          "value": "stable_value",
+          "definition": "Designed to maintain stable value by referencing fiat, commodities, or other assets.",
+          "citations": []
+        },
+        {
+          "value": "non_stable_value",
+          "definition": "Not designed to maintain a stable value against any reference.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "reference_asset",
+      "name": "Reference asset type",
+      "applies_to": "asset",
+      "question": "What does the asset's value reference or track?",
+      "description": "Classifies stable-value tokens and other assets by the reference they are pegged or tracked against.",
+      "aliases": [
+        "peg reference"
+      ],
+      "values": [
+        {
+          "value": "fiat_currency",
+          "definition": "Value is referenced to one or more fiat currencies.",
+          "citations": []
+        },
+        {
+          "value": "commodity",
+          "definition": "Value is referenced to a physical or digital commodity.",
+          "citations": []
+        },
+        {
+          "value": "other_crypto_asset",
+          "definition": "Value is referenced to other crypto-assets.",
+          "citations": []
+        },
+        {
+          "value": "algorithmic_or_none",
+          "definition": "No external reference; value maintained algorithmically or not referenced.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "reserve_backing_type",
+      "name": "Reserve backing type",
+      "applies_to": "asset",
+      "question": "What reserves back the stable-value token?",
+      "description": "Classifies stable-value tokens by the composition of their backing reserves.",
+      "aliases": [
+        "collateral type"
+      ],
+      "values": [
+        {
+          "value": "fiat_reserve",
+          "definition": "Backed by fiat currency reserves.",
+          "citations": []
+        },
+        {
+          "value": "crypto_collateral",
+          "definition": "Backed by crypto-asset collateral.",
+          "citations": []
+        },
+        {
+          "value": "commodity_reserve",
+          "definition": "Backed by commodity reserves.",
+          "citations": []
+        },
+        {
+          "value": "unbacked",
+          "definition": "Not backed by reserves; maintained by algorithm or other means.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_stabilisation_conditions",
+      "name": "Stablecoin classification conditions",
+      "applies_to": "asset",
+      "question": "Do the redemption rights, reserves and network design meet the conditions for a stabilised stablecoin?",
+      "description": "Tests whether a stablecoin's redemption terms, risk management, and network design satisfy the classification conditions.",
+      "aliases": [
+        "stablecoin prudential conditions"
+      ],
+      "values": [
+        {
+          "value": "conditions_met",
+          "definition": "Redemption, risk management, network design and redeemer regulation meet the classification conditions.",
+          "citations": []
+        },
+        {
+          "value": "conditions_not_met",
+          "definition": "One or more classification conditions are not satisfied.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_redemption_test",
+      "name": "Stablecoin redemption and reserve test",
+      "applies_to": "asset",
+      "question": "Do reserves cover the peg value and consist of low-risk, liquid assets with enforceable redemption?",
+      "description": "Tests whether a stablecoin's reserves at all times equal or exceed the peg value, are low-risk and liquid, and back legally enforceable redemption.",
+      "aliases": [
+        "redemption risk test"
+      ],
+      "values": [
+        {
+          "value": "passes_redemption_test",
+          "definition": "Reserves cover peg value at all times, are low-risk and liquid, with enforceable redemption and disclosure.",
+          "citations": []
+        },
+        {
+          "value": "fails_redemption_test",
+          "definition": "Reserves fall short of peg value, are not low-risk or liquid, or redemption is not enforceable.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_issuer_supervision",
+      "name": "Stablecoin issuer prudential supervision",
+      "applies_to": "actor",
+      "question": "Is the stablecoin issuer supervised under prudential capital and liquidity rules?",
+      "description": "Determines whether the issuer is subject to prudential capital and liquidity supervision as a classification condition for stablecoins.",
+      "aliases": [
+        "issuer prudential status"
+      ],
+      "values": [
+        {
+          "value": "prudentially_supervised",
+          "definition": "Issuer is supervised under prudential capital and liquidity rules.",
+          "citations": []
+        },
+        {
+          "value": "not_prudentially_supervised",
+          "definition": "Issuer is not subject to prudential capital and liquidity supervision.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_freeze_capability",
+      "name": "Stablecoin freeze capability",
+      "applies_to": "asset",
+      "question": "Can the issuer freeze, block or burn stablecoin units under lawful orders?",
+      "description": "Distinguishes stablecoin issuers retaining freeze, block and burn capability from freeze-resistant designs.",
+      "aliases": [
+        "freeze capability"
+      ],
+      "values": [
+        {
+          "value": "issuer_can_freeze",
+          "definition": "Issuer retains freeze, block and burn capability over units.",
+          "citations": []
+        },
+        {
+          "value": "freeze_resistant",
+          "definition": "Design prevents freezing, blocking or burning of units.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_permitted_status",
+      "name": "Permitted payment stablecoin status",
+      "applies_to": "asset",
+      "question": "Does the stablecoin meet the permitted payment stablecoin criteria for payment use, redemption, and issuer regulation?",
+      "description": "Determines whether a stablecoin qualifies as a permitted payment stablecoin under the statutory criteria.",
+      "aliases": [
+        "permitted payment stablecoin"
+      ],
+      "values": [
+        {
+          "value": "permitted_payment_stablecoin",
+          "definition": "Used or designed for payment or settlement, with issuer redemption obligation, regulated issuer, and not a national currency or registered security.",
+          "citations": []
+        },
+        {
+          "value": "not_permitted",
+          "definition": "Fails one or more permitted payment stablecoin criteria.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_issuer_category",
+      "name": "Permitted payment stablecoin issuer category",
+      "applies_to": "actor",
+      "question": "Is the issuer an insured depository institution subsidiary, a federal qualified issuer, or a state qualified issuer?",
+      "description": "Classifies permitted payment stablecoin issuers by institutional category, which determines the primary federal regulator.",
+      "aliases": [
+        "stablecoin issuer type"
+      ],
+      "values": [
+        {
+          "value": "insured_depository_subsidiary",
+          "definition": "Subsidiary of an insured depository institution issuing payment stablecoins.",
+          "citations": []
+        },
+        {
+          "value": "federal_qualified_issuer",
+          "definition": "Non-bank issuer qualified under federal authority.",
+          "citations": []
+        },
+        {
+          "value": "state_qualified_issuer",
+          "definition": "Non-bank issuer qualified under a state regime.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_arrangement_function",
+      "name": "Stablecoin arrangement function status",
+      "applies_to": "actor",
+      "question": "Does the party redeem, transfer, store or settle the stablecoin, and is it regulated?",
+      "description": "Classifies parties executing stablecoin redemption, transfer, storage or settlement by whether they are regulated.",
+      "aliases": [
+        "execution entity status"
+      ],
+      "values": [
+        {
+          "value": "regulated_executor",
+          "definition": "Entity executing redemption, transfer, storage or settlement that is regulated or subject to appropriate risk standards.",
+          "citations": []
+        },
+        {
+          "value": "unregulated_executor",
+          "definition": "Entity executing these functions without regulation or appropriate risk standards.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_arrangement_role",
+      "name": "Stablecoin arrangement participant role",
+      "applies_to": "actor",
+      "question": "Is the party a validator, cloud host, hardware maker, merchant, or software developer without VASP functions?",
+      "description": "Identifies parties in a stablecoin arrangement that generally fall outside VASP status.",
+      "aliases": [
+        "arrangement participant role"
+      ],
+      "values": [
+        {
+          "value": "validator",
+          "definition": "Participates only in validation of the network.",
+          "citations": []
+        },
+        {
+          "value": "cloud_host",
+          "definition": "Provides cloud hosting services only.",
+          "citations": []
+        },
+        {
+          "value": "hardware_or_unhosted_wallet_maker",
+          "definition": "Manufactures hardware or unhosted wallet software.",
+          "citations": []
+        },
+        {
+          "value": "merchant",
+          "definition": "Accepts virtual assets as payment for goods or services.",
+          "citations": []
+        },
+        {
+          "value": "software_developer",
+          "definition": "Develops software without performing VASP functions.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "restricted_digital_asset_status",
+      "name": "Restricted digital asset status",
+      "applies_to": "asset",
+      "question": "Is the digital asset restricted by holder status, acquisition channel, and blockchain decentralisation?",
+      "description": "Determines whether a digital asset is restricted based on holder, acquisition channel, and blockchain status, excluding permitted payment stablecoins.",
+      "aliases": [
+        "restricted asset"
+      ],
+      "values": [
+        {
+          "value": "restricted",
+          "definition": "Held by a related person or acquired through distribution, and blockchain is not certified decentralised.",
+          "citations": []
+        },
+        {
+          "value": "not_restricted",
+          "definition": "Does not meet the restricted digital asset criteria.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "network_maturity_status",
+      "name": "Network maturity status",
+      "applies_to": "asset",
+      "question": "Has the network reached mature decentralised governance such that the asset is no longer subject to issuer-based treatment?",
+      "description": "Distinguishes assets where a network has matured to decentralised governance from those where an issuer retains control.",
+      "aliases": [
+        "maturity date status",
+        "decentralised maturity"
+      ],
+      "values": [
+        {
+          "value": "mature_decentralised",
+          "definition": "Network has reached maturity with decentralised governance; no controlling issuer.",
+          "citations": []
+        },
+        {
+          "value": "immature_or_issuer_controlled",
+          "definition": "Network is not yet mature or an issuer retains control of operations.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_asset_distribution_method",
+      "name": "Digital asset issuance or distribution activity",
+      "applies_to": "activity",
+      "question": "Is the asset issued or distributed through an ICO, pre-sale, airdrop, or end-user distribution?",
+      "description": "Classifies initial issuance and distribution activities such as ICOs, pre-sales, airdrops, and end-user distributions.",
+      "aliases": [
+        "distribution method"
+      ],
+      "values": [
+        {
+          "value": "ico",
+          "definition": "Initial coin offering of digital assets to the public.",
+          "citations": []
+        },
+        {
+          "value": "pre_sale_framework",
+          "definition": "Pre-sale arrangement such as SAFT, equity-plus-token warrant or convertible note with token purchase option.",
+          "citations": []
+        },
+        {
+          "value": "airdrop",
+          "definition": "Gratuitous or nominal-consideration transfer, including transfers triggered by forks.",
+          "citations": []
+        },
+        {
+          "value": "end_user_distribution",
+          "definition": "Distribution with no more than nominal value exchanged and broad, equitable access, including protocol staking.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "end_user_distribution_status",
+      "name": "Mature system end user distribution status",
+      "applies_to": "asset",
+      "question": "Were all units issued through programmatic functioning as end user distributions, and was the asset marketed to the public as an investment?",
+      "description": "Tests whether an asset's distribution history and marketing qualify it as end-user distribution for mature blockchain treatment.",
+      "aliases": [
+        "end user distribution test"
+      ],
+      "values": [
+        {
+          "value": "qualifying_end_user_distribution",
+          "definition": "All units in the prior twelve months were end user distributions and the asset was not marketed as an investment.",
+          "citations": []
+        },
+        {
+          "value": "non_qualifying_distribution",
+          "definition": "Units were not all end user distributions or the asset was marketed to the public as an investment.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_asset_registration_status",
+      "name": "Securities registration status",
+      "applies_to": "activity",
+      "question": "Must the digital asset offering be registered under the Securities Act or exempt?",
+      "description": "Classifies digital asset offerings by whether they require registration or qualify for an exemption.",
+      "aliases": [
+        "registration exemption status"
+      ],
+      "values": [
+        {
+          "value": "registered",
+          "definition": "Offering requires Securities Act registration.",
+          "citations": []
+        },
+        {
+          "value": "exempt",
+          "definition": "Offering qualifies for an exemption such as Regulation D, A, S or Crowdfunding.",
+          "citations": []
+        },
+        {
+          "value": "no_comprehensive_framework",
+          "definition": "Non-security digital asset falling outside a comprehensive U.S. framework.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "regulated_entity_perimeter",
+      "name": "Regulated crypto-asset issuance or service perimeter",
+      "applies_to": "activity",
+      "question": "Is the offering, admission or service performed for others by a regulated entity within the framework's perimeter?",
+      "description": "Determines whether an issuance, admission, or service activity falls within the regulated perimeter of the framework.",
+      "aliases": [
+        "regulatory perimeter"
+      ],
+      "values": [
+        {
+          "value": "within_perimeter",
+          "definition": "Activity performed for others within the regulated perimeter.",
+          "citations": []
+        },
+        {
+          "value": "outside_perimeter",
+          "definition": "Activity outside the regulated perimeter or excluded by exemption.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "tokenised_asset_status",
+      "name": "Tokenised asset status",
+      "applies_to": "asset",
+      "question": "Does the tokenised asset carry the same risks and legal rights as its traditional form?",
+      "description": "Determines whether a tokenised traditional asset retains the credit, market and legal rights of its traditional counterpart.",
+      "aliases": [
+        "tokenised traditional asset test"
+      ],
+      "values": [
+        {
+          "value": "equivalent_to_traditional",
+          "definition": "Carries the same credit and market risk and legal rights as the traditional asset.",
+          "citations": []
+        },
+        {
+          "value": "differs_from_traditional",
+          "definition": "Carries different risk or legal rights from its traditional form.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "tokenised_asset_type",
+      "name": "Tokenised asset type",
+      "applies_to": "asset",
+      "question": "Is the tokenised asset a financial asset or a non-financial one?",
+      "description": "Separates tokenised financial assets such as fund shares or private credit from non-financial assets such as art or receivables.",
+      "aliases": [
+        "tokenised asset class"
+      ],
+      "values": [
+        {
+          "value": "tokenised_financial_asset",
+          "definition": "Tokenised money market fund shares, bank deposits or private credit.",
+          "citations": []
+        },
+        {
+          "value": "tokenised_non_financial_asset",
+          "definition": "Tokenised trade receivables, art or collectibles.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "transaction_medium",
+      "name": "Ledger record type",
+      "applies_to": "asset",
+      "question": "Is the asset recorded on a public, cryptographically secured ledger accessible without an intermediary?",
+      "description": "Classifies assets by whether their transfer is recorded on a public ledger and transferable without intermediaries.",
+      "aliases": [
+        "public ledger recording"
+      ],
+      "values": [
+        {
+          "value": "public_permissionless_ledger",
+          "definition": "Recorded on a public, cryptographically secured ledger and transferable without intermediaries.",
+          "citations": []
+        },
+        {
+          "value": "private_or_intermediated",
+          "definition": "Recorded on a private ledger or transferred only through an intermediary.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "financial_asset_classification",
+      "name": "Asset classification in fund and securities context",
+      "applies_to": "asset",
+      "question": "Is the blockchain-based asset classed as a security, fund unit or other financial asset under the applicable test?",
+      "description": "Determines whether a blockchain-based asset falls within the financial asset categories, such as securities or fund interests, rather than virtual asset regulation.",
+      "aliases": [
+        "financial asset classification"
+      ],
+      "values": [
+        {
+          "value": "security_or_fund_interest",
+          "definition": "Classed as a security or fund interest under the applicable test.",
+          "citations": []
+        },
+        {
+          "value": "other_financial_asset",
+          "definition": "Classed as a financial asset other than a security or fund interest.",
+          "citations": []
+        },
+        {
+          "value": "virtual_asset_not_financial",
+          "definition": "Not a financial asset and covered under virtual asset guidance.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "funds_or_assets_category",
+      "name": "Funds or assets category",
+      "applies_to": "asset",
+      "question": "Does the item fall within the broad definition of funds or other assets?",
+      "description": "Identifies whether an asset is covered by the broad, non-exhaustive definition of funds or other assets.",
+      "aliases": [
+        "assets definition"
+      ],
+      "values": [
+        {
+          "value": "covered_funds_or_assets",
+          "definition": "Within the broad definition of funds or other assets covered by the framework.",
+          "citations": []
+        },
+        {
+          "value": "not_covered",
+          "definition": "Outside the funds or other assets definition.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "high_value_goods_status",
+      "name": "High-value goods status",
+      "applies_to": "asset",
+      "question": "Is the good a high-value good, precious metal or stone, or cultural good?",
+      "description": "Classifies goods by whether they fall in high-value, precious metal or stone, or cultural goods categories.",
+      "aliases": [
+        "goods category"
+      ],
+      "values": [
+        {
+          "value": "high_value_good",
+          "definition": "Good of high value within the AML framework definition.",
+          "citations": []
+        },
+        {
+          "value": "precious_metal_or_stone",
+          "definition": "Precious metal or stone within the AML framework definition.",
+          "citations": []
+        },
+        {
+          "value": "cultural_good",
+          "definition": "Cultural good within the AML framework definition.",
+          "citations": []
+        },
+        {
+          "value": "other_good",
+          "definition": "Good falling outside these categories.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "legal_entity_identification",
+      "name": "Legal entity identification status",
+      "applies_to": "actor",
+      "question": "Does the party have a standard legal entity identifier conforming to ISO 17442?",
+      "description": "Records whether a party is identified by an ISO 17442 legal entity identifier.",
+      "aliases": [
+        "LEI status",
+        "LEI standard"
+      ],
+      "values": [
+        {
+          "value": "lei_assigned",
+          "definition": "Assigned a unique ISO 17442 legal entity identifier.",
+          "citations": []
+        },
+        {
+          "value": "no_lei",
+          "definition": "No legal entity identifier assigned, or an identifier not conforming to ISO 17442.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "transfer_party_role",
+      "name": "Transfer party role",
+      "applies_to": "actor",
+      "question": "What role does a party play in a crypto-asset transfer?",
+      "description": "Identifies the originator, beneficiary, or intermediary role of a party in a transfer.",
+      "aliases": [
+        "originator beneficiary role"
+      ],
+      "values": [
+        {
+          "value": "originator",
+          "definition": "The holder of the account, address, or device from which the transfer is made, or the initiator where none exists.",
+          "citations": []
+        },
+        {
+          "value": "beneficiary",
+          "definition": "The intended recipient of the crypto-asset transfer.",
+          "citations": []
+        },
+        {
+          "value": "intermediary_provider",
+          "definition": "A payment service provider or other provider that handles a transfer between originator and beneficiary.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "account_holder_type",
+      "name": "Originator account type",
+      "applies_to": "actor",
+      "question": "Does the originator hold a crypto-asset account, distributed ledger address, or storage device?",
+      "description": "Classifies the originator by whether they control a crypto-asset account, ledger address, or device.",
+      "aliases": [
+        "originator basis"
+      ],
+      "values": [
+        {
+          "value": "account_address_or_device_holder",
+          "definition": "Holds a crypto-asset account, distributed ledger address, or storage device from which transfer is made.",
+          "citations": []
+        },
+        {
+          "value": "order_or_initiation_party",
+          "definition": "Orders or initiates the transfer where no account, address or device exists.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "vasp_business_activity",
+      "name": "VASP-covered business activity",
+      "applies_to": "activity",
+      "question": "Which listed service does the business perform for others?",
+      "description": "Identifies which of the five listed VASP activities a business conducts for others.",
+      "aliases": [
+        "VASP service type"
+      ],
+      "values": [
+        {
+          "value": "fiat_exchange",
+          "definition": "Exchange between virtual assets and fiat currencies.",
+          "citations": []
+        },
+        {
+          "value": "virtual_asset_exchange",
+          "definition": "Exchange between one or more forms of virtual assets.",
+          "citations": []
+        },
+        {
+          "value": "transfer",
+          "definition": "Transfer of virtual assets from one address or account to another on behalf of others.",
+          "citations": []
+        },
+        {
+          "value": "safekeeping_or_administration",
+          "definition": "Safekeeping or administration of virtual assets or instruments enabling control.",
+          "citations": []
+        },
+        {
+          "value": "issuer_offer_participation",
+          "definition": "Participation in an issuer's offer or sale of a virtual asset.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "vasp_exchange_model",
+      "name": "Exchange and trading service model",
+      "applies_to": "activity",
+      "question": "How does the trading or exchange service operate?",
+      "description": "Classifies exchange and trading services by model, from escrow and brokerage to order-book and advanced trading.",
+      "aliases": [
+        "exchange service category"
+      ],
+      "values": [
+        {
+          "value": "escrow_service",
+          "definition": "Provider holds custody of funds during the exchange.",
+          "citations": []
+        },
+        {
+          "value": "brokerage_service",
+          "definition": "Provider issues or trades virtual assets for users.",
+          "citations": []
+        },
+        {
+          "value": "order_book_exchange",
+          "definition": "Platform matches buy and sell orders, excluding pure matching platforms performing no listed service.",
+          "citations": []
+        },
+        {
+          "value": "advanced_trading_service",
+          "definition": "Provides margin, algorithmic, or other advanced trading services.",
+          "citations": []
+        },
+        {
+          "value": "kiosk_exchange",
+          "definition": "Exchange conducted through physical kiosks accepting or dispensing currency or virtual assets.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "trading_platform_possession",
+      "name": "Trading platform possession",
+      "applies_to": "activity",
+      "question": "Does the platform take possession of the convertible virtual currency between buyers and sellers?",
+      "description": "Distinguishes bid-offer posting venues from exchangers that buy and sell CVC themselves.",
+      "aliases": [
+        "platform possession model"
+      ],
+      "values": [
+        {
+          "value": "bid_offer_posting_only",
+          "definition": "Platform posts bids and offers, leaving settlement to parties through outside wallets.",
+          "citations": []
+        },
+        {
+          "value": "exchanger_takes_possession",
+          "definition": "Platform buys from sellers and sells to buyers, taking possession of the CVC.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "custody_control_capability",
+      "name": "Custody and control capability",
+      "applies_to": "activity",
+      "question": "Can the entity hold, trade, transfer or spend a virtual asset, or enable control through keys or contracts?",
+      "description": "Tests whether an entity has custody or control capacity over virtual assets, including via multi-signature or smart contracts.",
+      "aliases": [
+        "custody limb",
+        "control test"
+      ],
+      "values": [
+        {
+          "value": "has_custody_or_control",
+          "definition": "Entity can hold, trade, transfer or spend virtual assets, or enable control through keys or smart contracts.",
+          "citations": []
+        },
+        {
+          "value": "no_custody_or_control",
+          "definition": "Entity lacks the ability to hold, transfer or control virtual assets for others.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "custody_model",
+      "name": "Custody arrangement",
+      "applies_to": "activity",
+      "question": "Who holds the keys or controls the asset: a custodian or the user?",
+      "description": "Classifies wallets and providers as custodial or non-custodial by who controls the private keys.",
+      "aliases": [
+        "hosted or unhosted",
+        "custodial status"
+      ],
+      "values": [
+        {
+          "value": "custodial_hosted",
+          "definition": "A third party holds the keys and controls the asset on the user's behalf.",
+          "citations": []
+        },
+        {
+          "value": "non_custodial_unhosted",
+          "definition": "The user alone controls the keys and the asset.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "custody_provider_type",
+      "name": "Custody provider type",
+      "applies_to": "actor",
+      "question": "Is the custodian a regulated institution or an unregulated custody provider?",
+      "description": "Classifies custodians by whether they are regulated banks, trusts, or other custody providers.",
+      "aliases": [
+        "custodian classification"
+      ],
+      "values": [
+        {
+          "value": "regulated_custodian",
+          "definition": "A bank or state-chartered trust providing custody under regulatory supervision.",
+          "citations": []
+        },
+        {
+          "value": "unregulated_custody_provider",
+          "definition": "A custody provider without a bank or trust charter.",
+          "citations": []
+        },
+        {
+          "value": "self_custody",
+          "definition": "The holder safeguards its own assets without a third-party custodian.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "custodial_wallet_control",
+      "name": "Wallet custodial control",
+      "applies_to": "actor",
+      "question": "Can the wallet provider unilaterally move client assets?",
+      "description": "Classifies wallets as custodial or non-custodial by whether the provider can unilaterally transfer client assets.",
+      "aliases": [
+        "custodial versus non-custodial wallet"
+      ],
+      "values": [
+        {
+          "value": "custodial_wallet",
+          "definition": "Provider can unilaterally move client assets.",
+          "citations": []
+        },
+        {
+          "value": "non_custodial_wallet",
+          "definition": "Provider cannot unilaterally move client assets.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "cryptoasset_control_safeguarding",
+      "name": "Cryptoasset safeguarding control",
+      "applies_to": "activity",
+      "question": "Does the party hold or store means of access, or appoint a custodian to do so?",
+      "description": "Assesses control over cryptoassets for safeguarding by holding or storing access means, or by appointing a custodian.",
+      "aliases": [
+        "control for safeguarding"
+      ],
+      "values": [
+        {
+          "value": "holds_or_stores_access",
+          "definition": "Holds or stores the means of access, such as a private cryptographic key.",
+          "citations": []
+        },
+        {
+          "value": "appoints_custodian",
+          "definition": "Appoints another party to hold or store the means of access.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "p2p_platform_role",
+      "name": "Peer-to-peer platform function",
+      "applies_to": "activity",
+      "question": "Does the peer-to-peer platform merely provide a forum or perform matching or finding services?",
+      "description": "Classifies P2P platforms by whether they are a minimal forum or actively match and find counterparties.",
+      "aliases": [
+        "P2P status"
+      ],
+      "values": [
+        {
+          "value": "forum_only",
+          "definition": "Provides only a forum or communication means with no matching or finding function.",
+          "citations": []
+        },
+        {
+          "value": "matching_or_finding",
+          "definition": "Actively matches or finds counterparties and may qualify as a VASP.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "vasp_control_factors",
+      "name": "Operator control and profit",
+      "applies_to": "actor",
+      "question": "Who profits, sets rules, controls operations, or could shut down the service?",
+      "description": "Captures the control and profit factors used to determine whether an actor is in substance an operator.",
+      "aliases": [
+        "operator control test"
+      ],
+      "values": [
+        {
+          "value": "operator_in_control",
+          "definition": "Party sets and changes rules, controls operations, profits, or could shut the service down.",
+          "citations": []
+        },
+        {
+          "value": "user_or_peripheral",
+          "definition": "Party lacks control, profit or shutdown power and is peripheral to the service.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "software_developer_vasp_status",
+      "name": "Software developer VASP status",
+      "applies_to": "actor",
+      "question": "Does the developer or platform creator retain control or influence over assets or user relationships?",
+      "description": "Separates software developers and platform creators from parties retaining control or influence that may make them VASPs, including through protocol parameters or ongoing user relationships.",
+      "aliases": [
+        "developer status"
+      ],
+      "values": [
+        {
+          "value": "developer_not_vasp",
+          "definition": "Builds or sells software without retaining control or influence over assets or user relationships.",
+          "citations": []
+        },
+        {
+          "value": "control_or_influence_vasp",
+          "definition": "Retains control or influence over assets, protocol parameters or user relationships, and may be a VASP.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ancillary_provider_status",
+      "name": "Ancillary provider status",
+      "applies_to": "actor",
+      "question": "Does the provider facilitate covered activities for others, or only supply hardware, software or network infrastructure?",
+      "description": "Identifies ancillary providers, such as hardware wallet makers and infrastructure operators, excluded from VASP status unless they facilitate covered activities.",
+      "aliases": [
+        "ancillary exclusion"
+      ],
+      "values": [
+        {
+          "value": "excluded_ancillary",
+          "definition": "Supplies hardware, unhosted wallet software or network infrastructure without facilitating covered activities for others.",
+          "citations": []
+        },
+        {
+          "value": "facilitates_covered_activity",
+          "definition": "Facilitates covered VA activities for others and may fall within scope.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_asset_infrastructure_function",
+      "name": "Digital asset infrastructure function",
+      "applies_to": "actor",
+      "question": "What infrastructure function does the provider perform?",
+      "description": "Sorts digital asset infrastructure providers by the function they perform.",
+      "aliases": [
+        "infrastructure role"
+      ],
+      "values": [
+        {
+          "value": "oracle",
+          "definition": "Supplies offchain data to onchain systems.",
+          "citations": []
+        },
+        {
+          "value": "dex_aggregator",
+          "definition": "Aggregates liquidity across decentralised exchanges.",
+          "citations": []
+        },
+        {
+          "value": "bridge_provider",
+          "definition": "Enables cross-chain asset transfers.",
+          "citations": []
+        },
+        {
+          "value": "node_provider",
+          "definition": "Grants network access by operating nodes.",
+          "citations": []
+        },
+        {
+          "value": "onchain_data_provider",
+          "definition": "Provides blockchain-derived data to users.",
+          "citations": []
+        },
+        {
+          "value": "digital_identity_provider",
+          "definition": "Provides identity verification for network participants.",
+          "citations": []
+        },
+        {
+          "value": "smart_contract_auditor",
+          "definition": "Audits smart contract code for vulnerabilities.",
+          "citations": []
+        },
+        {
+          "value": "front_end_operator",
+          "definition": "Operates user-facing interfaces to underlying protocols.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ico_participation_type",
+      "name": "ICO participation type",
+      "applies_to": "activity",
+      "question": "How is the business involved in the initial coin offering?",
+      "description": "Distinguishes issuing a virtual asset from exchange, transfer, or safekeeping activity in ICOs.",
+      "aliases": [
+        "ICO role"
+      ],
+      "values": [
+        {
+          "value": "issuance_only",
+          "definition": "Issuing a virtual asset alone, which is not a covered service.",
+          "citations": []
+        },
+        {
+          "value": "affiliated_sales_or_market_making",
+          "definition": "Accepting orders, purchasing for resale, underwriting, market making or placing tokens on behalf of others.",
+          "citations": []
+        },
+        {
+          "value": "issuance_software_development",
+          "definition": "Creating issuance software alone, which does not make a developer a VASP.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ico_business_model",
+      "name": "Token sale business model",
+      "applies_to": "activity",
+      "question": "Is the token sale a preferential group sale or an equity or debt token fundraise?",
+      "description": "Classifies token sales by business model, which determines money transmitter or exemption status.",
+      "aliases": [
+        "token sale model"
+      ],
+      "values": [
+        {
+          "value": "preferential_group_sale",
+          "definition": "Seller acting as administrator sells CVC to a preferential group.",
+          "citations": []
+        },
+        {
+          "value": "equity_or_debt_token_fundraise",
+          "definition": "Tokens represent equity or debt used to fund projects.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "trading_venue_type",
+      "name": "Trading venue type",
+      "applies_to": "activity",
+      "question": "Is the digital asset trade executed on a centralised or decentralised venue?",
+      "description": "Classifies digital asset trading by venue as centralised or decentralised.",
+      "aliases": [
+        "venue"
+      ],
+      "values": [
+        {
+          "value": "centralised_exchange",
+          "definition": "Trading executed through a centralised exchange operator.",
+          "citations": []
+        },
+        {
+          "value": "decentralised_exchange",
+          "definition": "Trading executed through a decentralised exchange protocol.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "trading_product_type",
+      "name": "Trading product type",
+      "applies_to": "activity",
+      "question": "Is the trade spot, futures, perpetual, or an option?",
+      "description": "Classifies digital asset trades by the product being traded.",
+      "aliases": [
+        "derivative product"
+      ],
+      "values": [
+        {
+          "value": "spot",
+          "definition": "Immediate exchange of the asset at current price.",
+          "citations": []
+        },
+        {
+          "value": "futures",
+          "definition": "Agreement to trade at a future date at an agreed price.",
+          "citations": []
+        },
+        {
+          "value": "perpetual",
+          "definition": "Derivative without expiry date, settled periodically.",
+          "citations": []
+        },
+        {
+          "value": "option",
+          "definition": "Right but not obligation to buy or sell at a set price.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "trading_order_type",
+      "name": "Order type",
+      "applies_to": "activity",
+      "question": "Is the order executed at market price, at a limit, or triggered by a stop?",
+      "description": "Classifies trade orders by execution condition.",
+      "aliases": [
+        "order category"
+      ],
+      "values": [
+        {
+          "value": "market_order",
+          "definition": "Executed immediately at the best available price.",
+          "citations": []
+        },
+        {
+          "value": "limit_order",
+          "definition": "Executed only at a specified price or better.",
+          "citations": []
+        },
+        {
+          "value": "stop_order",
+          "definition": "Triggered when a specified price threshold is reached.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "staking_participation_model",
+      "name": "Staking participation model",
+      "applies_to": "activity",
+      "question": "Does the holder operate a validator, use a service, use liquid staking, or delegate via contract?",
+      "description": "Classifies staking arrangements by who operates validation and whether control of tokens is retained.",
+      "aliases": [
+        "staking type"
+      ],
+      "values": [
+        {
+          "value": "self_operated_validator",
+          "definition": "Holder runs its own validator node and retains control of tokens.",
+          "citations": []
+        },
+        {
+          "value": "staking_as_a_service",
+          "definition": "Third party operates validation on the holder's behalf.",
+          "citations": []
+        },
+        {
+          "value": "liquid_staking",
+          "definition": "Holder receives a receipt token representing staked assets.",
+          "citations": []
+        },
+        {
+          "value": "smart_contract_delegation",
+          "definition": "Holder delegates tokens to a smart contract for staking.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "token_control_retention",
+      "name": "Staking control retention",
+      "applies_to": "activity",
+      "question": "Does the holder retain control of tokens during staking?",
+      "description": "Determines whether control of staked tokens stays with the holder or passes to a third party.",
+      "aliases": [
+        "control of staked tokens"
+      ],
+      "values": [
+        {
+          "value": "holder_retains_control",
+          "definition": "Holder keeps control of the tokens throughout staking.",
+          "citations": []
+        },
+        {
+          "value": "third_party_control",
+          "definition": "A third party controls the staked tokens or transmits funds.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "qualifying_cryptoasset_staking",
+      "name": "Staking service status",
+      "applies_to": "activity",
+      "question": "Is the cryptoasset used in blockchain validation through a staking arrangement that is a regulated activity?",
+      "description": "Determines whether using a cryptoasset to participate in validation, including proof-of-stake, falls within regulated staking.",
+      "aliases": [
+        "cryptoasset staking activity"
+      ],
+      "values": [
+        {
+          "value": "regulated_staking",
+          "definition": "Using a cryptoasset in blockchain validation, including proof-of-stake, offered as a regulated service.",
+          "citations": []
+        },
+        {
+          "value": "excluded_staking",
+          "definition": "Excluded from regulated staking, such as protocol-level or technical services not held out to the public.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "slashing_exposure",
+      "name": "Slashing exposure",
+      "applies_to": "obligation_or_risk",
+      "question": "Are validators penalised for misbehaviour through loss of staked tokens?",
+      "description": "Records whether a staking arrangement exposes stake to slashing penalties.",
+      "aliases": [
+        "slashing risk"
+      ],
+      "values": [
+        {
+          "value": "slashing_applies",
+          "definition": "Staked tokens may be penalised for validator misbehaviour.",
+          "citations": []
+        },
+        {
+          "value": "no_slashing",
+          "definition": "No slashing penalties apply to staked tokens.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "mev_exposure",
+      "name": "Transaction sequencing and MEV exposure",
+      "applies_to": "obligation_or_risk",
+      "question": "Is the transaction exposed to maximal extractable value through sequencing?",
+      "description": "Classifies transactions by exposure to maximal extractable value arising from ordering control.",
+      "aliases": [
+        "MEV risk"
+      ],
+      "values": [
+        {
+          "value": "mev_exposed",
+          "definition": "Transaction ordering allows value extraction by sequencers or validators.",
+          "citations": []
+        },
+        {
+          "value": "mev_protected",
+          "definition": "Transaction ordering is designed to resist value extraction.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "crypto_service_scope",
+      "name": "Crypto-asset service scope",
+      "applies_to": "activity",
+      "question": "Does the service fall within the crypto-asset services category or is it excluded (such as advice)?",
+      "description": "Determines whether a crypto-asset activity is within regulated crypto-asset services or excluded.",
+      "aliases": [
+        "service inclusion"
+      ],
+      "values": [
+        {
+          "value": "regulated_crypto_asset_service",
+          "definition": "Listed crypto-asset service performed for others under MiCAR.",
+          "citations": []
+        },
+        {
+          "value": "excluded_service",
+          "definition": "Activity excluded from crypto-asset services, such as advice.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ancillary_activity_exclusion",
+      "name": "Incidental activity exclusion",
+      "applies_to": "activity",
+      "question": "Is the crypto activity merely incidental to a profession, with no systematic income and under professional supervision?",
+      "description": "Determines whether an activity carried out incidentally to another profession is excluded from regulated crypto-asset activity.",
+      "aliases": [
+        "incidental activity test"
+      ],
+      "values": [
+        {
+          "value": "excluded_incidental",
+          "definition": "Ancillary to the profession, not a regulated activity, no systematic income, not marketed, and supervised by a professional body.",
+          "citations": []
+        },
+        {
+          "value": "not_excluded",
+          "definition": "Fails one or more of the incidental activity tests.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "stablecoin_issuance_activity",
+      "name": "Stablecoin issuance activity",
+      "applies_to": "activity",
+      "question": "Is the party offering, creating within a group, or redeeming and holding reserves for a qualifying stablecoin?",
+      "description": "Classifies the issuance-related undertakings that constitute the regulated stablecoin issuing activity.",
+      "aliases": [
+        "stablecoin issuing activity"
+      ],
+      "values": [
+        {
+          "value": "offering",
+          "definition": "Offering a qualifying stablecoin to the public.",
+          "citations": []
+        },
+        {
+          "value": "group_creation",
+          "definition": "Creating a qualifying stablecoin within a group.",
+          "citations": []
+        },
+        {
+          "value": "redemption_or_reserve_holding",
+          "definition": "Undertaking redemption or holding reserves for a qualifying stablecoin.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "cryptoasset_trading_activity",
+      "name": "Cryptoasset trading activity",
+      "applies_to": "activity",
+      "question": "Is the party operating a trading platform or dealing as principal in cryptoassets?",
+      "description": "Classifies regulated cryptoasset trading activities as platform operation or principal dealing.",
+      "aliases": [
+        "cryptoasset trading type"
+      ],
+      "values": [
+        {
+          "value": "operating_trading_platform",
+          "definition": "Operating a qualifying cryptoasset trading platform.",
+          "citations": []
+        },
+        {
+          "value": "dealing_as_principal",
+          "definition": "Dealing in qualifying cryptoassets as principal.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "cryptoasset_dealing_mode",
+      "name": "Cryptoasset dealing mode",
+      "applies_to": "activity",
+      "question": "Does the party deal in cryptoassets as principal or as agent, or arrange deals for others?",
+      "description": "Classifies specified cryptoasset dealing and arranging activities by whether the party trades on its own account, as agent, or only arranges transactions.",
+      "aliases": [
+        "dealing and arranging type"
+      ],
+      "values": [
+        {
+          "value": "dealing_as_principal",
+          "definition": "Buying or selling cryptoassets on its own account, such as market making or underwriting.",
+          "citations": []
+        },
+        {
+          "value": "dealing_as_agent",
+          "definition": "Buying or selling cryptoassets on behalf of clients.",
+          "citations": []
+        },
+        {
+          "value": "arranging_deals",
+          "definition": "Arranging or facilitating a transaction without itself becoming a party.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_commodity_intermediary_role",
+      "name": "Digital commodity intermediary role",
+      "applies_to": "actor",
+      "question": "Does the person act as a broker, dealer, exchange, or custodian of digital commodities?",
+      "description": "Classifies persons by whether they broker orders, act as counterparty, operate an exchange, or hold digital commodities for others.",
+      "aliases": [
+        "digital commodity intermediary"
+      ],
+      "values": [
+        {
+          "value": "digital_commodity_broker",
+          "definition": "Holds customer funds or executes customer transactions, or solicits or accepts customer orders on a registered entity.",
+          "citations": []
+        },
+        {
+          "value": "digital_commodity_dealer",
+          "definition": "Regularly acts as a counterparty and holds counterparty funds.",
+          "citations": []
+        },
+        {
+          "value": "digital_commodity_exchange",
+          "definition": "Operates a cash or spot market for digital commodities.",
+          "citations": []
+        },
+        {
+          "value": "digital_commodity_custodian",
+          "definition": "Holds digital commodities for others.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_commodity_associated_person",
+      "name": "Associated person of a digital commodity intermediary",
+      "applies_to": "actor",
+      "question": "Is the person an associated person of a digital commodity broker or dealer through solicitation, order acceptance or supervisory roles, excluding purely clerical functions?",
+      "description": "Determines whether a person is an associated person of a digital commodity broker or dealer based on solicitation, order acceptance, or supervisory functions.",
+      "aliases": [
+        "associated person test"
+      ],
+      "values": [
+        {
+          "value": "associated_person",
+          "definition": "Solicits or accepts orders or contracts, or holds a supervisory role, for a digital commodity broker or dealer.",
+          "citations": []
+        },
+        {
+          "value": "not_associated_person",
+          "definition": "Performs only purely clerical or ministerial functions, or has no solicitation, order or supervisory role.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "mixed_digital_asset_transaction",
+      "name": "Mixed digital asset transaction",
+      "applies_to": "activity",
+      "question": "Does the trade exchange a digital commodity for a security?",
+      "description": "Identifies mixed transactions where a digital commodity is traded against a security.",
+      "aliases": [
+        "mixed transaction"
+      ],
+      "values": [
+        {
+          "value": "mixed_transaction",
+          "definition": "Trade of a digital commodity for a security.",
+          "citations": []
+        },
+        {
+          "value": "non_mixed_transaction",
+          "definition": "Trade not involving a digital commodity-for-security exchange.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "dealer_market_role",
+      "name": "Digital commodity dealer market role",
+      "applies_to": "actor",
+      "question": "Does the person hold itself out as a dealer or market maker, or is it a registered or excluded counterparty?",
+      "description": "Distinguishes persons dealing or making markets in digital commodities from those excluded such as eligible contract participants or validators.",
+      "aliases": [
+        "dealer status"
+      ],
+      "values": [
+        {
+          "value": "market_maker_or_dealer",
+          "definition": "Holds itself out as a dealer or market maker, or runs a dealing business as principal in cash or spot digital commodity markets.",
+          "citations": []
+        },
+        {
+          "value": "excluded_non_dealer",
+          "definition": "Excluded as trading with eligible contract participants, on registered exchanges, for own account, for payments, or validating nodes.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_commodity_affiliation",
+      "name": "Affiliation with a digital commodity issuer",
+      "applies_to": "actor",
+      "question": "Does the person have control, common control, or a 5% or greater holding relationship with the issuer or asset?",
+      "description": "Classifies persons by their control or ownership relationship to a digital commodity issuer or to the digital asset.",
+      "aliases": [
+        "affiliated person test"
+      ],
+      "values": [
+        {
+          "value": "affiliated_person",
+          "definition": "Controls or is under common control with the issuer, or holds 5% or more of outstanding units, or is a founder or recent executive.",
+          "citations": []
+        },
+        {
+          "value": "not_affiliated",
+          "definition": "Lacks control, common control or the 5% holding relationship with the issuer or asset.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "digital_asset_service_provider_status",
+      "name": "Digital asset service provider status",
+      "applies_to": "actor",
+      "question": "Does the person perform listed exchange, transfer, custody or issuance services for compensation in U.S. business, excluding protocol developers and validators?",
+      "description": "Determines whether a person is a digital asset service provider under compensation, U.S. business, and listed-function criteria.",
+      "aliases": [
+        "DASP status"
+      ],
+      "values": [
+        {
+          "value": "digital_asset_service_provider",
+          "definition": "Performs listed exchange, transfer, custody or issuance services for compensation in U.S. business.",
+          "citations": []
+        },
+        {
+          "value": "excluded_from_dasp",
+          "definition": "Excluded as protocol developer, validator, self-custodial interface, or liquidity pool participant.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "transfer_travel_rule_scope",
+      "name": "Travel Rule transfer type",
+      "applies_to": "activity",
+      "question": "Is the transaction a transmittal of funds subject to the Travel Rule, and what is its value?",
+      "description": "Classifies transactions by type and dollar equivalent to determine Travel Rule applicability.",
+      "aliases": [
+        "travel rule transfer category"
+      ],
+      "values": [
+        {
+          "value": "transmittal_of_funds",
+          "definition": "Transaction subject to the Travel Rule requirements, based on host position in the chain.",
+          "citations": []
+        },
+        {
+          "value": "other_transaction",
+          "definition": "Transaction not qualifying as transmittal of funds under the Travel Rule.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "transfer_channel_type",
+      "name": "Transfer channel type",
+      "applies_to": "activity",
+      "question": "Is the transfer a credit transfer, direct debit, remittance, card or device-based transfer, or person-to-person transfer?",
+      "description": "Classifies transfers of funds by payment channel and whether a service provider is involved.",
+      "aliases": [
+        "payment channel"
+      ],
+      "values": [
+        {
+          "value": "credit_transfer",
+          "definition": "Transfer initiated by the payer's payment service provider to the payee's provider.",
+          "citations": []
+        },
+        {
+          "value": "direct_debit",
+          "definition": "Transfer initiated by the payee to debit the payer's account.",
+          "citations": []
+        },
+        {
+          "value": "remittance",
+          "definition": "Transfer of funds with no payment account at either end.",
+          "citations": []
+        },
+        {
+          "value": "card_or_device_transfer",
+          "definition": "Transfer made using a card, device or similar digital or telecom instrument.",
+          "citations": []
+        },
+        {
+          "value": "person_to_person_transfer",
+          "definition": "Transfer between persons without the involvement of a service provider.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "business_relationship_type",
+      "name": "Business relationship type",
+      "applies_to": "activity",
+      "question": "Is the relationship a professional connection with expected repetition or duration, or a linked set of transactions?",
+      "description": "Classifies customer relationships and linked transactions by their professional or transactional character.",
+      "aliases": [
+        "relationship classification"
+      ],
+      "values": [
+        {
+          "value": "business_relationship",
+          "definition": "Professional connection with expected repetition or duration.",
+          "citations": []
+        },
+        {
+          "value": "linked_transactions",
+          "definition": "Transactions sharing origin, destination, purpose and period.",
+          "citations": []
+        },
+        {
+          "value": "correspondent_relationship",
+          "definition": "Banking or crypto-asset service relationship between institutions.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "illicit_actor_type",
+      "name": "Illicit actor type",
+      "applies_to": "actor",
+      "question": "Which kind of criminal or state-linked actor uses virtual assets for illicit activity?",
+      "description": "Classifies actors engaged in illicit virtual asset use, such as organised crime, state-affiliated proliferation financiers, or fraudsters.",
+      "aliases": [
+        "criminal actor category"
+      ],
+      "values": [
+        {
+          "value": "organised_crime",
+          "definition": "Organised criminal groups laundering predicate-offence proceeds or running fraud through virtual assets.",
+          "citations": []
+        },
+        {
+          "value": "state_sponsored_hacker",
+          "definition": "State-linked actors conducting theft and laundering, such as DPRK-linked groups.",
+          "citations": []
+        },
+        {
+          "value": "proliferation_financier",
+          "definition": "State-affiliated actors using virtual assets to finance weapons proliferation, such as DPRK-linked networks.",
+          "citations": []
+        },
+        {
+          "value": "fraudster_or_scammer",
+          "definition": "Individuals or groups conducting fraud, investment scams or address poisoning.",
+          "citations": []
+        },
+        {
+          "value": "terrorist_financier",
+          "definition": "Actors using virtual assets to finance terrorism.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "illicit_intermediary_role",
+      "name": "Intermediary role in illicit schemes",
+      "applies_to": "actor",
+      "question": "What role does an intermediary play in an illicit virtual asset scheme, serving one criminal network or several?",
+      "description": "Classifies intermediaries by the part they play in illicit schemes, including whether they serve multiple criminal typologies at once.",
+      "aliases": [
+        "facilitator role"
+      ],
+      "values": [
+        {
+          "value": "single_typology_facilitator",
+          "definition": "Intermediary serving one illicit typology, such as only fraud or only laundering.",
+          "citations": []
+        },
+        {
+          "value": "multi_typology_facilitator",
+          "definition": "Intermediary serving more than one illicit typology, such as both fraud and proliferation financing.",
+          "citations": []
+        },
+        {
+          "value": "fraud_lure_and_laundering_channel",
+          "definition": "Virtual assets function both as the lure for fraud and as the channel for laundering proceeds.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "laundering_technique",
+      "name": "Illicit laundering technique",
+      "applies_to": "activity",
+      "question": "Which method is used to obscure or move illicit virtual asset proceeds?",
+      "description": "Classifies laundering techniques used to conceal the origin or movement of illicit virtual assets.",
+      "aliases": [
+        "laundering method"
+      ],
+      "values": [
+        {
+          "value": "unregistered_vasp_use",
+          "definition": "Using unregistered or unlicensed VASPs to move proceeds.",
+          "citations": []
+        },
+        {
+          "value": "mixer_or_tumbler",
+          "definition": "Using mixing services to obscure transaction trails.",
+          "citations": []
+        },
+        {
+          "value": "cross_chain_bridge",
+          "definition": "Moving assets across chains through bridges to break traceability.",
+          "citations": []
+        },
+        {
+          "value": "cash_for_va_swap",
+          "definition": "Exchanging cash for virtual assets through swap networks.",
+          "citations": []
+        },
+        {
+          "value": "large_wallet_cluster",
+          "definition": "Splitting or pooling funds across large wallet clusters.",
+          "citations": []
+        },
+        {
+          "value": "stablecoin_transfer_via_tron",
+          "definition": "Moving stablecoins such as USDT over low-cost networks such as Tron to evade tracing.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "illicit_va_use_motivation",
+      "name": "Reason for illicit virtual asset use",
+      "applies_to": "activity",
+      "question": "Why do criminals prefer virtual assets for the illicit activity?",
+      "description": "Identifies the attributes that make virtual assets attractive for illicit use, such as anonymity, speed or stability.",
+      "aliases": [
+        "criminal attraction factors"
+      ],
+      "values": [
+        {
+          "value": "anonymity",
+          "definition": "Obscuring identity of parties to transactions.",
+          "citations": []
+        },
+        {
+          "value": "speed_of_transfer",
+          "definition": "Rapid cross-border movement of value.",
+          "citations": []
+        },
+        {
+          "value": "low_volatility_stability",
+          "definition": "Stable value attractive for holding or moving proceeds.",
+          "citations": []
+        },
+        {
+          "value": "low_cost_and_liquidity",
+          "definition": "Low transaction cost and ready liquidity.",
+          "citations": []
+        },
+        {
+          "value": "fund_diversification",
+          "definition": "Spreading funds across assets to reduce detection risk.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "fraud_scheme_type",
+      "name": "Fraud and scam scheme type",
+      "applies_to": "activity",
+      "question": "What kind of fraud or scam is being perpetrated with virtual assets?",
+      "description": "Classifies fraud and scam schemes involving virtual assets by their mechanism.",
+      "aliases": [
+        "scam type"
+      ],
+      "values": [
+        {
+          "value": "investment_pig_butchering",
+          "definition": "Long-running fake investment scams that gradually extract funds from victims.",
+          "citations": []
+        },
+        {
+          "value": "address_poisoning",
+          "definition": "Sending small transfers from look-alike addresses to trick victims into copying them.",
+          "citations": []
+        },
+        {
+          "value": "ai_enabled_scam",
+          "definition": "Scams using AI-generated content such as deepfakes or synthetic identities.",
+          "citations": []
+        },
+        {
+          "value": "gambling_related_fraud",
+          "definition": "Fraud or laundering conducted through online gambling services.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "aml_risk_factor",
+      "name": "AML and sanctions-evasion risk factor",
+      "applies_to": "obligation_or_risk",
+      "question": "Does the feature amplify money laundering, terrorist financing, or sanctions-evasion risk?",
+      "description": "Identifies features of crypto-assets or activities that increase ML/TF or sanctions-evasion exposure.",
+      "aliases": [
+        "ML/TF risk factor"
+      ],
+      "values": [
+        {
+          "value": "ai_enabled_crime",
+          "definition": "AI-enabled crime such as deepfake scams or AI-assisted exploit development.",
+          "citations": []
+        },
+        {
+          "value": "freeze_resistant_design",
+          "definition": "Asset design that prevents lawful freezing, blocking or burning of units.",
+          "citations": []
+        },
+        {
+          "value": "unhosted_pseudonymous_transfer",
+          "definition": "Peer-to-peer transfers via unhosted wallets with limited visibility and no obliged reporting entity.",
+          "citations": []
+        },
+        {
+          "value": "offshore_service_provision",
+          "definition": "Services provided into a jurisdiction from outside its legal territory, subject to weak or absent licensing.",
+          "citations": []
+        },
+        {
+          "value": "dormant_account_layering",
+          "definition": "Dormant or non-trading VASP deposits and withdrawals used for layering.",
+          "citations": []
+        },
+        {
+          "value": "weak_fatf_implementation",
+          "definition": "Typologies arising from weak or uneven FATF standard implementation, notably by VASPs in weakly supervised jurisdictions.",
+          "citations": []
+        },
+        {
+          "value": "shared_risk_infrastructure",
+          "definition": "Shared infrastructure such as stablecoins, OTC brokers, RPC nodes or bridges used across multiple illicit schemes.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "linked_threat_type",
+      "name": "Linked financial crime threat",
+      "applies_to": "obligation_or_risk",
+      "question": "Which related financial crime threat is linked to the illicit virtual asset activity?",
+      "description": "Identifies financial crime threats, such as proliferation financing, terrorist financing or sanctions evasion, that co-occur with virtual asset misuse.",
+      "aliases": [
+        "co-occurring threat"
+      ],
+      "values": [
+        {
+          "value": "proliferation_financing",
+          "definition": "Financing of weapons of mass destruction proliferation.",
+          "citations": []
+        },
+        {
+          "value": "terrorist_financing",
+          "definition": "Provision of funds for terrorist activity.",
+          "citations": []
+        },
+        {
+          "value": "sanctions_evasion",
+          "definition": "Circumvention of targeted financial sanctions.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "offshore_vasp_home_regime",
+      "name": "Offshore VASP home regime strength",
+      "applies_to": "actor",
+      "question": "Is the offshore VASP's home regulatory framework strong or weak, and is it licensed by host jurisdictions?",
+      "description": "Assesses offshore VASPs by the strength of their home regulatory framework and host-jurisdiction licensing requirements.",
+      "aliases": [
+        "offshore VASP risk"
+      ],
+      "values": [
+        {
+          "value": "strong_home_framework",
+          "definition": "Home jurisdiction has a strong regulatory framework for the VASP.",
+          "citations": []
+        },
+        {
+          "value": "weak_or_absent_home_framework",
+          "definition": "Home jurisdiction lacks a strong framework, and host licensing is absent or weak.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "offshore_active_service_status",
+      "name": "Offshore active service to jurisdiction",
+      "applies_to": "actor",
+      "question": "Does the offshore entity actively serve customers in a jurisdiction, or maintain material local substance?",
+      "description": "Determines whether an offshore VASP actively targets customers in a jurisdiction regardless of physical presence, and whether it has local substance such as a compliance officer.",
+      "aliases": [
+        "active service test"
+      ],
+      "values": [
+        {
+          "value": "actively_serves_jurisdiction",
+          "definition": "Solicits or serves customers in the jurisdiction, regardless of physical presence.",
+          "citations": []
+        },
+        {
+          "value": "no_active_service",
+          "definition": "Does not actively serve customers in the jurisdiction and lacks material local substance.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "vasp_licensing_status",
+      "name": "VASP licensing or registration status",
+      "applies_to": "actor",
+      "question": "Where is the VASP incorporated or licensed, and is it already a licensed financial institution?",
+      "description": "Classifies VASPs by place of incorporation, business location, and whether they are already licensed financial institutions.",
+      "aliases": [
+        "VASP registration basis"
+      ],
+      "values": [
+        {
+          "value": "domestic_licensed",
+          "definition": "Incorporated or registered in the jurisdiction with a licence or registration.",
+          "citations": []
+        },
+        {
+          "value": "foreign_or_offshore",
+          "definition": "Incorporated abroad or providing service into the jurisdiction from offshore.",
+          "citations": []
+        },
+        {
+          "value": "existing_financial_institution",
+          "definition": "Already licensed as a financial institution with full FATF obligations, and so exempt from separate VASP treatment.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "vasp_regulatory_status",
+      "name": "VASP exemption from separate treatment",
+      "applies_to": "actor",
+      "question": "Is the entity already an existing financial institution exempt from separate VASP treatment?",
+      "description": "Separates existing financial institutions with full FATF obligations from entities subject to separate VASP treatment.",
+      "aliases": [
+        "existing FI exemption"
+      ],
+      "values": [
+        {
+          "value": "existing_financial_institution",
+          "definition": "Already licensed with full FATF obligations and so exempt from separate VASP treatment.",
+          "citations": []
+        },
+        {
+          "value": "separate_vasp_treatment",
+          "definition": "Subject to separate VASP licensing or registration.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "money_transmitter_status",
+      "name": "Money transmitter status",
+      "applies_to": "actor",
+      "question": "Does the person accept and transmit value for others, or perform a non-transmitter function?",
+      "description": "Determines whether a person is a money transmitter, user, or exempt supplier based on function and purpose.",
+      "aliases": [
+        "MSB status",
+        "transmitter classification"
+      ],
+      "values": [
+        {
+          "value": "money_transmitter",
+          "definition": "Accepts and transmits value or CVC for others.",
+          "citations": []
+        },
+        {
+          "value": "user",
+          "definition": "Anonymises or transacts only for its own purposes, not for others.",
+          "citations": []
+        },
+        {
+          "value": "exempt_tool_supplier",
+          "definition": "Supplies tools such as communications, hardware or anonymising software as trade.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "anonymising_service_type",
+      "name": "Anonymising service type",
+      "applies_to": "actor",
+      "question": "Does the provider offer anonymising services such as mixing, or only supply anonymising software?",
+      "description": "Separates providers of anonymising services, which are money transmitters, from providers of anonymising software, which are not.",
+      "aliases": [
+        "mixer classification"
+      ],
+      "values": [
+        {
+          "value": "anonymising_service_provider",
+          "definition": "Mixes or tumbles CVC for others and is classed as a money transmitter.",
+          "citations": []
+        },
+        {
+          "value": "anonymising_software_provider",
+          "definition": "Supplies anonymising software without transmitting value for others, and is not a money transmitter.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "integral_exemption_status",
+      "name": "Integral activity exemption status",
+      "applies_to": "actor",
+      "question": "Is the business distinct from money transmission, or is transmission necessary to its operation so the exemption fails?",
+      "description": "Applies the integral exemption, which excludes businesses whose operation is distinct from and does not require money transmission.",
+      "aliases": [
+        "integral test"
+      ],
+      "values": [
+        {
+          "value": "exempt_integral",
+          "definition": "Business is distinct from money transmission and transmission is not necessary for its operation.",
+          "citations": []
+        },
+        {
+          "value": "not_exempt_integral",
+          "definition": "Transmission is necessary for or integral to the business, so the exemption does not apply.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "mining_activity_status",
+      "name": "Mining activity status",
+      "applies_to": "actor",
+      "question": "Does the miner use mined CVC only for itself, or transmit value for others?",
+      "description": "Classifies CVC miners and pool operators by whether their activity amounts to money transmission.",
+      "aliases": [
+        "mining MSB status"
+      ],
+      "values": [
+        {
+          "value": "self_use_miner",
+          "definition": "Uses mined CVC solely to buy goods or services for itself and is not an MSB.",
+          "citations": []
+        },
+        {
+          "value": "transmitting_miner",
+          "definition": "Uses mined CVC to transmit value for others and is an MSB.",
+          "citations": []
+        },
+        {
+          "value": "pool_distribution_integral",
+          "definition": "Distributes earned CVC to members as integral to authentication services and is not money transmission.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "payment_processor_exemption",
+      "name": "Payment processor exemption status",
+      "applies_to": "actor",
+      "question": "Does the CVC payment processor meet the exemption conditions?",
+      "description": "Determines whether a payment processor qualifies for exemption based on facilitation through BSA-regulated clearance systems.",
+      "aliases": [
+        "processor exemption"
+      ],
+      "values": [
+        {
+          "value": "exempt_processor",
+          "definition": "Facilitates purchases through BSA-regulated clearance systems and meets exemption conditions.",
+          "citations": []
+        },
+        {
+          "value": "non_exempt_processor",
+          "definition": "Does not meet the payment processor exemption conditions.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "anonymity_provider_type",
+      "name": "Anonymity-enhanced provider type",
+      "applies_to": "actor",
+      "question": "Is the anonymity-enhanced CVC provider centralised or decentralised, and does it receive or transmit value?",
+      "description": "Classifies anonymity-enhanced CVC providers by payment system type and by value receipt or transmission.",
+      "aliases": [
+        "privacy provider classification"
+      ],
+      "values": [
+        {
+          "value": "centralised_anonymity_provider",
+          "definition": "Centralised anonymity-enhanced payment system that receives or transmits CVC for others.",
+          "citations": []
+        },
+        {
+          "value": "decentralised_anonymity_provider",
+          "definition": "Decentralised anonymity-enhanced system where the provider does not receive or transmit CVC for others.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "wallet_provider_role",
+      "name": "Hosted wallet provider role",
+      "applies_to": "actor",
+      "question": "Is the hosted wallet owner a user, an agent of the host, or a financial institution?",
+      "description": "Classifies the role of a hosted wallet owner, which determines due diligence duties.",
+      "aliases": [
+        "hosted wallet classification"
+      ],
+      "values": [
+        {
+          "value": "user",
+          "definition": "Wallet owner acting for itself and not as an agent of the host.",
+          "citations": []
+        },
+        {
+          "value": "agent_of_host",
+          "definition": "Wallet owner acting as agent of the hosted wallet provider.",
+          "citations": []
+        },
+        {
+          "value": "financial_institution",
+          "definition": "Wallet owner or host is a domestic or foreign financial institution.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "supervisor_type",
+      "name": "Supervisory authority type",
+      "applies_to": "actor",
+      "question": "Is the supervisor a competent authority or a self-regulatory body?",
+      "description": "Separates government competent authorities from self-regulatory bodies in supervising VASPs.",
+      "aliases": [
+        "regulator type"
+      ],
+      "values": [
+        {
+          "value": "competent_authority",
+          "definition": "Government authority responsible for supervising VASPs.",
+          "citations": []
+        },
+        {
+          "value": "self_regulatory_body",
+          "definition": "Non-government body supervising its members under delegated powers.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "federal_regulator_mandate",
+      "name": "Federal regulator mandate",
+      "applies_to": "actor",
+      "question": "Which market or institution type does the regulator supervise?",
+      "description": "Sorts U.S. regulators by the market or institution type under their mandate.",
+      "aliases": [
+        "regulator jurisdiction"
+      ],
+      "values": [
+        {
+          "value": "securities_market",
+          "definition": "Regulator of securities markets such as the SEC.",
+          "citations": []
+        },
+        {
+          "value": "commodity_derivatives_market",
+          "definition": "Regulator of commodity and derivatives markets such as the CFTC.",
+          "citations": []
+        },
+        {
+          "value": "self_regulatory_organisation",
+          "definition": "Industry self-regulatory body such as FINRA or the NFA.",
+          "citations": []
+        },
+        {
+          "value": "banking_institution",
+          "definition": "Banking regulator supervising specified types of depository institutions.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "entity_scope_coverage",
+      "name": "Regulatory scope entity category",
+      "applies_to": "actor",
+      "question": "Which category of entity falls within the regulation's scope?",
+      "description": "Identifies which entity types are covered by a regulation's scope provisions.",
+      "aliases": [
+        "scope category"
+      ],
+      "values": [
+        {
+          "value": "crypto_asset_service_provider",
+          "definition": "Performs one or more listed crypto-asset services under MiCAR.",
+          "citations": []
+        },
+        {
+          "value": "credit_intermediary",
+          "definition": "Holds funds linked to credit agreements, excluding those acting under a creditor's responsibility.",
+          "citations": []
+        },
+        {
+          "value": "trust_or_company_service_provider",
+          "definition": "Provides listed trust or company services.",
+          "citations": []
+        },
+        {
+          "value": "gambling_service_provider",
+          "definition": "Provides gambling services involving the wagering of stakes.",
+          "citations": []
+        },
+        {
+          "value": "crowdfunding_provider",
+          "definition": "Provides crowdfunding services through matching of funders and projects.",
+          "citations": []
+        },
+        {
+          "value": "mixed_activity_holding_company",
+          "definition": "Holding company whose subsidiaries are financial or non-financial in composition.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "entity_regulatory_category",
+      "name": "DORA financial entity category",
+      "applies_to": "actor",
+      "question": "Under which regulated financial entity category is the entity authorised?",
+      "description": "Classifies entities by the sectoral regulatory category under which they are authorised.",
+      "aliases": [
+        "financial entity type"
+      ],
+      "values": [
+        {
+          "value": "credit_institution",
+          "definition": "Authorised as a credit institution.",
+          "citations": []
+        },
+        {
+          "value": "investment_firm",
+          "definition": "Authorised as an investment firm.",
+          "citations": []
+        },
+        {
+          "value": "payment_or_emoney_institution",
+          "definition": "Authorised as a payment or e-money institution.",
+          "citations": []
+        },
+        {
+          "value": "central_counterparty_or_repository",
+          "definition": "Authorised as a central counterparty or trade repository.",
+          "citations": []
+        },
+        {
+          "value": "fund_or_insurance_undertaking",
+          "definition": "Authorised as a fund manager or insurance or intermediary undertaking.",
+          "citations": []
+        },
+        {
+          "value": "crypto_asset_service_provider",
+          "definition": "Authorised as a crypto-asset service provider or issuer of asset-referenced tokens under MiCA.",
+          "citations": []
+        },
+        {
+          "value": "crowdfunding_or_benchmark_or_securitisation_entity",
+          "definition": "Authorised as a crowdfunding service provider, critical benchmark administrator, or securitisation repository.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "small_enterprise_size_class",
+      "name": "Enterprise size class",
+      "applies_to": "actor",
+      "question": "Is the enterprise a microenterprise, small enterprise, or medium-sized enterprise by staff and turnover or balance-sheet thresholds?",
+      "description": "Classifies enterprises by employee count and turnover or balance-sheet thresholds, relevant to proportionate regulatory treatment.",
+      "aliases": [
+        "enterprise size"
+      ],
+      "values": [
+        {
+          "value": "microenterprise",
+          "definition": "Fewer than 10 staff with turnover or balance sheet up to EUR 2 million.",
+          "citations": []
+        },
+        {
+          "value": "small_enterprise",
+          "definition": "10 to 49 staff with turnover or balance sheet up to EUR 10 million.",
+          "citations": []
+        },
+        {
+          "value": "medium_sized_enterprise",
+          "definition": "Fewer than 250 staff with turnover up to EUR 50 million or balance sheet up to EUR 43 million.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "small_occupational_pension_status",
+      "name": "Small occupational pension institution status",
+      "applies_to": "actor",
+      "question": "Does the occupational pension institution have fewer than 100 members?",
+      "description": "Identifies small occupational pension institutions by member count, which affects their regulatory treatment.",
+      "aliases": [
+        "small pension institution"
+      ],
+      "values": [
+        {
+          "value": "small_institution",
+          "definition": "Occupational pension institution with fewer than 100 members.",
+          "citations": []
+        },
+        {
+          "value": "not_small_institution",
+          "definition": "Occupational pension institution with 100 or more members.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "critical_ict_provider_status",
+      "name": "Critical ICT third-party provider status",
+      "applies_to": "actor",
+      "question": "Has the ICT third-party provider been designated as critical?",
+      "description": "Determines whether an ICT third-party provider is designated critical under the EU regime.",
+      "aliases": [
+        "critical provider designation"
+      ],
+      "values": [
+        {
+          "value": "designated_critical",
+          "definition": "Designated as a critical ICT third-party service provider under Article 31.",
+          "citations": []
+        },
+        {
+          "value": "non_critical",
+          "definition": "Not designated as a critical ICT third-party service provider.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ict_provider_location",
+      "name": "ICT provider establishment location",
+      "applies_to": "actor",
+      "question": "Where is the ICT third-party provider legally established?",
+      "description": "Classifies ICT providers by whether they are established inside or outside the EU.",
+      "aliases": [
+        "third-country status"
+      ],
+      "values": [
+        {
+          "value": "eu_established",
+          "definition": "Legally established within the European Union.",
+          "citations": []
+        },
+        {
+          "value": "third_country",
+          "definition": "Legally established outside the European Union.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ict_provider_group_relation",
+      "name": "ICT provider group relationship",
+      "applies_to": "actor",
+      "question": "Is the ICT provider within the same group as the financial entity?",
+      "description": "Distinguishes intra-group ICT providers from external third-party providers.",
+      "aliases": [
+        "intra-group status"
+      ],
+      "values": [
+        {
+          "value": "intra_group",
+          "definition": "Belongs to the same group as the financial entity.",
+          "citations": []
+        },
+        {
+          "value": "external_third_party",
+          "definition": "Not part of the financial entity's group.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ict_function_criticality",
+      "name": "Critical or important function status",
+      "applies_to": "obligation_or_risk",
+      "question": "Would disruption to the function materially impair performance, continuity or compliance?",
+      "description": "Classifies ICT services and functions by whether disruption would materially impair financial performance, continuity, or regulatory compliance.",
+      "aliases": [
+        "critical function test"
+      ],
+      "values": [
+        {
+          "value": "critical_or_important",
+          "definition": "Disruption would materially impair financial performance, service continuity, or regulatory compliance.",
+          "citations": []
+        },
+        {
+          "value": "non_critical",
+          "definition": "Disruption would not materially impair these interests.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ict_incident_severity",
+      "name": "ICT incident severity",
+      "applies_to": "obligation_or_risk",
+      "question": "Does the ICT-related incident have an adverse impact on critical functions or payment services?",
+      "description": "Classifies ICT-related and payment-related incidents as major or non-major by adverse impact.",
+      "aliases": [
+        "major incident status"
+      ],
+      "values": [
+        {
+          "value": "major",
+          "definition": "Has an adverse impact on critical functions or payment services.",
+          "citations": []
+        },
+        {
+          "value": "non_major",
+          "definition": "Does not meet the adverse impact threshold.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "ict_incident_type",
+      "name": "ICT incident type",
+      "applies_to": "obligation_or_risk",
+      "question": "Is the incident ICT-related or payment-related?",
+      "description": "Separates ICT-related incidents from payment-related incidents.",
+      "aliases": [
+        "incident category"
+      ],
+      "values": [
+        {
+          "value": "ict_related",
+          "definition": "Incident related to information and communication technology systems.",
+          "citations": []
+        },
+        {
+          "value": "payment_related",
+          "definition": "Incident related to payment services.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "cyber_threat_significance",
+      "name": "Cyber threat significance",
+      "applies_to": "obligation_or_risk",
+      "question": "Is the cyber threat significant or ordinary?",
+      "description": "Classifies cyber threats by their significance relative to ordinary threats.",
+      "aliases": [
+        "threat severity"
+      ],
+      "values": [
+        {
+          "value": "significant",
+          "definition": "Threat judged significant under DORA classification criteria.",
+          "citations": []
+        },
+        {
+          "value": "ordinary",
+          "definition": "Threat not judged significant.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "legacy_ict_status",
+      "name": "Legacy ICT system status",
+      "applies_to": "technology",
+      "question": "Is the ICT system end-of-life, unsupported, or still in use?",
+      "description": "Classifies legacy ICT systems by their support lifecycle state.",
+      "aliases": [
+        "legacy system status"
+      ],
+      "values": [
+        {
+          "value": "end_of_life",
+          "definition": "Vendor support has ended for the system.",
+          "citations": []
+        },
+        {
+          "value": "unsupported",
+          "definition": "System is no longer supported for updates or fixes.",
+          "citations": []
+        },
+        {
+          "value": "still_in_use",
+          "definition": "System remains operational despite ageing.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "operational_risk_category",
+      "name": "Operational risk category",
+      "applies_to": "obligation_or_risk",
+      "question": "Which operational risk category does the event or weakness fall into?",
+      "description": "Classifies operational risks facing investors and consumers by their source, such as system failure, human error, governance, or code flaws.",
+      "aliases": [
+        "operational risk type"
+      ],
+      "values": [
+        {
+          "value": "system_failure",
+          "definition": "Failure of the underlying technical system.",
+          "citations": []
+        },
+        {
+          "value": "human_error",
+          "definition": "Mistakes by people operating or using the system.",
+          "citations": []
+        },
+        {
+          "value": "governance_lapse",
+          "definition": "Failure in decision-making or oversight of the network or provider.",
+          "citations": []
+        },
+        {
+          "value": "data_breach",
+          "definition": "Unauthorised access or disclosure of data.",
+          "citations": []
+        },
+        {
+          "value": "irreversible_transaction",
+          "definition": "Transactions that cannot be reversed once recorded.",
+          "citations": []
+        },
+        {
+          "value": "interoperability_failure",
+          "definition": "Problems arising when systems fail to work together.",
+          "citations": []
+        },
+        {
+          "value": "smart_contract_flaw",
+          "definition": "Coding flaws in smart contracts.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "prominent_public_function",
+      "name": "Prominent public function status",
+      "applies_to": "actor",
+      "question": "Does the person hold a prominent public function such as a politically exposed person role?",
+      "description": "Determines whether a person holds a prominent public function, subject to Member State threshold adjustments.",
+      "aliases": [
+        "PEP status"
+      ],
+      "values": [
+        {
+          "value": "prominent_public_function",
+          "definition": "Holds a prominent public function within the defined scope.",
+          "citations": []
+        },
+        {
+          "value": "no_prominent_function",
+          "definition": "Does not hold a prominent public function.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "shell_institution_status",
+      "name": "Shell institution status",
+      "applies_to": "actor",
+      "question": "Does the institution have physical presence, management, or regulatory affiliation in a jurisdiction?",
+      "description": "Identifies shell institutions lacking physical presence, management, or regulatory affiliation.",
+      "aliases": [
+        "shell bank test"
+      ],
+      "values": [
+        {
+          "value": "shell_institution",
+          "definition": "Lacks physical presence, management or regulatory affiliation.",
+          "citations": []
+        },
+        {
+          "value": "not_shell",
+          "definition": "Has physical presence, management or regulatory affiliation.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "trust_arrangement_category",
+      "name": "Trust arrangement category",
+      "applies_to": "actor",
+      "question": "Is the trust an express trust, an object of a power, a default taker, or another legal arrangement?",
+      "description": "Distinguishes express trusts, objects of a power, default takers, and other legal arrangements.",
+      "aliases": [
+        "trust type"
+      ],
+      "values": [
+        {
+          "value": "express_trust",
+          "definition": "Trust deliberately created by settlor.",
+          "citations": []
+        },
+        {
+          "value": "object_of_power",
+          "definition": "Person who may benefit under a power of appointment.",
+          "citations": []
+        },
+        {
+          "value": "default_taker",
+          "definition": "Person who takes where no other beneficiary is determined.",
+          "citations": []
+        },
+        {
+          "value": "other_legal_arrangement",
+          "definition": "Legal arrangement not falling within the above categories.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "sanctions_legal_source",
+      "name": "Sanctions legal source",
+      "applies_to": "obligation_or_risk",
+      "question": "What is the legal source of the targeted financial sanctions, UN or EU?",
+      "description": "Distinguishes targeted financial sanctions by their legal source, such as UN resolutions or EU measures.",
+      "aliases": [
+        "sanctions source"
+      ],
+      "values": [
+        {
+          "value": "un_financial_sanction",
+          "definition": "Sanctions imposed under UN Security Council resolutions, including proliferation financing.",
+          "citations": []
+        },
+        {
+          "value": "eu_targeted_sanction",
+          "definition": "Targeted financial sanctions imposed under EU measures.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "rule_applicability_basis",
+      "name": "Applicable rule tradition",
+      "applies_to": "obligation_or_risk",
+      "question": "Under which regulatory tradition is the asset or activity classified?",
+      "description": "Identifies which legal test or framework is applied to classify an asset or activity.",
+      "aliases": [
+        "legal test applied"
+      ],
+      "values": [
+        {
+          "value": "howey_test",
+          "definition": "U.S. investment contract test for securities.",
+          "citations": []
+        },
+        {
+          "value": "mifid_financial_instrument",
+          "definition": "EU MiFID II financial instrument classification.",
+          "citations": []
+        },
+        {
+          "value": "art_aif_test",
+          "definition": "EU alternative investment fund or asset-referenced token test.",
+          "citations": []
+        },
+        {
+          "value": "micar_stablecoin_test",
+          "definition": "MiCAR classification test for stablecoins.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    },
+    {
+      "id": "member_state_home_jurisdiction",
+      "name": "Home jurisdiction for regulated actor",
+      "applies_to": "actor",
+      "question": "Which Member State or jurisdiction serves as the home regulator for the actor, based on registered office, branch, or authorisation?",
+      "description": "Identifies the home jurisdiction that supervises an actor, determined by registered office, branch presence, or authorising state.",
+      "aliases": [
+        "home regulator"
+      ],
+      "values": [
+        {
+          "value": "registered_office_state",
+          "definition": "Home is the state of the registered office, as for ART issuers and CASPs.",
+          "citations": []
+        },
+        {
+          "value": "authorising_state",
+          "definition": "Home is the state that authorised the entity, as for EMT issuers.",
+          "citations": []
+        },
+        {
+          "value": "branch_or_offer_state",
+          "definition": "Home is the branch state or offer state for offerors or third-country entities.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {},
+      "notes": ""
+    }
+  ]
+}

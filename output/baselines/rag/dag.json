@@ -1,0 +1,2955 @@
+{
+ "relation": "is-a",
+ "catalogue": "rag",
+ "run": {
+  "task": "B",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "k": 6,
+  "calls": 81,
+  "citations": 219,
+  "citations_verified": 166,
+  "usage": {
+   "input": 178035,
+   "output": 61282,
+   "cache_write": 26531,
+   "cache_read": 21153106
+  },
+  "cost_usd": 1.3264,
+  "wall_seconds": 101.2
+ },
+ "nodes": [
+  {
+   "id": "issuer_type",
+   "name": "Issuer type",
+   "category": "actor",
+   "question": "Who, if anyone, creates and makes commitments regarding the token?",
+   "root": false,
+   "p_none": 0.01
+  },
+  {
+   "id": "centralisation_level",
+   "name": "Centralisation level",
+   "category": "asset",
+   "question": "Are governance, minting, yield and redemption controlled by a single entity or dispersed across the network?",
+   "root": false,
+   "p_none": 0.3
+  },
+  {
+   "id": "asset_function",
+   "name": "Asset economic function",
+   "category": "asset",
+   "question": "What is the economic, governance or rights-based purpose of the token?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "reference_asset",
+   "name": "Reference asset (stabilisation target)",
+   "category": "asset",
+   "question": "What value, asset or basket, if any, does the token purport to maintain stable value against or redeem into?",
+   "root": true,
+   "p_none": 0.08
+  },
+  {
+   "id": "redemption_mechanism",
+   "name": "Redemption mechanism",
+   "category": "activity",
+   "question": "How does a holder convert the token back into its reference asset, and who controls that process?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "yield_source",
+   "name": "Yield source",
+   "category": "asset",
+   "question": "What economic activity or protocol mechanism generates the income a holder receives?",
+   "root": false,
+   "p_none": 0.47
+  },
+  {
+   "id": "yield_distribution_mechanism",
+   "name": "Yield distribution mechanism",
+   "category": "asset",
+   "question": "How is yield delivered to holders: by changing balance, redemption ratio, price, or a separate asset?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "legal_classification",
+   "name": "Legal classification",
+   "category": "obligation_or_risk",
+   "question": "Under which legal or regulatory category does the crypto-asset or activity fall?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "technical_standard",
+   "name": "Technical standard",
+   "category": "technology",
+   "question": "Which technical template or token standard defines how the crypto-asset is issued and transferred?",
+   "root": false,
+   "p_none": 0.55
+  },
+  {
+   "id": "consensus_mechanism",
+   "name": "Consensus mechanism",
+   "category": "technology",
+   "question": "How do DLT network nodes agree that a transaction or block is validated?",
+   "root": false,
+   "p_none": 0.05
+  },
+  {
+   "id": "ledger_access_permissioning",
+   "name": "Ledger access and permissioning",
+   "category": "technology",
+   "question": "Who may read, write, validate or manage consensus on the distributed ledger (public, permissioned, private)?",
+   "root": false,
+   "p_none": 0.12
+  },
+  {
+   "id": "ledger_governance_model",
+   "name": "Ledger governance model",
+   "category": "technology",
+   "question": "Who sets, maintains or can change the rules of the blockchain system (decentralised, company, consortium, controlled)?",
+   "root": true,
+   "p_none": 0.6
+  },
+  {
+   "id": "custody_arrangement",
+   "name": "Custody arrangement",
+   "category": "activity",
+   "question": "Who holds and controls the cryptographic keys or assets: the user, a custodian, or a multi-party scheme?",
+   "root": false,
+   "p_none": 0.01
+  },
+  {
+   "id": "wallet_connectivity",
+   "name": "Wallet connectivity (hot vs cold)",
+   "category": "technology",
+   "question": "Is the wallet's key storage connected to the internet or kept offline?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "key_control_scheme",
+   "name": "Private key control scheme",
+   "category": "technology",
+   "question": "How is authority over a private key or wallet assets divided among one or more parties?",
+   "root": true,
+   "p_none": 0.26
+  },
+  {
+   "id": "service_activity_type",
+   "name": "Crypto-asset / VASP service activity type",
+   "category": "activity",
+   "question": "Which regulated crypto-asset service or VASP activity does the actor perform for others?",
+   "root": true,
+   "p_none": 0.12
+  },
+  {
+   "id": "vasp_status",
+   "name": "VASP / service provider status and authorisation",
+   "category": "actor",
+   "question": "Is the entity a regulated VASP or service provider, and is it licensed, registered or exempt?",
+   "root": true,
+   "p_none": 0.29
+  },
+  {
+   "id": "money_transmission_status",
+   "name": "Money transmission / MSB status",
+   "category": "obligation_or_risk",
+   "question": "Does the activity or actor constitute money transmission, making it a money transmitter or MSB?",
+   "root": true,
+   "p_none": 0.04
+  },
+  {
+   "id": "transaction_intermediation_mode",
+   "name": "Transaction intermediation mode (P2P vs intermediated)",
+   "category": "activity",
+   "question": "Does the transfer occur peer-to-peer or through a regulated intermediary or self-hosted address?",
+   "root": false,
+   "p_none": 0.04
+  },
+  {
+   "id": "fungibility",
+   "name": "Fungibility / uniqueness",
+   "category": "asset",
+   "question": "Is the token fungible and interchangeable unit-for-unit, or unique and non-fungible?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "anonymity_feature",
+   "name": "Transaction anonymity feature",
+   "category": "technology",
+   "question": "Does the token or transaction include built-in features that conceal transfer information?",
+   "root": false,
+   "p_none": 0.55
+  },
+  {
+   "id": "stablecoin_status",
+   "name": "Stablecoin status",
+   "category": "asset",
+   "question": "Does the token seek or purport to maintain a stable value relative to a reference?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "stabilisation_backing_reserve",
+   "name": "Reserve backing and redemption risk",
+   "category": "obligation_or_risk",
+   "question": "What reserve assets back the token, and do they suffice to redeem at peg value under stress?",
+   "root": false,
+   "p_none": 0.06
+  },
+  {
+   "id": "form_of_claim",
+   "name": "Form of claim (in personam / in rem)",
+   "category": "asset",
+   "question": "What is the holder's legal right — contractual against an issuer or reserve, property-type in rem, or none — and who gets the proceeds?",
+   "root": false,
+   "p_none": 0.06
+  },
+  {
+   "id": "tradfi_analogy",
+   "name": "TradFi analogy",
+   "category": "obligation_or_risk",
+   "question": "Which traditional financial instrument does the token most resemble for regulatory mapping?",
+   "root": false,
+   "p_none": 0.12
+  },
+  {
+   "id": "staking_participation_role",
+   "name": "Staking participation role",
+   "category": "actor",
+   "question": "What role does a participant take in staking or validation (self-run validator, delegator, staking-as-a-service, liquid staking)?",
+   "root": false,
+   "p_none": 0.15
+  },
+  {
+   "id": "validator_selection_model",
+   "name": "Validator selection and decentralisation of validation",
+   "category": "technology",
+   "question": "How are validators selected and how distributed is the validator set?",
+   "root": false,
+   "p_none": 0.05
+  },
+  {
+   "id": "network_topology",
+   "name": "Network topology and communication",
+   "category": "technology",
+   "question": "How are nodes interconnected and how does information propagate across them?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "ledger_data_structure",
+   "name": "Ledger data structure",
+   "category": "technology",
+   "question": "How is the distributed ledger organised: chain of blocks, distributed non-block form, or other?",
+   "root": true,
+   "p_none": 0.2
+  },
+  {
+   "id": "ledger_system_component",
+   "name": "Ledger system component and layer",
+   "category": "technology",
+   "question": "Which component of the DLT system (protocol, application, Layer 1/2, DeFi stack layer) is referred to?",
+   "root": false,
+   "p_none": 0.44
+  },
+  {
+   "id": "ledger_replication",
+   "name": "Ledger replication (complete vs partial)",
+   "category": "technology",
+   "question": "Do nodes hold complete or partial replicas of the ledger?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "smart_contract_execution",
+   "name": "Smart contract / automated execution",
+   "category": "technology",
+   "question": "Is the transaction or application executed automatically by code, and how expressive is the scripting language?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "cryptographic_basis_and_agility",
+   "name": "Cryptographic basis and agility",
+   "category": "technology",
+   "question": "What cryptography underpins the asset or system, and can algorithms be migrated?",
+   "root": false,
+   "p_none": 0.25
+  },
+  {
+   "id": "dlt_type_and_basis",
+   "name": "DLT / cryptographic asset basis",
+   "category": "technology",
+   "question": "Does the asset rely on cryptography and distributed ledger technology, or on another technology?",
+   "root": false,
+   "p_none": 0.26
+  },
+  {
+   "id": "transaction_fee_and_reward_model",
+   "name": "Transaction fee and validator reward model",
+   "category": "technology",
+   "question": "How are transaction fees and validator rewards structured?",
+   "root": false,
+   "p_none": 0.25
+  },
+  {
+   "id": "asset_supply_policy",
+   "name": "Asset supply policy",
+   "category": "asset",
+   "question": "How is the quantity of the asset created and bounded over time?",
+   "root": false,
+   "p_none": 0.45
+  },
+  {
+   "id": "native_vs_token",
+   "name": "Native coin versus token",
+   "category": "asset",
+   "question": "Does the asset run on its own blockchain (coin) or on an existing one (token)?",
+   "root": false,
+   "p_none": 0.05
+  },
+  {
+   "id": "tokenised_asset_class",
+   "name": "Underlying asset class of tokenised instruments",
+   "category": "asset",
+   "question": "What kind of underlying asset or right does the token represent?",
+   "root": false,
+   "p_none": 0.1
+  },
+  {
+   "id": "prudential_classification",
+   "name": "Prudential classification group",
+   "category": "obligation_or_risk",
+   "question": "What prudential treatment group applies to a bank's cryptoasset exposure?",
+   "root": false,
+   "p_none": 0.05
+  },
+  {
+   "id": "identity_and_kyc",
+   "name": "Identity and KYC layer",
+   "category": "obligation_or_risk",
+   "question": "How are participants identified on the network and are AML/KYC procedures applied?",
+   "root": false,
+   "p_none": 0.15
+  },
+  {
+   "id": "beneficial_ownership_and_control",
+   "name": "Beneficial ownership and control",
+   "category": "actor",
+   "question": "Who ultimately owns or controls a legal entity or arrangement?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "aml_risk_typology",
+   "name": "Illicit finance risk typology",
+   "category": "obligation_or_risk",
+   "question": "Which category of ML, TF, PF, sanctions or fraud risk does a VA activity relate to?",
+   "root": false,
+   "p_none": 0.26
+  },
+  {
+   "id": "aml_obligation_scope",
+   "name": "AML/CFT preventive obligation scope",
+   "category": "obligation_or_risk",
+   "question": "Which AML/CFT preventive obligations (CDD thresholds, travel rule, obliged-entity status) apply?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "freeze_and_burn_capability",
+   "name": "Issuer freeze and burn capability",
+   "category": "obligation_or_risk",
+   "question": "Can the issuer block, freeze, seize or burn tokens on authorities' request?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "regulated_entity_status",
+   "name": "Regulated entity status (service entities)",
+   "category": "actor",
+   "question": "Are entities performing redemption, transfer, storage or settlement regulated and supervised?",
+   "root": false,
+   "p_none": 0.1
+  },
+  {
+   "id": "payment_stablecoin_regime",
+   "name": "Payment stablecoin regime and issuer form",
+   "category": "actor",
+   "question": "What statutory status and legal form does a payment stablecoin issuer hold, and does it meet exemption criteria?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "offer_and_disclosure",
+   "name": "Offer, admission and disclosure",
+   "category": "obligation_or_risk",
+   "question": "Is the token offered to the public, and does the offer require a white paper or disclosure?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "consumer_risk_category",
+   "name": "Consumer and market risk category",
+   "category": "obligation_or_risk",
+   "question": "Which consumer or market risk (custody, fraud, cybersecurity, privacy, operational) does an ecosystem feature expose holders to?",
+   "root": false,
+   "p_none": 0.42
+  },
+  {
+   "id": "ict_incident_severity",
+   "name": "ICT incident severity and operational resilience",
+   "category": "obligation_or_risk",
+   "question": "How severe is an ICT incident or cyber threat, and does it breach the major or critical threshold?",
+   "root": false,
+   "p_none": 0.18
+  },
+  {
+   "id": "ict_risk_source",
+   "name": "ICT risk source and third-party dependence",
+   "category": "obligation_or_risk",
+   "question": "What kind of ICT risk, third-party dependency, or concentration risk is involved, and does it affect a critical function?",
+   "root": false,
+   "p_none": 0.55
+  },
+  {
+   "id": "settlement_finality",
+   "name": "Settlement finality and enforceability",
+   "category": "obligation_or_risk",
+   "question": "Are transfers and redemptions legally enforceable and final at a defined point?",
+   "root": true,
+   "p_none": 0.0
+  },
+  {
+   "id": "trading_venue_structure",
+   "name": "Trading venue architecture",
+   "category": "activity",
+   "question": "How is the trading venue organised (order-book, brokerage, kiosk, DEX, escrow)?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "holding_ledger_control",
+   "name": "Control over transfer and ownership",
+   "category": "activity",
+   "question": "Who has unilateral control of the asset and does the transfer change control?",
+   "root": false,
+   "p_none": 0.03
+  },
+  {
+   "id": "digital_asset_definition_scope",
+   "name": "Digital asset definitional scope",
+   "category": "asset",
+   "question": "Does the digital representation fall within the defined class of digital or crypto-assets?",
+   "root": false,
+   "p_none": 0.5
+  },
+  {
+   "id": "anonymity_and_traceability",
+   "name": "Transaction traceability",
+   "category": "obligation_or_risk",
+   "question": "Are transactions and participants traceable on the network?",
+   "root": false,
+   "p_none": 0.1
+  },
+  {
+   "id": "slashing_risk",
+   "name": "Slashing of staked collateral",
+   "category": "obligation_or_risk",
+   "question": "Is a validator's staked collateral forfeited for misbehaviour?",
+   "root": false,
+   "p_none": 0.55
+  },
+  {
+   "id": "decentralised_governance_status",
+   "name": "Decentralised governance system status",
+   "category": "actor",
+   "question": "Is the governing actor a decentralised governance system excluded from issuer or affiliate treatment?",
+   "root": false,
+   "p_none": 0.33
+  },
+  {
+   "id": "entity_legal_form",
+   "name": "Legal form of governance entity",
+   "category": "actor",
+   "question": "Under what legal form does a decentralised governance entity operate?",
+   "root": false,
+   "p_none": 0.15
+  },
+  {
+   "id": "wallet_owner_type",
+   "name": "Wallet owner type",
+   "category": "actor",
+   "question": "Is the wallet owner a user, an agent of the host, or a financial institution?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "principal_agent_capacity",
+   "name": "Principal or agent capacity",
+   "category": "activity",
+   "question": "Does the provider trade on its own account or for a client?",
+   "root": false,
+   "p_none": 0.06
+  },
+  {
+   "id": "digital_commodity_classification",
+   "name": "Digital commodity classification",
+   "category": "asset",
+   "question": "Is the asset a digital commodity linked to a blockchain system, or another digital asset?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "end_user_distribution",
+   "name": "End user distribution status",
+   "category": "asset",
+   "question": "Is the distribution broad and tied to network operation (end user distribution)?",
+   "root": false,
+   "p_none": 0.06
+  },
+  {
+   "id": "q0_network_token_characteristic",
+   "name": "Network token value source",
+   "category": "asset",
+   "question": "Is the token's market value primarily derived from the distributed ledger system and its adoption, or from another source?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "q2_stabilisation_mechanism",
+   "name": "Stabilisation mechanism",
+   "category": "asset",
+   "question": "How does a stablecoin defend its peg value?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "q2_cvc_substitute_for_currency",
+   "name": "Currency substitution (CVC status)",
+   "category": "asset",
+   "question": "Does the virtual currency act as, or have equivalent value to, currency?",
+   "root": false,
+   "p_none": 0.09
+  },
+  {
+   "id": "q3_data_structure_type",
+   "name": "Token business and collateral structure",
+   "category": "obligation_or_risk",
+   "question": "What regulatory obligations (custody, capitalisation, licensing) and risks follow from the classification of the asset?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "q5_security_status_test_prong",
+   "name": "Howey investment contract elements",
+   "category": "obligation_or_risk",
+   "question": "Which elements of the Howey test (investment of money, common enterprise, expectation of profits, reliance on others' efforts) does an asset satisfy?",
+   "root": false,
+   "p_none": 0.05
+  },
+  {
+   "id": "q8_service_provider_activity",
+   "name": "Digital asset service activity type",
+   "category": "activity",
+   "question": "Which regulated activity does a digital asset service provider perform?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "q8_ancillary_asset_relation_to_originator",
+   "name": "Relationship of holder to ancillary asset originator (related person)",
+   "category": "actor",
+   "question": "Does a person have an insider relationship (founder, officer, large holder) with the ancillary asset originator or asset?",
+   "root": false,
+   "p_none": 0.06
+  },
+  {
+   "id": "q9_legal_classification_basis",
+   "name": "Basis of legal classification (economic function and rights)",
+   "category": "asset",
+   "question": "What economic function and rights determine how the asset is classified?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "q11_key_control_scheme",
+   "name": "Private key control scheme",
+   "category": "technology",
+   "question": "How is authority over a wallet's private key divided among one or more parties?",
+   "root": false,
+   "p_none": 0.03
+  },
+  {
+   "id": "q11_payment_or_transaction_purpose",
+   "name": "Purpose of a transaction (payment, trading, or validation)",
+   "category": "activity",
+   "question": "Is the crypto-asset activity carried on as a regular business dealing, a payment, or infrastructure participation?",
+   "root": false,
+   "p_none": 0.03
+  },
+  {
+   "id": "q13_redemption_obligation",
+   "name": "Redemption right and redeemer",
+   "category": "obligation_or_risk",
+   "question": "Who may redeem a stabilised cryptoasset for the traditional asset, and under what obligations?",
+   "root": false,
+   "p_none": 0.06
+  },
+  {
+   "id": "q14_wallet_form_factor",
+   "name": "Wallet technology form (software, hardware, mobile)",
+   "category": "technology",
+   "question": "What technological form does the wallet take and how is value stored locally or externally?",
+   "root": false,
+   "p_none": 0.7
+  },
+  {
+   "id": "q15_interoperability_mode",
+   "name": "Interoperability mode",
+   "category": "technology",
+   "question": "How, if at all, can a blockchain exchange information with systems outside itself or with other blockchains?",
+   "root": false,
+   "p_none": 0.13
+  },
+  {
+   "id": "q15_cross_chain_bridge_model",
+   "name": "Cross-chain bridge / connection model",
+   "category": "technology",
+   "question": "What mechanism is used to connect a blockchain with other blockchains when it lacks native intraoperability?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "q16_reporting_status",
+   "name": "Reporting cryptoasset service provider status",
+   "category": "obligation_or_risk",
+   "question": "Is the provider subject to tax reporting and due diligence obligations in the UK, and is it exempt?",
+   "root": false,
+   "p_none": 0.55
+  },
+  {
+   "id": "q18_money_transmission_status",
+   "name": "Money transmitter / MSB status",
+   "category": "obligation_or_risk",
+   "question": "Does the activity constitute money transmission under the BSA, making the actor a money services business?",
+   "root": false,
+   "p_none": 0.02
+  },
+  {
+   "id": "q23_critical_resource_control",
+   "name": "Critical resource control subdimension",
+   "category": "technology",
+   "question": "Which specific control points (rule change, minting, reserves, rewards, distribution, exchange listing, transparency) are held by whom?",
+   "root": false,
+   "p_none": 0.25
+  },
+  {
+   "id": "q23_decentralisation_of_application",
+   "name": "Application control status (DApp / DeFi)",
+   "category": "technology",
+   "question": "Is a software application controlled by an identifiable administrator or operated without one?",
+   "root": false,
+   "p_none": 0.05
+  },
+  {
+   "id": "q30_token_type_on_chain_function",
+   "name": "Crypto-asset categories (token type)",
+   "category": "asset",
+   "question": "What kind of crypto-asset is it, in terms of its function or the form in which it is distributed?",
+   "root": false,
+   "p_none": 0.07
+  }
+ ],
+ "edges": [
+  {
+   "child": "issuer_type",
+   "parent": "vasp_status",
+   "probability": 0.5556
+  },
+  {
+   "child": "centralisation_level",
+   "parent": "q9_legal_classification_basis",
+   "probability": 0.2857
+  },
+  {
+   "child": "centralisation_level",
+   "parent": "asset_function",
+   "probability": 0.2857
+  },
+  {
+   "child": "centralisation_level",
+   "parent": "form_of_claim",
+   "probability": 0.2143
+  },
+  {
+   "child": "centralisation_level",
+   "parent": "q30_token_type_on_chain_function",
+   "probability": 0.1429
+  },
+  {
+   "child": "centralisation_level",
+   "parent": "reference_asset",
+   "probability": 0.0714
+  },
+  {
+   "child": "asset_function",
+   "parent": "stablecoin_status",
+   "probability": 0.2152
+  },
+  {
+   "child": "redemption_mechanism",
+   "parent": "custody_arrangement",
+   "probability": 0.4565
+  },
+  {
+   "child": "redemption_mechanism",
+   "parent": "holding_ledger_control",
+   "probability": 0.2174
+  },
+  {
+   "child": "redemption_mechanism",
+   "parent": "service_activity_type",
+   "probability": 0.1522
+  },
+  {
+   "child": "redemption_mechanism",
+   "parent": "transaction_intermediation_mode",
+   "probability": 0.1087
+  },
+  {
+   "child": "redemption_mechanism",
+   "parent": "trading_venue_structure",
+   "probability": 0.0652
+  },
+  {
+   "child": "yield_source",
+   "parent": "asset_function",
+   "probability": 0.3774
+  },
+  {
+   "child": "yield_source",
+   "parent": "q9_legal_classification_basis",
+   "probability": 0.2264
+  },
+  {
+   "child": "yield_source",
+   "parent": "q0_network_token_characteristic",
+   "probability": 0.1509
+  },
+  {
+   "child": "yield_distribution_mechanism",
+   "parent": "yield_source",
+   "probability": 0.5915
+  },
+  {
+   "child": "yield_distribution_mechanism",
+   "parent": "asset_function",
+   "probability": 0.0645
+  },
+  {
+   "child": "legal_classification",
+   "parent": "q18_money_transmission_status",
+   "probability": 0.4301
+  },
+  {
+   "child": "legal_classification",
+   "parent": "money_transmission_status",
+   "probability": 0.2688
+  },
+  {
+   "child": "technical_standard",
+   "parent": "dlt_type_and_basis",
+   "probability": 0.4445
+  },
+  {
+   "child": "technical_standard",
+   "parent": "cryptographic_basis_and_agility",
+   "probability": 0.2222
+  },
+  {
+   "child": "technical_standard",
+   "parent": "ledger_system_component",
+   "probability": 0.1778
+  },
+  {
+   "child": "technical_standard",
+   "parent": "smart_contract_execution",
+   "probability": 0.1111
+  },
+  {
+   "child": "technical_standard",
+   "parent": "consensus_mechanism",
+   "probability": 0.0444
+  },
+  {
+   "child": "consensus_mechanism",
+   "parent": "ledger_data_structure",
+   "probability": 0.3158
+  },
+  {
+   "child": "consensus_mechanism",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.2316
+  },
+  {
+   "child": "consensus_mechanism",
+   "parent": "ledger_governance_model",
+   "probability": 0.1579
+  },
+  {
+   "child": "ledger_access_permissioning",
+   "parent": "ledger_governance_model",
+   "probability": 0.4773
+  },
+  {
+   "child": "custody_arrangement",
+   "parent": "service_activity_type",
+   "probability": 0.303
+  },
+  {
+   "child": "wallet_connectivity",
+   "parent": "key_control_scheme",
+   "probability": 0.5195
+  },
+  {
+   "child": "wallet_connectivity",
+   "parent": "q23_critical_resource_control",
+   "probability": 0.0649
+  },
+  {
+   "child": "wallet_connectivity",
+   "parent": "transaction_fee_and_reward_model",
+   "probability": 0.026
+  },
+  {
+   "child": "transaction_intermediation_mode",
+   "parent": "custody_arrangement",
+   "probability": 0.4376
+  },
+  {
+   "child": "transaction_intermediation_mode",
+   "parent": "service_activity_type",
+   "probability": 0.2604
+  },
+  {
+   "child": "transaction_intermediation_mode",
+   "parent": "holding_ledger_control",
+   "probability": 0.1562
+  },
+  {
+   "child": "fungibility",
+   "parent": "asset_function",
+   "probability": 0.5556
+  },
+  {
+   "child": "fungibility",
+   "parent": "digital_asset_definition_scope",
+   "probability": 0.3086
+  },
+  {
+   "child": "fungibility",
+   "parent": "q9_legal_classification_basis",
+   "probability": 0.0741
+  },
+  {
+   "child": "anonymity_feature",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.3999
+  },
+  {
+   "child": "anonymity_feature",
+   "parent": "dlt_type_and_basis",
+   "probability": 0.2667
+  },
+  {
+   "child": "anonymity_feature",
+   "parent": "cryptographic_basis_and_agility",
+   "probability": 0.1778
+  },
+  {
+   "child": "anonymity_feature",
+   "parent": "ledger_replication",
+   "probability": 0.0889
+  },
+  {
+   "child": "anonymity_feature",
+   "parent": "ledger_governance_model",
+   "probability": 0.0667
+  },
+  {
+   "child": "stablecoin_status",
+   "parent": "reference_asset",
+   "probability": 0.5979
+  },
+  {
+   "child": "stablecoin_status",
+   "parent": "q2_stabilisation_mechanism",
+   "probability": 0.2174
+  },
+  {
+   "child": "stabilisation_backing_reserve",
+   "parent": "legal_classification",
+   "probability": 0.4468
+  },
+  {
+   "child": "stabilisation_backing_reserve",
+   "parent": "settlement_finality",
+   "probability": 0.0851
+  },
+  {
+   "child": "form_of_claim",
+   "parent": "asset_function",
+   "probability": 0.4468
+  },
+  {
+   "child": "form_of_claim",
+   "parent": "yield_distribution_mechanism",
+   "probability": 0.2128
+  },
+  {
+   "child": "form_of_claim",
+   "parent": "reference_asset",
+   "probability": 0.1489
+  },
+  {
+   "child": "form_of_claim",
+   "parent": "q9_legal_classification_basis",
+   "probability": 0.0851
+  },
+  {
+   "child": "tradfi_analogy",
+   "parent": "legal_classification",
+   "probability": 0.5681
+  },
+  {
+   "child": "tradfi_analogy",
+   "parent": "stabilisation_backing_reserve",
+   "probability": 0.1705
+  },
+  {
+   "child": "tradfi_analogy",
+   "parent": "q3_data_structure_type",
+   "probability": 0.1364
+  },
+  {
+   "child": "tradfi_analogy",
+   "parent": "q18_money_transmission_status",
+   "probability": 0.0455
+  },
+  {
+   "child": "staking_participation_role",
+   "parent": "vasp_status",
+   "probability": 0.353
+  },
+  {
+   "child": "staking_participation_role",
+   "parent": "beneficial_ownership_and_control",
+   "probability": 0.2353
+  },
+  {
+   "child": "staking_participation_role",
+   "parent": "wallet_owner_type",
+   "probability": 0.1765
+  },
+  {
+   "child": "staking_participation_role",
+   "parent": "regulated_entity_status",
+   "probability": 0.1176
+  },
+  {
+   "child": "staking_participation_role",
+   "parent": "issuer_type",
+   "probability": 0.0588
+  },
+  {
+   "child": "staking_participation_role",
+   "parent": "decentralised_governance_status",
+   "probability": 0.0588
+  },
+  {
+   "child": "validator_selection_model",
+   "parent": "consensus_mechanism",
+   "probability": 0.579
+  },
+  {
+   "child": "validator_selection_model",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.2105
+  },
+  {
+   "child": "validator_selection_model",
+   "parent": "ledger_governance_model",
+   "probability": 0.1263
+  },
+  {
+   "child": "network_topology",
+   "parent": "consensus_mechanism",
+   "probability": 0.525
+  },
+  {
+   "child": "network_topology",
+   "parent": "validator_selection_model",
+   "probability": 0.125
+  },
+  {
+   "child": "network_topology",
+   "parent": "ledger_governance_model",
+   "probability": 0.125
+  },
+  {
+   "child": "network_topology",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.125
+  },
+  {
+   "child": "ledger_system_component",
+   "parent": "ledger_data_structure",
+   "probability": 0.3571
+  },
+  {
+   "child": "ledger_system_component",
+   "parent": "q23_decentralisation_of_application",
+   "probability": 0.1786
+  },
+  {
+   "child": "ledger_system_component",
+   "parent": "ledger_governance_model",
+   "probability": 0.1071
+  },
+  {
+   "child": "ledger_system_component",
+   "parent": "dlt_type_and_basis",
+   "probability": 0.0893
+  },
+  {
+   "child": "ledger_replication",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.275
+  },
+  {
+   "child": "ledger_replication",
+   "parent": "network_topology",
+   "probability": 0.25
+  },
+  {
+   "child": "ledger_replication",
+   "parent": "ledger_data_structure",
+   "probability": 0.25
+  },
+  {
+   "child": "ledger_replication",
+   "parent": "validator_selection_model",
+   "probability": 0.125
+  },
+  {
+   "child": "ledger_replication",
+   "parent": "ledger_system_component",
+   "probability": 0.1
+  },
+  {
+   "child": "smart_contract_execution",
+   "parent": "ledger_system_component",
+   "probability": 0.375
+  },
+  {
+   "child": "smart_contract_execution",
+   "parent": "q23_decentralisation_of_application",
+   "probability": 0.25
+  },
+  {
+   "child": "smart_contract_execution",
+   "parent": "ledger_governance_model",
+   "probability": 0.25
+  },
+  {
+   "child": "cryptographic_basis_and_agility",
+   "parent": "dlt_type_and_basis",
+   "probability": 0.7333
+  },
+  {
+   "child": "cryptographic_basis_and_agility",
+   "parent": "ledger_data_structure",
+   "probability": 0.0667
+  },
+  {
+   "child": "cryptographic_basis_and_agility",
+   "parent": "consensus_mechanism",
+   "probability": 0.0667
+  },
+  {
+   "child": "dlt_type_and_basis",
+   "parent": "ledger_data_structure",
+   "probability": 0.4054
+  },
+  {
+   "child": "dlt_type_and_basis",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.1622
+  },
+  {
+   "child": "transaction_fee_and_reward_model",
+   "parent": "consensus_mechanism",
+   "probability": 0.7334
+  },
+  {
+   "child": "transaction_fee_and_reward_model",
+   "parent": "validator_selection_model",
+   "probability": 0.1333
+  },
+  {
+   "child": "transaction_fee_and_reward_model",
+   "parent": "q23_critical_resource_control",
+   "probability": 0.08
+  },
+  {
+   "child": "transaction_fee_and_reward_model",
+   "parent": "smart_contract_execution",
+   "probability": 0.0533
+  },
+  {
+   "child": "asset_supply_policy",
+   "parent": "q2_stabilisation_mechanism",
+   "probability": 0.3333
+  },
+  {
+   "child": "asset_supply_policy",
+   "parent": "yield_source",
+   "probability": 0.2222
+  },
+  {
+   "child": "asset_supply_policy",
+   "parent": "native_vs_token",
+   "probability": 0.1778
+  },
+  {
+   "child": "asset_supply_policy",
+   "parent": "centralisation_level",
+   "probability": 0.1556
+  },
+  {
+   "child": "asset_supply_policy",
+   "parent": "digital_asset_definition_scope",
+   "probability": 0.1111
+  },
+  {
+   "child": "native_vs_token",
+   "parent": "q30_token_type_on_chain_function",
+   "probability": 0.5263
+  },
+  {
+   "child": "native_vs_token",
+   "parent": "asset_function",
+   "probability": 0.1579
+  },
+  {
+   "child": "tokenised_asset_class",
+   "parent": "asset_function",
+   "probability": 0.3334
+  },
+  {
+   "child": "tokenised_asset_class",
+   "parent": "reference_asset",
+   "probability": 0.2222
+  },
+  {
+   "child": "tokenised_asset_class",
+   "parent": "q9_legal_classification_basis",
+   "probability": 0.2222
+  },
+  {
+   "child": "tokenised_asset_class",
+   "parent": "q30_token_type_on_chain_function",
+   "probability": 0.1111
+  },
+  {
+   "child": "tokenised_asset_class",
+   "parent": "digital_commodity_classification",
+   "probability": 0.1111
+  },
+  {
+   "child": "prudential_classification",
+   "parent": "stabilisation_backing_reserve",
+   "probability": 0.442
+  },
+  {
+   "child": "prudential_classification",
+   "parent": "legal_classification",
+   "probability": 0.2632
+  },
+  {
+   "child": "prudential_classification",
+   "parent": "settlement_finality",
+   "probability": 0.1263
+  },
+  {
+   "child": "prudential_classification",
+   "parent": "q3_data_structure_type",
+   "probability": 0.0632
+  },
+  {
+   "child": "identity_and_kyc",
+   "parent": "aml_obligation_scope",
+   "probability": 0.4941
+  },
+  {
+   "child": "identity_and_kyc",
+   "parent": "anonymity_and_traceability",
+   "probability": 0.2353
+  },
+  {
+   "child": "identity_and_kyc",
+   "parent": "aml_risk_typology",
+   "probability": 0.1412
+  },
+  {
+   "child": "identity_and_kyc",
+   "parent": "legal_classification",
+   "probability": 0.0706
+  },
+  {
+   "child": "beneficial_ownership_and_control",
+   "parent": "vasp_status",
+   "probability": 0.275
+  },
+  {
+   "child": "beneficial_ownership_and_control",
+   "parent": "issuer_type",
+   "probability": 0.1875
+  },
+  {
+   "child": "beneficial_ownership_and_control",
+   "parent": "regulated_entity_status",
+   "probability": 0.125
+  },
+  {
+   "child": "beneficial_ownership_and_control",
+   "parent": "decentralised_governance_status",
+   "probability": 0.1
+  },
+  {
+   "child": "beneficial_ownership_and_control",
+   "parent": "payment_stablecoin_regime",
+   "probability": 0.0625
+  },
+  {
+   "child": "aml_risk_typology",
+   "parent": "money_transmission_status",
+   "probability": 0.2973
+  },
+  {
+   "child": "aml_risk_typology",
+   "parent": "aml_obligation_scope",
+   "probability": 0.2703
+  },
+  {
+   "child": "aml_risk_typology",
+   "parent": "legal_classification",
+   "probability": 0.1622
+  },
+  {
+   "child": "aml_risk_typology",
+   "parent": "q18_money_transmission_status",
+   "probability": 0.1351
+  },
+  {
+   "child": "aml_obligation_scope",
+   "parent": "legal_classification",
+   "probability": 0.2941
+  },
+  {
+   "child": "aml_obligation_scope",
+   "parent": "money_transmission_status",
+   "probability": 0.2451
+  },
+  {
+   "child": "aml_obligation_scope",
+   "parent": "q18_money_transmission_status",
+   "probability": 0.1961
+  },
+  {
+   "child": "freeze_and_burn_capability",
+   "parent": "stabilisation_backing_reserve",
+   "probability": 0.3764
+  },
+  {
+   "child": "freeze_and_burn_capability",
+   "parent": "aml_obligation_scope",
+   "probability": 0.2688
+  },
+  {
+   "child": "freeze_and_burn_capability",
+   "parent": "aml_risk_typology",
+   "probability": 0.1613
+  },
+  {
+   "child": "freeze_and_burn_capability",
+   "parent": "consumer_risk_category",
+   "probability": 0.1075
+  },
+  {
+   "child": "freeze_and_burn_capability",
+   "parent": "legal_classification",
+   "probability": 0.086
+  },
+  {
+   "child": "regulated_entity_status",
+   "parent": "vasp_status",
+   "probability": 0.6667
+  },
+  {
+   "child": "regulated_entity_status",
+   "parent": "issuer_type",
+   "probability": 0.2222
+  },
+  {
+   "child": "payment_stablecoin_regime",
+   "parent": "issuer_type",
+   "probability": 0.6739
+  },
+  {
+   "child": "payment_stablecoin_regime",
+   "parent": "regulated_entity_status",
+   "probability": 0.2174
+  },
+  {
+   "child": "payment_stablecoin_regime",
+   "parent": "vasp_status",
+   "probability": 0.1087
+  },
+  {
+   "child": "offer_and_disclosure",
+   "parent": "legal_classification",
+   "probability": 0.5979
+  },
+  {
+   "child": "offer_and_disclosure",
+   "parent": "tradfi_analogy",
+   "probability": 0.1304
+  },
+  {
+   "child": "offer_and_disclosure",
+   "parent": "q5_security_status_test_prong",
+   "probability": 0.1304
+  },
+  {
+   "child": "offer_and_disclosure",
+   "parent": "aml_obligation_scope",
+   "probability": 0.087
+  },
+  {
+   "child": "offer_and_disclosure",
+   "parent": "stabilisation_backing_reserve",
+   "probability": 0.0543
+  },
+  {
+   "child": "consumer_risk_category",
+   "parent": "identity_and_kyc",
+   "probability": 0.1724
+  },
+  {
+   "child": "consumer_risk_category",
+   "parent": "anonymity_and_traceability",
+   "probability": 0.1379
+  },
+  {
+   "child": "consumer_risk_category",
+   "parent": "q18_money_transmission_status",
+   "probability": 0.069
+  },
+  {
+   "child": "consumer_risk_category",
+   "parent": "aml_risk_typology",
+   "probability": 0.0517
+  },
+  {
+   "child": "ict_incident_severity",
+   "parent": "ict_risk_source",
+   "probability": 0.7561
+  },
+  {
+   "child": "ict_incident_severity",
+   "parent": "consumer_risk_category",
+   "probability": 0.2439
+  },
+  {
+   "child": "ict_risk_source",
+   "parent": "consumer_risk_category",
+   "probability": 0.4446
+  },
+  {
+   "child": "ict_risk_source",
+   "parent": "q18_money_transmission_status",
+   "probability": 0.0444
+  },
+  {
+   "child": "ict_risk_source",
+   "parent": "aml_obligation_scope",
+   "probability": 0.0444
+  },
+  {
+   "child": "ict_risk_source",
+   "parent": "settlement_finality",
+   "probability": 0.0222
+  },
+  {
+   "child": "trading_venue_structure",
+   "parent": "service_activity_type",
+   "probability": 0.5435
+  },
+  {
+   "child": "trading_venue_structure",
+   "parent": "transaction_intermediation_mode",
+   "probability": 0.2174
+  },
+  {
+   "child": "trading_venue_structure",
+   "parent": "q8_service_provider_activity",
+   "probability": 0.1304
+  },
+  {
+   "child": "trading_venue_structure",
+   "parent": "holding_ledger_control",
+   "probability": 0.0652
+  },
+  {
+   "child": "holding_ledger_control",
+   "parent": "custody_arrangement",
+   "probability": 0.464
+  },
+  {
+   "child": "holding_ledger_control",
+   "parent": "service_activity_type",
+   "probability": 0.2577
+  },
+  {
+   "child": "digital_asset_definition_scope",
+   "parent": "asset_function",
+   "probability": 0.4
+  },
+  {
+   "child": "anonymity_and_traceability",
+   "parent": "aml_obligation_scope",
+   "probability": 0.4444
+  },
+  {
+   "child": "anonymity_and_traceability",
+   "parent": "aml_risk_typology",
+   "probability": 0.2222
+  },
+  {
+   "child": "slashing_risk",
+   "parent": "consumer_risk_category",
+   "probability": 0.4444
+  },
+  {
+   "child": "slashing_risk",
+   "parent": "q3_data_structure_type",
+   "probability": 0.2222
+  },
+  {
+   "child": "slashing_risk",
+   "parent": "ict_risk_source",
+   "probability": 0.1778
+  },
+  {
+   "child": "slashing_risk",
+   "parent": "stabilisation_backing_reserve",
+   "probability": 0.0889
+  },
+  {
+   "child": "slashing_risk",
+   "parent": "legal_classification",
+   "probability": 0.0667
+  },
+  {
+   "child": "decentralised_governance_status",
+   "parent": "issuer_type",
+   "probability": 0.4477
+  },
+  {
+   "child": "decentralised_governance_status",
+   "parent": "vasp_status",
+   "probability": 0.2985
+  },
+  {
+   "child": "entity_legal_form",
+   "parent": "decentralised_governance_status",
+   "probability": 0.7294
+  },
+  {
+   "child": "entity_legal_form",
+   "parent": "beneficial_ownership_and_control",
+   "probability": 0.1412
+  },
+  {
+   "child": "entity_legal_form",
+   "parent": "vasp_status",
+   "probability": 0.0706
+  },
+  {
+   "child": "entity_legal_form",
+   "parent": "issuer_type",
+   "probability": 0.0588
+  },
+  {
+   "child": "wallet_owner_type",
+   "parent": "vasp_status",
+   "probability": 0.4565
+  },
+  {
+   "child": "wallet_owner_type",
+   "parent": "regulated_entity_status",
+   "probability": 0.1957
+  },
+  {
+   "child": "wallet_owner_type",
+   "parent": "beneficial_ownership_and_control",
+   "probability": 0.1522
+  },
+  {
+   "child": "wallet_owner_type",
+   "parent": "issuer_type",
+   "probability": 0.1087
+  },
+  {
+   "child": "wallet_owner_type",
+   "parent": "q8_ancillary_asset_relation_to_originator",
+   "probability": 0.0326
+  },
+  {
+   "child": "principal_agent_capacity",
+   "parent": "service_activity_type",
+   "probability": 0.6595
+  },
+  {
+   "child": "principal_agent_capacity",
+   "parent": "q8_service_provider_activity",
+   "probability": 0.1277
+  },
+  {
+   "child": "principal_agent_capacity",
+   "parent": "trading_venue_structure",
+   "probability": 0.1064
+  },
+  {
+   "child": "principal_agent_capacity",
+   "parent": "holding_ledger_control",
+   "probability": 0.0638
+  },
+  {
+   "child": "principal_agent_capacity",
+   "parent": "custody_arrangement",
+   "probability": 0.0426
+  },
+  {
+   "child": "digital_commodity_classification",
+   "parent": "asset_function",
+   "probability": 0.4301
+  },
+  {
+   "child": "digital_commodity_classification",
+   "parent": "q30_token_type_on_chain_function",
+   "probability": 0.2151
+  },
+  {
+   "child": "digital_commodity_classification",
+   "parent": "native_vs_token",
+   "probability": 0.1613
+  },
+  {
+   "child": "digital_commodity_classification",
+   "parent": "q9_legal_classification_basis",
+   "probability": 0.086
+  },
+  {
+   "child": "end_user_distribution",
+   "parent": "asset_supply_policy",
+   "probability": 0.4469
+  },
+  {
+   "child": "end_user_distribution",
+   "parent": "digital_commodity_classification",
+   "probability": 0.2553
+  },
+  {
+   "child": "end_user_distribution",
+   "parent": "yield_source",
+   "probability": 0.1489
+  },
+  {
+   "child": "end_user_distribution",
+   "parent": "q30_token_type_on_chain_function",
+   "probability": 0.0851
+  },
+  {
+   "child": "end_user_distribution",
+   "parent": "asset_function",
+   "probability": 0.0638
+  },
+  {
+   "child": "q0_network_token_characteristic",
+   "parent": "asset_function",
+   "probability": 0.4348
+  },
+  {
+   "child": "q0_network_token_characteristic",
+   "parent": "digital_commodity_classification",
+   "probability": 0.3261
+  },
+  {
+   "child": "q0_network_token_characteristic",
+   "parent": "digital_asset_definition_scope",
+   "probability": 0.1087
+  },
+  {
+   "child": "q2_stabilisation_mechanism",
+   "parent": "reference_asset",
+   "probability": 0.5914
+  },
+  {
+   "child": "q2_cvc_substitute_for_currency",
+   "parent": "asset_function",
+   "probability": 0.48
+  },
+  {
+   "child": "q2_cvc_substitute_for_currency",
+   "parent": "stablecoin_status",
+   "probability": 0.2667
+  },
+  {
+   "child": "q2_cvc_substitute_for_currency",
+   "parent": "reference_asset",
+   "probability": 0.16
+  },
+  {
+   "child": "q2_cvc_substitute_for_currency",
+   "parent": "q9_legal_classification_basis",
+   "probability": 0.0933
+  },
+  {
+   "child": "q3_data_structure_type",
+   "parent": "legal_classification",
+   "probability": 0.5376
+  },
+  {
+   "child": "q3_data_structure_type",
+   "parent": "stabilisation_backing_reserve",
+   "probability": 0.2151
+  },
+  {
+   "child": "q3_data_structure_type",
+   "parent": "aml_obligation_scope",
+   "probability": 0.1075
+  },
+  {
+   "child": "q3_data_structure_type",
+   "parent": "settlement_finality",
+   "probability": 0.086
+  },
+  {
+   "child": "q3_data_structure_type",
+   "parent": "money_transmission_status",
+   "probability": 0.0538
+  },
+  {
+   "child": "q5_security_status_test_prong",
+   "parent": "legal_classification",
+   "probability": 0.5789
+  },
+  {
+   "child": "q5_security_status_test_prong",
+   "parent": "q3_data_structure_type",
+   "probability": 0.1579
+  },
+  {
+   "child": "q5_security_status_test_prong",
+   "parent": "tradfi_analogy",
+   "probability": 0.1053
+  },
+  {
+   "child": "q5_security_status_test_prong",
+   "parent": "money_transmission_status",
+   "probability": 0.0737
+  },
+  {
+   "child": "q8_service_provider_activity",
+   "parent": "service_activity_type",
+   "probability": 0.6667
+  },
+  {
+   "child": "q8_service_provider_activity",
+   "parent": "custody_arrangement",
+   "probability": 0.1075
+  },
+  {
+   "child": "q8_service_provider_activity",
+   "parent": "transaction_intermediation_mode",
+   "probability": 0.086
+  },
+  {
+   "child": "q8_ancillary_asset_relation_to_originator",
+   "parent": "beneficial_ownership_and_control",
+   "probability": 0.5319
+  },
+  {
+   "child": "q8_ancillary_asset_relation_to_originator",
+   "parent": "issuer_type",
+   "probability": 0.3191
+  },
+  {
+   "child": "q8_ancillary_asset_relation_to_originator",
+   "parent": "decentralised_governance_status",
+   "probability": 0.1064
+  },
+  {
+   "child": "q8_ancillary_asset_relation_to_originator",
+   "parent": "vasp_status",
+   "probability": 0.0426
+  },
+  {
+   "child": "q9_legal_classification_basis",
+   "parent": "asset_function",
+   "probability": 0.5376
+  },
+  {
+   "child": "q9_legal_classification_basis",
+   "parent": "digital_asset_definition_scope",
+   "probability": 0.1075
+  },
+  {
+   "child": "q11_key_control_scheme",
+   "parent": "key_control_scheme",
+   "probability": 0.9588
+  },
+  {
+   "child": "q11_key_control_scheme",
+   "parent": "wallet_connectivity",
+   "probability": 0.0206
+  },
+  {
+   "child": "q11_key_control_scheme",
+   "parent": "q14_wallet_form_factor",
+   "probability": 0.0206
+  },
+  {
+   "child": "q11_payment_or_transaction_purpose",
+   "parent": "principal_agent_capacity",
+   "probability": 0.3917
+  },
+  {
+   "child": "q11_payment_or_transaction_purpose",
+   "parent": "service_activity_type",
+   "probability": 0.2268
+  },
+  {
+   "child": "q11_payment_or_transaction_purpose",
+   "parent": "transaction_intermediation_mode",
+   "probability": 0.1753
+  },
+  {
+   "child": "q11_payment_or_transaction_purpose",
+   "parent": "q8_service_provider_activity",
+   "probability": 0.1031
+  },
+  {
+   "child": "q11_payment_or_transaction_purpose",
+   "parent": "custody_arrangement",
+   "probability": 0.0619
+  },
+  {
+   "child": "q11_payment_or_transaction_purpose",
+   "parent": "redemption_mechanism",
+   "probability": 0.0412
+  },
+  {
+   "child": "q13_redemption_obligation",
+   "parent": "stabilisation_backing_reserve",
+   "probability": 0.4468
+  },
+  {
+   "child": "q13_redemption_obligation",
+   "parent": "legal_classification",
+   "probability": 0.2128
+  },
+  {
+   "child": "q13_redemption_obligation",
+   "parent": "settlement_finality",
+   "probability": 0.1702
+  },
+  {
+   "child": "q13_redemption_obligation",
+   "parent": "prudential_classification",
+   "probability": 0.1064
+  },
+  {
+   "child": "q13_redemption_obligation",
+   "parent": "freeze_and_burn_capability",
+   "probability": 0.0638
+  },
+  {
+   "child": "q14_wallet_form_factor",
+   "parent": "wallet_connectivity",
+   "probability": 0.5455
+  },
+  {
+   "child": "q14_wallet_form_factor",
+   "parent": "key_control_scheme",
+   "probability": 0.4545
+  },
+  {
+   "child": "q15_interoperability_mode",
+   "parent": "smart_contract_execution",
+   "probability": 0.6323
+  },
+  {
+   "child": "q15_interoperability_mode",
+   "parent": "ledger_system_component",
+   "probability": 0.1379
+  },
+  {
+   "child": "q15_interoperability_mode",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.1149
+  },
+  {
+   "child": "q15_cross_chain_bridge_model",
+   "parent": "q15_interoperability_mode",
+   "probability": 0.7848
+  },
+  {
+   "child": "q15_cross_chain_bridge_model",
+   "parent": "ledger_governance_model",
+   "probability": 0.0633
+  },
+  {
+   "child": "q15_cross_chain_bridge_model",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.0633
+  },
+  {
+   "child": "q15_cross_chain_bridge_model",
+   "parent": "q23_critical_resource_control",
+   "probability": 0.0506
+  },
+  {
+   "child": "q15_cross_chain_bridge_model",
+   "parent": "dlt_type_and_basis",
+   "probability": 0.038
+  },
+  {
+   "child": "q16_reporting_status",
+   "parent": "aml_obligation_scope",
+   "probability": 0.4445
+  },
+  {
+   "child": "q16_reporting_status",
+   "parent": "legal_classification",
+   "probability": 0.3333
+  },
+  {
+   "child": "q16_reporting_status",
+   "parent": "q18_money_transmission_status",
+   "probability": 0.1111
+  },
+  {
+   "child": "q16_reporting_status",
+   "parent": "identity_and_kyc",
+   "probability": 0.1111
+  },
+  {
+   "child": "q18_money_transmission_status",
+   "parent": "money_transmission_status",
+   "probability": 0.9184
+  },
+  {
+   "child": "q23_critical_resource_control",
+   "parent": "ledger_governance_model",
+   "probability": 0.7333
+  },
+  {
+   "child": "q23_critical_resource_control",
+   "parent": "validator_selection_model",
+   "probability": 0.1333
+  },
+  {
+   "child": "q23_critical_resource_control",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.0667
+  },
+  {
+   "child": "q23_decentralisation_of_application",
+   "parent": "ledger_governance_model",
+   "probability": 0.4736
+  },
+  {
+   "child": "q23_decentralisation_of_application",
+   "parent": "q23_critical_resource_control",
+   "probability": 0.2632
+  },
+  {
+   "child": "q23_decentralisation_of_application",
+   "parent": "ledger_access_permissioning",
+   "probability": 0.1579
+  },
+  {
+   "child": "q30_token_type_on_chain_function",
+   "parent": "asset_function",
+   "probability": 0.4838
+  },
+  {
+   "child": "q30_token_type_on_chain_function",
+   "parent": "fungibility",
+   "probability": 0.2151
+  },
+  {
+   "child": "q30_token_type_on_chain_function",
+   "parent": "digital_asset_definition_scope",
+   "probability": 0.1613
+  }
+ ],
+ "ties": [],
+ "dropped_for_cycle": [
+  [
+   "key_control_scheme",
+   "q11_key_control_scheme",
+   0.8108
+  ],
+  [
+   "money_transmission_status",
+   "q18_money_transmission_status",
+   0.625
+  ],
+  [
+   "service_activity_type",
+   "q8_service_provider_activity",
+   0.5682
+  ],
+  [
+   "ict_risk_source",
+   "ict_incident_severity",
+   0.4444
+  ],
+  [
+   "reference_asset",
+   "stablecoin_status",
+   0.4348
+  ],
+  [
+   "custody_arrangement",
+   "transaction_intermediation_mode",
+   0.4243
+  ],
+  [
+   "wallet_connectivity",
+   "q14_wallet_form_factor",
+   0.3896
+  ],
+  [
+   "asset_function",
+   "q30_token_type_on_chain_function",
+   0.3798
+  ],
+  [
+   "ledger_governance_model",
+   "ledger_access_permissioning",
+   0.36
+  ],
+  [
+   "consumer_risk_category",
+   "ict_risk_source",
+   0.3449
+  ],
+  [
+   "vasp_status",
+   "issuer_type",
+   0.3126
+  ],
+  [
+   "vasp_status",
+   "regulated_entity_status",
+   0.3125
+  ],
+  [
+   "dlt_type_and_basis",
+   "cryptographic_basis_and_agility",
+   0.2973
+  ],
+  [
+   "ledger_system_component",
+   "smart_contract_execution",
+   0.2679
+  ],
+  [
+   "ledger_governance_model",
+   "q23_decentralisation_of_application",
+   0.24
+  ],
+  [
+   "asset_function",
+   "fungibility",
+   0.2278
+  ],
+  [
+   "consumer_risk_category",
+   "ict_incident_severity",
+   0.2241
+  ],
+  [
+   "decentralised_governance_status",
+   "entity_legal_form",
+   0.2239
+  ],
+  [
+   "ledger_data_structure",
+   "dlt_type_and_basis",
+   0.2222
+  ],
+  [
+   "ledger_data_structure",
+   "consensus_mechanism",
+   0.2222
+  ],
+  [
+   "reference_asset",
+   "q2_stabilisation_mechanism",
+   0.2174
+  ],
+  [
+   "q9_legal_classification_basis",
+   "tokenised_asset_class",
+   0.2151
+  ],
+  [
+   "q2_stabilisation_mechanism",
+   "stablecoin_status",
+   0.2151
+  ],
+  [
+   "stabilisation_backing_reserve",
+   "prudential_classification",
+   0.2128
+  ],
+  [
+   "consensus_mechanism",
+   "validator_selection_model",
+   0.2105
+  ],
+  [
+   "money_transmission_status",
+   "legal_classification",
+   0.2083
+  ],
+  [
+   "ledger_access_permissioning",
+   "consensus_mechanism",
+   0.2045
+  ],
+  [
+   "issuer_type",
+   "regulated_entity_status",
+   0.202
+  ],
+  [
+   "custody_arrangement",
+   "holding_ledger_control",
+   0.202
+  ],
+  [
+   "ledger_governance_model",
+   "validator_selection_model",
+   0.2
+  ],
+  [
+   "ledger_governance_model",
+   "consensus_mechanism",
+   0.2
+  ],
+  [
+   "ledger_data_structure",
+   "ledger_system_component",
+   0.2
+  ],
+  [
+   "digital_asset_definition_scope",
+   "digital_commodity_classification",
+   0.2
+  ],
+  [
+   "yield_source",
+   "asset_supply_policy",
+   0.1887
+  ],
+  [
+   "asset_function",
+   "q9_legal_classification_basis",
+   0.1772
+  ],
+  [
+   "anonymity_and_traceability",
+   "identity_and_kyc",
+   0.1667
+  ],
+  [
+   "anonymity_and_traceability",
+   "consumer_risk_category",
+   0.1667
+  ],
+  [
+   "legal_classification",
+   "q5_security_status_test_prong",
+   0.1613
+  ],
+  [
+   "digital_asset_definition_scope",
+   "q30_token_type_on_chain_function",
+   0.16
+  ],
+  [
+   "service_activity_type",
+   "custody_arrangement",
+   0.1591
+  ],
+  [
+   "native_vs_token",
+   "asset_supply_policy",
+   0.1579
+  ],
+  [
+   "ledger_data_structure",
+   "network_topology",
+   0.1556
+  ],
+  [
+   "holding_ledger_control",
+   "transaction_intermediation_mode",
+   0.1546
+  ],
+  [
+   "stabilisation_backing_reserve",
+   "q3_data_structure_type",
+   0.1489
+  ],
+  [
+   "aml_obligation_scope",
+   "aml_risk_typology",
+   0.1471
+  ],
+  [
+   "digital_asset_definition_scope",
+   "native_vs_token",
+   0.14
+  ],
+  [
+   "ledger_access_permissioning",
+   "validator_selection_model",
+   0.1364
+  ],
+  [
+   "key_control_scheme",
+   "q14_wallet_form_factor",
+   0.1351
+  ],
+  [
+   "dlt_type_and_basis",
+   "technical_standard",
+   0.1351
+  ],
+  [
+   "aml_risk_typology",
+   "consumer_risk_category",
+   0.1351
+  ],
+  [
+   "cryptographic_basis_and_agility",
+   "technical_standard",
+   0.1333
+  ],
+  [
+   "reference_asset",
+   "asset_function",
+   0.1304
+  ],
+  [
+   "yield_distribution_mechanism",
+   "asset_supply_policy",
+   0.129
+  ],
+  [
+   "q2_stabilisation_mechanism",
+   "asset_supply_policy",
+   0.129
+  ],
+  [
+   "smart_contract_execution",
+   "q15_interoperability_mode",
+   0.125
+  ],
+  [
+   "issuer_type",
+   "decentralised_governance_status",
+   0.1212
+  ],
+  [
+   "aml_obligation_scope",
+   "identity_and_kyc",
+   0.1176
+  ],
+  [
+   "q15_interoperability_mode",
+   "q15_cross_chain_bridge_model",
+   0.1149
+  ],
+  [
+   "service_activity_type",
+   "transaction_intermediation_mode",
+   0.1136
+  ],
+  [
+   "ledger_access_permissioning",
+   "q23_critical_resource_control",
+   0.1136
+  ],
+  [
+   "regulated_entity_status",
+   "payment_stablecoin_regime",
+   0.1111
+  ],
+  [
+   "ledger_data_structure",
+   "ledger_replication",
+   0.1111
+  ],
+  [
+   "reference_asset",
+   "q9_legal_classification_basis",
+   0.1087
+  ],
+  [
+   "reference_asset",
+   "form_of_claim",
+   0.1087
+  ],
+  [
+   "yield_distribution_mechanism",
+   "form_of_claim",
+   0.1075
+  ],
+  [
+   "yield_distribution_mechanism",
+   "centralisation_level",
+   0.1075
+  ],
+  [
+   "digital_commodity_classification",
+   "q0_network_token_characteristic",
+   0.1075
+  ],
+  [
+   "stabilisation_backing_reserve",
+   "q13_redemption_obligation",
+   0.1064
+  ],
+  [
+   "form_of_claim",
+   "centralisation_level",
+   0.1064
+  ],
+  [
+   "q23_decentralisation_of_application",
+   "ledger_system_component",
+   0.1053
+  ],
+  [
+   "prudential_classification",
+   "q13_redemption_obligation",
+   0.1053
+  ],
+  [
+   "native_vs_token",
+   "digital_commodity_classification",
+   0.1053
+  ],
+  [
+   "money_transmission_status",
+   "aml_obligation_scope",
+   0.1042
+  ],
+  [
+   "network_topology",
+   "ledger_replication",
+   0.1
+  ],
+  [
+   "digital_asset_definition_scope",
+   "q9_legal_classification_basis",
+   0.1
+  ],
+  [
+   "beneficial_ownership_and_control",
+   "q8_ancillary_asset_relation_to_originator",
+   0.1
+  ],
+  [
+   "service_activity_type",
+   "trading_venue_structure",
+   0.0909
+  ],
+  [
+   "ledger_data_structure",
+   "smart_contract_execution",
+   0.0889
+  ],
+  [
+   "beneficial_ownership_and_control",
+   "wallet_owner_type",
+   0.0875
+  ],
+  [
+   "q9_legal_classification_basis",
+   "form_of_claim",
+   0.086
+  ],
+  [
+   "q8_service_provider_activity",
+   "q11_payment_or_transaction_purpose",
+   0.086
+  ],
+  [
+   "q30_token_type_on_chain_function",
+   "native_vs_token",
+   0.086
+  ],
+  [
+   "legal_classification",
+   "tradfi_analogy",
+   0.086
+  ],
+  [
+   "validator_selection_model",
+   "network_topology",
+   0.0842
+  ],
+  [
+   "q5_security_status_test_prong",
+   "offer_and_disclosure",
+   0.0842
+  ],
+  [
+   "consensus_mechanism",
+   "transaction_fee_and_reward_model",
+   0.0842
+  ],
+  [
+   "vasp_status",
+   "wallet_owner_type",
+   0.0833
+  ],
+  [
+   "transaction_intermediation_mode",
+   "redemption_mechanism",
+   0.0833
+  ],
+  [
+   "issuer_type",
+   "payment_stablecoin_regime",
+   0.0808
+  ],
+  [
+   "tradfi_analogy",
+   "q5_security_status_test_prong",
+   0.0795
+  ],
+  [
+   "q0_network_token_characteristic",
+   "form_of_claim",
+   0.0761
+  ],
+  [
+   "vasp_status",
+   "decentralised_governance_status",
+   0.0729
+  ],
+  [
+   "vasp_status",
+   "beneficial_ownership_and_control",
+   0.0729
+  ],
+  [
+   "service_activity_type",
+   "principal_agent_capacity",
+   0.0682
+  ],
+  [
+   "ledger_access_permissioning",
+   "network_topology",
+   0.0682
+  ],
+  [
+   "stablecoin_status",
+   "q0_network_token_characteristic",
+   0.0652
+  ],
+  [
+   "stablecoin_status",
+   "asset_function",
+   0.0652
+  ],
+  [
+   "q2_stabilisation_mechanism",
+   "form_of_claim",
+   0.0645
+  ],
+  [
+   "transaction_intermediation_mode",
+   "trading_venue_structure",
+   0.0625
+  ],
+  [
+   "holding_ledger_control",
+   "redemption_mechanism",
+   0.0619
+  ],
+  [
+   "fungibility",
+   "q30_token_type_on_chain_function",
+   0.0617
+  ],
+  [
+   "q18_money_transmission_status",
+   "legal_classification",
+   0.0612
+  ],
+  [
+   "identity_and_kyc",
+   "consumer_risk_category",
+   0.0588
+  ],
+  [
+   "yield_source",
+   "yield_distribution_mechanism",
+   0.0566
+  ],
+  [
+   "wallet_owner_type",
+   "staking_participation_role",
+   0.0543
+  ],
+  [
+   "stablecoin_status",
+   "q2_cvc_substitute_for_currency",
+   0.0543
+  ],
+  [
+   "q0_network_token_characteristic",
+   "centralisation_level",
+   0.0543
+  ],
+  [
+   "key_control_scheme",
+   "wallet_connectivity",
+   0.0541
+  ],
+  [
+   "q9_legal_classification_basis",
+   "digital_commodity_classification",
+   0.0538
+  ],
+  [
+   "q8_service_provider_activity",
+   "principal_agent_capacity",
+   0.0538
+  ],
+  [
+   "q30_token_type_on_chain_function",
+   "asset_supply_policy",
+   0.0538
+  ],
+  [
+   "legal_classification",
+   "stabilisation_backing_reserve",
+   0.0538
+  ],
+  [
+   "native_vs_token",
+   "centralisation_level",
+   0.0526
+  ],
+  [
+   "vasp_status",
+   "staking_participation_role",
+   0.0521
+  ],
+  [
+   "vasp_status",
+   "payment_stablecoin_regime",
+   0.0521
+  ],
+  [
+   "trading_venue_structure",
+   "redemption_mechanism",
+   0.0435
+  ],
+  [
+   "money_transmission_status",
+   "aml_risk_typology",
+   0.0417
+  ],
+  [
+   "custody_arrangement",
+   "redemption_mechanism",
+   0.0404
+  ],
+  [
+   "q23_critical_resource_control",
+   "smart_contract_execution",
+   0.04
+  ],
+  [
+   "beneficial_ownership_and_control",
+   "staking_participation_role",
+   0.0375
+  ],
+  [
+   "holding_ledger_control",
+   "q11_payment_or_transaction_purpose",
+   0.0309
+  ],
+  [
+   "holding_ledger_control",
+   "principal_agent_capacity",
+   0.0309
+  ],
+  [
+   "issuer_type",
+   "beneficial_ownership_and_control",
+   0.0303
+  ],
+  [
+   "decentralised_governance_status",
+   "beneficial_ownership_and_control",
+   0.0299
+  ],
+  [
+   "q23_critical_resource_control",
+   "technical_standard",
+   0.0267
+  ],
+  [
+   "beneficial_ownership_and_control",
+   "entity_legal_form",
+   0.025
+  ],
+  [
+   "vasp_status",
+   "q8_ancillary_asset_relation_to_originator",
+   0.0208
+  ],
+  [
+   "vasp_status",
+   "entity_legal_form",
+   0.0208
+  ],
+  [
+   "money_transmission_status",
+   "q16_reporting_status",
+   0.0208
+  ],
+  [
+   "q18_money_transmission_status",
+   "aml_obligation_scope",
+   0.0204
+  ],
+  [
+   "custody_arrangement",
+   "principal_agent_capacity",
+   0.0202
+  ],
+  [
+   "issuer_type",
+   "wallet_owner_type",
+   0.0101
+  ],
+  [
+   "custody_arrangement",
+   "q11_payment_or_transaction_purpose",
+   0.0101
+  ]
+ ],
+ "metrics": {
+  "overall": {
+   "nodes": 81,
+   "edges": 249,
+   "roots": 8,
+   "leaves": 15,
+   "max_depth": 16,
+   "information_gain": {
+    "total_bits": 86.2327,
+    "bits_per_descent": 4.2664,
+    "per_node": {
+     "aml_obligation_scope": 2.6915,
+     "transaction_intermediation_mode": 1.9076,
+     "q23_critical_resource_control": 1.6492,
+     "money_transmission_status": 2.0475,
+     "q2_stabilisation_mechanism": 0.9678,
+     "consensus_mechanism": 1.8516,
+     "wallet_connectivity": 0.2255,
+     "stablecoin_status": 0.9917,
+     "q3_data_structure_type": 1.8811,
+     "ict_risk_source": 0.7023,
+     "q18_money_transmission_status": 2.3671,
+     "identity_and_kyc": 0.966,
+     "q30_token_type_on_chain_function": 1.9812,
+     "decentralised_governance_status": 1.2475,
+     "validator_selection_model": 1.9993,
+     "anonymity_and_traceability": 0.9503,
+     "beneficial_ownership_and_control": 1.7705,
+     "q8_service_provider_activity": 1.5773,
+     "regulated_entity_status": 1.9492,
+     "vasp_status": 2.8267,
+     "ledger_governance_model": 2.8706,
+     "tradfi_analogy": 0.9918,
+     "q23_decentralisation_of_application": 0.9799,
+     "issuer_type": 2.5915,
+     "asset_function": 3.6365,
+     "service_activity_type": 2.8216,
+     "consumer_risk_category": 1.8283,
+     "yield_source": 1.3364,
+     "trading_venue_structure": 0.958,
+     "q9_legal_classification_basis": 2.6071,
+     "custody_arrangement": 2.1415,
+     "holding_ledger_control": 1.8072,
+     "native_vs_token": 0.9983,
+     "dlt_type_and_basis": 1.8276,
+     "aml_risk_typology": 1.8535,
+     "ledger_data_structure": 2.1607,
+     "reference_asset": 2.2244,
+     "ledger_access_permissioning": 3.1199,
+     "legal_classification": 3.4171,
+     "digital_commodity_classification": 1.4659,
+     "cryptographic_basis_and_agility": 0.9911,
+     "ledger_system_component": 1.8112,
+     "settlement_finality": 2.1158,
+     "digital_asset_definition_scope": 2.1744,
+     "stabilisation_backing_reserve": 2.5272,
+     "smart_contract_execution": 0.922,
+     "key_control_scheme": 1.5023
+    }
+   },
+   "auc": {
+    "value": 0.8502,
+    "expected_depth": 2.8971,
+    "reach_leaf_by_depth": [
+     0.0,
+     0.1664,
+     0.4483,
+     0.7142,
+     0.8632,
+     0.9463,
+     0.9824,
+     0.9921,
+     0.9953,
+     0.9974,
+     0.9987,
+     0.9992,
+     0.9996,
+     0.9999,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "leaves_needed": {
+    "leaves": 15,
+    "effective_leaves": 12.337,
+    "leaves_for_90pct": 11,
+    "leaf_mass": {
+     "q11_key_control_scheme": 0.1627,
+     "q11_payment_or_transaction_purpose": 0.125,
+     "q13_redemption_obligation": 0.1201,
+     "staking_participation_role": 0.1015,
+     "anonymity_feature": 0.0875,
+     "q15_cross_chain_bridge_model": 0.076,
+     "end_user_distribution": 0.0596,
+     "technical_standard": 0.0488,
+     "offer_and_disclosure": 0.0486,
+     "q2_cvc_substitute_for_currency": 0.046,
+     "slashing_risk": 0.0309,
+     "q16_reporting_status": 0.0277,
+     "entity_legal_form": 0.0235,
+     "ict_incident_severity": 0.0227,
+     "tokenised_asset_class": 0.0195
+    }
+   }
+  },
+  "by_category": {
+   "asset": {
+    "nodes": 19,
+    "edges": 55,
+    "roots": 1,
+    "leaves": 3,
+    "max_depth": 16,
+    "information_gain": {
+     "total_bits": 18.3838,
+     "bits_per_descent": 4.1466,
+     "per_node": {
+      "native_vs_token": 0.9983,
+      "q2_stabilisation_mechanism": 0.9678,
+      "stablecoin_status": 0.9917,
+      "q30_token_type_on_chain_function": 1.9812,
+      "reference_asset": 2.2244,
+      "digital_commodity_classification": 1.4659,
+      "digital_asset_definition_scope": 2.1744,
+      "asset_function": 3.6365,
+      "yield_source": 1.3364,
+      "q9_legal_classification_basis": 2.6071
+     }
+    },
+    "auc": {
+     "value": 0.8346,
+     "expected_depth": 3.1471,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.2133,
+      0.398,
+      0.7356,
+      0.8445,
+      0.8754,
+      0.9178,
+      0.9467,
+      0.964,
+      0.9795,
+      0.9894,
+      0.9936,
+      0.9964,
+      0.9988,
+      0.9998,
+      1.0,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 3,
+     "effective_leaves": 2.747,
+     "leaves_for_90pct": 3,
+     "leaf_mass": {
+      "end_user_distribution": 0.4765,
+      "q2_cvc_substitute_for_currency": 0.3679,
+      "tokenised_asset_class": 0.1556
+     }
+    }
+   },
+   "technology": {
+    "nodes": 22,
+    "edges": 64,
+    "roots": 3,
+    "leaves": 4,
+    "max_depth": 11,
+    "information_gain": {
+     "total_bits": 21.9109,
+     "bits_per_descent": 3.7363,
+     "per_node": {
+      "key_control_scheme": 1.5023,
+      "q23_critical_resource_control": 1.6492,
+      "consensus_mechanism": 1.8516,
+      "wallet_connectivity": 0.2255,
+      "dlt_type_and_basis": 1.8276,
+      "ledger_data_structure": 2.1607,
+      "validator_selection_model": 1.9993,
+      "ledger_access_permissioning": 3.1199,
+      "cryptographic_basis_and_agility": 0.9911,
+      "ledger_system_component": 1.8112,
+      "ledger_governance_model": 2.8706,
+      "q23_decentralisation_of_application": 0.9799,
+      "smart_contract_execution": 0.922
+     }
+    },
+    "auc": {
+     "value": 0.7806,
+     "expected_depth": 2.913,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.1821,
+      0.4409,
+      0.6871,
+      0.8363,
+      0.9553,
+      0.9882,
+      0.9975,
+      0.9996,
+      0.9999,
+      1.0,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 4,
+     "effective_leaves": 3.636,
+     "leaves_for_90pct": 4,
+     "leaf_mass": {
+      "q11_key_control_scheme": 0.4338,
+      "anonymity_feature": 0.2335,
+      "q15_cross_chain_bridge_model": 0.2026,
+      "technical_standard": 0.1301
+     }
+    }
+   },
+   "actor": {
+    "nodes": 10,
+    "edges": 32,
+    "roots": 1,
+    "leaves": 2,
+    "max_depth": 7,
+    "information_gain": {
+     "total_bits": 10.3854,
+     "bits_per_descent": 4.6696,
+     "per_node": {
+      "issuer_type": 2.5915,
+      "decentralised_governance_status": 1.2475,
+      "beneficial_ownership_and_control": 1.7705,
+      "regulated_entity_status": 1.9492,
+      "vasp_status": 2.8267
+     }
+    },
+    "auc": {
+     "value": 0.6507,
+     "expected_depth": 2.9454,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.1498,
+      0.4829,
+      0.6696,
+      0.8355,
+      0.9202,
+      0.9965,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 2,
+     "effective_leaves": 1.621,
+     "leaves_for_90pct": 2,
+     "leaf_mass": {
+      "staking_participation_role": 0.8122,
+      "entity_legal_form": 0.1878
+     }
+    }
+   },
+   "activity": {
+    "nodes": 9,
+    "edges": 29,
+    "roots": 1,
+    "leaves": 1,
+    "max_depth": 7,
+    "information_gain": {
+     "total_bits": 11.2133,
+     "bits_per_descent": 4.2269,
+     "per_node": {
+      "custody_arrangement": 2.1415,
+      "transaction_intermediation_mode": 1.9076,
+      "service_activity_type": 2.8216,
+      "holding_ledger_control": 1.8072,
+      "q8_service_provider_activity": 1.5773,
+      "trading_venue_structure": 0.958
+     }
+    },
+    "auc": {
+     "value": 0.6789,
+     "expected_depth": 2.7479,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.0739,
+      0.4295,
+      0.7988,
+      0.9575,
+      0.9929,
+      0.9995,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 1,
+     "effective_leaves": 1.0,
+     "leaves_for_90pct": 1,
+     "leaf_mass": {
+      "q11_payment_or_transaction_purpose": 1.0
+     }
+    }
+   },
+   "obligation_or_risk": {
+    "nodes": 21,
+    "edges": 69,
+    "roots": 2,
+    "leaves": 5,
+    "max_depth": 9,
+    "information_gain": {
+     "total_bits": 24.3394,
+     "bits_per_descent": 4.9397,
+     "per_node": {
+      "aml_obligation_scope": 2.6915,
+      "money_transmission_status": 2.0475,
+      "q3_data_structure_type": 1.8811,
+      "ict_risk_source": 0.7023,
+      "q18_money_transmission_status": 2.3671,
+      "aml_risk_typology": 1.8535,
+      "identity_and_kyc": 0.966,
+      "anonymity_and_traceability": 0.9503,
+      "legal_classification": 3.4171,
+      "settlement_finality": 2.1158,
+      "tradfi_analogy": 0.9918,
+      "stabilisation_backing_reserve": 2.5272,
+      "consumer_risk_category": 1.8283
+     }
+    },
+    "auc": {
+     "value": 0.7446,
+     "expected_depth": 2.7987,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.1737,
+      0.4766,
+      0.724,
+      0.8796,
+      0.9582,
+      0.9905,
+      0.9988,
+      0.9999,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 5,
+     "effective_leaves": 4.017,
+     "leaves_for_90pct": 4,
+     "leaf_mass": {
+      "q13_redemption_obligation": 0.4804,
+      "offer_and_disclosure": 0.1945,
+      "slashing_risk": 0.1238,
+      "q16_reporting_status": 0.1108,
+      "ict_incident_severity": 0.0906
+     }
+    }
+   }
+  },
+  "summary": {
+   "nodes": 81,
+   "edges": 249,
+   "roots": 8,
+   "leaves": 15,
+   "max_depth": 16,
+   "total_bits": 86.2327,
+   "bits_per_descent": 4.2664,
+   "auc": 0.8502,
+   "expected_depth": 2.8971,
+   "effective_leaves": 12.337,
+   "leaves_for_90pct": 11
+  }
+ }
+}

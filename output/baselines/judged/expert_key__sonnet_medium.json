@@ -1,0 +1,190 @@
+{
+ "a": "expert_key",
+ "b": "sonnet_medium",
+ "judge_model": "claude-haiku-5-5",
+ "term_types_a": 39,
+ "term_types_b": 54,
+ "matched": 23,
+ "recall_of_a": 0.59,
+ "precision_of_b": 0.426,
+ "f1": 0.495,
+ "pairs": [
+  {
+   "a": "d1_consensus_network_topology",
+   "b": "network_topology",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_immutability_and_failure_tolerance",
+   "b": "consensus_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_agreement_latency",
+   "b": "finality_latency",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_transaction_model",
+   "b": "transaction_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_native_asset",
+   "b": "native_asset_presence",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_interoperability",
+   "b": "interoperability",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_governance",
+   "b": "governance_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_script_language",
+   "b": "script_language",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_encryption",
+   "b": "data_privacy_encryption",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_access_and_control_layer",
+   "b": "access_permission",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_identity_layer",
+   "b": "identity_layer",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_fees_reward",
+   "b": "fee_reward_system",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_code_license",
+   "b": "codebase_properties",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_technical_standard",
+   "b": "technical_standard",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_centralisation",
+   "b": "asset_centralisation",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_asset_function",
+   "b": "asset_function",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_issuer",
+   "b": "issuer_type",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_mechanism",
+   "b": "minting_mechanism",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_yield_source",
+   "b": "yield_source",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_redemption_reference_asset",
+   "b": "asset_reference_for_stable_value",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_redemption_mechanism",
+   "b": "redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_legal_classification",
+   "b": "legal_regulatory_status_of_asset",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_form_of_claim",
+   "b": "form_of_claim",
+   "confidence": "high"
+  }
+ ],
+ "unmatched_a": [
+  "d1_gossiping",
+  "d1_consensus_agreement_finality",
+  "d1_data_structure_in_the_blockheader",
+  "d1_server_storage",
+  "d1_block_storage",
+  "d1_limits_to_scalability",
+  "d1_tokenisation",
+  "d1_asset_supply_management",
+  "d1_intraoperability",
+  "d1_data_privacy",
+  "d1_coding_language",
+  "d1_software_architecture",
+  "d1_reward_system",
+  "d1_fee_structure",
+  "d2_yield_distribution_mechanism",
+  "d2_tradfi_analogy"
+ ],
+ "unmatched_b": [
+  "prudential_classification_group",
+  "fungibility",
+  "transferability_restriction",
+  "stabilisation_mechanism",
+  "tokenised_traditional_asset",
+  "anonymity_features",
+  "monetary_nature_currency",
+  "ledger_architecture",
+  "protocol_layer",
+  "wallet_custody_type",
+  "service_provider_function",
+  "msb_role",
+  "network_participant_role",
+  "affiliation_to_issuer",
+  "customer_type",
+  "offshore_status",
+  "controlling_influence_decentralisation_of_service",
+  "ict_provider_criticality",
+  "transfer_intermediation",
+  "uk_specified_activity",
+  "staking_arrangement",
+  "capacity_principal_agent",
+  "offer_distribution_type",
+  "trading_venue_type",
+  "mining_pool_structure",
+  "as_a_business_test",
+  "transaction_reporting_type",
+  "ml_tf_risk_typology",
+  "risk_incident_severity",
+  "centralisation_risk_layer",
+  "reserve_governance_requirements"
+ ],
+ "model": "claude-haiku-5-5",
+ "calls": 2,
+ "usage": {
+  "input": 14000,
+  "output": 2309,
+  "cache_write": 0,
+  "cache_read": 0
+ },
+ "cost_usd": 0.0026,
+ "api_seconds": 8.0,
+ "wall_seconds": 8.0
+}

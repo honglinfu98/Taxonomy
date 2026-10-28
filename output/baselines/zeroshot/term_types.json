@@ -1,0 +1,1516 @@
+{
+  "run": {
+    "task": "A-zeroshot",
+    "effort": "high",
+    "stop_reason": "end_turn",
+    "model": "claude-haiku-5-5",
+    "calls": 1,
+    "usage": {
+      "input": 2575,
+      "output": 13538,
+      "cache_write": 0,
+      "cache_read": 0
+    },
+    "cost_usd": 0.007,
+    "api_seconds": 53.7,
+    "wall_seconds": 0.0,
+    "timestamp": "2026-10-27T11:59:53+00:00",
+    "baseline": "zeroshot"
+  },
+  "term_types": [
+    {
+      "id": "asset_reference_type",
+      "name": "Asset reference type",
+      "applies_to": "asset",
+      "question": "What does the crypto-asset reference to maintain a stable value?",
+      "description": "Sources distinguish crypto-assets by what, if anything, their value is pegged or anchored to, such as fiat currency, commodities, other crypto-assets, or a basket. This dimension is the main boundary between stablecoins and other tokens in MiCA, the GENIUS Act and Basel SCO60, and it drives differing prudential and redemption treatment.",
+      "aliases": [
+        "stabilisation mechanism reference",
+        "peg reference",
+        "underlying reference asset"
+      ],
+      "values": [
+        {
+          "value": "single fiat currency",
+          "definition": "Crypto-asset stabilised by reference to one official currency, such as a national legal tender unit.",
+          "citations": []
+        },
+        {
+          "value": "multiple fiat currencies or basket",
+          "definition": "Crypto-asset stabilised by reference to a basket or several official currencies.",
+          "citations": []
+        },
+        {
+          "value": "commodity",
+          "definition": "Crypto-asset whose value is stabilised by reference to one or more commodities such as precious metals.",
+          "citations": []
+        },
+        {
+          "value": "other crypto-assets",
+          "definition": "Crypto-asset whose value is stabilised by reference to other crypto-assets.",
+          "citations": []
+        },
+        {
+          "value": "no reference asset",
+          "definition": "Crypto-asset without any stabilisation reference, such as an algorithmic or unbacked token.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          13,
+          20,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "US",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument",
+          "taxonomy_framework"
+        ]
+      },
+      "notes": "MiCA restricts e-money token references to single official currencies; the GENIUS Act and Basel treatment differ on permitted reference assets and on whether basket-referenced tokens count as stablecoins."
+    },
+    {
+      "id": "asset_legal_status",
+      "name": "Legal status of crypto-asset",
+      "applies_to": "asset",
+      "question": "Is the crypto-asset classified as a financial instrument, e-money, an asset-referenced token, a utility token, or outside existing categories?",
+      "description": "Regulators assign crypto-assets to statutory categories that determine which regime applies. MiCA sorts assets into asset-referenced tokens, e-money tokens and other crypto-assets, while US and UK instruments test whether an asset is a security, commodity or payment instrument.",
+      "aliases": [
+        "regulatory classification of token",
+        "statutory category"
+      ],
+      "values": [
+        {
+          "value": "financial instrument or security",
+          "definition": "Crypto-asset that qualifies as a transferable security or other financial instrument under applicable securities or financial law.",
+          "citations": []
+        },
+        {
+          "value": "e-money token",
+          "definition": "Crypto-asset referencing a single official currency and functioning as a means of payment under MiCA.",
+          "citations": []
+        },
+        {
+          "value": "asset-referenced token",
+          "definition": "Crypto-asset referencing multiple currencies, commodities or other assets to maintain stable value under MiCA.",
+          "citations": []
+        },
+        {
+          "value": "commodity or digital commodity",
+          "definition": "Crypto-asset treated as a commodity or digital commodity under US commodities or market-structure law.",
+          "citations": []
+        },
+        {
+          "value": "other crypto-asset",
+          "definition": "Crypto-asset falling outside the financial instrument, e-money and asset-referenced categories, including many utility tokens.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          8,
+          10,
+          11,
+          12,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "UK",
+          "US",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "US instruments (FIT21, Clarity Act House and Senate versions) differ on the security versus digital commodity boundary and on the decentralisation test; UK SI 2026/102 uses its own cryptoasset categories."
+    },
+    {
+      "id": "asset_function_purpose",
+      "name": "Asset function or purpose",
+      "applies_to": "asset",
+      "question": "What economic function or use does the token serve for holders?",
+      "description": "Taxonomies and regulators classify tokens by what they are intended to do, such as paying for services, representing investment rights, or serving as a medium of exchange. Function determines whether an offering is a security-like instrument or a utility or payment token.",
+      "aliases": [
+        "token purpose",
+        "token type by use",
+        "economic function"
+      ],
+      "values": [
+        {
+          "value": "payment or medium of exchange",
+          "definition": "Token intended as a means of payment or transfer of value.",
+          "citations": []
+        },
+        {
+          "value": "utility or access",
+          "definition": "Token granting access to goods, services or functionality on a platform.",
+          "citations": []
+        },
+        {
+          "value": "investment or profit-rights",
+          "definition": "Token conferring financial rights such as profit share, dividends or claims to returns.",
+          "citations": []
+        },
+        {
+          "value": "governance",
+          "definition": "Token conferring voting or decision-making rights over a protocol or organisation.",
+          "citations": []
+        },
+        {
+          "value": "hybrid or multi-purpose",
+          "definition": "Token combining more than one function, such as payment and investment.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          1,
+          2,
+          4,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "legal_instrument"
+        ]
+      },
+      "notes": "Functional categories are non-exclusive; taxonomies treat function as a descriptive axis while legal instruments use it as a classification test."
+    },
+    {
+      "id": "asset_issuance_model",
+      "name": "Issuance model",
+      "applies_to": "asset",
+      "question": "Is the crypto-asset issued by an identifiable issuer, or created without one?",
+      "description": "Regimes distinguish crypto-assets with a central issuer, which carry issuer obligations, from natively generated assets such as Bitcoin that lack one. MiCA, GENIUS and FATF texts rely on the presence of an issuer to assign obligations.",
+      "aliases": [
+        "issuer presence",
+        "native versus issued asset"
+      ],
+      "values": [
+        {
+          "value": "issued by identifiable issuer",
+          "definition": "Crypto-asset offered or issued by a legal or natural person responsible for it.",
+          "citations": []
+        },
+        {
+          "value": "natively generated or protocol-issued",
+          "definition": "Crypto-asset created by a protocol without a single issuer, such as mined coins.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          13,
+          17,
+          21
+        ],
+        "jurisdictions": [
+          "EU",
+          "US",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument",
+          "taxonomy_framework"
+        ]
+      },
+      "notes": "Boundary cases arise for decentralised protocols with foundations or core developers; MiCA exempts some fully decentralised assets from issuer obligations."
+    },
+    {
+      "id": "asset_transferability_and_redemption",
+      "name": "Redemption right",
+      "applies_to": "asset",
+      "question": "Can holders redeem the crypto-asset from the issuer for its reference value or currency?",
+      "description": "Redemption rights separate stablecoin-type instruments from other tokens and are central to prudential and consumer protection requirements. GENIUS and MiCA attach distinct redemption obligations to tokens carrying such rights.",
+      "aliases": [
+        "redeemability",
+        "right of redemption"
+      ],
+      "values": [
+        {
+          "value": "redeemable at par",
+          "definition": "Holders may redeem the token from the issuer at par value in reference currency.",
+          "citations": []
+        },
+        {
+          "value": "not redeemable",
+          "definition": "Holders have no direct right to redeem the token from an issuer.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          13,
+          20
+        ],
+        "jurisdictions": [
+          "EU",
+          "US",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "MiCA requires redemption at par for e-money and asset-referenced tokens; the GENIUS Act specifies redemption conditions and timing that differ from the EU model."
+    },
+    {
+      "id": "asset_scale_systemic_significance",
+      "name": "Significance threshold",
+      "applies_to": "asset",
+      "question": "Does the crypto-asset or issuer exceed thresholds that make it significant or subject to enhanced supervision?",
+      "description": "Regimes single out significant stablecoins or tokens by user numbers, market capitalisation, transaction volumes or interconnectedness. Significance triggers enhanced supervisory requirements under MiCA and Basel rules.",
+      "aliases": [
+        "significant token designation",
+        "systemic relevance"
+      ],
+      "values": [
+        {
+          "value": "significant",
+          "definition": "Crypto-asset or issuer meeting quantitative thresholds for enhanced supervision.",
+          "citations": []
+        },
+        {
+          "value": "non-significant",
+          "definition": "Crypto-asset or issuer falling below significance thresholds.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          13,
+          20
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "Threshold values and metrics differ across MiCA, Basel SCO60 and US instruments; EU significance criteria are set by statute while Basel uses the bank-level classification."
+    },
+    {
+      "id": "asset_fungibility_and_unique_token",
+      "name": "Fungibility or uniqueness",
+      "applies_to": "asset",
+      "question": "Is the token fungible with other units of the same kind, or unique and non-fungible?",
+      "description": "Taxonomies separate fungible tokens from non-fungible tokens (NFTs), with NFTs often excluded from core crypto-asset regimes. This dimension affects whether MiCA or other regimes apply to collectibles and unique tokens.",
+      "aliases": [
+        "NFT versus fungible token",
+        "non-fungible token"
+      ],
+      "values": [
+        {
+          "value": "fungible",
+          "definition": "Token interchangeable one-for-one with other units of the same type.",
+          "citations": []
+        },
+        {
+          "value": "non-fungible",
+          "definition": "Token unique or distinguishable from other tokens, often representing a specific item.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          2,
+          4
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "legal_instrument"
+        ]
+      },
+      "notes": "MiCA excludes certain unique and non-fungible crypto-assets from its scope under conditions; taxonomies treat fungibility as descriptive."
+    },
+    {
+      "id": "asset_tokenised_real_world_asset",
+      "name": "Tokenised underlying asset",
+      "applies_to": "asset",
+      "question": "Does the token represent a claim on, or ownership of, an off-chain real-world asset or traditional financial instrument?",
+      "description": "Tokenised securities and real-world-asset tokens are classified by the underlying instrument they represent, which frequently places them under securities or financial instruments regimes rather than crypto-asset regimes.",
+      "aliases": [
+        "tokenised security",
+        "real-world asset token",
+        "security token"
+      ],
+      "values": [
+        {
+          "value": "tokenised financial instrument",
+          "definition": "Token representing a security or other financial instrument recognised in traditional law.",
+          "citations": []
+        },
+        {
+          "value": "tokenised real-world asset",
+          "definition": "Token representing a non-financial off-chain asset such as real estate or commodities.",
+          "citations": []
+        },
+        {
+          "value": "no underlying asset",
+          "definition": "Token with no off-chain underlying claim.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          2,
+          4,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "legal_instrument"
+        ],
+        "notes": ""
+      },
+      "notes": "MiCA excludes instruments already regulated as financial instruments; boundary cases arise between tokenised securities and crypto-assets."
+    },
+    {
+      "id": "dlt_access_permissions",
+      "name": "Access permissions for ledger participation",
+      "applies_to": "technology",
+      "question": "Who may read, write or validate on the ledger: anyone, or only authorised participants?",
+      "description": "The permissioned versus permissionless distinction is the foundational technical taxonomy for DLT and is used by regulators to scope obligations on operators and validators. Taxonomies and FSB or IOSCO texts rely on it when assessing governance and risk.",
+      "aliases": [
+        "permissioned versus permissionless",
+        "access control model"
+      ],
+      "values": [
+        {
+          "value": "permissionless",
+          "definition": "Ledger open to anyone to read, submit transactions or participate in validation.",
+          "citations": []
+        },
+        {
+          "value": "permissioned",
+          "definition": "Ledger restricting read or write or validation rights to authorised participants.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          1,
+          2,
+          3,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "legal_instrument",
+          "domain_corpus_paper"
+        ]
+      },
+      "notes": "Many sources use hybrid or permissioned-with-public-read variants; the boundary between public read and restricted write is not uniformly defined."
+    },
+    {
+      "id": "dlt_consensus_mechanism",
+      "name": "Consensus mechanism",
+      "applies_to": "technology",
+      "question": "How does the network agree on the valid state of the ledger?",
+      "description": "Consensus mechanisms such as proof of work, proof of stake and byzantine fault tolerant voting are standard classification criteria in taxonomy and research sources, and inform energy and security risk assessments.",
+      "aliases": [
+        "validation mechanism",
+        "agreement protocol"
+      ],
+      "values": [
+        {
+          "value": "proof of work",
+          "definition": "Consensus where participants expend computational work to propose valid blocks.",
+          "citations": []
+        },
+        {
+          "value": "proof of stake",
+          "definition": "Consensus where validators are chosen according to locked or staked assets.",
+          "citations": []
+        },
+        {
+          "value": "byzantine fault tolerant voting",
+          "definition": "Consensus based on message-passing voting among known validators, tolerating faulty nodes.",
+          "citations": []
+        },
+        {
+          "value": "other or hybrid consensus",
+          "definition": "Consensus mechanisms not listed above or combining multiple approaches.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          1,
+          2,
+          3,
+          21
+        ],
+        "jurisdictions": [
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "domain_corpus_paper",
+          "legal_instrument"
+        ]
+      },
+      "notes": "Legal instruments rarely mandate a consensus type; the criterion appears mainly in taxonomies and corpus literature."
+    },
+    {
+      "id": "dlt_ledger_architecture",
+      "name": "Ledger data structure",
+      "applies_to": "technology",
+      "question": "How is the ledger structured: as a chain of blocks, a directed acyclic graph, or another structure?",
+      "description": "Taxonomies distinguish blockchain-based ledgers from DAG-based and other distributed data structures, which matters for classifying technologies and for security analysis.",
+      "aliases": [
+        "ledger topology",
+        "data structure"
+      ],
+      "values": [
+        {
+          "value": "linear blockchain",
+          "definition": "Ledger of cryptographically linked sequential blocks.",
+          "citations": []
+        },
+        {
+          "value": "directed acyclic graph",
+          "definition": "Ledger in which transactions reference multiple prior transactions rather than a single chain.",
+          "citations": []
+        },
+        {
+          "value": "other distributed data structure",
+          "definition": "Distributed ledger using structures other than chains or DAGs.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          1,
+          2,
+          3
+        ],
+        "jurisdictions": [
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "domain_corpus_paper"
+        ]
+      },
+      "notes": "Legal instruments do not use this dimension; it appears in technical taxonomies."
+    },
+    {
+      "id": "dlt_network_architecture",
+      "name": "Network architecture",
+      "applies_to": "technology",
+      "question": "Does the network operate as a central controlled system, a federated group, or a decentralised peer-to-peer network?",
+      "description": "Architecture distinguishes centralised, federated and fully decentralised systems, a question central to assessing control and therefore regulatory responsibility.",
+      "aliases": [
+        "governance architecture",
+        "network topology"
+      ],
+      "values": [
+        {
+          "value": "centralised",
+          "definition": "Network controlled and operated by a single entity.",
+          "citations": []
+        },
+        {
+          "value": "federated",
+          "definition": "Network operated by a defined group of institutions acting as validators.",
+          "citations": []
+        },
+        {
+          "value": "decentralised peer-to-peer",
+          "definition": "Network with distributed validation and no single controlling entity.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          1,
+          2,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "legal_instrument"
+        ]
+      },
+      "notes": "Decentralisation is contested; US instruments and MiCA use different tests for when a system is sufficiently decentralised."
+    },
+    {
+      "id": "dlt_cryptographic_primitives",
+      "name": "Cryptographic mechanism",
+      "applies_to": "technology",
+      "question": "Which cryptographic mechanisms underpin ledger security and privacy, such as hash functions, digital signatures and zero-knowledge proofs?",
+      "description": "Technical taxonomies classify DLT systems by their cryptographic primitives, which affect privacy, verifiability and quantum resistance and are discussed in corpus literature.",
+      "aliases": [
+        "cryptographic primitives",
+        "security primitives"
+      ],
+      "values": [
+        {
+          "value": "hash-based linking",
+          "definition": "Ledger integrity ensured by cryptographic hash chaining of records.",
+          "citations": []
+        },
+        {
+          "value": "digital signature authentication",
+          "definition": "Transaction authorisation through public-key digital signatures.",
+          "citations": []
+        },
+        {
+          "value": "zero-knowledge proof privacy",
+          "definition": "Privacy mechanism proving statements without revealing underlying data.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          1,
+          3
+        ],
+        "jurisdictions": [
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "domain_corpus_paper"
+        ]
+      },
+      "notes": "Not used as a legal boundary in the legal instruments sampled."
+    },
+    {
+      "id": "dlt_ledger_scope_application",
+      "name": "Application scope of ledger",
+      "applies_to": "technology",
+      "question": "Is the ledger a general-purpose platform or dedicated to a specific application or asset?",
+      "description": "Taxonomies separate general-purpose smart-contract platforms from single-application or single-asset ledgers, which affects how platform risks are attributed.",
+      "aliases": [
+        "purpose-specific ledger",
+        "platform type"
+      ],
+      "values": [
+        {
+          "value": "general-purpose platform",
+          "definition": "Ledger supporting arbitrary applications and smart contracts.",
+          "citations": []
+        },
+        {
+          "value": "application-specific",
+          "definition": "Ledger designed for one application or use case.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          1,
+          2
+        ],
+        "jurisdictions": [
+          "INTL"
+        ],
+        "document_classes": [
+          "taxonomy_framework"
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "dlt_smart_contract_capability",
+      "name": "Smart contract capability",
+      "applies_to": "technology",
+      "question": "Does the ledger execute programmable smart contracts, and are they autonomous?",
+      "description": "Presence and autonomy of smart contracts is a recurring classifier in taxonomies and in legal texts treating programmable or self-executing arrangements.",
+      "aliases": [
+        "programmability",
+        "smart contract support"
+      ],
+      "values": [
+        {
+          "value": "no smart contracts",
+          "definition": "Ledger supporting only simple value transfer without programmable logic.",
+          "citations": []
+        },
+        {
+          "value": "smart contracts supported",
+          "definition": "Ledger executing programmable logic via on-chain smart contracts.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          1,
+          2,
+          21
+        ],
+        "jurisdictions": [
+          "INTL",
+          "EU"
+        ],
+        "document_classes": [
+          "taxonomy_framework",
+          "legal_instrument"
+        ]
+      },
+      "notes": "MiCA regulates crypto-asset services, not smart contracts as such; the classification is more prominent in taxonomy sources."
+    },
+    {
+      "id": "actor_service_provider_type",
+      "name": "Crypto-asset service provider category",
+      "applies_to": "actor",
+      "question": "Which regulated service category does the entity fall into when providing crypto-asset services?",
+      "description": "Regimes define discrete categories of crypto-asset service provider, each with its own licensing and conduct obligations. MiCA lists specific service categories, while FATF and the US instruments use broader VASP and money-transmitter definitions.",
+      "aliases": [
+        "CASP category",
+        "VASP type",
+        "regulated crypto service"
+      ],
+      "values": [
+        {
+          "value": "custody and administration",
+          "definition": "Provider safekeeping or controlling crypto-assets or access keys for clients.",
+          "citations": []
+        },
+        {
+          "value": "trading platform operation",
+          "definition": "Provider operating a multilateral trading facility for crypto-assets.",
+          "citations": []
+        },
+        {
+          "value": "exchange against funds or other crypto-assets",
+          "definition": "Provider exchanging crypto-assets for fiat currency or other crypto-assets for its own account.",
+          "citations": []
+        },
+        {
+          "value": "execution of orders or placement",
+          "definition": "Provider executing client orders or placing crypto-assets on behalf of clients.",
+          "citations": []
+        },
+        {
+          "value": "advice or portfolio management",
+          "definition": "Provider giving advice or managing crypto-asset portfolios for clients.",
+          "citations": []
+        },
+        {
+          "value": "transfer services",
+          "definition": "Provider transferring crypto-assets on behalf of clients.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          5,
+          6,
+          9,
+          17,
+          18,
+          19
+        ],
+        "jurisdictions": [
+          "EU",
+          "UK",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "Category lists differ across MiCA, AMLR, UK instruments and FATF; MiCA is the most granular."
+    },
+    {
+      "id": "actor_vasp_definition_status",
+      "name": "VASP or CASP status",
+      "applies_to": "actor",
+      "question": "Does the entity qualify as a virtual asset service provider or crypto-asset service provider under the applicable definition?",
+      "description": "Defining whether an actor is within the VASP or CASP perimeter is the threshold classification for obligations under FATF standards, MiCA and national law. Sources vary in breadth and in treatment of decentralised or non-custodial actors.",
+      "aliases": [
+        "VASP definition",
+        "CASP perimeter",
+        "regulated entity status"
+      ],
+      "values": [
+        {
+          "value": "within VASP or CASP definition",
+          "definition": "Entity conducting covered activities for or on behalf of customers under the definition.",
+          "citations": []
+        },
+        {
+          "value": "outside definition",
+          "definition": "Entity not conducting covered activities, such as purely technical software providers.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          5,
+          8,
+          9,
+          16,
+          17,
+          18,
+          19
+        ],
+        "jurisdictions": [
+          "EU",
+          "UK",
+          "US",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "FinCEN treats some convertible virtual currency actors as money transmitters; FATF covers DeFi arrangements where a person retains control or sufficient influence; MiCA excludes fully decentralised services."
+    },
+    {
+      "id": "actor_custody_control_arrangement",
+      "name": "Custody and control arrangement",
+      "applies_to": "actor",
+      "question": "Does the provider hold client assets or private keys in custody, or does the client retain sole control?",
+      "description": "Whether an intermediary controls keys or assets determines whether it is a custodian with safekeeping obligations, and is a recurring boundary in FATF, MiCA and US instruments.",
+      "aliases": [
+        "custodial versus non-custodial",
+        "key control"
+      ],
+      "values": [
+        {
+          "value": "custodial",
+          "definition": "Provider holds or controls client private keys or crypto-assets.",
+          "citations": []
+        },
+        {
+          "value": "non-custodial",
+          "definition": "Client retains sole control of private keys and assets.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          5,
+          16,
+          17,
+          18,
+          19,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "US",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "FATF and FinCEN treat non-custodial wallets and software differently; US proposals debate custodial thresholds."
+    },
+    {
+      "id": "actor_legal_form",
+      "name": "Legal form of entity",
+      "applies_to": "actor",
+      "question": "Is the actor a legal person, a natural person, or an unincorporated arrangement such as a decentralised autonomous organisation?",
+      "description": "Regimes distinguish legal persons from natural persons and from decentralised, unincorporated arrangements, which affects who bears obligations and licensing duties.",
+      "aliases": [
+        "entity type",
+        "legal personality"
+      ],
+      "values": [
+        {
+          "value": "legal person",
+          "definition": "Incorporated company or other legal entity authorised to provide services.",
+          "citations": []
+        },
+        {
+          "value": "natural person",
+          "definition": "Individual person providing services or acting as a provider.",
+          "citations": []
+        },
+        {
+          "value": "decentralised or unincorporated arrangement",
+          "definition": "Protocol, DAO or community without legal personality.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          17,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument",
+          "taxonomy_framework"
+        ]
+      },
+      "notes": "Treatment of DAOs and unincorporated arrangements is unsettled; FATF and US texts address them with differing criteria."
+    },
+    {
+      "id": "actor_supervisory_role",
+      "name": "Supervisory or operator role",
+      "applies_to": "actor",
+      "question": "What role does the actor play in the ecosystem: issuer, operator, validator, developer, or user?",
+      "description": "Obligations are assigned by role, such as token issuer, network operator, validator or developer. FATF and MiCA differentiate these roles to allocate responsibility.",
+      "aliases": [
+        "ecosystem role",
+        "functional role"
+      ],
+      "values": [
+        {
+          "value": "issuer",
+          "definition": "Entity offering or issuing crypto-assets.",
+          "citations": []
+        },
+        {
+          "value": "operator or platform",
+          "definition": "Entity operating a trading or service platform.",
+          "citations": []
+        },
+        {
+          "value": "validator or miner",
+          "definition": "Entity participating in ledger consensus.",
+          "citations": []
+        },
+        {
+          "value": "developer",
+          "definition": "Entity writing or maintaining protocol software.",
+          "citations": []
+        },
+        {
+          "value": "user or holder",
+          "definition": "Client holding, transferring or using crypto-assets.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          17,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "FATF guidance treats developers as potentially covered when they exert control; MiCA excludes pure developers."
+    },
+    {
+      "id": "actor_jurisdiction_location",
+      "name": "Jurisdictional nexus",
+      "applies_to": "actor",
+      "question": "Where is the provider established or located, or where are its services directed, for the purposes of jurisdiction?",
+      "description": "Regimes apply based on establishment, registration or services directed at residents, which determines the scope of extraterritorial application.",
+      "aliases": [
+        "territorial scope",
+        "place of establishment"
+      ],
+      "values": [
+        {
+          "value": "established in jurisdiction",
+          "definition": "Entity with registered office or establishment within the regime's territory.",
+          "citations": []
+        },
+        {
+          "value": "serving jurisdiction residents without establishment",
+          "definition": "Entity without establishment but directing services to residents of the jurisdiction.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          8,
+          13,
+          17
+        ],
+        "jurisdictions": [
+          "EU",
+          "UK",
+          "US",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "Reverse solicitation exemptions differ between MiCA and UK regulations."
+    },
+    {
+      "id": "activity_service_category",
+      "name": "Crypto-asset service",
+      "applies_to": "activity",
+      "question": "Which specific crypto-asset service is being provided?",
+      "description": "Services are enumerated categories whose classification determines authorisation and conduct requirements. MiCA and the UK regime list discrete services, while FATF refers to VASP activities in broader terms.",
+      "aliases": [
+        "crypto-asset service type",
+        "regulated activity"
+      ],
+      "values": [
+        {
+          "value": "reception and transmission of orders",
+          "definition": "Receiving and transmitting client orders for crypto-assets.",
+          "citations": []
+        },
+        {
+          "value": "custody and administration",
+          "definition": "Safekeeping and controlling crypto-assets for clients.",
+          "citations": []
+        },
+        {
+          "value": "exchange services",
+          "definition": "Exchanging crypto-assets for funds or other crypto-assets.",
+          "citations": []
+        },
+        {
+          "value": "transfer services",
+          "definition": "Transferring crypto-assets from one address or account to another on behalf of a person.",
+          "citations": []
+        },
+        {
+          "value": "issuance or offer",
+          "definition": "Offering or admitting crypto-assets to trading.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          8,
+          17,
+          18,
+          19
+        ],
+        "jurisdictions": [
+          "EU",
+          "UK",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "Service lists are not identical across MiCA, the UK SI and the FATF Standard."
+    },
+    {
+      "id": "activity_transaction_type",
+      "name": "Transaction type",
+      "applies_to": "activity",
+      "question": "Is the transaction a transfer, an exchange, a payment, or a custody movement?",
+      "description": "Transaction type determines which reporting, travel rule or prudential requirements apply, notably in the travel rule and CARF reporting regimes.",
+      "aliases": [
+        "transfer type",
+        "transaction category"
+      ],
+      "values": [
+        {
+          "value": "transfer",
+          "definition": "Movement of crypto-assets between addresses or accounts.",
+          "citations": []
+        },
+        {
+          "value": "exchange",
+          "definition": "Conversion of one asset to another asset or fiat currency.",
+          "citations": []
+        },
+        {
+          "value": "payment",
+          "definition": "Use of crypto-assets to settle payment for goods or services.",
+          "citations": []
+        },
+        {
+          "value": "custody movement",
+          "definition": "Movement of assets within a custodian's own systems.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          6,
+          9,
+          17,
+          19
+        ],
+        "jurisdictions": [
+          "EU",
+          "UK",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "Travel rule thresholds and definitions of transfer vary across FATF and EU regulation."
+    },
+    {
+      "id": "activity_cross_border_status",
+      "name": "Cross-border status of transaction",
+      "applies_to": "activity",
+      "question": "Is the transaction domestic or cross-border, and does it involve an unhosted wallet?",
+      "description": "Travel rule and AML obligations depend on whether counterparties are in different jurisdictions and whether one side is an unhosted wallet, so this classification drives due diligence requirements.",
+      "aliases": [
+        "domestic versus cross-border",
+        "unhosted wallet transfer"
+      ],
+      "values": [
+        {
+          "value": "domestic",
+          "definition": "Transaction where both counterparties are within the same jurisdiction.",
+          "citations": []
+        },
+        {
+          "value": "cross-border",
+          "definition": "Transaction involving counterparties in different jurisdictions.",
+          "citations": []
+        },
+        {
+          "value": "involving unhosted wallet",
+          "definition": "Transaction where one party's address is held in a wallet not controlled by a regulated provider.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          6,
+          17,
+          18,
+          19
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "EU Regulation 2023/1113 and FATF apply different thresholds and verification duties to unhosted wallets."
+    },
+    {
+      "id": "activity_transfer_value_threshold",
+      "name": "Transfer value threshold",
+      "applies_to": "activity",
+      "question": "Does the transfer value exceed a threshold triggering enhanced due diligence or information requirements?",
+      "description": "Thresholds in amounts (for example USD or EUR 1,000 or 3,000) determine whether originator and beneficiary information must accompany transfers, making value a classifying criterion.",
+      "aliases": [
+        "de minimis threshold",
+        "travel rule threshold"
+      ],
+      "values": [
+        {
+          "value": "below threshold",
+          "definition": "Transfer value below the de minimis amount triggering reduced information requirements.",
+          "citations": []
+        },
+        {
+          "value": "at or above threshold",
+          "definition": "Transfer value meeting or exceeding the threshold triggering full information requirements.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          6,
+          17,
+          18,
+          19
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "FATF sets USD/EUR 1,000 as the travel rule threshold; EU Regulation 2023/1113 applies the rule without a de minimis for crypto transfers, a notable divergence."
+    },
+    {
+      "id": "activity_tax_reporting_category",
+      "name": "Reportable transaction category",
+      "applies_to": "activity",
+      "question": "Which reporting category does a transaction or account fall into under tax information exchange rules?",
+      "description": "CARF and related regimes classify transactions and accounts by reportable type, such as sale, exchange or transfer, to determine information exchange obligations.",
+      "aliases": [
+        "CARF reportable transaction",
+        "reporting category"
+      ],
+      "values": [
+        {
+          "value": "exchange of crypto-assets for fiat or crypto",
+          "definition": "Exchange transactions reportable under tax information rules.",
+          "citations": []
+        },
+        {
+          "value": "transfer of crypto-assets",
+          "definition": "Transfers reportable where they involve reportable persons.",
+          "citations": []
+        },
+        {
+          "value": "retail payment",
+          "definition": "Payment transactions for goods or services reportable where applicable.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          9
+        ],
+        "jurisdictions": [
+          "UK"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "CARF categories derive from OECD framework and differ in scope from AML transaction categories."
+    },
+    {
+      "id": "obligation_prudential_treatment",
+      "name": "Prudential treatment category",
+      "applies_to": "obligation_or_risk",
+      "question": "Which capital or prudential risk weight or treatment applies to the crypto-asset exposure?",
+      "description": "Basel SCO60 classifies bank exposures to crypto-assets into groups by underlying asset characteristics such as stabilisation and permissionless operation, assigning differing capital requirements.",
+      "aliases": [
+        "capital treatment group",
+        "risk weight category"
+      ],
+      "values": [
+        {
+          "value": "group 1a",
+          "definition": "Tokenised traditional assets or stablecoins meeting SCO60 classification conditions.",
+          "citations": []
+        },
+        {
+          "value": "group 1b",
+          "definition": "Tokenised assets with a reference asset but failing some conditions.",
+          "citations": []
+        },
+        {
+          "value": "group 2",
+          "definition": "Crypto-assets failing Group 1 conditions, subject to highest capital charges.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          20
+        ],
+        "jurisdictions": [
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "Basel group boundaries are not replicated in EU or US prudential rules; the classification depends on SCO60 conditions."
+    },
+    {
+      "id": "obligation_risk_category",
+      "name": "Risk category",
+      "applies_to": "obligation_or_risk",
+      "question": "Which risk type does the activity or asset present: money laundering, operational, market, cyber or systemic?",
+      "description": "Regulators categorise risks to determine supervisory requirements; FATF, DORA and FSB texts use distinct risk categories to scope requirements.",
+      "aliases": [
+        "risk type",
+        "risk taxonomy"
+      ],
+      "values": [
+        {
+          "value": "money laundering and terrorist financing",
+          "definition": "Risk that crypto-assets are used to launder illicit funds or finance terrorism.",
+          "citations": []
+        },
+        {
+          "value": "operational and ICT",
+          "definition": "Risk arising from failures in information and communication technology systems.",
+          "citations": []
+        },
+        {
+          "value": "market and liquidity",
+          "definition": "Risk from price volatility or reduced market liquidity.",
+          "citations": []
+        },
+        {
+          "value": "cyber",
+          "definition": "Risk from malicious attacks against ledger or service infrastructure.",
+          "citations": []
+        },
+        {
+          "value": "systemic",
+          "definition": "Risk that failure transmits to the wider financial system.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          7,
+          17,
+          21,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "DORA addresses ICT risk specifically; FATF addresses ML/TF; the taxonomy of risk types is not harmonised across sources."
+    },
+    {
+      "id": "obligation_ict_resilience_scope",
+      "name": "ICT resilience scope",
+      "applies_to": "obligation_or_risk",
+      "question": "Is the entity within the scope of digital operational resilience requirements, and which resilience tier does it fall into?",
+      "description": "DORA classifies financial entities and ICT third-party providers by type and criticality, assigning differing resilience requirements.",
+      "aliases": [
+        "DORA scope",
+        "ICT criticality"
+      ],
+      "values": [
+        {
+          "value": "in scope financial entity",
+          "definition": "Financial entity listed in DORA Article 2 subject to ICT requirements.",
+          "citations": []
+        },
+        {
+          "value": "critical ICT third-party provider",
+          "definition": "ICT provider designated as critical with enhanced oversight.",
+          "citations": []
+        },
+        {
+          "value": "out of scope",
+          "definition": "Entity not listed under DORA scope.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          7
+        ],
+        "jurisdictions": [
+          "EU"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "DORA scope does not map directly onto MiCA CASP categories; the boundary is set by separate DORA definitions."
+    },
+    {
+      "id": "obligation_financial_crime_control",
+      "name": "Financial crime control regime",
+      "applies_to": "obligation_or_risk",
+      "question": "Which AML or sanctions controls apply to the actor or transaction under the risk-based approach?",
+      "description": "FATF and EU AML rules attach controls such as customer due diligence, monitoring and reporting to actors and transactions based on risk.",
+      "aliases": [
+        "AML obligations",
+        "risk-based controls"
+      ],
+      "values": [
+        {
+          "value": "simplified due diligence",
+          "definition": "Reduced controls for lower-risk actors or transactions.",
+          "citations": []
+        },
+        {
+          "value": "standard due diligence",
+          "definition": "Default customer due diligence applied to ordinary-risk customers.",
+          "citations": []
+        },
+        {
+          "value": "enhanced due diligence",
+          "definition": "Strengthened controls for higher-risk actors, transactions or jurisdictions.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          5,
+          17,
+          18,
+          19
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "Risk tiering criteria are set out differently in AMLR and FATF guidance."
+    },
+    {
+      "id": "obligation_investor_protection_class",
+      "name": "Investor or client classification",
+      "applies_to": "obligation_or_risk",
+      "question": "Is the client a retail, professional or institutional investor for conduct and disclosure purposes?",
+      "description": "MiCA and IOSCO classify clients by sophistication, with different disclosure and suitability obligations for retail and professional holders.",
+      "aliases": [
+        "client categorisation",
+        "investor type"
+      ],
+      "values": [
+        {
+          "value": "retail client",
+          "definition": "Non-professional client requiring enhanced disclosure and protection.",
+          "citations": []
+        },
+        {
+          "value": "professional client",
+          "definition": "Client meeting professional criteria with reduced protection.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          22
+        ],
+        "jurisdictions": [
+          "EU",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "MiCA follows MiFID categorisation; IOSCO framework leaves categorisation to national regulators."
+    },
+    {
+      "id": "obligation_licensing_exemption",
+      "name": "Licensing or exemption status",
+      "applies_to": "obligation_or_risk",
+      "question": "Is the activity licensed, exempt, or outside the regime, and under which exemption?",
+      "description": "Regulatory treatments include authorisation, registration, exemption, and transitional relief; sources classify actors according to which treatment applies.",
+      "aliases": [
+        "authorisation status",
+        "exemption category"
+      ],
+      "values": [
+        {
+          "value": "authorised or licensed",
+          "definition": "Entity holding the required authorisation under the regime.",
+          "citations": []
+        },
+        {
+          "value": "exempt",
+          "definition": "Entity or activity falling within a statutory exemption.",
+          "citations": []
+        },
+        {
+          "value": "transitional",
+          "definition": "Entity operating under grandfathering or transitional provisions.",
+          "citations": []
+        },
+        {
+          "value": "unregulated",
+          "definition": "Entity or activity outside the regulatory perimeter.",
+          "citations": []
+        }
+      ],
+      "citations": [],
+      "sources": {
+        "documents": [
+          4,
+          8,
+          13,
+          17
+        ],
+        "jurisdictions": [
+          "EU",
+          "UK",
+          "US",
+          "INTL"
+        ],
+        "document_classes": [
+          "legal_instrument"
+        ]
+      },
+      "notes": "Transitional periods and exemption conditions vary across MiCA, UK SI 2026/102 and the GENIUS Act."
+    }
+  ],
+  "coverage_notes": "",
+  "truncated": true
+}

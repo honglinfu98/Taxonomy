@@ -110,6 +110,34 @@ python -m taxonomy.evaluation.retrieval_eval --runs 3
 
 Protocol and results: `taxonomy/evaluation/README.md`, `output/evaluation/`, `paper/tables/eval_*.tex`.
 
+### RQ5: catalogue baselines (`taxonomy/baselines/`, Haiku 5.5)
+
+Four alternative ways to build the catalogue from the same corpus, scored on citations verified,
+LLM-judged agreement with ours, coverage of the 39 dimensions of the two taxonomy papers in the
+corpus, structure after Task B, and type-level F1 when tagging the gold items (table:
+`output/baselines/rq5.md`, `paper/tables/rq5.tex`). Zero-shot without the corpus reaches 32
+types and 0.30 judged agreement with ours; chunked RAG 81 types at 0.47; RAPTOR 65 at 0.43;
+TnT-LLM 170 at 0.33 with no citations. Our run-to-run agreement is 0.60 by the judge. Downstream
+type micro-F1: ours 0.34, RAG 0.24, zero-shot 0.20, RAPTOR 0.18, TnT-LLM 0.12 (biased toward ours:
+the gold is in our label space). RQ5 cost $8.83.
+
+### RQ6: Task A ablations (`taxonomy/baselines/ablate.py`, `rq6.py`)
+
+One Task A run per ingredient removed or changed, scored like the RQ5 baselines (table:
+`output/ablations/rq6.md`, `paper/tables/rq6.tex`). No manifest: 62 types, 21% of citations
+relabelled (1.5% with it). No citation requirement: 39 types, recall of the main run 0.36. No
+definitions block: 111 types, precision 0.57. Effort low: 46 types. Model repeats: Haiku 76
+(judged agreement 0.60), Sonnet medium 54 (0.52), Sonnet high 72 truncated (0.57). RQ6 cost $1.55.
+
+### RQ7: Web-sourced token descriptions (`taxonomy/rq7/`)
+
+378 CoinGecko token descriptions classified into the site's own 28 categories (independent gold).
+As prompt context the catalogue does not raise an LLM classifier (micro-F1 0.570 vs 0.571
+without it). The ontology tags alone, without the description, reach 0.535; as features for
+logistic regression 432 tag indicators match 8,334 TF-IDF features on micro-F1 and beat them on
+macro-F1 (0.40 vs 0.26); words + tags is best (0.51 / 0.42). Table `output/rq7/rq7.md`,
+`paper/tables/rq7.tex`, failure cases `output/rq7/failure_cases.md`. RQ7 cost $1.73.
+
 ## Setup
 
 ```bash
@@ -136,6 +164,9 @@ taxonomy/
   classification/          Part 2: sampler, prompts, Task C tagging, maintenance, evolution
   retrieval/               Part 3: DAG index, graph structures, query engine, benchmark
   evaluation/              gold set, tagging F1 with baselines, retrieval P@k / NDCG@k
+  baselines/               RQ5: zero-shot, chunked RAG, RAPTOR, TnT-LLM catalogues, expert key, comparison
+                           RQ6: Task A ablations (ablate.py, rq6.py)
+  rq7/                     RQ7: CoinGecko descriptions, site categories, LLM and supervised classifiers
 data/dlt_corpus/           downloaded DLT-Corpus shards and the pilot sample (gitignored)
 output/
   establishment/           Part 1 results: term types, is-a distributions, DAG, metrics, viewer
@@ -143,5 +174,7 @@ output/
   evolution/               v0 seed, v1.. evolved catalogues, iter_XX batches, evolution log
   retrieval/               Part 3: index summary, benchmark (index.pkl is rebuilt, not committed)
   evaluation/              gold set, predictions per run, tagging and retrieval results
+  baselines/, ablations/   RQ5 baseline catalogues and RQ6 ablation runs with their tables
+  rq7/                     RQ7 dataset (coins, items, labels), predictions, tables
 paper/                     the write-up (LaTeX)
 ```

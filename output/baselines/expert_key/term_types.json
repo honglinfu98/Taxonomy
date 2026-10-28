@@ -1,0 +1,1627 @@
+{
+  "run": {
+    "task": "expert-key",
+    "docs": [
+      1,
+      2
+    ],
+    "per_doc": {
+      "1": {
+        "title": "Taxonomy of Blockchain Technologies. Principles of Identification and Classification",
+        "extracted": 27,
+        "kept": 27,
+        "quote_verified": 27,
+        "name_only": 0
+      },
+      "2": {
+        "title": "Crypto-asset Taxonomy for Investors and Regulators",
+        "extracted": 12,
+        "kept": 12,
+        "quote_verified": 11,
+        "name_only": 1
+      }
+    },
+    "dropped_unverified": [],
+    "effort": "high",
+    "model": "claude-haiku-5-5",
+    "calls": 2,
+    "usage": {
+      "input": 669,
+      "output": 15642,
+      "cache_write": 0,
+      "cache_read": 57817
+    },
+    "cost_usd": 0.0085,
+    "api_seconds": 51.4,
+    "wall_seconds": 51.6,
+    "timestamp": "2026-10-27T12:02:12+00:00",
+    "baseline": "expert_key"
+  },
+  "term_types": [
+    {
+      "id": "d1_consensus_network_topology",
+      "name": "Consensus Network Topology",
+      "applies_to": "technology",
+      "question": "How are nodes interconnected and how does information flow for transaction validation?",
+      "description": "Describes the type of interconnection between nodes and the information flow used for transaction validation.",
+      "aliases": [
+        "Network Topology"
+      ],
+      "values": [
+        {
+          "value": "Decentralised",
+          "definition": "Peer-to-peer network where every node is equivalent and validates transactions independently.",
+          "citations": []
+        },
+        {
+          "value": "Hierarchical",
+          "definition": "Network where nodes have differentiated roles, such as tracking and validating nodes, also called consortium blockchains.",
+          "citations": []
+        },
+        {
+          "value": "Centralised",
+          "definition": "Network where a central authority controls what is added to the ledger.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "Consensus Network Topology describes the type of interconnection between the nodes and the type of information flow between them for transaction and/or for the purpose of validation.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_consensus_immutability_and_failure_tolerance",
+      "name": "Consensus Immutability and Failure Tolerance",
+      "applies_to": "technology",
+      "question": "What mechanism ensures immutability and tolerance to failures of the agreed ledger?",
+      "description": "Defines the mechanism that keeps the ledger reliable, valid and secure against faults and malicious behaviour.",
+      "aliases": [
+        "Consensus mechanism"
+      ],
+      "values": [
+        {
+          "value": "Proof-of-Work",
+          "definition": "Miners solve cryptographic hash puzzles to create blocks, with probability proportional to computing power devoted.",
+          "citations": []
+        },
+        {
+          "value": "Proof-of-Stake",
+          "definition": "Block creation probability depends on share of digital assets held, with randomised or coin-age-based selection.",
+          "citations": []
+        },
+        {
+          "value": "Proof-of-Authority",
+          "definition": "Only pre-selected trusted authority nodes are allowed to create new blocks and secure the blockchain.",
+          "citations": []
+        },
+        {
+          "value": "Proof-of-Capacity/Proof-of-Space and Proof-of-Storage",
+          "definition": "Provers allocate hard-drive or storage space instead of CPU cycles to compete for block creation.",
+          "citations": []
+        },
+        {
+          "value": "Proof-of-Burn",
+          "definition": "Miners prove they burned digital assets by sending them to unspendable addresses.",
+          "citations": []
+        },
+        {
+          "value": "Hybrid",
+          "definition": "Combines mechanisms such as PoB with PoS, or PoW with PoS, where one acts as checkpoints for the other.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "As of this writing, we identify six main layouts for Consensus Immutability and Failure Tolerance",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_gossiping",
+      "name": "Gossiping",
+      "applies_to": "technology",
+      "question": "How does information propagate through the peer network?",
+      "description": "Describes how new blocks and information travel across nodes in the network.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Local",
+          "definition": "Information first spreads locally through a federated validation process before reaching all nodes.",
+          "citations": []
+        },
+        {
+          "value": "Global",
+          "definition": "Information is sent to a randomly selected list of peers in a largely unstructured network topology.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts for Gossiping: 1. Local. Gossiping occurs first in a local manner (through a local validation process) until consensus is reached.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_consensus_agreement_latency",
+      "name": "Latency",
+      "applies_to": "technology",
+      "question": "What rule governs message propagation timing in the network?",
+      "description": "Sub-subcomponent describing whether message delays are bounded in the consensus agreement.",
+      "aliases": [
+        "Communication synchrony"
+      ],
+      "values": [
+        {
+          "value": "Synchronous Communication",
+          "definition": "Systems set upper bounds on process speed and communication delay, discarding messages exceeding the interval.",
+          "citations": []
+        },
+        {
+          "value": "Asynchronous Communication",
+          "definition": "No bound is set on process speed or communication delay; messages may take indefinite time to arrive.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "Systems which set upper bounds on process speed interval and communication delay such that every message arrives within a certain known, predefined, time interval are called synchronous.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_consensus_agreement_finality",
+      "name": "Finality",
+      "applies_to": "technology",
+      "question": "Can recorded information be considered perpetually stored once recorded?",
+      "description": "Sub-subcomponent describing whether consensus converges deterministically or only probabilistically.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Non-Deterministic",
+          "definition": "Consensus eventually settles probabilistically; previously validated blocks may still be pruned later.",
+          "citations": []
+        },
+        {
+          "value": "Deterministic",
+          "definition": "Consensus converges with certainty and transactions are immediately confirmed or rejected.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts for Finality: 1. Non-Deterministic. In this case, consensus agreement eventually settles.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_data_structure_in_the_blockheader",
+      "name": "Data Structure in the Blockheader",
+      "applies_to": "technology",
+      "question": "Which tree structure is used to store transaction information in the block header?",
+      "description": "Describes the capability of the system to store transaction information in block headers.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Binary Merkle Tree",
+          "definition": "Block header stores a root hash of a binary Merkle tree containing that block's transactions.",
+          "citations": []
+        },
+        {
+          "value": "Patricia Merkle Tree",
+          "definition": "Tree storing transactions, receipts and state, allowing verification of specific branches and account updates.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts for Data Structure in the blockheader: 1. Binary Merkle Tree. Bitcoin uses the Binary Merkle tree within the block header to store the transactions.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_transaction_model",
+      "name": "Transaction Model",
+      "applies_to": "technology",
+      "question": "How are user information and transaction inputs and outputs recorded and updated in the ledger?",
+      "description": "Describes how nodes store and update user information in the distributed ledger.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "The Unspent Transaction Output (UTXO)",
+          "definition": "Outputs are locked for a number of blocks before reuse, preventing spending of unstable fees and rewards.",
+          "citations": []
+        },
+        {
+          "value": "Traditional Ledger",
+          "definition": "Transactions recorded as balance increments and decrements in an account-style ledger.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "The transaction model can be imagined as an accounting ledger which tracks the inputs and outputs of each transaction.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_server_storage",
+      "name": "Server Storage",
+      "applies_to": "technology",
+      "question": "Which nodes store the full blockchain versus a subset of it?",
+      "description": "Describes whether nodes hold the complete ledger or only selected information.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Full Nodes",
+          "definition": "All nodes hold the full information of the blockchain, creating redundancy and resilience.",
+          "citations": []
+        },
+        {
+          "value": "Thin Nodes Capabilities",
+          "definition": "Some nodes store only a selected subset of blockchain information, improving scalability but reducing resiliency.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts for Server Storage: 1. Full Nodes. All nodes connected to the network, and which are part of the validation process, are of the same kind.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_block_storage",
+      "name": "Block Storage",
+      "applies_to": "technology",
+      "question": "What information is stored in the blockchain?",
+      "description": "Determines which information is stored on-chain, affecting scalability and abstraction of user data.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Transactions",
+          "definition": "Only transactions with inputs and outputs are stored, as in Bitcoin or IOTA's directed acyclic graph.",
+          "citations": []
+        },
+        {
+          "value": "User balance",
+          "definition": "Decentralised storage also records user balances in specific assets, as in Ripple.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts for Block Storage: 1. Transactions. In systems like Bitcoin, only the transactions are stored.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_limits_to_scalability",
+      "name": "Limits to Scalability",
+      "applies_to": "technology",
+      "question": "Which factor most limits how the system scales as its size grows?",
+      "description": "Identifies the most limiting element for scaling the system (transactions, users, nodes, or confirmation time).",
+      "aliases": [
+        "Scalability limit"
+      ],
+      "values": [
+        {
+          "value": "Limit by number of transactions",
+          "definition": "Throughput is capped by design, such as a hard-coded block size limit in Bitcoin.",
+          "citations": []
+        },
+        {
+          "value": "Limit by number of users",
+          "definition": "Scalability is constrained by the number of objects or accounts whose states are stored, as in Ripple or Ethereum.",
+          "citations": []
+        },
+        {
+          "value": "Limit by number of nodes",
+          "definition": "Gossip propagation time across many nodes limits consensus and may cause forks.",
+          "citations": []
+        },
+        {
+          "value": "Confirmation time",
+          "definition": "Scaling is constrained by how long it takes actions to be added and validated in blocks, deterministic or stochastic.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify four possible layouts as Limits to Scalability: 1. Limit by number of transactions. We start from the most common real-world example.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_native_asset",
+      "name": "Native Asset",
+      "applies_to": "asset",
+      "question": "Does the system have an underlying native currency, and can it convert other assets?",
+      "description": "Describes whether the system has a native digital asset and whether it supports multiple convertible assets.",
+      "aliases": [
+        "Native Currency"
+      ],
+      "values": [
+        {
+          "value": "None",
+          "definition": "Private implementations do not require a native asset to incentivise participation.",
+          "citations": []
+        },
+        {
+          "value": "Own Cryptocurrency",
+          "definition": "Only the platform's own token can be transferred, such as Bitcoin or Litecoin.",
+          "citations": []
+        },
+        {
+          "value": "Convertible Multiple Assets",
+          "definition": "Platform supports exchange of assets expressed in currencies outside those native to the platform.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify three possible layouts for Native asset: 1. None. Private blockchain implementations do not require a native asset within to incentivise participation.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_tokenisation",
+      "name": "Tokenisation",
+      "applies_to": "asset",
+      "question": "Can tokens representing ownership be created on the platform?",
+      "description": "Describes whether and how the platform supports issuing tokens that represent property ownership.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "No tokenisation present",
+          "definition": "Platform has no technology enabling tokenisation without third-party additions.",
+          "citations": []
+        },
+        {
+          "value": "Tokenisation through third-party addons",
+          "definition": "Tokenised transactions enabled on the base chain via add-ons such as Colored Coins.",
+          "citations": []
+        },
+        {
+          "value": "Tokenisation",
+          "definition": "Native tokenisation via smart contracts, as in Ethereum, enabling creation of arbitrary new tokens.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify three possible layouts for Tokenisation: 1. No tokenisation present. Without third-party technologies, Bitcoin does not have implemented technologies that enable tokenisation.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_asset_supply_management",
+      "name": "Asset Supply Management",
+      "applies_to": "asset",
+      "question": "How is the supply of the digital asset created and limited?",
+      "description": "Describes the monetary policy governing creation of the digital asset.",
+      "aliases": [
+        "Monetary policy"
+      ],
+      "values": [
+        {
+          "value": "Limited - Deterministic",
+          "definition": "Supply grows sub-linearly toward a well-defined maximum, as introduced in Bitcoin.",
+          "citations": []
+        },
+        {
+          "value": "Unlimited - Deterministic",
+          "definition": "Supply has no defined maximum limit, as in Dogecoin or Freicoin.",
+          "citations": []
+        },
+        {
+          "value": "Pre-mined",
+          "definition": "All assets distributed before system start, with a reward system inducing later redistribution.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify three possible layouts for Asset Supply Management: 1. Limited - Deterministic. The most replicated system in the world of blockchain is the limited supply.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_interoperability",
+      "name": "Interoperability",
+      "applies_to": "technology",
+      "question": "Can the blockchain exchange information with systems outside blockchains?",
+      "description": "Describes the capability to exchange information with external, non-blockchain systems.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Implicit interoperability",
+          "definition": "Turing-complete script language allows conditions referencing external system status via APIs.",
+          "citations": []
+        },
+        {
+          "value": "Explicit interoperability",
+          "definition": "Non-Turing-complete language or built-in tools purposely enable interaction with the real world.",
+          "citations": []
+        },
+        {
+          "value": "No Interoperability",
+          "definition": "Blockchain has no means to interact with other systems outside it.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify three possible layouts for Interoperability: 1. Implicit interoperability. It occurs when the smart contracts that specify conditions can be written in a Turing-complete blockchain script language.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_intraoperability",
+      "name": "Intraoperability",
+      "applies_to": "technology",
+      "question": "Can the blockchain exchange information with other blockchains?",
+      "description": "Describes the capability to exchange information between different blockchains.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Implicit intraoperability",
+          "definition": "Turing-complete script language allows conditions referencing status on other blockchains.",
+          "citations": []
+        },
+        {
+          "value": "Explicit intraoperability",
+          "definition": "Non-Turing-complete language specifically designed to allow intraoperability, such as Bitcoin with Counterparty.",
+          "citations": []
+        },
+        {
+          "value": "No intraoperability",
+          "definition": "Blockchain cannot interact with other blockchains without external solutions.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "Intraoperability illustrates the overall capability of blockchains to exchange information with other blockchains.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_governance",
+      "name": "Governance",
+      "applies_to": "actor",
+      "question": "Who defines and maintains the technical rules of the blockchain?",
+      "description": "Describes the model by which technical rules and upgrades are determined.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Open-source Community",
+          "definition": "Open communities of developers and validators coordinate upgrades and technical adjustments.",
+          "citations": []
+        },
+        {
+          "value": "Technical",
+          "definition": "Enterprises with technical strength dictate technical rules according to their business goals.",
+          "citations": []
+        },
+        {
+          "value": "Alliance",
+          "definition": "Industry consortia of companies with common business demands set technical rules collectively.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two type of governance rules: 1) technical rules of self-governance defined by the participants.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_script_language",
+      "name": "Script Language",
+      "applies_to": "technology",
+      "question": "How expressive is the scripting language used to define conditions and smart contracts?",
+      "description": "Describes the expressiveness and computational scope of the scripting language.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Turing Complete",
+          "definition": "Language can execute arbitrary algorithmic computations, as in the Ethereum Virtual Machine.",
+          "citations": []
+        },
+        {
+          "value": "Generic Non-Turing Complete",
+          "definition": "Limited-scope language chosen to keep computation impact low, as in Bitcoin.",
+          "citations": []
+        },
+        {
+          "value": "Application-specific Non-Turing Complete",
+          "definition": "Non-Turing-complete language purposely designed for specific cases, such as DAML for financial rights.",
+          "citations": []
+        },
+        {
+          "value": "Non-Turing Complete + External Data",
+          "definition": "Non-Turing-complete language that uses trusted oracles to incorporate external data.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify four possible layouts for Script Language: 1. Turing Complete. Ethereum refers to a suite of protocols that define a platform for decentralised applications.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_data_encryption",
+      "name": "Data Encryption",
+      "applies_to": "technology",
+      "question": "Which cryptographic primitive ensures authenticity, integrity and order of events?",
+      "description": "Describes the cryptographic primitives used for authenticity and integrity.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "SHA-2",
+          "definition": "Secure Hash Algorithm family (SHA-256, SHA-512) used for hashing transactions and integrity.",
+          "citations": []
+        },
+        {
+          "value": "ZK-SNARKS",
+          "definition": "Zero-knowledge succinct non-interactive argument allowing validation without providing the underlying data.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two major layouts for Data Encryption: 1. SHA-2. SHA stands for Secure Hash Algorithm.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_data_privacy",
+      "name": "Data Privacy",
+      "applies_to": "technology",
+      "question": "Is privacy built into the protocol or added externally?",
+      "description": "Describes whether transaction data is obfuscated by default or through add-on solutions.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Built-in data privacy",
+          "definition": "Privacy provided by default in the protocol, such as ZeroCash, Enigma or CORDA.",
+          "citations": []
+        },
+        {
+          "value": "Add-on data privacy",
+          "definition": "Pseudonymous or public blockchains rely on external mixing, secret sharing, ring signatures or stealth addresses.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "According to the solutions proposes so far to enhance Data Privacy, we identify two possible layouts: 1. Built-in data privacy.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_coding_language",
+      "name": "Coding Language",
+      "applies_to": "technology",
+      "question": "In which programming language or languages is the codebase written?",
+      "description": "Describes the interconnectivity of programming languages used in the blockchain codebase.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Single Language",
+          "definition": "Codebase is written in one programming language, such as C++ for Bitcoin Core.",
+          "citations": []
+        },
+        {
+          "value": "Multiple Languages",
+          "definition": "Codebase and SDKs use several programming languages, such as C++, Go and JavaScript.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts for Coding Language: 1. Single Language. Bitcoin has released The Bitcoin Core version 0.13.1 with the underlying coding language C++.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_code_license",
+      "name": "Code License",
+      "applies_to": "technology",
+      "question": "Is the source code openly available for modification?",
+      "description": "Describes whether the source code is open to modification and forking.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Open Source",
+          "definition": "Source code is publicly available under permissive licences such as MIT or ISC.",
+          "citations": []
+        },
+        {
+          "value": "Closed Source",
+          "definition": "Source code is not openly distributed, typically for private implementations.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify thee possible layouts for Code License: 1. Open Source. Regardless of the exact licence used for specific projects, we refer only to the openness in the source code.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_software_architecture",
+      "name": "Software Architecture",
+      "applies_to": "technology",
+      "question": "Is the blockchain built as a single integrated application or as decoupled modules?",
+      "description": "Describes the high-level structure of the blockchain software.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Monolithic Design",
+          "definition": "All ledger functions are handled by a single-tier application without modularity, as in Bitcoin and Ethereum.",
+          "citations": []
+        },
+        {
+          "value": "Polylithic Design",
+          "definition": "Consensus engine and P2P layers are decoupled from application state, as in Tendermint or Hyperledger Fabric.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts for Software Architecture: 1. Monolithic Design. In this case, all the aspects of a decentralised ledger are handled by a blockchain built as a single-tier software application.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_access_and_control_layer",
+      "name": "Access and Control Layer",
+      "applies_to": "actor",
+      "question": "Who has read, write and consensus-management rights on the ledger?",
+      "description": "Defines the authorisation and control policy determining who can read, write and manage consensus.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Public blockchain",
+          "definition": "All participants have read/write access and can contribute to ledger updates without control.",
+          "citations": []
+        },
+        {
+          "value": "Permissioned Public blockchain",
+          "definition": "Read access is open to all, but write and consensus management require permission from pre-selected nodes.",
+          "citations": []
+        },
+        {
+          "value": "Permissioned Private blockchain",
+          "definition": "Read, write and consensus rights are granted only by a centralised organisation.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "Although different variations are possible, the authority to perform transactions on a blockchain generally belongs to one of the following main models of the Access and control Layer.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_identity_layer",
+      "name": "Identity Layer",
+      "applies_to": "actor",
+      "question": "Does the system verify user identities through KYC/AML procedures or allow anonymity?",
+      "description": "Describes the onboarding and identification approach for entities joining the network.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "KYC/AML",
+          "definition": "Compliant blockchain validates organisations and attribute data from authoritative sources, e.g. Stellar and Ripple.",
+          "citations": []
+        },
+        {
+          "value": "Anonymous",
+          "definition": "No identity layer identifies users; pseudonymous addresses are used, as in Bitcoin.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts: 1. KYC/AML. Compliant blockchains have the ability to validate organisations and their attribute data from authoritative sources.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_reward_system",
+      "name": "Reward System",
+      "applies_to": "obligation_or_risk",
+      "question": "How are participants compensated for storage, validation or verification?",
+      "description": "Describes the automatic rewarding mechanisms that compensate active members.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Lump-sum Reward",
+          "definition": "Fixed or variable reward to the block creator, such as the coinbase transaction in Bitcoin.",
+          "citations": []
+        },
+        {
+          "value": "Block + Security Reward",
+          "definition": "Reward for block creation plus reward for including valid forked blocks to incentivise cross-validation, as in Ethereum.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify two possible layouts for Reward System: 1. Lump-sum Reward. Individuals taking part of the storage, validation or verification process may be rewarded for their action.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_fees_reward",
+      "name": "Fee Reward",
+      "applies_to": "obligation_or_risk",
+      "question": "Are transaction fees optional, mandatory or absent?",
+      "description": "Describes the nature of fees users must contribute when using the blockchain.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Optional Fees",
+          "definition": "Users may pay a voluntary fee that prioritises processing, as in Bitcoin.",
+          "citations": []
+        },
+        {
+          "value": "Mandatory Fees",
+          "definition": "All transactions must include fees, as required in Stellar.",
+          "citations": []
+        },
+        {
+          "value": "No Fees",
+          "definition": "No transaction fees are charged, as in Hyperledger Fabric.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "We identify three possible layouts for Fees Reward: 1. Optional Fees. In Bitcoin and related technologies users can optionally pay a voluntary fee for the validation process.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d1_fee_structure",
+      "name": "Fee Structure",
+      "applies_to": "obligation_or_risk",
+      "question": "Is the fee linked to the size of the request or fixed per request?",
+      "description": "Describes whether fees follow a variable or fixed structure.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Variable Fees",
+          "definition": "Fee depends on transaction size, paid per byte, as in Bitcoin.",
+          "citations": []
+        },
+        {
+          "value": "Fixed Fees",
+          "definition": "Fee is linked to the request rather than its size, as in Enigma or Peercoin.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 1,
+          "section": "Body: Sections I-XII (introduction through conclusion)",
+          "quote": "When provided by the system, fees can follow either a fixed or a variable structure. There are two alternative layouts for Fees Structure: 1. Variable Fees.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 1,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_technical_standard",
+      "name": "Technical Standard",
+      "applies_to": "technology",
+      "question": "Which technical template defines how the crypto-asset is issued and transferred across blockchains?",
+      "description": "Classifies the token standard or native protocol on which the asset is built.",
+      "aliases": [
+        "token standard"
+      ],
+      "values": [
+        {
+          "value": "Native",
+          "definition": "Assets built on their own chain and governed by its own protocol rules rather than a smart-contract token standard.",
+          "citations": []
+        },
+        {
+          "value": "ERC-20",
+          "definition": "Fungible, widely used standard enabling broad DeFi integration and wider contagion surface.",
+          "citations": []
+        },
+        {
+          "value": "Other token templates across blockchains",
+          "definition": "Other standards such as ERC-721 or ERC-1400/ERC-3643 used across blockchains.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "Native: Assets built on their own chain and governed by its own protocol rules rather than a smart-contract token standard.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_centralisation",
+      "name": "Centralisation Dimension",
+      "applies_to": "asset",
+      "question": "Is governance, minting, yield and redemption control concentrated in a single entity or distributed across the network?",
+      "description": "Classifies the degree of centralisation of critical resources using the Minimum Decentralisation Test across functional sub-dimensions.",
+      "aliases": [
+        "centralisation",
+        "decentralisation level"
+      ],
+      "values": [
+        {
+          "value": "Centralised",
+          "definition": "Governance, minting or redemption controlled by a single entity or tightly-layered group; token-holder influence limited.",
+          "citations": []
+        },
+        {
+          "value": "Decentralised",
+          "definition": "Governance, issuance, redemption and yield broadly distributed; no single entity exercises unilateral control.",
+          "citations": []
+        },
+        {
+          "value": "Hybrid",
+          "definition": "Mixed or transitional models where some domains are decentralised and others remain centrally controlled.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "an asset is classified as decentralised if all groups pass the MDT, centralised if the first 4 groups are subject to unilateral control by a single entity, and hybrid otherwise",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_asset_function",
+      "name": "Asset Function",
+      "applies_to": "asset",
+      "question": "What is the primary economic function of the crypto-asset?",
+      "description": "Distinguishes assets by their economic function, such as governance, utility or exposure to underlying cash flows.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Governance tokens",
+          "definition": "Assets conveying on-chain governance or control rights over a protocol or pool, such as voting on parameters or upgrades.",
+          "citations": []
+        },
+        {
+          "value": "Utility tokens",
+          "definition": "Assets providing digital access to a specific application, good or service without claims on reserves or cash flows.",
+          "citations": []
+        },
+        {
+          "value": "Security tokens",
+          "definition": "Assets whose core economic function is providing exposure to underlying assets or cash flows, behaving like securities.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "Security tokens: Assets whose core economic function is to provide exposure to underlying assets or cash flows, and that therefore behave similarly to traditional securities",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_minting_issuer",
+      "name": "Issuer",
+      "applies_to": "actor",
+      "question": "Who, if anyone, creates and makes commitments regarding the token?",
+      "description": "Identifies whether an issuer exists and whether it is a centralised entity, protocol or none.",
+      "aliases": [
+        "issuer"
+      ],
+      "values": [
+        {
+          "value": "Centralised issuer",
+          "definition": "Assets minted by a clearly identifiable legal person or entity that controls issuance and may promise returns or redemption.",
+          "citations": []
+        },
+        {
+          "value": "Protocol issuance",
+          "definition": "Assets minted or distributed algorithmically via smart contracts without a single accountable party post-deployment.",
+          "citations": []
+        },
+        {
+          "value": "No issuer",
+          "definition": "Assets minted from consensus mechanisms without any centralised or delegated issuance process.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "No issuer: Assets minted from consensus mechanisms, without any centralised or delegated issuance process (e.g., BTC, XMR).",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_minting_mechanism",
+      "name": "Minting Mechanism",
+      "applies_to": "activity",
+      "question": "How are new units of the crypto-asset created and released into circulation?",
+      "description": "Classifies the process by which units originate, such as consensus, lock-and-mint, staking or wrapping.",
+      "aliases": [
+        "minting type"
+      ],
+      "values": [
+        {
+          "value": "Consensus-based minting",
+          "definition": "Units created via proof of work, proof of stake, proof of authority, proof of capacity or proof of burn.",
+          "citations": []
+        },
+        {
+          "value": "Collateralised lock-and-mint",
+          "definition": "Assets minted by depositing collateral into a contract or custodian.",
+          "citations": []
+        },
+        {
+          "value": "Staked tokens",
+          "definition": "Minted by staking PoS tokens to generate staking rewards.",
+          "citations": []
+        },
+        {
+          "value": "Wrapped tokens",
+          "definition": "Original asset locked on its own blockchain with a copy minted on another to enable cross-chain use.",
+          "citations": []
+        },
+        {
+          "value": "Algorithmic burn-and-mint equilibria",
+          "definition": "Tokens with elastic supply adjusted to maintain a peg.",
+          "citations": []
+        },
+        {
+          "value": "Governance- or emission-based minting",
+          "definition": "Protocol-engineered emissions as incentives or to bootstrap participation.",
+          "citations": []
+        },
+        {
+          "value": "Pre-mining / initial allocation",
+          "definition": "Assets minted at launch and distributed to founders or early buyers.",
+          "citations": []
+        },
+        {
+          "value": "NFT minting",
+          "definition": "Token contracts maintaining a registry of unique ownership under non-fungible standards.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "Crypto-assets can be created through a variety of minting processes, which differ in their economic logic and technical implementation.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_yield_source",
+      "name": "Yield Source",
+      "applies_to": "activity",
+      "question": "From which underlying economic activity or protocol emission does the holder's yield derive?",
+      "description": "Distinguishes direct yield from underlying economic activity and incentive yield from protocol-engineered emissions, or no yield.",
+      "aliases": [
+        "yield type"
+      ],
+      "values": [
+        {
+          "value": "Lending/Borrowing",
+          "definition": "Interest generated from borrowers in lending protocols accruing to depositors.",
+          "citations": []
+        },
+        {
+          "value": "Liquidity Provision Fees",
+          "definition": "Trading fees rewarded to liquidity providers from automated market maker protocols.",
+          "citations": []
+        },
+        {
+          "value": "Staking rewards",
+          "definition": "Validator rewards distributed on proof-of-stake chains and liquid staking tokens.",
+          "citations": []
+        },
+        {
+          "value": "Revenue Sharing",
+          "definition": "Collected protocol revenues redistributed to token stakers.",
+          "citations": []
+        },
+        {
+          "value": "Liquidity Mining Incentives",
+          "definition": "Minted and distributed governance tokens to motivate protocol participants.",
+          "citations": []
+        },
+        {
+          "value": "Burn-and-Mint Equilibria",
+          "definition": "Value redistributed after supply adjustment in algorithmic stablecoins.",
+          "citations": []
+        },
+        {
+          "value": "No Yield",
+          "definition": "Assets that generate no yield, functioning only as stores of value or means of payment.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "We distinguish yield by underlying economic activity (direct yield) or by protocol-engineered emissions (incentive yield).",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_yield_distribution_mechanism",
+      "name": "Distribution Mechanism",
+      "applies_to": "asset",
+      "question": "How is yield operationalised and reflected in token-holder value?",
+      "description": "Defines how yield is delivered to holders, through balance changes, redemption ratio changes, price, or external rewards.",
+      "aliases": [
+        "distribution mechanism"
+      ],
+      "values": [
+        {
+          "value": "Quantity-accrual (rebasing)",
+          "definition": "Yield distributed by periodically adjusting the holder's balance upward.",
+          "citations": []
+        },
+        {
+          "value": "Value-accrual",
+          "definition": "Token quantity constant while its redemption or reference ratio to the underlying increases over time.",
+          "citations": []
+        },
+        {
+          "value": "Price-accrual",
+          "definition": "Neither balance nor redemption rate changes; yield distributed through price adjustment.",
+          "citations": []
+        },
+        {
+          "value": "External redistribution",
+          "definition": "Yield distributed in another asset or via a distinct rewards pool.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "Quantity-accrual (rebasing): Yield is distributed by periodically adjusting the holder's balance upward (e.g., stETH, AMPL).",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_redemption_reference_asset",
+      "name": "Reference Asset",
+      "applies_to": "asset",
+      "question": "Which asset, if any, is the redemption or stability reference for the crypto-asset?",
+      "description": "Classifies whether the asset references fiat, other assets, or nothing, and whether it is a stablecoin.",
+      "aliases": [
+        "reference asset"
+      ],
+      "values": [
+        {
+          "value": "Fiat-pegged stablecoins (EMT)",
+          "definition": "Stablecoins referencing a single official currency, such as MiCAR e-money tokens.",
+          "citations": []
+        },
+        {
+          "value": "Asset-referenced tokens (ART)",
+          "definition": "Assets purporting to maintain stable value by referencing one or more assets, defended through redemption or collateral.",
+          "citations": []
+        },
+        {
+          "value": "Non-stablecoins with redemption features",
+          "definition": "Crypto-referenced tokens not intended to stabilise their own value, such as wrapped tokens and LSTs.",
+          "citations": []
+        },
+        {
+          "value": "Non-stablecoins without redemption",
+          "definition": "Assets providing no redemption right to a reference asset.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "ARTs: assets that purport to maintain a stable value by referencing one or more assets, and designed to defend value parity through issuer redemption or collateral mechanisms.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_redemption_mechanism",
+      "name": "Redemption Mechanism",
+      "applies_to": "activity",
+      "question": "How does a holder convert the token into its reference asset?",
+      "description": "Describes the operational route through which redemption is executed and where control resides.",
+      "aliases": [
+        "redemption type"
+      ],
+      "values": [
+        {
+          "value": "Off-chain issuer redemption",
+          "definition": "Issuer or custodian redeems off-chain after unilateral authorisation.",
+          "citations": []
+        },
+        {
+          "value": "Burn-to-unlock",
+          "definition": "Holder repays or burns and withdraws collateral from protocol custody, enforced by smart contract.",
+          "citations": []
+        },
+        {
+          "value": "Bridge burn-and-release",
+          "definition": "Burn or lock a wrapped asset to release the underlying on another chain via a custodian.",
+          "citations": []
+        },
+        {
+          "value": "Secondary-market exit",
+          "definition": "Holder exits by swapping to others rather than redeeming with the issuer.",
+          "citations": []
+        },
+        {
+          "value": "Queued withdrawal",
+          "definition": "Redemption subject to queues or withdrawal windows pre-established in the protocol.",
+          "citations": []
+        },
+        {
+          "value": "Protocol par redemption",
+          "definition": "Built-in facility to swap at or near par using protocol reserves or troves.",
+          "citations": []
+        },
+        {
+          "value": "Claim-from-pool",
+          "definition": "Burn position token to withdraw a pro-rata share of pool reserves.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "Redemption mechanism: Assets can be further distinguished by how redemption is operationalised within the protocol.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_legal_classification",
+      "name": "Legal Classification",
+      "applies_to": "obligation_or_risk",
+      "question": "How is the crypto-asset positioned under current US and EU legal frameworks?",
+      "description": "Labels whether the asset is a security or financial instrument, stable-value token, fund/AIF-type, or other crypto-asset.",
+      "aliases": [],
+      "values": [
+        {
+          "value": "Security or financial instrument",
+          "definition": "Assets meeting at least one of the US Howey test or EU MiFID financial-instrument test.",
+          "citations": []
+        },
+        {
+          "value": "Stable-value token (ART/EMT)",
+          "definition": "Assets failing Howey and MiFID tests but passing the MiCAR stablecoin test.",
+          "citations": []
+        },
+        {
+          "value": "Fund / AIF-type",
+          "definition": "Assets satisfying Howey and triggering EU AIF classification as units or shares in a collective investment undertaking.",
+          "citations": []
+        },
+        {
+          "value": "Other crypto-assets or commodities",
+          "definition": "Assets qualifying none of the above classifications; legal claims weak or absent.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "With these tests, we categorize assets to 4 main categories: Security or financial instrument; Stable-value token (ART/EMT); Fund / AIF-type; Other crypto-assets or commodities.",
+          "verified": false
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": false,
+      "name_verified": true
+    },
+    {
+      "id": "d2_form_of_claim",
+      "name": "Form of Claim",
+      "applies_to": "obligation_or_risk",
+      "question": "What economic rights does the holder have, along the axes of in personam versus in rem, claim target, and direction of proceeds?",
+      "description": "Distinguishes the contractual or property-type nature of holder rights and where proceeds are directed.",
+      "aliases": [
+        "claim form"
+      ],
+      "values": [
+        {
+          "value": "In personam, against issuer, proceeds to issuer",
+          "definition": "Contractual or statutory claim against the issuer, with issuer keeping the interest margin.",
+          "citations": []
+        },
+        {
+          "value": "In personam, against issuer, proceeds to holders",
+          "definition": "Holders have equity or profit-sharing claims on the issuing entity.",
+          "citations": []
+        },
+        {
+          "value": "In personam, against reserve, proceeds to issuer",
+          "definition": "Contractual claim linked to a segregated reserve pool, with issuer capturing interest margin.",
+          "citations": []
+        },
+        {
+          "value": "In personam, against reserve, proceeds to holders",
+          "definition": "Contractual claims on the reserve pool's cash flows allocated to tranche holders.",
+          "citations": []
+        },
+        {
+          "value": "In rem, against reserve, proceeds to issuer",
+          "definition": "Asset represents co-ownership or beneficial interest in a defined asset pool, with net income to investors.",
+          "citations": []
+        },
+        {
+          "value": "No claim",
+          "definition": "Assets conferring no economic claim.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "we distinguish the form of rights along three orthogonal axes: (i) whether the holder has an in personam (contractual) or in rem (property-type) position, (ii) whether the claim is directed primarily against the issuer's balance sheet or against a specified reserve or asset pool, (iii) whether the proceeds are retailed by holders or by issuers",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    },
+    {
+      "id": "d2_tradfi_analogy",
+      "name": "TradFi Analogy",
+      "applies_to": "asset",
+      "question": "Which traditional finance instrument category is the crypto-asset most analogous to, given its feature combination?",
+      "description": "Maps combinations of features to mutually exclusive traditional finance analogues for interpretability.",
+      "aliases": [
+        "TradFi analogue"
+      ],
+      "values": [
+        {
+          "value": "Commodity",
+          "definition": "Assets minted on consensus or at genesis, analogous to commodities such as BTC or XRP.",
+          "citations": []
+        },
+        {
+          "value": "Voting equity share",
+          "definition": "Governance tokens analogous to voting equity shares such as UNI.",
+          "citations": []
+        },
+        {
+          "value": "Payment-in-kind (PIK)",
+          "definition": "Yield-generating assets with no reference asset, distributed by increasing holder balance.",
+          "citations": []
+        },
+        {
+          "value": "Repo",
+          "definition": "Assets minted by locking collateral and redeemed at par by protocol, analogous to repurchase agreements.",
+          "citations": []
+        },
+        {
+          "value": "Depositary receipts",
+          "definition": "Reference-asset tokens without yield, analogous to depositary receipts such as WBTC.",
+          "citations": []
+        },
+        {
+          "value": "Capitalising share class",
+          "definition": "Yield retained to increase redemption ratio, analogous to capitalising share classes such as cbETH.",
+          "citations": []
+        },
+        {
+          "value": "Pass-through certificates",
+          "definition": "Yield distributed by increasing holder balance with queued redemption, analogous to PTCs such as stETH.",
+          "citations": []
+        },
+        {
+          "value": "Other",
+          "definition": "Default when no defined analogy is found.",
+          "citations": []
+        }
+      ],
+      "citations": [
+        {
+          "doc": 2,
+          "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+          "quote": "we derive TradFi analogies (to commodities, voting equity shares, payment in kind, repo, depositary receipts, capitalising share class, and pass-through certificates (PTCs)) for matching combinations of features.",
+          "verified": true
+        }
+      ],
+      "sources": {},
+      "notes": "",
+      "source_doc": 2,
+      "quote_verified": true,
+      "name_verified": true
+    }
+  ]
+}

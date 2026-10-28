@@ -27,7 +27,74 @@ Evaluation: dag@claude-sonnet-5-5 run 3 (300 items) & sonnet-5-5 & 234 & 9.7 & 7
 Evaluation: flat@claude-sonnet-5-5 run 1 (300 items) & sonnet-5-5 & 234 & 2.6 & 85 & 1.87 \\
 Evaluation: flat@claude-sonnet-5-5 run 2 (300 items) & sonnet-5-5 & 234 & 2.6 & 83 & 1.82 \\
 Evaluation: flat@claude-sonnet-5-5 run 3 (300 items) & sonnet-5-5 & 234 & 2.6 & 84 & 1.83 \\
+RQ5 baseline catalogue: zeroshot & haiku-5-5 & 3 & 0.0 & 14 & 0.01 \\
+RQ5 Task B over zeroshot & haiku-5-5 & 37 & 7.4 & 25 & 0.69 \\
+RQ5 baseline catalogue: rag & haiku-5-5 & 69 & 0.0 & 355 & 0.27 \\
+RQ5 Task B over rag & haiku-5-5 & 178 & 21.2 & 61 & 1.33 \\
+RQ5 baseline catalogue: raptor & haiku-5-5 & 320 & 0.0 & 339 & 0.27 \\
+RQ5 Task B over raptor & haiku-5-5 & 132 & 16.7 & 50 & 1.05 \\
+RQ5 baseline catalogue: tnt & haiku-5-5 & 473 & 0.0 & 243 & 0.17 \\
+RQ5 Task B over tnt & haiku-5-5 & 442 & 43.7 & 116 & 2.72 \\
+RQ5 baseline catalogue: expert_key & haiku-5-5 & 1 & 0.1 & 16 & 0.01 \\
+RQ5 downstream: ours run 1 (300 items) & haiku-5-5 & 234 & 6.2 & 97 & 0.14 \\
+RQ5 downstream: ours run 2 (300 items) & haiku-5-5 & 234 & 6.2 & 96 & 0.13 \\
+RQ5 downstream: ours run 3 (300 items) & haiku-5-5 & 234 & 6.2 & 99 & 0.13 \\
+RQ5 downstream: rag run 1 (300 items) & haiku-5-5 & 234 & 11.9 & 94 & 0.19 \\
+RQ5 downstream: rag run 2 (300 items) & haiku-5-5 & 234 & 12.0 & 97 & 0.19 \\
+RQ5 downstream: rag run 3 (300 items) & haiku-5-5 & 234 & 12.0 & 96 & 0.19 \\
+RQ5 judge: map rag to gold & haiku-5-5 & 46 & 0.0 & 6 & 0.01 \\
+RQ5 downstream: raptor run 1 (300 items) & haiku-5-5 & 234 & 9.6 & 95 & 0.17 \\
+RQ5 downstream: raptor run 2 (300 items) & haiku-5-5 & 234 & 9.7 & 95 & 0.17 \\
+RQ5 downstream: raptor run 3 (300 items) & haiku-5-5 & 234 & 9.7 & 95 & 0.17 \\
+RQ5 judge: map raptor to gold & haiku-5-5 & 43 & 0.0 & 5 & 0.01 \\
+RQ5 downstream: tnt run 1 (300 items) & haiku-5-5 & 234 & 7.8 & 111 & 0.16 \\
+RQ5 downstream: tnt run 2 (300 items) & haiku-5-5 & 234 & 7.8 & 109 & 0.16 \\
+RQ5 downstream: tnt run 3 (300 items) & haiku-5-5 & 234 & 7.8 & 112 & 0.16 \\
+RQ5 judge: map tnt to gold & haiku-5-5 & 54 & 0.0 & 10 & 0.01 \\
+RQ5 downstream: zeroshot run 1 (300 items) & haiku-5-5 & 234 & 1.7 & 99 & 0.09 \\
+RQ5 downstream: zeroshot run 2 (300 items) & haiku-5-5 & 234 & 1.8 & 101 & 0.09 \\
+RQ5 downstream: zeroshot run 3 (300 items) & haiku-5-5 & 234 & 1.8 & 98 & 0.09 \\
+RQ5 judge: map zeroshot to gold & haiku-5-5 & 33 & 0.0 & 3 & 0.00 \\
+RQ6 judge: expert_key vs effort_low & haiku-5-5 & 15 & 0.0 & 2 & 0.00 \\
+RQ6 judge: expert_key vs no_citations & haiku-5-5 & 14 & 0.0 & 2 & 0.00 \\
+RQ6 judge: expert_key vs no_definitions & haiku-5-5 & 30 & 0.0 & 3 & 0.00 \\
+RQ6 judge: expert_key vs no_manifest & haiku-5-5 & 19 & 0.0 & 4 & 0.00 \\
+RQ5 judge: expert_key vs ours & haiku-5-5 & 25 & 0.0 & 2 & 0.00 \\
+RQ5 judge: expert_key vs rag & haiku-5-5 & 24 & 0.0 & 3 & 0.00 \\
+RQ5 judge: expert_key vs raptor & haiku-5-5 & 21 & 0.0 & 2 & 0.00 \\
+RQ5 judge: expert_key vs repeat & haiku-5-5 & 23 & 0.0 & 2 & 0.00 \\
+RQ6 judge: expert_key vs sonnet & haiku-5-5 & 20 & 0.0 & 3 & 0.00 \\
+RQ6 judge: expert_key vs sonnet_medium & haiku-5-5 & 14 & 0.0 & 2 & 0.00 \\
+RQ5 judge: expert_key vs tnt & haiku-5-5 & 32 & 0.0 & 3 & 0.00 \\
+RQ5 judge: expert_key vs zeroshot & haiku-5-5 & 12 & 0.0 & 2 & 0.00 \\
+RQ6 judge: ours vs effort_low & haiku-5-5 & 28 & 0.0 & 4 & 0.00 \\
+RQ6 judge: ours vs no_citations & haiku-5-5 & 27 & 0.0 & 3 & 0.00 \\
+RQ6 judge: ours vs no_definitions & haiku-5-5 & 43 & 0.0 & 8 & 0.01 \\
+RQ6 judge: ours vs no_manifest & haiku-5-5 & 32 & 0.0 & 6 & 0.01 \\
+RQ5 judge: ours vs rag & haiku-5-5 & 37 & 0.0 & 6 & 0.01 \\
+RQ5 judge: ours vs raptor & haiku-5-5 & 34 & 0.0 & 5 & 0.01 \\
+RQ5 judge: ours vs repeat & haiku-5-5 & 36 & 0.0 & 5 & 0.01 \\
+RQ6 judge: ours vs sonnet & haiku-5-5 & 33 & 0.0 & 5 & 0.01 \\
+RQ6 judge: ours vs sonnet_medium & haiku-5-5 & 27 & 0.0 & 5 & 0.01 \\
+RQ5 judge: ours vs tnt & haiku-5-5 & 45 & 0.0 & 8 & 0.01 \\
+RQ5 judge: ours vs zeroshot & haiku-5-5 & 25 & 0.0 & 2 & 0.00 \\
+RQ6 ablation: effort_low & haiku-5-5 & 3 & 0.0 & 42 & 0.34 \\
+RQ6 ablation: no_citations & haiku-5-5 & 2 & 0.0 & 27 & 0.30 \\
+RQ6 ablation: no_definitions & haiku-5-5 & 3 & 0.0 & 95 & 0.47 \\
+RQ6 ablation: no_manifest & haiku-5-5 & 1 & 0.0 & 53 & 0.37 \\
+RQ7 classify onto run 1 (378 items) & haiku-5-5 & 146 & 12.1 & 127 & 0.20 \\
+RQ7 classify onto run 2 (378 items) & haiku-5-5 & 146 & 12.2 & 128 & 0.20 \\
+RQ7 classify onto run 3 (378 items) & haiku-5-5 & 146 & 12.2 & 126 & 0.20 \\
+RQ7 tagger (catalogue v6) run 1 (378 items) & haiku-5-5 & 233 & 12.1 & 224 & 0.26 \\
+RQ7 classify tags run 1 (378 items) & haiku-5-5 & 738 & 0.0 & 18 & 0.08 \\
+RQ7 tagger (catalogue v6) run 2 (378 items) & haiku-5-5 & 233 & 12.2 & 220 & 0.25 \\
+RQ7 classify tags run 2 (378 items) & haiku-5-5 & 730 & 0.0 & 18 & 0.08 \\
+RQ7 tagger (catalogue v6) run 3 (378 items) & haiku-5-5 & 233 & 12.2 & 223 & 0.26 \\
+RQ7 classify tags run 3 (378 items) & haiku-5-5 & 736 & 0.0 & 19 & 0.08 \\
+RQ7 classify text run 1 (378 items) & haiku-5-5 & 282 & 0.0 & 20 & 0.04 \\
+RQ7 classify text run 2 (378 items) & haiku-5-5 & 282 & 0.0 & 20 & 0.04 \\
+RQ7 classify text run 3 (378 items) & haiku-5-5 & 282 & 0.0 & 20 & 0.04 \\
 \midrule
-Total & & & & & 60.72 \\
+Total & & & & & 72.82 \\
 \bottomrule
 \end{tabular}

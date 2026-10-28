@@ -1,0 +1,327 @@
+{
+ "a": "expert_key",
+ "b": "tnt",
+ "judge_model": "claude-haiku-5-5",
+ "term_types_a": 39,
+ "term_types_b": 170,
+ "matched": 30,
+ "recall_of_a": 0.769,
+ "precision_of_b": 0.176,
+ "f1": 0.287,
+ "pairs": [
+  {
+   "a": "d1_consensus_network_topology",
+   "b": "consensus_network_topology",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_immutability_and_failure_tolerance",
+   "b": "consensus_mechanism",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_gossiping",
+   "b": "network_message_propagation",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_agreement_latency",
+   "b": "message_timing_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_agreement_finality",
+   "b": "transaction_finality_type",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_server_storage",
+   "b": "node_storage_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_block_storage",
+   "b": "block_storage_content",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_limits_to_scalability",
+   "b": "scaling_binding_constraint",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_native_asset",
+   "b": "native_asset_status",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_tokenisation",
+   "b": "tokenisation_provision",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_access_and_control_layer",
+   "b": "ledger_governance_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_governance",
+   "b": "governance_model_type",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_script_language",
+   "b": "smart_contract_expressiveness",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_encryption",
+   "b": "data_encryption_method",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_data_privacy",
+   "b": "privacy_technique",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_coding_language",
+   "b": "codebase_language",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_code_license",
+   "b": "code_license",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_software_architecture",
+   "b": "software_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_fee_structure",
+   "b": "ledger_fee_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_issuer",
+   "b": "issuer_presence",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_mechanism",
+   "b": "asset_minting_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_yield_source",
+   "b": "yield_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_yield_distribution_mechanism",
+   "b": "yield_distribution_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_redemption_mechanism",
+   "b": "redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_redemption_reference_asset",
+   "b": "redemption_reference_asset",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_legal_classification",
+   "b": "legal_asset_category",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_form_of_claim",
+   "b": "holder_rights_form",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_centralisation",
+   "b": "control_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_asset_function",
+   "b": "economic_function",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_technical_standard",
+   "b": "asset_technical_standard",
+   "confidence": "medium"
+  }
+ ],
+ "unmatched_a": [
+  "d1_data_structure_in_the_blockheader",
+  "d1_transaction_model",
+  "d1_asset_supply_management",
+  "d1_interoperability",
+  "d1_intraoperability",
+  "d1_identity_layer",
+  "d1_reward_system",
+  "d1_fees_reward",
+  "d2_tradfi_analogy"
+ ],
+ "unmatched_b": [
+  "block_adding_access_restriction",
+  "consensus_fault_tolerance_threshold",
+  "energy_intensity_class",
+  "immutability_governance",
+  "fork_type",
+  "performance_scalability_layout",
+  "tokenisation_platform_type",
+  "automation_mechanism",
+  "data_storage_location",
+  "dlt_definition_basis",
+  "blockchain_definition_test",
+  "dlt_application_type",
+  "network_layer_position",
+  "defi_stack_layer",
+  "network_decentralisation_status",
+  "decentralisation_test_outcome",
+  "defi_trading_protocol_status",
+  "defi_messaging_system_status",
+  "wallet_signing_arrangement",
+  "wallet_connectivity",
+  "dlt_access_permission_basis",
+  "quantum_threat_exposure",
+  "cryptographic_agility_level",
+  "node_role",
+  "asset_underlying_basis",
+  "asset_fungibility",
+  "virtual_asset_status",
+  "crypto_asset_scope_qualification",
+  "legal_tender_status",
+  "currency_substitution",
+  "value_substitute_status",
+  "redemption_legal_claim",
+  "legal_security_classification",
+  "digital_asset_security_category",
+  "digital_asset_ownership_rights",
+  "digital_commodity_status",
+  "digital_asset_value_source",
+  "digital_asset_blockchain_linkage",
+  "stable_value_purpose",
+  "reference_asset",
+  "reserve_backing_type",
+  "stablecoin_stabilisation_conditions",
+  "stablecoin_redemption_test",
+  "stablecoin_issuer_supervision",
+  "stablecoin_freeze_capability",
+  "stablecoin_permitted_status",
+  "stablecoin_issuer_category",
+  "stablecoin_arrangement_function",
+  "stablecoin_arrangement_role",
+  "restricted_digital_asset_status",
+  "network_maturity_status",
+  "digital_asset_distribution_method",
+  "end_user_distribution_status",
+  "digital_asset_registration_status",
+  "regulated_entity_perimeter",
+  "tokenised_asset_status",
+  "tokenised_asset_type",
+  "transaction_medium",
+  "financial_asset_classification",
+  "funds_or_assets_category",
+  "high_value_goods_status",
+  "legal_entity_identification",
+  "transfer_party_role",
+  "account_holder_type",
+  "vasp_business_activity",
+  "vasp_exchange_model",
+  "trading_platform_possession",
+  "custody_control_capability",
+  "custody_model",
+  "custody_provider_type",
+  "custodial_wallet_control",
+  "cryptoasset_control_safeguarding",
+  "p2p_platform_role",
+  "vasp_control_factors",
+  "software_developer_vasp_status",
+  "ancillary_provider_status",
+  "digital_asset_infrastructure_function",
+  "ico_participation_type",
+  "ico_business_model",
+  "trading_venue_type",
+  "trading_product_type",
+  "trading_order_type",
+  "staking_participation_model",
+  "token_control_retention",
+  "qualifying_cryptoasset_staking",
+  "slashing_exposure",
+  "mev_exposure",
+  "crypto_service_scope",
+  "ancillary_activity_exclusion",
+  "stablecoin_issuance_activity",
+  "cryptoasset_trading_activity",
+  "cryptoasset_dealing_mode",
+  "digital_commodity_intermediary_role",
+  "digital_commodity_associated_person",
+  "mixed_digital_asset_transaction",
+  "dealer_market_role",
+  "digital_commodity_affiliation",
+  "digital_asset_service_provider_status",
+  "transfer_travel_rule_scope",
+  "transfer_channel_type",
+  "business_relationship_type",
+  "illicit_actor_type",
+  "illicit_intermediary_role",
+  "laundering_technique",
+  "illicit_va_use_motivation",
+  "fraud_scheme_type",
+  "aml_risk_factor",
+  "linked_threat_type",
+  "offshore_vasp_home_regime",
+  "offshore_active_service_status",
+  "vasp_licensing_status",
+  "vasp_regulatory_status",
+  "money_transmitter_status",
+  "anonymising_service_type",
+  "integral_exemption_status",
+  "mining_activity_status",
+  "payment_processor_exemption",
+  "anonymity_provider_type",
+  "wallet_provider_role",
+  "supervisor_type",
+  "federal_regulator_mandate",
+  "entity_scope_coverage",
+  "entity_regulatory_category",
+  "small_enterprise_size_class",
+  "small_occupational_pension_status",
+  "critical_ict_provider_status",
+  "ict_provider_location",
+  "ict_provider_group_relation",
+  "ict_function_criticality",
+  "ict_incident_severity",
+  "ict_incident_type",
+  "cyber_threat_significance",
+  "legacy_ict_status",
+  "operational_risk_category",
+  "prominent_public_function",
+  "shell_institution_status",
+  "trust_arrangement_category",
+  "sanctions_legal_source",
+  "rule_applicability_basis",
+  "member_state_home_jurisdiction"
+ ],
+ "model": "claude-haiku-5-5",
+ "calls": 2,
+ "usage": {
+  "input": 31958,
+  "output": 2731,
+  "cache_write": 0,
+  "cache_read": 0
+ },
+ "cost_usd": 0.0046,
+ "api_seconds": 9.9,
+ "wall_seconds": 9.9
+}

@@ -1,0 +1,165 @@
+{
+ "model": "claude-haiku-5-5",
+ "queries": [
+  {
+   "category": "asset",
+   "query": "definition of crypto-asset token"
+  },
+  {
+   "category": "asset",
+   "query": "asset-referenced token stablecoin definition"
+  },
+  {
+   "category": "asset",
+   "query": "e-money token single currency peg"
+  },
+  {
+   "category": "asset",
+   "query": "utility token versus payment token classification"
+  },
+  {
+   "category": "asset",
+   "query": "digital asset representation of value rights"
+  },
+  {
+   "category": "asset",
+   "query": "security token investment contract howey test"
+  },
+  {
+   "category": "asset",
+   "query": "non-fungible token unique identifier exclusion"
+  },
+  {
+   "category": "asset",
+   "query": "virtual asset definition FATF recommendation 15"
+  },
+  {
+   "category": "technology",
+   "query": "distributed ledger technology definition shared ledger"
+  },
+  {
+   "category": "technology",
+   "query": "permissioned versus permissionless ledger distinction"
+  },
+  {
+   "category": "technology",
+   "query": "consensus mechanism proof of stake proof of work"
+  },
+  {
+   "category": "technology",
+   "query": "smart contract definition self-executing code"
+  },
+  {
+   "category": "technology",
+   "query": "decentralised finance protocol governance classification"
+  },
+  {
+   "category": "technology",
+   "query": "public blockchain network validators nodes definition"
+  },
+  {
+   "category": "technology",
+   "query": "cryptographic key management wallet architecture types"
+  },
+  {
+   "category": "technology",
+   "query": "interoperability bridge cross-chain protocol risk"
+  },
+  {
+   "category": "actor",
+   "query": "crypto-asset service provider definition authorisation"
+  },
+  {
+   "category": "actor",
+   "query": "custodian of crypto-assets licensing requirement"
+  },
+  {
+   "category": "actor",
+   "query": "virtual asset service provider registration obligation"
+  },
+  {
+   "category": "actor",
+   "query": "issuer of asset-referenced tokens definition"
+  },
+  {
+   "category": "actor",
+   "query": "trading platform operator crypto exchange classification"
+  },
+  {
+   "category": "actor",
+   "query": "money transmitter broker-dealer intermediary status"
+  },
+  {
+   "category": "actor",
+   "query": "decentralised autonomous organisation controller identification"
+  },
+  {
+   "category": "actor",
+   "query": "validator node operator regulatory status"
+  },
+  {
+   "category": "activity",
+   "query": "custody and administration of crypto-assets activity"
+  },
+  {
+   "category": "activity",
+   "query": "exchange of crypto-assets for funds definition"
+  },
+  {
+   "category": "activity",
+   "query": "transfer of virtual assets travel rule"
+  },
+  {
+   "category": "activity",
+   "query": "placing and offering of crypto-assets public offer"
+  },
+  {
+   "category": "activity",
+   "query": "providing advice on crypto-assets service"
+  },
+  {
+   "category": "activity",
+   "query": "staking lending and yield service classification"
+  },
+  {
+   "category": "activity",
+   "query": "execution of orders on behalf of clients"
+  },
+  {
+   "category": "activity",
+   "query": "peer-to-peer unhosted wallet transaction treatment"
+  },
+  {
+   "category": "obligation_or_risk",
+   "query": "white paper disclosure requirement crypto-asset offer"
+  },
+  {
+   "category": "obligation_or_risk",
+   "query": "reserve assets backing redemption rights requirement"
+  },
+  {
+   "category": "obligation_or_risk",
+   "query": "market abuse insider dealing crypto-assets"
+  },
+  {
+   "category": "obligation_or_risk",
+   "query": "anti-money laundering customer due diligence virtual assets"
+  },
+  {
+   "category": "obligation_or_risk",
+   "query": "ICT operational resilience third-party risk DLT"
+  },
+  {
+   "category": "obligation_or_risk",
+   "query": "prudential capital requirement crypto exposures banks"
+  },
+  {
+   "category": "obligation_or_risk",
+   "query": "consumer protection loss of private keys risk"
+  },
+  {
+   "category": "obligation_or_risk",
+   "query": "systemic risk stablecoin financial stability assessment"
+  }
+ ]
+}

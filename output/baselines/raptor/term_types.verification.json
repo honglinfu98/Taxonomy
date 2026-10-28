@@ -1,0 +1,1575 @@
+{
+  "citations": 1359,
+  "verified": 1185,
+  "exact": 1168,
+  "relabelled": 17,
+  "rejection_rate": 0.128,
+  "rejected": [
+    {
+      "term_type": "issuer_type",
+      "where": "value:decentralized governance system",
+      "status": "no_such_section",
+      "doc": 10,
+      "section": "Senate Banking Committee substitute, Sec. 2: Definitions",
+      "quote": "a transparent, rules-based system where participation is not limited to or under control of any person or group",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Asset function (§4.3) defines governance tokens (voting or control rights, e.g. UNI, MKR), utility tokens",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Asset function (§4.3) defines governance tokens",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "utility token (access to a good or service supplied by its issuer only)",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "value:Governance token",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "governance tokens (voting or control rights, e.g. UNI, MKR)",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "value:Governance token",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Asset function (§4.3) defines governance tokens (voting or control rights, e.g. UNI, MKR)",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "value:Utility token",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "a utility token as one giving access to goods or services supplied only by its issuer",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "value:Utility token",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "utility tokens (MiCAR Art. 3(1)(9): digital access to a good or service, accepted solely by the issuer)",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "value:Utility token",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "utility token (access to a good or service supplied by its issuer only)",
+      "verified": false
+    },
+    {
+      "term_type": "asset_function",
+      "where": "value:Security token",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "security tokens (exposure to underlying assets or cash flows)",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "legal classification (§4.5) sets legal classification as security/financial instrument, stable-value token (ART/EMT), fund/AIF-type, or other crypto-asset",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "crypto-assets qualifying as financial instruments, deposits (including structured deposits)",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "Crypto-assets qualifying as financial instruments",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "Digital representations of fiat currencies and securities already covered by the Recommendations are excluded",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "Digital representations of fiat currencies, securities and other financial assets already covered by the Recommendations are excluded",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "excludes specified investment cryptoassets (other than art. 74A electronic money), electronic money, fiat currency including any central bank digital currency, and single-issuer or limited-network cryptoassets.",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "tokenization's regulatory structure is determined by the underlying asset, not the process",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "any unit of a digital asset held by a person, other than the digital asset issuer, a related person, or an affiliated person",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:financial instrument or deposit",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "crypto-assets qualifying as financial instruments, deposits (including structured deposits)",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:digital representation of fiat currency",
+      "status": "no_such_section",
+      "doc": 20,
+      "section": "§SCO60.131: Definitions",
+      "quote": "excluding digital representations of fiat currencies",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Convertible virtual currency",
+      "status": "quote_not_found",
+      "doc": 16,
+      "section": "Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)",
+      "quote": "Convertible Virtual Currency (CVC) is a type of virtual currency that has an equivalent value to currency or substitutes for it",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Financial instrument, deposit or fund",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "crypto-assets qualifying as financial instruments, deposits (including structured deposits), funds (unless e-money tokens)",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Financial instrument / regulated financial asset",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "crypto-assets qualifying as financial instruments, deposits (including structured deposits), funds (unless e-money tokens)",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Excluded fiat or security representation",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "Digital representations of fiat currencies, securities and other financial assets already covered by the Recommendations are excluded",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Case-by-case",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "and are assessed case by case",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Function-based",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.131: Definitions",
+      "quote": "Digital assets are digital representations of value usable for payment, investment, or accessing a good or service, excluding digital representations of fiat currencies.",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Qualifying cryptoasset",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "Regulation 2: Interpretation; doc 8 defines \"qualifying cryptoasset\" (art. 88F) as a fungible, transferable cryptoasset that is not solely a record of value or contractual rights",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Qualifying stablecoin",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "\"Qualifying stablecoin\" (art. 88G) is a qualifying cryptoasset that seeks or purports to maintain a stable value against a fiat currency",
+      "verified": false
+    },
+    {
+      "term_type": "legal_classification",
+      "where": "value:Security (tokenised instrument)",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "tokenized instruments have tended to be regulated as securities",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "asset-referenced token (stable value by referencing other values or rights, not an e-money token)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "an asset-referenced token as one stabilised by reference to other values or rights",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.131: Definitions",
+      "quote": "Stablecoins aim to maintain stable value relative to a specified asset, pool, or basket of assets.",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "asset-referenced token (stable value by referencing other values or rights, not an e-money token), e-money token (stable value referencing one official currency)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:E-money token",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "an e-money token as one referencing one official currency",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:E-money token",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "e-money token (stable value referencing one official currency)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Asset-referenced token",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "an asset-referenced token as one stabilised by reference to other values or rights",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Asset-referenced token",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "asset-referenced token (stable value by referencing other values or rights, not an e-money token)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Non-stablecoin",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "reference asset: EMT, ART, non-stablecoin",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:single official currency",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "e-money token as one referencing one official currency",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:single official currency",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "e-money token (stable value referencing one official currency)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:single official currency",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "‘e-money token’ means ... stable value referencing one official currency",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:other values or rights, or a combination",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "asset-referenced tokens as those referencing other values or rights, or a combination thereof",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:stablecoin",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "stablecoins as aiming to maintain stable value relative to a specified asset, pool or basket",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:stablecoin",
+      "status": "no_such_section",
+      "doc": 20,
+      "section": "Glossary",
+      "quote": "Stablecoins aim to maintain stable value relative to a specified asset, pool, or basket of assets.",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:stablecoin",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "there are 37 assets referenced to other assets (and 16 among them are stablecoins)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:specified asset or basket",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.131: Definitions",
+      "quote": "Stablecoins aim to maintain stable value relative to a specified asset, pool, or basket of assets.",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Other values or rights",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "asset-referenced token (stable value by referencing other values or rights, not an e-money token)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Utility token",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "a utility token as one giving access to goods or services supplied only by its issuer",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Utility token",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "utility token (access to a good or service supplied by its issuer only)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Access to issuer's goods or services",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "utility token (access to a good or service supplied by its issuer only)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Single official currency (e-money token)",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "e-money token (stable value referencing one official currency)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Other values or rights (asset-referenced token)",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "asset-referenced token (stable value by referencing other values or rights, not an e-money token)",
+      "verified": false
+    },
+    {
+      "term_type": "stablecoin_reference_type",
+      "where": "value:Reserve-backed redeemable peg",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+      "quote": "Stabilisation mechanisms must be redeemable for a peg value, designed to minimise fluctuations",
+      "verified": false
+    },
+    {
+      "term_type": "form_of_claim",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Form of Claim distinguishes in personam from in rem positions and claims against issuer from reserve.",
+      "verified": false
+    },
+    {
+      "term_type": "form_of_claim",
+      "where": "value:In personam claim",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Form of claim distinguishes in personam from in rem positions and claims against issuer from reserve.",
+      "verified": false
+    },
+    {
+      "term_type": "form_of_claim",
+      "where": "value:In rem claim",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Form of claim distinguishes in personam from in rem positions and claims against issuer from reserve.",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "its centralisation dimension (§4.2) classifies assets as centralised, decentralised or hybrid using the Minimum Decentralisation Test",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Centralisation dimension (§4.2) classifies assets as centralised, decentralised or hybrid using the Minimum Decentralisation Test (MDT)",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "classifies crypto-assets as centralised, decentralised or hybrid via the Minimum Decentralisation Test",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Operators are typically a single administrative authority managing a cryptoasset arrangement",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Centralised",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "unilateral control of any one makes an asset centralised; a decentralised asset passes all groups.",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Centralised",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "a decentralised asset passes all groups",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Hybrid",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "The top 100 assets (19 Nov 2025) map to 45 decentralised, 39 centralised and 8 hybrid.",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Rule change authority",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Rule change authority: who can propose, modify, or execute protocol-level rule changes",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Exchange control",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Exchange control: exchange listing; freeze/halt controls; designated market makers",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Operator",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Operators are typically a single administrative authority managing a cryptoasset arrangement",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Validator",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Validators commit transaction blocks to the distributed ledger network.",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Node",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Nodes are participants in distributed ledger networks that record and share data across multiple ledgers.",
+      "verified": false
+    },
+    {
+      "term_type": "centralisation",
+      "where": "value:Redeemer",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "Redeemers exchange the cryptoasset for the traditional asset",
+      "verified": false
+    },
+    {
+      "term_type": "technical_standard",
+      "where": "type",
+      "status": "no_such_section",
+      "doc": 2,
+      "section": "Crypto-asset Taxonomy for Investors and Regulators",
+      "quote": "Four technical standards are named: Native (e.g., BTC, ETH, TON), ERC-20 (fungible, e.g., WETH, MKR), and ERC-721 (non-fungible).",
+      "verified": false
+    },
+    {
+      "term_type": "technical_standard",
+      "where": "value:Native",
+      "status": "no_such_section",
+      "doc": 2,
+      "section": "Crypto-asset Taxonomy for Investors and Regulators",
+      "quote": "Native (e.g., BTC, ETH, TON)",
+      "verified": false
+    },
+    {
+      "term_type": "technical_standard",
+      "where": "value:ERC-20",
+      "status": "no_such_section",
+      "doc": 2,
+      "section": "Crypto-asset Taxonomy for Investors and Regulators",
+      "quote": "ERC-20 (fungible, e.g., WETH, MKR)",
+      "verified": false
+    },
+    {
+      "term_type": "technical_standard",
+      "where": "value:ERC-721",
+      "status": "no_such_section",
+      "doc": 2,
+      "section": "Crypto-asset Taxonomy for Investors and Regulators",
+      "quote": "ERC-721 (non-fungible)",
+      "verified": false
+    },
+    {
+      "term_type": "fungibility",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "excludes unique, non-fungible crypto-assets",
+      "verified": false
+    },
+    {
+      "term_type": "fungibility",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "Non-fungible tokens (NFTs) or crypto-collectibles are generally not VAs unless used in practice for payment or investment",
+      "verified": false
+    },
+    {
+      "term_type": "fungibility",
+      "where": "value:Fungible",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "A crypto-asset is a digital representation of value or right transferable and storable electronically via DLT",
+      "verified": false
+    },
+    {
+      "term_type": "fungibility",
+      "where": "value:Unique, non-fungible",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "unique, non-fungible crypto-assets",
+      "verified": false
+    },
+    {
+      "term_type": "fungibility",
+      "where": "value:Fungible and transferable",
+      "status": "no_such_section",
+      "doc": 8,
+      "section": "Glossary",
+      "quote": "qualifying cryptoasset (art. 88F) as a fungible, transferable cryptoasset not solely a record of value or contractual rights",
+      "verified": false
+    },
+    {
+      "term_type": "consensus_mechanism",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "consensus mechanisms as predominantly Proof-of-Work or Proof-of-Stake",
+      "verified": false
+    },
+    {
+      "term_type": "consensus_mechanism",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "DLT, distributed ledger, consensus mechanism, DLT network node",
+      "verified": false
+    },
+    {
+      "term_type": "consensus_mechanism",
+      "where": "value:Deterministic finality",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "all Lamport Byzantine Fault Tolerance-based blockchains achieve deterministic consensus",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_access_model",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Consensus Network Topology (layouts: decentralised, hierarchical/\"Consortium blockchains\", centralised)",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_access_model",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "Decentralized, permissionless staking protocols compete with staking services provided by entities organized under a more traditional corporate structure.",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_access_model",
+      "where": "value:Hierarchical (consortium)",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Consensus Network Topology (layouts: decentralised, hierarchical/\"Consortium blockchains\", centralised)",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_access_model",
+      "where": "value:Centralised",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Consensus Network Topology (layouts: decentralised, hierarchical/\"Consortium blockchains\", centralised)",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_access_model",
+      "where": "value:Software architecture: monolithic",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "monolithic, e.g., Bitcoin and Ethereum; polylithic, which decouples consensus and P2P layers from application state",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_access_model",
+      "where": "value:Software architecture: monolithic",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "polylithic, which decouples consensus and P2P layers from application state",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Transaction Model layouts are the Unspent Transaction Output (UTXO) model (Bitcoin)",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Software Architecture (monolithic, e.g., Bitcoin and Ethereum; polylithic, which decouples consensus and P2P layers from application state).",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "DLT as the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "type",
+      "status": "no_such_section",
+      "doc": 3,
+      "section": "Doc 3 (DLT-Corpus, KDD '26) defines DLT as the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs",
+      "quote": "DLT as the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Software Architecture (monolithic, e.g., Bitcoin and Ethereum; polylithic",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "value:Polylithic",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "polylithic, which decouples consensus and P2P layers from application state",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "value:UTXO",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Transaction Model layouts are the Unspent Transaction Output (UTXO) model (Bitcoin)",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "value:Traditional ledger / smart-contract transactions",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "the Traditional Ledger (Stellar, Ripple, with Ethereum using smart-contract transactions)",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "value:Blockchain",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "DLT as the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "value:Blockchain",
+      "status": "no_such_section",
+      "doc": 3,
+      "section": "Doc 3 (DLT-Corpus, KDD '26) defines DLT as the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs",
+      "quote": "DLT as the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "value:Monolithic",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Software Architecture (monolithic, e.g., Bitcoin and Ethereum; polylithic, which decouples consensus and P2P layers from application state).",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "value:Monolithic",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Software Architecture (monolithic, e.g., Bitcoin and Ethereum; polylithic, which decouples consensus and P2P layers from application state)",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_architecture",
+      "where": "value:Other DLT (DAG, Hashgraph, sidechain)",
+      "status": "no_such_section",
+      "doc": 3,
+      "section": "Doc 3 (DLT-Corpus, KDD '26) defines DLT as the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs",
+      "quote": "including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 3,
+      "section": "Body: all sections (introduction through limitations)",
+      "quote": "distributed ledger address, or a device allowing the storage of crypto-assets",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 21,
+      "section": "Glossary",
+      "quote": "A custodial wallet is also known as a hosted wallet. Non-custodial wallet ... also known as an unhosted wallet.",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.131: Definitions",
+      "quote": "A custodial (hosted) wallet is held by a service provider, whereas a non-custodial (unhosted) wallet lets the user alone access the assets.",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "\"means of access\" (including a private cryptographic key)",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "value:custodial",
+      "status": "quote_not_found",
+      "doc": 16,
+      "section": "Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)",
+      "quote": "Requires reliance on a centralised custodian (e.g., BitGo) to lock the underlying asset",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "value:custodial",
+      "status": "quote_not_found",
+      "doc": 3,
+      "section": "Body: all sections (introduction through limitations)",
+      "quote": "distributed ledger address, or a device allowing the storage of crypto-assets",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "value:non-custodial",
+      "status": "quote_not_found",
+      "doc": 3,
+      "section": "Body: all sections (introduction through limitations)",
+      "quote": "distributed ledger address, or a device allowing the storage of crypto-assets",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "value:Unhosted wallet (P2P)",
+      "status": "quote_not_found",
+      "doc": 19,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "P2P transfers via unhosted wallets are rated high risk by 88% of jurisdictions",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "value:Custodial (hosted)",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.131: Definitions",
+      "quote": "A custodial (hosted) wallet is held by a service provider",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "value:Non-custodial (unhosted)",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.131: Definitions",
+      "quote": "whereas a non-custodial (unhosted) wallet lets the user alone access the assets.",
+      "verified": false
+    },
+    {
+      "term_type": "custody_arrangement",
+      "where": "value:Authorised cryptoasset custodian",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "\"Authorised cryptoasset custodian\" and \"relevant specified investment cryptoasset\" (security or contractually based investment) are also defined",
+      "verified": false
+    },
+    {
+      "term_type": "cryptographic_scheme",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "Digital signatures use public-private key pairs; quantum computers could derive private keys from public keys.",
+      "verified": false
+    },
+    {
+      "term_type": "cryptographic_scheme",
+      "where": "value:Public-private key pair",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "Digital signatures use public-private key pairs; quantum computers could derive private keys from public keys.",
+      "verified": false
+    },
+    {
+      "term_type": "cryptographic_scheme",
+      "where": "value:Zero-knowledge proof",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "ZK-SNARKs (validation without providing the underlying data)",
+      "verified": false
+    },
+    {
+      "term_type": "privacy_and_anonymity",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Data Privacy is split into built-in privacy (e.g., ZeroCash zero-knowledge encryption;",
+      "verified": false
+    },
+    {
+      "term_type": "privacy_and_anonymity",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Data Privacy is split into built-in privacy",
+      "verified": false
+    },
+    {
+      "term_type": "privacy_and_anonymity",
+      "where": "value:Built-in privacy",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Data Privacy is split into built-in privacy (e.g., ZeroCash zero-knowledge encryption;",
+      "verified": false
+    },
+    {
+      "term_type": "privacy_and_anonymity",
+      "where": "value:Built-in privacy",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Data Privacy is split into built-in privacy (e.g., ZeroCash zero-knowledge encryption; Enigma's secure multi-party computation",
+      "verified": false
+    },
+    {
+      "term_type": "privacy_and_anonymity",
+      "where": "value:Add-on privacy",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "add-on privacy (CoinJoin mixing, secret sharing, ring and linkable ring signatures, stealth addresses, exemplified by Monero)",
+      "verified": false
+    },
+    {
+      "term_type": "fee_model",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Charging and Rewarding System (§XI): subcomponents are Reward System and Fee System",
+      "verified": false
+    },
+    {
+      "term_type": "fee_model",
+      "where": "value:Optional fees",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Fee Reward layouts are Optional Fees (Bitcoin), Mandatory Fees (Stellar), and No Fees (Hyperledger Fabric).",
+      "verified": false
+    },
+    {
+      "term_type": "fee_model",
+      "where": "value:Mandatory fees",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Mandatory Fees (Stellar), and No Fees (Hyperledger Fabric)",
+      "verified": false
+    },
+    {
+      "term_type": "fee_model",
+      "where": "value:Variable fees",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Fee Structure layouts are Variable Fees (Bitcoin, per byte) and Fixed Fees",
+      "verified": false
+    },
+    {
+      "term_type": "fee_model",
+      "where": "value:Fixed fees",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Fixed Fees (Enigma, Peercoin at 0.01 PPC per kilobyte).",
+      "verified": false
+    },
+    {
+      "term_type": "network_participant_role",
+      "where": "type",
+      "status": "no_such_section",
+      "doc": 20,
+      "section": "§SCO60.131: Definitions",
+      "quote": "Validators commit transaction blocks to the distributed ledger network.",
+      "verified": false
+    },
+    {
+      "term_type": "network_participant_role",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "blockchain network support actors (miners, stakers, validators, node providers)",
+      "verified": false
+    },
+    {
+      "term_type": "network_participant_role",
+      "where": "value:node",
+      "status": "no_such_section",
+      "doc": 20,
+      "section": "§SCO60.131: Definitions",
+      "quote": "Nodes are participants in distributed ledger networks that record and share data across multiple ledgers.",
+      "verified": false
+    },
+    {
+      "term_type": "network_participant_role",
+      "where": "value:validator",
+      "status": "no_such_section",
+      "doc": 20,
+      "section": "§SCO60.131: Definitions",
+      "quote": "Validators commit transaction blocks to the distributed ledger network.",
+      "verified": false
+    },
+    {
+      "term_type": "staking_participation_model",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "custodial versus non-custodial staking",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "custody and administration; operation of a trading platform; exchange of crypto-assets for funds",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "Crypto-asset services (Art. 3(1)(16)(a)-(j)) are: custody and administration; operation of a trading platform",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "a natural or legal person not covered elsewhere under the Recommendations who, as a business, conducts for or on behalf of another person one or more of five activities",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "Regulation 40 creates new specified activities in Chapter 2B",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:custody and administration",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "custody and administration; operation of a trading platform",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:custody and administration",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "Crypto-asset services (Art. 3(1)(16)(a)-(j)) are: custody and administration; operation of a trading platform; exchange of crypto-assets for funds;",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:exchange",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "exchange of crypto-assets for funds; exchange for other crypto-assets",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:transfer services",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "portfolio management; and transfer services",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:transfer services",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "execution of orders; placing; reception and transmission of orders; advice; portfolio management; and transfer services.",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:Transfer",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "\"Transfer\" means conducting a transaction on behalf of another person that moves a VA from one address or account to another",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:Exchange (fiat or crypto)",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "exchange between VAs and fiat currencies; (ii) exchange between one or more forms of VAs",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:operation of a trading platform",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "operation of a trading platform; exchange of crypto-assets for funds; exchange for other crypto-assets",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:Custody and administration (safekeeping)",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "safekeeping and/or administration of VAs or instruments enabling control",
+      "verified": false
+    },
+    {
+      "term_type": "crypto_asset_service_type",
+      "where": "value:Qualifying cryptoasset staking",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "qualifying cryptoasset staking (art. 9Z6), defined as using a cryptoasset in blockchain validation, including proof-of-stake consensus.",
+      "verified": false
+    },
+    {
+      "term_type": "transaction_intermediation",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 6,
+      "section": "Article 3: Definitions",
+      "quote": "any transaction moving crypto-assets between distributed ledger addresses, crypto-asset accounts or other storage devices",
+      "verified": false
+    },
+    {
+      "term_type": "transaction_intermediation",
+      "where": "value:Provider-mediated transfer",
+      "status": "quote_not_found",
+      "doc": 6,
+      "section": "Article 3: Definitions",
+      "quote": "carried out by at least one crypto-asset service provider for an originator or beneficiary",
+      "verified": false
+    },
+    {
+      "term_type": "transaction_intermediation",
+      "where": "value:Person-to-person transfer",
+      "status": "quote_not_found",
+      "doc": 6,
+      "section": "Article 3: Definitions",
+      "quote": "person-to-person transfer of crypto-assets (no provider involved)",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status_and_scope",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 16,
+      "section": "Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)",
+      "quote": "Persons who are banks, foreign banks, or registered and functionally regulated by the SEC or CFTC are not MSBs",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status_and_scope",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 7,
+      "section": "Article 3: Definitions",
+      "quote": "microenterprise (fewer than 10 persons, turnover or balance sheet at most EUR 2 million)",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status_and_scope",
+      "where": "value:Licensed or registered VASP",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "a VASP is conducted or provided as a business",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status_and_scope",
+      "where": "value:Non-business or peer-to-peer",
+      "status": "no_such_section",
+      "doc": 6,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "person-to-person transfer as one involving no provider",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status_and_scope",
+      "where": "value:Digital commodity broker",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "any person who, in a digital commodity cash or spot market, is engaged in soliciting or accepting orders for the purchase or sale of a unit of a digital commodity",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status_and_scope",
+      "where": "value:microenterprise",
+      "status": "quote_not_found",
+      "doc": 7,
+      "section": "Article 3: Definitions",
+      "quote": "microenterprise (fewer than 10 persons, turnover or balance sheet at most EUR 2 million)",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status_and_scope",
+      "where": "value:small enterprise",
+      "status": "quote_not_found",
+      "doc": 7,
+      "section": "Article 3: Definitions",
+      "quote": "small enterprise (10 to under 50 persons, above EUR 2 million but at most EUR 10 million)",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status_and_scope",
+      "where": "value:medium-sized enterprise",
+      "status": "quote_not_found",
+      "doc": 7,
+      "section": "Article 3: Definitions",
+      "quote": "medium-sized enterprise (under 250 persons, turnover at most EUR 50 million and/or balance sheet at most EUR 43 million)",
+      "verified": false
+    },
+    {
+      "term_type": "issuer_supervision_status",
+      "where": "value:Onshore VASP",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "Entities are assessed on function, not name or technology",
+      "verified": false
+    },
+    {
+      "term_type": "licensing_jurisdiction_basis",
+      "where": "value:Offshore (unlicensed in customer jurisdiction)",
+      "status": "quote_not_found",
+      "doc": 19,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "Offshore VASPs (oVASPs) serve customers in jurisdictions where they are unlicensed, may use nested accounts at onshore VASPs",
+      "verified": false
+    },
+    {
+      "term_type": "reserve_quality_and_management",
+      "where": "value:Passes redemption risk test",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+      "quote": "Stabilisation mechanisms that ... do not meet classification condition 1.",
+      "verified": false
+    },
+    {
+      "term_type": "prudential_classification_group",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+      "quote": "sorts cryptoassets into Group 1 and Group 2, screened on an ongoing basis.",
+      "verified": false
+    },
+    {
+      "term_type": "prudential_classification_group",
+      "where": "value:Group 1a",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+      "quote": "Group 1 assets meet classification conditions 1–4 (SCO60.8–60.19) and comprise Group 1a",
+      "verified": false
+    },
+    {
+      "term_type": "prudential_classification_group",
+      "where": "value:Group 1a",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+      "quote": "and Group 1b (cryptoassets with effective stabilisation mechanisms meeting the conditions)",
+      "verified": false
+    },
+    {
+      "term_type": "prudential_classification_group",
+      "where": "value:Group 1a",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+      "quote": "Group 2 assets fail those conditions and comprise Group 2a (assets passing the Group 2a hedging recognition criteria in SCO60.55)",
+      "verified": false
+    },
+    {
+      "term_type": "prudential_classification_group",
+      "where": "value:Group 2b",
+      "status": "quote_not_found",
+      "doc": 20,
+      "section": "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+      "quote": "and Group 2b (all others).",
+      "verified": false
+    },
+    {
+      "term_type": "regulated_status_of_intermediary",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 16,
+      "section": "Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)",
+      "quote": "Mining pool distributions are integral to authentication services and not money transmission",
+      "verified": false
+    },
+    {
+      "term_type": "token_form_coin_or_token",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "a native token as the token a network uses for fees and consensus rewards",
+      "verified": false
+    },
+    {
+      "term_type": "token_form_coin_or_token",
+      "where": "value:Native token",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "Native tokens are the token a network uses for fees and consensus rewards",
+      "verified": false
+    },
+    {
+      "term_type": "data_source_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 3,
+      "section": "Body: all sections (introduction through limitations)",
+      "quote": "We collected patent text and metadata ... The patents subset contains 49,023 documents",
+      "verified": false
+    },
+    {
+      "term_type": "payment_transaction_purpose",
+      "where": "value:Payment transaction",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "enters into a digital commodity transaction the primary purpose of which is to make, send, receive, or facilitate payments",
+      "verified": false
+    },
+    {
+      "term_type": "payment_transaction_purpose",
+      "where": "value:Network validation or operation",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "validates a digital commodity transaction, operates a node, or engages in similar activity to participate in facilitating, operating, or securing a blockchain system",
+      "verified": false
+    },
+    {
+      "term_type": "defi_control_status",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 16,
+      "section": "Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)",
+      "quote": "DApp developers are not money transmitters merely for creating an application",
+      "verified": false
+    },
+    {
+      "term_type": "defi_control_status",
+      "where": "value:Controlled DeFi arrangement",
+      "status": "quote_not_found",
+      "doc": 19,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "Only 18% (26 of 142) of jurisdictions have assessed DeFi risks, 93% have identified no DeFi VASPs",
+      "verified": false
+    },
+    {
+      "term_type": "q22_consensus_network_topology",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Consensus Network Topology (layouts: decentralised, hierarchical/Consortium blockchains, centralised)",
+      "verified": false
+    },
+    {
+      "term_type": "q22_consensus_network_topology",
+      "where": "value:Decentralised",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Consensus Network Topology (layouts: decentralised, hierarchical/Consortium blockchains, centralised)",
+      "verified": false
+    },
+    {
+      "term_type": "q22_consensus_network_topology",
+      "where": "value:Hierarchical (consortium)",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "hierarchical/Consortium blockchains",
+      "verified": false
+    },
+    {
+      "term_type": "q22_consensus_network_topology",
+      "where": "value:Centralised",
+      "status": "quote_not_found",
+      "doc": 1,
+      "section": "Body: Sections I-XII (introduction through conclusion)",
+      "quote": "Consensus Network Topology (layouts: decentralised, hierarchical/Consortium blockchains, centralised)",
+      "verified": false
+    }
+  ]
+}

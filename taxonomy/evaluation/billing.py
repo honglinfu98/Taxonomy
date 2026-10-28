@@ -18,6 +18,7 @@ from taxonomy.evaluation.common import OUT, PAPER_TABLES, PRICES
 from taxonomy.llm_context import ROOT
 
 EST = ROOT / "output" / "establishment"
+RQ6_NAMES = ("no_manifest", "no_citations", "no_definitions", "effort_low", "sonnet", "sonnet_medium")
 HAIKU_LONG = {"input": 0.50e-6, "output": 2.50e-6, "cache_read": 0.05e-6, "cache_write": 1.0e-6}
 
 
@@ -68,6 +69,37 @@ def rows() -> list[dict]:
                 info = r["run_info"]
                 if info.get("usage"):
                     add(f"Evaluation: {sysname} run {r['run']} ({te['gold']['items']} items)", info["model"], info["usage"], info.get("wall_seconds"))
+    base = ROOT / "output" / "baselines"
+    for name in ("zeroshot", "rag", "raptor", "tnt", "expert_key"):
+        f = base / name / "term_types.json"
+        if f.exists():
+            r = json.loads(f.read_text(encoding="utf-8"))["run"]
+            add(f"RQ5 baseline catalogue: {name}", r["model"], r["usage"], r.get("wall_seconds") or r.get("api_seconds"), False, f"{r.get('calls')} calls")
+        f = base / name / "dag.json"
+        if f.exists():
+            r = json.loads(f.read_text(encoding="utf-8"))["run"]
+            add(f"RQ5 Task B over {name}", r["model"], r["usage"], r.get("wall_seconds"), True, f"{r.get('calls')} calls")
+    for f in sorted(base.glob("*/downstream.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        for r in d["runs"]:
+            info = r["run_info"]
+            add(f"RQ5 downstream: {f.parent.name} run {r['run']} ({d['items']} items)", info["model"], info["usage"], info.get("wall_seconds"))
+        if d["mapping"].get("usage"):
+            add(f"RQ5 judge: map {f.parent.name} to gold", d["mapping"]["model"], d["mapping"]["usage"], d["mapping"].get("wall_seconds"))
+    for f in sorted(base.glob("judged/*.json")):
+        j = json.loads(f.read_text(encoding="utf-8"))
+        tag = "RQ6" if j["b"] in RQ6_NAMES or j["a"] in RQ6_NAMES else "RQ5"
+        add(f"{tag} judge: {j['a']} vs {j['b']}", j["model"], j["usage"], j.get("wall_seconds"))
+    for f in sorted((ROOT / "output" / "ablations").glob("*/term_types.json")):
+        r = json.loads(f.read_text(encoding="utf-8"))["run"]
+        add(f"RQ6 ablation: {r['variant']}", r["model"], r["usage"], r.get("seconds"), True, r.get("description", ""))
+    for f in sorted((ROOT / "output" / "rq7").glob("classify_*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        for r in d["runs"]:
+            i = r["run_info"]
+            if i.get("tagger"):
+                add(f"RQ7 tagger (catalogue v6) run {r['run']} ({d['items']} items)", i["tagger"]["model"], i["tagger"]["usage"], i["tagger"].get("wall_seconds"))
+            add(f"RQ7 classify {d['system']} run {r['run']} ({d['items']} items)", i["model"], i["usage"], i.get("wall_seconds"))
     return out
 
 

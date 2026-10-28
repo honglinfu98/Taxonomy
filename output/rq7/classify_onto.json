@@ -1,0 +1,92 @@
+{
+ "system": "onto",
+ "items": 378,
+ "labels": 28,
+ "catalogue_version": 6,
+ "runs": [
+  {
+   "run": 1,
+   "metrics": {
+    "micro_p": 0.4597,
+    "micro_r": 0.7532,
+    "micro_f1": 0.5709,
+    "macro_f1": 0.5636,
+    "n_labels": 28,
+    "tp": 644,
+    "fp": 757,
+    "fn": 211,
+    "pred_per_item": 3.706,
+    "unknown_names": 27,
+    "parse_errors": 0
+   },
+   "run_info": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "usage": {
+     "input": 145620,
+     "output": 126718,
+     "cache_write": 32146,
+     "cache_read": 12119042
+    },
+    "cost_usd": 0.2031,
+    "wall_seconds": 101.6
+   }
+  },
+  {
+   "run": 2,
+   "metrics": {
+    "micro_p": 0.4529,
+    "micro_r": 0.7427,
+    "micro_f1": 0.5627,
+    "macro_f1": 0.5492,
+    "n_labels": 28,
+    "tp": 635,
+    "fp": 767,
+    "fn": 220,
+    "pred_per_item": 3.709,
+    "unknown_names": 27,
+    "parse_errors": 1
+   },
+   "run_info": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "usage": {
+     "input": 145620,
+     "output": 128029,
+     "cache_write": 0,
+     "cache_read": 12151188
+    },
+    "cost_usd": 0.2001,
+    "wall_seconds": 104.3
+   }
+  },
+  {
+   "run": 3,
+   "metrics": {
+    "micro_p": 0.4645,
+    "micro_r": 0.7579,
+    "micro_f1": 0.576,
+    "macro_f1": 0.5571,
+    "n_labels": 28,
+    "tp": 648,
+    "fp": 747,
+    "fn": 207,
+    "pred_per_item": 3.69,
+    "unknown_names": 24,
+    "parse_errors": 0
+   },
+   "run_info": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "usage": {
+     "input": 145620,
+     "output": 125602,
+     "cache_write": 0,
+     "cache_read": 12151188
+    },
+    "cost_usd": 0.1989,
+    "wall_seconds": 102.3
+   }
+  }
+ ]
+}

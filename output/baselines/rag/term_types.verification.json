@@ -1,0 +1,81 @@
+{
+  "citations": 1439,
+  "verified": 1431,
+  "exact": 1424,
+  "relabelled": 7,
+  "rejection_rate": 0.0056,
+  "rejected": [
+    {
+      "term_type": "ledger_access_permissioning",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "Decentralized, permissionless staking protocols compete with staking services provided by entities organized under a more traditional corporate structure.",
+      "verified": false
+    },
+    {
+      "term_type": "ledger_access_permissioning",
+      "where": "value:Decentralised",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "These applications or platforms often run on a decentralized ledger, but often still have a central party",
+      "verified": false
+    },
+    {
+      "term_type": "service_activity_type",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "‘crypto-asset service provider’ means a crypto-asset service provider as defined in Article 3(1), point (15), of Regulation (EU) 2023/1114, where performing one or more crypto-asset services",
+      "verified": false
+    },
+    {
+      "term_type": "service_activity_type",
+      "where": "value:Transfer",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "Transfer of virtual assets; iv",
+      "verified": false
+    },
+    {
+      "term_type": "vasp_status",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "who established and can change the rules, who can make decisions affecting operations, who could shut down the product or service.",
+      "verified": false
+    },
+    {
+      "term_type": "transaction_intermediation_mode",
+      "where": "value:Intermediated transfer",
+      "status": "quote_not_found",
+      "doc": 18,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "multi-hop transfers through VASPs and OTC brokers with minimal CDD requirements",
+      "verified": false
+    },
+    {
+      "term_type": "q11_payment_or_transaction_purpose",
+      "where": "value:Validation or node operation",
+      "status": "quote_not_found",
+      "doc": 11,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "validates a digital commodity transaction, operates a node, or engages in similar activity to participate in facilitating, operating, or securing a blockchain system",
+      "verified": false
+    },
+    {
+      "term_type": "q30_token_type_on_chain_function",
+      "where": "value:Non-fungible token",
+      "status": "quote_not_found",
+      "doc": 17,
+      "section": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "quote": "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+      "verified": false
+    }
+  ]
+}

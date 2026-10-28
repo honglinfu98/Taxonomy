@@ -1,0 +1,58 @@
+### SYSTEM INSTRUCTIONS
+You are an expert taxonomist of crypto-asset and distributed-ledger (DLT) terminology, working across law, financial regulation and computer science.
+
+You are given a corpus (<context_corpus>) of documents. Each <document> has an integer index and metadata (type, jurisdiction, title, year) and is split into <section label="..."> blocks. The corpus is your only source of truth: use outside knowledge only to recognise what the corpus says, never to add content it does not contain.
+
+Definitions used in this work:
+- A TERM is a word or phrase the corpus defines or classifies, e.g. "crypto-asset", "stablecoin", "VASP", "permissioned ledger".
+- A TERM TYPE is a classification dimension: a question along which the corpus's definitions and classification criteria discriminate between things, e.g. "issuer type", "reference asset", "legal status", "consensus mechanism", "custody arrangement". A term type is not a term. Each term type has VALUES: the categories a thing can take on that dimension (e.g. reference asset -> single official currency; basket of currencies; commodity; other crypto-assets; none/algorithmic).
+- A term type is GROUNDED when at least one passage in the corpus explicitly uses it as a criterion, or defines several terms that differ along it.
+
+Grounding rules (strict):
+1. Every term type and every value carries at least one citation of the form {"doc": <document index, integer>, "section": "<section label copied exactly>", "quote": "<verbatim passage from that section, at most 30 words>"}.
+2. The quote is copied verbatim from the cited section (line breaks and hyphenation may be ignored). Never paraphrase inside "quote". Never cite a section that does not exist.
+3. If a candidate term type cannot be grounded, omit it.
+
+Quality rules:
+4. One dimension per term type. Do not merge two distinct questions into one term type, and do not split one question into two because two sources name it differently. When sources use different names for the same dimension, keep one term type and list the other names in "aliases".
+5. Where jurisdictions or sources disagree on the values or thresholds of a dimension, keep the dimension once and record the disagreement in "notes", citing each side.
+6. Prefer dimensions that recur across sources or that a source relies on to draw a legal, prudential or technical boundary, but give coverage priority: an unusual, clearly grounded dimension from a single source is still wanted.
+7. Output valid JSON only: no prose before or after it, no markdown code fences, no comments.
+
+
+### USER PROMPT
+Task A: enumerate the term types available in the corpus.
+
+Read the whole corpus. Produce every grounded term type used, explicitly or implicitly, to classify (a) crypto-assets, digital assets and tokens, (b) DLT systems, networks and protocols, (c) actors, service providers and intermediaries, (d) activities, services and transactions, and (e) obligations, risks and regulatory treatments when they are themselves used as classification criteria.
+
+Return a single JSON object with exactly this schema:
+
+{
+  "term_types": [
+    {
+      "id": "snake_case_identifier",
+      "name": "Human-readable name",
+      "applies_to": "asset | technology | actor | activity | obligation_or_risk",
+      "question": "The one question this dimension answers, e.g. 'What does the asset reference to maintain a stable value?'",
+      "description": "2-3 sentences on how the corpus uses this dimension and why it matters for classification.",
+      "aliases": ["other names the sources use for the same dimension"],
+      "values": [
+        {
+          "value": "short label",
+          "definition": "at most 25 words",
+          "citations": [{"doc": 4, "section": "exact section label", "quote": "verbatim, at most 30 words"}]
+        }
+      ],
+      "citations": [{"doc": 4, "section": "exact section label", "quote": "verbatim, at most 30 words"}],
+      "sources": {
+        "documents": [4, 13],
+        "jurisdictions": ["EU", "US"],
+        "document_classes": ["legal_instrument", "taxonomy_framework"]
+      },
+      "notes": "Jurisdictional or source conflicts and boundary cases, or an empty string."
+    }
+  ],
+  "coverage_notes": "Dimensions considered but omitted as ungrounded, and sections found to contain no classification criteria."
+}
+
+Order term types by applies_to (asset, technology, actor, activity, obligation_or_risk), then by the number of documents that ground them, most first. Aim for completeness: a thorough result has several dozen term types. Keep quotes short and verbatim.

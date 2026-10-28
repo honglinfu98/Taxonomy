@@ -311,7 +311,878 @@
     "cache_write": 0
    },
    "note": ""
+  },
+  {
+   "stage": "RQ5 baseline catalogue: zeroshot",
+   "model": "claude-haiku-5-5",
+   "usd": 0.007,
+   "seconds": 53.7,
+   "tokens": {
+    "input": 2575,
+    "output": 13538,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": "1 calls"
+  },
+  {
+   "stage": "RQ5 Task B over zeroshot",
+   "model": "claude-haiku-5-5",
+   "usd": 0.6926,
+   "seconds": 49.7,
+   "tokens": {
+    "input": 36595,
+    "output": 25209,
+    "cache_read": 7430948,
+    "cache_write": 239708
+   },
+   "note": "32 calls"
+  },
+  {
+   "stage": "RQ5 baseline catalogue: rag",
+   "model": "claude-haiku-5-5",
+   "usd": 0.2674,
+   "seconds": 221.7,
+   "tokens": {
+    "input": 69004,
+    "output": 354791,
+    "cache_read": 0,
+    "cache_write": 664803
+   },
+   "note": "42 calls"
+  },
+  {
+   "stage": "RQ5 Task B over rag",
+   "model": "claude-haiku-5-5",
+   "usd": 1.3264,
+   "seconds": 101.2,
+   "tokens": {
+    "input": 178035,
+    "output": 61282,
+    "cache_read": 21153106,
+    "cache_write": 26531
+   },
+   "note": "81 calls"
+  },
+  {
+   "stage": "RQ5 baseline catalogue: raptor",
+   "model": "claude-haiku-5-5",
+   "usd": 0.2739,
+   "seconds": 237.8,
+   "tokens": {
+    "input": 320148,
+    "output": 338716,
+    "cache_read": 17302,
+    "cache_write": 578904
+   },
+   "note": "74 calls"
+  },
+  {
+   "stage": "RQ5 Task B over raptor",
+   "model": "claude-haiku-5-5",
+   "usd": 1.0459,
+   "seconds": 81.4,
+   "tokens": {
+    "input": 132067,
+    "output": 49909,
+    "cache_read": 16665730,
+    "cache_write": 21785
+   },
+   "note": "65 calls"
+  },
+  {
+   "stage": "RQ5 baseline catalogue: tnt",
+   "model": "claude-haiku-5-5",
+   "usd": 0.169,
+   "seconds": 650.0,
+   "tokens": {
+    "input": 472617,
+    "output": 243491,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": "135 calls"
+  },
+  {
+   "stage": "RQ5 Task B over tnt",
+   "model": "claude-haiku-5-5",
+   "usd": 2.7205,
+   "seconds": 131.2,
+   "tokens": {
+    "input": 441980,
+    "output": 115903,
+    "cache_read": 43745686,
+    "cache_write": 22514
+   },
+   "note": "170 calls"
+  },
+  {
+   "stage": "RQ5 baseline catalogue: expert_key",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0085,
+   "seconds": 51.6,
+   "tokens": {
+    "input": 669,
+    "output": 15642,
+    "cache_read": 57817,
+    "cache_write": 0
+   },
+   "note": "2 calls"
+  },
+  {
+   "stage": "RQ5 downstream: ours run 1 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1363,
+   "seconds": 105.4,
+   "tokens": {
+    "input": 233972,
+    "output": 97344,
+    "cache_read": 6163586,
+    "cache_write": 20614
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: ours run 2 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.133,
+   "seconds": 102.9,
+   "tokens": {
+    "input": 233972,
+    "output": 95570,
+    "cache_read": 6184200,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: ours run 3 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1348,
+   "seconds": 98.2,
+   "tokens": {
+    "input": 233972,
+    "output": 99183,
+    "cache_read": 6184200,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: rag run 1 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1946,
+   "seconds": 110.6,
+   "tokens": {
+    "input": 233972,
+    "output": 93893,
+    "cache_read": 11928605,
+    "cache_write": 39895
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: rag run 2 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1917,
+   "seconds": 110.9,
+   "tokens": {
+    "input": 233972,
+    "output": 97177,
+    "cache_read": 11968500,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: rag run 3 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1909,
+   "seconds": 103.4,
+   "tokens": {
+    "input": 233972,
+    "output": 95615,
+    "cache_read": 11968500,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: map rag to gold",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0077,
+   "seconds": 22.1,
+   "tokens": {
+    "input": 46080,
+    "output": 6171,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: raptor run 1 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1715,
+   "seconds": 112.4,
+   "tokens": {
+    "input": 233972,
+    "output": 95255,
+    "cache_read": 9642451,
+    "cache_write": 32249
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: raptor run 2 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1675,
+   "seconds": 109.6,
+   "tokens": {
+    "input": 233972,
+    "output": 94618,
+    "cache_read": 9674700,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: raptor run 3 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1679,
+   "seconds": 102.9,
+   "tokens": {
+    "input": 233972,
+    "output": 95489,
+    "cache_read": 9674700,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: map raptor to gold",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0068,
+   "seconds": 18.1,
+   "tokens": {
+    "input": 42610,
+    "output": 4987,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: tnt run 1 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1597,
+   "seconds": 85.5,
+   "tokens": {
+    "input": 233972,
+    "output": 110856,
+    "cache_read": 7764731,
+    "cache_write": 25969
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: tnt run 2 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.156,
+   "seconds": 83.6,
+   "tokens": {
+    "input": 233972,
+    "output": 109316,
+    "cache_read": 7790700,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: tnt run 3 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1571,
+   "seconds": 86.3,
+   "tokens": {
+    "input": 233972,
+    "output": 111500,
+    "cache_read": 7790700,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: map tnt to gold",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0101,
+   "seconds": 34.1,
+   "tokens": {
+    "input": 53772,
+    "output": 9509,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: zeroshot run 1 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0911,
+   "seconds": 99.3,
+   "tokens": {
+    "input": 233972,
+    "output": 98878,
+    "cache_read": 1749449,
+    "cache_write": 5851
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: zeroshot run 2 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0914,
+   "seconds": 105.2,
+   "tokens": {
+    "input": 233972,
+    "output": 100838,
+    "cache_read": 1755300,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 downstream: zeroshot run 3 (300 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0898,
+   "seconds": 96.1,
+   "tokens": {
+    "input": 233972,
+    "output": 97771,
+    "cache_read": 1755300,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: map zeroshot to gold",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0047,
+   "seconds": 12.2,
+   "tokens": {
+    "input": 33344,
+    "output": 2699,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: expert_key vs effort_low",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0025,
+   "seconds": 7.9,
+   "tokens": {
+    "input": 14916,
+    "output": 2034,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: expert_key vs no_citations",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0023,
+   "seconds": 6.6,
+   "tokens": {
+    "input": 13800,
+    "output": 1767,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: expert_key vs no_definitions",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0045,
+   "seconds": 11.6,
+   "tokens": {
+    "input": 29972,
+    "output": 3077,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: expert_key vs no_manifest",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0038,
+   "seconds": 12.1,
+   "tokens": {
+    "input": 18912,
+    "output": 3781,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: expert_key vs ours",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0038,
+   "seconds": 10.9,
+   "tokens": {
+    "input": 25476,
+    "output": 2411,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: expert_key vs rag",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0038,
+   "seconds": 9.2,
+   "tokens": {
+    "input": 24266,
+    "output": 2759,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: expert_key vs raptor",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0032,
+   "seconds": 7.8,
+   "tokens": {
+    "input": 20796,
+    "output": 2196,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: expert_key vs repeat",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0035,
+   "seconds": 7.8,
+   "tokens": {
+    "input": 23406,
+    "output": 2221,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: expert_key vs sonnet",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0033,
+   "seconds": 9.5,
+   "tokens": {
+    "input": 19902,
+    "output": 2698,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: expert_key vs sonnet_medium",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0026,
+   "seconds": 8.0,
+   "tokens": {
+    "input": 14000,
+    "output": 2309,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: expert_key vs tnt",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0046,
+   "seconds": 9.9,
+   "tokens": {
+    "input": 31958,
+    "output": 2731,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: expert_key vs zeroshot",
+   "model": "claude-haiku-5-5",
+   "usd": 0.002,
+   "seconds": 6.0,
+   "tokens": {
+    "input": 11530,
+    "output": 1597,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: ours vs effort_low",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0047,
+   "seconds": 14.4,
+   "tokens": {
+    "input": 28006,
+    "output": 3840,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: ours vs no_citations",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0044,
+   "seconds": 12.6,
+   "tokens": {
+    "input": 26890,
+    "output": 3443,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: ours vs no_definitions",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0085,
+   "seconds": 26.8,
+   "tokens": {
+    "input": 43062,
+    "output": 8433,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: ours vs no_manifest",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0063,
+   "seconds": 18.5,
+   "tokens": {
+    "input": 32002,
+    "output": 6157,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: ours vs rag",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0066,
+   "seconds": 17.8,
+   "tokens": {
+    "input": 37356,
+    "output": 5658,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: ours vs raptor",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0057,
+   "seconds": 16.5,
+   "tokens": {
+    "input": 33886,
+    "output": 4555,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: ours vs repeat",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0063,
+   "seconds": 18.9,
+   "tokens": {
+    "input": 36496,
+    "output": 5394,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: ours vs sonnet",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0059,
+   "seconds": 16.6,
+   "tokens": {
+    "input": 32992,
+    "output": 5102,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 judge: ours vs sonnet_medium",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0051,
+   "seconds": 16.2,
+   "tokens": {
+    "input": 27090,
+    "output": 4689,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: ours vs tnt",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0086,
+   "seconds": 29.1,
+   "tokens": {
+    "input": 45048,
+    "output": 8119,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ5 judge: ours vs zeroshot",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0036,
+   "seconds": 8.4,
+   "tokens": {
+    "input": 24620,
+    "output": 2343,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ6 ablation: effort_low",
+   "model": "claude-haiku-5-5",
+   "usd": 0.3403,
+   "seconds": 142.0,
+   "tokens": {
+    "input": 2542,
+    "output": 41636,
+    "cache_read": 0,
+    "cache_write": 234945
+   },
+   "note": "full prompt at effort low"
+  },
+  {
+   "stage": "RQ6 ablation: no_citations",
+   "model": "claude-haiku-5-5",
+   "usd": 0.3042,
+   "seconds": 111.4,
+   "tokens": {
+    "input": 2443,
+    "output": 27266,
+    "cache_read": 0,
+    "cache_write": 234830
+   },
+   "note": "grounding rules and citation fields removed (no citation requirement)"
+  },
+  {
+   "stage": "RQ6 ablation: no_definitions",
+   "model": "claude-haiku-5-5",
+   "usd": 0.4724,
+   "seconds": 320.3,
+   "tokens": {
+    "input": 2542,
+    "output": 94578,
+    "cache_read": 0,
+    "cache_write": 234675
+   },
+   "note": "definitions of term, term type and grounded removed from the instructions"
+  },
+  {
+   "stage": "RQ6 ablation: no_manifest",
+   "model": "claude-haiku-5-5",
+   "usd": 0.3681,
+   "seconds": 195.6,
+   "tokens": {
+    "input": 699,
+    "output": 53113,
+    "cache_read": 0,
+    "cache_write": 234945
+   },
+   "note": "task prompt without the manifest of section labels"
+  },
+  {
+   "stage": "RQ7 classify onto run 1 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.2031,
+   "seconds": 101.6,
+   "tokens": {
+    "input": 145620,
+    "output": 126718,
+    "cache_read": 12119042,
+    "cache_write": 32146
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 classify onto run 2 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.2001,
+   "seconds": 104.3,
+   "tokens": {
+    "input": 145620,
+    "output": 128029,
+    "cache_read": 12151188,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 classify onto run 3 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.1989,
+   "seconds": 102.3,
+   "tokens": {
+    "input": 145620,
+    "output": 125602,
+    "cache_read": 12151188,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 tagger (catalogue v6) run 1 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.2604,
+   "seconds": 139.0,
+   "tokens": {
+    "input": 232565,
+    "output": 223584,
+    "cache_read": 12134499,
+    "cache_write": 32187
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 classify tags run 1 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0829,
+   "seconds": 196.3,
+   "tokens": {
+    "input": 737768,
+    "output": 18234,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 tagger (catalogue v6) run 2 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.2549,
+   "seconds": 138.7,
+   "tokens": {
+    "input": 232565,
+    "output": 219868,
+    "cache_read": 12166686,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 classify tags run 2 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0821,
+   "seconds": 189.7,
+   "tokens": {
+    "input": 729545,
+    "output": 18282,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 tagger (catalogue v6) run 3 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.2562,
+   "seconds": 133.8,
+   "tokens": {
+    "input": 232565,
+    "output": 222613,
+    "cache_read": 12166686,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 classify tags run 3 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0829,
+   "seconds": 186.4,
+   "tokens": {
+    "input": 736378,
+    "output": 18623,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 classify text run 1 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0382,
+   "seconds": 50.8,
+   "tokens": {
+    "input": 281700,
+    "output": 20159,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 classify text run 2 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0382,
+   "seconds": 51.6,
+   "tokens": {
+    "input": 281700,
+    "output": 20076,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
+  },
+  {
+   "stage": "RQ7 classify text run 3 (378 items)",
+   "model": "claude-haiku-5-5",
+   "usd": 0.0383,
+   "seconds": 53.1,
+   "tokens": {
+    "input": 281700,
+    "output": 20239,
+    "cache_read": 0,
+    "cache_write": 0
+   },
+   "note": ""
   }
  ],
- "total_usd": 60.72
+ "total_usd": 72.82
 }

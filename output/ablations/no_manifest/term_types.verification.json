@@ -1,0 +1,63 @@
+{
+  "citations": 271,
+  "verified": 265,
+  "exact": 208,
+  "relabelled": 57,
+  "rejection_rate": 0.0221,
+  "rejected": [
+    {
+      "term_type": "crypto_asset_function",
+      "where": "value:governance",
+      "status": "quote_not_found",
+      "doc": 12,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "(IV) used to participate in the decentralized governance system of the blockchain system;",
+      "verified": false
+    },
+    {
+      "term_type": "dlt_decentralisation_of_governance",
+      "where": "value:decentralised governance system",
+      "status": "quote_not_found",
+      "doc": 12,
+      "section": "Title I, Secs. 101-104: Definitions",
+      "quote": "any transparent, rulesbased system permitting persons to form consensus or reach agreement",
+      "verified": false
+    },
+    {
+      "term_type": "dlt_finality",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 8,
+      "section": "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)",
+      "quote": "Basel also requires settlement finality",
+      "verified": false
+    },
+    {
+      "term_type": "dlt_software_architecture",
+      "where": "value:monolithic",
+      "status": "no_such_section",
+      "doc": 1,
+      "section": "IX. CODEBASE",
+      "quote": "1. Monolithic Design. In this case, all the aspects of a decentralised ledger are handled by a blockchain built as a single-tier software application",
+      "verified": false
+    },
+    {
+      "term_type": "dlt_security_privacy_encryption",
+      "where": "value:anonymity-enhanced coin",
+      "status": "no_such_section",
+      "doc": 4,
+      "section": "Article 2: Definitions",
+      "quote": "‘anonymity-enhancing coins’ means crypto-assets that have built-in features designed to make crypto-asset transfer information anonymous",
+      "verified": false
+    },
+    {
+      "term_type": "activity_transaction_direction_and_trade_type",
+      "where": "value:peer-to-peer",
+      "status": "quote_not_found",
+      "doc": 18,
+      "section": "Section Two: ML/TF/PF Risks (stablecoins, unhosted wallets, offshore VASPs, DeFi)",
+      "quote": "P2P transfers via unhosted wallets present elevated illicit finance risks, as such transactions occur directly between parties",
+      "verified": false
+    }
+  ]
+}

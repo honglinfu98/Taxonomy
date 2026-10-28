@@ -1,0 +1,421 @@
+{
+ "a": "ours",
+ "b": "no_definitions",
+ "judge_model": "claude-haiku-5-5",
+ "term_types_a": 93,
+ "term_types_b": 111,
+ "matched": 63,
+ "recall_of_a": 0.677,
+ "precision_of_b": 0.568,
+ "f1": 0.618,
+ "pairs": [
+  {
+   "a": "fungibility",
+   "b": "asset_fungibility_and_uniqueness",
+   "confidence": "high"
+  },
+  {
+   "a": "issuer_presence",
+   "b": "asset_issuer_presence",
+   "confidence": "high"
+  },
+  {
+   "a": "crypto_asset_function",
+   "b": "asset_function_utility_governance_security",
+   "confidence": "medium"
+  },
+  {
+   "a": "native_vs_token_standard",
+   "b": "asset_protocol_native_vs_token_standard",
+   "confidence": "high"
+  },
+  {
+   "a": "wrapped_or_bridged_asset",
+   "b": "asset_cross_chain_or_wrapped_status",
+   "confidence": "high"
+  },
+  {
+   "a": "yield_source",
+   "b": "asset_yield_source",
+   "confidence": "high"
+  },
+  {
+   "a": "yield_distribution_mechanism",
+   "b": "asset_yield_distribution_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "redemption_mechanism",
+   "b": "asset_redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "claim_form",
+   "b": "asset_claim_form",
+   "confidence": "high"
+  },
+  {
+   "a": "centralisation_level",
+   "b": "asset_centralisation_level",
+   "confidence": "high"
+  },
+  {
+   "a": "asset_reference_type",
+   "b": "asset_stable_value_reference",
+   "confidence": "medium"
+  },
+  {
+   "a": "asset_supply_policy",
+   "b": "asset_supply_management",
+   "confidence": "high"
+  },
+  {
+   "a": "minting_mechanism",
+   "b": "asset_minting_mechanism",
+   "confidence": "medium"
+  },
+  {
+   "a": "legal_classification_status",
+   "b": "asset_legal_classification_status",
+   "confidence": "high"
+  },
+  {
+   "a": "consensus_mechanism",
+   "b": "tech_consensus_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "consensus_finality",
+   "b": "tech_finality",
+   "confidence": "high"
+  },
+  {
+   "a": "network_topology",
+   "b": "tech_network_topology",
+   "confidence": "high"
+  },
+  {
+   "a": "ledger_access_permission",
+   "b": "tech_network_access_permission",
+   "confidence": "high"
+  },
+  {
+   "a": "script_language_expressiveness",
+   "b": "tech_scripting_language",
+   "confidence": "high"
+  },
+  {
+   "a": "governance_model",
+   "b": "tech_governance_model",
+   "confidence": "high"
+  },
+  {
+   "a": "software_architecture",
+   "b": "tech_software_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "code_license_openness",
+   "b": "tech_coding_license_and_source_openness",
+   "confidence": "high"
+  },
+  {
+   "a": "dlt_architecture",
+   "b": "tech_blockchain_vs_dlt_distinction",
+   "confidence": "high"
+  },
+  {
+   "a": "ledger_storage_model",
+   "b": "tech_data_structure_and_storage",
+   "confidence": "medium"
+  },
+  {
+   "a": "interoperability_type",
+   "b": "tech_interoperability_intraoperability",
+   "confidence": "high"
+  },
+  {
+   "a": "fee_structure",
+   "b": "tech_fee_structure",
+   "confidence": "high"
+  },
+  {
+   "a": "reward_mechanism",
+   "b": "tech_reward_system",
+   "confidence": "high"
+  },
+  {
+   "a": "digital_identity_layer",
+   "b": "tech_identity_and_permission_layer",
+   "confidence": "high"
+  },
+  {
+   "a": "privacy_enhancement",
+   "b": "tech_data_privacy_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "wallet_type_storage",
+   "b": "tech_key_custody_wallet_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "ledger_node_role",
+   "b": "actor_validator_node_operator_miner",
+   "confidence": "medium"
+  },
+  {
+   "a": "crypto_asset_service_type",
+   "b": "activity_crypto_asset_services_list",
+   "confidence": "high"
+  },
+  {
+   "a": "service_provider_status",
+   "b": "actor_crypto_asset_service_provider",
+   "confidence": "high"
+  },
+  {
+   "a": "exchange_venue_type",
+   "b": "actor_trading_platform_operator",
+   "confidence": "medium"
+  },
+  {
+   "a": "custodian_or_custody_model",
+   "b": "actor_custodian",
+   "confidence": "medium"
+  },
+  {
+   "a": "transfer_of_crypto_assets",
+   "b": "activity_money_transmission_and_transfer",
+   "confidence": "medium"
+  },
+  {
+   "a": "regulated_transmission_of_value",
+   "b": "actor_money_transmitter",
+   "confidence": "medium"
+  },
+  {
+   "a": "transaction_type_p2p",
+   "b": "activity_p2p_transaction",
+   "confidence": "high"
+  },
+  {
+   "a": "staking_arrangement",
+   "b": "activity_staking",
+   "confidence": "high"
+  },
+  {
+   "a": "offer_and_issuance_method",
+   "b": "activity_issuance_offer_distribution",
+   "confidence": "high"
+  },
+  {
+   "a": "ecosystem_participant_role",
+   "b": "actor_issuer_role",
+   "confidence": "medium"
+  },
+  {
+   "a": "related_person_affiliation",
+   "b": "actor_related_and_affiliated_person",
+   "confidence": "high"
+  },
+  {
+   "a": "infrastructure_provider_type",
+   "b": "actor_bridge_oracle_infrastructure_provider",
+   "confidence": "high"
+  },
+  {
+   "a": "actor_role_in_service",
+   "b": "actor_intermediary_and_broker_dealer",
+   "confidence": "medium"
+  },
+  {
+   "a": "decentralised_control_status_actor",
+   "b": "actor_decentralised_protocol_or_dao",
+   "confidence": "medium"
+  },
+  {
+   "a": "aml_obligations_applicability",
+   "b": "obligation_aml_cft_status",
+   "confidence": "medium"
+  },
+  {
+   "a": "operational_resilience_risk",
+   "b": "obligation_operational_resilience_and_ict_risk",
+   "confidence": "high"
+  },
+  {
+   "a": "settlement_finality_legal_test",
+   "b": "obligation_legal_claim_and_redemption_rights",
+   "confidence": "medium"
+  },
+  {
+   "a": "custody_safeguarding_obligation",
+   "b": "obligation_safeguarding_and_segregation",
+   "confidence": "high"
+  },
+  {
+   "a": "prudential_classification_group",
+   "b": "obligation_prudential_capital_and_liquidity",
+   "confidence": "medium"
+  },
+  {
+   "a": "securities_status_digital_asset",
+   "b": "asset_digital_commodity_vs_security_exclusions",
+   "confidence": "medium"
+  },
+  {
+   "a": "sanctions_and_freezing_capability",
+   "b": "risk_sanctions_and_asset_freezing",
+   "confidence": "medium"
+  },
+  {
+   "a": "tax_reporting_status",
+   "b": "actor_tax_reporting_entity",
+   "confidence": "high"
+  },
+  {
+   "a": "ancillary_asset_status",
+   "b": "asset_ancillary_or_network_token",
+   "confidence": "high"
+  },
+  {
+   "a": "tokenisation_form",
+   "b": "asset_tokenised_traditional_asset",
+   "confidence": "medium"
+  },
+  {
+   "a": "central_bank_digital_currency",
+   "b": "asset_digital_representation_of_fiat_or_securities",
+   "confidence": "medium"
+  },
+  {
+   "a": "digital_asset_recording",
+   "b": "asset_ledger_or_technology_basis",
+   "confidence": "medium"
+  },
+  {
+   "a": "offshore_vasp_status",
+   "b": "activity_cross_border_offshore_operation",
+   "confidence": "high"
+  },
+  {
+   "a": "party_role_transfer",
+   "b": "actor_intermediary_crypto_asset_service_provider",
+   "confidence": "high"
+  },
+  {
+   "a": "consumer_vs_professional_status",
+   "b": "obligation_consumer_investor_protection_and_disclosure",
+   "confidence": "medium"
+  },
+  {
+   "a": "risk_type_illicit_finance",
+   "b": "risk_money_laundering_and_terror_financing",
+   "confidence": "medium"
+  },
+  {
+   "a": "excluded_instrument_category",
+   "b": "asset_scope_exclusions_eu",
+   "confidence": "high"
+  },
+  {
+   "a": "dlt_network_access_scope",
+   "b": "tech_public_vs_private_ledger_status",
+   "confidence": "medium"
+  }
+ ],
+ "unmatched_a": [
+  "crypto_asset_scope_criteria",
+  "decentralised_system_status",
+  "stablecoin_regulatory_class",
+  "unhosted_vs_hosted_wallet",
+  "smart_contract_definition_scope",
+  "native_asset_type",
+  "fund_or_pooled_vehicle",
+  "stablecoin_issuer_model",
+  "crypto_asset_operator",
+  "payment_or_transfer_service",
+  "convertible_virtual_currency_status",
+  "redemption_risk_criteria",
+  "stablecoin_interest_restriction",
+  "anonymity_enhancing_status",
+  "tradfi_analogue",
+  "investment_contract_howey",
+  "financial_instrument_status",
+  "virtual_asset_property_status",
+  "serious_crime_threshold",
+  "ict_system_scope",
+  "traffic_and_subscriber_data_class",
+  "self_hosted_address_status",
+  "native_vs_stable_price_reference_asset_currency",
+  "regulated_status_cvc_mst_exemption",
+  "regulatory_perimeter_fi_status",
+  "regulatory_regime_scope_jurisdictional",
+  "consensus_participant_validator_capacity",
+  "unhosted_custody_control_policy",
+  "decentralised_or_centralised_offer_model",
+  "service_location_nexus"
+ ],
+ "unmatched_b": [
+  "asset_legal_form_of_digital_representation",
+  "asset_intrinsic_link_to_blockchain",
+  "asset_stabilisation_mechanism",
+  "asset_class_mica_category",
+  "asset_decentralised_governance_system",
+  "asset_native_asset_and_tokenisation_status_dlt",
+  "tech_latency_communication_model",
+  "tech_gossip_propagation",
+  "tech_transaction_model",
+  "tech_distributed_ledger_definition_elements",
+  "tech_oracle_and_external_data_dependency",
+  "tech_layer_position",
+  "tech_cryptographic_primitive",
+  "tech_consensus_immutability_failure_model",
+  "tech_transaction_capacity_scalability",
+  "tech_codebase_language_and_architecture",
+  "actor_developer_and_software_provider",
+  "actor_authorised_participant",
+  "actor_reserve_asset_manager_and_custodian",
+  "actor_obliged_entity_and_fi",
+  "actor_ict_third_party_provider",
+  "actor_crypto_asset_regulatory_entity_type",
+  "activity_vasp_activity_limbs",
+  "activity_exchange_type",
+  "activity_lending_borrowing_collateral",
+  "activity_minting_or_mining",
+  "activity_redemption_of_stablecoin",
+  "activity_custody_of_private_keys",
+  "activity_market_making_and_underwriting",
+  "activity_advice_and_portfolio_management",
+  "activity_placing_and_marketing",
+  "activity_wrapping_and_bridging",
+  "activity_ict_service_provision",
+  "activity_operating_distributed_ledger_or_protocol",
+  "activity_closed_loop_and_non_transferable_items",
+  "activity_settlement_clearance",
+  "transaction_value_threshold",
+  "obligation_licensing_registration",
+  "obligation_reserve_requirements_and_disclosure",
+  "obligation_insolvency_and_claim_priority",
+  "risk_privacy_and_data_protection",
+  "risk_cybersecurity_and_cyber_attack",
+  "risk_systemic_and_concentration",
+  "risk_market_manipulation_and_conflicts",
+  "risk_smart_contract_and_code_vulnerability",
+  "risk_immutability_and_irreversibility",
+  "risk_tax_reporting_obligation",
+  "obligation_tokenised_asset_regime_scope"
+ ],
+ "model": "claude-haiku-5-5",
+ "calls": 2,
+ "usage": {
+  "input": 43062,
+  "output": 8433,
+  "cache_write": 0,
+  "cache_read": 0
+ },
+ "cost_usd": 0.0085,
+ "api_seconds": 26.8,
+ "wall_seconds": 26.8
+}

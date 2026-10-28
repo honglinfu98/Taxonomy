@@ -1,0 +1,43 @@
+[
+ {
+  "batch": 1,
+  "summaries": 30,
+  "term_types": 89,
+  "values": 248,
+  "stop_reason": "end_turn"
+ },
+ {
+  "batch": 2,
+  "summaries": 30,
+  "term_types": 126,
+  "values": 349,
+  "stop_reason": "end_turn"
+ },
+ {
+  "batch": 3,
+  "summaries": 30,
+  "term_types": 151,
+  "values": 423,
+  "stop_reason": "end_turn"
+ },
+ {
+  "batch": 4,
+  "summaries": 30,
+  "term_types": 159,
+  "values": 452,
+  "stop_reason": "end_turn"
+ },
+ {
+  "batch": 5,
+  "summaries": 9,
+  "term_types": 170,
+  "values": 485,
+  "stop_reason": "end_turn"
+ },
+ {
+  "batch": "review",
+  "term_types": 170,
+  "values": 485,
+  "stop_reason": "end_turn"
+ }
+]

@@ -1,0 +1,198 @@
+{
+ "a": "expert_key",
+ "b": "raptor",
+ "judge_model": "claude-haiku-5-5",
+ "term_types_a": 39,
+ "term_types_b": 65,
+ "matched": 22,
+ "recall_of_a": 0.564,
+ "precision_of_b": 0.338,
+ "f1": 0.423,
+ "pairs": [
+  {
+   "a": "d1_consensus_network_topology",
+   "b": "q22_consensus_network_topology",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_immutability_and_failure_tolerance",
+   "b": "consensus_mechanism",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_transaction_model",
+   "b": "ledger_architecture",
+   "confidence": "low"
+  },
+  {
+   "a": "d1_access_and_control_layer",
+   "b": "ledger_access_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_identity_layer",
+   "b": "stablecoin_anonymity_identity_layer",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_privacy",
+   "b": "privacy_and_anonymity",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_fees_reward",
+   "b": "fee_model",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_governance",
+   "b": "governance_rules_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_interoperability",
+   "b": "interoperability_level",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_data_encryption",
+   "b": "cryptographic_scheme",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_consensus_agreement_finality",
+   "b": "finality_and_settlement",
+   "confidence": "low"
+  },
+  {
+   "a": "d2_technical_standard",
+   "b": "technical_standard",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_centralisation",
+   "b": "centralisation",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_asset_function",
+   "b": "asset_function",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_issuer",
+   "b": "issuer_type",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_mechanism",
+   "b": "minting_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_yield_source",
+   "b": "yield_source",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_yield_distribution_mechanism",
+   "b": "yield_distribution_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_redemption_mechanism",
+   "b": "redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_legal_classification",
+   "b": "legal_classification",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_form_of_claim",
+   "b": "form_of_claim",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_tradfi_analogy",
+   "b": "tradfi_analogue",
+   "confidence": "high"
+  }
+ ],
+ "unmatched_a": [
+  "d1_gossiping",
+  "d1_consensus_agreement_latency",
+  "d1_data_structure_in_the_blockheader",
+  "d1_server_storage",
+  "d1_block_storage",
+  "d1_limits_to_scalability",
+  "d1_native_asset",
+  "d1_tokenisation",
+  "d1_asset_supply_management",
+  "d1_intraoperability",
+  "d1_script_language",
+  "d1_coding_language",
+  "d1_code_license",
+  "d1_software_architecture",
+  "d1_reward_system",
+  "d1_fee_structure",
+  "d2_redemption_reference_asset"
+ ],
+ "unmatched_b": [
+  "stablecoin_reference_type",
+  "fungibility",
+  "custody_arrangement",
+  "wallet_connectivity",
+  "key_control_scheme",
+  "network_participant_role",
+  "staking_participation_model",
+  "crypto_asset_service_type",
+  "transaction_intermediation",
+  "provider_role_in_transaction",
+  "vasp_status_and_scope",
+  "issuer_supervision_status",
+  "licensing_jurisdiction_basis",
+  "supervisory_authority_type",
+  "illicit_finance_risk",
+  "issuer_freeze_capability",
+  "reserve_quality_and_management",
+  "prudential_classification_group",
+  "ict_incident_and_risk",
+  "defi_technology_layer",
+  "regulated_status_of_intermediary",
+  "digital_asset_definition_basis",
+  "token_form_coin_or_token",
+  "network_value_source",
+  "stablecoin_reach",
+  "cbdc_form",
+  "ledger_technology_relationship",
+  "data_source_type",
+  "tokenised_asset_equivalence",
+  "consumer_and_market_risk",
+  "federal_custody_safeguarding",
+  "payment_transaction_purpose",
+  "defi_control_status",
+  "key_storage_location",
+  "distribution_mode",
+  "regulatory_jurisdiction_nexus",
+  "ict_provider_type",
+  "multi_entity_operation",
+  "q11_technology_mechanism_of_execution",
+  "q14_wallet_technology_type",
+  "q17_wallet_type",
+  "q19_legal_regime_scope_exclusion",
+  "q22_ledger_governance_model"
+ ],
+ "model": "claude-haiku-5-5",
+ "calls": 2,
+ "usage": {
+  "input": 20796,
+  "output": 2196,
+  "cache_write": 0,
+  "cache_read": 0
+ },
+ "cost_usd": 0.0032,
+ "api_seconds": 7.8,
+ "wall_seconds": 7.8
+}

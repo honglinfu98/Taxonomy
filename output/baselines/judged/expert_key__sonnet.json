@@ -1,0 +1,235 @@
+{
+ "a": "expert_key",
+ "b": "sonnet",
+ "judge_model": "claude-haiku-5-5",
+ "term_types_a": 39,
+ "term_types_b": 72,
+ "matched": 32,
+ "recall_of_a": 0.821,
+ "precision_of_b": 0.444,
+ "f1": 0.577,
+ "pairs": [
+  {
+   "a": "d1_consensus_network_topology",
+   "b": "network_topology",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_immutability_and_failure_tolerance",
+   "b": "consensus_mechanism",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_gossiping",
+   "b": "gossiping",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_agreement_latency",
+   "b": "communication_synchrony",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_agreement_finality",
+   "b": "finality",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_structure_in_the_blockheader",
+   "b": "header_data_structure",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_transaction_model",
+   "b": "transaction_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_server_storage",
+   "b": "node_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_limits_to_scalability",
+   "b": "scalability_limit",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_interoperability",
+   "b": "interoperability_external",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_intraoperability",
+   "b": "interoperability_cross_chain",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_governance",
+   "b": "governance_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_script_language",
+   "b": "smart_contract_script_language",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_encryption",
+   "b": "cryptographic_primitive",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_code_license",
+   "b": "code_and_software_design",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_access_and_control_layer",
+   "b": "access_permission_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_identity_layer",
+   "b": "identity_layer",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_reward_system",
+   "b": "reward_system",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_fees_reward",
+   "b": "fee_requirement",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_fee_structure",
+   "b": "fee_structure",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_native_asset",
+   "b": "native_asset_support",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_asset_supply_management",
+   "b": "supply_policy",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_technical_standard",
+   "b": "technical_standard",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_centralisation",
+   "b": "centralisation_of_control",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_asset_function",
+   "b": "asset_function",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_issuer",
+   "b": "issuer_identifiability",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_minting_mechanism",
+   "b": "minting_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_yield_source",
+   "b": "yield_source",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_yield_distribution_mechanism",
+   "b": "yield_distribution_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_redemption_mechanism",
+   "b": "redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_legal_classification",
+   "b": "legal_classification_of_asset",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_form_of_claim",
+   "b": "rights_conferred",
+   "confidence": "medium"
+  }
+ ],
+ "unmatched_a": [
+  "d1_block_storage",
+  "d1_tokenisation",
+  "d1_data_privacy",
+  "d1_coding_language",
+  "d1_software_architecture",
+  "d2_redemption_reference_asset",
+  "d2_tradfi_analogy"
+ ],
+ "unmatched_b": [
+  "stablecoin_regulatory_category",
+  "reference_asset",
+  "monetary_status",
+  "fungibility",
+  "transferability_convertibility",
+  "privacy_features",
+  "redemption_right",
+  "backing_collateralisation",
+  "asset_underlying_nature",
+  "tokenised_underlying_asset_class",
+  "prudential_classification_group",
+  "link_to_blockchain_system",
+  "initial_distribution_method",
+  "freezing_capability",
+  "ledger_architecture",
+  "ledger_and_code_openness",
+  "wallet_custody_model",
+  "wallet_connectivity",
+  "key_control_scheme",
+  "stack_layer",
+  "blockchain_application_family",
+  "mining_pool_organisation",
+  "service_provider_category",
+  "issuer_authorisation_category",
+  "ecosystem_role",
+  "control_over_arrangement",
+  "relationship_to_issuer",
+  "client_type",
+  "legal_personality",
+  "territorial_nexus",
+  "authorisation_status",
+  "transfer_chain_role",
+  "money_transmission_role",
+  "enterprise_size",
+  "service_activity_type",
+  "capacity_principal_agent",
+  "business_basis",
+  "intermediary_involvement",
+  "offering_mode",
+  "staking_model"
+ ],
+ "model": "claude-haiku-5-5",
+ "calls": 2,
+ "usage": {
+  "input": 19902,
+  "output": 2698,
+  "cache_write": 0,
+  "cache_read": 0
+ },
+ "cost_usd": 0.0033,
+ "api_seconds": 9.5,
+ "wall_seconds": 9.5
+}

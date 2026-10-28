@@ -1,0 +1,79 @@
+### SYSTEM INSTRUCTIONS
+You are an expert taxonomist of crypto-asset and distributed-ledger (DLT) terminology, working across law, financial regulation and computer science.
+
+You are given a corpus (<context_corpus>) of documents. Each <document> has an integer index and metadata (type, jurisdiction, title, year) and is split into <section label="..."> blocks. The corpus is your only source of truth: use outside knowledge only to recognise what the corpus says, never to add content it does not contain.
+
+Grounding rules (strict):
+1. Every term type and every value carries at least one citation of the form {"doc": <document index, integer>, "section": "<section label copied exactly>", "quote": "<verbatim passage from that section, at most 30 words>"}.
+2. The quote is copied verbatim from the cited section (line breaks and hyphenation may be ignored). Never paraphrase inside "quote". Never cite a section that does not exist.
+3. If a candidate term type cannot be grounded, omit it.
+
+Quality rules:
+4. One dimension per term type. Do not merge two distinct questions into one term type, and do not split one question into two because two sources name it differently. When sources use different names for the same dimension, keep one term type and list the other names in "aliases".
+5. Where jurisdictions or sources disagree on the values or thresholds of a dimension, keep the dimension once and record the disagreement in "notes", citing each side.
+6. Prefer dimensions that recur across sources or that a source relies on to draw a legal, prudential or technical boundary, but give coverage priority: an unusual, clearly grounded dimension from a single source is still wanted.
+7. Output valid JSON only: no prose before or after it, no markdown code fences, no comments.
+
+
+### USER PROMPT
+Task A: enumerate the term types available in the corpus.
+
+Read the whole corpus. Produce every grounded term type used, explicitly or implicitly, to classify (a) crypto-assets, digital assets and tokens, (b) DLT systems, networks and protocols, (c) actors, service providers and intermediaries, (d) activities, services and transactions, and (e) obligations, risks and regulatory treatments when they are themselves used as classification criteria.
+
+Return a single JSON object with exactly this schema:
+
+{
+  "term_types": [
+    {
+      "id": "snake_case_identifier",
+      "name": "Human-readable name",
+      "applies_to": "asset | technology | actor | activity | obligation_or_risk",
+      "question": "The one question this dimension answers, e.g. 'What does the asset reference to maintain a stable value?'",
+      "description": "2-3 sentences on how the corpus uses this dimension and why it matters for classification.",
+      "aliases": ["other names the sources use for the same dimension"],
+      "values": [
+        {
+          "value": "short label",
+          "definition": "at most 25 words",
+          "citations": [{"doc": 4, "section": "exact section label", "quote": "verbatim, at most 30 words"}]
+        }
+      ],
+      "citations": [{"doc": 4, "section": "exact section label", "quote": "verbatim, at most 30 words"}],
+      "sources": {
+        "documents": [4, 13],
+        "jurisdictions": ["EU", "US"],
+        "document_classes": ["legal_instrument", "taxonomy_framework"]
+      },
+      "notes": "Jurisdictional or source conflicts and boundary cases, or an empty string."
+    }
+  ],
+  "coverage_notes": "Dimensions considered but omitted as ungrounded, and sections found to contain no classification criteria."
+}
+
+Order term types by applies_to (asset, technology, actor, activity, obligation_or_risk), then by the number of documents that ground them, most first. Aim for completeness: a thorough result has several dozen term types. Keep quotes short and verbatim.
+
+Document indexes and section labels present in the corpus. Copy a section label exactly as written here (case, punctuation and all); no other labels exist:
+doc 1 (Taxonomy of Blockchain Technologies. Principles of Identification and ): "Body: Sections I-XII (introduction through conclusion)" | "Appendix A: Blockchains analysed for the taxonomy"
+doc 2 (Crypto-asset Taxonomy for Investors and Regulators): "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)" | "Sections 6-7: case studies, TradFi analogues and regulatory implications; conclusion"
+doc 3 (DLT-Corpus: A Large-Scale Text Collection for the Distributed Ledger T): "Body: all sections (introduction through limitations)"
+doc 4 (Regulation (EU) 2023/1114 Markets in Crypto-Assets (MiCA)): "Articles 2-3: Scope and Definitions"
+doc 5 (Regulation (EU) 2024/1624 Anti-Money Laundering Regulation (AMLR)): "Article 2: Definitions"
+doc 6 (Regulation (EU) 2023/1113 Transfer of Funds (travel rule)): "Article 3: Definitions"
+doc 7 (Regulation (EU) 2022/2554 Digital Operational Resilience (DORA)): "Article 3: Definitions"
+doc 8 (FSMA 2000 (Cryptoassets) Regulations 2026 (SI 2026/102)): "Regulation 2: Interpretation" | "Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)"
+doc 9 (Reporting Cryptoasset Service Providers Regulations 2025 (SI 2025/744,): "Regulations 2-3: Interpretation; UK reporting cryptoasset service provider"
+doc 10 (Digital Asset Market Clarity Act, H.R. 3633 (Senate-reported, 2026)): "Senate Banking Committee substitute, Sec. 2: Definitions (ancillary asset, digital asset, distributed ledger, etc.)" | "Senate Banking Committee substitute, Sec. 105: Characteristics of network tokens"
+doc 11 (Digital Asset Market Clarity Act, H.R. 3633 (House-passed, 2025)): "Title I, Secs. 101-104: Definitions"
+doc 12 (Financial Innovation and Technology for the 21st Century Act (FIT21), ): "Title I, Secs. 101-104: Definitions"
+doc 13 (GENIUS Act, Pub. L. 119-27 (2025)): "Sec. 2: Definitions"
+doc 14 (Executive Order 14178 Strengthening American Leadership in Digital Fin): "Sec. 2: Definitions"
+doc 15 (President's Working Group on Digital Asset Markets Report (2025)): "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)"
+doc 16 (FinCEN Guidance FIN-2019-G001, Application of FinCEN Regulations to Co): "Sec. 1.2.1: Definitions" | "Sec. 1.3: Convertible Virtual Currency (CVC)" | "Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)"
+doc 17 (FATF Updated Guidance for a Risk-Based Approach to Virtual Assets and ): "Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)" | "Annex A: Recommendation 15, Interpretive Note and FATF Definitions; Glossary"
+doc 18 (FATF Targeted Update on Implementation of the FATF Standards on VAs an): "Section Two: ML/TF/PF Risks (stablecoins, unhosted wallets, offshore VASPs, DeFi)"
+doc 19 (FATF Targeted Update on Implementation of the FATF Standards on VAs an): "Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)"
+doc 20 (Basel Committee SCO60 Prudential Treatment of Cryptoasset Exposures (2): "SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)" | "SCO60.131: Definitions"
+doc 21 (FSB High-level Recommendations for the Regulation of Crypto-asset Acti): "Glossary"
+doc 22 (IOSCO Policy Recommendations for Crypto and Digital Asset Markets (202): "Annex A: Glossary of Relevant Terms and Definitions"
+doc 23 (UN Convention against Cybercrime, A/RES/79/243 (2024)): "Article 2: Use of terms"
+doc 24 (Council of Europe Convention on Cybercrime (Budapest Convention, 2001)): "Article 1: Definitions"

@@ -1,0 +1,217 @@
+{
+ "a": "expert_key",
+ "b": "rag",
+ "judge_model": "claude-haiku-5-5",
+ "term_types_a": 39,
+ "term_types_b": 81,
+ "matched": 23,
+ "recall_of_a": 0.59,
+ "precision_of_b": 0.284,
+ "f1": 0.383,
+ "pairs": [
+  {
+   "a": "d1_consensus_immutability_and_failure_tolerance",
+   "b": "consensus_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_network_topology",
+   "b": "network_topology",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_transaction_model",
+   "b": "ledger_data_structure",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_native_asset",
+   "b": "native_vs_token",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_access_and_control_layer",
+   "b": "ledger_access_permissioning",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_governance",
+   "b": "ledger_governance_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_script_language",
+   "b": "smart_contract_execution",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_data_privacy",
+   "b": "anonymity_feature",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_fees_reward",
+   "b": "transaction_fee_and_reward_model",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_asset_supply_management",
+   "b": "asset_supply_policy",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_identity_layer",
+   "b": "identity_and_kyc",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_technical_standard",
+   "b": "technical_standard",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_centralisation",
+   "b": "centralisation_level",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_asset_function",
+   "b": "asset_function",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_issuer",
+   "b": "issuer_type",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_yield_distribution_mechanism",
+   "b": "yield_distribution_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_yield_source",
+   "b": "yield_source",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_redemption_reference_asset",
+   "b": "reference_asset",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_redemption_mechanism",
+   "b": "redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_legal_classification",
+   "b": "legal_classification",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_encryption",
+   "b": "cryptographic_basis_and_agility",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_interoperability",
+   "b": "q15_interoperability_mode",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_server_storage",
+   "b": "ledger_replication",
+   "confidence": "medium"
+  }
+ ],
+ "unmatched_a": [
+  "d1_gossiping",
+  "d1_consensus_agreement_latency",
+  "d1_consensus_agreement_finality",
+  "d1_data_structure_in_the_blockheader",
+  "d1_block_storage",
+  "d1_limits_to_scalability",
+  "d1_tokenisation",
+  "d1_intraoperability",
+  "d1_coding_language",
+  "d1_code_license",
+  "d1_software_architecture",
+  "d1_reward_system",
+  "d1_fee_structure",
+  "d2_minting_mechanism",
+  "d2_form_of_claim",
+  "d2_tradfi_analogy"
+ ],
+ "unmatched_b": [
+  "custody_arrangement",
+  "wallet_connectivity",
+  "key_control_scheme",
+  "service_activity_type",
+  "vasp_status",
+  "money_transmission_status",
+  "transaction_intermediation_mode",
+  "fungibility",
+  "stablecoin_status",
+  "stabilisation_backing_reserve",
+  "form_of_claim",
+  "tradfi_analogy",
+  "staking_participation_role",
+  "validator_selection_model",
+  "ledger_system_component",
+  "dlt_type_and_basis",
+  "tokenised_asset_class",
+  "prudential_classification",
+  "beneficial_ownership_and_control",
+  "aml_risk_typology",
+  "aml_obligation_scope",
+  "freeze_and_burn_capability",
+  "regulated_entity_status",
+  "payment_stablecoin_regime",
+  "offer_and_disclosure",
+  "consumer_risk_category",
+  "ict_incident_severity",
+  "ict_risk_source",
+  "settlement_finality",
+  "trading_venue_structure",
+  "holding_ledger_control",
+  "digital_asset_definition_scope",
+  "anonymity_and_traceability",
+  "slashing_risk",
+  "decentralised_governance_status",
+  "entity_legal_form",
+  "wallet_owner_type",
+  "principal_agent_capacity",
+  "digital_commodity_classification",
+  "end_user_distribution",
+  "q0_network_token_characteristic",
+  "q2_stabilisation_mechanism",
+  "q2_cvc_substitute_for_currency",
+  "q3_data_structure_type",
+  "q5_security_status_test_prong",
+  "q8_service_provider_activity",
+  "q8_ancillary_asset_relation_to_originator",
+  "q9_legal_classification_basis",
+  "q11_key_control_scheme",
+  "q11_payment_or_transaction_purpose",
+  "q13_redemption_obligation",
+  "q14_wallet_form_factor",
+  "q15_cross_chain_bridge_model",
+  "q16_reporting_status",
+  "q18_money_transmission_status",
+  "q23_critical_resource_control",
+  "q23_decentralisation_of_application",
+  "q30_token_type_on_chain_function"
+ ],
+ "model": "claude-haiku-5-5",
+ "calls": 2,
+ "usage": {
+  "input": 24266,
+  "output": 2759,
+  "cache_write": 0,
+  "cache_read": 0
+ },
+ "cost_usd": 0.0038,
+ "api_seconds": 9.2,
+ "wall_seconds": 9.2
+}

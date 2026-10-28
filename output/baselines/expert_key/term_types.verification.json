@@ -1,0 +1,18 @@
+{
+  "citations": 39,
+  "verified": 38,
+  "exact": 38,
+  "relabelled": 0,
+  "rejection_rate": 0.0256,
+  "rejected": [
+    {
+      "term_type": "d2_legal_classification",
+      "where": "type",
+      "status": "quote_not_found",
+      "doc": 2,
+      "section": "Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+      "quote": "With these tests, we categorize assets to 4 main categories: Security or financial instrument; Stable-value token (ART/EMT); Fund / AIF-type; Other crypto-assets or commodities.",
+      "verified": false
+    }
+  ]
+}

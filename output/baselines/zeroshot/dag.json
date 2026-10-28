@@ -1,0 +1,1341 @@
+{
+ "relation": "is-a",
+ "catalogue": "zeroshot",
+ "run": {
+  "task": "B",
+  "model": "claude-haiku-5-5",
+  "effort": "high",
+  "k": 6,
+  "calls": 32,
+  "citations": 84,
+  "citations_verified": 70,
+  "usage": {
+   "input": 36595,
+   "output": 25209,
+   "cache_write": 239708,
+   "cache_read": 7430948
+  },
+  "cost_usd": 0.6926,
+  "wall_seconds": 49.7
+ },
+ "nodes": [
+  {
+   "id": "asset_reference_type",
+   "name": "Asset reference type",
+   "category": "asset",
+   "question": "What does the crypto-asset reference to maintain a stable value?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "asset_legal_status",
+   "name": "Legal status of crypto-asset",
+   "category": "asset",
+   "question": "Is the crypto-asset classified as a financial instrument, e-money, an asset-referenced token, a utility token, or outside existing categories?",
+   "root": true,
+   "p_none": 0.18
+  },
+  {
+   "id": "asset_function_purpose",
+   "name": "Asset function or purpose",
+   "category": "asset",
+   "question": "What economic function or use does the token serve for holders?",
+   "root": false,
+   "p_none": 0.02
+  },
+  {
+   "id": "asset_issuance_model",
+   "name": "Issuance model",
+   "category": "asset",
+   "question": "Is the crypto-asset issued by an identifiable issuer, or created without one?",
+   "root": false,
+   "p_none": 0.08
+  },
+  {
+   "id": "asset_transferability_and_redemption",
+   "name": "Redemption right",
+   "category": "asset",
+   "question": "Can holders redeem the crypto-asset from the issuer for its reference value or currency?",
+   "root": false,
+   "p_none": 0.04
+  },
+  {
+   "id": "asset_scale_systemic_significance",
+   "name": "Significance threshold",
+   "category": "asset",
+   "question": "Does the crypto-asset or issuer exceed thresholds that make it significant or subject to enhanced supervision?",
+   "root": false,
+   "p_none": 0.1
+  },
+  {
+   "id": "asset_fungibility_and_unique_token",
+   "name": "Fungibility or uniqueness",
+   "category": "asset",
+   "question": "Is the token fungible with other units of the same kind, or unique and non-fungible?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "asset_tokenised_real_world_asset",
+   "name": "Tokenised underlying asset",
+   "category": "asset",
+   "question": "Does the token represent a claim on, or ownership of, an off-chain real-world asset or traditional financial instrument?",
+   "root": false,
+   "p_none": 0.03
+  },
+  {
+   "id": "dlt_access_permissions",
+   "name": "Access permissions for ledger participation",
+   "category": "technology",
+   "question": "Who may read, write or validate on the ledger: anyone, or only authorised participants?",
+   "root": false,
+   "p_none": 0.15
+  },
+  {
+   "id": "dlt_consensus_mechanism",
+   "name": "Consensus mechanism",
+   "category": "technology",
+   "question": "How does the network agree on the valid state of the ledger?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "dlt_ledger_architecture",
+   "name": "Ledger data structure",
+   "category": "technology",
+   "question": "How is the ledger structured: as a chain of blocks, a directed acyclic graph, or another structure?",
+   "root": false,
+   "p_none": 0.13
+  },
+  {
+   "id": "dlt_network_architecture",
+   "name": "Network architecture",
+   "category": "technology",
+   "question": "Does the network operate as a central controlled system, a federated group, or a decentralised peer-to-peer network?",
+   "root": true,
+   "p_none": 0.15
+  },
+  {
+   "id": "dlt_cryptographic_primitives",
+   "name": "Cryptographic mechanism",
+   "category": "technology",
+   "question": "Which cryptographic mechanisms underpin ledger security and privacy, such as hash functions, digital signatures and zero-knowledge proofs?",
+   "root": false,
+   "p_none": 1.0
+  },
+  {
+   "id": "dlt_ledger_scope_application",
+   "name": "Application scope of ledger",
+   "category": "technology",
+   "question": "Is the ledger a general-purpose platform or dedicated to a specific application or asset?",
+   "root": false,
+   "p_none": 0.15
+  },
+  {
+   "id": "dlt_smart_contract_capability",
+   "name": "Smart contract capability",
+   "category": "technology",
+   "question": "Does the ledger execute programmable smart contracts, and are they autonomous?",
+   "root": false,
+   "p_none": 0.15
+  },
+  {
+   "id": "actor_service_provider_type",
+   "name": "Crypto-asset service provider category",
+   "category": "actor",
+   "question": "Which regulated service category does the entity fall into when providing crypto-asset services?",
+   "root": false,
+   "p_none": 0.12
+  },
+  {
+   "id": "actor_vasp_definition_status",
+   "name": "VASP or CASP status",
+   "category": "actor",
+   "question": "Does the entity qualify as a virtual asset service provider or crypto-asset service provider under the applicable definition?",
+   "root": true,
+   "p_none": 0.01
+  },
+  {
+   "id": "actor_custody_control_arrangement",
+   "name": "Custody and control arrangement",
+   "category": "actor",
+   "question": "Does the provider hold client assets or private keys in custody, or does the client retain sole control?",
+   "root": false,
+   "p_none": 0.1
+  },
+  {
+   "id": "actor_legal_form",
+   "name": "Legal form of entity",
+   "category": "actor",
+   "question": "Is the actor a legal person, a natural person, or an unincorporated arrangement such as a decentralised autonomous organisation?",
+   "root": false,
+   "p_none": 0.3
+  },
+  {
+   "id": "actor_supervisory_role",
+   "name": "Supervisory or operator role",
+   "category": "actor",
+   "question": "What role does the actor play in the ecosystem: issuer, operator, validator, developer, or user?",
+   "root": false,
+   "p_none": 0.03
+  },
+  {
+   "id": "actor_jurisdiction_location",
+   "name": "Jurisdictional nexus",
+   "category": "actor",
+   "question": "Where is the provider established or located, or where are its services directed, for the purposes of jurisdiction?",
+   "root": false,
+   "p_none": 0.11
+  },
+  {
+   "id": "activity_service_category",
+   "name": "Crypto-asset service",
+   "category": "activity",
+   "question": "Which specific crypto-asset service is being provided?",
+   "root": false,
+   "p_none": 0.3
+  },
+  {
+   "id": "activity_transaction_type",
+   "name": "Transaction type",
+   "category": "activity",
+   "question": "Is the transaction a transfer, an exchange, a payment, or a custody movement?",
+   "root": true,
+   "p_none": 0.15
+  },
+  {
+   "id": "activity_cross_border_status",
+   "name": "Cross-border status of transaction",
+   "category": "activity",
+   "question": "Is the transaction domestic or cross-border, and does it involve an unhosted wallet?",
+   "root": false,
+   "p_none": 0.3
+  },
+  {
+   "id": "activity_transfer_value_threshold",
+   "name": "Transfer value threshold",
+   "category": "activity",
+   "question": "Does the transfer value exceed a threshold triggering enhanced due diligence or information requirements?",
+   "root": false,
+   "p_none": 0.06
+  },
+  {
+   "id": "activity_tax_reporting_category",
+   "name": "Reportable transaction category",
+   "category": "activity",
+   "question": "Which reporting category does a transaction or account fall into under tax information exchange rules?",
+   "root": false,
+   "p_none": 0.07
+  },
+  {
+   "id": "obligation_prudential_treatment",
+   "name": "Prudential treatment category",
+   "category": "obligation_or_risk",
+   "question": "Which capital or prudential risk weight or treatment applies to the crypto-asset exposure?",
+   "root": false,
+   "p_none": 0.25
+  },
+  {
+   "id": "obligation_risk_category",
+   "name": "Risk category",
+   "category": "obligation_or_risk",
+   "question": "Which risk type does the activity or asset present: money laundering, operational, market, cyber or systemic?",
+   "root": true,
+   "p_none": 0.1
+  },
+  {
+   "id": "obligation_ict_resilience_scope",
+   "name": "ICT resilience scope",
+   "category": "obligation_or_risk",
+   "question": "Is the entity within the scope of digital operational resilience requirements, and which resilience tier does it fall into?",
+   "root": false,
+   "p_none": 0.25
+  },
+  {
+   "id": "obligation_financial_crime_control",
+   "name": "Financial crime control regime",
+   "category": "obligation_or_risk",
+   "question": "Which AML or sanctions controls apply to the actor or transaction under the risk-based approach?",
+   "root": false,
+   "p_none": 0.3
+  },
+  {
+   "id": "obligation_investor_protection_class",
+   "name": "Investor or client classification",
+   "category": "obligation_or_risk",
+   "question": "Is the client a retail, professional or institutional investor for conduct and disclosure purposes?",
+   "root": false,
+   "p_none": 0.2
+  },
+  {
+   "id": "obligation_licensing_exemption",
+   "name": "Licensing or exemption status",
+   "category": "obligation_or_risk",
+   "question": "Is the activity licensed, exempt, or outside the regime, and under which exemption?",
+   "root": false,
+   "p_none": 0.4
+  }
+ ],
+ "edges": [
+  {
+   "child": "asset_reference_type",
+   "parent": "asset_legal_status",
+   "probability": 0.5913
+  },
+  {
+   "child": "asset_function_purpose",
+   "parent": "asset_legal_status",
+   "probability": 0.5614
+  },
+  {
+   "child": "asset_function_purpose",
+   "parent": "asset_reference_type",
+   "probability": 0.1224
+  },
+  {
+   "child": "asset_issuance_model",
+   "parent": "asset_legal_status",
+   "probability": 0.4565
+  },
+  {
+   "child": "asset_issuance_model",
+   "parent": "asset_function_purpose",
+   "probability": 0.1957
+  },
+  {
+   "child": "asset_issuance_model",
+   "parent": "asset_tokenised_real_world_asset",
+   "probability": 0.1304
+  },
+  {
+   "child": "asset_issuance_model",
+   "parent": "asset_reference_type",
+   "probability": 0.1087
+  },
+  {
+   "child": "asset_transferability_and_redemption",
+   "parent": "asset_reference_type",
+   "probability": 0.5209
+  },
+  {
+   "child": "asset_transferability_and_redemption",
+   "parent": "asset_legal_status",
+   "probability": 0.2604
+  },
+  {
+   "child": "asset_transferability_and_redemption",
+   "parent": "asset_issuance_model",
+   "probability": 0.125
+  },
+  {
+   "child": "asset_transferability_and_redemption",
+   "parent": "asset_function_purpose",
+   "probability": 0.0625
+  },
+  {
+   "child": "asset_scale_systemic_significance",
+   "parent": "asset_legal_status",
+   "probability": 0.3334
+  },
+  {
+   "child": "asset_scale_systemic_significance",
+   "parent": "asset_reference_type",
+   "probability": 0.2444
+  },
+  {
+   "child": "asset_scale_systemic_significance",
+   "parent": "asset_issuance_model",
+   "probability": 0.2222
+  },
+  {
+   "child": "asset_scale_systemic_significance",
+   "parent": "asset_transferability_and_redemption",
+   "probability": 0.0889
+  },
+  {
+   "child": "asset_scale_systemic_significance",
+   "parent": "asset_function_purpose",
+   "probability": 0.0556
+  },
+  {
+   "child": "asset_scale_systemic_significance",
+   "parent": "asset_tokenised_real_world_asset",
+   "probability": 0.0333
+  },
+  {
+   "child": "asset_scale_systemic_significance",
+   "parent": "asset_fungibility_and_unique_token",
+   "probability": 0.0222
+  },
+  {
+   "child": "asset_fungibility_and_unique_token",
+   "parent": "asset_tokenised_real_world_asset",
+   "probability": 0.25
+  },
+  {
+   "child": "asset_fungibility_and_unique_token",
+   "parent": "asset_legal_status",
+   "probability": 0.25
+  },
+  {
+   "child": "asset_fungibility_and_unique_token",
+   "parent": "asset_function_purpose",
+   "probability": 0.25
+  },
+  {
+   "child": "asset_fungibility_and_unique_token",
+   "parent": "asset_reference_type",
+   "probability": 0.125
+  },
+  {
+   "child": "asset_fungibility_and_unique_token",
+   "parent": "asset_issuance_model",
+   "probability": 0.125
+  },
+  {
+   "child": "asset_tokenised_real_world_asset",
+   "parent": "asset_legal_status",
+   "probability": 0.5671
+  },
+  {
+   "child": "asset_tokenised_real_world_asset",
+   "parent": "asset_reference_type",
+   "probability": 0.2577
+  },
+  {
+   "child": "asset_tokenised_real_world_asset",
+   "parent": "asset_function_purpose",
+   "probability": 0.1031
+  },
+  {
+   "child": "dlt_access_permissions",
+   "parent": "dlt_network_architecture",
+   "probability": 0.6471
+  },
+  {
+   "child": "dlt_consensus_mechanism",
+   "parent": "dlt_access_permissions",
+   "probability": 0.35
+  },
+  {
+   "child": "dlt_consensus_mechanism",
+   "parent": "dlt_network_architecture",
+   "probability": 0.3125
+  },
+  {
+   "child": "dlt_ledger_architecture",
+   "parent": "dlt_network_architecture",
+   "probability": 0.2529
+  },
+  {
+   "child": "dlt_ledger_architecture",
+   "parent": "dlt_consensus_mechanism",
+   "probability": 0.2299
+  },
+  {
+   "child": "dlt_ledger_architecture",
+   "parent": "dlt_access_permissions",
+   "probability": 0.1149
+  },
+  {
+   "child": "dlt_cryptographic_primitives",
+   "parent": "dlt_consensus_mechanism",
+   "probability": 0.3334
+  },
+  {
+   "child": "dlt_cryptographic_primitives",
+   "parent": "dlt_ledger_architecture",
+   "probability": 0.3333
+  },
+  {
+   "child": "dlt_cryptographic_primitives",
+   "parent": "dlt_access_permissions",
+   "probability": 0.3333
+  },
+  {
+   "child": "dlt_ledger_scope_application",
+   "parent": "dlt_smart_contract_capability",
+   "probability": 0.4118
+  },
+  {
+   "child": "dlt_ledger_scope_application",
+   "parent": "dlt_ledger_architecture",
+   "probability": 0.2353
+  },
+  {
+   "child": "dlt_ledger_scope_application",
+   "parent": "dlt_access_permissions",
+   "probability": 0.2353
+  },
+  {
+   "child": "dlt_ledger_scope_application",
+   "parent": "dlt_network_architecture",
+   "probability": 0.0588
+  },
+  {
+   "child": "dlt_ledger_scope_application",
+   "parent": "dlt_consensus_mechanism",
+   "probability": 0.0588
+  },
+  {
+   "child": "dlt_smart_contract_capability",
+   "parent": "dlt_consensus_mechanism",
+   "probability": 0.2353
+  },
+  {
+   "child": "dlt_smart_contract_capability",
+   "parent": "dlt_cryptographic_primitives",
+   "probability": 0.1765
+  },
+  {
+   "child": "dlt_smart_contract_capability",
+   "parent": "dlt_ledger_architecture",
+   "probability": 0.1176
+  },
+  {
+   "child": "dlt_smart_contract_capability",
+   "parent": "dlt_access_permissions",
+   "probability": 0.1176
+  },
+  {
+   "child": "actor_service_provider_type",
+   "parent": "actor_vasp_definition_status",
+   "probability": 0.7045
+  },
+  {
+   "child": "actor_custody_control_arrangement",
+   "parent": "actor_service_provider_type",
+   "probability": 0.5556
+  },
+  {
+   "child": "actor_custody_control_arrangement",
+   "parent": "actor_vasp_definition_status",
+   "probability": 0.2222
+  },
+  {
+   "child": "actor_custody_control_arrangement",
+   "parent": "actor_supervisory_role",
+   "probability": 0.1333
+  },
+  {
+   "child": "actor_custody_control_arrangement",
+   "parent": "actor_legal_form",
+   "probability": 0.0556
+  },
+  {
+   "child": "actor_custody_control_arrangement",
+   "parent": "actor_jurisdiction_location",
+   "probability": 0.0333
+  },
+  {
+   "child": "actor_legal_form",
+   "parent": "actor_vasp_definition_status",
+   "probability": 0.5714
+  },
+  {
+   "child": "actor_legal_form",
+   "parent": "actor_service_provider_type",
+   "probability": 0.2143
+  },
+  {
+   "child": "actor_legal_form",
+   "parent": "actor_jurisdiction_location",
+   "probability": 0.1429
+  },
+  {
+   "child": "actor_supervisory_role",
+   "parent": "actor_vasp_definition_status",
+   "probability": 0.464
+  },
+  {
+   "child": "actor_supervisory_role",
+   "parent": "actor_service_provider_type",
+   "probability": 0.2577
+  },
+  {
+   "child": "actor_supervisory_role",
+   "parent": "actor_legal_form",
+   "probability": 0.1237
+  },
+  {
+   "child": "actor_supervisory_role",
+   "parent": "actor_jurisdiction_location",
+   "probability": 0.0515
+  },
+  {
+   "child": "actor_jurisdiction_location",
+   "parent": "actor_vasp_definition_status",
+   "probability": 0.618
+  },
+  {
+   "child": "actor_jurisdiction_location",
+   "parent": "actor_service_provider_type",
+   "probability": 0.1348
+  },
+  {
+   "child": "activity_service_category",
+   "parent": "activity_transaction_type",
+   "probability": 0.7143
+  },
+  {
+   "child": "activity_cross_border_status",
+   "parent": "activity_transaction_type",
+   "probability": 0.2857
+  },
+  {
+   "child": "activity_cross_border_status",
+   "parent": "activity_service_category",
+   "probability": 0.2143
+  },
+  {
+   "child": "activity_cross_border_status",
+   "parent": "activity_tax_reporting_category",
+   "probability": 0.1857
+  },
+  {
+   "child": "activity_transfer_value_threshold",
+   "parent": "activity_cross_border_status",
+   "probability": 0.5319
+  },
+  {
+   "child": "activity_transfer_value_threshold",
+   "parent": "activity_transaction_type",
+   "probability": 0.3191
+  },
+  {
+   "child": "activity_transfer_value_threshold",
+   "parent": "activity_service_category",
+   "probability": 0.1064
+  },
+  {
+   "child": "activity_transfer_value_threshold",
+   "parent": "activity_tax_reporting_category",
+   "probability": 0.0426
+  },
+  {
+   "child": "activity_tax_reporting_category",
+   "parent": "activity_transaction_type",
+   "probability": 0.5914
+  },
+  {
+   "child": "activity_tax_reporting_category",
+   "parent": "activity_service_category",
+   "probability": 0.2151
+  },
+  {
+   "child": "obligation_prudential_treatment",
+   "parent": "obligation_risk_category",
+   "probability": 0.6666
+  },
+  {
+   "child": "obligation_prudential_treatment",
+   "parent": "obligation_financial_crime_control",
+   "probability": 0.1067
+  },
+  {
+   "child": "obligation_prudential_treatment",
+   "parent": "obligation_ict_resilience_scope",
+   "probability": 0.04
+  },
+  {
+   "child": "obligation_ict_resilience_scope",
+   "parent": "obligation_risk_category",
+   "probability": 0.7999
+  },
+  {
+   "child": "obligation_financial_crime_control",
+   "parent": "obligation_risk_category",
+   "probability": 0.7142
+  },
+  {
+   "child": "obligation_financial_crime_control",
+   "parent": "obligation_ict_resilience_scope",
+   "probability": 0.0714
+  },
+  {
+   "child": "obligation_investor_protection_class",
+   "parent": "obligation_licensing_exemption",
+   "probability": 0.4167
+  },
+  {
+   "child": "obligation_investor_protection_class",
+   "parent": "obligation_risk_category",
+   "probability": 0.2778
+  },
+  {
+   "child": "obligation_investor_protection_class",
+   "parent": "obligation_financial_crime_control",
+   "probability": 0.2083
+  },
+  {
+   "child": "obligation_investor_protection_class",
+   "parent": "obligation_prudential_treatment",
+   "probability": 0.0694
+  },
+  {
+   "child": "obligation_investor_protection_class",
+   "parent": "obligation_ict_resilience_scope",
+   "probability": 0.0278
+  },
+  {
+   "child": "obligation_licensing_exemption",
+   "parent": "obligation_financial_crime_control",
+   "probability": 0.4167
+  },
+  {
+   "child": "obligation_licensing_exemption",
+   "parent": "obligation_prudential_treatment",
+   "probability": 0.25
+  },
+  {
+   "child": "obligation_licensing_exemption",
+   "parent": "obligation_ict_resilience_scope",
+   "probability": 0.1667
+  },
+  {
+   "child": "obligation_licensing_exemption",
+   "parent": "obligation_risk_category",
+   "probability": 0.0833
+  }
+ ],
+ "ties": [
+  [
+   "obligation_prudential_treatment",
+   "obligation_ict_resilience_scope",
+   0.04
+  ]
+ ],
+ "dropped_for_cycle": [
+  [
+   "actor_vasp_definition_status",
+   "actor_service_provider_type",
+   0.6061
+  ],
+  [
+   "dlt_network_architecture",
+   "dlt_access_permissions",
+   0.6024
+  ],
+  [
+   "activity_transaction_type",
+   "activity_service_category",
+   0.5883
+  ],
+  [
+   "obligation_risk_category",
+   "obligation_financial_crime_control",
+   0.5556
+  ],
+  [
+   "dlt_smart_contract_capability",
+   "dlt_ledger_scope_application",
+   0.353
+  ],
+  [
+   "asset_legal_status",
+   "asset_tokenised_real_world_asset",
+   0.3262
+  ],
+  [
+   "activity_cross_border_status",
+   "activity_transfer_value_threshold",
+   0.3143
+  ],
+  [
+   "dlt_network_architecture",
+   "dlt_consensus_mechanism",
+   0.241
+  ],
+  [
+   "dlt_access_permissions",
+   "dlt_consensus_mechanism",
+   0.2353
+  ],
+  [
+   "activity_transaction_type",
+   "activity_tax_reporting_category",
+   0.2353
+  ],
+  [
+   "obligation_risk_category",
+   "obligation_ict_resilience_scope",
+   0.2222
+  ],
+  [
+   "asset_legal_status",
+   "asset_reference_type",
+   0.2174
+  ],
+  [
+   "asset_legal_status",
+   "asset_function_purpose",
+   0.2174
+  ],
+  [
+   "asset_reference_type",
+   "asset_transferability_and_redemption",
+   0.2151
+  ],
+  [
+   "dlt_ledger_architecture",
+   "dlt_cryptographic_primitives",
+   0.2069
+  ],
+  [
+   "actor_vasp_definition_status",
+   "actor_custody_control_arrangement",
+   0.202
+  ],
+  [
+   "obligation_risk_category",
+   "obligation_prudential_treatment",
+   0.1667
+  ],
+  [
+   "obligation_prudential_treatment",
+   "obligation_licensing_exemption",
+   0.16
+  ],
+  [
+   "actor_service_provider_type",
+   "actor_custody_control_arrangement",
+   0.1591
+  ],
+  [
+   "dlt_consensus_mechanism",
+   "dlt_cryptographic_primitives",
+   0.15
+  ],
+  [
+   "obligation_financial_crime_control",
+   "obligation_licensing_exemption",
+   0.1429
+  ],
+  [
+   "activity_service_category",
+   "activity_tax_reporting_category",
+   0.1429
+  ],
+  [
+   "dlt_ledger_architecture",
+   "dlt_ledger_scope_application",
+   0.1379
+  ],
+  [
+   "actor_jurisdiction_location",
+   "actor_legal_form",
+   0.1348
+  ],
+  [
+   "dlt_consensus_mechanism",
+   "dlt_ledger_architecture",
+   0.125
+  ],
+  [
+   "activity_transaction_type",
+   "activity_cross_border_status",
+   0.1176
+  ],
+  [
+   "asset_legal_status",
+   "asset_issuance_model",
+   0.1087
+  ],
+  [
+   "asset_issuance_model",
+   "asset_transferability_and_redemption",
+   0.1087
+  ],
+  [
+   "asset_reference_type",
+   "asset_tokenised_real_world_asset",
+   0.1075
+  ],
+  [
+   "activity_tax_reporting_category",
+   "activity_transfer_value_threshold",
+   0.1075
+  ],
+  [
+   "actor_supervisory_role",
+   "actor_custody_control_arrangement",
+   0.1031
+  ],
+  [
+   "asset_function_purpose",
+   "asset_tokenised_real_world_asset",
+   0.102
+  ],
+  [
+   "actor_vasp_definition_status",
+   "actor_supervisory_role",
+   0.101
+  ],
+  [
+   "activity_tax_reporting_category",
+   "activity_cross_border_status",
+   0.086
+  ],
+  [
+   "activity_service_category",
+   "activity_cross_border_status",
+   0.0857
+  ],
+  [
+   "dlt_network_architecture",
+   "dlt_ledger_architecture",
+   0.0843
+  ],
+  [
+   "obligation_licensing_exemption",
+   "obligation_investor_protection_class",
+   0.0833
+  ],
+  [
+   "asset_function_purpose",
+   "asset_fungibility_and_unique_token",
+   0.0816
+  ],
+  [
+   "asset_function_purpose",
+   "asset_issuance_model",
+   0.0714
+  ],
+  [
+   "actor_legal_form",
+   "actor_supervisory_role",
+   0.0714
+  ],
+  [
+   "actor_service_provider_type",
+   "actor_supervisory_role",
+   0.0682
+  ],
+  [
+   "obligation_ict_resilience_scope",
+   "obligation_licensing_exemption",
+   0.0667
+  ],
+  [
+   "obligation_ict_resilience_scope",
+   "obligation_financial_crime_control",
+   0.0667
+  ],
+  [
+   "dlt_consensus_mechanism",
+   "dlt_smart_contract_capability",
+   0.0625
+  ],
+  [
+   "actor_vasp_definition_status",
+   "actor_jurisdiction_location",
+   0.0606
+  ],
+  [
+   "dlt_access_permissions",
+   "dlt_smart_contract_capability",
+   0.0588
+  ],
+  [
+   "dlt_access_permissions",
+   "dlt_ledger_scope_application",
+   0.0588
+  ],
+  [
+   "activity_transaction_type",
+   "activity_transfer_value_threshold",
+   0.0588
+  ],
+  [
+   "dlt_ledger_architecture",
+   "dlt_smart_contract_capability",
+   0.0575
+  ],
+  [
+   "activity_service_category",
+   "activity_transfer_value_threshold",
+   0.0571
+  ],
+  [
+   "actor_jurisdiction_location",
+   "actor_supervisory_role",
+   0.0562
+  ],
+  [
+   "actor_jurisdiction_location",
+   "actor_custody_control_arrangement",
+   0.0562
+  ],
+  [
+   "asset_legal_status",
+   "asset_transferability_and_redemption",
+   0.0543
+  ],
+  [
+   "asset_legal_status",
+   "asset_fungibility_and_unique_token",
+   0.0543
+  ],
+  [
+   "asset_reference_type",
+   "asset_function_purpose",
+   0.0538
+  ],
+  [
+   "dlt_network_architecture",
+   "dlt_ledger_scope_application",
+   0.0482
+  ],
+  [
+   "actor_service_provider_type",
+   "actor_jurisdiction_location",
+   0.0455
+  ],
+  [
+   "obligation_financial_crime_control",
+   "obligation_investor_protection_class",
+   0.0429
+  ],
+  [
+   "asset_tokenised_real_world_asset",
+   "asset_transferability_and_redemption",
+   0.0412
+  ],
+  [
+   "asset_function_purpose",
+   "asset_transferability_and_redemption",
+   0.0408
+  ],
+  [
+   "obligation_ict_resilience_scope",
+   "obligation_prudential_treatment",
+   0.04
+  ],
+  [
+   "obligation_risk_category",
+   "obligation_licensing_exemption",
+   0.0333
+  ],
+  [
+   "asset_reference_type",
+   "asset_issuance_model",
+   0.0323
+  ],
+  [
+   "asset_transferability_and_redemption",
+   "asset_scale_systemic_significance",
+   0.0312
+  ],
+  [
+   "asset_tokenised_real_world_asset",
+   "asset_issuance_model",
+   0.0309
+  ],
+  [
+   "actor_vasp_definition_status",
+   "actor_legal_form",
+   0.0303
+  ],
+  [
+   "obligation_financial_crime_control",
+   "obligation_prudential_treatment",
+   0.0286
+  ],
+  [
+   "obligation_prudential_treatment",
+   "obligation_investor_protection_class",
+   0.0267
+  ],
+  [
+   "obligation_ict_resilience_scope",
+   "obligation_investor_protection_class",
+   0.0267
+  ],
+  [
+   "dlt_network_architecture",
+   "dlt_smart_contract_capability",
+   0.0241
+  ],
+  [
+   "actor_service_provider_type",
+   "actor_legal_form",
+   0.0227
+  ],
+  [
+   "obligation_risk_category",
+   "obligation_investor_protection_class",
+   0.0222
+  ],
+  [
+   "asset_legal_status",
+   "asset_scale_systemic_significance",
+   0.0217
+  ],
+  [
+   "asset_function_purpose",
+   "asset_scale_systemic_significance",
+   0.0204
+  ]
+ ],
+ "metrics": {
+  "overall": {
+   "nodes": 32,
+   "edges": 84,
+   "roots": 5,
+   "leaves": 5,
+   "max_depth": 6,
+   "information_gain": {
+    "total_bits": 33.2778,
+    "bits_per_descent": 3.6053,
+    "per_node": {
+     "activity_transaction_type": 1.8955,
+     "dlt_access_permissions": 2.1763,
+     "actor_jurisdiction_location": 1.3125,
+     "obligation_financial_crime_control": 1.3836,
+     "asset_tokenised_real_world_asset": 1.2567,
+     "asset_reference_type": 2.3381,
+     "dlt_consensus_mechanism": 1.8162,
+     "asset_function_purpose": 2.085,
+     "actor_service_provider_type": 1.801,
+     "activity_tax_reporting_category": 0.6943,
+     "obligation_risk_category": 2.0566,
+     "activity_service_category": 1.5205,
+     "obligation_ict_resilience_scope": 1.6654,
+     "asset_issuance_model": 1.5269,
+     "actor_legal_form": 0.8933,
+     "dlt_ledger_architecture": 1.4716,
+     "dlt_network_architecture": 1.662,
+     "actor_vasp_definition_status": 2.2366,
+     "obligation_prudential_treatment": 0.7552,
+     "asset_legal_status": 2.7304
+    }
+   },
+   "auc": {
+    "value": 0.6205,
+    "expected_depth": 2.7771,
+    "reach_leaf_by_depth": [
+     0.0,
+     0.1038,
+     0.3815,
+     0.7782,
+     0.9635,
+     0.9959,
+     1.0
+    ]
+   },
+   "leaves_needed": {
+    "leaves": 5,
+    "effective_leaves": 5.0,
+    "leaves_for_90pct": 5,
+    "leaf_mass": {
+     "obligation_investor_protection_class": 0.2,
+     "activity_transfer_value_threshold": 0.2,
+     "dlt_ledger_scope_application": 0.2,
+     "actor_custody_control_arrangement": 0.2,
+     "asset_scale_systemic_significance": 0.2
+    }
+   }
+  },
+  "by_category": {
+   "asset": {
+    "nodes": 8,
+    "edges": 26,
+    "roots": 1,
+    "leaves": 1,
+    "max_depth": 6,
+    "information_gain": {
+     "total_bits": 9.9372,
+     "bits_per_descent": 4.402,
+     "per_node": {
+      "asset_reference_type": 2.3381,
+      "asset_function_purpose": 2.085,
+      "asset_legal_status": 2.7304,
+      "asset_issuance_model": 1.5269,
+      "asset_tokenised_real_world_asset": 1.2567
+     }
+    },
+    "auc": {
+     "value": 0.6442,
+     "expected_depth": 2.6347,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.1104,
+      0.4158,
+      0.8556,
+      0.9839,
+      0.9996,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 1,
+     "effective_leaves": 1.0,
+     "leaves_for_90pct": 1,
+     "leaf_mass": {
+      "asset_scale_systemic_significance": 1.0
+     }
+    }
+   },
+   "technology": {
+    "nodes": 7,
+    "edges": 18,
+    "roots": 1,
+    "leaves": 1,
+    "max_depth": 6,
+    "information_gain": {
+     "total_bits": 7.1261,
+     "bits_per_descent": 4.0229,
+     "per_node": {
+      "dlt_ledger_architecture": 1.4716,
+      "dlt_access_permissions": 2.1763,
+      "dlt_consensus_mechanism": 1.8162,
+      "dlt_network_architecture": 1.662
+     }
+    },
+    "auc": {
+     "value": 0.5095,
+     "expected_depth": 3.4431,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.0463,
+      0.2354,
+      0.4396,
+      0.8559,
+      0.9798,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 1,
+     "effective_leaves": 1.0,
+     "leaves_for_90pct": 1,
+     "leaf_mass": {
+      "dlt_ledger_scope_application": 1.0
+     }
+    }
+   },
+   "actor": {
+    "nodes": 6,
+    "edges": 15,
+    "roots": 1,
+    "leaves": 1,
+    "max_depth": 5,
+    "information_gain": {
+     "total_bits": 6.2434,
+     "bits_per_descent": 3.4792,
+     "per_node": {
+      "actor_jurisdiction_location": 1.3125,
+      "actor_service_provider_type": 1.801,
+      "actor_vasp_definition_status": 2.2366,
+      "actor_legal_form": 0.8933
+     }
+    },
+    "auc": {
+     "value": 0.5814,
+     "expected_depth": 2.5929,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.0861,
+      0.5002,
+      0.8345,
+      0.9863,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 1,
+     "effective_leaves": 1.0,
+     "leaves_for_90pct": 1,
+     "leaf_mass": {
+      "actor_custody_control_arrangement": 1.0
+     }
+    }
+   },
+   "activity": {
+    "nodes": 5,
+    "edges": 10,
+    "roots": 1,
+    "leaves": 1,
+    "max_depth": 4,
+    "information_gain": {
+     "total_bits": 4.1103,
+     "bits_per_descent": 2.7832,
+     "per_node": {
+      "activity_transaction_type": 1.8955,
+      "activity_tax_reporting_category": 0.6943,
+      "activity_service_category": 1.5205
+     }
+    },
+    "auc": {
+     "value": 0.4984,
+     "expected_depth": 2.5065,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.167,
+      0.4486,
+      0.8779,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 1,
+     "effective_leaves": 1.0,
+     "leaves_for_90pct": 1,
+     "leaf_mass": {
+      "activity_transfer_value_threshold": 1.0
+     }
+    }
+   },
+   "obligation_or_risk": {
+    "nodes": 6,
+    "edges": 15,
+    "roots": 1,
+    "leaves": 1,
+    "max_depth": 5,
+    "information_gain": {
+     "total_bits": 5.8608,
+     "bits_per_descent": 3.3392,
+     "per_node": {
+      "obligation_risk_category": 2.0566,
+      "obligation_financial_crime_control": 1.3836,
+      "obligation_ict_resilience_scope": 1.6654,
+      "obligation_prudential_treatment": 0.7552
+     }
+    },
+    "auc": {
+     "value": 0.5583,
+     "expected_depth": 2.7083,
+     "reach_leaf_by_depth": [
+      0.0,
+      0.1093,
+      0.3076,
+      0.8832,
+      0.9916,
+      1.0
+     ]
+    },
+    "leaves_needed": {
+     "leaves": 1,
+     "effective_leaves": 1.0,
+     "leaves_for_90pct": 1,
+     "leaf_mass": {
+      "obligation_investor_protection_class": 1.0
+     }
+    }
+   }
+  },
+  "summary": {
+   "nodes": 32,
+   "edges": 84,
+   "roots": 5,
+   "leaves": 5,
+   "max_depth": 6,
+   "total_bits": 33.2778,
+   "bits_per_descent": 3.6053,
+   "auc": 0.6205,
+   "expected_depth": 2.7771,
+   "effective_leaves": 5.0,
+   "leaves_for_90pct": 5
+  }
+ }
+}

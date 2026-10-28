@@ -1,0 +1,252 @@
+{
+ "judge_model": "claude-haiku-5-5",
+ "expert_key_size": 39,
+ "rows": [
+  {
+   "name": "ours",
+   "group": "reference",
+   "label": "full prompt, Haiku 5.5, effort high (main run)",
+   "model": "claude-haiku-5-5",
+   "effort": "high",
+   "stop_reason": "end_turn",
+   "term_types": 93,
+   "values": 317,
+   "citations": 480,
+   "citations_verified": 470,
+   "citations_exact": 463,
+   "verified_rate": 0.979,
+   "label_exact_rate": 0.965,
+   "cost_usd": 0.2274,
+   "seconds": 302.1,
+   "expert_key": {
+    "coverage": 0.667,
+    "precision": 0.28,
+    "matched": 26
+   }
+  },
+  {
+   "name": "haiku_run2",
+   "group": "model",
+   "label": "same prompt, Haiku 5.5, second run",
+   "model": "claude-haiku-5-5",
+   "effort": "high",
+   "stop_reason": "end_turn",
+   "term_types": 76,
+   "values": 260,
+   "citations": 399,
+   "citations_verified": 387,
+   "citations_exact": 384,
+   "verified_rate": 0.97,
+   "label_exact_rate": 0.962,
+   "cost_usd": 0.4178,
+   "seconds": 257.0,
+   "agreement_lexical": {
+    "f1": 0.509,
+    "matched": 43
+   },
+   "agreement_judged": {
+    "f1": 0.604,
+    "recall_of_ours": 0.548,
+    "precision": 0.671,
+    "matched": 51
+   },
+   "expert_key": {
+    "coverage": 0.667,
+    "precision": 0.342,
+    "matched": 26
+   }
+  },
+  {
+   "name": "sonnet_medium",
+   "group": "model",
+   "label": "same prompt, Sonnet 5.5, effort medium",
+   "model": "claude-sonnet-5-5",
+   "effort": "medium",
+   "stop_reason": "end_turn",
+   "term_types": 54,
+   "values": 210,
+   "citations": 264,
+   "citations_verified": 264,
+   "citations_exact": 264,
+   "verified_rate": 1.0,
+   "label_exact_rate": 1.0,
+   "cost_usd": 0.3986,
+   "seconds": 173.7,
+   "agreement_lexical": {
+    "f1": 0.395,
+    "matched": 29
+   },
+   "agreement_judged": {
+    "f1": 0.517,
+    "recall_of_ours": 0.409,
+    "precision": 0.704,
+    "matched": 38
+   },
+   "expert_key": {
+    "coverage": 0.59,
+    "precision": 0.426,
+    "matched": 23
+   }
+  },
+  {
+   "name": "sonnet",
+   "group": "model",
+   "label": "same prompt, Sonnet 5.5, effort high (truncated at the output limit)",
+   "model": "claude-sonnet-5-5",
+   "effort": "high",
+   "stop_reason": "max_tokens",
+   "term_types": 72,
+   "values": 308,
+   "citations": 414,
+   "citations_verified": 414,
+   "citations_exact": 414,
+   "verified_rate": 1.0,
+   "label_exact_rate": 1.0,
+   "cost_usd": 2.2149,
+   "seconds": 701.3,
+   "agreement_lexical": {
+    "f1": 0.545,
+    "matched": 45
+   },
+   "agreement_judged": {
+    "f1": 0.57,
+    "recall_of_ours": 0.505,
+    "precision": 0.653,
+    "matched": 47
+   },
+   "expert_key": {
+    "coverage": 0.821,
+    "precision": 0.444,
+    "matched": 32
+   }
+  },
+  {
+   "name": "effort_low",
+   "group": "prompt",
+   "label": "same prompt, Haiku 5.5, effort low",
+   "model": "claude-haiku-5-5",
+   "effort": "low",
+   "stop_reason": "end_turn",
+   "term_types": 46,
+   "values": 165,
+   "citations": 211,
+   "citations_verified": 211,
+   "citations_exact": 208,
+   "verified_rate": 1.0,
+   "label_exact_rate": 0.986,
+   "cost_usd": 0.3403,
+   "seconds": 142.0,
+   "agreement_lexical": {
+    "f1": 0.403,
+    "matched": 28
+   },
+   "agreement_judged": {
+    "f1": 0.532,
+    "recall_of_ours": 0.398,
+    "precision": 0.804,
+    "matched": 37
+   },
+   "expert_key": {
+    "coverage": 0.538,
+    "precision": 0.457,
+    "matched": 21
+   }
+  },
+  {
+   "name": "no_manifest",
+   "group": "manifest",
+   "label": "no manifest of section labels",
+   "model": "claude-haiku-5-5",
+   "effort": "high",
+   "stop_reason": "end_turn",
+   "term_types": 62,
+   "values": 209,
+   "citations": 271,
+   "citations_verified": 265,
+   "citations_exact": 208,
+   "verified_rate": 0.978,
+   "label_exact_rate": 0.768,
+   "cost_usd": 0.3681,
+   "seconds": 195.6,
+   "agreement_lexical": {
+    "f1": 0.439,
+    "matched": 34
+   },
+   "agreement_judged": {
+    "f1": 0.645,
+    "recall_of_ours": 0.538,
+    "precision": 0.806,
+    "matched": 50
+   },
+   "expert_key": {
+    "coverage": 0.718,
+    "precision": 0.452,
+    "matched": 28
+   }
+  },
+  {
+   "name": "no_definitions",
+   "group": "prompt",
+   "label": "no definitions of term, term type, grounded",
+   "model": "claude-haiku-5-5",
+   "effort": "high",
+   "stop_reason": "end_turn",
+   "term_types": 111,
+   "values": 303,
+   "citations": 414,
+   "citations_verified": 412,
+   "citations_exact": 409,
+   "verified_rate": 0.995,
+   "label_exact_rate": 0.988,
+   "cost_usd": 0.4724,
+   "seconds": 320.3,
+   "agreement_lexical": {
+    "f1": 0.422,
+    "matched": 43
+   },
+   "agreement_judged": {
+    "f1": 0.618,
+    "recall_of_ours": 0.677,
+    "precision": 0.568,
+    "matched": 63
+   },
+   "expert_key": {
+    "coverage": 0.821,
+    "precision": 0.288,
+    "matched": 32
+   }
+  },
+  {
+   "name": "no_citations",
+   "group": "grounding",
+   "label": "no citation requirement",
+   "model": "claude-haiku-5-5",
+   "effort": "high",
+   "stop_reason": "end_turn",
+   "term_types": 39,
+   "values": 193,
+   "citations": 0,
+   "citations_verified": 0,
+   "citations_exact": 0,
+   "verified_rate": null,
+   "label_exact_rate": null,
+   "cost_usd": 0.3042,
+   "seconds": 111.4,
+   "agreement_lexical": {
+    "f1": 0.439,
+    "matched": 29
+   },
+   "agreement_judged": {
+    "f1": 0.5,
+    "recall_of_ours": 0.355,
+    "precision": 0.846,
+    "matched": 33
+   },
+   "expert_key": {
+    "coverage": 0.436,
+    "precision": 0.436,
+    "matched": 17
+   }
+  }
+ ]
+}

@@ -1,0 +1,274 @@
+{
+ "a": "expert_key",
+ "b": "no_definitions",
+ "judge_model": "claude-haiku-5-5",
+ "term_types_a": 39,
+ "term_types_b": 111,
+ "matched": 32,
+ "recall_of_a": 0.821,
+ "precision_of_b": 0.288,
+ "f1": 0.427,
+ "pairs": [
+  {
+   "a": "d1_consensus_network_topology",
+   "b": "tech_network_topology",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_immutability_and_failure_tolerance",
+   "b": "tech_consensus_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_gossiping",
+   "b": "tech_gossip_propagation",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_agreement_latency",
+   "b": "tech_latency_communication_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_consensus_agreement_finality",
+   "b": "tech_finality",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_structure_in_the_blockheader",
+   "b": "tech_data_structure_and_storage",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_transaction_model",
+   "b": "tech_transaction_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_limits_to_scalability",
+   "b": "tech_transaction_capacity_scalability",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_native_asset",
+   "b": "asset_native_asset_and_tokenisation_status_dlt",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_asset_supply_management",
+   "b": "asset_supply_management",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_interoperability",
+   "b": "tech_interoperability_intraoperability",
+   "confidence": "medium"
+  },
+  {
+   "a": "d1_governance",
+   "b": "tech_governance_model",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_script_language",
+   "b": "tech_scripting_language",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_encryption",
+   "b": "tech_cryptographic_primitive",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_data_privacy",
+   "b": "tech_data_privacy_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_coding_language",
+   "b": "tech_codebase_language_and_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_code_license",
+   "b": "tech_coding_license_and_source_openness",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_software_architecture",
+   "b": "tech_software_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_access_and_control_layer",
+   "b": "tech_network_access_permission",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_identity_layer",
+   "b": "tech_identity_and_permission_layer",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_reward_system",
+   "b": "tech_reward_system",
+   "confidence": "high"
+  },
+  {
+   "a": "d1_fee_structure",
+   "b": "tech_fee_structure",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_technical_standard",
+   "b": "asset_protocol_native_vs_token_standard",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_centralisation",
+   "b": "asset_centralisation_level",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_asset_function",
+   "b": "asset_function_utility_governance_security",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_minting_mechanism",
+   "b": "asset_minting_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_yield_source",
+   "b": "asset_yield_source",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_yield_distribution_mechanism",
+   "b": "asset_yield_distribution_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_redemption_reference_asset",
+   "b": "asset_stable_value_reference",
+   "confidence": "medium"
+  },
+  {
+   "a": "d2_redemption_mechanism",
+   "b": "asset_redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_legal_classification",
+   "b": "asset_legal_classification_status",
+   "confidence": "high"
+  },
+  {
+   "a": "d2_form_of_claim",
+   "b": "asset_claim_form",
+   "confidence": "high"
+  }
+ ],
+ "unmatched_a": [
+  "d1_server_storage",
+  "d1_block_storage",
+  "d1_tokenisation",
+  "d1_intraoperability",
+  "d1_fees_reward",
+  "d2_minting_issuer",
+  "d2_tradfi_analogy"
+ ],
+ "unmatched_b": [
+  "asset_fungibility_and_uniqueness",
+  "asset_legal_form_of_digital_representation",
+  "asset_ledger_or_technology_basis",
+  "asset_intrinsic_link_to_blockchain",
+  "asset_stabilisation_mechanism",
+  "asset_tokenised_traditional_asset",
+  "asset_issuer_presence",
+  "asset_class_mica_category",
+  "asset_decentralised_governance_system",
+  "asset_ancillary_or_network_token",
+  "asset_digital_commodity_vs_security_exclusions",
+  "asset_scope_exclusions_eu",
+  "asset_digital_representation_of_fiat_or_securities",
+  "asset_cross_chain_or_wrapped_status",
+  "tech_distributed_ledger_definition_elements",
+  "tech_public_vs_private_ledger_status",
+  "tech_blockchain_vs_dlt_distinction",
+  "tech_oracle_and_external_data_dependency",
+  "tech_layer_position",
+  "tech_key_custody_wallet_type",
+  "tech_consensus_immutability_failure_model",
+  "actor_issuer_role",
+  "actor_related_and_affiliated_person",
+  "actor_crypto_asset_service_provider",
+  "actor_custodian",
+  "actor_trading_platform_operator",
+  "actor_intermediary_and_broker_dealer",
+  "actor_money_transmitter",
+  "actor_validator_node_operator_miner",
+  "actor_developer_and_software_provider",
+  "actor_decentralised_protocol_or_dao",
+  "actor_bridge_oracle_infrastructure_provider",
+  "actor_authorised_participant",
+  "actor_reserve_asset_manager_and_custodian",
+  "actor_obliged_entity_and_fi",
+  "actor_intermediary_crypto_asset_service_provider",
+  "actor_tax_reporting_entity",
+  "actor_ict_third_party_provider",
+  "actor_crypto_asset_regulatory_entity_type",
+  "activity_crypto_asset_services_list",
+  "activity_vasp_activity_limbs",
+  "activity_money_transmission_and_transfer",
+  "activity_exchange_type",
+  "activity_staking",
+  "activity_lending_borrowing_collateral",
+  "activity_issuance_offer_distribution",
+  "activity_minting_or_mining",
+  "activity_redemption_of_stablecoin",
+  "activity_custody_of_private_keys",
+  "activity_market_making_and_underwriting",
+  "activity_advice_and_portfolio_management",
+  "activity_placing_and_marketing",
+  "activity_wrapping_and_bridging",
+  "activity_p2p_transaction",
+  "activity_cross_border_offshore_operation",
+  "activity_ict_service_provision",
+  "activity_operating_distributed_ledger_or_protocol",
+  "activity_closed_loop_and_non_transferable_items",
+  "activity_settlement_clearance",
+  "transaction_value_threshold",
+  "obligation_aml_cft_status",
+  "obligation_licensing_registration",
+  "obligation_prudential_capital_and_liquidity",
+  "obligation_reserve_requirements_and_disclosure",
+  "obligation_operational_resilience_and_ict_risk",
+  "obligation_legal_claim_and_redemption_rights",
+  "obligation_safeguarding_and_segregation",
+  "obligation_consumer_investor_protection_and_disclosure",
+  "obligation_insolvency_and_claim_priority",
+  "risk_money_laundering_and_terror_financing",
+  "risk_privacy_and_data_protection",
+  "risk_cybersecurity_and_cyber_attack",
+  "risk_systemic_and_concentration",
+  "risk_market_manipulation_and_conflicts",
+  "risk_smart_contract_and_code_vulnerability",
+  "risk_immutability_and_irreversibility",
+  "risk_tax_reporting_obligation",
+  "risk_sanctions_and_asset_freezing",
+  "obligation_tokenised_asset_regime_scope"
+ ],
+ "model": "claude-haiku-5-5",
+ "calls": 2,
+ "usage": {
+  "input": 29972,
+  "output": 3077,
+  "cache_write": 0,
+  "cache_read": 0
+ },
+ "cost_usd": 0.0045,
+ "api_seconds": 11.6,
+ "wall_seconds": 11.6
+}

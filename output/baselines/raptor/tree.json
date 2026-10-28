@@ -1,0 +1,586 @@
+{
+ "leaves": 129,
+ "nodes": [
+  {
+   "id": "s1_0_d15s0",
+   "level": 1,
+   "text": "Doc 15 (Chapter II, The Digital Asset Ecosystem) opens with the Nakamoto whitepaper's account of a peer-to-peer electronic cash system solving double-spending via proof-of-work chains, then defines a \"digital asset\" as \"any digital representation of value that is recorded on a distributed ledger,\" and treats \"blockchain\" as a type of distributed ledger technology. Doc 15 also quotes the Executive Order 14178 definition of blockchain (shared network, cryptographic linkage, automated distribution, publicly available source code). It reports market growth: Bitcoin spot ETPs approved in early 2024, monthly successful transactions on public blockchains reaching 3.8 billion in early 2025, and total DeFi value locked approaching $130 billion by July 2025, with DEXs at nearly 30% of CEX spot volume by June 2025.\n\nDoc 15 lists market participants: issuers, retail participants, institutional investors, centralized trading platforms (CEXs), decentralized protocols and development teams, and blockchain network support actors (miners, stakers, validators, node providers). It describes DeFi as using smart contracts for peer-to-peer services, and gives a five-layer DeFi technology stack: application/interface, broadcast, smart contract protocol, asset, and base (settlement) layers. Doc 15 defines a native token as the token a network uses for fees and consensus rewards, and describes DAOs as community-governed systems whose governance token holders make collective decisions executed by smart contracts. It identifies consensus mechanisms as predominantly Proof-of-Work or Proof-of-Stake, and lists infrastructure providers (oracles, DEX aggregators, bridge providers, node providers, onchain data providers, digital identity providers, smart contract auditors, front-end operators).\n\nDoc 15 identifies federal regulators: SEC and CFTC (secondary markets), FINRA and NFA as SROs, FRB, OCC, FDIC, NCUA (banking), FinCEN and OFAC and IRS (Treasury), and state regulators including NYDFS's BitLicense and Wyoming's special purpose depository regime. It describes market activities: issuance (ICOs, airdrops, forks), custody and wallets (hot/cold, custodial/non-custodial, multi-signature and multi-party computation), clearance and settlement, and lending/prime brokerage.",
+   "covers": [
+    "doc 15 §Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)"
+   ],
+   "children": [
+    "d15s0",
+    "d15s1",
+    "d15s2",
+    "d15s3",
+    "d15s6",
+    "d15s7",
+    "d15s9",
+    "d15s10"
+   ]
+  },
+  {
+   "id": "s1_0_d3s0",
+   "level": 1,
+   "text": "Doc 3 (DLT-Corpus paper, KDD '26) introduces DLT-Corpus: 2.98 billion tokens from 22.12 million documents across scientific literature (37,440 publications, 564M tokens), USPTO patents (49,023 filings, 1,296M tokens), and social media (22.03M posts, 1,120M tokens), covering 2013 to mid-2025 by subset. Existing DLT NLP resources focus narrowly on price prediction, trading, smart contracts and sentiment. The corpus uses a domain-relevance filter (BERT-base-cased fine-tuned on the NER dataset of [37], retaining documents with maximum prediction score above 0.995 or median at or above the scientific-literature median), an English-language filter (FastText, Lingua), and length limits of 500 to 40,000 tokens for papers. Social media posts were limited to pre-2023 Twitter/X collections, with usernames removed. Defined terms include DLT (the broader category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs), and blockchain (the chain-based architecture introduced by Bitcoin). Keyword density was measured per 1,000 words against a 361-term DLT keyword set; DLT-Corpus averages 43.96 versus 5.05 for RefinedWeb and C4, with document coverage of 98.7% versus 53.8%, and Jensen-Shannon divergence of 0.39 to 0.45 versus 0.10. Sentiment labels in the companion dataset (23,301 CryptoPanic headlines/descriptions) use 25th and 75th percentile boundaries on normalised votes: below the 25th is negative, above the 75th is positive, otherwise neutral. LedgerBERT, continued pre-training from SciBERT, reaches 0.299 F1 on DLT NER (versus 0.289 SciBERT, 0.243 BERT-base). Findings: scientific literature leads market capitalisation by about two years (Spearman ρ = 0.95, p < 0.001 at lag −2), and technologies (stablecoins, DEXs, AMMs) appear first in literature. Ethics and limitations sections describe the open-access, USPTO, and pre-2023 social media sourcing, and the risk of market manipulation use.",
+   "covers": [
+    "doc 3 §Body: all sections (introduction through limitations)"
+   ],
+   "children": [
+    "d3s0",
+    "d3s1",
+    "d3s2",
+    "d3s3",
+    "d3s4",
+    "d3s5",
+    "d3s6",
+    "d3s7"
+   ]
+  },
+  {
+   "id": "s1_0_d2s2",
+   "level": 1,
+   "text": "Doc 2 (sections 1–7) is a taxonomy paper for crypto-assets and DLT. Its centralisation dimension (§4.2) classifies assets as centralised, decentralised or hybrid using the Minimum Decentralisation Test (MDT) across six functional groups (governance, minting, yield, redemption, market, community). Governance, minting, yield and redemption are core: unilateral control of any one makes an asset centralised; a decentralised asset passes all groups. Market and community only add evidence. The paper cites MiCAR's \"no identifiable issuer\" and \"fully decentralised\" language and notes that centralisation drives issuer-regime applicability.\n\nAsset function (§4.3) defines governance tokens (voting or control rights, e.g. UNI, MKR), utility tokens (MiCAR Art. 3(1)(9): digital access to a good or service, accepted solely by the issuer), and security tokens (exposure to underlying assets or cash flows).\n\nMechanism design (§4.4) covers minting types, yield sources (direct or incentive) and distribution mechanisms (quantity-accrual, value-accrual, price-accrual, external redistribution), and redemption (reference asset: EMT, ART, non-stablecoin; redemption mechanisms such as off-chain issuer, burn-to-unlock, bridge burn-and-release, queued withdrawal).\n\nLegal dimension (§4.5) sets legal classification as security/financial instrument, stable-value token (ART/EMT), fund/AIF-type, or other crypto-asset, applying the US Howey test, the EU MiFID II financial-instrument test and the ART/AIF tests. Form of claim distinguishes in personam from in rem positions and claims against issuer from reserve.\n\n§5 encodes these as a CryptoAsset dataclass with decision trees for centralisation, reference asset and TradFi analogy (commodity, voting equity, payment-in-kind, repo, depositary receipt, capitalising share class, pass-through certificate). Mapping of the top 100 assets (19 Nov 2025): 45 decentralised, 39 centralised, 8 hybrid; 68 have an identifiable issuer; 50 bear yield; 37 are reference-asset-linked (16 stablecoins).\n\n§6 gives case studies: WBTC (hybrid, depositary receipt), stETH (decentralised, pass-through certificate), with further cases in Appendix B.",
+   "covers": [
+    "doc 2 §Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+    "doc 2 §Sections 6-7: case studies, TradFi analogues and regulatory implications; conclusion"
+   ],
+   "children": [
+    "d2s2",
+    "d2s3",
+    "d2s4",
+    "d2s5",
+    "d2s6",
+    "d2s7",
+    "d2s8",
+    "d2s9"
+   ]
+  },
+  {
+   "id": "s1_0_d4s0",
+   "level": 1,
+   "text": "Doc 4 (MiCA, Articles 2-3) excludes from scope crypto-assets that are unique and not fungible (Art. 2(3)), and crypto-assets qualifying as financial instruments, deposits (including structured deposits), funds (unless e-money tokens), securitisation positions, insurance and reinsurance products, pension products, occupational pension schemes, individual pension products with mandatory employer contribution, PEPP products and social security schemes (Art. 2(4)). ESMA must issue guidelines on qualifying crypto-assets as financial instruments by 30 December 2024 (Art. 2(5)). Art. 3(1) defines DLT, distributed ledger, consensus mechanism, DLT network node, crypto-asset (a digital representation of value or right transferable and storable electronically via DLT or similar technology), asset-referenced token (stable value by referencing other values or rights, not an e-money token), e-money token (stable value referencing one official currency), official currency, utility token (access to a good or service supplied by its issuer only), issuer, applicant issuer, offer to the public, offeror, funds (per PSD2 Art. 4(25)), and crypto-asset service provider. Crypto-asset services (Art. 3(1)(16)(a)-(j)) are: custody and administration; operation of a trading platform; exchange of crypto-assets for funds; exchange for other crypto-assets; execution of orders; placing; reception and transmission of orders; advice; portfolio management; and transfer services. Further definitions cover management body, credit institution, investment firm, qualified investors (MiFID II Annex II, points 1-4), close links, reserve of assets, home and host Member State, competent authority, qualifying holding (at least 10% of capital or voting rights, per Directives 2004/109/EC Arts. 9-10 and 12(4)-(5)), retail holder, online interface, and client. The Commission may adjust definitions by delegated act under Art. 139 (Art. 3(2)).\n\nDoc 5 (AML Directive, Article 2) defines money laundering and terrorist financing by reference to Directives 2018/1673 and 2017/541, criminal activity, funds or property, credit institution, financial institution (including bureaux de change, life insurers, UCITS and AIFs, CSDs, and crypto-asset service providers), trust or company service provider, gambling service, self-hosted address (per Regulation 2023/1113 Art. 3(20)), crowdfunding service provider and intermediary, electronic money (excluding monetary value under Directive 2009/110/EC Art. 1(4)-(5)), and establishment. Doc 5 defines crypto-asset and crypto-asset services by reference to MiCA Art. 3(1)(5) and (16), excluding advice under point (16)(h), and crypto-asset service provider by reference to MiCA Art. 3(1)(15).\n\nDoc 7 (DORA, Article 3) defines, among others, ICT concentration risk, critical ICT third-party service provider, management body, group, subsidiary, microenterprise (fewer than 10 persons, turnover or balance sheet at most EUR 2 million), small enterprise (10 to under 50 persons, above EUR 2 million but at most EUR 10 million), and medium-sized enterprise (under 250 persons, turnover at most EUR 50 million and/or balance sheet at most EUR 43 million). It defines crypto-asset service provider, issuer of asset-referenced tokens and Lead Overseer by reference to the \"Regulation on markets in crypto-assets\" (MiCA), and public authority as including national central banks.",
+   "covers": [
+    "doc 4 §Articles 2-3: Scope and Definitions",
+    "doc 5 §Article 2: Definitions",
+    "doc 7 §Article 3: Definitions"
+   ],
+   "children": [
+    "d4s0",
+    "d4s1",
+    "d4s2",
+    "d4s3",
+    "d5s0",
+    "d5s1",
+    "d7s1",
+    "d7s2"
+   ]
+  },
+  {
+   "id": "s1_0_d17s3",
+   "level": 1,
+   "text": "Doc 17 (Updated Guidance: A Risk-Based Approach to Virtual Assets and VASPs), Part Two, \"What is a virtual asset? What is a VASP? Scope of the definitions\":\n\n- **DeFi (paras 67–70):** A DeFi application (software) is not a VASP under the FATF Standards. Creators, owners or operators who maintain \"control or sufficient influence\" over the arrangement, or who provide or actively facilitate VASP services, may be VASPs. Indicators include control over assets or protocol, an ongoing business relationship with users (even via smart contract or voting), profit from the service, and the ability to set or change parameters. Self-description as \"decentralised\" is not determinative. Governance token holders are not responsible unless they exercise control or sufficient influence. Where no VASP can be identified, countries should monitor and may require a regulated VASP's involvement.\n- **Software, ancillary services and networks (paras 81–84):** The Standards are technology neutral. Software developers, hardware wallet manufacturers, unhosted wallet providers, and pure network operators (internet, cloud, block creation/validation) are not VASPs when acting only in those roles. Closed-loop, non-transferable items (e.g., airline miles, loyalty points) are excluded. Acceptance of VAs as payment for goods is not a VASP activity; a service facilitating such acceptance is.\n- **Stablecoins (paras 86–89, Box 3):** A governance body is generally a FI or VASP, particularly if it performs other functions. Authorised Participants, trading platforms and custodial wallet providers are VASPs; global FIs managing the reserve fund are FIs; validators, cloud providers, hardware wallet makers, software developers and individual users are generally not VASPs.\n- **P2P (paras 90–91):** Assessment is functional. Platforms offering only a forum for buyers and sellers generally are not VASPs; \"matching\" services may be.\n- **Lifecycle and indicators (paras 92–93):** Launching a service can impose VASP obligations even if later automated. Indicators include who profits, who sets or changes rules, who makes operational decisions, who drove creation, who maintains business relationships, and who could shut the service down.\n- **Minimum standard (para 94):** The VA and VASP definitions are a minimum; countries may extend regimes on a risk-assessed basis.",
+   "covers": [
+    "doc 17 §Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)"
+   ],
+   "children": [
+    "d17s3",
+    "d17s6",
+    "d17s7",
+    "d17s8"
+   ]
+  },
+  {
+   "id": "s1_0_d17s0",
+   "level": 1,
+   "text": "Doc 17 (FATF Updated Guidance on a risk-based approach to virtual assets and VASPs), Part Two, defines a virtual asset (VA) as a digital representation of value that can be digitally traded or transferred and used for payment or investment purposes, interpreted broadly and in a technology-neutral, functional way. Digital representations of fiat currencies, securities and other financial assets already covered by the Recommendations are excluded, but such assets are not presumed to fall outside the Standards and may be covered as financial assets. Stablecoins are covered as VAs or financial assets depending on their nature and national regime. Non-fungible tokens (NFTs) or crypto-collectibles are generally not VAs unless used in practice for payment or investment, and are assessed case by case.\n\nDoc 17 defines a virtual asset service provider (VASP) as any natural or legal person not covered elsewhere under the Recommendations who, as a business, conducts for or on behalf of another person one or more of five activities: (i) exchange between VAs and fiat currencies; (ii) exchange between one or more forms of VAs; (iii) transfer of VAs; (iv) safekeeping and/or administration of VAs or instruments enabling control over them; and (v) participation in and provision of financial services related to an issuer's offer and/or sale of a VA. \"Transfer\" means conducting a transaction on behalf of another person that moves a VA from one address or account to another. \"Conducts\" includes active provision or facilitation; \"as a business\" excludes infrequent non-commercial activity; \"control\" means the ability to hold, trade, transfer or spend a VA and does not require unilateral control. Entities are assessed on function, not name or technology: escrow, brokerage, order-book and advanced trading services, kiosks, and certain safekeeping providers may qualify, while purely ancillary infrastructure providers and software developers or unhosted wallet providers normally do not. The sole act of issuing a VA is not a covered service under limb (v), while related sale, distribution and market-making activity may be.",
+   "covers": [
+    "doc 17 §Annex A: Recommendation 15, Interpretive Note and FATF Definitions; Glossary",
+    "doc 17 §Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)"
+   ],
+   "children": [
+    "d17s0",
+    "d17s1",
+    "d17s2",
+    "d17s4",
+    "d17s5",
+    "d17s10"
+   ]
+  },
+  {
+   "id": "s1_0_d1s7",
+   "level": 1,
+   "text": "Doc 1 (Sections I–XII, §Body) describes blockchain design components. Gossiping is \"local\" when consensus is reached within a local validation process first, as in Ripple's federated consensus (Ripple, 2015), and \"global\" when peers are selected from a list held by fallback nodes, giving an unstructured, Erdős–Rényi-like topology (Barabási and Pósfai, 2016). Consensus agreement covers Byzantine fault tolerance against f malicious nodes and Sybil attacks (Douceur, 2002). Latency is \"synchronous\" when a bound Δ applies to message delivery, as in Bitcoin's timestamp rules and Ripple's LastLedgerSequence, or \"asynchronous\" when no bound applies, as in Synereo. Finality is \"non-deterministic\" when consensus eventually settles and forks remain possible (Bitcoin, where six confirmations reduce but do not eliminate reversal risk), or \"deterministic\" when transactions are immediately confirmed or rejected, which suits smart contracts.\n\nThin nodes hold only a subset of blockchain data, improving scalability at some cost to resiliency. Block storage is either \"transactions\" (Bitcoin, IOTA) or \"user balance\" (Ripple). Limits to scalability are classed as limit by number of transactions, number of users, or number of nodes, each rated as indifferent, at most linear, at most quadratic, or worse than quadratic. Confirmation time is deterministic (Peercoin) or stochastic (Bitcoin, exponential inter-block times).\n\nNative asset is \"none\", \"own cryptocurrency\", or \"convertible multiple assets\" (Counterparty, Ardor). Tokenisation is \"no tokenisation\", \"through third-party addons\" (Coloured Coins), or \"tokenisation\" (Ethereum smart contracts). Asset supply management is \"limited-deterministic\" (Bitcoin), \"unlimited-deterministic\" (Dogecoin, Freicoin), or \"pre-mined\".\n\nExtensibility covers interoperability and intraoperability, each \"implicit\" (Turing-complete script), \"explicit\" (e.g., Bitcoin with Counterparty), or \"none\". Governance comprises technical self-governance rules and regulatory rules defined by external bodies.",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)"
+   ],
+   "children": [
+    "d1s7",
+    "d1s9",
+    "d1s10",
+    "d1s11"
+   ]
+  },
+  {
+   "id": "s1_0_d10s1",
+   "level": 1,
+   "text": "**Doc 10 (Senate Banking Committee substitute), Sec. 2 and Sec. 105:** Sec. 2 defines \"securities laws\" by reference to Securities Exchange Act of 1934 §3(a) (15 U.S.C. 78c(a)). It defines \"smart contract\" as a self-executing contract or program stored on a distributed ledger system that automatically executes or enforces digital asset transactions upon explicit, pre-determined encoded conditions, without intervention other than providing data. Sec. 105 requires the Commission, within one year of enactment, to adopt rules that a network token is not a disqualifying financial right under Securities Act §4B(a)(7)(B) where its market value is primarily derived, or reasonably expected to be primarily derived, from a distributed ledger system or its broader adoption. Qualifying indicators include: (A) the system collecting, receiving, accruing or distributing consideration from its functioning; (B) governance capabilities over the system or a decentralized governance system; (C) value moving with the system's use or performance; and (D) for an ancillary asset, value moving with the originator's or related person's efforts. Participants may rely on the §4B(b) exemption. Sec. 105(b) provides that a court's non-appealable final judgment before enactment that a digital asset transaction was not a securities offer or sale shields the transferred asset from §4B(b)(2) securities provisions. A network token is not an ancillary asset nor a security if, on January 1, 2026, its units were the principal asset of an unregistered (under the Investment Company Act of 1940) exchange-traded product listed on a registered national securities exchange.\n\n**Doc 11 (Title I, Secs. 101-104, definitions):** Defines \"mature blockchain system\" as a blockchain system and related digital commodity not controlled by any person or group under common control. \"Permitted payment stablecoin\" and \"permitted payment stablecoin issuer\" take the meanings in GENIUS Act §2. Sec. 102 adds to Exchange Act §3(a) a Bank Secrecy Act definition (FDIA §21; Pub. L. 91-508 ch. 2 of title I; 31 U.S.C. subch. II ch. 53) and cross-references Securities Act §2(a) and CEA §1a terms. Sec. 103 amends CEA §1a: \"digital commodity\" is added to the trading-in-commodity-interests and related paragraphs, with an exclusion for custody, inventory or payment instruments for commercial purposes, and for maintaining or validating a blockchain system. It defines \"digital commodity broker\" (including solicitation from non-eligible contract participants or registered entities, and exceptions for payments, eligible contract participants and banks), \"digital commodity dealer\" (regular-business counterparty activity with exceptions), \"digital commodity exchange\" (a trading facility offering a cash or spot market in at least one digital commodity), and \"mixed digital asset transaction\" (a digital commodity traded for a security). Sec. 104 imports defined terms from the CEA, Securities Act and Exchange Act.\n\n**Doc 12 (Title I, Secs. 101-104, alternative text):** Largely parallel to Doc 11 but with differing terms. It adds \"digital asset broker\", \"digital asset dealer\", \"digital asset custodian\", \"digital asset trading system\" and \"notice-registered digital asset clearing agency\" (Exchange Act §17A(b)(9)), with exclusions for blockchain protocol developers. It defines \"digital commodity\" in three limbs (units held by non-issuers before the functional/decentralized certification under Exchange Act §44; units held after certification; and units held by related or affiliated persons while certified), excluding permitted payment stablecoins, with an adjudicated non-security rule. \"Digital commodity custodian\" and \"digital commodity dealer\" (with a market-maker test) are defined. \"Mixed digital asset transaction\" covers a digital commodity transacted with a security or restricted digital asset.",
+   "covers": [
+    "doc 10 §Senate Banking Committee substitute, Sec. 105: Characteristics of network tokens",
+    "doc 10 §Senate Banking Committee substitute, Sec. 2: Definitions (ancillary asset, digital asset, distributed ledger, etc.)",
+    "doc 11 §Title I, Secs. 101-104: Definitions",
+    "doc 12 §Title I, Secs. 101-104: Definitions"
+   ],
+   "children": [
+    "d10s1",
+    "d10s2",
+    "d11s2",
+    "d11s5",
+    "d11s6",
+    "d12s0",
+    "d12s5",
+    "d12s6",
+    "d12s7"
+   ]
+  },
+  {
+   "id": "s1_0_d8s0",
+   "level": 1,
+   "text": "The passage, drawn from doc 8 (the Financial Services and Markets Act 2000 Regulated Activities Order amendments in Regulation 40 and Regulation 2), defines \"the Act\" as FSMA 2000, \"the Financial Promotion Order\" as the 2005 Order, \"the full commencement day\" by reference to regulation 1(2), and \"the Regulated Activities Order\" as S.I. 2001/544. It defines \"qualifying cryptoasset\" (art. 88F) as a fungible, transferable cryptoasset that is not solely a record of value or contractual rights, and excludes specified investment cryptoassets (other than art. 74A electronic money), electronic money, fiat currency including any central bank digital currency, and single-issuer or limited-network cryptoassets. \"Qualifying stablecoin\" (art. 88G) is a qualifying cryptoasset that seeks or purports to maintain a stable value against a fiat currency, backed by fiat or other assets held for that purpose. \"Qualifying cryptoasset trading platform\" (art. 3) is a system bringing together multiple third-party buying and selling interests so as to result in contracts exchanging qualifying cryptoassets for money or other qualifying cryptoassets. \"Authorised cryptoasset custodian\" and \"relevant specified investment cryptoasset\" (security or contractually based investment) are also defined, along with \"specified investment cryptoasset,\" \"consumer\" (an individual acting outside trade, business or profession), \"title transfer cryptoasset collateral arrangement,\" and \"means of access\" (including a private cryptographic key).\n\nRegulation 40 creates new specified activities in Chapter 2B: issuing qualifying stablecoin (art. 9M), safeguarding qualifying or relevant specified investment cryptoassets (art. 9N), operating a qualifying cryptoasset trading platform (art. 9S), dealing as principal (art. 9T) and as agent (art. 9W), arranging deals (art. 9Y), and qualifying cryptoasset staking (art. 9Z6), defined as using a cryptoasset in blockchain validation, including proof-of-stake consensus. Each has associated exclusions, including group, introduction, temporary settlement, nominee and trustee, minting and stablecoin creation, no-consideration transfers, employee sales, and incidental-activity exclusions. Holding-out tests in art. 9U define when principal dealing is regulated. Consequential amendments adjust arts 5, 40, 42A, 64, 71, 72H, and 88E.",
+   "covers": [
+    "doc 8 §Regulation 2: Interpretation",
+    "doc 8 §Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)"
+   ],
+   "children": [
+    "d8s0",
+    "d8s1",
+    "d8s2",
+    "d8s3",
+    "d8s4",
+    "d8s5"
+   ]
+  },
+  {
+   "id": "s1_0_d16s0",
+   "level": 1,
+   "text": "FinCEN's 2011 MSB Final Rule (doc 16 §1.2.1) defines a money services business as a person doing business wholly or in substantial part within the United States who functions as a \"money transmitter,\" defined as a person providing money transmission services or any other person engaged in the transfer of funds. A \"transmittor\" is the sender of the first transmittal order in a transmittal of funds, and typically initiates a transaction that the money transmitter executes. \"Money transmission services\" means accepting currency, funds, or \"other value that substitutes for currency\" from one person and transmitting it to another location or person by any means. The regulation does not limit \"value that substitutes for currency,\" which may be created for that purpose or repurposed by an administrator or unincorporated organization; persons subject to other regulatory frameworks may be exempt from MSB status but covered as another type of financial institution.\n\nDoc 16 §1.3 defines \"virtual currency\" as a medium of exchange operating like currency without all its attributes, including legal tender status. Convertible Virtual Currency (CVC) is a type of virtual currency that has an equivalent value to currency or substitutes for it, and so is a form of \"value that substitutes for currency.\" Labels such as \"cryptocurrency\" or \"digital asset\" are not dispositive. CVC transactions are subject to FinCEN regulations regardless of whether the token is physical or digital, the ledger is centralized or distributed, or the transmission technology used.\n\nDoc 16 §§4-5 addresses ICOs, DApps, CVC creators, and mining. Persons who are banks, foreign banks, or registered and functionally regulated by the SEC or CFTC are not MSBs (31 CFR §1010.100(ff)(8)). Under the integral exemption, money transmission only integral to the sale of goods or services is excluded, unless the asset serves as value substituting for currency. Re-sale of tokens generally creates no BSA obligations, unless other frameworks require broker-dealer or commodities registration. DApp developers are not money transmitters merely for creating an application, but developers or owners/operators who use it to conduct money transmission are. Creators who pre-mine CVC and distribute or sell it may fall within these definitions. A person who mines CVC solely to buy goods or services for itself is not an MSB, but one who uses it for money transmission is. Mining pool distributions are integral to authentication services and not money transmission, unless the pool leader, cloud miner, or software agency also hosts CVC wallets for participants, which constitutes account-based money transmission.",
+   "covers": [
+    "doc 16 §Sec. 1.2.1: Definitions",
+    "doc 16 §Sec. 1.3: Convertible Virtual Currency (CVC)",
+    "doc 16 §Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)"
+   ],
+   "children": [
+    "d16s0",
+    "d16s1",
+    "d16s8",
+    "d16s9"
+   ]
+  },
+  {
+   "id": "s1_0_d20s0",
+   "level": 1,
+   "text": "Doc 20 (§SCO60.6–60.22, classification conditions) sorts cryptoassets into Group 1 and Group 2, screened on an ongoing basis. Group 1 assets meet classification conditions 1–4 (SCO60.8–60.19) and comprise Group 1a (tokenised traditional assets meeting the conditions, per footnote 1 defined as assets within the Basel Framework not classified as cryptoassets) and Group 1b (cryptoassets with effective stabilisation mechanisms meeting the conditions). Group 2 assets fail those conditions and comprise Group 2a (assets passing the Group 2a hedging recognition criteria in SCO60.55) and Group 2b (all others).\n\nCondition 1 (SCO60.8–60.13) requires a cryptoasset to be either a tokenised traditional asset, or to have a stabilisation mechanism effective at all times in linking its value to reference asset(s). Tokenised traditional assets must be digital representations recording ownership, posing the same credit and market risk as the traditional form, and must not require redemption or conversion first, nor add counterparty credit risk. Stabilisation mechanisms must be redeemable for a peg value, designed to minimise fluctuations, supported by sufficient data, with ownership of reserves verified and the issuer supervised with prudential capital and liquidity requirements. They must also pass the redemption risk test (SCO60.12), which requires reserves, net of non-cryptoasset claims, to at all times equal or exceed aggregate peg value, with Level 1 HQLA (LCR30.41) as an example of eligible reserve assets, daily value and weekly composition disclosure, and at least annual independent audit. The basis risk test is noted but not implemented. Algorithm-based or cryptoasset-referenced mechanisms do not qualify.\n\nCondition 2 (SCO60.14–60.15) requires legally enforceable rights and settlement finality, with full redeemability completed within 5 calendar days. Condition 3 (SCO60.16–60.17) requires the functions and network to mitigate material risks, with traceable transactions and well-defined network elements. Condition 4 (SCO60.18–60.19) requires entities performing redemption, transfer, storage or reserve management to be regulated or subject to appropriate risk standards, with disclosed governance.\n\nBanks are responsible for classification (SCO60.20), documenting it and notifying supervisors. Supervisors review classifications and may override them (SCO60.21), and authorities share information to ensure consistency (SCO60.22).",
+   "covers": [
+    "doc 20 §SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)"
+   ],
+   "children": [
+    "d20s0",
+    "d20s1",
+    "d20s2",
+    "d20s3"
+   ]
+  },
+  {
+   "id": "s1_0_d1s5",
+   "level": 1,
+   "text": "Doc 1 (academic survey of consensus mechanisms, §Body) identifies six layouts for Consensus Immutability and Failure Tolerance: Proof-of-Work (PoW), Proof-of-Stake (PoS), Proof-of-Authority (PoA), Proof-of-Capacity/Proof-of-Space and Proof-of-Storage (PoC/PoSpace/PoStorage), Proof-of-Burn (PoB), and Hybrid. PoW miners solve a hash puzzle whose result must start with a given number of zeros at or below a target; selection probability is proportional to the miner's share of total computing power, and the document notes that coordinated adversaries holding 25% of computing power can mount an attack. PoS selects block proposers by their share of assets, with variants of randomised block selection and coin-age-based selection, and is affected by the \"nothing at stake\" issue; Delegated Proof-of-Stake (DPoS) delegates forging to predetermined users. PoA uses a hard-configured set of trusted signers, typically for consortium private networks. PoC defines a proof by three quantities (N0, N1, T). PoB requires provably burning digital assets, currently PoW-mined currencies. Hybrid layouts pair PoB or PoW checkpoints with PoS. Doc 1 also defines Gossiping, with Local as one of two layouts for propagating blocks between peers, and states that BFT mechanisms tolerate at most n/3 corrupted nodes under asynchronous communication.\n\nDoc 15 (regulatory report, Chapter II: The Digital Asset Ecosystem) describes PoW as miners proposing blocks that, once validated by consensus, are appended, with rewards in transaction fees and newly issued native tokens. It describes PoS as validators staking native tokens as surety, subject to \"slashing\" (forfeiture for downtime or malicious behaviour), with delegators earning a pro-rata share of staking rewards after validator commission. It notes Bitcoin's fixed supply of 21 million, difficulty adjustment every 2,016 blocks to target ten-minute block times, and the \"51% attack\" as the principal threat to PoW. It defines sequencing as ordering transactions within a block to maximise Maximum Extractable Value (MEV). It distinguishes staking-as-a-service, liquid staking (receipt tokens), and custodial versus non-custodial staking, and reports that Ethereum's 2022 move to PoS cut energy use by over 99.9%.",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 15 §Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)"
+   ],
+   "children": [
+    "d1s5",
+    "d1s6",
+    "d15s4",
+    "d15s5"
+   ]
+  },
+  {
+   "id": "s1_0_d17s9",
+   "level": 1,
+   "text": "**Doc 17 (Annex A):** Recommendation 15 requires countries and financial institutions to assess ML/TF risks before launching new products, practices or technologies, and to regulate virtual asset service providers (VASPs) for AML/CFT, with licensing or registration and effective monitoring. The Interpretive Note treats virtual assets as \"property,\" \"proceeds,\" \"funds\" or \"other corresponding value.\" VASPs must be licensed or registered in the jurisdiction where they are created, or where a natural person's place of business is located; jurisdictions may also require licensing for VASPs serving customers or operating from their territory. Supervision must be risk-based, by a competent authority rather than an SRB, with powers including inspections, information production and sanctions, including withdrawal or suspension of licences. Recommendations 10 to 21 apply to VASPs, with a CDD occasional-transaction threshold of USD/EUR 1,000, and R.16 Travel Rule obligations for originating and beneficiary VASPs.\n\n**Doc 18 (Section Two):** Virtual assets are used by criminals and organised crime groups to launder predicate-offence proceeds. The DPRK stole USD 1.46 bn from ByBit, with only 3.8% recovered, using unregistered VASPs, mixers, bridges and large numbers of wallets. Fraud and scams, including \"pig butchering,\" are growing; one estimate puts 2024 illicit on-chain fraud activity at USD 51 bn. Terrorist groups use VAs but still rely largely on cash, MVTS and hawala. Stablecoins (e.g. USDT on Tron) account for a majority of on-chain illicit activity; issuers can freeze or block tokens, and the FATF will publish a stablecoin report in Q1 2026. For DeFi, about half of more advanced jurisdictions (47 of 99) require certain arrangements to be licensed; seven have taken supervisory or enforcement action, and four have registered DeFi entities as VASPs.\n\n**Doc 19 (Section Two):** Cambodia-based scam centres generate multi-billion USD proceeds; one conglomerate laundered at least USD 4 bn (2021–2025), including at least USD 37 m of DPRK cyber-heist proceeds. AI is an amplifying risk factor in fraud, hacking and laundering. Stablecoins designed to resist freezing are an emerging typology. P2P transfers via unhosted wallets are rated high risk by 88% of jurisdictions (58 of 66); only 23% (31 of 133) collect P2P market metrics. Offshore VASPs (oVASPs) serve customers in jurisdictions where they are unlicensed, may use nested accounts at onshore VASPs, and are regulated through activity-based licensing and in-country substance requirements. Only 18% (26 of 142) of jurisdictions have assessed DeFi risks, 93% have identified no DeFi VASPs, and only two have licensed one in practice.",
+   "covers": [
+    "doc 17 §Annex A: Recommendation 15, Interpretive Note and FATF Definitions; Glossary",
+    "doc 18 §Section Two: ML/TF/PF Risks (stablecoins, unhosted wallets, offshore VASPs, DeFi)",
+    "doc 19 §Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)"
+   ],
+   "children": [
+    "d17s9",
+    "d18s0",
+    "d18s1",
+    "d19s0",
+    "d19s1",
+    "d19s2"
+   ]
+  },
+  {
+   "id": "s1_0_d10s0",
+   "level": 1,
+   "text": "**Doc 10 (Senate Banking Committee substitute, Sec. 2):** Defines \"ancillary asset,\" \"ancillary asset originator,\" and \"network token\" by reference to Securities Act §4B(a), as added by the Act. \"Bank Secrecy Act\" covers 12 U.S.C. 1829b, 12 U.S.C. 1951 et seq., and 31 U.S.C. subch. II ch. 53. \"Coordinated control\" is left to Commission rules under §104(b). \"Decentralized governance system\" is a transparent, rules-based system where participation is not limited to or under control of any person or group under common control; it may include a legal entity without centralized management, and is not deemed a person under common control. \"Digital asset\" and \"digital asset service provider\" take the GENIUS Act (12 U.S.C. 5901) meanings. \"Digital asset intermediary\" is a person engaged in digital asset activities required to register with the CFTC or SEC. \"Digital commodity\" takes the CEA §1a meaning. \"Distributed ledger\" requires data shared across a network creating a public digital ledger of verified transactions, with cryptographic linking. \"Distributed ledger application,\" \"distributed ledger protocol,\" and \"distributed ledger system\" are defined by publicly available source code. \"Related person\" (for ancillary asset originators) covers founders, 4%+ holders within 36 months, executive officers and 10%+ equity owners within 12 months, persons owning 10%+ of the asset within 6 months, and covered-token holders of 2%+ within 6 months; it excludes decentralized governance systems.\n\n**Doc 11 (Title I, Secs. 101-104, Securities Act §2(a) and CEA additions):** Defines \"blockchain,\" \"blockchain application,\" \"blockchain protocol,\" \"blockchain system,\" and \"decentralized governance system\" (with exclusion for common-control or centralized management). \"Digital asset\" is any digital representation of value recorded on a cryptographically secured distributed ledger. \"Digital commodity affiliated person\" covers 5%+ acquirers, founders, and executives within 12 months. \"Digital commodity issuer\" and \"digital commodity related person\" (promoters, senior employees, 1%+ acquirers) are defined, with an anti-evasion prohibition. \"End user distribution\" requires no more than nominal exchange and broad, equitable distribution, including self-staking and custodial or ancillary staking subject to Commission rules due within 270 days. CEA-related terms include \"decentralized finance trading protocol,\" \"decentralized finance messaging system,\" and \"digital commodity,\" the last defined as an asset intrinsically linked to a blockchain system with value derived from its use, with enumerated exclusions.\n\n**Doc 12 (Title I, Secs. 101-104, Securities Act §2(a)):** Defines \"affiliated person\" (control relationships; 5%+ beneficial owners), \"blockchain,\" \"blockchain protocol,\" and \"blockchain system.\" \"Decentralized governance system\" excludes systems under common-control unilateral power. \"Decentralized system\" sets 12-month and 3-month tests: no unilateral control, no 20%+ aggregate affiliate ownership, no material source-code changes by issuers, no investment marketing, and only end user distributions. \"Digital asset\" is a fungible, transferable, publicly recorded representation of value, with exclusions for securities and CEA instruments. \"Digital asset issuer,\" \"digital asset maturity date\" (20%+ of units as digital commodities or registered assets), \"end user distribution,\" and \"functional system\" are also defined.\n\n**Doc 14 (Executive order, Sec. 2):** \"Digital asset\" is any digital representation of value recorded on a distributed ledger, including cryptocurrencies, tokens, and stablecoins. \"Blockchain\" requires shared, cryptographically linked, automatically distributed public ledger data with publicly available source code. \"Central Bank Digital Currency\" is digital money denominated in the national unit of account and a direct central bank liability.",
+   "covers": [
+    "doc 10 §Senate Banking Committee substitute, Sec. 2: Definitions (ancillary asset, digital asset, distributed ledger, etc.)",
+    "doc 11 §Title I, Secs. 101-104: Definitions",
+    "doc 12 §Title I, Secs. 101-104: Definitions",
+    "doc 14 §Sec. 2: Definitions"
+   ],
+   "children": [
+    "d10s0",
+    "d11s0",
+    "d11s1",
+    "d11s3",
+    "d12s1",
+    "d12s2",
+    "d12s3",
+    "d14s0"
+   ]
+  },
+  {
+   "id": "s1_0_d20s4",
+   "level": 1,
+   "text": "Doc 20 (§SCO60.131) defines eight terms for its use in [SCO60]. Cryptoassets are private digital assets depending primarily on cryptography and distributed ledger or similar technology. Digital assets are digital representations of value usable for payment, investment, or accessing a good or service, excluding digital representations of fiat currencies. Nodes are participants in distributed ledger networks that record and share data across multiple ledgers. Operators are typically a single administrative authority managing a cryptoasset arrangement, including issuing a centralised cryptoasset, setting its rules, maintaining a central payment ledger, and redeeming it. Stablecoins aim to maintain stable value relative to a specified asset, pool, or basket of assets. Redeemers exchange the cryptoasset for the traditional asset and need not be the issuance organiser. Validators commit transaction blocks to the distributed ledger network.\n\nDoc 21 (Glossary) gives parallel definitions. Blockchain is a form of distributed ledger holding transactions in blocks appended via a validation process. Crypto-asset is a private-sector digital asset depending primarily on cryptography and distributed ledger technology. Global stablecoin (GSC) is a stablecoin with existing or potential multi-jurisdictional reach that could become systemically important. Other terms include crypto-asset issuer, crypto-asset market, crypto-asset services, crypto-asset service providers, crypto-asset activities, crypto-asset trading platform, Decentralised Finance (DeFi), DeFi protocols, digital asset (a representation of value or contractual rights usable for payment or investment), and wallet. A hot wallet is internet-connected, while a cold wallet is offline hardware. A custodial (hosted) wallet is held by a service provider, whereas a non-custodial (unhosted) wallet lets the user alone access the assets.\n\nDoc 22 (Annex A) states its glossary applies only to that report and is non-legal. It defines Crypto-Asset Service Provider (CASP), smart contract (self-executing code triggered by a blockchain transaction), and repeats the stablecoin, wallet, custodial and non-custodial definitions.\n\nDoc 22 (Annex B) records IOSCO's May 2023 consultation on 18 policy recommendations, which drew 80 responses across eleven stakeholder categories. Recommendation 1 (Common Standards of Regulatory Outcomes) requires regulators to oversee crypto-asset trading, services, and issuance consistently with IOSCO Objectives and Principles for Securities Regulation, aiming for investor protection and market integrity outcomes the same as or consistent with traditional markets.",
+   "covers": [
+    "doc 20 §SCO60.131: Definitions",
+    "doc 21 §Glossary",
+    "doc 22 §Annex A: Glossary of Relevant Terms and Definitions"
+   ],
+   "children": [
+    "d20s4",
+    "d21s0",
+    "d22s0"
+   ]
+  },
+  {
+   "id": "s1_0_d16s2",
+   "level": 1,
+   "text": "Doc 16 (FinCEN guidance on common CVC business models), §§4–5, sets out how the BSA money transmission rules apply to several CVC activities. Money transmitter is defined in 31 CFR §1010.100(ff)(5), and MSB under §1010.100(ff), which covers natural and legal persons engaged in covered activities \"whether or not on a regular basis or as an organized business concern.\" P2P exchangers (§4.1) are money transmitters acting as principal when they regularly trade CVC for value, though an infrequent, non-profit person is exempt under §1010.100(ff)(8)(iii). Wallets (§4.2) are assessed on four criteria: (a) who owns the value; (b) where it is stored; (c) whether the owner interacts directly with the payment system; and (d) whether the intermediary has total independent control. Hosted wallet providers are money transmitters; unhosted wallets used for personal purchases are not; multiple-signature providers are not if they only create unhosted wallets, but are if combined with hosted services. CVC kiosks (§4.3) and DApps (§4.4) that accept and transmit value are money transmitters, with the operator, the DApp, or both so treated. Anonymity-enhanced CVC (§4.5) is subject to the same obligations as other CVC; anonymizing services providers (mixers) are money transmitters, while anonymizing software providers are not (31 CFR §1010.100(ff)(5)(ii)). Payment processors (§4.6) generally fail the payment processor exemption, §1010.100(ff)(5)(ii)(B), because they do not clear through BSA-regulated-only systems. Internet casinos (§4.7) are subject to casino rules under 31 CFR Part 1021 or to money transmitter rules. CVC trading platforms (§5.1) that only match bids and offers are not money transmitters; those that buy and sell as principal are. ICOs (§5.2) are assessed case by case, with the seller treated as a money transmitter and administrator where it alone issues and redeems the CVC at the initial offering.",
+   "covers": [
+    "doc 16 §Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)"
+   ],
+   "children": [
+    "d16s2",
+    "d16s3",
+    "d16s4",
+    "d16s5",
+    "d16s6",
+    "d16s7"
+   ]
+  },
+  {
+   "id": "s1_0_d1s1",
+   "level": 1,
+   "text": "Doc 1 (Body, Sections I–XII; a blockchain taxonomy paper) argues that heterogeneity in blockchain/DLT will hinder innovation, consistent lawmaking, consumer protection, workforce clarity, academic research, ISO/IEC/SDO standardisation and NGO understanding, and proposes software reference architectures and standards as the remedy, citing ISO/TC 307 (WG1 on reference architecture, taxonomy and ontology) and a 2016 Standards Australia survey in which over 88% of respondents saw a role for standards. It defines taxonomy as the identification, description, nomenclature and hierarchical classification of blockchain components, distinct from an ontology concerned with types, properties and interrelationships. Its method is: analysis across blockchains (families: digital currencies, application stacks, asset registry and asset-centric technologies); framework setting, yielding a hierarchical taxonomy of main, sub and sub-sub components; and layout categorisation, limited to two or three layouts per lowest-level component. Key principles are decentralisation of consensus, transparency, security (private keys and signatures), immutability (hash chaining, with a 51% attack threshold for proof-of-work) and automation via smart contracts. Consensus is the first main component, with subcomponents Consensus Network Topology (layouts: decentralised, hierarchical/\"Consortium blockchains\", centralised), Consensus Immutability and Failure Tolerance, Gossiping, and Consensus Agreement (Latency, Finality).\n\nDoc 15 (Chapter II, The Digital Asset Ecosystem; a US regulatory report) describes tokenization as using blockchain to record ownership of traditional or non-financial assets, with an industry estimate of over $600 billion in real-world assets tokenized by 2030. It states that tokenization's regulatory structure is determined by the underlying asset, not the process, and that tokenized instruments have tended to be regulated as securities. It identifies risks to consumers and market participants: custody risks (intermediary bankruptcy, manipulation, conflicts of interest, loss of private keys with non-custodial wallets), fraud and cybersecurity risks (smart contract coding errors and exploitable vulnerabilities), and data privacy risks from public, pseudonymous ledgers.",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 15 §Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)"
+   ],
+   "children": [
+    "d1s1",
+    "d1s2",
+    "d1s3",
+    "d1s4",
+    "d15s11"
+   ]
+  },
+  {
+   "id": "s1_0_d9s0",
+   "level": 1,
+   "text": "Doc 9 (UK Cryptoasset Reporting Regulations, regs 2–3): \"HMRC\" means His Majesty's Revenue and Customs. \"The rules\" means the rules and commentary in the OECD Crypto-Asset Reporting Framework (2022, as amended June and October 2023). \"Self-certification provider\" means an individual cryptoasset user, entity cryptoasset user, or controlling person of an entity cryptoasset user asked by a UK reporting cryptoasset service provider for a self-certification. \"Tribunal\" means the First-tier or Upper Tribunal. Expressions undefined in the Regulations take their meaning from the rules. A \"UK reporting cryptoasset service provider\" is a reporting cryptoasset service provider subject to Sections II and III of the rules in the UK under Section I(A), or with respect to transactions through a UK branch under Section I(B), and not exempt under Section I(C) to (H). Under Section I(H), a notification must reach HMRC by 31 May 2027 for calendar year 2026, or by 31 January after the relevant year for 2027 onward. It takes effect for that year and later years until withdrawn, and is given and withdrawn in the form HMRC specifies.\n\nDoc 15 (Chapter II, Digital Asset Ecosystem, US report): Financial intermediaries must collect and maintain identity information on transaction participants under requirements including the BSA. Operational risks include system failures, human error, governance lapses, data breaches, and smart contract coding errors causing unauthorised transfers. Technical standards are specifications for products, processes or services; standards development organisations (SDOs) include IEEE, ISO, IEC, W3C, IRTF and IETF. NIST pursues pre-standardisation research (e.g., Cybersecurity Framework 2.0) and represents US interests in SDOs. Relevant standards include ISO 23455:2019 and IEEE P3207. Digital signatures use public-private key pairs; quantum computers could derive private keys from public keys. NIST finalised FIPS 203, 204 and 205 in August 2024 as post-quantum standards. Cryptographic agility means replacing algorithms without disrupting operations. Permissionless blockchains face difficulty coordinating such upgrades, and immutability complicates migration. The report calls for sustained US leadership, with NIST guidance on wallet security, cross-chain bridges and incident response.",
+   "covers": [
+    "doc 15 §Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+    "doc 9 §Regulations 2-3: Interpretation; UK reporting cryptoasset service provider"
+   ],
+   "children": [
+    "d9s0",
+    "d15s12",
+    "d15s13"
+   ]
+  },
+  {
+   "id": "s1_0_d23s0",
+   "level": 1,
+   "text": "Doc 23 (UN Convention against Cybercrime, Art. 2) defines \"information and communications technology system\" as any device or interconnected group of devices that, pursuant to a program, gathers, stores and automatically processes electronic data. \"Electronic data\" is any representation of facts, information or concepts suitable for processing, including programs. \"Traffic data\" covers communication data indicating origin, destination, route, time, date, size, duration or type of service. \"Content data\" is any electronic data other than subscriber information or traffic data concerning the substance of a transfer. \"Service provider\" covers entities enabling communication by ICT systems, and those processing or storing data for such services or their users. \"Subscriber information\" is provider-held data (other than traffic or content) establishing service type and period, subscriber identity and address, billing details, and installation-site information. \"Personal data\" means information relating to an identified or identifiable natural person. \"Serious crime\" is conduct punishable by a maximum deprivation of liberty of at least four years or more. \"Property\" includes assets of every kind, including virtual assets, and instruments evidencing title. \"Proceeds of crime\" is property derived directly or indirectly from an offence. \"Freezing\" or \"seizure\" is temporary prohibition of transfer or movement, or temporary custody or control, under a court or competent authority order. \"Confiscation\", including forfeiture where applicable, is permanent deprivation by such an order. \"Predicate offence\" is an offence generating proceeds that may become the subject of an offence under Article 17. \"Regional economic integration organization\" is a body of sovereign States to which members have transferred competence under the Convention; references to States Parties apply to it within its competence. \"Emergency\" is a significant and imminent risk to the life or safety of any natural person.\n\nDoc 24 (Art. 1) defines \"computer system\", \"computer data\", \"service provider\", and \"traffic data\" in substantially similar terms to doc 23, using \"computer\" in place of \"information and communications technology\" and \"electronic\" terminology. Its service provider definition is split into two limbs: (i) public or private communication-service providers, and (ii) any other entity processing or storing computer data for such services or users.",
+   "covers": [
+    "doc 23 §Article 2: Use of terms",
+    "doc 24 §Article 1: Definitions"
+   ],
+   "children": [
+    "d23s0",
+    "d24s0"
+   ]
+  },
+  {
+   "id": "s1_0_d1s0",
+   "level": 1,
+   "text": "**Doc 1 (Tasca & Tessone, \"Taxonomy of Blockchain Technologies\", §Body, Sections I–XII, partial):** The paper uses a bottom-up method: blockchains are decomposed into building blocks, each hierarchically classified into main and subcomponents, alternative layouts are compared, and a taxonomy tree is produced as a navigation tool. Blockchain is defined as enabling agreement on shared states among untrusted participants without central control. The authors state that all components (distributed ledgers, public-key encryption, Merkle tree hashing, consensus protocols) predate Bitcoin (2008). The term \"blockchain technologies\" is used to cover architectural configurations and, more broadly, distributed ledger technologies, meaning community consensus-based ledgers not stored as chains of blocks. The paper frames the field as in a \"fermentation\" phase under the Technology Life Cycle theory, marked by technological uncertainty and heterogeneous designs, with interoperability concerns.\n\n**Doc 2 (Zhang, Ibañez & Xu, \"Crypto-asset Taxonomy for Investors and Regulators\", §Sections 1–5, partial):** Crypto-assets are defined, following MiCAR and IOSCO, as fungible tokens recorded on distributed ledgers within the digital-asset class, including stablecoins, governance tokens and other transferable instruments; the taxonomy focuses on this subset. Dimensions are to be orthogonal and non-overlapping, drawn from literature, MiCAR, MiFID and the Howey Test, and stress-tested on ambiguous cases. The dimensions emphasise regulatory and risk features (issuer/governance, creation and circulation, rights and cash flows, redemption, custody and control) and exclude descriptive market metrics such as price, volatility, volume, TVL and market share. Four technical standards are named: Native (e.g., BTC, ETH, TON), ERC-20 (fungible, e.g., WETH, MKR), and ERC-721 (non-fungible). Liquid staking tokens (LSTs) are highlighted as a category challenging existing taxonomies. The sample is the top 100 assets by CoinGecko market capitalisation as of 19 Nov 2025, instantiated in a CryptoAsset dataclass. Limitations noted: the taxonomy is static, TradFi analogues are non-exclusive, and borderline cases require judgement.\n\n**Doc 2 (§Sections 6–7, partial):** LSTs are treated by the US SEC as other crypto-assets because they do not involve an offer and sale of securities, so they fail the Howey test. LSTs are analogous to pass-through certificates (PTCs) under US Reg AB, which pass pro-rata cash flows from a pool to holders. Under EU Securitisation Regulation (Reg. (EU) 2017/2402), holders receive only tranche-allocated cash flows per the priority-of-payments waterfall. The conclusion lists open challenges: a static taxonomy, non-exclusive TradFi analogues, and integration with risk-based and cross-jurisdictional regimes.",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 2 §Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+    "doc 2 §Sections 6-7: case studies, TradFi analogues and regulatory implications; conclusion"
+   ],
+   "children": [
+    "d1s0",
+    "d2s0",
+    "d2s1",
+    "d2s10"
+   ]
+  },
+  {
+   "id": "s1_0_d1s12",
+   "level": 1,
+   "text": "Doc 1 (§Body, Sections I–XII) sets out a taxonomy of technical rules for blockchain systems, excluding regulatory rules as outside its scope, and identifies three governance layouts. Open-source community governance (Bitcoin, Ethereum, Hyperledger) has developers and validators coordinating upgrades, often with a foundation. Technical governance is led by companies such as IBM and Microsoft, which dictate rules to suit business goals and typically seek patents; the document cites about 2,500 such patents filed from 2014 to 2016. Alliance governance is run by industry consortia (B3i, R3), where only companies meeting criteria such as fee payment and organisational qualification may set technical rules.\n\nFor scripting languages, the document defines Turing-complete languages as those able to simulate any Turing machine, and notes that blockchain conditions for including transactions are specified algorithmically, sometimes called smart contracts. It identifies four script language layouts: (1) Turing complete, exemplified by Ethereum's EVM and Counterparty, with unresolved scalability and security concerns (Atzei et al., 2017); (2) generic non-Turing complete, exemplified by Bitcoin, with no oracle connectivity; (3) application-specific non-Turing complete, exemplified by DAML, designed for financial rights and obligations on private networks and more expressive than Bitcoin script; and (4) non-Turing complete with external data, which permits oracles and is barely used so far.",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)"
+   ],
+   "children": [
+    "d1s12"
+   ]
+  },
+  {
+   "id": "s1_0_d11s4",
+   "level": 1,
+   "text": "Doc 11 (Title I, Secs. 101-104, digital asset definitions): \"digital asset security\" includes a note, investment contract, or certificate of interest or participation in a profit-sharing agreement that (AA) gives an ownership or other interest in revenues, profits, obligations, debts or assets of the issuer or another person (other than a decentralized governance system), (BB) makes the holder a creditor, or (CC) gives a right to interest or return of principal. \"Security derivative\" covers security futures, security-based swaps, and puts, calls, straddles, options or privileges on securities, CDs, or indices. \"Permitted payment stablecoin\" is a digital asset designed as a means of payment or settlement, obligated to convert or redeem at a fixed monetary value, whose issuer is regulated by a Federal or State payment stablecoin regulator, and which is neither national currency nor an investment-company security under Investment Company Act §8(a). \"Banking deposit\" covers FDIA §3 deposits and FCUA §101 accounts regardless of recording technology. \"Commodity\" covers digital assets referencing agricultural commodities, excluded commodities (other than securities), or exempt commodities as further defined by the Commission. \"Commodity derivative\" covers futures, security futures products, swaps, CEA §2(c)(2)(C)(i)/(D)(i) agreements, commodity options under §4c, and leverage transactions under §19. \"Pooled investment vehicle\" means an Investment Company Act §3(a) investment company, an entity excluded under §3(c) (assumed an issuer), or any entity holding non-security assets. \"Good, collectible, and other non-commodity asset\" covers works of art, musical and literary works and other IP, collectibles, merchandise, virtual land, video game assets, non-speculative loyalty or rewards points, and rights, licenses and tickets. Rule of construction: no presumption that a digital asset is a security; voting or economic rights, or price changes tied to blockchain performance or use, do not alone exclude it from being a digital commodity. \"Digital commodity broker\" means a person who regularly solicits or accepts orders for digital commodity purchases or sales, or CEA §2(c)(2)(D)(iv) agreements. Doc 12 (same sections, continued): defines \"permitted payment stablecoin\" (as above), \"related person,\" \"restricted digital asset,\" \"securities laws\" (per Securities Exchange Act §3(a)), and \"source code.\"\n\nDoc 13 (Sec. 2, Definitions): defines \"digital asset\" as any digital representation of value recorded on a cryptographically secured distributed ledger; \"digital asset service provider\"; \"distributed ledger\"; \"distributed ledger protocol\"; \"payment stablecoin\"; \"permitted payment stablecoin issuer\" (subsidiary of an insured depository institution, Federal qualified issuer, or State qualified issuer); \"monetary value\"; \"national currency\"; \"State qualified payment stablecoin issuer\"; \"lawful order\"; and \"insured depository institution.\"\n\nDoc 15 (Ch. II, Digital Asset Ecosystem): under federal securities law, a digital asset security must be registered or exempt; non-security digital assets lack a comprehensive federal framework. Recognised exemptions include Regulation D, Regulation A, Regulation S and Regulation Crowdfunding. Forms include SAFT, Equity Plus Token Warrant and Convertible Notes with Token Purchase Options. Airdrops and forks are described; trading covers spot, futures, perpetual contracts and options.",
+   "covers": [
+    "doc 11 §Title I, Secs. 101-104: Definitions",
+    "doc 12 §Title I, Secs. 101-104: Definitions",
+    "doc 13 §Sec. 2: Definitions",
+    "doc 15 §Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)"
+   ],
+   "children": [
+    "d11s4",
+    "d12s4",
+    "d13s0",
+    "d13s1",
+    "d15s8"
+   ]
+  },
+  {
+   "id": "s1_0_d1s8",
+   "level": 1,
+   "text": "Doc 1 (the blockchain taxonomy paper) covers consensus, transaction capabilities, identity management, charging and rewarding, and conclusions, and includes an appendix listing blockchains analysed.\n\nConsensus: all Lamport Byzantine Fault Tolerance-based blockchains achieve deterministic consensus, with Stellar cited as deterministic finality and private blockchains with predefined block rules as another deterministic case.\n\nTransaction Capabilities (§V): subcomponents are Data Structure in the Blockheader, Transaction Model, Server Storage, Block Storage, and Limits to Scalability (transactions, users, nodes, confirmation time). Blockheader layouts are the Binary Merkle Tree (Bitcoin) and the Patricia Merkle Tree (Ethereum). Transaction Model layouts are the Unspent Transaction Output (UTXO) model (Bitcoin) and the Traditional Ledger (Stellar, Ripple, with Ethereum using smart-contract transactions). Server Storage layouts are Full Nodes and thin clients.\n\nDecomposition (§ unnamed, between V and X): Tendermint and Hyperledger Fabric are cited as polylithic designs with interchangeable modules.\n\nIdentity Management (§X): subcomponents are the Access and Control Layer and the Identity Layer. Access and Control models are Public blockchain (Bitcoin), Permissioned Public blockchain (Ripple, Ethereum, Hyperledger Fabric), and Permissioned Private blockchain (Monax). Identity Layer layouts are KYC/AML (Stellar, Ripple) and Anonymous (Bitcoin, described as pseudonymous).\n\nCharging and Rewarding System (§XI): subcomponents are Reward System and Fee System (Fee Reward and Fee Structure). Reward layouts are Lump-sum Reward (Bitcoin coinbase; Enigma fixed) and Block + Security Reward (Ethereum). Fee Reward layouts are Optional Fees (Bitcoin), Mandatory Fees (Stellar), and No Fees (Hyperledger Fabric). Fee Structure layouts are Variable Fees (Bitcoin, per byte) and Fixed Fees (Enigma, Peercoin at 0.01 PPC per kilobyte).\n\nConclusion (§XII): the paper proposes a blockchain taxonomy as a preliminary reference architectural model, noting non-interoperability of platforms and the need for standards, and describing the taxonomy as an early-stage first version.\n\nAppendix A (Table I): lists analysed blockchains including Bitcoin, Dash, Monero, LiteCoin, Zcash, Peercoin, ColorCoin, Omnilayer, NameCoin, Counterparty, NXT/Ardor, Ethereum, Monax, Cosmos, COMIT, Synerio, Ripple, Stellar, Hyperledger, Tendermint, Corda, and Enigma.",
+   "covers": [
+    "doc 1 §Appendix A: Blockchains analysed for the taxonomy",
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)"
+   ],
+   "children": [
+    "d1s8",
+    "d1s15",
+    "d1s16",
+    "d1s17",
+    "d1s18"
+   ]
+  },
+  {
+   "id": "s1_0_d5s2",
+   "level": 1,
+   "text": "Doc 5 (Article 2: Definitions, AML/CFT) defines: \"business relationship\" as a business, professional or commercial relationship with a customer, expected to have an element of repetition or duration; \"linked transactions\" as two or more transactions with identical or similar origin, destination and purpose over a specific period; \"third country\" as a jurisdiction outside the Union with its own AML/CFT legislation or enforcement regime; and \"correspondent relationship\" as banking services provided by one credit institution to another, extended to securities, transfers of funds and crypto-asset transactions or transfers. \"Shell institution\" is defined separately for credit/financial institutions (no physical presence, no meaningful mind and management, unaffiliated with a regulated group) and for crypto-asset service providers (an entity on the ESMA register under Article 110 of Regulation (EU) 2023/1114, or an unlicensed third-country provider not subject to AML/CFT supervision). Doc 5 also defines \"crypto-asset account\" by reference to Regulation (EU) 2023/1113, \"anonymity-enhancing coins\" as crypto-assets with built-in anonymising features, \"virtual IBAN\" as an identifier redirecting payments to a different IBAN, and \"Legal Entity Identifier\" as an ISO 17442 code. \"Beneficial owner\" is any natural person who ultimately owns or controls a legal entity or legal arrangement. \"Express trust\" is a trust intentionally set up by a settlor, usually in writing, placing assets under a trustee for a beneficiary or purpose. \"Objects of a power\" and \"default taker\" describe the potential and default beneficiaries of a discretionary trust. \"Legal arrangement\" covers express trusts and similar structures, including fiducie, certain Treuhand and fideicomiso. \"Basic information\" is specified for legal entities (legal form and name, constitutive instrument, registered and principal office, country of creation, legal representatives, shareholder details, registration, EUID, tax and LEI identifiers, and foundation assets) and for legal arrangements (name or identifier, trust deed, purposes, assets, and trustees' residence or administration place). \"Politically exposed person\" is defined by reference to prominent public functions, beginning with heads of State, heads of government, ministers, deputy or assistant ministers, and members of parliament or similar bodies in a Member State.\n\nDoc 6 (Article 3: Definitions, transfers of funds and crypto-assets) defines \"terrorist financing\" and \"money laundering\" by reference to Directive (EU) 2015/849, and \"payer,\" \"payee,\" \"payment service provider,\" \"intermediary payment service provider,\" \"payment account,\" \"funds\" and \"transfer of funds\" by reference to Directive (EU) 2015/2366, with \"transfer of funds\" listing credit transfers, direct debits, money remittances and payment-card, e-money or device-based transfers. \"Transfer of crypto-assets\" is any transaction moving crypto-assets between distributed ledger addresses, crypto-asset accounts or other storage devices, carried out by at least one crypto-asset service provider for an originator or beneficiary. Further terms include \"batch file transfer,\" \"unique transaction identifier,\" \"person-to-person transfer of crypto-assets\" (no provider involved), \"crypto-asset\" and \"crypto-asset service provider\" (by reference to Regulation (EU) 2023/1114), \"intermediary crypto-asset service provider,\" \"crypto-ATMs,\" \"distributed ledger address,\" \"crypto-asset account\" (held by a provider for one or more persons), and \"self-hosted address\" (not linked to a provider or to an equivalent non-Union entity). \"Originator\" and \"beneficiary\" are the crypto-asset counterparts of payer and payee. \"Legal entity identifier\" repeats the Doc 5 definition, and \"distributed ledger technology\" is defined by reference to Regulation (EU) 2023/1114, Article 3(1)(1).",
+   "covers": [
+    "doc 5 §Article 2: Definitions",
+    "doc 6 §Article 3: Definitions"
+   ],
+   "children": [
+    "d5s2",
+    "d6s0",
+    "d6s1"
+   ]
+  },
+  {
+   "id": "s1_0_d5s3",
+   "level": 1,
+   "text": "Doc 5 (§Article 2: Definitions) defines \"politically exposed person\" by reference to prominent public functions, including members of political party governing bodies in national or regional/local legislatures (constituencies of at least 50,000 inhabitants), members of supreme, constitutional or other final-instance courts, members of courts of auditors or central bank boards, ambassadors and senior armed forces officers, members of administrative, management or supervisory bodies of state-controlled (and, for medium/large undertakings, regionally or locally controlled) enterprises, heads of regional/local authorities with at least 50,000 inhabitants, and other functions set by Member States. Equivalent functions apply at international organisation, Union and third-country level. Middle-ranking or junior officials are excluded. Doc 5 defines \"family member\" as a spouse or registered/civil partner, a child and that child's spouse or partner, a parent, and, for certain functions, a sibling. \"Person known to be a close associate\" covers joint beneficial owners or close business relations, and sole beneficial owners of entities set up for a politically exposed person's benefit.\n\nDoc 5 (§Article 2: Definitions) defines \"management body\" (the body empowered to set strategy and oversee management, including persons effectively directing the business), \"management body in its management function\" (day-to-day management), \"management body in its supervisory function\", and \"senior management\" (management-function members plus officers and employees with sufficient knowledge and seniority to affect risk exposure). \"Group\" comprises a parent undertaking, its subsidiaries and undertakings linked under Article 22 of Directive 2013/34/EU. \"Parent undertaking\" is defined separately for Union-headquartered and non-Union-headquartered groups, the latter requiring at least two Union obliged-entity subsidiaries and an Union entity meeting criteria (i)–(iv). \"Cash\" follows Regulation (EU) 2018/1672. \"Competent authority\" comprises FIUs, supervisory authorities, and public authorities investigating or prosecuting money laundering or terrorist financing or tracing and confiscating criminal assets. \"Supervisor\" and \"supervisory authority\" are defined by reference to Regulation (EU) 2024/1620 and Directive (EU) 2024/1640; \"self-regulatory body\" is also defined.\n\nDoc 5 (§Article 2: Definitions) defines \"funds or other assets\" broadly, \"targeted financial sanctions\", \"UN financial sanctions\" and \"UN financial sanctions relating to proliferation financing\" by reference to specified UNSC resolutions and Council decisions and regulations. It further defines \"professional football club\", \"football agent\", \"high-value goods\" (Annex IV), \"precious metals and stones\" (Annex V), \"cultural goods\" (Annex I to Regulation (EC) No 116/2009), and \"partnership for information sharing\".\n\nDoc 5 (§Article 2, paragraphs 2–5) permits Member States, where justified by risk, to set lower thresholds for regional/local party governing bodies and regional/local heads, lower thresholds for regionally/locally controlled enterprises, and a broader scope for siblings, notifying the Commission.",
+   "covers": [
+    "doc 5 §Article 2: Definitions"
+   ],
+   "children": [
+    "d5s3",
+    "d5s4"
+   ]
+  },
+  {
+   "id": "s1_0_d1s13",
+   "level": 1,
+   "text": "Doc 1 (blockchain/DLT technical survey, Sections VIII–IX) describes security and privacy as two interrelated faces of one problem, with security covering information mismanagement, implementation vulnerabilities, cryptographic mismanagement and user privilege mismanagement. Privacy is defined per ISO 25237 as \"freedom from intrusion into the private life or affairs of an individual when that intrusion results from undue or illegal gathering and use of data about that individual.\" Data Encryption is split into SHA-2 (hashing, used in Bitcoin, requiring the issuer's public key for validation) and ZK-SNARKs (validation without providing the underlying data). Data Privacy is split into built-in privacy (e.g., ZeroCash zero-knowledge encryption; Enigma's secure multi-party computation with M-of-N secret sharing; R3's CORDA node-to-node encrypted transactions) and add-on privacy (CoinJoin mixing, secret sharing, ring and linkable ring signatures, stealth addresses, exemplified by Monero). The Codebase component comprises three elements: Coding Language (single language, e.g., Bitcoin Core in C++; multiple languages, e.g., Ethereum and Stellar), Code License (open source, e.g., MIT and ISC; closed source, e.g., Ethereum Enterprise Alliance), and Software Architecture (monolithic, e.g., Bitcoin and Ethereum; polylithic, which decouples consensus and P2P layers from application state).\n\nDoc 7 (EU digital operational resilience regulation, Article 3) sets out definitions including: \"digital operational resilience\"; \"ICT risk\"; \"ICT-related incident\"; \"major ICT-related incident\" (high adverse impact on systems supporting critical or important functions); \"cyber threat\" (by reference to Regulation (EU) 2019/881); \"significant cyber threat\"; \"cyber-attack\"; \"vulnerability\"; \"threat-led penetration testing (TLPT)\"; \"ICT third-party risk\"; \"ICT third-party service provider\"; \"ICT intra-group service provider\"; \"ICT services\"; \"legacy ICT system\"; and \"critical or important function\" (a function whose disruption would materially impair financial performance, soundness or continuity of services, or compliance with authorisation conditions).",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 7 §Article 3: Definitions"
+   ],
+   "children": [
+    "d1s13",
+    "d1s14",
+    "d7s0"
+   ]
+  },
+  {
+   "id": "s2_26_s1_0_d10s1",
+   "level": 2,
+   "text": "Doc 10 (Senate Banking Committee substitute) defines \"ancillary asset,\" \"ancillary asset originator,\" \"network token,\" \"smart contract,\" \"decentralized governance system,\" \"digital asset,\" \"digital commodity\" (CEA §1a meaning), \"distributed ledger\" (shared network data forming a public digital ledger of verified transactions, cryptographically linked), and \"related person\" (founders; 4%+ holders within 36 months; executive officers and 10%+ equity owners within 12 months; 10%+ asset owners within 6 months; covered-token holders of 2%+ within 6 months, excluding decentralized governance systems). Sec. 105 requires Commission rules within one year, treating a network token as not a disqualifying financial right under Securities Act §4B(a)(7)(B) where value is primarily derived from the distributed ledger system. Qualifying indicators: (A) system consideration; (B) governance capabilities; (C) value moving with use or performance; (D) for ancillary assets, value moving with originator efforts. Sec. 105(b) and a January 1, 2026 ETP exception are also set out.\n\nDoc 11 (Title I, Secs. 101-104) defines \"blockchain system,\" \"decentralized governance system,\" \"mature blockchain system\" (not controlled by a person or group under common control), \"digital asset,\" \"digital commodity\" (intrinsically linked to a blockchain system, value derived from its use), \"digital commodity affiliated person\" (5%+ acquirers, founders, executives within 12 months), \"digital commodity issuer,\" \"end user distribution\" (nominal exchange; broad, equitable distribution; staking subject to rules due within 270 days), \"digital commodity broker,\" \"digital commodity dealer,\" \"digital commodity exchange,\" and \"mixed digital asset transaction.\" \"Digital asset security\" covers notes, investment contracts and profit-sharing interests conferring revenue or asset interests (excluding decentralized governance systems), creditor status, or interest/principal rights. \"Permitted payment stablecoin\" is a fixed-value redeemable means of payment from a regulated issuer, not national currency nor an Investment Company Act §8(a) security.\n\nDoc 12 (Title I, alternative text) defines \"decentralized system\" with 12-month and 3-month tests (no unilateral control, no 20%+ affiliate aggregate ownership, no material issuer code changes, no investment marketing, end-user distributions only), \"digital commodity\" in three limbs, \"digital asset maturity date\" (20%+ of units as digital commodities or registered assets), \"digital asset broker,\" \"digital asset custodian,\" and \"digital asset trading system.\"\n\nDoc 13 (Sec. 2) defines \"digital asset,\" \"distributed ledger,\" and \"permitted payment stablecoin issuer\" (insured depository subsidiary, Federal or State qualified issuer). Doc 14 (Executive order, Sec. 2) defines \"digital asset,\" \"blockchain,\" and \"Central Bank Digital Currency\" (direct central bank liability in the national unit of account). Doc 15 (Ch. II) notes that digital asset securities require registration or exemption (Regulation D, A, S, Crowdfunding).",
+   "covers": [
+    "doc 10 §Senate Banking Committee substitute, Sec. 105: Characteristics of network tokens",
+    "doc 10 §Senate Banking Committee substitute, Sec. 2: Definitions (ancillary asset, digital asset, distributed ledger, etc.)",
+    "doc 11 §Title I, Secs. 101-104: Definitions",
+    "doc 12 §Title I, Secs. 101-104: Definitions",
+    "doc 13 §Sec. 2: Definitions",
+    "doc 14 §Sec. 2: Definitions",
+    "doc 15 §Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)"
+   ],
+   "children": [
+    "s1_0_d10s1",
+    "s1_0_d10s0",
+    "s1_0_d11s4"
+   ]
+  },
+  {
+   "id": "s2_26_s1_0_d3s0",
+   "level": 2,
+   "text": "**Doc 3 (DLT-Corpus, KDD '26):** Introduces DLT-Corpus, 2.98 billion tokens from 22.12 million documents: scientific literature (37,440 publications, 564M tokens), USPTO patents (49,023 filings, 1,296M tokens) and social media (22.03M posts, 1,120M tokens), covering 2013 to mid-2025. Social media is limited to pre-2023 Twitter/X collections with usernames removed. Defined terms: DLT is the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs; blockchain is the chain-based architecture introduced by Bitcoin. Filters: a domain-relevance filter (BERT-base-cased, retaining documents with maximum score above 0.995 or median at or above the scientific-literature median), an English filter (FastText, Lingua), and paper length limits of 500 to 40,000 tokens. Keyword density is measured per 1,000 words against a 361-term DLT keyword set. Sentiment labels (23,301 CryptoPanic items) use 25th and 75th percentile boundaries on normalised votes: below the 25th is negative, above the 75th positive, otherwise neutral.\n\n**Doc 2 (Zhang, Ibañez & Xu, crypto-asset taxonomy, §§1–7):** Crypto-assets are fungible tokens on distributed ledgers, following MiCAR and IOSCO. The centralisation dimension (§4.2) classifies assets as centralised, decentralised or hybrid via the Minimum Decentralisation Test (MDT) across six groups: governance, minting, yield, redemption (core, where unilateral control of any one makes an asset centralised), market and community (supporting evidence only). Asset function (§4.3) defines governance tokens, utility tokens (MiCAR Art. 3(1)(9)) and security tokens. Legal classification (§4.5) applies the Howey test, MiFID II and ART/AIF tests. Technical standards are Native, ERC-20 and ERC-721. Liquid staking tokens are treated as other crypto-assets under the US SEC, analogous to pass-through certificates under US Reg AB and EU Reg. (EU) 2017/2402. The top 100 assets (19 Nov 2025) map to 45 decentralised, 39 centralised and 8 hybrid.\n\n**Doc 20 (Basel cryptoasset classification, SCO60.6–60.22):** Cryptoassets are screened on an ongoing basis into Group 1 (meeting conditions 1–4) and Group 2 (failing them). Group 1a comprises tokenised traditional assets; Group 1b comprises cryptoassets with effective stabilisation mechanisms. Group 2a passes the hedging recognition criteria in SCO60.55; Group 2b comprises all others. Condition 1 requires a tokenised traditional asset or an effective stabilisation mechanism, which must pass the redemption risk test (SCO60.12): reserves net of non-cryptoasset claims must at all times at least equal aggregate peg value, with Level 1 HQLA as an example. Algorithmic mechanisms do not qualify. Condition 2 requires enforceable rights and redemption within 5 calendar days; Condition 3 requires risk-mitigating network functions; Condition 4 requires regulated or appropriately supervised intermediaries. Banks classify and document (SCO60.20); supervisors review and may override (SCO60.21).\n\n**Doc 1 (Tasca & Tessone, taxonomy of blockchain technologies, §§I–XII, partial):** Uses a bottom-up method decomposing blockchains into building blocks arranged in a hierarchical taxonomy tree. Blockchain enables agreement on shared states among untrusted participants without central control. \"Blockchain technologies\" covers architectural configurations and, more broadly, distributed ledger technologies: community consensus-based ledgers not stored as chains of blocks. The field is in a \"fermentation\" phase under Technology Life Cycle theory.",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 2 §Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+    "doc 2 §Sections 6-7: case studies, TradFi analogues and regulatory implications; conclusion",
+    "doc 20 §SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+    "doc 3 §Body: all sections (introduction through limitations)"
+   ],
+   "children": [
+    "s1_0_d3s0",
+    "s1_0_d2s2",
+    "s1_0_d20s0",
+    "s1_0_d1s0"
+   ]
+  },
+  {
+   "id": "s2_26_s1_0_d17s3",
+   "level": 2,
+   "text": "Doc 17 (FATF Updated Guidance on a risk-based approach to virtual assets and VASPs), Part Two, defines a virtual asset (VA) as a digital representation of value that can be digitally traded or transferred and used for payment or investment purposes, interpreted broadly, technology-neutrally and functionally. Digital representations of fiat currencies, securities and other financial assets already covered by the Recommendations are excluded but may be covered as financial assets. Stablecoins are covered as VAs or financial assets depending on nature and national regime. NFTs or crypto-collectibles are generally not VAs unless used in practice for payment or investment, assessed case by case.\n\nDoc 17 defines a virtual asset service provider (VASP) as a natural or legal person not covered elsewhere under the Recommendations who, as a business, conducts for or on behalf of another person one or more of five activities: (i) exchange between VAs and fiat currencies; (ii) exchange between VAs; (iii) transfer of VAs; (iv) safekeeping and/or administration of VAs or instruments enabling control over them; (v) participation in and provision of financial services related to an issuer's offer and/or sale of a VA. \"Transfer\" means a transaction moving a VA from one address or account to another. \"Control\" means the ability to hold, trade, transfer or spend a VA and does not require unilateral control. Entities are assessed on function, not name or technology.\n\nDoc 17, Part Two, on DeFi (paras 67–70), states a DeFi application is not a VASP, but creators, owners or operators maintaining \"control or sufficient influence\" or actively facilitating VASP services may be. Self-description as decentralised is not determinative. Stablecoin governance bodies are generally FIs or VASPs (paras 86–89, Box 3). Doc 17 states the VA and VASP definitions are a minimum (para 94).\n\nDoc 16 (FinCEN guidance), §1.2.1, defines a money transmitter under the 2011 MSB Final Rule and \"money transmission services\" as accepting and transmitting currency, funds or \"other value that substitutes for currency.\" §1.3 defines convertible virtual currency (CVC) as virtual currency having an equivalent value to currency or substituting for it. In §§4–5, Doc 16 addresses P2P exchangers, hosted and unhosted wallets, CVC kiosks, DApps, anonymizing services (mixers), payment processors, internet casinos, trading platforms (matching-only versus principal trading) and ICOs, under 31 CFR §1010.100(ff).",
+   "covers": [
+    "doc 16 §Sec. 1.2.1: Definitions",
+    "doc 16 §Sec. 1.3: Convertible Virtual Currency (CVC)",
+    "doc 16 §Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)",
+    "doc 17 §Annex A: Recommendation 15, Interpretive Note and FATF Definitions; Glossary",
+    "doc 17 §Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)"
+   ],
+   "children": [
+    "s1_0_d17s3",
+    "s1_0_d17s0",
+    "s1_0_d16s0",
+    "s1_0_d16s2"
+   ]
+  },
+  {
+   "id": "s2_26_s1_0_d4s0",
+   "level": 2,
+   "text": "Doc 4 (MiCA, Arts 2–3) excludes unique, non-fungible crypto-assets (Art. 2(3)) and crypto-assets qualifying as financial instruments, deposits, structured deposits, funds (unless e-money tokens), securitisation positions, insurance and pension products, and social security schemes (Art. 2(4)). ESMA must issue guidelines on qualifying crypto-assets as financial instruments by 30 December 2024 (Art. 2(5)). Art. 3(1) defines a crypto-asset as a digital representation of value or right transferable and storable electronically via DLT, an asset-referenced token as one stabilised by reference to other values or rights, an e-money token as one referencing one official currency, and a utility token as one giving access to goods or services supplied only by its issuer. Crypto-asset services (Art. 3(1)(16)(a)–(j)) cover custody and administration, trading platform operation, exchange for funds or other crypto-assets, execution, placing, reception and transmission of orders, advice, portfolio management and transfer services. A qualifying holding is at least 10% of capital or voting rights (Art. 3(1)). The Commission may amend definitions by delegated act (Art. 3(2)).\n\nDoc 5 (AML Directive, Art. 2) defines money laundering and terrorist financing by reference to Directives 2018/1673 and 2017/541, self-hosted address by reference to Regulation 2023/1113 Art. 3(20), and crypto-asset service provider by reference to MiCA Art. 3(1)(15). It also defines beneficial owner, express trust, politically exposed person (including the Member State threshold of 50,000 inhabitants for regional and local heads and assemblies), and shell institution.\n\nDoc 6 (Art. 3) defines transfer of crypto-assets as any transaction moving crypto-assets between distributed ledger addresses, crypto-asset accounts or storage devices, carried out by at least one provider for an originator or beneficiary, and person-to-person transfer as one involving no provider.\n\nDoc 7 (DORA, Art. 3) defines microenterprise (fewer than 10 persons, turnover or balance sheet at most EUR 2 million), small enterprise (10 to under 50 persons, up to EUR 10 million) and medium-sized enterprise (under 250 persons, turnover up to EUR 50 million and/or balance sheet up to EUR 43 million), and critical or important function.\n\nDoc 8 (UK FSMA 2000 RAO amendments) defines qualifying cryptoasset (art. 88F) as a fungible, transferable cryptoasset not solely a record of value or contractual rights, and qualifying stablecoin (art. 88G) as one seeking stable value against fiat currency. Qualifying cryptoasset trading platform (art. 3) and consumer are defined. Regulation 40 creates specified activities including issuing qualifying stablecoin (art. 9M), operating a trading platform (art. 9S) and qualifying cryptoasset staking (art. 9Z6), the last being use of a cryptoasset in blockchain validation including proof-of-stake.\n\nDoc 17 (FATF Annex A) requires VASPs to be licensed or registered and supervised on a risk basis, with CDD occasional-transaction threshold of USD/EUR 1,000 (Recs 10–21) and Travel Rule obligations under R.16.\n\nDoc 20 (§SCO60.131) defines cryptoassets as private digital assets depending primarily on cryptography and DLT, and stablecoins as aiming to maintain stable value relative to a specified asset, pool or basket. Doc 21 defines global stablecoin as a stablecoin with existing or potential multi-jurisdictional reach. Doc 22 (Annex A) defines smart contract and CASP; a custodial wallet is held by a provider, a non-custodial wallet is user-controlled.\n\nDoc 23 (UN Convention against Cybercrime, Art. 2) defines serious crime as conduct punishable by at least four years' deprivation of liberty, property as including virtual assets, and proceeds of crime as property derived from an offence. Doc 24 (Art. 1) defines service provider in two limbs.",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 17 §Annex A: Recommendation 15, Interpretive Note and FATF Definitions; Glossary",
+    "doc 18 §Section Two: ML/TF/PF Risks (stablecoins, unhosted wallets, offshore VASPs, DeFi)",
+    "doc 19 §Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+    "doc 20 §SCO60.131: Definitions",
+    "doc 21 §Glossary",
+    "doc 22 §Annex A: Glossary of Relevant Terms and Definitions",
+    "doc 23 §Article 2: Use of terms",
+    "doc 24 §Article 1: Definitions",
+    "doc 4 §Articles 2-3: Scope and Definitions",
+    "doc 5 §Article 2: Definitions",
+    "doc 6 §Article 3: Definitions",
+    "doc 7 §Article 3: Definitions",
+    "doc 8 §Regulation 2: Interpretation",
+    "doc 8 §Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)"
+   ],
+   "children": [
+    "s1_0_d4s0",
+    "s1_0_d8s0",
+    "s1_0_d17s9",
+    "s1_0_d20s4",
+    "s1_0_d23s0",
+    "s1_0_d5s2",
+    "s1_0_d5s3",
+    "s1_0_d1s13"
+   ]
+  },
+  {
+   "id": "s2_26_s1_0_d15s0",
+   "level": 2,
+   "text": "Doc 15 (Chapter II, Digital Asset Ecosystem, US regulatory report) defines a \"digital asset\" as \"any digital representation of value that is recorded on a distributed ledger\" and treats blockchain as a type of distributed ledger technology, quoting the EO 14178 definition (shared network, cryptographic linkage, automated distribution, publicly available source code). It defines a native token as the token a network uses for fees and consensus rewards, and describes DAOs and DeFi's five-layer stack (application/interface, broadcast, smart contract protocol, asset, base). It lists federal regulators (SEC, CFTC, FINRA, NFA, FRB, OCC, FDIC, NCUA, FinCEN, OFAC, IRS) and reports that tokenization's regulatory structure follows the underlying asset.\n\nDoc 1 (Body, Sections I–XII; blockchain taxonomy paper) defines taxonomy as the identification, description, nomenclature and hierarchical classification of components, distinct from an ontology. Gossiping is \"local\" or \"global\"; latency is \"synchronous\" (bound Δ) or \"asynchronous\"; finality is \"non-deterministic\" or \"deterministic\". Native asset is \"none\", \"own cryptocurrency\" or \"convertible multiple assets\"; tokenisation is \"no tokenisation\", \"through third-party addons\" or \"tokenisation\". Consensus layouts are PoW, PoS, PoA, PoC/PoSpace/PoStorage, PoB and Hybrid, with BFT tolerating at most n/3 corrupted nodes under asynchrony. Transaction Model layouts are UTXO and Traditional Ledger; Identity Layer layouts are KYC/AML and Anonymous; Fee Reward layouts are Optional, Mandatory and No Fees. Script languages are Turing complete, generic non-Turing complete, application-specific non-Turing complete, and non-Turing complete with external data. Governance is open-source community, technical (corporate) or alliance.\n\nDoc 15 defines a PoS \"slashing\" as forfeiture for downtime or malicious behaviour, notes Bitcoin's 21 million fixed supply and 2,016-block difficulty adjustment, and names the 51% attack as the main PoW threat. It defines sequencing as ordering transactions to maximise MEV.\n\nDoc 9 (UK Cryptoasset Reporting Regulations, regs 2–3) defines \"HMRC\" and \"the rules\" (OECD CARF, 2022, amended 2023), \"self-certification provider\" and \"Tribunal\". A \"UK reporting cryptoasset service provider\" is one subject to Sections II and III of the rules under Section I(A) or I(B), and not exempt under I(C)–(H).",
+   "covers": [
+    "doc 1 §Appendix A: Blockchains analysed for the taxonomy",
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 15 §Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+    "doc 9 §Regulations 2-3: Interpretation; UK reporting cryptoasset service provider"
+   ],
+   "children": [
+    "s1_0_d15s0",
+    "s1_0_d1s7",
+    "s1_0_d1s5",
+    "s1_0_d1s1",
+    "s1_0_d9s0",
+    "s1_0_d1s12",
+    "s1_0_d1s8"
+   ]
+  },
+  {
+   "id": "s3_31_s2_26_s1_0_d17s3",
+   "level": 3,
+   "text": "Doc 17 (FATF Updated Guidance, Part Two) defines a virtual asset (VA) as a digital representation of value that can be digitally traded or transferred and used for payment or investment purposes, interpreted broadly, technology-neutrally and functionally. Digital representations of fiat currencies and securities already covered by the Recommendations are excluded but may be covered as financial assets. Stablecoins are VAs or financial assets depending on nature and national regime. NFTs or crypto-collectibles are generally not VAs unless used in practice for payment or investment. A virtual asset service provider (VASP) is a natural or legal person, not covered elsewhere, conducting as a business for another one or more of five activities: (i) exchange between VAs and fiat currencies; (ii) exchange between VAs; (iii) transfer of VAs; (iv) safekeeping and/or administration of VAs or instruments enabling control; (v) participation in and provision of financial services related to an issuer's offer and/or sale of a VA. \"Transfer\" is a transaction moving a VA from one address or account to another. \"Control\" means the ability to hold, trade, transfer or spend a VA and does not require unilateral control. Under paras 67–70, a DeFi application is not a VASP, but creators or operators maintaining \"control or sufficient influence\" may be. Stablecoin governance bodies are generally FIs or VASPs (paras 86–89). The definitions are a minimum (para 94).\n\nDoc 16 (FinCEN guidance, §§1.2.1, 1.3) defines money transmission services as accepting and transmitting \"other value that substitutes for currency\", and convertible virtual currency (CVC) as virtual currency having equivalent value to currency or substituting for it.\n\nDoc 4 (MiCA, Arts 2–3) excludes unique, non-fungible crypto-assets (Art. 2(3)) and crypto-assets qualifying as financial instruments, deposits, funds (unless e-money tokens) and similar products (Art. 2(4)). A crypto-asset is a digital representation of value or right transferable and storable via DLT; an asset-referenced token is stabilised by reference to other values or rights; an e-money token references one official currency; a utility token gives access to goods or services supplied only by its issuer. Crypto-asset services (Art. 3(1)(16)(a)–(j)) include custody, trading platform operation, exchange, execution, advice, portfolio management and transfer services. A qualifying holding is at least 10% of capital or voting rights.\n\nDoc 5 (AML Directive, Art. 2) defines self-hosted address by reference to Regulation 2023/1113 Art. 3(20) and crypto-asset service provider by reference to MiCA Art. 3(1)(15). Doc 6 (Art. 3) defines transfer of crypto-assets as any transaction moving them between distributed ledger addresses, accounts or storage devices, carried out by at least one provider, and person-to-person transfer as one involving no provider.\n\nDoc 7 (DORA, Art. 3) defines microenterprise (fewer than 10 persons, turnover or balance sheet at most EUR 2 million), small (10 to under 50 persons, up to EUR 10 million) and medium-sized (under 250 persons, turnover up to EUR 50 million and/or balance sheet up to EUR 43 million) enterprises.\n\nDoc 8 (UK FSMA 2000 RAO amendments) defines qualifying cryptoasset (art. 88F) as a fungible, transferable cryptoasset not solely a record of value or contractual rights, and qualifying stablecoin (art. 88G) as one seeking stable value against fiat currency.\n\nDoc 20 (§SCO60.131) defines cryptoassets as private digital assets depending primarily on cryptography and DLT, and stablecoins as aiming to maintain stable value relative to a specified asset, pool or basket. Doc 21 defines a global stablecoin as one with existing or potential multi-jurisdictional reach. Doc 22 (Annex A) distinguishes custodial wallets, held by a provider, from non-custodial wallets, which are user-controlled.\n\nDoc 23 (UN Convention against Cybercrime, Art. 2) defines serious crime as conduct punishable by at least four years' deprivation of liberty, property as including virtual assets, and proceeds of crime as property derived from an offence.",
+   "covers": [
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 16 §Sec. 1.2.1: Definitions",
+    "doc 16 §Sec. 1.3: Convertible Virtual Currency (CVC)",
+    "doc 16 §Secs. 4-5: Common CVC business models (P2P exchangers, wallets, kiosks, DApps, anonymity-enhanced CVC, trading platforms, ICOs, mining pools)",
+    "doc 17 §Annex A: Recommendation 15, Interpretive Note and FATF Definitions; Glossary",
+    "doc 17 §Part Two: What is a virtual asset? What is a VASP? Scope of the definitions (incl. stablecoins, P2P, DeFi, NFTs)",
+    "doc 18 §Section Two: ML/TF/PF Risks (stablecoins, unhosted wallets, offshore VASPs, DeFi)",
+    "doc 19 §Section Two: ML/TF/PF Risks (stablecoins, P2P/unhosted wallets, offshore VASPs, DeFi)",
+    "doc 20 §SCO60.131: Definitions",
+    "doc 21 §Glossary",
+    "doc 22 §Annex A: Glossary of Relevant Terms and Definitions",
+    "doc 23 §Article 2: Use of terms",
+    "doc 24 §Article 1: Definitions",
+    "doc 4 §Articles 2-3: Scope and Definitions",
+    "doc 5 §Article 2: Definitions",
+    "doc 6 §Article 3: Definitions",
+    "doc 7 §Article 3: Definitions",
+    "doc 8 §Regulation 2: Interpretation",
+    "doc 8 §Regulation 40: Amendment of the Regulated Activities Order (new cryptoasset specified activities, arts 9M-9Z, 88F-88G)"
+   ],
+   "children": [
+    "s2_26_s1_0_d17s3",
+    "s2_26_s1_0_d4s0"
+   ]
+  },
+  {
+   "id": "s3_31_s2_26_s1_0_d10s1",
+   "level": 3,
+   "text": "The corpus materials define the following terms and criteria. Doc 10 (Senate Banking Committee substitute) defines \"ancillary asset,\" \"network token,\" \"smart contract,\" \"decentralized governance system,\" \"digital asset,\" \"digital commodity\" (CEA §1a meaning), \"distributed ledger,\" and \"related person,\" with holding thresholds of 4% (founders within 36 months), 10% (executive officers and equity owners within 12 months, asset owners within 6 months) and 2% (covered-token holders within 6 months, excluding decentralized governance systems). Sec. 105 treats a network token as not a disqualifying financial right under Securities Act §4B(a)(7)(B) where value is primarily derived from the distributed ledger system, with qualifying indicators (A) system consideration, (B) governance capabilities, (C) value moving with use or performance, and (D) for ancillary assets, value moving with originator efforts.\n\nDoc 11 (Title I, Secs. 101-104) defines \"blockchain system,\" \"mature blockchain system\" (not controlled by a person or group under common control), \"digital commodity\" (intrinsically linked to a blockchain system), \"digital commodity affiliated person\" (5%+ acquirers, founders, executives within 12 months), \"end user distribution,\" and \"permitted payment stablecoin.\" Doc 12 (alternative Title I text) sets 12-month and 3-month tests for \"decentralized system\" and a \"digital asset maturity date\" at 20% of units as digital commodities or registered assets.\n\nDoc 3 (DLT-Corpus, KDD '26) defines DLT as the broad category including blockchain, Hashgraph, Holochain, Parachains, Sidechains and DAGs, with a 361-term keyword set and a sentiment split at the 25th and 75th percentiles.\n\nDoc 2 (Zhang, Ibañez & Xu, §§1–7) classifies crypto-assets as centralised, decentralised or hybrid via the Minimum Decentralisation Test across governance, minting, yield, redemption (core), market and community groups. Doc 20 (Basel SCO60.6–60.22) assigns Group 1a (tokenised traditional assets), Group 1b (effective stabilisation mechanisms), Group 2a (hedging recognition) and Group 2b (all others), with a 5-day redemption requirement.\n\nDoc 1 (taxonomy of blockchain technologies) defines taxonomy, gossiping (local or global), latency (synchronous or asynchronous), finality (deterministic or non-deterministic), and consensus layouts including PoW, PoS, PoA and BFT (tolerating at most n/3 corrupted nodes). Doc 15 defines \"digital asset\" as \"any digital representation of value that is recorded on a distributed ledger\" and a native token as the token used for fees and consensus rewards.",
+   "covers": [
+    "doc 1 §Appendix A: Blockchains analysed for the taxonomy",
+    "doc 1 §Body: Sections I-XII (introduction through conclusion)",
+    "doc 10 §Senate Banking Committee substitute, Sec. 105: Characteristics of network tokens",
+    "doc 10 §Senate Banking Committee substitute, Sec. 2: Definitions (ancillary asset, digital asset, distributed ledger, etc.)",
+    "doc 11 §Title I, Secs. 101-104: Definitions",
+    "doc 12 §Title I, Secs. 101-104: Definitions",
+    "doc 13 §Sec. 2: Definitions",
+    "doc 14 §Sec. 2: Definitions",
+    "doc 15 §Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+    "doc 2 §Sections 1-5: motivation, related work, methodology, taxonomy dimensions, dataclass and decision rules, mapping results (summary)",
+    "doc 2 §Sections 6-7: case studies, TradFi analogues and regulatory implications; conclusion",
+    "doc 20 §SCO60.6-60.22: Classification conditions (Group 1a/1b/2a/2b cryptoassets)",
+    "doc 3 §Body: all sections (introduction through limitations)",
+    "doc 9 §Regulations 2-3: Interpretation; UK reporting cryptoasset service provider"
+   ],
+   "children": [
+    "s2_26_s1_0_d10s1",
+    "s2_26_s1_0_d3s0",
+    "s2_26_s1_0_d15s0"
+   ]
+  }
+ ]
+}

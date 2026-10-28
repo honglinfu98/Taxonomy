@@ -1,0 +1,92 @@
+{
+ "system": "text",
+ "items": 378,
+ "labels": 28,
+ "catalogue_version": 6,
+ "runs": [
+  {
+   "run": 1,
+   "metrics": {
+    "micro_p": 0.4459,
+    "micro_r": 0.786,
+    "micro_f1": 0.569,
+    "macro_f1": 0.5627,
+    "n_labels": 28,
+    "tp": 672,
+    "fp": 835,
+    "fn": 183,
+    "pred_per_item": 3.987,
+    "unknown_names": 10,
+    "parse_errors": 2
+   },
+   "run_info": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "usage": {
+     "input": 281700,
+     "output": 20159,
+     "cache_write": 0,
+     "cache_read": 0
+    },
+    "cost_usd": 0.0382,
+    "wall_seconds": 50.8
+   }
+  },
+  {
+   "run": 2,
+   "metrics": {
+    "micro_p": 0.4482,
+    "micro_r": 0.7895,
+    "micro_f1": 0.5718,
+    "macro_f1": 0.5631,
+    "n_labels": 28,
+    "tp": 675,
+    "fp": 831,
+    "fn": 180,
+    "pred_per_item": 3.984,
+    "unknown_names": 13,
+    "parse_errors": 2
+   },
+   "run_info": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "usage": {
+     "input": 281700,
+     "output": 20076,
+     "cache_write": 0,
+     "cache_read": 0
+    },
+    "cost_usd": 0.0382,
+    "wall_seconds": 51.6
+   }
+  },
+  {
+   "run": 3,
+   "metrics": {
+    "micro_p": 0.4474,
+    "micro_r": 0.7906,
+    "micro_f1": 0.5714,
+    "macro_f1": 0.5629,
+    "n_labels": 28,
+    "tp": 676,
+    "fp": 835,
+    "fn": 179,
+    "pred_per_item": 3.997,
+    "unknown_names": 13,
+    "parse_errors": 2
+   },
+   "run_info": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "usage": {
+     "input": 281700,
+     "output": 20239,
+     "cache_write": 0,
+     "cache_read": 0
+    },
+    "cost_usd": 0.0383,
+    "wall_seconds": 53.1
+   }
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "gold_version": 6,
+ "items": 300,
+ "term_types": 65,
+ "mapped_types": 36,
+ "mapping": {
+  "judge": "claude-haiku-5-5",
+  "gold_types": 132,
+  "catalogue_types": 65,
+  "matched": 36,
+  "model": "claude-haiku-5-5",
+  "calls": 2,
+  "usage": {
+   "input": 42610,
+   "output": 4987,
+   "cache_write": 0,
+   "cache_read": 0
+  },
+  "cost_usd": 0.0068,
+  "api_seconds": 17.1,
+  "wall_seconds": 18.1
+ },
+ "runs": [
+  {
+   "run": 1,
+   "metrics": {
+    "micro_p": 0.1868,
+    "micro_r": 0.1805,
+    "micro_f1": 0.1836,
+    "macro_f1": 0.0868,
+    "n_labels": 84,
+    "tp": 187,
+    "fp": 814,
+    "fn": 849,
+    "pred_per_item": 3.34,
+    "mapped_share": 0.66
+   },
+   "run_info": {
+    "cost_usd": 0.1715,
+    "api_seconds": 650.5,
+    "wall_seconds": 112.4,
+    "usage": {
+     "input": 233972,
+     "output": 95255,
+     "cache_write": 32249,
+     "cache_read": 9642451
+    },
+    "model": "claude-haiku-5-5",
+    "effort": "medium"
+   }
+  },
+  {
+   "run": 2,
+   "metrics": {
+    "micro_p": 0.1715,
+    "micro_r": 0.1651,
+    "micro_f1": 0.1682,
+    "macro_f1": 0.0741,
+    "n_labels": 84,
+    "tp": 171,
+    "fp": 826,
+    "fn": 865,
+    "pred_per_item": 3.32,
+    "mapped_share": 0.646
+   },
+   "run_info": {
+    "cost_usd": 0.1675,
+    "api_seconds": 641.9,
+    "wall_seconds": 109.6,
+    "usage": {
+     "input": 233972,
+     "output": 94618,
+     "cache_write": 0,
+     "cache_read": 9674700
+    },
+    "model": "claude-haiku-5-5",
+    "effort": "medium"
+   }
+  },
+  {
+   "run": 3,
+   "metrics": {
+    "micro_p": 0.1839,
+    "micro_r": 0.1824,
+    "micro_f1": 0.1831,
+    "macro_f1": 0.0841,
+    "n_labels": 84,
+    "tp": 189,
+    "fp": 839,
+    "fn": 847,
+    "pred_per_item": 3.43,
+    "mapped_share": 0.674
+   },
+   "run_info": {
+    "cost_usd": 0.1679,
+    "api_seconds": 602.0,
+    "wall_seconds": 102.9,
+    "usage": {
+     "input": 233972,
+     "output": 95489,
+     "cache_write": 0,
+     "cache_read": 9674700
+    },
+    "model": "claude-haiku-5-5",
+    "effort": "medium"
+   }
+  }
+ ]
+}

@@ -1,0 +1,290 @@
+{
+ "items": 378,
+ "items_with_gold": 351,
+ "labels": 28,
+ "label_counts": {
+  "Smart Contract Platform": 120,
+  "Layer 1 (L1)": 75,
+  "Real World Assets (RWA)": 72,
+  "Decentralized Finance (DeFi)": 69,
+  "Tokenized Assets": 46,
+  "Stablecoins": 42,
+  "Artificial Intelligence (AI)": 42,
+  "Infrastructure": 38,
+  "Proof of Stake (PoS)": 33,
+  "Governance": 33,
+  "Exchange-based Tokens": 26,
+  "USD Stablecoin": 25,
+  "Meme": 25,
+  "DePIN": 24,
+  "Proof of Work (PoW)": 17,
+  "Fiat-backed Stablecoin": 17,
+  "Decentralized Exchange (DEX)": 16,
+  "Layer 2 (L2)": 16,
+  "Gaming (GameFi)": 15,
+  "NFT": 14,
+  "Privacy": 13,
+  "Yield Farming": 13,
+  "Tokenized Credit": 13,
+  "Privacy Blockchain": 11,
+  "Centralized Exchange (CEX) Token": 10,
+  "Zero Knowledge (ZK)": 10,
+  "Wallets": 10,
+  "AI Framework": 10
+ },
+ "systems": {
+  "text": {
+   "kind": "llm",
+   "model": "claude-haiku-5-5",
+   "runs": 3,
+   "micro_f1": [
+    0.5707333333333333,
+    0.0015143755588800968
+   ],
+   "macro_f1": [
+    0.5629,
+    0.00020000000000003348
+   ],
+   "micro_p": [
+    0.44716666666666666,
+    0.0011676186592091192
+   ],
+   "micro_r": [
+    0.7887,
+    0.002402082429892829
+   ],
+   "pred_per_item": [
+    3.989333333333333,
+    0.00680685928555397
+   ],
+   "cost_usd": 0.11
+  },
+  "onto": {
+   "kind": "llm",
+   "model": "claude-haiku-5-5",
+   "runs": 3,
+   "micro_f1": [
+    0.5698666666666666,
+    0.006709942871093106
+   ],
+   "macro_f1": [
+    0.5566333333333333,
+    0.007211333672305915
+   ],
+   "micro_p": [
+    0.45903333333333335,
+    0.00582866479850517
+   ],
+   "micro_r": [
+    0.7512666666666666,
+    0.007782244748999686
+   ],
+   "pred_per_item": [
+    3.7016666666666667,
+    0.010214368964029757
+   ],
+   "cost_usd": 0.6
+  },
+  "tags": {
+   "kind": "llm",
+   "model": "claude-haiku-5-5",
+   "runs": 3,
+   "micro_f1": [
+    0.5351,
+    0.006750555532695047
+   ],
+   "macro_f1": [
+    0.511,
+    0.010068266980965496
+   ],
+   "micro_p": [
+    0.4435,
+    0.005408326913195988
+   ],
+   "micro_r": [
+    0.6744666666666667,
+    0.009743886972524554
+   ],
+   "pred_per_item": [
+    3.44,
+    0.024269322199023294
+   ],
+   "cost_usd": 1.02
+  },
+  "tfidf": {
+   "kind": "supervised",
+   "model": "5-fold CV",
+   "runs": 3,
+   "micro_f1": [
+    0.4866333333333333,
+    0.0015502687938978056
+   ],
+   "macro_f1": [
+    0.25726666666666664,
+    0.0013650396819628937
+   ],
+   "micro_p": [
+    0.8278333333333333,
+    0.010893270093655682
+   ],
+   "micro_r": [
+    0.34463333333333335,
+    0.001778576209593878
+   ],
+   "pred_per_item": [
+    0.9416666666666667,
+    0.015947831618540863
+   ],
+   "cost_usd": 0.0
+  },
+  "ontology_tags": {
+   "kind": "supervised",
+   "model": "5-fold CV",
+   "runs": 3,
+   "micro_f1": [
+    0.4782,
+    0.004121892769104987
+   ],
+   "macro_f1": [
+    0.4024333333333333,
+    0.003442867022313427
+   ],
+   "micro_p": [
+    0.44026666666666664,
+    0.004329357150124403
+   ],
+   "micro_r": [
+    0.5232,
+    0.0037643060449437478
+   ],
+   "pred_per_item": [
+    2.687666666666667,
+    0.00680685928555397
+   ],
+   "cost_usd": 0.0
+  },
+  "tfidf+ontology_tags": {
+   "kind": "supervised",
+   "model": "5-fold CV",
+   "runs": 3,
+   "micro_f1": [
+    0.5135333333333333,
+    0.0017097758137642643
+   ],
+   "macro_f1": [
+    0.4232333333333333,
+    0.011232690387139371
+   ],
+   "micro_p": [
+    0.5082666666666666,
+    0.006011932578907841
+   ],
+   "micro_r": [
+    0.5189333333333334,
+    0.0027135462651911987
+   ],
+   "pred_per_item": [
+    2.3096666666666668,
+    0.038695391629150505
+   ],
+   "cost_usd": 0.0
+  }
+ },
+ "per_label_f1_run1": {
+  "text": {
+   "Proof of Work (PoW)": 0.833,
+   "Layer 1 (L1)": 0.761,
+   "Infrastructure": 0.267,
+   "Smart Contract Platform": 0.766,
+   "Decentralized Finance (DeFi)": 0.537,
+   "Proof of Stake (PoS)": 0.457,
+   "USD Stablecoin": 0.638,
+   "Stablecoins": 0.713,
+   "Fiat-backed Stablecoin": 0.667,
+   "Layer 2 (L2)": 0.452,
+   "Centralized Exchange (CEX) Token": 0.6,
+   "DePIN": 0.615,
+   "Governance": 0.384,
+   "Exchange-based Tokens": 0.25,
+   "Tokenized Assets": 0.629,
+   "Decentralized Exchange (DEX)": 0.588,
+   "Tokenized Credit": 0.388,
+   "Real World Assets (RWA)": 0.788,
+   "Privacy": 0.476,
+   "Privacy Blockchain": 0.48,
+   "Zero Knowledge (ZK)": 0.444,
+   "Meme": 0.958,
+   "Yield Farming": 0.278,
+   "Artificial Intelligence (AI)": 0.682,
+   "AI Framework": 0.438,
+   "Wallets": 0.5,
+   "NFT": 0.516,
+   "Gaming (GameFi)": 0.65
+  },
+  "onto": {
+   "Proof of Work (PoW)": 0.789,
+   "Layer 1 (L1)": 0.726,
+   "Smart Contract Platform": 0.752,
+   "Privacy Blockchain": 0.4,
+   "Gaming (GameFi)": 0.65,
+   "Decentralized Finance (DeFi)": 0.5,
+   "NFT": 0.444,
+   "Infrastructure": 0.268,
+   "Proof of Stake (PoS)": 0.427,
+   "USD Stablecoin": 0.778,
+   "Stablecoins": 0.752,
+   "Fiat-backed Stablecoin": 0.651,
+   "Layer 2 (L2)": 0.414,
+   "Centralized Exchange (CEX) Token": 0.667,
+   "Governance": 0.361,
+   "Exchange-based Tokens": 0.28,
+   "Decentralized Exchange (DEX)": 0.667,
+   "DePIN": 0.605,
+   "Tokenized Assets": 0.681,
+   "Tokenized Credit": 0.491,
+   "Real World Assets (RWA)": 0.808,
+   "Privacy": 0.465,
+   "Zero Knowledge (ZK)": 0.516,
+   "Meme": 0.913,
+   "Artificial Intelligence (AI)": 0.576,
+   "Yield Farming": 0.308,
+   "AI Framework": 0.256,
+   "Wallets": 0.636
+  },
+  "tags": {
+   "Proof of Work (PoW)": 0.743,
+   "Layer 1 (L1)": 0.691,
+   "Infrastructure": 0.291,
+   "Smart Contract Platform": 0.663,
+   "Proof of Stake (PoS)": 0.343,
+   "Decentralized Finance (DeFi)": 0.423,
+   "USD Stablecoin": 0.621,
+   "Stablecoins": 0.678,
+   "Fiat-backed Stablecoin": 0.5,
+   "Centralized Exchange (CEX) Token": 0.25,
+   "Governance": 0.359,
+   "Exchange-based Tokens": 0.27,
+   "Tokenized Assets": 0.634,
+   "Tokenized Credit": 0.441,
+   "Real World Assets (RWA)": 0.766,
+   "Decentralized Exchange (DEX)": 0.703,
+   "Privacy": 0.541,
+   "Zero Knowledge (ZK)": 0.438,
+   "Meme": 0.844,
+   "Layer 2 (L2)": 0.522,
+   "Artificial Intelligence (AI)": 0.531,
+   "Yield Farming": 0.28,
+   "Privacy Blockchain": 0.5,
+   "DePIN": 0.651,
+   "Wallets": 0.636,
+   "NFT": 0.348,
+   "Gaming (GameFi)": 0.621,
+   "AI Framework": 0.0
+  }
+ },
+ "failure_case_counts": {
+  "text_right_onto_wrong": 14,
+  "onto_right_text_wrong": 18,
+  "tags_right_text_wrong": 18
+ }
+}

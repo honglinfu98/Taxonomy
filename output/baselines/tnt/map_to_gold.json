@@ -1,0 +1,245 @@
+{
+ "map": {
+  "consensus_mechanism": "consensus_mechanism",
+  "ledger_governance_model": "ledger_access_permission",
+  "consensus_network_topology": "network_topology",
+  "transaction_finality_type": "consensus_finality",
+  "asset_technical_standard": "native_vs_token_standard",
+  "issuer_presence": "issuer_presence",
+  "yield_distribution_mechanism": "yield_distribution_mechanism",
+  "redemption_mechanism": "redemption_mechanism",
+  "control_model": "centralisation_level",
+  "legal_asset_category": "legal_classification_status",
+  "reserve_backing_type": "backing_of_token",
+  "wallet_connectivity": "wallet_type_storage",
+  "native_asset_status": "native_asset_type",
+  "ledger_fee_model": "fee_structure",
+  "dlt_application_type": "smart_contract_definition_scope",
+  "block_storage_content": "ledger_storage_model",
+  "smart_contract_expressiveness": "script_language_expressiveness",
+  "governance_model_type": "governance_model",
+  "code_license": "code_license_openness",
+  "software_architecture": "software_architecture",
+  "privacy_technique": "privacy_enhancement",
+  "node_role": "ledger_node_role",
+  "trading_venue_type": "exchange_venue_type",
+  "crypto_service_scope": "crypto_asset_service_type",
+  "digital_asset_service_provider_status": "service_provider_status",
+  "stablecoin_issuer_category": "stablecoin_issuer_model",
+  "stablecoin_freeze_capability": "sanctions_and_freezing_capability",
+  "stablecoin_permitted_status": "stablecoin_regulatory_class",
+  "stablecoin_redemption_test": "redemption_risk_criteria",
+  "transaction_medium": "digital_asset_recording",
+  "asset_minting_mechanism": "minting_mechanism",
+  "digital_asset_distribution_method": "offer_and_issuance_method",
+  "staking_participation_model": "staking_arrangement",
+  "custodial_wallet_control": "unhosted_custody_control_policy",
+  "money_transmitter_status": "regulated_transmission_of_value",
+  "transfer_travel_rule_scope": "transfer_of_crypto_assets",
+  "transfer_party_role": "party_role_transfer"
+ },
+ "info": {
+  "judge": "claude-haiku-5-5",
+  "gold_types": 132,
+  "catalogue_types": 170,
+  "matched": 37,
+  "model": "claude-haiku-5-5",
+  "calls": 2,
+  "usage": {
+   "input": 53772,
+   "output": 9509,
+   "cache_write": 0,
+   "cache_read": 0
+  },
+  "cost_usd": 0.0101,
+  "api_seconds": 33.1,
+  "wall_seconds": 34.1
+ },
+ "pairs": [
+  {
+   "a": "consensus_mechanism",
+   "b": "consensus_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "ledger_access_permission",
+   "b": "ledger_governance_model",
+   "confidence": "medium"
+  },
+  {
+   "a": "network_topology",
+   "b": "consensus_network_topology",
+   "confidence": "high"
+  },
+  {
+   "a": "consensus_finality",
+   "b": "transaction_finality_type",
+   "confidence": "high"
+  },
+  {
+   "a": "native_vs_token_standard",
+   "b": "asset_technical_standard",
+   "confidence": "medium"
+  },
+  {
+   "a": "issuer_presence",
+   "b": "issuer_presence",
+   "confidence": "high"
+  },
+  {
+   "a": "yield_distribution_mechanism",
+   "b": "yield_distribution_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "redemption_mechanism",
+   "b": "redemption_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "centralisation_level",
+   "b": "control_model",
+   "confidence": "medium"
+  },
+  {
+   "a": "legal_classification_status",
+   "b": "legal_asset_category",
+   "confidence": "high"
+  },
+  {
+   "a": "backing_of_token",
+   "b": "reserve_backing_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "wallet_type_storage",
+   "b": "wallet_connectivity",
+   "confidence": "high"
+  },
+  {
+   "a": "native_asset_type",
+   "b": "native_asset_status",
+   "confidence": "high"
+  },
+  {
+   "a": "fee_structure",
+   "b": "ledger_fee_model",
+   "confidence": "high"
+  },
+  {
+   "a": "smart_contract_definition_scope",
+   "b": "dlt_application_type",
+   "confidence": "medium"
+  },
+  {
+   "a": "ledger_storage_model",
+   "b": "block_storage_content",
+   "confidence": "medium"
+  },
+  {
+   "a": "script_language_expressiveness",
+   "b": "smart_contract_expressiveness",
+   "confidence": "high"
+  },
+  {
+   "a": "governance_model",
+   "b": "governance_model_type",
+   "confidence": "high"
+  },
+  {
+   "a": "code_license_openness",
+   "b": "code_license",
+   "confidence": "high"
+  },
+  {
+   "a": "software_architecture",
+   "b": "software_architecture",
+   "confidence": "high"
+  },
+  {
+   "a": "privacy_enhancement",
+   "b": "privacy_technique",
+   "confidence": "medium"
+  },
+  {
+   "a": "ledger_node_role",
+   "b": "node_role",
+   "confidence": "medium"
+  },
+  {
+   "a": "exchange_venue_type",
+   "b": "trading_venue_type",
+   "confidence": "high"
+  },
+  {
+   "a": "crypto_asset_service_type",
+   "b": "crypto_service_scope",
+   "confidence": "low"
+  },
+  {
+   "a": "service_provider_status",
+   "b": "digital_asset_service_provider_status",
+   "confidence": "medium"
+  },
+  {
+   "a": "stablecoin_issuer_model",
+   "b": "stablecoin_issuer_category",
+   "confidence": "low"
+  },
+  {
+   "a": "sanctions_and_freezing_capability",
+   "b": "stablecoin_freeze_capability",
+   "confidence": "medium"
+  },
+  {
+   "a": "stablecoin_regulatory_class",
+   "b": "stablecoin_permitted_status",
+   "confidence": "low"
+  },
+  {
+   "a": "redemption_risk_criteria",
+   "b": "stablecoin_redemption_test",
+   "confidence": "medium"
+  },
+  {
+   "a": "digital_asset_recording",
+   "b": "transaction_medium",
+   "confidence": "low"
+  },
+  {
+   "a": "minting_mechanism",
+   "b": "asset_minting_mechanism",
+   "confidence": "high"
+  },
+  {
+   "a": "offer_and_issuance_method",
+   "b": "digital_asset_distribution_method",
+   "confidence": "high"
+  },
+  {
+   "a": "staking_arrangement",
+   "b": "staking_participation_model",
+   "confidence": "high"
+  },
+  {
+   "a": "unhosted_custody_control_policy",
+   "b": "custodial_wallet_control",
+   "confidence": "low"
+  },
+  {
+   "a": "regulated_transmission_of_value",
+   "b": "money_transmitter_status",
+   "confidence": "low"
+  },
+  {
+   "a": "transfer_of_crypto_assets",
+   "b": "transfer_travel_rule_scope",
+   "confidence": "medium"
+  },
+  {
+   "a": "party_role_transfer",
+   "b": "transfer_party_role",
+   "confidence": "high"
+  }
+ ]
+}

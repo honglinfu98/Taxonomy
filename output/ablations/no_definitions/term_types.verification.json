@@ -1,0 +1,27 @@
+{
+  "citations": 414,
+  "verified": 412,
+  "exact": 409,
+  "relabelled": 3,
+  "rejection_rate": 0.0048,
+  "rejected": [
+    {
+      "term_type": "asset_tokenised_traditional_asset",
+      "where": "value:tokenised financial instrument",
+      "status": "quote_not_found",
+      "doc": 4,
+      "section": "Articles 2-3: Scope and Definitions",
+      "quote": "Tokenised financial instruments should continue to be considered as financial instruments for all regulatory purposes.",
+      "verified": false
+    },
+    {
+      "term_type": "tech_network_access_permission",
+      "where": "value:permissionless (US report)",
+      "status": "quote_not_found",
+      "doc": 15,
+      "section": "Chapter II: The Digital Asset Ecosystem (market participants, DeFi architecture, consensus, infrastructure providers)",
+      "quote": "Decentralized, permissionless staking protocols compete with staking services",
+      "verified": false
+    }
+  ]
+}
