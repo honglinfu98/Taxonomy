@@ -24,7 +24,13 @@ grow the graph by \AllAddedTypes\ dimensions and \AllAddedValues\ values for
 \$\AllCost; dimensions discovered in one iteration are among the most used
 in the next. The index answers queries
 over \RItems\ items in microseconds, \RSpeedMin\ to \RSpeedMax\ times faster
-than a flat scan, and facet gain reaches ten items in \RGainSteps\ questions. On a 300-item gold set the DAG index beats BM25 on NDCG@10 at a
-twentieth of the latency, and tagging micro-F$_1$ rises from \DagMicro\ to
-\SonMicro\ with a stronger tagger. The
+than a flat scan, and facet gain reaches ten items in \RGainSteps\ questions. On a 300-item gold set the catalogue prompt does not raise tagging
+accuracy over a flat label list, the model does (micro-F$_1$ \DagMicro\ to
+\SonMicro), while the DAG index lifts retrieval over the same tags without
+closure and beats BM25 on NDCG@10 at a twentieth of the latency. Against
+zero-shot, chunked RAG, RAPTOR and TnT-LLM pipelines over the same corpus and
+model, our catalogue scores highest downstream (type micro-F$_1$ 0.34 against
+0.12--0.24), and without the corpus the same model recovers a quarter of the
+expert key. Removing the citation requirement alone cuts the catalogue from
+93 to 39 term types: having to quote is what makes the model read. The
 corpus, taxonomy and code are available at an anonymised repository.\footnote{\url{https://anonymous.4open.science/r/Taxonomy-77BF/}}

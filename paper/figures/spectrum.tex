@@ -1,23 +1,26 @@
 %% Figure: hierarchy metrics when edges below a weight are hidden (text width, 1x3).
+%% Legends sit above each panel so they never cover the curves.
 \begin{tikzpicture}
   \begin{groupplot}[
-    group style={group size=3 by 1, horizontal sep=11mm},
-    width=0.34\textwidth, height=2.3cm,
-    xmin=0, xmax=1, xlabel={minimum edge weight}, ylabel near ticks,
+    group style={group size=3 by 1, horizontal sep=15mm},
+    width=0.33\textwidth, height=3.6cm,
+    xmin=0, xmax=1, xtick={0,0.2,0.4,0.6,0.8,1},
     tick label style={font=\scriptsize}, label style={font=\scriptsize},
+    ylabel near ticks, xlabel near ticks,
     axis line style={gray!60}, ymajorgrids, grid style={gray!25},
-    legend style={font=\scriptsize, draw=none, fill=none}, legend cell align=left,
-    every axis plot/.append style={mark size=1.2pt, line width=0.8pt}]
-    \nextgroupplot[ylabel={count}, xlabel={minimum edge weight\\(a)}, xlabel style={align=center}, legend pos=north east]
+    legend style={font=\scriptsize, draw=none, fill=none, at={(0.5,1.02)}, anchor=south, legend columns=-1,
+                  /tikz/every even column/.append style={column sep=5pt}},
+    every axis plot/.append style={mark size=1.4pt, line width=0.9pt}]
+    \nextgroupplot[ylabel={count}, xlabel={(a) minimum edge weight}, ymin=0]
       \addplot[blue!60!black, mark=*, mark repeat=10] table[x=thr, y=edges] {tables/spectrum.dat};
       \addplot[orange!80!black, mark=square*, mark repeat=10] table[x=thr, y=roots] {tables/spectrum.dat};
       \addplot[green!50!black, mark=triangle*, mark repeat=10] table[x=thr, y=leaves] {tables/spectrum.dat};
       \legend{kept edges, roots, leaves}
-    \nextgroupplot[ylabel={bits per descent}, xlabel={minimum edge weight\\(b)}, xlabel style={align=center}]
+    \nextgroupplot[ylabel={bits per descent}, xlabel={(b) minimum edge weight}, ymin=0]
       \addplot[blue!60!black, mark=*, mark repeat=10] table[x=thr, y=bits] {tables/spectrum.dat};
-    \nextgroupplot[ylabel={}, xlabel={minimum edge weight\\(c)}, xlabel style={align=center}, legend pos=south east]
+    \nextgroupplot[ylabel={fraction}, xlabel={(c) minimum edge weight}, ymin=0, ymax=1.05, ytick={0,0.25,0.5,0.75,1}]
       \addplot[blue!60!black, mark=*, mark repeat=10] table[x=thr, y=auc] {tables/spectrum.dat};
       \addplot[orange!80!black, mark=square*, mark repeat=10] table[x=thr, y expr=\thisrow{effleaves}/93] {tables/spectrum.dat};
-      \legend{AUC, eff.\ leaves / 93}
+      \legend{AUC, effective leaves / 93}
   \end{groupplot}
 \end{tikzpicture}

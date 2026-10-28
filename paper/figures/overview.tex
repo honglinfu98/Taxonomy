@@ -1,40 +1,35 @@
-%% Figure 2: method overview (text width). Section numbers printed on the blocks.
+%% Figure 2: method overview (text width). Section numbers printed on the blocks; the italic
+%% last line of each module follows one example through the pipeline.
+\providecommand{\exl}[1]{\\[3pt]{\scriptsize\itshape\color{blue!50!black}#1}}
 \begin{tikzpicture}[
   font=\footnotesize,
-  mod/.style={draw=#1!60!black, fill=#1!10, rounded corners=3pt, text width=3.0cm, minimum height=2.3cm, inner sep=3pt, align=left},
-  io/.style={draw=gray!60, fill=white, rounded corners=2pt, text width=1.9cm, inner sep=3pt, align=center, font=\scriptsize},
+  mod/.style={draw=#1!60!black, fill=#1!10, rounded corners=3pt, text width=3.35cm, minimum height=3.9cm, inner sep=4pt, align=left},
+  modb/.style={draw=#1!60!black, fill=#1!10, rounded corners=3pt, text width=3.05cm, minimum height=2.9cm, inner sep=4pt, align=left},
+  io/.style={draw=gray!60, fill=white, rounded corners=2pt, text width=2.0cm, inner sep=3pt, align=center, font=\scriptsize},
   arr/.style={-{Latex[length=2mm]}, thick, gray!70!black},
-  ex/.style={font=\tiny\itshape, text=blue!50!black, text width=3.4cm, align=center, inner sep=1pt},
-  node distance=3mm and 4mm]
-  \node[mod=orange] (corpus) {\textbf{4.1 Definitions-first corpus}\\[2pt]\scriptsize 24 PDFs (21 legal, 3 academic); per-PDF section ranges or regex markers; one XML file:\\[1pt]\texttt{<document index=4 jurisdiction=EU>}\\\texttt{\ \ <section label="Art.\ 2-3">}\\[2pt]32 sections, 97.8k words, 235k tokens};
-  \node[mod=blue, right=of corpus] (prompt) {\textbf{4.2--4.3 Cache-grounded extraction}\\[2pt]\scriptsize System: instructions $\|$ corpus \textcolor{blue!60!black}{[cached 1h]}\\User: Task A + manifest of exact labels\\[2pt]One call, JSON out:\\\texttt{\{id, question, values[\{value,}\\\texttt{\ \ citations[\{doc,sec,quote\}]\}],}\\\texttt{\ \ aliases, sources, notes\}}};
-  \node[mod=green, right=of prompt] (verify) {\textbf{4.4 Citation verifier}\\[2pt]\scriptsize normalise(quote) $\subseteq$ normalise(section)?\\else $\ge 80\%$ of 12-char shingles in one window\\else found under another label $\Rightarrow$ relabel\\else reject\\[2pt]480 cites: 463 ok, 7 relabelled, 10 rejected};
-  \node[mod=purple, right=of verify] (hier) {\textbf{4.5 Is-a hierarchy}\\[2pt]\scriptsize Catalogue of 93 types as a 2nd cached block; per type, one call: distribution over more general types in its category (+\,none), cited\\[2pt]Greedy acyclic consolidation $\Rightarrow$ DAG, 279 weighted edges, 5 roots};
+  node distance=6mm and 4mm]
+  %% ==== first row: Part 1, establishment
+  \node[mod=orange] (corpus) {\textbf{4.1 Definitions-first corpus}\\[2pt]\scriptsize 24 PDFs (21 legal, 3 academic); per-PDF section ranges or regex markers; one XML file:\\[1pt]\texttt{<document index=4 jurisdiction=EU>}\\\texttt{\ \ <section label="Art.\ 2-3">}\\[1pt]32 sections, 97.8k words, 235k tokens\exl{e.g.\ MiCA Art.\ 3(7): ``\ldots one official currency''}};
+  \node[mod=blue, right=of corpus] (prompt) {\textbf{4.2--4.3 Grounded extraction}\\[2pt]\scriptsize System: instructions $\|$ corpus \textcolor{blue!60!black}{[cached 1h]}\\User: Task A + manifest of exact labels\\[1pt]One call, JSON out:\\\texttt{\{id, question, values[\{value,}\\\texttt{\ \ citations[\{doc,sec,quote\}]\}],}\\\texttt{\ \ aliases, sources, notes\}}\exl{$\to$ reference asset: \{single official currency, \ldots\}}};
+  \node[mod=green, right=of prompt] (verify) {\textbf{4.4 Citation verifier}\\[2pt]\scriptsize normalise(quote) $\subseteq$ normalise(section)?\\else $\ge 80\%$ of 12-char shingles in one window\\else found under another label $\Rightarrow$ relabel\\else reject\\[1pt]480 cites: 463 ok, 7 relabelled, 10 rejected\exl{quote found in doc 4, ``Articles 2--3'' $\Rightarrow$ ok}};
+  \node[mod=purple, right=of verify] (hier) {\textbf{4.5 Is-a hierarchy}\\[2pt]\scriptsize Catalogue of 93 types as a 2nd cached block; per type, one call: distribution over more general types in its category (+\,none), cited\\[1pt]Greedy acyclic consolidation $\Rightarrow$ DAG, 279 weighted edges, 5 roots\exl{reference asset is-a legal classification (0.32)}};
   \draw[arr] (corpus) -- (prompt);
   \draw[arr] (prompt) -- (verify);
   \draw[arr] (verify) -- (hier);
-  \node[ex, below=1mm of corpus.south] {MiCA Art.\ 3(7): ``\ldots one official currency''};
-  \node[ex, below=1mm of prompt.south] {$\to$ reference asset: \{single official currency\}};
-  \node[ex, below=1mm of verify.south] {quote found in doc 4, ``Articles 2-3'' $\Rightarrow$ ok};
-  \node[ex, below=1mm of hier.south] {reference asset is-a legal classification (0.32)};
   %% ==== second row: Part 2, the DAG as label space and its maintenance
-  \node[io, below=10mm of corpus.south, anchor=north] (content) {Web content\\[1pt]\tiny DLT-Corpus papers and patents, 300-item batches};
-  \node[mod=blue, right=of content, minimum height=2.0cm] (tag) {\textbf{4.6 Tagging (Task C)}\\[2pt]\scriptsize Catalogue block (types, value codes, is-a parents) cached; per item: tags (type, value, confidence, evidence $\le$20 words), proposals, off-topic\\[2pt]evidence verified; ancestors implied};
-  \node[mod=green, right=of tag, minimum height=2.0cm] (measure) {\textbf{4.6 Label space \& objectives}\\[2pt]\scriptsize items on nodes and their is-a ancestors; per node: value entropy, branching gain, residual\\[2pt]bits/descent, AUC, effective leaves from content vs.\ prior};
-  \node[mod=orange, right=of measure, minimum height=2.0cm] (discover) {\textbf{4.6 Discovery (Task E) \& evolution}\\[2pt]\scriptsize at impure nodes: residual items $\to$ candidate values / child types; accept if support $\ge$5, gain $\ge$0.1 bit, evidence verified\\[2pt]consolidate $\to$ catalogue v1};
+  \node[modb=blue, anchor=north] at ([yshift=-4mm]prompt.south |- current bounding box.south) (tag) {\textbf{4.6 Tagging (Task C)}\\[2pt]\scriptsize Catalogue block (types, value codes, is-a parents) cached; per item: tags (type, value, confidence, evidence $\le$20 words), proposals, off-topic; evidence verified, ancestors implied\exl{(consensus mechanism, proof of work; ``PoW validators'')}};
+  \node[io, left=of tag] (content) {Web content\\[1pt]\tiny DLT-Corpus papers and patents, disjoint batches};
+    \node[modb=green, right=of tag] (measure) {\textbf{4.6 Measuring the DAG}\\[2pt]\scriptsize items on nodes and their is-a ancestors; per node: value entropy, branching gain, residual; bits/descent, AUC, effective leaves from content vs.\ prior\exl{DLT data structure: 95\% ``blockchain'', residual 60\%}};
+  \node[modb=orange, right=of measure] (discover) {\textbf{4.6 Discovery (Task E) \& evolution}\\[2pt]\scriptsize at impure nodes: residual items $\to$ candidate values / child types; accept if support $\ge$5, gain $\ge$0.1 bit, evidence verified; consolidate $\to$ next version\exl{+ ledger partitioning topology (5 items, 0.3 bit)}};
   \node[io, right=of discover] (v1) {v\VLastNum: \VLastNodes\ types\\[1pt]\tiny \VLastEdges\ edges, \VLastValues\ values\\[2pt]$\circlearrowleft$ next batch};
   \draw[arr] (content) -- (tag);
   \draw[arr] (tag) -- (measure);
   \draw[arr] (measure) -- (discover);
   \draw[arr] (discover) -- (v1);
   \draw[arr] (hier.south) -- ++(0,-3mm) -| (tag.north);
-  \node[ex, below=1mm of tag.south] {(consensus\_mechanism, proof of work; ``PoW validators'')};
-  \node[ex, below=1mm of measure.south] {DLT data structure: 95\% ``blockchain'', residual 60\%};
-  \node[ex, below=1mm of discover.south] {+ ledger partitioning topology (5 items, 0.3 bit)};
   %% ==== third row: Part 3, retrieval over the DAG
-  \node[mod=purple, below=8mm of measure.south, anchor=north, text width=9.4cm, minimum height=1.4cm] (retr) {\textbf{4.7 Retrieval over the DAG}\\[2pt]\scriptsize Tagged items $\to$ bitsets per node: direct, per value, subtree closure. Query atoms $y$, $y!$, $y{=}v$, $y{\sim}\sigma$ (path strength), category; AND / OR / NOT as integer ops. Rank by confidence $\times$ best is-a path strength; generalise by lowest common ancestor; facet = next question by expected narrowing (same gain as 4.6)};
-  \node[io, right=of retr, text width=2.2cm] (answer) {\RItems\ items\\[1pt]\tiny \RLatMin--\RLatMax\ $\mu$s per query, \RSpeedMin--\RSpeedMax$\times$ over a flat scan};
+  \node[mod=purple, anchor=north, text width=9.6cm, minimum height=1.2cm] at ([yshift=-4mm]measure.south |- current bounding box.south) (retr) {\textbf{4.7 Retrieval over the DAG}\\[2pt]\scriptsize Tagged items $\to$ bitsets per node: direct, per value, subtree closure. Query atoms $y$, $y!$, $y{=}v$, $y{\sim}\sigma$ (path strength), category; AND / OR / NOT as integer ops. Rank by confidence $\times$ best is-a path strength; generalise by lowest common ancestor; facet = next question by expected narrowing (the gain of 4.6)\exl{facet gain: \RGainBits\ bits resolved in \RGainSteps\ questions on average, \RRandBits\ bits for a random facet}};
+  \node[io, right=of retr, text width=2.3cm] (answer) {\RItems\ items\\[1pt]\tiny \RLatMin--\RLatMax\ $\mu$s per query, \RSpeedMin--\RSpeedMax$\times$ over a flat scan};
   \draw[arr] (v1.south) -- ++(0,-3mm) -| (answer.north);
   \draw[arr] (answer) -- (retr);
-  \node[ex, text width=9.6cm, below=1mm of retr.south] {facet gain: \RGainBits\ bits resolved in \RGainSteps\ questions on average, \RRandBits\ bits for a random facet};
 \end{tikzpicture}

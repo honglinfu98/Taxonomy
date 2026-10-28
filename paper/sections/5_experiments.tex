@@ -1,7 +1,7 @@
 \section{Experiments}
 \label{sec:exp}
 
-We answer four research questions.
+We answer six research questions.
 \textbf{RQ1}: How many dimensions does the corpus support, how widely are
 they shared, and how faithful are the citations?
 \textbf{RQ2}: What hierarchy do the term types form and how grounded are its
@@ -10,6 +10,10 @@ edges?
 the content reveal where it must grow?
 \textbf{RQ4}: Does the DAG index beat a flat tag table on latency, and does
 facet gain navigate to a target?
+\textbf{RQ5}: How does the catalogue compare with expert taxonomies and with
+other ways of building one from the same corpus with the same model?
+\textbf{RQ6}: How much do the manifest, the citation requirement, the
+definitions block, the effort setting and the model matter?
 
 \subsection{Experimental Setup}
 \label{sec:exp:setup}
@@ -32,10 +36,30 @@ contamination would help every system alike.
 \textbf{Baselines.} For tagging, the same model given a flat list of term
 types and value labels without questions, definitions or hierarchy, and a
 supervised TF-IDF with one-vs-rest logistic regression trained on the
-production tags outside the gold set; a \texttt{claude-sonnet-5-5} variant
-of our tagger shows the effect of the model. For retrieval, Boolean match on the
+production tags outside the gold set; both LLM taggers are also run with
+\texttt{claude-sonnet-5-5}. For retrieval, Boolean match on the
 flat tags, the supervised labels through our index, and BM25 over title and
 text with the query rendered as the term type's name, question and values.
+For term type induction (RQ5), four alternative Task~A pipelines over the
+same corpus, model and output schema, so that the same verifier, Task~B and
+tagger apply to every catalogue: \emph{zero-shot}, which sees the task, the
+schema and the 24 document titles but no text; \emph{chunked RAG}, which
+splits the sections into 129 passages of at most 900 words, retrieves the
+BM25 top~8 for each of 40 model-written queries, runs the Task~A instructions
+with the citation rule over each retrieved set, and consolidates the
+per-query proposals in one call; \emph{RAPTOR}~\cite{sarthi2024raptor}, the
+same with a three-level summary tree added to the retrieval pool, where a
+summary may inform a term type but cannot be quoted; and
+\emph{TnT-LLM}~\cite{wan2024tntllm}, which summarises every passage and
+builds the taxonomy bottom-up over batches of 30 summaries with a final
+review pass. As an expert key we extract, with verified quotes, the 39
+dimensions that the two taxonomy papers in the corpus propose. For RQ6,
+Task~A is rerun with one ingredient changed and everything else as in the
+main run: the manifest removed, the citation requirement removed, the
+definitions of term, term type and grounded removed, effort set to
+\texttt{low}; and, for the model, a second Haiku run with the same prompt and
+two \texttt{claude-sonnet-5-5} runs at effort \texttt{medium} and
+\texttt{high}.
 
 \textbf{Metrics.} For faithfulness, the share of citations whose quote the
 verifier finds in the cited document (exact or relabelled) and the rejection
@@ -46,7 +70,15 @@ identical results and the steps and bits a navigation needs to reach $k$
 items. For tagging against the gold set, micro- and macro-F$_1$ over
 (term type, value) labels and over term types; for retrieval on the gold
 items, P@10, R@10, NDCG@10 and MAP with relevance graded from the gold
-labels.
+labels. For RQ5, agreement with our catalogue as F$_1$ over term types
+paired by an LLM judge that sees both catalogues and keeps a pair only when
+it is found in both directions; coverage of the expert key by the same judge;
+the structure metrics of Task~B; and type-level micro- and macro-F$_1$ of the
+tagger on the gold items when given each catalogue, with a baseline's types
+mapped onto the gold space by the judge. For RQ6, the same size, verification,
+judged agreement and expert coverage, with the agreement split into recall of
+the main run's term types and precision of the variant's, and the share of
+citations whose section label needed no relabelling.
 
 \textbf{Implementation.} Tasks A and B use \texttt{claude-haiku-5-5} at
 effort \texttt{high} with thinking disabled, the corpus behind a one-hour
@@ -59,6 +91,9 @@ involved. The retrieval engine is pure Python over integer bitsets and is
 timed on one core of the same laptop. Gold-set systems
 are run \EvalRunsWord\ times, LLMs by sampling and the classifier by seed,
 and reported as mean $\pm$ sd; Task~A repeats are compared in \cref{sec:exp:rq1}.
+The RQ5 baselines, the RQ6 variants and their judge use
+\texttt{claude-haiku-5-5}; a baseline catalogue goes through the unchanged
+Task~B and tagger. RQ6 variants are run once each.
 
 \subsection{RQ1: Term Types Generated and Their Faithfulness}
 \label{sec:exp:rq1}
@@ -115,17 +150,15 @@ to the next version (\cref{sec:conclusion}). The run is one call of 302
 seconds with 85,729 output tokens and 235,298 cached input tokens,
 \$\BillTaskA\ at list price.
 
-\textbf{Ablation and stability.} Without the manifest of exact section
-labels (\cref{sec:method:task}), a first run cited wrong labels in 9\% of its
-citations and returned 65 coarser term types; with it, 93 term types with
-1.5\% relabelled. A second Haiku run with the same prompt returned
+\textbf{Stability.} A second Haiku run with the same prompt returned
 \AgHTypes\ term types, \AgHMatched\ of which match one of the first run's 93
 by name, question or alias (F$_1$ \AgHF, value Jaccard \AgHJaccard), with
 \AgHVerifiedPct\% of its \AgHCites\ citations verified; a
 \texttt{claude-sonnet-5-5} run, cut off at the output limit, returned
 \AgSTypes\ with \AgSMatched\ matched (F$_1$ \AgSF) and \AgSVerifiedPct\% of
 \AgSCites\ verified. Grounding holds across runs and models; the set of
-dimensions does not.
+dimensions does not. \Cref{sec:exp:rq6} rescores these runs with an LLM judge
+beside the prompt ablations.
 
 \subsection{RQ2: The Is-a Hierarchy}
 \label{sec:exp:rq2}
@@ -242,16 +275,49 @@ LLM-adjudicated labels over \GTypes\ term types (\cref{tab:evaltag,tab:evalret},
 \cref{app:results}), the Haiku tagger with the catalogue reaches label
 micro-F$_1$ \DagMicro, level with the same model given a flat label list
 (\FlatMicro) and with the supervised classifier (\SupMicro), whose macro-F$_1$
-collapses to \SupMacro; the catalogue trades recall for precision, and it pays
-off with a stronger model, \SonMicro\ for Sonnet 5.5 (macro \SonMacro). For
-retrieval over \NQueries\ judged queries, the DAG index on our tags reaches
-NDCG@10 \RetDagNDCG\ against \RetFlatNDCG\ for Boolean match on flat tags and
-\RetBMNDCG\ for BM25, at \RetDagLat\ against \RetBMLat\ microseconds per
-query, and \RetSonNDCG\ on Sonnet tags; two-atom AND queries remain the weak
-case (\RetDagAnd).
+collapses to \SupMacro; with Sonnet 5.5 both prompts rise together, \SonMicro\
+with the catalogue and \SonFlatMicro\ with the flat list. The catalogue
+prompt therefore does not raise tagging accuracy; the model does, and the
+catalogue trades recall for precision. The DAG index does raise retrieval:
+over \NQueries\ judged queries it reaches NDCG@10 \RetSonNDCG\ on Sonnet tags
+against \RetSonFlatNDCG\ for the same tags matched without closure (node
+queries \RetSonNode\ against \RetSonFlatNode), \RetDagNDCG\ against
+\RetFlatNDCG\ on Haiku tags, and \RetBMNDCG\ for BM25, at \RetDagLat\ against
+\RetBMLat\ microseconds per query; two-atom AND queries remain the weak case
+(\RetSonAnd).
 
 \subsection{RQ4: Retrieval over the DAG}
 \label{sec:exp:rq4}
+
+\begin{table*}[t]
+  \centering
+  \caption{Our catalogue against four alternative Task~A pipelines over the
+  same corpus and model, and against a second run of ours. Cited is the share
+  of citations the verifier finds; Agr.\ $F_1$ is the judged agreement of
+  term types with our first run; Expert cov.\ is the share of the 39
+  expert-key dimensions a catalogue contains, contaminated for every
+  corpus-based row because both papers are in the corpus; Bits/desc.\ and
+  AUC come from the unchanged Task~B; Micro- and Macro-$F_1$ are type-level
+  scores of the tagger on the gold items with each catalogue, mean $\pm$ sd
+  over three runs. Zero-shot and TnT-LLM cannot cite.}
+  \label{tab:rq5}
+  \scriptsize
+  \input{tables/rq5}
+\end{table*}
+
+\begin{table*}[t]
+  \centering
+  \caption{Task~A with one ingredient changed, everything else as in the main
+  run. Cited is the share of citations the verifier finds; Label exact the
+  share whose section label needed no relabelling; Agr.\ $F_1$ the judged
+  agreement of term types with the main run; Expert cov.\ the share of the 39
+  expert-key dimensions contained, contaminated as in \cref{tab:rq5}; USD the
+  cost of the call at list price. One run per variant. The Sonnet run at
+  effort high hit the output limit and keeps its 72 complete term types.}
+  \label{tab:rq6}
+  \scriptsize
+  \input{tables/rq6}
+\end{table*}
 
 \begin{table}[t]
   \centering
@@ -280,10 +346,83 @@ the target until at most $k{=}\RK$ items remain or 15 steps are spent (ideal
 \RGainSteps\ steps and reaches $k$ for \RGainReached\% of the targets, against
 \RRandBits\ bits in \RRandSteps\ steps and \RRandReached\% for a random facet. (3) The failure is
 inherited from the edge weights: through light is-a edges the subtree of the
-asset root reaches \RTopClosurePct\% of the items, so a bare subtree query on
-a high node returns most of the collection; restricting it to path strength
-$\ge 0.3$ cuts the mean hit count from \RClosureHits\ to \RStrengthHits\ at
-\RStrengthLatRatio\ times the latency.
+asset root reaches \RTopClosurePct\% of the items, and restricting a subtree to path
+strength $\ge 0.3$ cuts the mean hit count from \RClosureHits\ to
+\RStrengthHits\ at \RStrengthLatRatio\ times the latency.
 Ranking quality against BM25 is reported in \cref{sec:exp:rq3}.
 
+\subsection{RQ5: Against Expert Taxonomies and LLM Baselines}
+\label{sec:exp:rq5}
 
+\Cref{tab:rq5} compares the catalogues. We make four observations. (1) The
+corpus is most of the catalogue. Without it the same model and prompt return
+32 dimensions, a fifth of ours by the judge, and the actor, activity and
+obligation branches that only the legal instruments define are nearly
+absent. Zero-shot is also the one uncontaminated expert-coverage number:
+0.26 of the key, against 0.67 for ours. (2) Retrieval fragments the
+catalogue. Chunked RAG proposes 498 term types over its 40 queries and keeps
+81 after consolidation, with 750 values, 2.4 times ours per type, padded with
+near-duplicates drawn from different passages; its citations verify because
+each is cut from a retrieved passage, but only 39 of its types map to a gold
+dimension. RAPTOR's summaries lose verbatim text, 87\% of citations verified
+against 98--99\% for the passage-based catalogues, and do not recover
+coverage. (3) Bottom-up generation over-generates. TnT-LLM accumulates 170
+term types from 129 summaries and its review pass removes none; it has the
+highest raw expert coverage at the lowest precision (0.18), cannot cite, and
+scores lowest downstream because 37 of its 170 types map to a gold dimension.
+(4) Our second run agrees with the first at F$_1$ 0.60 by the judge, against
+0.51 by the lexical matcher of \cref{sec:exp:rq1}: 51 of its 76 types ask a
+question the first run asked. Structure after Task~B separates the catalogues
+little, 3.6 to 5.9 bits per descent; the Task~A stage does.
+
+\textbf{Expert key.} Our catalogue contains 26 of the 39 dimensions. The 13
+it misses are mostly engineering sub-dimensions of Tasca and
+Tessone~\cite{tasca2019taxonomy}, such as network topology, block storage,
+fee structure and coding language, which the task prompt, asking for
+dimensions a source uses as a legal, prudential or technical boundary, does
+not request; adding them is a scope choice rather than a defect of the
+method.
+
+\textbf{Limits.} The downstream score favours our catalogue: the gold labels
+were adjudicated in the space of catalogue version \EvalCat, and a baseline is
+scored through the judge's mapping onto it, so the column measures how far
+each catalogue reproduces our dimensions on real items rather than an
+independent task. Expert coverage is contaminated for every corpus-based row,
+and the judge is the generators' model. The RAG and RAPTOR variants use BM25
+and TF-IDF clustering rather than dense retrieval, the cheapest faithful
+versions. RQ5 cost \$8.83, of which \$5.8 is Task~B over the four baseline
+catalogues.
+
+\subsection{RQ6: What Each Ingredient Contributes}
+\label{sec:exp:rq6}
+
+\Cref{tab:rq6} removes or changes one ingredient of Task~A at a time. We make
+four observations. (1) The citation requirement is what makes the model read
+the corpus. Without it the same model, prompt and corpus return 39 term
+types in 111 seconds, with recall 0.36 of the main run's types at the
+highest precision (0.85) and under half the expert key. The quality rules
+alone do not force a section-by-section pass; having to quote does. Dropping
+citations does not add ungrounded dimensions, it shortens the catalogue.
+(2) The manifest fixes labels, not dimensions. Without it 21\% of citations
+name a section label that the verifier had to relabel (57 of 271) and six
+more are rejected, against 1.5\% relabelled with it, worse than the 9\% of
+the uncontrolled first run that motivated the manifest
+(\cref{sec:method:task}); the catalogue itself, 62 term types at judged
+agreement 0.65, sits inside the run-to-run band. (3) The definitions block
+controls granularity. Without the definitions of term, term type and grounded
+the model returns 111 term types with the highest recall of the main run
+(0.68) and the lowest precision (0.57): more splitting and more topic-like
+dimensions, at 0.29 precision against the expert key. (4) Effort and model
+trade size for precision. Effort low gives 46 term types; Sonnet 5.5 gives
+54 at effort medium and 72 at effort high before hitting the output ceiling,
+at ten times the cost; all three verify every citation and exceed the Haiku
+repeat in precision against the main run. The dimension set is
+model-dependent, with judged agreement 0.52 to 0.57 against 0.60 for a Haiku
+repeat; the grounding is not.
+
+\textbf{Limits.} Every variant's judged agreement with the main run, 0.50 to
+0.65, lies at or below the run-to-run level of 0.60, so one run per variant
+shows effects on size, label accuracy and precision and not on the identity
+of the dimensions; a second run per variant would give the spread. The judge
+and the expert key carry the caveats of RQ5. RQ6 cost \$1.55, of which
+\$1.48 is the four Task~A calls.

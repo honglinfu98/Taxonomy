@@ -98,8 +98,14 @@ facet with the highest expected narrowing.
     hierarchy resolves \BBits\ bits per descent, \NIterWord\ maintenance
     iterations over the whole on-topic DLT-Corpus of \AllItems\ items verify
     \EvidMin--\EvidMax\% of tag evidence and add \AllAddedTypes\ dimensions, and the index answers queries over \RItems\
-    items \RSpeedMin\ to \RSpeedMax\ times faster than a flat scan. On a 300-item gold set the DAG index reaches NDCG@10 \RetDagNDCG\
-    against \RetBMNDCG\ for BM25, and tagging micro-F$_1$ rises from
-    \DagMicro\ to \SonMicro\ with a stronger tagger (\cref{sec:exp:rq3}). Code and data are at an anonymised
+    items \RSpeedMin\ to \RSpeedMax\ times faster than a flat scan. On a 300-item gold set the DAG index reaches NDCG@10 \RetSonNDCG\ on
+    Sonnet tags against \RetSonFlatNDCG\ for the same tags without closure
+    and \RetBMNDCG\ for BM25, while the catalogue prompt leaves tagging
+    micro-F$_1$ level with a flat label list (\cref{sec:exp:rq3}). Against
+    zero-shot, chunked RAG, RAPTOR and TnT-LLM pipelines over the same corpus
+    and model, our catalogue scores highest downstream, type micro-F$_1$
+    0.34 against 0.12--0.24 (\cref{sec:exp:rq5}); ablations show that the
+    citation requirement, not the prompt's quality rules, makes the model read
+    the corpus, 39 term types without it against 93 (\cref{sec:exp:rq6}). Code and data are at an anonymised
     repository.\footnote{\url{https://anonymous.4open.science/r/Taxonomy-77BF/}}
 \end{itemize}
