@@ -494,7 +494,7 @@ RETR = ROOT / "output" / "retrieval"
 def retrieval_table() -> str:
     b = json.loads((RETR / "benchmark.json").read_text())
     names = {"closure (1 node)": "subtree, 1 node", "direct (node!)": "direct, 1 node", "value (node=value)": "value, 1 node",
-             "closure, strength >= 0.3": r"subtree, $s \ge 0.3$", "AND (2 atoms)": "AND, 2 atoms", "OR (2 atoms)": "OR, 2 atoms",
+             "closure, strength >= 0.3": r"subtree, $\rho \ge 0.3$", "AND (2 atoms)": "AND, 2 atoms", "OR (2 atoms)": "OR, 2 atoms",
              "AND NOT": "AND NOT, 2 atoms", "3 atoms, mixed": "mixed, 3 atoms"}
     rows = [r"\begin{tabular}{@{}lrrrrr@{}}", r"\toprule",
             r"Workload & Queries & Hits & Bitset ($\mu$s) & Flat (ms) & Speed-up \\", r"\midrule"]

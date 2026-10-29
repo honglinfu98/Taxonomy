@@ -21,7 +21,7 @@ here with what each would need, so they can be revived for a journal version or 
 
 ## RQ5: expert taxonomies and LLM baselines
 
-**In the paper since 2026-10-27** as Section 5.6 (`sections/5_experiments.tex`, `tables/rq5.tex`), with the baselines in the setup paragraphs and one sentence each in the abstract, contributions and conclusion. RQ6 is in the paper since 2026-10-27 as Section 5.7 (`tables/rq6.tex`). Only RQ7 (an independent downstream task) remains parked.
+**In the paper since 2026-10-27** as Section 5.6 (`sections/5_experiments.tex`, `tables/rq5.tex`), with the baselines in the setup paragraphs and one sentence each in the abstract, contributions and conclusion. RQ6 is in the paper since 2026-10-27 as Section 5.7 (`tables/rq6.tex`). RQ7 is in the paper since 2026-10-29 as Section 5.8 (`tables/rq7.tex`). Nothing remains parked.
 
 **Run on 2026-10-27 with Haiku 5.5** (`taxonomy/baselines/`, results in `output/baselines/rq5.md`, table `paper/tables/rq5.tex`, caveats in `taxonomy/baselines/README.md`). The notes below describe the state before the run.
 
@@ -71,6 +71,8 @@ describe the state before the run.
   Not run.
 
 ## RQ7: downstream classification with and without the ontology
+
+**In the paper since 2026-10-29** as Section 5.8 "RQ7: An Independent Downstream Task" (`sections/5_experiments.tex`, `tables/rq7.tex`), with the dataset and six systems in the setup paragraphs and one sentence each in the abstract, contributions and conclusion.
 
 **Run on 2026-10-28 with Haiku 5.5** (`taxonomy/rq7/`, results in `output/rq7/rq7.md`, table
 `paper/tables/rq7.tex`, failure cases `output/rq7/failure_cases.md`, findings and caveats in

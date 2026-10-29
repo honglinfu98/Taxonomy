@@ -1,7 +1,7 @@
 \section{Experiments}
 \label{sec:exp}
 
-We answer six research questions.
+We answer seven research questions.
 \textbf{RQ1}: How many dimensions does the corpus support, how widely are
 they shared, and how faithful are the citations?
 \textbf{RQ2}: What hierarchy do the term types form and how grounded are its
@@ -14,6 +14,8 @@ facet gain navigate to a target?
 other ways of building one from the same corpus with the same model?
 \textbf{RQ6}: How much do the manifest, the citation requirement, the
 definitions block, the effort setting and the model matter?
+\textbf{RQ7}: Does the ontology improve an independent classification of Web
+token descriptions whose labels were made without it?
 
 \subsection{Experimental Setup}
 \label{sec:exp:setup}
@@ -31,7 +33,15 @@ capped at 450 words. For RQ4 the index holds the tagged
 items of all \RIterWord\ batches on version \RCat. A held-out gold set of \GItems\ items (150 papers, 150
 patents) is excluded from the supervised baseline's training. DLT-Corpus items may occur in the model's pretraining data, which we
 cannot rule out; the gold labels are produced with the catalogue in view, so
-contamination would help every system alike.
+contamination would help every system alike. For RQ7 the items are 378
+descriptions of the 500 largest coins by market capitalisation on CoinGecko,
+collected on 28 October 2026, each at least 40 words and capped at 400, with
+the site's own categories as labels: after excluding 215 category names that
+are not properties of the asset (ecosystem membership, index constituents,
+portfolios, listings), the 28 categories carried by at least ten items are
+kept, 351 items have at least one and the mean is 2.26 per item. The site
+assigned these labels without our catalogue in view, so the task does not
+favour our label space.
 
 \textbf{Baselines.} For tagging, the same model given a flat list of term
 types and value labels without questions, definitions or hierarchy, and a
@@ -58,8 +68,16 @@ Task~A is rerun with one ingredient changed and everything else as in the
 main run: the manifest removed, the citation requirement removed, the
 definitions of term, term type and grounded removed, effort set to
 \texttt{low}; and, for the model, a second Haiku run with the same prompt and
-two \texttt{claude-sonnet-5-5} runs at effort \texttt{medium} and
-\texttt{high}.
+two \texttt{claude-sonnet-5-5} runs at effort \texttt{medium} and \texttt{high}.
+For RQ7, six systems. Without the ontology, the model sees the description
+and the category list. With the ontology as context, it also sees the
+cached catalogue block and must state the catalogue values the description
+instantiates before choosing categories. With the ontology as the only
+evidence, the unchanged tagger tags the description and a second call sees
+those tags with their definitions, never the description. Three supervised
+classifiers, one-vs-rest logistic regression on 1--2-gram TF-IDF (8,334
+features), on 432 binary indicators of the tagger's (term type, value)
+pairs, term types and implied ancestors, and on both.
 
 \textbf{Metrics.} For faithfulness, the share of citations whose quote the
 verifier finds in the cited document (exact or relabelled) and the rejection
@@ -77,14 +95,15 @@ the structure metrics of Task~B; and type-level micro- and macro-F$_1$ of the
 tagger on the gold items when given each catalogue, with a baseline's types
 mapped onto the gold space by the judge. For RQ6, the same size, verification,
 judged agreement and expert coverage, with the agreement split into recall of
-the main run's term types and precision of the variant's, and the share of
-citations whose section label needed no relabelling.
+the main run's term types and precision of the variant's, and the share of citations whose section label needed no relabelling. For
+RQ7, micro- and macro-F$_1$, precision and recall over the 28 site
+categories; a predicted name outside the list is dropped.
 
 \textbf{Implementation.} Tasks A and B use \texttt{claude-haiku-5-5} at
 effort \texttt{high} with thinking disabled, the corpus behind a one-hour
 prompt cache.
 Task~A is one streamed call with a 120,000-token output limit; Task~B is 93
-calls with $k{=}6$, four in parallel; Task~C runs at effort \texttt{medium}
+calls with six entries each, four in parallel; Task~C runs at effort \texttt{medium}
 with 6 to 24 items in flight; gold annotation uses \texttt{claude-opus-5-5}
 at effort \texttt{high}. All runs are API calls from a laptop; no GPU is
 involved. The retrieval engine is pure Python over integer bitsets and is
@@ -93,7 +112,10 @@ are run \EvalRunsWord\ times, LLMs by sampling and the classifier by seed,
 and reported as mean $\pm$ sd; Task~A repeats are compared in \cref{sec:exp:rq1}.
 The RQ5 baselines, the RQ6 variants and their judge use
 \texttt{claude-haiku-5-5}; a baseline catalogue goes through the unchanged
-Task~B and tagger. RQ6 variants are run once each.
+Task~B and tagger. RQ6 variants are run once each. The RQ7 LLM systems use
+\texttt{claude-haiku-5-5} and are run three times; its supervised
+classifiers use five-fold cross-validation repeated over three shuffles with
+balanced class weights, with tag features from the first tagging run.
 
 \subsection{RQ1: Term Types Generated and Their Faithfulness}
 \label{sec:exp:rq1}
@@ -293,11 +315,11 @@ queries \RetSonNode\ against \RetSonFlatNode), \RetDagNDCG\ against
   \centering
   \caption{Our catalogue against four alternative Task~A pipelines over the
   same corpus and model, and against a second run of ours. Cited is the share
-  of citations the verifier finds; Agr.\ $F_1$ is the judged agreement of
+  of citations the verifier finds; Agr.\ F$_1$ is the judged agreement of
   term types with our first run; Expert cov.\ is the share of the 39
   expert-key dimensions a catalogue contains, contaminated for every
   corpus-based row because both papers are in the corpus; Bits/desc.\ and
-  AUC come from the unchanged Task~B; Micro- and Macro-$F_1$ are type-level
+  AUC come from the unchanged Task~B; Micro- and Macro-F$_1$ are type-level
   scores of the tagger on the gold items with each catalogue, mean $\pm$ sd
   over three runs. Zero-shot and TnT-LLM cannot cite.}
   \label{tab:rq5}
@@ -309,14 +331,26 @@ queries \RetSonNode\ against \RetSonFlatNode), \RetDagNDCG\ against
   \centering
   \caption{Task~A with one ingredient changed, everything else as in the main
   run. Cited is the share of citations the verifier finds; Label exact the
-  share whose section label needed no relabelling; Agr.\ $F_1$ the judged
+  share whose section label needed no relabelling; Agr.\ F$_1$ the judged
   agreement of term types with the main run; Expert cov.\ the share of the 39
   expert-key dimensions contained, contaminated as in \cref{tab:rq5}; USD the
   cost of the call at list price. One run per variant. The Sonnet run at
   effort high hit the output limit and keeps its 72 complete term types.}
-  \label{tab:rq6}
+    \label{tab:rq6}
   \scriptsize
   \input{tables/rq6}
+\end{table*}
+
+\begin{table*}[t]
+  \centering
+  \caption{Site categories from 378 Web token descriptions with and without
+  the ontology, over the 28 categories a market-data site assigned without
+  our catalogue. LLM systems are Haiku 5.5, mean $\pm$ sd over three runs;
+  LR is one-vs-rest logistic regression under five-fold cross-validation
+  over three shuffles. P and R are micro-averaged.}
+  \label{tab:rq7}
+  \scriptsize
+  \input{tables/rq7}
 \end{table*}
 
 \begin{table}[t]
@@ -426,3 +460,42 @@ shows effects on size, label accuracy and precision and not on the identity
 of the dimensions; a second run per variant would give the spread. The judge
 and the expert key carry the caveats of RQ5. RQ6 cost \$1.55, of which
 \$1.48 is the four Task~A calls.
+
+\subsection{RQ7: An Independent Downstream Task}
+\label{sec:exp:rq7}
+
+\Cref{tab:rq7} reports the only task in the paper whose labels were made
+without our catalogue. We make three observations. (1) As prompt context the
+ontology does not help. Description plus catalogue equals description alone,
+micro-F$_1$ 0.570 against 0.571 and macro-F$_1$ 0.557 against 0.563, at five
+times the cost; this repeats the gold-set result of \cref{sec:exp:rq3}: the
+model, not the catalogue in its prompt, sets the accuracy of an LLM
+classifier. (2) The ontology tags carry the category information. A model
+that sees only the tagger's output and never the description keeps 94\% of
+the description-only micro-F$_1$ (0.535). As learned features, 432 binary tag
+indicators match 8,334 TF-IDF features on micro-F$_1$ (0.478 against 0.487)
+and beat them by 15 points on macro-F$_1$ (0.402 against 0.257): the word
+classifier learns the frequent categories only, while a tag such as
+\emph{references a single official currency} is the same feature for every
+stablecoin whatever words its page uses, so the tag classifier reaches the
+rare ones. Words plus tags is the best learned classifier, 0.514 and 0.423.
+(3) The LLM systems over-predict. All three return 3.4 to 4.0 categories per
+coin against 2.26 in the gold, so recall is 0.67 to 0.79 and precision 0.44
+to 0.46; the site's assignment is sparser than the descriptions support,
+while the word classifier errs the other way, precision 0.83 at recall 0.35.
+
+\textbf{Failure case.} Stacks is a Bitcoin layer~2, labelled Infrastructure,
+Layer~2 and Smart Contract Platform. The description alone gets all three.
+With the catalogue the model first claims a base-chain value of the DLT
+architecture dimension and then answers Layer~1, because catalogue version
+\EvalCat\ has no term type whose question asks whether a system is a base
+chain or a second layer; the nearest is a candidate value two levels down,
+\emph{layered main and sub-chains}, which the model did not use. Classifying
+through the catalogue forced a base-chain reading. The same mechanism helps
+KuCoin, where the actor dimensions lead the catalogue prompt to the gold
+Exchange-based Tokens that the description-only prompt misses. Fourteen coins
+are right only without the catalogue and eighteen only with it.
+
+\textbf{Limits.} The label space is one site's editorial categories, several
+of which are marketing themes rather than classification dimensions (AI
+Framework, Meme, DePIN), which caps every system; the supervised tag features come from one tagging run; the supervised classifiers are not tuned. RQ7 cost \$1.73.

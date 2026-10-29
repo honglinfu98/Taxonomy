@@ -1,9 +1,7 @@
 \section{Problem Formulation}
 \label{sec:problem}
 
-\textbf{Corpus.} A corpus $\mathcal{D} = \set{d_1,\dots,d_N}$ is a set of source
-documents, each with metadata (type, jurisdiction, year) and partitioned into
-labelled sections $d_i = \set{s_{i1},\dots,s_{in_i}}$. Documents are
+\textbf{Corpus.} A corpus $\mathcal{D} = \set{d_i}$ is a set of source documents, each with metadata (type, jurisdiction, year) and partitioned into labelled sections $d_i = \set{s_{i\ell}}$. Documents are
 \emph{legal instruments}, of which we keep the definitions articles,
 glossaries, classification conditions and business-model descriptions, or
 \emph{taxonomy frameworks}, academic papers that propose classification
@@ -21,8 +19,8 @@ section label and a verbatim quote $q \subseteq s_{i\ell}$ of at most thirty
 words.
 
 \textbf{Problem (term type induction).} Given $\mathcal{D}$, produce a catalogue
-$\mathcal{Y} = \set{(y, V(y), C(y), A(y), \eta(y))}$ in which every term type $y$
-and every value $v \in V(y)$ carries at least one citation in $C(y)$, $A(y)$
+$\mathcal{Y} = \set{(y, V(y), Q(y), A(y), \eta(y))}$ in which every term type $y$
+and every value $v \in V(y)$ carries at least one citation in $Q(y)$, $A(y)$
 lists the names other sources use for $y$, and $\eta(y)$ records where sources
 disagree on $V(y)$ or on its thresholds, citing each side. No seed taxonomy, gold
 labels or training pairs are given.

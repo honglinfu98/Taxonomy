@@ -116,7 +116,7 @@ the model, for each term type $x$, how probable it is that $x$ is-a $y$ for ever
 other term type $y$ in the same category, plus \emph{none}, meaning $x$ is a
 top-level dimension. One user message per $x$ carries the definition of is-a
 from \cref{sec:problem}, the full record of $x$ and the candidate parents by
-identifier, name and question. The model returns at most $k{=}6$ entries, each
+identifier, name and question. The model returns at most six entries, each
 with a probability, a rationale of at most thirty words, and citations in the
 format of Task~A; the top entry, unless it is \emph{none}, must cite at least
 one passage. The corpus and a second cached block holding the compact
@@ -137,20 +137,19 @@ can hide weak edges later. The first kept edge of a node is its primary parent,
 which gives a tree view.
 
 \textbf{Metrics for maintenance.} We attach to the DAG three measures of how
-well it discriminates. At a node $y$ with children $C(y)$ the kept edge weights define a
+well it discriminates. At a node $y$ with children $\mathrm{ch}(y)$ the kept edge weights define a
 branching distribution
 \begin{equation}
-  q_y(c) = \frac{w(c \to y)}{\sum_{c' \in C(y)} w(c' \to y)}, \qquad c \in C(y),
+  q_y(x) = \frac{w(x \to y)}{\sum_{x' \in \mathrm{ch}(y)} w(x' \to y)}, \qquad x \in \mathrm{ch}(y),
   \label{eq:branch}
 \end{equation}
 and a \emph{random descent} starts at a uniformly chosen root and follows $q_y$
 until it reaches a leaf. The \emph{information gain} at $y$ is the entropy
 $\entropy(q_y)$ in bits, zero for leaves and single-child nodes; we report its
 sum over nodes and its expectation along a descent, the bits a full walk
-resolves. With $F(d)$ the probability that a descent has reached a leaf by depth
-$d$ and $D$ the maximum depth,
+resolves. With $F(h)$ the probability that a descent has reached a leaf by depth $h$ and $h_{\max}$ the maximum depth,
 \begin{equation}
-  \mathrm{AUC} = \frac{1}{D}\int_0^D F(d)\,\mathrm{d}d,
+  \mathrm{AUC} = \frac{1}{h_{\max}}\int_0^{h_{\max}} F(h)\,\mathrm{d}h,
   \qquad
   \text{effective leaves} = 2^{\entropy(r)},
   \label{eq:auc}
@@ -164,86 +163,206 @@ which is the sensitivity study of \cref{sec:exp:rq2}.
 \subsection{The DAG as a Label Space and Its Maintenance}
 \label{sec:method:maintain}
 
+Part~2 treats $G$ as the label space for Web content and runs the same loop
+over every batch: sample, tag (Task~C), measure and discover (Task~E), and
+evolve. Catalogue version $t$ is in force for one iteration; version 0 is the
+DAG of Part~1 and is never modified, later versions only add to it, and every
+node, edge and value added after the seed carries a \emph{candidate} status
+with the iteration that produced it, so seed and discovered structure stay
+distinguishable. Batches are disjoint, the sampler excluding every item drawn
+before; an item is a title and abstract (for a patent, its abstract section)
+capped at 450 words, kept when it is in English and its title or abstract
+matches a fixed list of DLT terms (\cref{sec:exp:setup}).
+
 \textbf{Tagging (Task C).} The model receives one cached system block, the
-\emph{catalogue}: every term type with its question, its values as codes with
-definitions, and its is-a parents with weights. The Part~1 corpus is not sent.
-For each content item, a title and abstract, it returns tags $(y, v, c, e)$: a
-term type, a value code, a confidence, and an evidence span of at most twenty
-words copied from the item; optional proposals of a value or term type the
-catalogue lacks; and an off-topic flag. We reject unknown identifiers, verify
-every evidence span against the item with the matcher of
-\cref{sec:method:verify}, and record the is-a ancestors of each tagged term
-type as implied.
+\emph{catalogue}: every term type with its identifier, question, values as
+codes $v_1, v_2, \dots$ with their definitions, and its is-a parents with weights,
+listed as the term types it refines. The Part~1 corpus is not sent, so a
+request is the cached catalogue plus the item. The instructions
+(\cref{app:prompts}) state what a tag asserts, that the text is about,
+describes or clearly exhibits the category, and that a word used in passing
+is not a tag; that several values of one term type may apply; that the most
+specific applicable term type is preferred and ancestors are not repeated
+unless they carry a value of their own; and that the model may propose, under
+a separate key and only when confident, at most three values or term types the
+catalogue lacks. For each item it returns tags $(y, v, \kappa, e)$, a term type, a value code, a confidence in $[0,1]$, and an evidence span of at most twenty
+words copied from the item, plus the proposals and an off-topic flag. We
+reject a tag whose term type is not in the catalogue; a value given as a code
+or a label is resolved to a catalogue value exactly, then by string similarity
+at ratio 0.85, and rejected otherwise; the confidence is clipped to $[0,1]$;
+every evidence span is checked against the title and text with the matcher of
+\cref{sec:method:verify}, and the result is recorded on the tag, which is kept
+either way and reported as verified or not. We record the is-a ancestors of
+each tagged term type, under every edge of $G$, as the item's implied term
+types. The first item of a batch is tagged alone to write the cache, the rest
+with 6 to 24 requests in flight at effort \texttt{medium}; a response that is
+not valid JSON counts as an item with no tags. Proposals are grouped by the
+term type they target and become seeds for discovery.
 
 \textbf{Label space.} Tagging places an item on node $y$ and, by is-a, on every
 ancestor. For node $y$ let $S(y)$ be the items tagged directly at $y$, $C(y)$
 its closure, $S(y)$ plus the closure of its children, and $R(y) \subseteq C(y)$
 the \emph{residual}, items on no child of $y$. From these we compute per node
-the entropy of the value distribution of $S(y)$ (impurity of the node's own
-split), its dominance (share of the top value), the \emph{branching gain}, the
-entropy of the split of $C(y)$ over its children plus the residual, and the
-residual fraction $|R(y)|/|C(y)|$. A random descent now starts at a root with
-probability proportional to its closure and at $y$ stops with the residual
-share or moves to a child in proportion to its closure, which gives the
-objectives of \cref{eq:branch,eq:auc} from content rather than from the prior
-weights; both are reported.
+the value entropy, $\entropy$ of the value distribution of $S(y)$, where an
+item with two values at $y$ counts for both (the impurity of the node's own
+split, near zero when one value absorbs everything); the dominance, the share
+of the most frequent value; the residual fraction $|R(y)|/|C(y)|$; and the
+\emph{branching gain}, the entropy of the split of $C(y)$ over its children
+plus the residual,
+\begin{equation}
+  \label{eq:gain}
+  g(y) = \entropy(\hat q_y), \qquad
+  \hat q_y(x) \propto \frac{|C(x)|}{|C(y)|},\quad
+  \hat q_y(\mathrm{stop}) \propto \frac{|R(y)|}{|C(y)|},
+\end{equation}
+for $x \in \mathrm{ch}(y)$, normalised to sum to one because the closures of
+two children may overlap.
+\Cref{eq:gain} is \cref{eq:branch} with the model's edge weights
+replaced by item counts and a stop option added. A random descent now starts
+at a root with probability proportional to its closure and at $y$ stops with
+$\hat q_y(\mathrm{stop})$ or moves to child $x$ with $\hat q_y(x)$; a node
+without children stops with probability one. From the descent we compute, as
+in \cref{sec:method:hierarchy}, the expected bits resolved, the AUC of the
+reach-a-leaf curve, the expected depth, and the effective leaves
+$2^{\entropy(r)}$ for the distribution $r$ of the node a descent stops at,
+all from content rather than from the prior weights. The prior values of
+\cref{eq:branch,eq:auc} are recomputed for the version in force and reported
+beside them.
 
-\textbf{Proposals and discovery (Task E).} The measurements name \emph{dormant}
-nodes ($C(y) = \emptyset$), \emph{collapsed} nodes (dominance $\ge 0.85$ with at
-least ten items), the highest-gain nodes, and \emph{discovery targets}, nodes
-with at least five residual items making up at least 30\% of the closure. For
-each target the model sees the node, its values and children, the tagger's
-seeds and up to forty residual items with evidence spans, and proposes at most
-four candidates, new values of $y$ or new child term types with two to six
-values, each with supporting items and one evidence span. Because the items shown are a sample of the residual, the share of shown items
-that support a candidate is extrapolated to the whole residual. A candidate is
-accepted when at least five of the shown items support it, when making it a
-child that captures its estimated support would raise the branching gain at
-$y$ by at least 0.1 bit, and when its evidence span is found verbatim in a
-supporting item. Dormant and collapsed nodes are reported, not
-removed.
+\textbf{Deterministic proposals.} From the statistics the loop names, without
+a model call, the \emph{dormant} nodes ($C(y) = \emptyset$), the
+\emph{collapsed} nodes (dominance $\ge 0.85$ with $|S(y)| \ge 10$), the nodes
+of highest branching gain, and the \emph{discovery targets}, nodes with
+$|R(y)| \ge 5$ and $|R(y)|/|C(y)| \ge 0.3$: enough items stop at $y$ to ask
+whether a dimension below it is missing. Dormant and collapsed nodes are
+reported, not removed. On technical content the legal branches are dormant by
+nature of the batch, and removing a node is a decision across batches that
+the loop does not take.
 
-\textbf{Evolution.} One model call consolidates the accepted candidates into
-version $n{+}1$, merging candidates that ask the same question at different
-nodes, placing each new term type under the node it refines and dropping
-duplicate values; additions are marked as candidates with edges at weight one
-until the is-a query of \cref{sec:method:hierarchy} re-estimates them. The
-seed is never modified, batches are disjoint, and every iteration appends its
-sample, tags, objectives, additions, cost and time to a log.
+\textbf{Discovery (Task E).} One call per target, without the corpus, at
+effort \texttt{medium}. The model sees the node's identifier, name, question,
+category, values and child term types; the seeds the tagger proposed at that
+node, marked as possibly wrong; and up to 40 residual items, those with the
+most confident tag at $y$ first, each as its identifier, title, the evidence
+spans of its tags at $y$ and its first sixty words, with the total residual
+count stated. It proposes at most four candidates, most useful first: a new
+value of $y$, when the residual items exhibit a category of the node's
+question that its value list lacks, or a new child term type with a question
+and two to six values, when they can be split by a question the catalogue
+does not ask; each with the identifiers of the residual items that support it
+and one evidence span of at most twenty words, and an empty list when the
+residual is the natural end of the branch. A candidate is accepted when three
+tests hold. \emph{Support}: at least five of the identifiers it lists are
+residual items of $y$ among those shown. \emph{Gain}: because the shown items
+are a sample of the residual, the support $m$ among the $n_s$ shown is
+extrapolated to the whole residual, $\hat m = \mathrm{round}(m\,|R(y)|/n_s)$
+when $n_s < |R(y)|$ and $\hat m = m$ otherwise, capped at $|R(y)|$, and the
+candidate must raise the branching gain at $y$ by at least 0.1 bit when it
+becomes a child that captures $\hat m$ items out of the residual,
+\begin{equation}
+  \label{eq:cgain}
+  \Delta(y, \hat m) = \entropy(\hat q_y^{+}) - \entropy(\hat q_y) \ge 0.1,
+\end{equation}
+where $\hat q_y^{+}$ replaces the stop option of \cref{eq:gain} by two options
+of mass $\hat m/|C(y)|$ and $(|R(y)| - \hat m)/|C(y)|$, renormalised. A value
+candidate is scored the same way, as the split its items would make. Without
+the extrapolation a node with thousands of residual items could accept
+nothing, since support is capped by the forty items shown. \emph{Evidence}:
+the span is found verbatim, by the matcher of \cref{sec:method:verify}, in one
+of the supporting items. The thresholds 5, 0.3, 0.1 and 40 are parameters of
+the loop and were the same in every iteration.
+
+\textbf{Evolution.} One call at effort \texttt{high} consolidates the accepted
+candidates of an iteration into version $t{+}1$. It sees every existing node
+as identifier, category, name and question, grouped by category, and every
+accepted candidate with its kind, target node, label, question, definition,
+values, gain and supporting items, and must merge candidates that ask the same
+question at different nodes, taking the union of their values (two to eight)
+and items; place each new term type under the existing node or nodes it
+refines, under the category root when it applies across the category, and
+under two parents only when it refines both; keep a candidate value unless it
+duplicates an existing one; and invent nothing the candidates do not support.
+The answer is validated: a new term type needs a unique identifier, parents
+that exist, at least two values and a valid category, or it is skipped; a new
+value is skipped when the term type already has it under another case.
+Additions carry the candidate status, the iteration, the labels merged into
+them and their supporting items, and a new edge carries weight one until the
+is-a query of \cref{sec:method:hierarchy} re-estimates it against the corpus.
+When nothing was accepted no version is written. Every iteration appends to a
+log its sample, items, tags and verified evidence, the objectives from tags
+and from the prior, the dormant, collapsed and target counts, the candidates
+and the accepted ones, what was added and the resulting node, edge and value
+counts, and the tokens, cost at list price, API seconds, wall time and
+parallelism of its three stages.
 
 \subsection{Retrieval over the DAG}
 \label{sec:method:retrieval}
 
+Part~3 turns the tagged content into an index on $G$ and answers queries with
+set algebra on the DAG instead of text search.
+
 \textbf{Index.} The tagged items of every iteration are placed on the current
-version of $G$ and numbered $0..N{-}1$, and every posting list is a bitset, so
-set algebra on postings is one integer operation. Node $y$ carries $S(y)$, one
-bitset per value $v \in V(y)$, and its closure $C(y)$, the union of $S$ over
-its descendants. From $G$ we
-precompute, in topological order, the descendants and ancestors of every node,
-the best is-a path strength $s(d, a)$, the maximum over paths from $d$ to $a$
-of the product of edge weights, the lowest common ancestors of any node set,
-and the information content $\mathrm{IC}(y) = -\log_2 |C(y)|/N$.
+version of $G$; off-topic items, items with no tag on a node of that version
+and duplicates are skipped. Identifiers are stable across versions, so a tag
+made on an earlier version remains valid, and a node added later holds no
+items from earlier batches. Items are numbered $0..N{-}1$ and every posting
+list is a bitset over the items, so set algebra on postings is one integer
+operation. Node $y$ carries $S(y)$, one bitset per value $v \in V(y)$, and its
+closure $C(y)$, the union of $S$ over $y$ and its descendants; a category
+carries the items with any tag in it. Per item the index keeps its tagged
+nodes with the highest confidence of their tags, its (node, value) pairs with
+confidence, one evidence span per (item, node), and a byte offset into the
+batch file, so the text itself is not stored. From $G$ we precompute, in
+topological order, the descendants and ancestors of every node as bitsets
+over the nodes; the best is-a path strength $\rho(x, y)$, the maximum over paths from $x$ up to its ancestor $y$ of the product of the edge weights of \cref{sec:method:hierarchy}, one at $x$ itself and one along candidate edges; the lowest common ancestors
+of any node set, the common ancestors not dominated by another; the
+information content $\mathrm{IC}(y) = -\log_2 |C(y)|/N$; and a node similarity $\max_z \rho(x, z)\,\rho(x', z)$ over the common ancestors $z$ of $x$ and $x'$, how strongly both are kinds of one thing. The index on \RCat\ builds in
+about a second and is rebuilt, not updated, after each iteration.
 
 \textbf{Queries.} An atom denotes the subtree $C(y)$, the direct items $S(y)$,
-the items with value $v$ at $y$, the descendants $d$ of $y$ with
-$s(d, y) \ge \sigma$, or a category; atoms combine with AND, OR and NOT. An
-item's score is the sum over the positive atoms of its match strength, the tag
-confidence for a direct or value match and $\max_d c(d)\,s(d, y)$ over its
-tagged descendants $d$ for a subtree match, so an item reached only by weak
-edges ranks below one tagged at $y$ itself. The lowest common ancestors of the query nodes are
-offered as the generalisation of the query; when fewer than $k$ items match,
-items from the nodes most similar to the query nodes, by
-$\max_c s(a, c)\,s(b, c)$ over common ancestors $c$, are appended and marked.
+the items with value $v$ at $y$, given as a code or a label, the items on descendants $x$ of $y$ with $\rho(x, y) \ge \sigma$, or a category; atoms
+combine with AND, OR, NOT and parentheses, and a space is AND. Evaluation
+walks the parse tree over bitsets, AND and OR as intersection and union and
+NOT as the complement within the collection, so a subtree query is one
+lookup and the strength-restricted form, which must enumerate the descendants
+of $y$, is the only atom whose cost grows with the subtree. An item's score
+is the sum over the positive atoms, those not under a NOT, of its match
+strength: the tag confidence for a direct or value match, the highest
+confidence among the item's tags in the category for a category match, and
+$\max_x \kappa(x)\,\rho(x, y)$ over its tagged descendants $x$ for a subtree match, so
+an item reached only by weak edges ranks below one tagged at $y$ itself; the
+descendant that produced the match is reported with the result, and ties are
+broken by item identifier. The lowest common ancestors of the query nodes are
+offered as the generalisation of a query over more than one node. When fewer
+than $k$ items match, the six nodes most similar to each query node are taken
+in decreasing similarity and the items of their subtrees appended until $k$
+is reached, each scored as the similarity times its match strength at that
+node and marked as expanded with the node it came through. An item is also a
+vector over the nodes, $\max_x \kappa(x)\,\rho(x, y)\,\mathrm{IC}(y)$ over its tagged descendants $x$ of each ancestor $y$, and ``more like this'' ranks the items
+that share a tagged node with it by cosine. A free-text request is routed to
+a query lexically, by idf-weighted overlap of its tokens with the names,
+questions, descriptions, aliases and value labels of the catalogue, the three
+best atoms joined by OR, or by one small model call with the catalogue block
+cached.
 
 \textbf{Facets.} For a result set of $n$ items and a node $y$ it touches, the
-child subtrees of $y$ with the residual, and the values of $y$ with the
-untagged items, are the questions a user could be asked next. Picking option
-$o$ with probability proportional to its size $m_o$, the expected narrowing is
+query nodes or, for a category query, the roots of that category, two kinds
+of question could be asked next: the child subtrees of $y$, where each child $x$ with items is an option of size $n_x = |C(x) \cap \text{result}|$ and the
+items on no child form a residual option, and the values of $y$, where each
+value with items is an option and the items not tagged at $y$ form the
+residual. Picking option $o$ with probability proportional to its size $n_o$,
+the expected narrowing is
 \begin{equation}
   \label{eq:facet}
-  \mathcal{N}(y) = \sum_{o} \frac{m_o}{\sum_{o'} m_{o'}} \log_2 \frac{n}{m_o},
+  \mathcal{N}(y) = \sum_{o} \frac{n_o}{\sum_{o'} n_{o'}} \log_2 \frac{n}{n_o},
 \end{equation}
-zero for an option that covers the whole set; the facet with the highest
-$\mathcal{N}$ is the next question, the branching gain of
-\cref{sec:method:maintain} evaluated on a result set: the objective that
-grows the DAG also routes a search through it.
+zero for an option that covers the whole set; options may overlap, as an
+item can sit in two child subtrees, which the normalisation absorbs. The
+engine returns the six facets of highest $\mathcal{N}$ with their options and
+sizes, and the one at the top is the next question. On the result set
+$C(y)$ with the child subtrees and the residual as options, \cref{eq:facet}
+is the branching gain of \cref{eq:gain}: the objective that grows the DAG
+also routes a search through it. The navigation experiment of
+\cref{sec:exp:rq4} uses this directly, offering at each step the facets of
+every node the remaining items carry tags on and taking the option that
+contains the target.

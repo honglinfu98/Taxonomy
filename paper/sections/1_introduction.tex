@@ -106,6 +106,10 @@ facet with the highest expected narrowing.
     and model, our catalogue scores highest downstream, type micro-F$_1$
     0.34 against 0.12--0.24 (\cref{sec:exp:rq5}); ablations show that the
     citation requirement, not the prompt's quality rules, makes the model read
-    the corpus, 39 term types without it against 93 (\cref{sec:exp:rq6}). Code and data are at an anonymised
+    the corpus, 39 term types without it against 93 (\cref{sec:exp:rq6}). On
+    378 Web token descriptions labelled by a market-data site without our
+    catalogue, the ontology's tags as learned features match 8,334 TF-IDF
+    features on micro-F$_1$ and beat them by 15 points on macro-F$_1$, while
+    the catalogue as prompt context adds nothing (\cref{sec:exp:rq7}). Code and data are at an anonymised
     repository.\footnote{\url{https://anonymous.4open.science/r/Taxonomy-77BF/}}
 \end{itemize}
