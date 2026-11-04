@@ -200,3 +200,6 @@ acceptances stayed between 17 and 24. Per-version structure, per-iteration objec
 later usage of every discovered term type: `output/evolution/evolution_track.md`; dashboard
 `python -m taxonomy.classification.evolution_dashboard` (published at
 https://claude.ai/artifact/Q6EXEjugt2w64dsTo6a5yS).
+The final DAG itself, as a radial graph around a DLT hub joined to the five category roots, with
+per-category metrics and a node table: `python -m taxonomy.classification.dag_dashboard`
+(`output/evolution/dag_dashboard.html`).

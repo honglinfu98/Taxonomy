@@ -76,28 +76,43 @@
 The system instructions (\cref{fig:promptsys}) precede the cached corpus and are
 identical for every task; the Task A user prompt (\cref{fig:prompttask}) is
 followed at run time by the manifest of document indexes and section labels;
-the tagging prompt (\cref{fig:prompttag}) is sent once per item. The Task B
-is-a prompt, the discovery prompt and the consolidation prompt are in the
-released artefact.
+the Task B is-a prompt (\cref{fig:prompttaskb}) is sent once per term type,
+after the corpus and a second cached block holding the compact catalogue; the
+tagging prompt (\cref{fig:prompttag}) is sent once per item. The discovery
+prompt and the consolidation prompt are in the released artefact.
 
-\noindent
+%% Each prompt listing sits in its own float so it is never split across
+%% pages by the surrounding tables and figures.
+\begin{figure}[tbp]
 \lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_system.txt}
-\captionof{figure}{System instructions, verbatim.}
+\caption{System instructions, verbatim.}
 \label{fig:promptsys}
-\smallskip
-\noindent
+\end{figure}
+
+\begin{figure}[tbp]
 \lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_task_a.txt}
-\captionof{figure}{Task A user prompt, verbatim. The manifest appended at run time is
+\caption{Task A user prompt, verbatim. The manifest appended at run time is
 one line per document: \texttt{doc 4 (Regulation (EU) 2023/1114 ...): "Articles
 2-3: Scope and Definitions"}.}
 \label{fig:prompttask}
-\smallskip
-\noindent
+\end{figure}
+
+\begin{figure}[tbp]
+\lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_task_b.txt}
+\caption{Task B is-a prompt, verbatim, sent once per term type $x$ with
+\texttt{\{child\}} and \texttt{\{child\_id\}} filled by the record of $x$,
+\texttt{\{candidates\}} by the other term types of its category, and
+\texttt{\{k\}} by the entry limit of six. The compact catalogue precedes it
+as a second cached system block after the corpus.}
+\label{fig:prompttaskb}
+\end{figure}
+
+\begin{figure}[tbp]
 \lstinputlisting[basicstyle=\ttfamily\tiny, frame=single, breaklines=true]{tables/prompt_tag.txt}
-\captionof{figure}{Task C tagging prompt, verbatim; the catalogue block is a cached
+\caption{Task C tagging prompt, verbatim; the catalogue block is a cached
 system block that follows the instructions.}
 \label{fig:prompttag}
-\smallskip
+\end{figure}
 
 \section{Additional Results}
 \label{app:results}

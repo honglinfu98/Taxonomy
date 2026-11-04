@@ -136,5 +136,8 @@ TODO: funding, data providers, reviewers.
 %% ============================================================================
 \appendix
 \input{sections/8_appendix}
+%% Flush every pending float before acmart's end-of-document \balance,
+%% which otherwise silently drops floats that are still queued.
+\clearpage
 
 \end{document}

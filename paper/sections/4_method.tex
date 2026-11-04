@@ -54,7 +54,7 @@ blocks, so a citation can name a document and a section unambiguously. The file
 holds 32 sections and 97.8 thousand words, which the model's tokeniser counts
 as 235,298 tokens.
 
-\subsection{The Extraction Task}
+\subsection{The Extraction Task (Task A)}
 \label{sec:method:task}
 
 
@@ -108,15 +108,16 @@ verified flag, and the rejection rate measures desideratum~(D1). Verification es
 model says it does; it does not establish that the quote supports the
 dimension, a limit we return to in \cref{sec:exp:rq1}.
 
-\subsection{From Term Types to a Hierarchy}
+\subsection{From Term Types to a Hierarchy (Task B)}
 \label{sec:method:hierarchy}
 
-\textbf{One question per node.} With the catalogue $\mathcal{Y}$ in hand we ask
-the model, for each term type $x$, how probable it is that $x$ is-a $y$ for every
-other term type $y$ in the same category, plus \emph{none}, meaning $x$ is a
-top-level dimension. One user message per $x$ carries the definition of is-a
-from \cref{sec:problem}, the full record of $x$ and the candidate parents by
-identifier, name and question. The model returns at most six entries, each
+\textbf{One question per node.} With the catalogue $\mathcal{Y}$ in hand, Task~B
+asks the model, for each term type $x$, how probable it is that $x$ is-a $y$
+for every other term type $y$ in the same category, plus \emph{none}, meaning
+$x$ is a top-level dimension. The prompt is given verbatim in
+\cref{fig:prompttaskb}. One user message per $x$ carries the definition of
+is-a from \cref{sec:problem}, the full record of $x$ and the candidate parents
+by identifier, name and question. The model returns at most six entries, each
 with a probability, a rationale of at most thirty words, and citations in the
 format of Task~A; the top entry, unless it is \emph{none}, must cite at least
 one passage. The corpus and a second cached block holding the compact
@@ -135,30 +136,6 @@ thus resolves to the stronger direction, and an exact tie resolves by identifier
 order and is reported. No weight threshold is applied; a display threshold
 can hide weak edges later. The first kept edge of a node is its primary parent,
 which gives a tree view.
-
-\textbf{Metrics for maintenance.} We attach to the DAG three measures of how
-well it discriminates. At a node $y$ with children $\mathrm{ch}(y)$ the kept edge weights define a
-branching distribution
-\begin{equation}
-  q_y(x) = \frac{w(x \to y)}{\sum_{x' \in \mathrm{ch}(y)} w(x' \to y)}, \qquad x \in \mathrm{ch}(y),
-  \label{eq:branch}
-\end{equation}
-and a \emph{random descent} starts at a uniformly chosen root and follows $q_y$
-until it reaches a leaf. The \emph{information gain} at $y$ is the entropy
-$\entropy(q_y)$ in bits, zero for leaves and single-child nodes; we report its
-sum over nodes and its expectation along a descent, the bits a full walk
-resolves. With $F(h)$ the probability that a descent has reached a leaf by depth $h$ and $h_{\max}$ the maximum depth,
-\begin{equation}
-  \mathrm{AUC} = \frac{1}{h_{\max}}\int_0^{h_{\max}} F(h)\,\mathrm{d}h,
-  \qquad
-  \text{effective leaves} = 2^{\entropy(r)},
-  \label{eq:auc}
-\end{equation}
-where $r$ is the distribution of the leaf a descent ends at. AUC is one when
-every root is a leaf and falls as branches run deeper; effective leaves counts
-how many leaves descents use. We compute all three overall, per
-category, and for the sub-DAG obtained at every display threshold from 0 to 1,
-which is the sensitivity study of \cref{sec:exp:rq2}.
 
 \subsection{The DAG as a Label Space and Its Maintenance}
 \label{sec:method:maintain}
@@ -199,35 +176,322 @@ with 6 to 24 requests in flight at effort \texttt{medium}; a response that is
 not valid JSON counts as an item with no tags. Proposals are grouped by the
 term type they target and become seeds for discovery.
 
+\textbf{Metrics for maintenance.} The consolidated DAG of
+\cref{sec:method:hierarchy} is the label space that Part~2 maintains, so we
+attach to it three measures of how well it discriminates: how many bits a walk down the DAG resolves, how early that walk
+ends, and how many distinct leaves it reaches. All three are defined through
+one random walk that uses the DAG as a classifier would, and we illustrate
+each on the five-edge DAG of \cref{fig:toydag}, small enough to compute by
+hand.
+
+\begin{figure}[t]
+  \centering
+  \begin{forest}
+    for tree={grow'=0, parent anchor=east, child anchor=west, anchor=west,
+              l sep=22pt, s sep=2pt, font=\scriptsize, edge={-}},
+    [Consensus mechanism
+      [Proof of work, edge label={node[midway,above,font=\tiny]{0.50}}]
+      [Proof of stake, edge label={node[midway,above,font=\tiny]{0.40}}
+        [Delegated PoS, edge label={node[midway,above,font=\tiny]{0.90}}]
+        [Liquid staking, edge label={node[midway,below,font=\tiny]{0.10}}]
+      ]
+      [Proof of authority, edge label={node[midway,below,font=\tiny]{0.10}}]
+    ]
+  \end{forest}
+  \par\vspace{4pt}
+  \scriptsize
+  \begin{tabular}{@{}lrr@{\qquad}lrr@{}}
+    \toprule
+    Node $y$ & $q_y$ & $\entropy(q_y)$ & Leaf reached & $r$ & depth \\
+    \midrule
+    Consensus mechanism & $.50,.40,.10$ & 1.36 & Proof of work      & $.50$ & 1 \\
+    Proof of stake      & $.90,.10$     & 0.47 & Proof of authority & $.10$ & 1 \\
+    four leaves         & --            & 0    & Delegated PoS      & $.36$ & 2 \\
+                        &               &      & Liquid staking     & $.04$ & 2 \\
+    \bottomrule
+  \end{tabular}
+  \caption{A worked example for the three metrics. Top: a DAG of one root
+  and four leaves with the kept edge weights $w(x \to y)$. Bottom: the
+  branching distributions and their entropies, and the leaf a random descent
+  ends at with its probability and depth. The DAG resolves 1.55 bits per
+  descent, has an AUC of 0.55 and 2.9 effective leaves.}
+  \label{fig:toydag}
+\end{figure}
+
+At a node $y$ with children $\mathrm{ch}(y)$ the kept edge weights define a
+branching distribution
+\begin{equation}
+  q_y(x) = \frac{w(x \to y)}{\sum_{x' \in \mathrm{ch}(y)} w(x' \to y)}, \qquad x \in \mathrm{ch}(y),
+  \label{eq:branch}
+\end{equation}
+the probability of stepping from $y$ to child $x$, so that heavy edges attract
+more of the walk. In the example the weights at each node already sum to one;
+in general they do not, since $w(x \to y)$ is the probability of $y$ as a
+parent of $x$, not a share of $y$. A \emph{random descent} starts at a
+uniformly chosen root, draws a child from $q_y$ at every node it visits, and
+ends when it reaches a leaf. The walk is a device rather than a step of the
+pipeline: it turns a static graph into a distribution over paths, so that
+entropy applies. In the example every walk starts at the single root, steps to
+proof of work with probability $0.5$, to proof of stake with $0.4$, or to
+proof of authority with $0.1$, and from proof of stake continues to delegated
+PoS with $0.9$ or to liquid staking with $0.1$.
+
+\emph{Information gain} is the yield of the walk. At $y$ it is the entropy
+$\entropy(q_y) = -\sum_x q_y(x) \log_2 q_y(x)$ in bits, the uncertainty the
+choice at $y$ resolves: two equally weighted children resolve one bit, four
+resolve two, and four children of which one carries almost all the weight
+resolve close to zero, since the walk nearly always goes the same way; leaves
+and single-child nodes resolve nothing. In the example the root resolves
+$1.36$ bits, a little short of the $1.58$ that three equal children would
+give, and proof of stake resolves $0.47$, since nine walks in ten take the
+same edge. We report two aggregates. The \emph{sum over nodes}, $1.83$ bits in
+the example, is the total discrimination the DAG holds. The \emph{expectation
+along a descent} weights each node by how often a walk visits it: every walk
+passes the root and collects its $1.36$ bits, but only $40\%$ reach proof of
+stake and collect the further $0.47$, so a walk resolves $1.36 + 0.4 \times
+0.47 = 1.55$ bits. The expectation is the fairer figure and the one we quote
+as \emph{bits per descent}, because a high-entropy node below an edge the
+walk rarely takes adds little to it.
+
+The \emph{AUC of the reach-a-leaf curve} is the shape of the walk. Let $F(h)$
+be the probability that a descent has reached a leaf by depth $h$, with
+$h_{\max}$ the maximum depth, and let $r$ be the distribution of the leaf a
+descent ends at. Then
+\begin{equation}
+  \mathrm{AUC} = \frac{1}{h_{\max}}\int_0^{h_{\max}} F(h)\,\mathrm{d}h,
+  \qquad
+  \text{effective leaves} = 2^{\entropy(r)},
+  \label{eq:auc}
+\end{equation}
+where $F$ is linearly interpolated between integer depths, so the integral is
+the trapezoid rule over unit steps. $F$ is the cumulative distribution of the
+stopping depth, and AUC measures how early walks terminate. In the example
+$60\%$ of walks stop at depth~1, at proof of work or proof of authority, and
+the rest at depth~2, so $F = (0, 0.6, 1.0)$ over $h_{\max} = 2$ and
+$\mathrm{AUC} = \tfrac{1}{2}\big(\tfrac{0 + 0.6}{2} + \tfrac{0.6 + 1.0}{2}\big)
+= 0.55$. It is one when every root is a leaf, since then $F(0) = 1$, and
+approaches zero for a single chain, where nothing stops before the bottom: a
+chain of five nodes has $F = (0, 0, 0, 0, 1)$ and an AUC of $0.5 / 4 =
+0.125$. Between the two, a high value marks a shallow, wide DAG and a low
+value deep branches. Two DAGs can resolve the same bits, one in a few wide
+steps and one in many narrow ones, and AUC separates them; we report the
+expected stopping depth beside it, $1.4$ in the example.
+
+\emph{Effective leaves} is the destination of the walk. It is $2^{\entropy(r)}$,
+the perplexity of $r$: if descents end at each of $n$ leaves equally often,
+$\entropy(r) = \log_2 n$ and the measure equals $n$, and when heavy edges
+funnel the walk into a few leaves it falls toward that few whatever the leaf
+count. It therefore counts the leaves the hierarchy delivers as distinct
+outcomes, not the leaves it draws. The example has four leaves, reached with
+probabilities $0.50$, $0.36$, $0.10$ and $0.04$, so $\entropy(r) = 1.55$ bits
+and the DAG has $2^{1.55} = 2.9$ effective leaves: liquid staking is reached
+by one walk in twenty-five and barely functions as a destination. Four leaves
+reached equally would give $4$; four of which one takes $97\%$ of the walks
+would give about $1.2$. On a tree $\entropy(r)$ equals the expected bits per
+descent, as it does here, since the bits resolved along a path identify its
+end; in a DAG with shared children the two differ, which is why both are
+reported.
+
+Together the three expose three failures of a hierarchy: low bits per
+descent, branches that do not discriminate; AUC near one, a structure so flat
+that it adds little over a list; effective leaves far below the leaf count, a
+DAG wide on paper that a few branches dominate. We compute all three overall,
+per category, and for the sub-DAG obtained at every display threshold from 0
+to 1, where hiding an edge turns its child into a root, which is the
+sensitivity study of \cref{sec:exp:rq2}. On the example, hiding the edges
+below $0.2$ detaches proof of authority and liquid staking into roots of their
+own: two of the three roots are then leaves, the remaining branch resolves
+$0.99$ bits, bits per descent fall from $1.55$ to $0.33$, and AUC rises to
+$0.84$ because two walks in three end at depth~0. That is the pattern the
+sweep reports on the real DAG.
+
 \textbf{Label space.} Tagging places an item on node $y$ and, by is-a, on every
-ancestor. For node $y$ let $S(y)$ be the items tagged directly at $y$, $C(y)$
-its closure, $S(y)$ plus the closure of its children, and $R(y) \subseteq C(y)$
-the \emph{residual}, items on no child of $y$. From these we compute per node
-the value entropy, $\entropy$ of the value distribution of $S(y)$, where an
-item with two values at $y$ counts for both (the impurity of the node's own
-split, near zero when one value absorbs everything); the dominance, the share
-of the most frequent value; the residual fraction $|R(y)|/|C(y)|$; and the
-\emph{branching gain}, the entropy of the split of $C(y)$ over its children
-plus the residual,
+ancestor. Let $I$ be the items of the batch, $V(y)$ the values of term type
+$y$, and $T$ the accepted tags, each a triple $(i, y, v)$ with $i \in I$,
+$y \in \mathcal{Y}$ and $v \in V(y)$ placing item $i$ at $y$ with value $v$.
+For node $y$ let
+\begin{equation}
+  \label{eq:closure}
+  S(y) = \{\, i \in I : (i, y, v) \in T \text{ for some } v \,\}, \qquad
+  C(y) = S(y) \cup \bigcup_{x \in \mathrm{ch}(y)} C(x),
+\end{equation}
+where $S(y)$ is the set of items tagged directly at $y$ and $C(y)$ is its
+\emph{closure}, the items on $y$ or on any descendant, so that
+$C(y) = \bigcup_{x \preceq y} S(x)$ over all $x$ with an is-a path to $y$,
+$x$ itself included; a leaf has $C(y) = S(y)$. The recursion is well defined
+because $G$ is acyclic, and the closures of two children may overlap, since an
+item may be tagged at both or a node may have two parents. The
+\emph{residual} of $y$ is the part of its closure that stops there,
+\begin{equation}
+  \label{eq:residual}
+  R(y) = C(y) \setminus \bigcup_{x \in \mathrm{ch}(y)} C(x) \;\subseteq\; S(y),
+\end{equation}
+the items placed on $y$ but on none of its children; for a leaf,
+$R(y) = S(y)$. An item tagged at a child and also at $y$ belongs to $S(y)$
+and $C(y)$ but not to $R(y)$.
+
+\begin{figure}[t]
+  \centering
+  \scriptsize
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Item & Tags $(y, v)$ \\
+    \midrule
+    a & consensus mechanism: PoS; \; finality: deterministic \\
+    b & consensus mechanism: PoW \\
+    c & finality: probabilistic \\
+    d & consensus mechanism: PoS \\
+    \bottomrule
+  \end{tabular}
+  \par\vspace{4pt}
+  \begin{tabular}{@{}llr@{\qquad}lrr@{}}
+    \toprule
+    Set & Items & Size & Value $v$ & $n_v(y)$ & $p_y(v)$ \\
+    \midrule
+    $S(y)$              & $\{a, b, d\}$    & 3 & PoS & 2 & $2/3$ \\
+    $C(\mathrm{fin})$   & $\{a, c\}$       & 2 & PoW & 1 & $1/3$ \\
+    $C(y)$              & $\{a, b, c, d\}$ & 4 & PoA & 0 & $0$   \\
+    $R(y)$              & $\{b, d\}$       & 2 &     &   &       \\
+    \bottomrule
+  \end{tabular}
+  \caption{A worked example for the label-space statistics. Top: four items
+  and their accepted tags on a node $y$, consensus mechanism, with values
+  PoW, PoS and PoA, and its one child, finality (fin), with values
+  deterministic and probabilistic. Bottom left: the item sets of
+  \cref{eq:closure,eq:residual} at $y$ and at the child. Bottom right: the
+  value counts and value distribution of \cref{eq:valcount} at $y$. The node
+  has value entropy 0.92 bits, dominance 0.67, residual fraction 0.5 and
+  branching gain 1 bit.}
+  \label{fig:toylabel}
+\end{figure}
+
+We illustrate the sets and the four statistics that follow on the example of
+\cref{fig:toylabel}: a node $y$, consensus mechanism, with one child,
+finality, and four tagged items. The values of $y$ are alternative answers
+to its question, which mechanism validates a transaction; the child asks a
+different question, whether settlement is deterministic, that an item about
+consensus may go on to answer. The two never overlap in meaning: a child is
+a further question, not a sub-answer. Item a answers both questions, b and
+d answer only the parent's, and c answers only the child's. The direct set
+$S(y) = \{a, b, d\}$ holds the items tagged at $y$; item c enters the
+closure $C(y) = \{a, b, c, d\}$ only through the child, since a tag at
+finality implies consensus mechanism by is-a; and the residual
+$R(y) = \{b, d\}$ drops item a, which the child also covers. From these
+sets we compute four statistics per node: two describe the node's own
+split into values and use the direct tags only, since these alone carry a
+value of $y$; two describe how the node's items divide among its children
+and use the closure.
+
+\subsubsection{Value entropy}
+For $v \in V(y)$ let
+\begin{equation}
+  \label{eq:valcount}
+  n_v(y) = |\{\, i \in I : (i, y, v) \in T \,\}|, \qquad
+  p_y(v) = \frac{n_v(y)}{\sum_{v' \in V(y)} n_{v'}(y)},
+\end{equation}
+where $n_v(y)$ is the number of items carrying value $v$ at $y$: the braces
+collect every item $i$ of the batch $I$ for which the tag set $T$ holds a
+triple $(i, y, v)$, item $i$ tagged at term type $y$ with value $v$, and the
+bars $|\cdot|$ count them. The second quantity, $p_y(v)$, divides that count
+by the total count over every value of $y$, the dummy index $v'$ running over
+$V(y)$ in the denominator, so that $p_y$ is a probability distribution over
+the values of $y$ summing to one: the share of the node's answers that fall
+on $v$. An item tagged at $y$ with two values counts once under each, so
+$\sum_v n_v(y) \ge |S(y)|$, with equality when no item carries two values
+at $y$. The \emph{value entropy} is
+$\entropy(p_y) = -\sum_{v} p_y(v) \log_2 p_y(v)$, the impurity of the node's
+own split: $\log_2 |V(y)|$ when the values are used equally and near zero
+when one value absorbs everything. It is undefined when $S(y) = \emptyset$.
+In the example item c never answered the consensus question and is ignored.
+The counts are $n_{\mathrm{PoS}} = 2$, $n_{\mathrm{PoW}} = 1$ and
+$n_{\mathrm{PoA}} = 0$, summing to $3 = |S(y)|$ because no item carried two
+consensus values; had item d also been tagged PoA, the sum would be 4 while
+$|S(y)|$ stayed 3. The value distribution is $p_y = (2/3, 1/3, 0)$, so
+\begin{equation*}
+  \entropy(p_y) = -\tfrac{2}{3}\log_2\tfrac{2}{3} - \tfrac{1}{3}\log_2\tfrac{1}{3} = 0.92 \text{ bits},
+\end{equation*}
+against a ceiling of $\log_2 3 = 1.58$ if the three values were used
+equally and a floor of 0 if every item said PoS. At 0.92 bits the node's
+question still separates items on this content, though not as well as it
+could.
+
+\subsubsection{Dominance}
+The \emph{dominance} is $\max_v p_y(v)$, the share of the most frequent
+value, the same information as the value entropy in a blunter form that is
+easier to threshold: a node whose dominance is high has a question with, on
+this content, effectively one answer. Like the entropy it is undefined when
+$S(y) = \emptyset$. In the example the dominance is $2/3 = 0.67$, below the
+collapse threshold of 0.85 used by the proposals below. Nine items in ten
+saying PoS would give dominance 0.9 and, with $|S(y)| \ge 10$, the node
+would be reported as collapsed.
+
+\subsubsection{Residual fraction}
+The \emph{residual fraction} is $|R(y)|/|C(y)|$, the share of the node's
+items that stop at it rather than continuing to a child. It is zero when
+every item on $y$ is also on some child, so the children cover the node
+completely, and one when the node has no children or none of them is used.
+In the example the closure is used, so item c now counts, and the residual
+fraction is $|R(y)|/|C(y)| = 2/4 = 0.5$: half the items that belong to
+consensus mechanism go no further than the node itself, since b and d state
+which mechanism is used but say nothing the child asks. A large residual
+with many items is the signal that a child dimension may be missing. With a
+real batch, enough such items would make $y$ a discovery target, and Task~E
+would be shown b and d and asked what question about consensus the catalogue
+does not yet pose.
+
+\subsubsection{Branching gain}
+The \emph{branching gain} is the entropy of the empirical split of $C(y)$
+over the children and the residual,
 \begin{equation}
   \label{eq:gain}
   g(y) = \entropy(\hat q_y), \qquad
-  \hat q_y(x) \propto \frac{|C(x)|}{|C(y)|},\quad
-  \hat q_y(\mathrm{stop}) \propto \frac{|R(y)|}{|C(y)|},
+  \hat q_y(x) = \frac{|C(x)|}{Z_y},\qquad
+  \hat q_y(\mathrm{stop}) = \frac{|R(y)|}{Z_y},
 \end{equation}
-for $x \in \mathrm{ch}(y)$, normalised to sum to one because the closures of
-two children may overlap.
-\Cref{eq:gain} is \cref{eq:branch} with the model's edge weights
-replaced by item counts and a stop option added. A random descent now starts
-at a root with probability proportional to its closure and at $y$ stops with
-$\hat q_y(\mathrm{stop})$ or moves to child $x$ with $\hat q_y(x)$; a node
-without children stops with probability one. From the descent we compute, as
-in \cref{sec:method:hierarchy}, the expected bits resolved, the AUC of the
-reach-a-leaf curve, the expected depth, and the effective leaves
-$2^{\entropy(r)}$ for the distribution $r$ of the node a descent stops at,
-all from content rather than from the prior weights. The prior values of
-\cref{eq:branch,eq:auc} are recomputed for the version in force and reported
-beside them.
+for $x \in \mathrm{ch}(y)$, with $Z_y = |R(y)| + \sum_{x \in \mathrm{ch}(y)}
+|C(x)|$. Here $\hat q_y$ is a probability distribution over the options
+open to a walk sitting at $y$: step to child $x$, with mass the size of
+that child's closure, or stop, with mass the size of the residual; $Z_y$
+is the sum of those masses, so that the options sum to one. The hat
+distinguishes $\hat q_y$ from $q_y$ of \cref{eq:branch}, which used the
+model's edge weights where $\hat q_y$ uses item counts, and \cref{eq:gain}
+is \cref{eq:branch} with that substitution and a stop option added. The
+normaliser $Z_y$ is needed because the closures of two children may
+overlap, so $|R(y)| + \sum_x |C(x)|$ can exceed $|C(y)|$; when they are
+disjoint, $Z_y = |C(y)|$ and $\hat q_y$ is simply the share of each child's
+closure and of the residual in the node's closure. A node without children
+has $\hat q_y(\mathrm{stop}) = 1$ and $g(y) = 0$. In the example the walk
+arriving at $y$ either steps to finality, with mass $|C(\mathrm{fin})| =
+2$, or stops, with mass $|R(y)| = 2$, so $Z_y = 4 = |C(y)|$,
+$\hat q_y = (1/2, 1/2)$ and
+\begin{equation*}
+  g(y) = \entropy(\tfrac{1}{2}, \tfrac{1}{2}) = 1 \text{ bit}:
+\end{equation*}
+the step from $y$ resolves one full bit of uncertainty about where an item
+ends up. The normaliser matters once closures overlap: with a second child,
+reward mechanism, and item a tagged there too, the masses would be finality
+2, reward 1 and stop 2, summing to $Z_y = 5$ against $|C(y)| = 4$, and
+dividing by $|C(y)|$ would give shares summing to $1.25$; dividing by $Z_y$
+gives $\hat q_y = (0.4, 0.2, 0.4)$. The child itself has no children, so
+$\hat q_{\mathrm{fin}}(\mathrm{stop}) = 1$ and $g(\mathrm{fin}) = 0$.
+
+A random descent now starts at a root with probability proportional to its
+closure and at $y$ stops with $\hat q_y(\mathrm{stop})$ or moves to child
+$x$ with $\hat q_y(x)$; a node without children stops with probability one.
+From the descent we compute, as for the prior walk above, the expected
+bits resolved, the AUC of the reach-a-leaf curve, the expected depth, and
+the effective leaves $2^{\entropy(r)}$ for the distribution $r$ of the node
+a descent stops at, all from content rather than from the prior weights. The
+prior values of \cref{eq:branch,eq:auc} are recomputed for the version in
+force and reported beside them.
+
+Read together, the four statistics of the example say the following.
+Entropy 0.92 and dominance 0.67 say the node's question still separates
+items; a residual fraction of 0.5 says half of them have nowhere to go
+beneath it; a gain of 1 bit says the one existing child is taken about as
+often as not. The node is healthy on its own values and under-served by
+children, the profile of a discovery target rather than of a collapsed or
+dormant one.
 
 \textbf{Deterministic proposals.} From the statistics the loop names, without
 a model call, the \emph{dormant} nodes ($C(y) = \emptyset$), the
