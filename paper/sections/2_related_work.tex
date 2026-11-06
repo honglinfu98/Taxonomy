@@ -50,3 +50,31 @@ ground an LLM in chunks; we hold the whole definitional corpus in a cached
 context, despite the known loss of mid-context information~\cite{liu2024lost},
 because recognising one dimension under different names is a whole-corpus
 judgement.
+
+\paragraph{Faceted search and the next question.}
+Faceted interfaces narrow a result set along several attributes at once:
+Flamenco~\cite{yee2003faceted} navigates a collection through hierarchical
+faceted metadata, and production engines return a count per facet value and
+order facets by count, by configuration or by past
+use~\cite{koren2008personalized,solrfaceting,algoliadynamicfacets}. Which
+facet to offer next has been studied as a cost to minimise. Basu Roy et
+al.~\cite{roy2008minimum} treat the navigation of a database as a decision
+tree that singles out each tuple and pick the facet that leaves the fewest
+pairs of tuples indistinguishable; they contrast it with the information gain
+of ID3 with every tuple its own class, for which no approximation bound is
+known. FACeTOR~\cite{kashyap2010facetor} chooses the facet conditions that
+minimise an expected navigation cost, with the entropy of the result over the
+conditions estimating whether the user keeps refining; Koren et
+al.~\cite{koren2008personalized} rank facets by their expected utility to a
+user, learned from ratings; Facetedpedia~\cite{li2010facetedpedia} builds
+query-dependent facet hierarchies from Wikipedia's categories and ranks them
+by navigational cost; and clarifying questions~\cite{zamani2020clarifying}
+bring the next question to Web search when a query is ambiguous. Our facet
+score is that information gain when the options are disjoint, normalised over
+overlapping options by their total size as FACeTOR's entropy is, so we do not
+claim the criterion. What differs is where the questions come from and what
+else the score decides. Our facets are the is-a children and values of a DAG
+induced from cited definitions, not the attributes of a schema or a category
+system, and the score that orders them at query time also decides, during
+maintenance, whether a new child or value enters the DAG, so the DAG grows
+only by questions that would narrow a search.

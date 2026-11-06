@@ -565,49 +565,278 @@ parallelism of its three stages.
 Part~3 turns the tagged content into an index on $G$ and answers queries with
 set algebra on the DAG instead of text search.
 
-\textbf{Index.} The tagged items of every iteration are placed on the current
-version of $G$; off-topic items, items with no tag on a node of that version
-and duplicates are skipped. Identifiers are stable across versions, so a tag
-made on an earlier version remains valid, and a node added later holds no
-items from earlier batches. Items are numbered $0..N{-}1$ and every posting
-list is a bitset over the items, so set algebra on postings is one integer
-operation. Node $y$ carries $S(y)$, one bitset per value $v \in V(y)$, and its
-closure $C(y)$, the union of $S$ over $y$ and its descendants; a category
-carries the items with any tag in it. Per item the index keeps its tagged
-nodes with the highest confidence of their tags, its (node, value) pairs with
-confidence, one evidence span per (item, node), and a byte offset into the
-batch file, so the text itself is not stored. From $G$ we precompute, in
-topological order, the descendants and ancestors of every node as bitsets
-over the nodes; the best is-a path strength $\rho(x, y)$, the maximum over paths from $x$ up to its ancestor $y$ of the product of the edge weights of \cref{sec:method:hierarchy}, one at $x$ itself and one along candidate edges; the lowest common ancestors
-of any node set, the common ancestors not dominated by another; the
-information content $\mathrm{IC}(y) = -\log_2 |C(y)|/N$; and a node similarity $\max_z \rho(x, z)\,\rho(x', z)$ over the common ancestors $z$ of $x$ and $x'$, how strongly both are kinds of one thing. The index on \RCat\ builds in
-about a second and is rebuilt, not updated, after each iteration.
+\textbf{Index.} The index places the tagged items of every batch on the
+current version of $G$. Items are read batch by batch and numbered
+$0..N{-}1$ in that order. An item is skipped when the tagger marked it
+off-topic, when none of its tags names a node of that version, or when an
+earlier batch already holds it. Evolution only adds nodes and never renames
+one, so a tag made on an earlier version still names a node of the current
+one, and a node added in version $t$ holds only items tagged on version $t$
+or later, since an item is tagged once. In this section $I$ is the set of
+indexed items and $N = |I|$, so $S$, $C$ and $R$ of
+\cref{eq:closure,eq:residual} are taken over all batches rather than one.
 
-\textbf{Queries.} An atom denotes the subtree $C(y)$, the direct items $S(y)$,
-the items with value $v$ at $y$, given as a code or a label, the items on descendants $x$ of $y$ with $\rho(x, y) \ge \sigma$, or a category; atoms
-combine with AND, OR, NOT and parentheses, and a space is AND. Evaluation
-walks the parse tree over bitsets, AND and OR as intersection and union and
-NOT as the complement within the collection, so a subtree query is one
-lookup and the strength-restricted form, which must enumerate the descendants
-of $y$, is the only atom whose cost grows with the subtree. An item's score
-is the sum over the positive atoms, those not under a NOT, of its match
-strength: the tag confidence for a direct or value match, the highest
-confidence among the item's tags in the category for a category match, and
-$\max_x \kappa(x)\,\rho(x, y)$ over its tagged descendants $x$ for a subtree match, so
-an item reached only by weak edges ranks below one tagged at $y$ itself; the
-descendant that produced the match is reported with the result, and ties are
-broken by item identifier. The lowest common ancestors of the query nodes are
-offered as the generalisation of a query over more than one node. When fewer
-than $k$ items match, the six nodes most similar to each query node are taken
-in decreasing similarity and the items of their subtrees appended until $k$
-is reached, each scored as the similarity times its match strength at that
-node and marked as expanded with the node it came through. An item is also a
-vector over the nodes, $\max_x \kappa(x)\,\rho(x, y)\,\mathrm{IC}(y)$ over its tagged descendants $x$ of each ancestor $y$, and ``more like this'' ranks the items
-that share a tagged node with it by cosine. A free-text request is routed to
-a query lexically, by idf-weighted overlap of its tokens with the names,
-questions, descriptions, aliases and value labels of the catalogue, the three
-best atoms joined by OR, or by one small model call with the catalogue block
-cached.
+\textbf{Postings.} Every set of items the index stores is a \emph{bitset},
+an $N$-bit integer whose bit $i$ is one exactly when item $i$ is in the set.
+Union, intersection and difference of two sets are then the bitwise OR, AND
+and AND with the complement of two integers, and the size of a set is the
+number of its one bits. Each operation is one pass over two $N$-bit
+integers, a machine word at a time, in place of a merge of two lists of item
+identifiers, so its cost is small but still linear in $N$. Node $y$ stores
+three kinds of posting: its direct items $S(y)$; for each value $v \in V(y)$,
+the items that carry $v$ at $y$,
+\begin{equation}
+  \label{eq:pair}
+  S(y, v) = \{\, i \in I : (i, y, v) \in T \,\},
+\end{equation}
+so that $n_v(y) = |S(y, v)|$ in \cref{eq:valcount}; and its closure $C(y)$,
+stored once rather than recomputed by each query. Each of the five
+categories of term type (asset, technology, actor, activity, obligation or
+risk) stores the items with a direct tag on one of its nodes. On the example
+of \cref{fig:toylabel}, number the items a, b, c, d as 0 to 3 and write a
+bitset as four bits with item d first. Then $S(y) = 1011$ sets the bits of
+a, b and d. The values split it into $S(y, \text{PoS}) = 1001$ and
+$S(y, \text{PoW}) = 0010$, and $S(y, \text{PoA})$ is empty. Finality, a
+leaf, has $S(\mathrm{fin}) = C(\mathrm{fin}) = 0101$. The closure
+$C(y) = S(y) \cup C(\mathrm{fin}) = 1111$ is one OR. The residual of
+\cref{eq:residual} is $C(y) \setminus C(\mathrm{fin}) = 1010$, items b and d,
+and $C(y) \setminus S(y) = 0100$ is item c, which reaches $y$ only through
+its child.
+
+\textbf{Item records.} Beside its bit in the postings, each item keeps a
+record of its tags and a pointer to its text. For each node $x$ it is
+tagged at, the record holds $\kappa(x)$, the highest confidence among the
+item's tags at $x$, and the first evidence span the tagger gave there; for
+each pair $(x, v)$ it holds the confidence of that tag. The text itself is
+not copied into the index. It stays in the batch file the tagger read, one
+JSON record per item and line, and the pointer is the file together with the
+\emph{byte offset} at which the item's line begins, counted from the start of
+the file when the index is built. Displaying an item seeks to that offset and
+parses one line, at the same cost wherever the line sits in the file.
+Matching, scoring and facets use only the postings and the records, so text
+is read for the results shown and for no others.
+
+\textbf{Structure of $G$.} The index also precomputes, from $G$ alone, the
+structure that queries and their expansion use. Nodes are numbered as well,
+and a set of nodes is a bitset over them. With $\mathrm{pa}(y)$ the parents
+of $y$, one pass in reverse topological order, children before parents,
+gives the descendants of every node, and one pass in topological order gives
+its ancestors,
+\begin{equation}
+  \label{eq:descanc}
+  \mathrm{desc}(y) = \{y\} \cup \bigcup_{x \in \mathrm{ch}(y)} \mathrm{desc}(x),
+  \qquad
+  \mathrm{anc}(y) = \{y\} \cup \bigcup_{p \in \mathrm{pa}(y)} \mathrm{anc}(p).
+\end{equation}
+Each set is the OR of sets computed earlier in the pass, so a pass reads
+every edge once. The descendant sets build the closure postings,
+$C(y) = \bigcup_{x \in \mathrm{desc}(y)} S(x)$, the bitset form of
+\cref{eq:closure}; whether $z$ is an ancestor of $x$ is one bit of
+$\mathrm{anc}(x)$; and the common ancestors of a set of nodes are the AND of
+their ancestor sets. A subtree query reads the stored posting $C(y)$ and
+does not walk $\mathrm{desc}(y)$, so the node bitsets add nothing to its
+cost.
+
+The closure follows every is-a edge, whatever its weight. How strongly a
+descendant $x$ is a kind of $y$ is its \emph{path strength},
+\begin{equation}
+  \label{eq:rho}
+  \rho(x, y) = \max_{x = z_0 \to z_1 \to \cdots \to z_m = y} \;
+  \prod_{j=1}^{m} w(z_{j-1} \to z_j), \qquad \rho(x, x) = 1,
+\end{equation}
+the best product of the edge weights of \cref{sec:method:hierarchy} over the
+is-a paths from $x$ up to $y$, with $\rho(x, y) = 0$ when $y$ is not an
+ancestor of $x$; an edge added by evolution counts with weight one until it
+is re-estimated. A search upward from each node, keeping the best product
+found so far for each ancestor, computes $\rho$ for all pairs. On the DAG of
+\cref{fig:toydag}, $\rho(\text{delegated PoS}, \text{consensus mechanism}) =
+0.9 \times 0.4 = 0.36$ and $\rho(\text{liquid staking}, \text{consensus
+mechanism}) = 0.1 \times 0.4 = 0.04$, yet the closure of consensus mechanism
+holds the items of liquid staking as fully as those of proof of work. A light
+edge thus brings all of a child's items into its parent, which near the
+roots of the real DAG makes closures cover most of the collection
+(\cref{sec:exp:rq4}). The queries below use $\rho$ to restrict a subtree to
+strong descendants and to rank the items reached through weak ones lower.
+
+The \emph{lowest common ancestors} of a set of nodes are its common
+ancestors that are not a proper ancestor of another common ancestor. A set
+can have several, since a node can have several parents. Delegated PoS and
+liquid staking have the common ancestors proof of stake and consensus
+mechanism, and only proof of stake is lowest. The \emph{information content}
+of a node,
+\begin{equation}
+  \label{eq:ic}
+  \mathrm{IC}(y) = -\log_2 \frac{|C(y)|}{N},
+\end{equation}
+takes $|C(y)|$ as the number of one bits of the closure, counting an empty
+closure as one half so that the value stays finite. A node is more
+informative the fewer items its subtree holds. In \cref{fig:toylabel}, with
+$N = 4$, consensus mechanism holds every item and has $\mathrm{IC}(y) = 0$,
+and finality holds two and has $\mathrm{IC}(\mathrm{fin}) = 1$ bit. The
+\emph{similarity} of two nodes,
+\begin{equation}
+  \label{eq:sim}
+  \mathrm{sim}(x, x') = \max_{z \in \mathrm{anc}(x) \cap \mathrm{anc}(x')}
+  \rho(x, z)\, \rho(x', z), \qquad \mathrm{sim}(x, x) = 1,
+\end{equation}
+says how strongly both are kinds of one thing. Because $\mathrm{anc}(x)$
+contains $x$, a node and its ancestor are at least as similar as the path
+strength between them. The measure follows the edge weights, not the depth
+of the shared ancestor. In \cref{fig:toydag}, delegated PoS and proof of
+work have similarity $0.36 \times 0.5 = 0.18$ through consensus mechanism,
+more than delegated PoS and its sibling liquid staking, $0.9 \times 0.1 =
+0.09$ through proof of stake, because liquid staking is only weakly a kind
+of proof of stake. On version~\RCat\ the index builds in \RBuildSec\
+seconds, so it is rebuilt after each iteration, offsets included, rather
+than updated in place.
+
+\begin{figure}[t]
+  \centering
+  \scriptsize
+  \begin{tabular}{@{}llrrr@{}}
+    \toprule
+    Item & Tagged at $x$ & $\kappa_i(x)$ & $\rho(x, \mathrm{CM})$ & Score for \texttt{CM} \\
+    \midrule
+    $i_1$ & consensus mechanism (CM) & 0.9 & 1    & 0.900 \\
+    $i_2$ & delegated PoS (DPoS)     & 0.9 & 0.36 & 0.324 \\
+    $i_3$ & proof of stake (PoS)     & 0.8 & 0.40 & 0.320 \\
+    $i_4$ & proof of work (PoW)      & 0.6 & 0.50 & 0.300 \\
+    $i_5$ & liquid staking (LS)      & 0.9 & 0.04 & 0.036 \\
+    \bottomrule
+  \end{tabular}
+  \par\vspace{4pt}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Atom & Denotes & On the example \\
+    \midrule
+    \texttt{y}                         & the subtree $C(y)$                  & \texttt{PoS}: $i_2, i_3, i_5$ \\
+    \texttt{y!}                        & the direct items $S(y)$             & \texttt{PoS!}: $i_3$ \\
+    \texttt{y=v}                       & the items with value $v$, $S(y, v)$ & no values in the example \\
+    \texttt{y\textasciitilde}$\sigma$  & the strong subtree $C_\sigma(y)$    & \texttt{CM\textasciitilde 0.3}: $i_1, i_2, i_3, i_4$ \\
+    \texttt{@c}                        & the items tagged in category $c$    & \texttt{@technology}: all five \\
+    \bottomrule
+  \end{tabular}
+  \caption{A worked example for queries on the DAG of \cref{fig:toydag}.
+  Top: five items with one tag each, the confidence of the tag, the path
+  strength from the tagged node to consensus mechanism, and the item's score
+  for the subtree query \texttt{CM}, the product of the two. Bottom: the five
+  kinds of atom, what each denotes, and its result on the example.}
+  \label{fig:toyquery}
+\end{figure}
+
+\textbf{Queries.} A query is a boolean expression over five kinds of atom,
+listed in \cref{fig:toyquery} with their results on a small example. For a
+node $y$, the atom \texttt{y} denotes the subtree $C(y)$ and \texttt{y!} the
+direct items $S(y)$. The atom \texttt{y=v} denotes $S(y, v)$ of
+\cref{eq:pair}. Its value is given either as a code $v_j$, the $j$th value of
+$y$, or as a label, matched first ignoring case and then as the only label of
+$y$ that contains it; a value that matches neither way is rejected with the
+list of values of $y$. The atom \texttt{y\textasciitilde}$\sigma$ denotes the
+subtree restricted to strong descendants,
+\begin{equation}
+  \label{eq:strongsub}
+  C_\sigma(y) = \bigcup \{\, S(x) : x \in \mathrm{desc}(y),\ \rho(x, y) \ge \sigma \,\},
+\end{equation}
+which contains $S(y)$ because $\rho(y, y) = 1$. The atom \texttt{@c} denotes
+the items with a tag on a node of category $c$. Atoms combine with AND, OR,
+NOT and parentheses, and a space between two operands is AND. NOT binds
+tightest, then AND, then OR, so \texttt{x y OR z} reads
+\texttt{(x AND y) OR z}. Evaluation walks the parse tree over bitsets, with
+AND and OR as intersection and union and NOT as the complement within $I$.
+Four kinds of atom are one lookup of a stored posting. The
+strength-restricted atom enumerates $\mathrm{desc}(y)$, tests $\rho(x, y)$
+for each descendant and unites the direct postings that pass, so it is the
+only atom whose cost grows with the subtree. It is also the atom that keeps a
+general node selective, since $C(y)$ follows every edge whatever its weight.
+At $\sigma = 0.3$ it cuts the mean result of a subtree query on the real
+index from \RClosureHits\ to \RStrengthHits\ items (\cref{sec:exp:rq4}). On
+the example, \texttt{PoS} returns $i_2$, $i_3$ and $i_5$,
+\texttt{PoS NOT DPoS} returns $i_3$ and $i_5$, and \texttt{PoS DPoS OR PoW}
+returns $i_2$ and $i_4$.
+
+\textbf{Ranking.} A score orders the matches. Write $\kappa_i(x)$ for the
+$\kappa(x)$ of item $i$'s record, zero when $i$ has no tag at $x$, and
+$\mathcal{A}^{+}$ for the atoms of the query that are not negated. The score
+of item $i$ is the sum of its match strengths,
+\begin{equation}
+  \label{eq:score}
+  \mathrm{score}(i) = \sum_{a \in \mathcal{A}^{+}} m(i, a).
+\end{equation}
+For a subtree atom on $y$ the strength is
+$m(i, a) = \max_{x \in \mathcal{Y}} \kappa_i(x)\, \rho(x, y)$, the best
+product of tag confidence and path strength over the nodes the item is
+tagged at; a tag outside the subtree contributes nothing, since
+$\rho(x, y) = 0$ there. For \texttt{y!} the strength is $\kappa_i(y)$, for
+\texttt{y=v} the confidence of the tag $(i, y, v)$, and for \texttt{@c} the
+highest $\kappa_i(x)$ over the nodes $x$ of category $c$. A
+strength-restricted atom takes the subtree strength over all the item's
+tagged nodes, so its threshold decides whether an item matches but not which
+tag scores it. The node $x$ that attains the maximum is reported with the
+item, ties are broken by item identifier, and the $k$ best are returned. For
+the query \texttt{CM} every item of the example matches, with the scores of
+\cref{fig:toyquery}. Item $i_1$, tagged at consensus mechanism itself, ranks
+first. Item $i_2$, two levels down, outranks $i_3$ at proof of stake because
+its tag is more confident, and $i_5$, reached through the light edge to
+liquid staking, ranks last. Because strengths add, an item that matches both
+operands of an OR ranks above one that matches only one, and a negated atom
+filters the result without adding to any score.
+
+\textbf{Generalisation and expansion.} When the atoms of $\mathcal{A}^{+}$
+name two or more distinct nodes, the result carries their lowest common
+ancestors as a broader query, which the engine offers but does not run. For
+\texttt{DPoS OR LS} it offers proof of stake. When fewer than $k$ items
+match, the engine relaxes the query to nearby nodes. For each node named in
+$\mathcal{A}^{+}$ it takes the six nodes most similar to it by
+\cref{eq:sim}, pools them, and adds their subtrees in decreasing similarity
+until at least $k$ items are held. An item first reached through node $z$,
+similar to query node $y$, scores $\mathrm{sim}(y, z)$ times its subtree
+strength at $z$, is marked as expanded with $z$ and the similarity, and is
+listed after every match. On the example with $k = 3$, \texttt{LS} matches
+only $i_5$. The nodes most similar to liquid staking are proof of stake at
+0.10, delegated PoS at 0.09 and consensus mechanism at 0.04. The subtree of
+proof of stake adds $i_2$ and $i_3$, scored $0.10 \times 0.81 = 0.081$ and
+$0.10 \times 0.80 = 0.080$, and the expansion stops. The expansion ignores
+the boolean structure of the query. An expanded item comes from a node
+similar to one query node and need not satisfy the other atoms, the ANDs or
+the NOTs.
+
+\textbf{More like this.} An item is also a vector over the nodes, with
+component
+\begin{equation}
+  \label{eq:itemvec}
+  u_i(y) = \max_{x \in \mathcal{Y}} \kappa_i(x)\, \rho(x, y)\, \mathrm{IC}(y)
+\end{equation}
+at node $y$. Every ancestor of a tagged node carries weight, discounted by
+the path strength from the tag and by how general the ancestor is. A root
+whose subtree holds every item has $\mathrm{IC} = 0$ and contributes
+nothing. Given item $i$, ``more like this'' ranks by the cosine of $u_i$ and
+$u_j$ the items $j$ that share at least one tagged node with $i$, and
+reports the shared nodes. An item tagged only at a parent or a sibling of
+$i$'s nodes is not a candidate, however close its vector.
+
+\textbf{Free text.} A request in words becomes a query in one of two ways.
+The lexical route treats each node and each value of the catalogue as a
+short document, made of a node's name, question, description and aliases or
+of a value's label and definition. Each distinct word of the request with
+three or more characters adds its inverse document frequency
+$\log(M / \mathrm{df}(w))$ to every document that contains it, with $M$
+documents of which $\mathrm{df}(w)$ contain $w$. The three best documents
+become atoms, \texttt{y} for a node and \texttt{y=v} for a value, joined by
+OR. The join favours recall, and one atom can contain another. For ``rug
+pull scam on a decentralised exchange'' the atoms are the subtree of
+\ttype{exchange\_venue\_type}, its own value ``decentralised exchange
+(DEX)'', which that subtree already contains, and the value ``fraud / scam
+(investment or romance)'' of \ttype{risk\_type\_illicit\_finance}; the words
+rug and pull occur in no catalogue entry. The model route makes one call to
+Haiku~5.5 at effort \texttt{low} with thinking disabled. The call carries the
+catalogue block of Task~C as a cached system block and an instruction that
+offers subtree atoms, value atoms and the boolean operators, but not the
+direct, strength-restricted or category atoms, and asks for the query string
+alone. The string is parsed and run like a typed query, and one that names
+an unknown node or value is rejected. Neither route sees the result of the
+query it writes. Neither is evaluated in this paper, since the judged queries
+of \cref{sec:exp:rq3} and the workloads of \cref{sec:exp:rq4} are written in
+the query language directly.
 
 \textbf{Facets.} For a result set of $n$ items and a node $y$ it touches, the
 query nodes or, for a category query, the roots of that category, two kinds
@@ -620,13 +849,20 @@ the expected narrowing is
   \label{eq:facet}
   \mathcal{N}(y) = \sum_{o} \frac{n_o}{\sum_{o'} n_{o'}} \log_2 \frac{n}{n_o},
 \end{equation}
-zero for an option that covers the whole set; options may overlap, as an
-item can sit in two child subtrees, which the normalisation absorbs. The
-engine returns the six facets of highest $\mathcal{N}$ with their options and
-sizes, and the one at the top is the next question. On the result set
-$C(y)$ with the child subtrees and the residual as options, \cref{eq:facet}
-is the branching gain of \cref{eq:gain}: the objective that grows the DAG
-also routes a search through it. The navigation experiment of
+zero for an option that covers the whole set. With disjoint options,
+\cref{eq:facet} is the information gain of the question when every item is
+its own class, the criterion Basu Roy et al.~\cite{roy2008minimum} consider
+for choosing facets over a database. Options may overlap, as an item can sit
+in two child subtrees. The normalisation by the total option size, which
+FACeTOR~\cite{kashyap2010facetor} also uses for its entropy, keeps the
+weights a distribution, but they are then no longer the probabilities of the
+answers a user gives. The engine returns the six facets of highest
+$\mathcal{N}$ with their options and sizes, and the one at the top is the
+next question. On the result set $C(y)$ with the child subtrees and the
+residual as options, $\mathcal{N}(y) = g(y) - \log_2 (Z_y / |C(y)|)$, so
+\cref{eq:facet} equals the branching gain of \cref{eq:gain} when no item lies
+in two child subtrees and falls below it otherwise: the objective that grows
+the DAG also routes a search through it. The navigation experiment of
 \cref{sec:exp:rq4} uses this directly, offering at each step the facets of
 every node the remaining items carry tags on and taking the option that
 contains the target.

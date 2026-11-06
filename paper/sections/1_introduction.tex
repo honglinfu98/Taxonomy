@@ -76,7 +76,10 @@ accepting only candidates that raise the information gain and are supported by
 verified evidence. The seed built from law is never modified; what the content
 adds is marked as such. Finally the tagged content is indexed on the graph as bitsets,
 queried by set algebra weighted by is-a path strength, and navigated by the
-facet with the highest expected narrowing.
+facet with the highest expected narrowing. That criterion is the information
+gain studied for dynamic faceted search~\cite{roy2008minimum}; what is new is
+that the DAG supplies the questions and that maintenance admits a question
+only when it narrows the content.
 
 \smallskip\noindent\textbf{Contributions.}
 \begin{itemize}
